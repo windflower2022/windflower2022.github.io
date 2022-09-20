@@ -13,7 +13,7 @@
 
     <title>
         
-          IMAPOST - undefined
+          学习笔记 033-036 - undefined
         
     </title>
 
@@ -151,7 +151,7 @@
                     <div class="tags">
                         
                     </div>
-                    <h1>IMAPOST</h1>
+                    <h1>学习笔记 033-036</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 平子 on
@@ -174,7 +174,115 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                
+                <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    &nbsp;&nbsp; <h3>033 表单label标签</h3><br>
+     label双标签的使用可在表格中出现光标表格菜单,只读readonly和禁用disabled属性,<br><br>
+    <form action="">
+        <label for="username">请输入用户名:</label>
+        <input type="text" id="username"> <br><br>
+    您的手机号：<input type="text" value="12345678" readonly><br><br>
+    您的性别：<input type="radio" name="gender">男
+    <input type="radio" name="gender">女
+    <input type="radio" name="gender">保密
+    </form><br>
+    您的性别：<input type="radio" name="gender">男
+    <input type="radio" name="gender">女
+    <input type="radio" name="gender" disabled>保密
+    </form><br><br>
+    小技巧：input[type="radio" name=gender]*3再label
+    &nbsp;&nbsp; <h3>034 表单分组</h3><br>
+    带有边框和标题的表单控件字段集双标签fieldset，进行表单控件分组。嵌套双标签legend,说明的意思。<br><br>
+    <fieldset></fieldset><br><br>
+    边框作用就是相关字段进行视觉上的划分。<br><br>
+    <fieldset>
+        <legend>基础信息</legend><br><br>
+        用户名：<input type="text"><br><br>   
+        密码：<input type="password"><br><br>
+    </fieldset>
+    &nbsp;&nbsp; <h3>035 表单按钮（上）</h3><br>
+    提交按钮：input里type属性为submit<br><br>
+    <form action="">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+    </form><br><br>
+    form里定义action属性，填服务器地址<br><br>
+    <form action="https://windflower2022.github.io">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+    </form><br><br>
+    form里定义target属性，_blank/_self<br><br>
+    <form action="https://windflower2022.github.io" target="_blank">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+    </form><br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+    </form><br><br>
+    重置按钮：input里type属性为reset<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+        <input type="reset">
+    </form><br><br>
+    普通按钮：input里type属性为button<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+        <input type="reset">
+        <input type="button">
+    </form><br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+        <input type="reset">
+        <input type="button" value="普通按钮">
+    </form><br><br>
+    反思：提交按钮也在input里添加属性value为注册，重置为登录。<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit" value="注册">
+        <input type="reset" value="登录">
+        <input type="button" value="普通按钮">
+    </form>
+    &nbsp;&nbsp; <h3>036 表单按钮（下）</h3><br>
+    图像按钮：input里type属性为image,还要定义其属性src<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit" value="注册">
+        <input type="reset" value="登录">
+        <input type="button" value="普通按钮">
+        <input type="image" src="图片地址">
+    </form><br><br>
+    双标签button按钮：button<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit" value="注册">
+        <input type="reset" value="登录">
+        <input type="button" value="普通按钮">
+        <input type="image" src="图片地址">
+        <button>button按钮</button>
+    </form><br><br>
+</body>
+</html>
 
                 <hr>
 
