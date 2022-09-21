@@ -281,6 +281,87 @@
         <input type="image" src="图片地址">
         <button>button按钮</button>
     </form><br><br>
+     &nbsp;&nbsp; <h3>037-39 表单综合案例</h3><br>
+    <h1 align="center">社区疫情流掉信息表</h1>
+    <p>&emsp;&emsp;请大家做好个人防护，如去过风险地区，请及时向社区报备。</p>
+    <form action="https://windflower2022.github.io/" target="_self">
+        <fieldset>
+            <legend>基本信息</legend>
+            <h4>1.您的名字</h4>
+            <input type="text">
+            <h4>2.您的电话号码</h4>
+            <input type="text" value="12345678" onlyread>
+            <h4>3.您的性别</h4>
+            <input type="radio" name="gender">男
+            <input type="radio" name="gender">女
+            <input type="radio" name="gender" disabled>保密
+            <h4>4.您的家庭住址</h4>
+            <select name="" id="">
+                <option value="">哪个省</option>
+            </select>
+            <select name="" id="">
+                <option value="">市</option>
+            </select>
+            <select name="" id="">
+                <option value="">县</option>
+            </select>
+            <select name="" id="">
+                <option value="">乡</option>
+            </select><br><br>
+            <textarea name="" id="" cols="65" rows="4">请输入详细地址</textarea>
+        </fieldset><br><br>
+            <legend>目前状况</legend>    
+            <h4>5.您现在的身体状况</h4>
+            <input type="checkbox">健康<br><br>
+            <input type="checkbox">发热<br><br>
+            <input type="checkbox">干咳<br><br>
+            <input type="checkbox">乏力<br><br>
+            <input type="checkbox">呼吸困难<br><br>
+            <input type="checkbox">咽痛<br><br>
+            <input type="checkbox">胸痛<br><br>
+            <input type="checkbox">肌肉酸痛<br><br>
+            <input type="checkbox">呕吐<br><br>
+            <input type="checkbox">腹泻<br><br>
+            <input type="checkbox">味觉异常<br><br>
+            <input type="checkbox">嗅觉异常<br><br>
+         小技巧：input[type="checkbox"]*12再tab
+            <h4>6.您的健康码颜色目前是</h4>
+            <input type="radio" name="color">绿色
+            <input type="radio" name="color">黄色
+            <input type="radio" name="color">红色
+            <h4>7.是否在14天有个高中风险区旅居史</h4>
+            <input type="radio" name="close">是
+            <input type="radio" name="close">否
+            <h4>8.疫苗接种情况</h4>
+            <input type="radio" name="vaccines">已接种第一针
+            <input type="radio" name="vaccines">已接种第二针
+            <input type="radio" name="vaccines">已接种第三针
+        </form>  <br><br>
+        <fieldset>
+            <legend>保密信息</legend>
+            <h4>1.身份证信息</h4>
+            正面：<input type="file"><br><br>
+            反面：<input type="file"><br><br>
+            <h4>2.学历信息（最高）</h4>
+            <select name="" id="">
+                <option value="">研究生</option>
+                <option value="">本科</option>
+                <option value="">大专</option>
+                <option value="">高中</option>
+                <option value="">高中以下</option>
+            </select>
+            <h4>3.是否服兵役</h4>
+            <input type="radio" name="ismilitary" id="yes">
+            <label for="yes">是</label>
+            <input type="radio" name="ismilitary" id="no">
+            <label for="no">否</label>
+            <h4>4.个人意见</h4>
+            <textarea name="" id="" cols="60" rows="5">请输入详细地址</textarea>
+        </fieldset><br><br>
+        <input type="submit" value="上传信息">
+        <input type="reset" value="清空信息">
+        <input type="image" src="">
+    </form><br><br>
 </body>
 </html>
 
