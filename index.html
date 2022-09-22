@@ -68,6 +68,83 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-hello-world5" class="post-hello-world5 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2022/09/22/hello-world5/">笔记 042</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="https://windflower2022.github.io/2022/09/22/hello-world5/" data-id="cl8d4ugdg0000c0xm9gu0eiwl" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    &nbsp;&nbsp; <h3>042 iframe </h3><br>
+    双标签，用来在一个网页中显示另一个网页。<br><br>
+    属性：src="页面路径"；width="数字:引入页面的宽度";height;frameborder="0"默认引入页面带有边框为0，就是去除边框了。scrolling="auto/yes/no"是否显示框架滚动条。<br><br>
+    <iframe src="https://windflower2022.github.io/" frameborder="1">               
+    </iframe><br><br>
+    <iframe src="https://windflower2022.github.io/" frameborder="1" width="800" height="600">       
+    </iframe><br><br>
+    <iframe src="https://windflower2022.github.io/" frameborder="1" width="800" height="600" scrolling="no">       
+    </iframe><br><br>
+    <iframe src="https://windflower2022.github.io/">               
+    </iframe><br><br>
+    添加容器，div,实现iframe链接功能换行输入(a[href target=iframe_a]>b)*3<br><br>
+    <div>
+        <a href="https://windflower2022.github.io/2022/09/20/hello-world3/" target="iframe_a"><b></b>内容1</a>
+        <a href="https://windflower2022.github.io/archives/" target="iframe_a"><b></b>目录</a>
+        <a href="https://windflower2022.github.io/2022/09/21/hello-world4/" target="iframe_a"><b></b>内容2</a><br><br> 
+    </div>      
+    <iframe src="https://windflower2022.github.io/" frameborder="0" width="800" height="600" scrolling="no">       
+    </iframe><br><br>
+    &nbsp;&nbsp; <h3>043 初识SVG </h3><br>
+    全称scalable vector graphics,意为可缩放矢量图。形状描述的文本文件，体积较小。不管放大多少倍，都不会失真。可以绘制。可以用svg双标签。<br><br> 
+    <svg  width="800" height="600">
+    </svg><br><br>
+    点击F12查看,element下svg,就看见上面是一个蓝色矩形。<br><br>    
+</body>  
+</html>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2022/09/22/hello-world5/">
+    <time datetime="2022-09-22T13:13:59.000Z" class="entry-date">
+        2022-09-22
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-hello-world4" class="post-hello-world4 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -1751,6 +1828,10 @@ h1到h6同时出现快捷：标签${内容}*标签重复次数
       <ul>
         
           <li>
+            <a href="/2022/09/22/hello-world5/">笔记 042</a>
+          </li>
+        
+          <li>
             <a href="/2022/09/21/hello-world4/">笔记 033-041</a>
           </li>
         
@@ -1764,10 +1845,6 @@ h1到h6同时出现快捷：标签${内容}*标签重复次数
         
           <li>
             <a href="/2022/09/20/hello-world2/">笔记 019-025</a>
-          </li>
-        
-          <li>
-            <a href="/2022/09/20/hello-world/">笔记 001-018</a>
           </li>
         
       </ul>
