@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="四方食事，不过一场人间烟火">
+    <meta name="keyword" content="">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="人间烟火" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        笔记 033-041｜undefined
+        
+    </title>
+
+    <link rel="canonical" href="https://windflower2022.github.io/2022/09/21/hello-world4/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/blog-style.css">
+
+
+    <!-- Pygments Github CSS -->
+    
+<link rel="stylesheet" href="/css/syntax.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    人间烟火
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>笔记 033-041</h1>
+                    
+                    <span class="meta">
+                         作者 风花
+                        <span>
+                          日期 2022-09-21
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            笔记 033-041
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    &nbsp;&nbsp; <h3>033 表单label标签</h3><br>
+     label双标签的使用可在表格中出现光标表格菜单,只读readonly和禁用disabled属性,<br><br>
+    <form action="">
+        <label for="username">请输入用户名:</label>
+        <input type="text" id="username"> <br><br>
+    您的手机号：<input type="text" value="12345678" readonly><br><br>
+    您的性别：<input type="radio" name="gender">男
+    <input type="radio" name="gender">女
+    <input type="radio" name="gender">保密
+    </form><br>
+    您的性别：<input type="radio" name="gender">男
+    <input type="radio" name="gender">女
+    <input type="radio" name="gender" disabled>保密
+    </form><br><br>
+    小技巧：input[type="radio" name=gender]*3再label
+    &nbsp;&nbsp; <h3>034 表单分组</h3><br>
+    带有边框和标题的表单控件字段集双标签fieldset，进行表单控件分组。嵌套双标签legend,说明的意思。<br><br>
+    <fieldset></fieldset><br><br>
+    边框作用就是相关字段进行视觉上的划分。<br><br>
+    <fieldset>
+        <legend>基础信息</legend><br><br>
+        用户名：<input type="text"><br><br>   
+        密码：<input type="password"><br><br>
+    </fieldset>
+    &nbsp;&nbsp; <h3>035 表单按钮（上）</h3><br>
+    提交按钮：input里type属性为submit<br><br>
+    <form action="">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+    </form><br><br>
+    form里定义action属性，填服务器地址<br><br>
+    <form action="https://windflower2022.github.io">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+    </form><br><br>
+    form里定义target属性，_blank/_self<br><br>
+    <form action="https://windflower2022.github.io" target="_blank">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+    </form><br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+    </form><br><br>
+    重置按钮：input里type属性为reset<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+        <input type="reset">
+    </form><br><br>
+    普通按钮：input里type属性为button<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+        <input type="reset">
+        <input type="button">
+    </form><br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+        <input type="reset">
+        <input type="button" value="普通按钮">
+    </form><br><br>
+    反思：提交按钮也在input里添加属性value为注册，重置为登录。<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit" value="注册">
+        <input type="reset" value="登录">
+        <input type="button" value="普通按钮">
+    </form>
+    &nbsp;&nbsp; <h3>036 表单按钮（下）</h3><br>
+    图像按钮：input里type属性为image,还要定义其属性src<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit" value="注册">
+        <input type="reset" value="登录">
+        <input type="button" value="普通按钮">
+        <input type="image" src="图片地址">
+    </form><br><br>
+    双标签button按钮：button<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit" value="注册">
+        <input type="reset" value="登录">
+        <input type="button" value="普通按钮">
+        <input type="image" src="图片地址">
+        <button>button按钮</button>
+    </form><br><br>
+     &nbsp;&nbsp; <h3>037-39 表单综合案例</h3><br>
+    <h1 align="center">社区疫情流掉信息表</h1>
+    <p>&emsp;&emsp;请大家做好个人防护，如去过风险地区，请及时向社区报备。</p>
+    <form action="https://raink.net/api/html/signin" target="_blank">
+        <fieldset>
+            <legend>基本信息</legend>
+            <h4>1.您的名字</h4>
+            <input type="text">
+            <h4>2.您的电话号码</h4>
+            <input type="text" value="86113398214301" onlyread>
+            <h4>3.您的性别</h4>
+            <input type="radio" name="gender">男
+            <input type="radio" name="gender">女
+            <input type="radio" name="gender" disabled>保密
+            <h4>4.您的家庭住址</h4>
+            <select name="" id="">
+                <option value="">哪个省</option>
+            </select>
+            <select name="" id="">
+                <option value="">市</option>
+            </select>
+            <select name="" id="">
+                <option value="">县</option>
+            </select>
+            <select name="" id="">
+                <option value="">乡</option>
+            </select><br><br>
+            <textarea name="" id="" cols="65" rows="4">请输入详细地址</textarea>
+        </fieldset><br><br>
+            <legend>目前状况</legend>    
+            <h4>5.您现在的身体状况</h4>
+            <input type="checkbox">健康<br><br>
+            <input type="checkbox">发热<br><br>
+            <input type="checkbox">干咳<br><br>
+            <input type="checkbox">乏力<br><br>
+            <input type="checkbox">呼吸困难<br><br>
+            <input type="checkbox">咽痛<br><br>
+            <input type="checkbox">胸痛<br><br>
+            <input type="checkbox">肌肉酸痛<br><br>
+            <input type="checkbox">呕吐<br><br>
+            <input type="checkbox">腹泻<br><br>
+            <input type="checkbox">味觉异常<br><br>
+            <input type="checkbox">嗅觉异常<br><br>
+         小技巧：input[type="checkbox"]*12再tab
+            <h4>6.您的健康码颜色目前是</h4>
+            <input type="radio" name="color">绿色
+            <input type="radio" name="color">黄色
+            <input type="radio" name="color">红色
+            <h4>7.是否在14天有个高中风险区旅居史</h4>
+            <input type="radio" name="close">是
+            <input type="radio" name="close">否
+            <h4>8.疫苗接种情况</h4>
+            <input type="radio" name="vaccines">已接种第一针
+            <input type="radio" name="vaccines">已接种第二针
+            <input type="radio" name="vaccines">已接种第三针    <br><br>   
+        <fieldset>
+            <legend>保密信息</legend>
+            <h4>1.身份证信息</h4>
+            正面：<input type="file"><br><br>
+            反面：<input type="file"><br><br>
+            <h4>2.学历信息（最高）</h4>
+            <select name="" id="">
+                <option value="">研究生</option>
+                <option value="">本科</option>
+                <option value="">大专</option>
+                <option value="">高中</option>
+                <option value="">高中以下</option>
+            </select>
+            <h4>3.是否服兵役</h4>
+            <input type="radio" name="ismilitary" id="yes">
+            <label for="yes">是</label>
+            <input type="radio" name="ismilitary" id="no">
+            <label for="no">否</label>
+            <h4>4.个人意见</h4>
+            <textarea name="" id="" cols="60" rows="5">请输入详细地址</textarea>
+        </fieldset><br><br>
+            <input type="submit" value="上传信息">
+            <input type="reset" value="清空信息">
+            <input type="image" src="" alt="提交">
+        </form><br><br>
+        &nbsp;&nbsp; <h3>040 表单数据采集和提交</h3><br>
+        <form action="https://raink.net/api/html/signin">
+          手机号码：<input type="text" name="pnumber">  <br> <br>
+          密码框: <input type="password" name="password"><br> <br>
+          <input type="submit" value="登录"><br> <br>
+        </form><br> <br>
+        &nbsp;&nbsp; <h3>041 其它实用标签 </h3><br>
+        hr(horizontal)单标签，表水平线，作用是网页上画出一条水平分割线。视觉上将文档分成多个部分。<br> <br>
+        5个属性，width宽度,size高度,noshade去掉水平线阴影。color用于定义水平线颜色。align水平线水平对齐方式。<br> <br>
+        爱上一朵花的芬芳 爱一朵花的倔强
+        <hr width="300px" size="10px" align="left" noshade color="green">
+        爱上一朵花的姿态 它在黑夜中发亮<br> <br>
+        pre(preformatted)双标签：预格式化的文本，里面文本以固定宽度格式显示，保留了空格和换行。<br> <br>
+        <pre>
+            爱上一个人的目光
+            爱上一个人的家乡
+            爱上一个人的伤疤
+            他在记忆的远方
+        </pre>
+        map双标签:定义一个图像映射，就是一个图片的热点链接。点击图片实现链接跳转。属性name。<br> <br>嵌套area,定义图片的热点区域，其shape属性：
+        default所有区域；rect矩形；circle圆形；poly多边形。coords属性坐标，与shape配合使用。<br> <br>
+        <map name="">
+            <area shape="circle" coords="x,y,r" href="目标地址" alt="">
+            <area shape="poly" coords="x1,y1,x2,y2,x3,y3,...xn,yn" href="目标地址" alt="">
+            <area shape="rect" coords="x1,y1,x2,y2" href="目标地址" alt="">   
+        </map>
+        <img src="https://s1.ax1x.com/2022/09/02/vIbNjK.jpg" alt="windflower" usemap="#flower"><br> <br>
+        <map name="flower">
+            <area shape="rect" coords="0,0,110,260" href="https://s1.ax1x.com/2022/09/15/vzF5es.jpg" alt="ruyuan">
+            <area shape="cirle" coords="129,161,10" href="https://s1.ax1x.com/2022/09/10/vOAQsI.jpg" alt="zhdjt">
+        </map><br><br>       
+</body>
+</html>
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/09/22/hello-world5/" data-toggle="tooltip" data-placement="top"
+                           title="笔记 042-044">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2022/09/20/ry/" data-toggle="tooltip" data-placement="top"
+                           title="音画-如愿">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">033 表单label标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">034 表单分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">035 表单按钮（上）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">036 表单按钮（下）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">037-39 表单综合案例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">社区疫情流掉信息表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">1.您的名字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">2.您的电话号码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">3.您的性别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">4.您的家庭住址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">5.您现在的身体状况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">6.您的健康码颜色目前是</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">7.是否在14天有个高中风险区旅居史</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">8.疫苗接种情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">1.身份证信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">2.学历信息（最高）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">3.是否服兵役</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">4.个人意见</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">040 表单数据采集和提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">041 其它实用标签 </span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 人间烟火 2022
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://windflower2022.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="">
+</body>
+
+</html>
