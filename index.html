@@ -1,15 +1,243 @@
-{% extends "_layout.swig" %}
-{% import '_macro/post.swig' as post_template %}
 
 
-{% block title %} {{ config.title }} - {{ config.description }}{% endblock %}
+  <!DOCTYPE html>
+  <html lang="en">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="description" content=欢迎访问！ >
+  <meta name="keywords" content=hexo,theme,windflower >
 
-{% block content %}
-    <div id="primary" class="home">
-        {% for post in page.posts %}
-            {{ post_template.render(post) }}
-        {% endfor %}
-        {% include "_partial/pagination.swig" %}
+  <head>
+    <title>
+       [ 人间烟火 ]
+    </title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+
+    <link rel="stylesheet" href="/css/header.css">
+<div class="header">
+  <div class="logo">
+    <span class="pull-left">
+      <a id="site-name" href="/">
+        
+      </a>
+    </span>
+  </div>
+  <ul class="nav-list">
+    
+      <li>
+        <a href="/">
+          首页
+        </a>
+      </li>
+      
+      <li>
+        <a href="/about">
+          关于
+        </a>
+      </li>
+      
+  </ul>
+</div>
+
+      <!--<link rel="stylesheet" href="/css/top-header.css">
+<div id="top-bar" class="fixed">
+
+  <a class="goto-top" href="#"></a>
+  <ul class="bar-list bar-list-1">
+    
+      <li>
+        <p>
+          <a href="/">
+            <text class="bar-text bar-p1">
+              首页
+            </text>
+            <text class="bar-text bar-p2"></text>
+          </a>
+          <text class="bar-p3">/</text>
+        </p>
+      </li>
+      
+      <li>
+        <p>
+          <a href="/about">
+            <text class="bar-text bar-p1">
+              关于
+            </text>
+            <text class="bar-text bar-p2"></text>
+          </a>
+          <text class="bar-p3">/</text>
+        </p>
+      </li>
+      
+  </ul>
+</div>-->
+
+        <div id="content-outer">
+          <div class="content-inner">
+            <link rel="stylesheet" href="/css/index.css">
+<div class="paginator">
+  <div class="content">
+    <div class="contain-box1">
+
+      <div class="hd logodiv">
+        <img src="https://s1.ax1x.com/2022/09/15/vxsLJs.jpg" class="logopng" alt="logo">
+          <p class="logot">
+            平  子
+              <span class="logo_2"></span>
+              <h3 class="words" style="font-weight: bold;font-family: Georgia;">
+                四方食事，不过一碗人间烟火。
+              </h3>
+          </p>
+      </div>
+      <link rel="stylesheet" href="/css/nav.css">
+<div class="hd">
+  <ol class="breadcrumb">
+    
+      <li><a class="ba" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1oU4y1278g?spm_id_from=333.337.search-card.all.click">
+          CssCii🎃
+        </a></li>
+      
+      <li><a class="ba" target="_blank" rel="noopener" href="http://space.mvbox.cn/422365167.html">
+          蝉衣
+        </a></li>
+      
+      <li><a class="ba" target="_blank" rel="noopener" href="https://music.163.com/">
+          网易云
+        </a></li>
+      
+      <li><a class="ba" target="_blank" rel="noopener" href="http://dj.fqingy.com/forum.php">
+          小酒窝
+        </a></li>
+      
+      <li><a class="ba" target="_blank" rel="noopener" href="http://www.qingtanju.com/forum.php">
+          青檀居
+        </a></li>
+      
+      <li><a class="ba" target="_blank" rel="noopener" href="http://www.tingkew.com/">
+          听课网
+        </a></li>
+      
+      <li><a class="ba" target="_blank" rel="noopener" href="https://imgse.com/">
+          图床
+        </a></li>
+      
+      <li><a class="ba" target="_blank" rel="noopener" href="https://github.com/windflower2022/windflower2022.github.io">
+          GitHub🧨
+        </a></li>
+      
+  </ol>
+  <hr>
+</div>
+
     </div>
-    {% include "_partial/widget.swig" %}
-{% endblock %}
+    <div class="contain-box2">
+      <link rel="stylesheet" href="/css/index-post.css">
+
+  <div class="recent-posts">
+    <p class="p1">文章列表</p>
+    <div class="recent-post-item">
+      <ul class="notice-list" id="notice-1">
+        
+          <li>
+            <a href="/2022/09/22/hello-world5/">
+              笔记 042-044
+            </a>
+            <p class="notice-time" datetime="2022-09-22T13:13:59.000Z">
+              2022-09-22
+            </p>
+          </li>
+          
+          <li>
+            <a href="/2022/09/21/hello-world4/">
+              笔记 033-041
+            </a>
+            <p class="notice-time" datetime="2022-09-21T12:44:59.000Z">
+              2022-09-21
+            </p>
+          </li>
+          
+          <li>
+            <a href="/2022/09/20/ry/">
+              音画-如愿
+            </a>
+            <p class="notice-time" datetime="2022-09-20T05:19:27.000Z">
+              2022-09-20
+            </p>
+          </li>
+          
+          <li>
+            <a href="/2022/09/20/hello-world3/">
+              笔记 026-032
+            </a>
+            <p class="notice-time" datetime="2022-09-20T05:10:04.527Z">
+              2022-09-20
+            </p>
+          </li>
+          
+          <li>
+            <a href="/2022/09/20/hello-world2/">
+              笔记 019-025
+            </a>
+            <p class="notice-time" datetime="2022-09-20T05:10:04.519Z">
+              2022-09-20
+            </p>
+          </li>
+          
+          <li>
+            <a href="/2022/09/20/hello-world/">
+              笔记 001-018
+            </a>
+            <p class="notice-time" datetime="2022-09-20T05:01:39.264Z">
+              2022-09-20
+            </p>
+          </li>
+          
+          <li>
+            <a href="/2022/09/20/gsdqj/">
+              音画-故事的情节
+            </a>
+            <p class="notice-time" datetime="2022-09-20T03:19:27.000Z">
+              2022-09-20
+            </p>
+          </li>
+          
+      </ul>
+      <div class="list-bottom">
+        <span class="page-number current">1</span>
+      </div>
+    </div>
+
+  </div>
+  
+    </div>
+  </div>
+</div>
+          </div>
+        </div>
+
+        <link rel="stylesheet" href="/css/footer.css">
+<div class="bottom-outer">
+  <div class="copyright">©2021 - 2021 By Tanger</div>
+  <div class="framework-info">
+    <span>Power by</span>
+    <a class="a1" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    <span class="footer-separator">|</span>
+    <span>Theme by</span>
+    <a class="a2" target="_blank" rel="noopener" href="https://github.com/redhat123456/hexo-theme-MiHoYo">MiHoYo</a>
+  </div>
+</div>
+
+          
+            <!-- scripts list from theme config.yml -->
+            
+              <script src="/js/MiHoYo.js"></script>
+              
+                
+
+  </body>
+
+  </html>
