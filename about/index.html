@@ -11,7 +11,7 @@
 
   <head>
     <title>
-      about [ 人间烟火 ]
+       [ 人间烟火 ]
     </title>
   <meta name="generator" content="Hexo 6.3.0"></head>
 
@@ -80,8 +80,87 @@
           <div class="content-inner">
             
 <article id="page">
-  <h1>about</h1>
-  
+  <h1></h1>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>waterBall(水球动画)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            height: 100vh;
+            background: rgb(0, 0, 0);
+        }
+        .main,
+        .wave {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .main {
+            border: 3px solid rgb(178, 10, 10);
+            padding: 10px;
+        }
+        .wave {
+            background: rgb(1, 1, 0);
+            /* 去掉水滴多余部分 */
+            overflow: hidden;
+        }
+        .wave::after {
+            /* 生成水滴 */
+            content: "";
+            width: 300px;
+            height: 300px;
+            background: rgba(242, 4, 60, 0.8);
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translate(-50%, -60%);
+            border-radius: 40%;
+            animation: wave 5s linear infinite;
+        }
+        .wave::before {
+            content: "风花博客";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            z-index: 99;
+            color: rgb(0, 10, 10);
+            transform: translate(-50%, 30px);
+        }
+        /* 
+            创建动画
+         */
+        @keyframes wave {
+            0% {
+                transform: translate(-50%, -60%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -60%) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 外层容器 -->
+    <div class="main">
+        <!-- 水滴背景 -->
+        <div class="wave" align="center" valign="middle">
+          <img src="https://s1.ax1x.com/2022/09/15/vxD0YR.jpg" width="128" height="128"><br><br>
+          <a href="https://windflower2022.github.io/archives/" font-color="white">Read More</a>
+        </div>
+      </div>
+</body>
+</html>
 </article>
 
 <div id="paginator">
