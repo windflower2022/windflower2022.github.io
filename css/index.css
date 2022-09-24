@@ -1,6 +1,6 @@
 /*中部信息框设计*/
 .logodiv {
-  text-align: center;
+  text-align: left;
 }
 
 .titlex {
@@ -45,7 +45,7 @@
 
 .logot {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 20px;
   margin-top: 10px;
   margin-bottom: -20px;
 }
