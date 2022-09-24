@@ -82,85 +82,86 @@
 <article id="page">
   <h1></h1>
   <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>waterBall(水球动画)</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            height: 100vh;
-            background: rgb(0, 0, 0);
-        }
-        .main,
-        .wave {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        .main {
-            border: 3px solid rgb(178, 10, 10);
-            padding: 10px;
-        }
-        .wave {
-            background: rgb(1, 1, 0);
-            /* 去掉水滴多余部分 */
-            overflow: hidden;
-        }
-        .wave::after {
-            /* 生成水滴 */
-            content: "";
-            width: 300px;
-            height: 300px;
-            background: rgba(242, 4, 60, 0.8);
-            position: absolute;
-            left: 50%;
-            top: 0;
-            transform: translate(-50%, -60%);
-            border-radius: 40%;
-            animation: wave 5s linear infinite;
-        }
-        .wave::before {
-            content: "风花博客";
-            position: absolute;
-            left: 50%;
-            top: 0;
-            z-index: 99;
-            color: rgb(0, 10, 10);
-            transform: translate(-50%, 30px);
-        }
-        /* 
-            创建动画
-         */
-        @keyframes wave {
-            0% {
-                transform: translate(-50%, -60%) rotate(0deg);
-            }
-            100% {
-                transform: translate(-50%, -60%) rotate(360deg);
-            }
-        }
-    </style>
+  <title>about</title>
+  <style type="text/css">
+      body {
+          margin: 0;
+          padding: 0;
+          min-height: 100vh;
+          position: relative;
+          background-color: rgb(244, 248, 249);
+          overflow: hidden;
+      }
+      body::before, body::after {
+          content: '';
+          position: absolute;
+          bottom: 15vh;
+          min-width: 300vw;
+          min-height: 300vw;
+          background-color: #070000;
+          animation: rote 10s linear infinite;
+      }
+      body::before {
+          left: -95%;
+          border-radius: 45%;
+          opacity: .5;
+      }
+      body::after {
+          left: -95%;
+          border-radius: 46%;
+      }
+      @keyframes rote {
+          from {
+              transform: rotateZ(0);
+          }
+          to {
+              transform: rotateZ(360deg);
+          }
+      }
+      .content {
+  position: relative;
+  padding: 40px 60px;
+  color: #fff;
+  text-align: center;
+  transition: 0.5s;
+  z-index: 1000;
+}
+.content a {
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
+  border: 2px solid #fff;
+  padding: 6px 18px;
+  text-decoration: none;
+  color: #fff;
+  font-size: larger 
+  font-weight: 800;
+  border-radius: 73% 27% 44% 56% / 49% 44% 56% 51%;
+}
+.content a:hover {
+  background: #fff;
+  color: #333;
+}
+  </style>
 </head>
 <body>
-    <!-- 外层容器 -->
-    <div class="main">
-        <!-- 水滴背景 -->
-        <div class="wave" align="center" valign="middle">
-          <img src="https://s1.ax1x.com/2022/09/15/vxD0YR.jpg" width="128" height="128"><br><br>
-          <a href="https://windflower2022.github.io/archives/" font-color="white">Read More</a>
+    <div class="square">
+        <span></span>
+        <span></span>
+        <span></span>
+        <div class="content">
+          <h2>风花博客</h2><br>
+          <img src="https://s1.ax1x.com/2022/09/15/vxD0YR.jpg" width="200" height="200"><br><br>
+          <p>有些事 ，只能一个人做 ；有些关 ，只能一个人过 ；有些路啊 ，只能一个人走 。</p>
+          <a href="https://windflower2022.github.io/">Read More</a>
         </div>
       </div>
-</body>
-</html>
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=0 height=0 src="//music.163.com/outchain/player?type=2&id=1890590098&auto=1&height=66"></iframe><br>
+    </body>
+    </html>
+  
 </article>
 
 <div id="paginator">
