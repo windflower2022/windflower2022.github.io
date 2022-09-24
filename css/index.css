@@ -36,7 +36,7 @@
   list-style: none;
   background-color: initial;
   border-radius: 0px;
-  text-align: left;
+  text-align: center;
 }
 
 .jing {
@@ -78,7 +78,6 @@
 .words {
   padding-top: 16px;
   font-size: 18px;
-  font-weight: thin;
 }
 .navd {
   padding-top: 14px;
@@ -96,7 +95,6 @@
 
 hr {
   border-color: #58606b;
-  
 }
 
 /*文章列表*/
