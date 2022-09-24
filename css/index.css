@@ -1,10 +1,10 @@
 /*中部信息框设计*/
 .logodiv {
-  text-align: left;
+  text-align: center;
 }
 
 .titlex {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   margin-top: 30px;
 }
@@ -77,7 +77,7 @@
 }
 .words {
   padding-top: 16px;
-  font-size: 10px;
+  font-size: 20px;
 }
 .navd {
   padding-top: 14px;
