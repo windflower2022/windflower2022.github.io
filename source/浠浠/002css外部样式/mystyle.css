@@ -1,0 +1,9 @@
+<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>body {
+    background-color: rgb(196, 208, 176);
+
+}
+
+h1 {
+    color: blue;
+    margin-left: 20px;
+}

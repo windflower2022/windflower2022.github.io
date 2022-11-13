@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="css列表            072. 有序列表和无序列表. 属性有list-style-type:circle,disc,square,decimal,upper-roman,lower-alpha;     list-style-type:url(背景图片路径)     list-style-position:outside,inside;lis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【072-073】边框列表及案例">
+<meta property="og:url" content="https://windflower2022.github.io/2022/10/15/hell0-world20/index.html">
+<meta property="og:site_name" content="Windflower&#39;s Sky">
+<meta property="og:description" content="css列表            072. 有序列表和无序列表. 属性有list-style-type:circle,disc,square,decimal,upper-roman,lower-alpha;     list-style-type:url(背景图片路径)     list-style-position:outside,inside;lis">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-10-15T11:58:27.000Z">
+<meta property="article:modified_time" content="2022-11-13T05:15:34.410Z">
+<meta property="article:author" content="风花">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>【072-073】边框列表及案例</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+
+    
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Windflower&#39;s Sky</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/home/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://www.tingkew.com/">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2022/10/16/hell0-world21/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2022/10/12/wanwujing/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://windflower2022.github.io/2022/10/15/hell0-world20/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://windflower2022.github.io/2022/10/15/hell0-world20/&text=【072-073】边框列表及案例"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://windflower2022.github.io/2022/10/15/hell0-world20/&title=【072-073】边框列表及案例"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://windflower2022.github.io/2022/10/15/hell0-world20/&is_video=false&description=【072-073】边框列表及案例"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【072-073】边框列表及案例&body=Check out this article: https://windflower2022.github.io/2022/10/15/hell0-world20/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://windflower2022.github.io/2022/10/15/hell0-world20/&title=【072-073】边框列表及案例"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://windflower2022.github.io/2022/10/15/hell0-world20/&title=【072-073】边框列表及案例"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://windflower2022.github.io/2022/10/15/hell0-world20/&title=【072-073】边框列表及案例"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://windflower2022.github.io/2022/10/15/hell0-world20/&title=【072-073】边框列表及案例"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://windflower2022.github.io/2022/10/15/hell0-world20/&name=【072-073】边框列表及案例&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">课表</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        【072-073】边框列表及案例
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Windflower's Sky</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2022-10-15T11:58:27.000Z" itemprop="datePublished">2022-10-15</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css列表</title>
+    <link rel="stylesheet" href="./list-style.css">
+</head>
+<body>
+    072. 有序列表和无序列表.<br><br> 属性有list-style-type:circle,disc,square,decimal,upper-roman,lower-alpha;<br><br>
+    list-style-type:url(背景图片路径)<br><br>
+    list-style-position:outside,inside;list-style-type:none如果列表不想要符号可以使用。<br><br>
+    list-style:square inside url(./bullet_designs.gif)可以声明所有属性,顺序为list-style-type,list-style-position,list-style-image。<br><br>
+    (ul>li*3) *3回车
+<ul class="a">
+    <li>语文</li>
+    <li>数学</li>
+    <li>历史</li>
+</ul>
+<ul class="b">
+    <li>张三</li>
+    <li>李四</li>
+    <li>王子</li>
+</ul>
+<ul class="c">
+    <li>99</li>
+    <li>93</li>
+    <li>96</li>
+</ul>
+<ol class="d">
+    <li>语文</li>
+    <li>数学</li>
+    <li>历史</li>
+</ol>
+<ol class="e">
+    <li>张三</li>
+    <li>李四</li>
+    <li>王子</li>
+</ol>
+<ol class="f">
+    <li>99</li>
+    <li>93</li>
+    <li>96</li>
+</ol>   
+<ul class="g">
+    <li>语文</li>
+    <li>数学</li>
+    <li>历史</li>
+</ul> <br>
+<h3>课表</h3>
+<ul class="h">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<ul class="i">
+    <li>布鲁姆分类法</li>
+    <li>有助于学生对知识的吸收</li>
+    <li>从认识知识到评价共6个阶梯</li>
+</ul>
+<ul class="j">
+    <li>认识，理解</li>
+    <li>应用，分析</li>
+    <li>综合，评价</li>
+</ul>
+<ul class="k">
+    <li>语文</li>
+    <li>数学</li>
+    <li>历史</li>
+</ul>
+<ul class="l">
+    <li>张三</li>
+    <li>李四</li>
+    <li>王子</li>
+</ul>
+<ul class="m">
+    <li>布鲁姆分类法</li>
+    <li>有助于学生对知识的吸收</li>
+    <li>从认识知识到评价共6个阶梯</li>
+</ul>
+<ol class="n">
+    <li>认识，理解</li>
+    <li>应用，分析</li>
+    <li>综合，评价</li>
+</ol>
+<div class="bigBox">073. 边框和列表案例
+        <div>对于提供文字宽度,颜色,间距不知的话可在ps中查看。</div>
+        <ul>
+            <li>认知</li>
+            <li>理解</li>
+            <li>应用</li>
+            <li>分析</li>
+            <li>综合</li>
+            <li>评价</li>
+        </ul>
+    </div> 
+<br><br><br>
+</body>
+</html>
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/home/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://www.tingkew.com/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">课表</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://windflower2022.github.io/2022/10/15/hell0-world20/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://windflower2022.github.io/2022/10/15/hell0-world20/&text=【072-073】边框列表及案例"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://windflower2022.github.io/2022/10/15/hell0-world20/&title=【072-073】边框列表及案例"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://windflower2022.github.io/2022/10/15/hell0-world20/&is_video=false&description=【072-073】边框列表及案例"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【072-073】边框列表及案例&body=Check out this article: https://windflower2022.github.io/2022/10/15/hell0-world20/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://windflower2022.github.io/2022/10/15/hell0-world20/&title=【072-073】边框列表及案例"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://windflower2022.github.io/2022/10/15/hell0-world20/&title=【072-073】边框列表及案例"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://windflower2022.github.io/2022/10/15/hell0-world20/&title=【072-073】边框列表及案例"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://windflower2022.github.io/2022/10/15/hell0-world20/&title=【072-073】边框列表及案例"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://windflower2022.github.io/2022/10/15/hell0-world20/&name=【072-073】边框列表及案例&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2022 风花
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/home/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Archives</a></li>
+         
+          <li><a href="/categories/">Categories</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="http://www.tingkew.com/">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+      
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>
