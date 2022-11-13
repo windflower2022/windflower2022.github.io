@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float-case</title>
+    <link rel="stylesheet" href="float-case-style.css">
+</head>
+<body>
+    <br><br>
+    <!--顶部导航-->
+    ul>(li>a)*4.回车<br><br>
+    <ul class="topmenu">
+        <li ><a href="#home" class="active">首页</a></li>
+        <li><a href="#archieve">归档</a></li>
+        <li><a href="#post">文章</a></li>
+        <li><a href="#about">关于我</a></li>
+    </ul><br><br>
+    <b>思考：</b><br><br>
+    1.为什么使用ul,li两个元素，为什么不使用div or span?<br><br>
+      一般情况下，布置页面结构时，元素选择尽量使用不同标签。这样有利于通过元素选择器可直接添加样式。<br><br>
+    如果使用div,就需分别添加类属性才能区别开。增加样式定义的复杂性。<br><br>
+    另外，导航容器和导航项都有自己的宽高。需要使用块元素，所以span不合适。<br><br>
+    2.为什么多添加a元素？把导航内容直接放到li里不好吗？<br><br>
+      顶部导航是一个其它网站或页面的链接，点击它会打开其它的页面。<br><br>
+    3.为什么链接使用锚点的写法？<br><br>
+      这是一个习惯，也是一个技巧，在不知新页面具体链接前，可以使用锚点写法。也可直接写一个#号，<br><br>
+    切忌不要空着，不然浏览器就不为链接添加默认样式。<br><br>
+
+    在通用选择器里输入box-sizing: border-box;这样所有元素的width和height样式属性声明，就可以直接设置元素的宽高。<br><br>
+    再定义body选择器，声明样式margin:0;这样就去掉了浏览器的默认的页面外边距。<br><br>
+    当在顶部导航添加浮动后，灰色背景会失去，所以在topmenu添加去除样式overflow:auto;<br><br>
+    <b>页面主体</b><br><br>
+    <b>左侧导航</b>,与顶部导航思路一致。区别是这个是垂直排列。div下ul>(li>a)*7,回车.<b>内容区域</b><br><br>
+<div class="clearfix">
+    <div class="column sidemenu" >
+      <ul>
+        <li><a href="picture">音画</a></li>
+        <li><a href="css" class="active">前端</a></li>
+        <li><a href="music">音乐</a></li>
+        <li><a href="lesson">课程</a></li>
+        <li><a href="food">美食</a></li>
+        <li><a href="diary">日记</a></li>
+        <li><a href="message">留言</a></li>
+      </ul>
+    </div>
+    <div class="column content"> 
+      <div class="header">
+        <h1>音画</h1>
+      </div>
+      <h1>前端</h1>
+      <P>学习前端是一个循序渐进的过程，每天进步一点点。</P>
+      <P>可以先学习CSS，它具有无穷魅力</P>
+    </div><br><br>
+  <b>页面底部</b>
+<div class="footer">
+   <p>十月二十五日</p>
+</div> 
+通用的清理浮动的方法：给主体区域的容器定义属性class="clearfix".<br><br>
+在css中定义伪元素.clear::after;这样就会在容器底部添加一个元素，声明伪元素内容时空的，<br><br>
+视觉上没有什么内容，也不占据页面空间。在这个元素上清理浮动，这样后面的元素footer就不受浮动的影响了。<br><br>
+display: block;很关键，将伪元素转换成块元素，这样才能正常清理浮动。<br><br>
+</body>
+</html>
