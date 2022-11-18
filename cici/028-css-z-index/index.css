@@ -23,32 +23,32 @@ div {
 .one {
     background: red;
     outline: 5px solid black;
-    top: 100px;
-    left: 200px;
+    top: 160px;
+    left: 300px;
     z-index: 10;
 }
 
 .two {
     background: green;
     outline: 5px solid black;
-    top: 50px;
-    left: 75px;
+    top: 110px;
+    left: 175px;
     z-index: 100;
 }
 
 .three {
     background: skyblue;
     outline: 5px solid black;
-    top: 125px;
-    left: 25px;
+    top: 185px;
+    left: 125px;
     z-index: 150;
 }
 
 .four {
     background: blue;
     outline: 5px solid black;
-    top: 200px;
-    left: 350px;
+    top: 260px;
+    left: 450px;
     z-index: 20;
 }
 
