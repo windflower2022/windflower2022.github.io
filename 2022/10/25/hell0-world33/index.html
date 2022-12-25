@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="风花">
+
+
+
+    <meta name="description" content="四方食事，不过一碗人间烟火">
+
+
+
+<title>【087】CSS布局之之浮动综合案例 | Windflower&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Windflower&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Windflower&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+	
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">【087】CSS布局之之浮动综合案例</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">风花</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">October 25, 2022&nbsp;&nbsp;12:57:27</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float-case</title>
+    <link rel="stylesheet" href="float-case-style.css">
+</head>
+<body>
+    <br><br>
+    <!--顶部导航-->
+    ul>(li>a)*4.回车<br><br>
+    <ul class="topmenu">
+        <li ><a href="#home" class="active">首页</a></li>
+        <li><a href="#archieve">归档</a></li>
+        <li><a href="#post">文章</a></li>
+        <li><a href="#about">关于我</a></li>
+    </ul><br><br>
+    <b>思考：</b><br><br>
+    1.为什么使用ul,li两个元素，为什么不使用div or span?<br><br>
+      一般情况下，布置页面结构时，元素选择尽量使用不同标签。这样有利于通过元素选择器可直接添加样式。<br><br>
+    如果使用div,就需分别添加类属性才能区别开。增加样式定义的复杂性。<br><br>
+    另外，导航容器和导航项都有自己的宽高。需要使用块元素，所以span不合适。<br><br>
+    2.为什么多添加a元素？把导航内容直接放到li里不好吗？<br><br>
+      顶部导航是一个其它网站或页面的链接，点击它会打开其它的页面。<br><br>
+    3.为什么链接使用锚点的写法？<br><br>
+      这是一个习惯，也是一个技巧，在不知新页面具体链接前，可以使用锚点写法。也可直接写一个#号，<br><br>
+    切忌不要空着，不然浏览器就不为链接添加默认样式。<br><br>
+
+<pre><code>在通用选择器里输入box-sizing: border-box;这样所有元素的width和height样式属性声明，就可以直接设置元素的宽高。&lt;br&gt;&lt;br&gt;
+再定义body选择器，声明样式margin:0;这样就去掉了浏览器的默认的页面外边距。&lt;br&gt;&lt;br&gt;
+当在顶部导航添加浮动后，灰色背景会失去，所以在topmenu添加去除样式overflow:auto;&lt;br&gt;&lt;br&gt;
+&lt;b&gt;页面主体&lt;/b&gt;&lt;br&gt;&lt;br&gt;
+&lt;b&gt;左侧导航&lt;/b&gt;,与顶部导航思路一致。区别是这个是垂直排列。div下ul&gt;(li&gt;a)*7,回车.&lt;b&gt;内容区域&lt;/b&gt;&lt;br&gt;&lt;br&gt;
+</code></pre>
+<div class="clearfix">
+    <div class="column sidemenu" >
+      <ul>
+        <li><a href="picture">音画</a></li>
+        <li><a href="css" class="active">前端</a></li>
+        <li><a href="music">音乐</a></li>
+        <li><a href="lesson">课程</a></li>
+        <li><a href="food">美食</a></li>
+        <li><a href="diary">日记</a></li>
+        <li><a href="message">留言</a></li>
+      </ul>
+    </div>
+    <div class="column content"> 
+      <div class="header">
+        <h1>音画</h1>
+      </div>
+      <h1>前端</h1>
+      <P>学习前端是一个循序渐进的过程，每天进步一点点。</P>
+      <P>可以先学习CSS，它具有无穷魅力</P>
+    </div><br><br>
+  <b>页面底部</b>
+<div class="footer">
+   <p>十月二十五日</p>
+</div> 
+通用的清理浮动的方法：给主体区域的容器定义属性class="clearfix".<br><br>
+在css中定义伪元素.clear::after;这样就会在容器底部添加一个元素，声明伪元素内容时空的，<br><br>
+视觉上没有什么内容，也不占据页面空间。在这个元素上清理浮动，这样后面的元素footer就不受浮动的影响了。<br><br>
+display: block;很关键，将伪元素转换成块元素，这样才能正常清理浮动。<br><br>
+</body>
+</html>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2022/11/02/gsdqj/">【风花音画】故事的情节</a>
+            
+            
+            <a class="next" rel="next" href="/2022/10/24/hell0-world32/">【086】CSS布局之之浮动清理</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+            </div>
+            <footer id="footer" class="footer">
+   <!-- <div class="copyright">
+        <span>© 风花 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>-->
+</footer>
+
+    </div>
+</body>
+
+</html>
