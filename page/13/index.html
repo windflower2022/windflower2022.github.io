@@ -1,193 +1,339 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang=en>
+<meta charset="utf-8">
+	<title>windflower's Garden: The Beauty of personal room</title>
+	
+	<link rel="stylesheet" media="screen" href="../css/style.css">
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.csszengarden.com/zengarden.xml">
+	
+	<!-- Insert to your webpage before the <meta name="generator" content="Hexo 6.3.0"></head> -->
+    <script src="player/jquery.js"></script>
+    <script src="player/amazingaudioplayer.js"></script>
+    <link rel="stylesheet" type="text/css" href="player/initaudioplayer-1.css">
+    <script src="player/initaudioplayer-1.js"></script>
+    <!-- End of head section HTML codes -->
 
-<head>
-    <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <meta name="author" content="风花">
-
-
-
-    <meta name="description" content="四方食事，不过一碗人间烟火">
-
-
-
-<title>Windflower&#39;s Blog</title>
-
-
-
-    <link rel="icon" href="/favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Dave Shea">
+	<meta name="description" content="A demonstration of what can be accomplished visually through CSS-based design.">
+	<meta name="robots" content="all">
 
 
+	<!--[if lt IE 9]>
+	<script src="script/html5shiv.js"></script>
+	<![endif]-->
+<body id="css-zen-garden">
+	<div class="page-wrapper">
+
+	<section class="intro" id="zen-intro">
+		<header role="banner">
+			<h1></h1>
+			<h2></h2>
+		</header>
+
+		<!--<div class="summary" id="zen-summary" role="article">
+			<p></p>
+			<p><a href="" title="This page's source HTML code, not to be modified.">Love life</a> and <a href="" title="This page's sample CSS, the file you may modify.">love yourself.</a> Here make you <a href="" title="">delighted</a> through  music,css and pictures.</p>
+		</div>
+
+		<!--<div class="preamble" id="zen-preamble" role="article">
+			<h3>The Road to Enlightenment</h3>-->
+	</section>
+
+	    <div class="main supporting" id="zen-supporting" role="main">
+		    <div class="explanation" id="zen-explanation" role="article">
+			<h3></h3>
+            <!--主页，一般显示最近文章，含分页-->
+<!-- Main Content -->
 
 
-    <!-- stylesheets list from _config.yml -->
-    
-    <link rel="stylesheet" href="/css/style.css">
-    
+<div class="post-preview">
 
-
-
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
-
-    
-    
-        
-    
-
-
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-<body>
-    <script>
-        // this function is used to check current theme before page loaded.
-        (() => {
-            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
-            const isDark = currentTheme === 'dark';
-            const pagebody = document.getElementsByTagName('body')[0]
-            if (isDark) {
-                pagebody.classList.add('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
-            } else {
-                pagebody.classList.remove('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Light"
-            }
-        })();
-    </script>
-
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">Windflower&#39;s Blog</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
-        </div>
-    </nav>
-
-    
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">Windflower&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-            </div>
-        </div>
-    </nav>
-
-</header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-            <div class="main">
-                
-    <div class="container profile-container">
-    <div class="intro">
-        <div class="avatar">
-            <a href="/archives"><img src="/image/w.jpg"></a>
-        </div>
-        <div class="nickname">Wind  Flower</div>
-        <div class="description"><p>We, rustling leaves <strong>have a voice that answers storms。</strong><br>But who are thou so silent? <em>I am a mere flower。</em></p>
-</div>
-        <div class="links">
+    <a href="/2022/10/21/hello-world29/">
+        <h2 class="post-title">
+            【083】CSS布局之元素类型
+        </h2>
+        <h3 class="post-subtitle">
             
-                
-                    <a class="link-item" title="Blog" href="/archives">
-                        
-                        
-                            <i class="iconfont icon-blog"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="ZhiHu" target="_blank" rel="noopener" href="http://www.tingkew.com/">
-                        
-                        
-                            <i class="iconfont icon-zhihu"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="Instagram" target="_blank" rel="noopener" href="https://imgse.com/">
-                        
-                        
-                            <i class="iconfont icon-instagram"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="Reddit" target="_blank" rel="noopener" href="http://dj.fqingy.com/">
-                        
-                        
-                            <i class="iconfont icon-reddit"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="Github" target="_blank" rel="noopener" href="https://github.com/windflower2022">
-                        
-                        
-                            <i class="iconfont icon-github"></i>
-                        
-                    </a>
-                
+        </h3>
+        <div class="post-content-preview">
             
+
+
+  
+  
+  
+  022-css-element-type
+  
+
+
+    
+    
+
+...
         </div>
-    </div>
+    </a>
+    <p class="post-meta">
+        Posted by 风花 on
+        2022-10-21
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2022/10/20/hell0-world28/">
+        <h2 class="post-title">
+            【082】CSS布局之显示属性3.0
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            
+
+
+    
+    
+    
+    display
+    
+
+
+
+display指定一个元素是否或如何显示。默认显示值为block:元素显示为块级元素,inline元素显示为行内元素,none隐藏元素,地消失了。
+而visibility:hidden/visible(可见);则占地保留。这在应用javaScript动态控制元素和隐藏元素非常有用。
+内联元素
+链接元素：a 
+文本修饰......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 风花 on
+        2022-10-20
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2022/10/20/hello-world28/">
+        <h2 class="post-title">
+            【082】CSS布局之显示属性3.0
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            
+
+
+  
+  
+  
+  021-css-display3.0
+  
+
+
+    
+    
+
+...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 风花 on
+        2022-10-20
+    </p>
+
+</div>
+<hr>
+
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+        <li class="previous">
+            <a href="/page/12/">&larr; Newer Posts</a>
+        </li>
+    
+    
+        <li class="next">
+            <a href="/page/14/">Older Posts &rarr;</a>
+        </li>
+    
+</ul>
+
+
+
+	 
+ 		
+	    </div>
+
+		<!--<div class="participation" id="zen-participation" role="article">
+			<h3>Participation</h3>
+			<p>Strong visual design has always been our focus. You are modifying this page, so strong <abbr title="Cascading Style Sheets">CSS</abbr> skills are necessary too, but the example files are commented well enough that even <abbr title="Cascading Style Sheets">CSS</abbr> novices can use them as starting points. Please see the <a target="_blank" rel="noopener" href="http://www.mezzoblue.com/zengarden/resources/" title="A listing of CSS-related resources"><abbr title="Cascading Style Sheets">CSS</abbr> Resource Guide</a> for advanced tutorials and tips on working with <abbr title="Cascading Style Sheets">CSS</abbr>.</p>
+			<p>You may modify the style sheet in any way you wish, but not the <abbr title="HyperText Markup Language">HTML</abbr>. This may seem daunting at first if you&#8217;ve never worked this way before, but follow the listed links to learn more, and use the sample files as a guide.</p>
+			<p>Download the sample <a href="/examples/index" title="This page's source HTML code, not to be modified.">HTML</a> and <a href="/examples/style.css" title="This page's sample CSS, the file you may modify.">CSS</a> to work on a copy locally. Once you have completed your masterpiece (and please, don&#8217;t submit half-finished work) upload your <abbr title="Cascading Style Sheets">CSS</abbr> file to a web server under your control. <a target="_blank" rel="noopener" href="http://www.mezzoblue.com/zengarden/submit/" title="Use the contact form to send us your CSS file">Send us a link</a> to an archive of that file and all associated assets, and if we choose to use it we will download it and place it on our server.</p>
+		</div>
+
+		<div class="benefits" id="zen-benefits" role="article">
+			<h3>Benefits</h3>
+			<p>Why participate? For recognition, inspiration, and a resource we can all refer to showing people how amazing <abbr title="Cascading Style Sheets">CSS</abbr> really can be. This site serves as equal parts inspiration for those working on the web today, learning tool for those who will be tomorrow, and gallery of future techniques we can all look forward to.</p>
+		</div>-->
+
+		<div class="requirements" id="zen-requirements" role="article">
+			
+		</div>
+
+		<footer>
+			<a target="_blank" rel="noopener" href="http://validator.w3.org/check/referer" title="Check the validity of this site&#8217;s HTML" class="zen-validate-html">HTML</a>
+			<a target="_blank" rel="noopener" href="http://jigsaw.w3.org/css-validator/check/referer" title="Check the validity of this site&#8217;s CSS" class="zen-validate-css">CSS</a>
+			<a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/" title="View the Creative Commons license of this site: Attribution-NonCommercial-ShareAlike." class="zen-license">CC</a>
+			<a target="_blank" rel="noopener" href="http://mezzoblue.com/zengarden/faq/#aaa" title="Read about the accessibility of this site" class="zen-accessibility">A11y</a>
+			<a target="_blank" rel="noopener" href="https://github.com/mezzoblue/csszengarden.com" title="Fork this site on Github" class="zen-github">GH</a>
+		</footer>
+
+	</div>
+
+
+	<aside class="sidebar" role="complementary">
+		<div class="wrapper">
+
+			<div class="design-selection" id="design-selection">
+				<h3 class="select">Select a Design:</h3>
+				<nav role="navigation">
+					<ul>
+					<li>
+						<a target="_blank" rel="noopener" href="https://music.163.com/" class="design-name">网易云</a> by						<a target="_blank" rel="noopener" href="https://music.163.com/" class="designer-name">WangYi Cloud</a>
+					</li>					<li>
+						<a target="_blank" rel="noopener" href="http://space.mvbox.cn/422365167.html" class="design-name">蝉衣</a> by						<a target="_blank" rel="noopener" href="http://space.mvbox.cn/422365167.html" class="designer-name">Chan Yi</a>
+					</li>					<li>
+						<a target="_blank" rel="noopener" href="http://dj.fqingy.com/forum.php" class="design-name">小酒窝</a> by						<a target="_blank" rel="noopener" href="http://dj.fqingy.com/forum.php" class="designer-name">Feng Qingyang</a>
+					</li>					<li>
+						<a target="_blank" rel="noopener" href="https://wyc520.com.cn/forum.php" class="design-name">忘忧草</a> by						<a target="_blank" rel="noopener" href="https://wyc520.com.cn/forum.php" class="designer-name">Wang Youcao</a>
+					</li>					<li>
+						<a target="_blank" rel="noopener" href="http://www.qingtanju.com/forum.php" class="design-name">青檀居</a> by						<a target="_blank" rel="noopener" href="http://www.qingtanju.com/forum.php" class="designer-name">Qing Tan</a>
+					</li>					<li>
+						<a target="_blank" rel="noopener" href="http://www.tingkew.com/" class="design-name">听课网</a> by						<a target="_blank" rel="noopener" href="http://www.tingkew.com/" class="designer-name">Ali</a>
+					</li>					<li>
+						<a target="_blank" rel="noopener" href="https://imgse.com/" class="design-name">图床</a> by						<a target="_blank" rel="noopener" href="https://imgse.com/" class="designer-name">Upload Photo</a>
+					</li>					<li>
+						<a target="_blank" rel="noopener" href="https://github.com/windflower2022/windflower2022.github.io" class="design-name">GitHub</a> by						<a target="_blank" rel="noopener" href="https://github.com/windflower2022/windflower2022.github.io" class="designer-name">windflower</a>
+					</li>					</ul>
+				</nav>
+			</div>
+
+			 <!--<div class="design-archives" id="design-archives">
+				<h3 class="archives">Archives:</h3>
+				<nav role="navigation">
+					<ul>
+					    
+					</ul>
+				</nav>
+			</div>-->
+
+			<div class="zen-resources" id="zen-resources">
+			    <h3 class="resources">Resources:</h3>
+				    <div style="margin:12px auto;">
+    
+                    <!-- Insert to your webpage where you want to display the audio player -->
+                        <div id="amazingaudioplayer-1" style="display:block;position:relative;width:100%;max-width:24px;height:auto;margin:0px auto 0px;">
+                            <ul class="amazingaudioplayer-audios" style="display:none;">
+							<li data-artist="----------------------------------" data-title="秋凉" data-album="情不为因果，缘注定生死。" data-info="" data-image="03.jpg" data-duration="0">
+                                <div class="amazingaudioplayer-source" data-src="https://music.163.com/song/media/outer/url?id=1492270571.mp3" data-type="audio/mpeg" />
+                            </li>
+							<li data-artist="----------------------------------" data-title="跨越世界的河流" data-album="情不为因果，缘注定生死。" data-info="" data-image="03.jpg" data-duration="0">
+                                <div class="amazingaudioplayer-source" data-src="https://music.163.com/outchain/player?type=3&id=2504599358&auto=1&height=66" data-type="audio/mpeg" />
+                            </li>
+							<li data-artist="----------------------------------" data-title="不值得" data-album="情不为因果，缘注定生死。" data-info="" data-image="03.jpg" data-duration="0">
+                                <div class="amazingaudioplayer-source" data-src="https://music.163.com/song/media/outer/url?id=366577.mp3" data-type="audio/mpeg" />
+                            </li>							
+							<li data-artist="----------------------------------No matter who finds this reason" data-title="千年风雅" data-album="No matter who shakes this hard ground" data-info="" data-image="02.jpg" data-duration="0">
+                                <div class="amazingaudioplayer-source" data-src="http://chuangshicdn.data.mvbox.cn/music/bz/22/05/07/22050723095511597846.mp3" data-type="audio/mpeg" />
+                            </li>
+							<li data-artist="----------------------------------No matter who finds this reason" data-title="故事的结局" data-album="No matter who shakes this hard ground" data-info="" data-image="02.jpg" data-duration="0">
+                                <div class="amazingaudioplayer-source" data-src="https://music.163.com/song/media/outer/url?id=1941418549.mp3" data-type="audio/mpeg" />
+                            </li>
+							<li data-artist="----------------------------------" data-title="等风的日子" data-album="情不为因果，缘注定生死。" data-info="" data-image="03.jpg" data-duration="0">
+                                <div class="amazingaudioplayer-source" data-src="http://chuangshicdn.data.mvbox.cn/music/bz/22/04/23/22042323581893079537.mp3" data-type="audio/mpeg" />
+                            </li>
+							<li data-artist="----------------------------------No matter who finds this reason" data-title="Icarus" data-album="No matter who shakes this hard ground" data-info="" data-image="02.jpg" data-duration="0">
+                                <div class="amazingaudioplayer-source" data-src="http://chuangshicdn.data.mvbox.cn/music/bz/22/05/07/22050721501204476575.mp3" data-type="audio/mpeg" />
+                            </li>
+							<li data-artist="----------------------------------No matter who finds this reason" data-title="great morning" data-album="No matter who shakes this hard ground" data-info="" data-image="02.jpg" data-duration="0">
+                                <div class="amazingaudioplayer-source" data-src="http://chuangshicdn.data.mvbox.cn/music/bz/22/04/23/22042323584138642125.mp3" data-type="audio/mpeg" />
+                            </li>
+							<li data-artist="----------------------------------No matter who finds this reason" data-title="回到你身边" data-album="No matter who shakes this hard ground" data-info="" data-image="02.jpg" data-duration="0">
+                                <div class="amazingaudioplayer-source" data-src="http://m801.music.126.net/20221105190740/e65df9ec525d87060ab1e1ff58d1c9fa/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/12771680094/d426/2c0a/6d5b/1c50abdfaddfd407104384b744dad06c.mp3" data-type="audio/mpeg" />
+                            </li>
+                            <li data-artist="----------------------------------No matter who finds this reason" data-title="Falling" data-album="No matter who shakes this hard ground" data-info="" data-image="02.jpg" data-duration="0">
+                                <div class="amazingaudioplayer-source" data-src="https://music.163.com/song/media/outer/url?id=19144822.mp3" data-type="audio/mpeg" />
+                            </li>
+                            <li data-artist="----------------------------------" data-title="freedom" data-album="闲看庭前花开花落，漫随天外云卷云舒。" data-info="" data-image="01.jpg" data-duration="0">
+                                <div class="amazingaudioplayer-source" data-src="https://music.163.com/song/media/outer/url?id=422419151.mp3" data-type="audio/mpeg" />
+                            </li>
+                            <li data-artist="----------------------------------" data-title="空灵" data-album="身边萦绕着人造的信息素香氛，每个人到了这里都骤然轻飘飘起来。" data-info="" data-image="04.jpg" data-duration="0">
+                                <div class="amazingaudioplayer-source" data-src="https://music.163.com/song/media/outer/url?id=1430256188.mp3" data-type="audio/mpeg" />
+                            </li>
+                            <li data-artist="-------------------------------------------" data-title="高歌破阵" data-album="一开始随随便便深深浅浅,不过是心的自由不计前嫌不知疲倦。" data-info="" data-image="05.jpg" data-duration="0">
+                                <div class="amazingaudioplayer-source" data-src="http://chuangshicdn.data.mvbox.cn/music/bz/22/05/07/22050723092313207397.mp3" data-type="audio/mpeg" />
+                            </li>
+                            <li data-artist="----------------------------------" data-title="影" data-album="彼岸花，开一千年，落一千年，花叶永不相见。" data-info="" data-image="03.jpg" data-duration="0">
+                                <div class="amazingaudioplayer-source" data-src="https://music.163.com/song/media/outer/url?id=1459928972.mp3" data-type="audio/mpeg" />
+                            </li>
+							<li data-artist="----------------------------------" data-title="象王行" data-album="彼岸花，开一千年，落一千年，花叶永不相见。" data-info="" data-image="03.jpg" data-duration="0">
+                                <div class="amazingaudioplayer-source" data-src="http://chuangshicdn.data.mvbox.cn/music/bz/22/05/07/22050721484073873703.mp3" data-type="audio/mpeg" />
+                            </li>
+							<li data-artist="----------------------------------" data-title="往事" data-album="彼岸花，开一千年，落一千年，花叶永不相见。" data-info="" data-image="03.jpg" data-duration="0">
+                                <div class="amazingaudioplayer-source" data-src="http://chuangshicdn.data.mvbox.cn/music/bz/22/04/24/22042400070915708036.mp3" data-type="audio/mpeg" />
+                            </li>
+                            </ul>
+    <!-- End of body section HTML codes -->
+                                </div>
+			            </div>
+                    </div>
+					<!--<ul>
+					 <li data-artist="" data-title="草予木 - 风花赏乐5" data-album="" data-info="" data-image="" data-duration="0">
+                            <div class="amazingaudioplayer-source" data-src="http://music.163.com/song/media/outer/url?id=1952292953.mp3" data-type="audio/mpeg" />
+                        </li>
+                        <li data-artist="" data-title="彼岸花 - 风花赏乐4" data-album="" data-info="" data-image="" data-duration="0">
+                            <div class="amazingaudioplayer-source" data-src="https://music.163.com/song/media/outer/url?id=1941639510.mp3" data-type="audio/mpeg" />
+                        </li>
+                        <li data-artist="" data-title="秋天不回来-风花赏乐3" data-album="" data-info="" data-image="" data-duration="0">
+                            <div class="amazingaudioplayer-source" data-src="http://music.163.com/song/media/outer/url?id=163123.mp3" data-type="audio/mpeg" />
+                        </li>
+                        <li data-artist="" data-title="天下有情人-风花赏乐2" data-album="" data-info="" data-image="" data-duration="0">
+                            <div class="amazingaudioplayer-source" data-src="http://music.163.com/song/media/outer/url?id=1496629559.mp3" data-type="audio/mpeg" />
+                        </li>
+                        <li data-artist="" data-title="终于等到你-风花赏乐1" data-album="" data-info="" data-image="" data-duration="0">
+                            <div class="amazingaudioplayer-source" data-src="http://music.163.com/song/media/outer/url?id=481859184.mp3" data-type="audio/mpeg" />
+                        </li>
+                        <li data-artist="" data-title="流浪记-风花赏乐6" data-album="" data-info="" data-image="" data-duration="0">
+                            <div class="amazingaudioplayer-source" data-src="http://music.163.com/song/media/outer/url?id=479422064.mp3" data-type="audio/mpeg" />
+                        </li>
+				</ul>-->
+		</div>
+	</aside>
+
+
 </div>
 
+<!--
 
-<audio style="width: 0px; height: 0px;" src="https://music.163.com/song/media/outer/url?id=1910694933.mp3" autoplay="autoplay" loop="loop" controls="controls" type="audio/mpeg"></audio>
-            </div>
-            <footer id="footer" class="footer">
-   <!-- <div class="copyright">
-        <span>© 风花 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
-    </div>-->
-</footer>
+	These superfluous divs/spans were originally provided as catch-alls to add extra imagery.
+	These days we have full ::before and ::after support, favour using those instead.
+	These only remain for historical design compatibility. They might go away one day.
+		
+-->
+<div class="extra1" role="presentation"></div><div class="extra2" role="presentation"></div><div class="extra3" role="presentation"></div>
+<div class="extra4" role="presentation"></div><div class="extra5" role="presentation"></div><div class="extra6" role="presentation"></div>
 
-    </div>
 </body>
-
+</html>
+</body>
 </html>
