@@ -1,0 +1,43 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(75vw, #ddd 0%, #666 10%, #fff, #000, #999) 91vw 74vh, radial-gradient(37vw, #ddd 0%, #666 10%, #fff, #000, #999) 42vw 30vh, radial-gradient(88vw, #ddd 0%, #666 10%, #fff, #000, #999) 92vw 9vh, radial-gradient(31vw, #ddd 0%, #666 10%, #fff, #000, #999) 6vw 71vh, radial-gradient(58vw, #ddd 0%, #666 10%, #fff, #000, #999) 54vw 14vh, radial-gradient(75vw, #ddd 0%, #666 10%, #fff, #000, #999) 59vw 51vh, radial-gradient(100vw, #ddd 0%, #666 10%, #fff, #000, #999) 80vw 98vh, radial-gradient(66vw, #ddd 0%, #666 10%, #fff, #000, #999) 3vw 77vh, radial-gradient(95vw, #ddd 0%, #666 10%, #fff, #000, #999) 46vw 94vh;
+  -webkit-animation: waveMove 15s infinite linear alternate;
+          animation: waveMove 15s infinite linear alternate;
+  background-blend-mode: difference;
+  filter: blur(2px) hue-rotate(0);
+}
+div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #03a9f4;
+  mix-blend-mode: color-burn;
+}
+
+@-webkit-keyframes waveMove {
+  100% {
+    background-position: 62vw 92vh, 10vw 20vh, 6vw 80vh, 98vw 28vh, 26vw 25vh, 86vw 55vh, 41vw 77vh, -46vw 1vh, -36vw 95vh;
+    filter: blur(5px) hue-rotate(30deg);
+  }
+}
+
+@keyframes waveMove {
+  100% {
+    background-position: 62vw 92vh, 10vw 20vh, 6vw 80vh, 98vw 28vh, 26vw 25vh, 86vw 55vh, 41vw 77vh, -46vw 1vh, -36vw 95vh;
+    filter: blur(5px) hue-rotate(30deg);
+  }
+}/*# sourceMappingURL=jysb.css.map */

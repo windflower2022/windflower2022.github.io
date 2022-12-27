@@ -1,361 +1,246 @@
-/* css Zen Garden submission 083 - 'Springtime', by Boër Attila */
-/* css released under Creative Commons License - http://creativecommons.org/licenses/by-nc-sa/1.0/  */
-/* All associated graphics copyright 2004, Boër Attila */
-/* Added: March 4th, 2004 */
-
-/* IMPORTANT */
-/* This design is not a template. You may not reproduce it elsewhere without the 
-   designer's written permission. However, feel free to study the CSS and use 
-   techniques you learn from it elsewhere. */
-
-
-
-/* basic elements */
-html,body { 
-    height: 100%;
-	font: 8pt/16pt georgia; 
-	color: #555753; 
-	background: #F5F7EC url(../img/bg.jpg) fixed; 
-	margin: 0px; 
-	text-align: left;
-	background-repeat: repeat-x;
-	}
-p { 
-	font: 10pt/14pt verdana; 
-	margin-top: 0px; 
-	text-align: left;
-	}
-h3 { 
-	font: italic normal 12pt georgia; 
-	letter-spacing: 1px; 
-	margin-bottom: 10px; 
-	color: #7D775C;
-	text-align: left;
-	}
-a:link { 
-	font: 11px verdana; 
-	font-weight: bold; 
-	text-decoration: underline; 
-	color: #8F9E28;
-	}
-
-a:visited { 
-	font-weight: bold; 
-	text-decoration: underline; 
-	color: #C0C0C0;
-	}
-a:hover, a:active { 
-	text-decoration: underline; 
-	color: #B8C271;
-	}
-
-
-/* specific divs */
-.page-wrapper { 
-	background: url(../img/footbg.jpg) no-repeat bottom left; 
-
-	width:650px;
-	padding-bottom:80px;
-	position:relative;
-	margin: 0 auto;
-
-
-	}
-
-.intro { 
-	min-width: 470px;
-	}
-header { 
-	margin-bottom: 20px;
-
-	}
-
-/* using an image to replace text in an h1. This trick courtesy Douglas Bowman, http://www.stopdesign.com/articles/css/replace-text/ */
-header h1 { 
-	background: url(../img/head.gif) no-repeat top left; 
-	width: 678px; 
-	height: 213px; 
-
-
-	margin-top:0px;
-
-	text-indent: 200%;
-	white-space: nowrap;
-	overflow: hidden;
-	}
-header h2 { 
-	background: transparent url(../img/flwr.gif) no-repeat top left; 
-
-	width: 84px; 
-	height: 261px; 
-	float: right;
-	margin-top:0px;
-
-	position:absolute;
-	top:163px;
-	left:647px;
-
-	text-indent: 200%;
-	white-space: nowrap;
-	overflow: hidden;
-	}
-
-.summary {
-	background: transparent url(../img/green.gif) no-repeat top left; 
-	clear:both; 
-	overflow:auto;
-
-	width: 147px;
-	height:201px;
-
-	padding-top:10px;
-	padding-left:15px;
-	padding-right:15px;
-
-	position:absolute;
-	top:213px;
-	left:0px;
-
-	}
-.summary p {
-	font: 8pt/12pt verdana;
-	color:#EFF2E5;
-	text-align:left;
-
-	}
-
-.summary a {
-	font:  bold 8pt/12pt verdana;
-	color:#EFF2E5;
-	text-align:left;
-	text-decoration:underline;
-	}
-
-.summary a:hover {
-	font:  bold 8pt/12pt verdana;
-	color:#EFF2E5;
-	text-align:left;
-	text-decoration:none;
-	}
-
-
-.preamble {
-
-	padding-right:40px;
-	padding-top:20px;
-	padding-left:30px;
-	overflow:auto;
-	background: transparent url(../img/whitebg.gif) no-repeat 0 0 !important; 
-
-	position:absolute;
-	top:72px;
-	left:177px;
-	height:333px;
-	width:400px;
-
-	}
-
-.preamble h3 {
-	background: transparent url(../img/pretext.gif) no-repeat top left;
-	font: 0pt/14pt verdana;
-	color:#FFFFFF;
-	text-align:right;
-	height:40px; 
-}
-
-
-.explanation h3, .benefits h3, .participation h3, .requirements h3 {
-
-display:none	
-}
-
-
-
-.supporting {
-	background: transparent url(../img/whitebg2.gif) repeat-y top left; 
-
-	float:left;
-	padding-left: 10px; 
-	padding-right: 30px; 
-	padding-top:230px;
-	padding-bottom:0px;
-	margin-bottom: 0px;
-	width:607px;
-	}
-
-
-
-.explanation {
-	background: transparent url(../img/whatistext.gif) no-repeat top left; 
-
-	float:right;
-	width:410px;
-	padding-top:50px;
-	padding-bottom:30px;
-
-}
-
-.participation {
-	background: transparent url(../img/parttext.gif) no-repeat top left; 
-
-
-	float:right;
-	width:410px;
-	padding-top:50px;
-	padding-bottom:30px;
-
-}
-
-.benefits {
-	background: transparent url(../img/beneftxt.gif) no-repeat top left; 
-
-
-	float:right;	
-	width:410px;
-	padding-top:50px;
-	padding-bottom:30px;
-
-}
-.requirements {
-	background: transparent url(../img/reqtext.gif) no-repeat top left; 
-	
-	float:right;
-	width:410px;
-	padding-top:50px;
-	padding-bottom:50px;
-	
-
-}
-
-
-footer { 
-
-	background: transparent url(../img/notext.gif) no-repeat top left; 	
-
-	left:0px;
-	text-align: center; 
-
-	padding-top:30px;
-	padding-bottom:0px;
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* CSS Zen Garden Top Level Styles || William Duffy || www.wdart.co.uk || 01 March 2006
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 	
-
-	float:right;
-	width:580px;
-
+html,body {
+    height: 100%;	
+	color: #AB9F82;
+	font: 9pt/13pt georgia, sans-serif;
+	margin: 0px; padding: 0px;	
+	background: black url(../img/background_windflower.gif) no-repeat center top fixed;
 	}
-footer a:link, footer a:visited { 
-	margin-left: 20px; 
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+abbr {
+	border-bottom: 1px dotted #AB9F82;
+	cursor: help;
+	font-weight: bold;
 	}
 
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Container Styles
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.page-wrapper {
+	margin: 0px auto 0px auto;
+	position: relative;
+	width: 750px;
+	}
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Intro Styles
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.intro header {
+	background: transparent no-repeat 17px 22px;
+	width: 464px; height: 446px;
+	}
+	
+	.intro header h1, .intro header h2 {
+		margin: 0px;
+
+		text-indent: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+		}
+					
+			
+.intro .summary {
+	background: transparent no-repeat left top;
+	color: #D9D0B7;
+	position: absolute; top: 186px; left: 336px;
+	width: 172px; height: 160px;
+	}
+	
+	.intro .summary p:first-child {
+		display: none;
+		}
+
+	.intro .summary p:last-child {
+		background: transparent no-repeat 0px 4px;		
+		color: #E8D6A3;
+		padding: 0px 0px 0px 12px;
+		position: absolute; top: 1110px; left: 203px; z-index: 100;
+		width: 150px;
+		}
+		
+		.intro .summary p:last-child a {color: #DEC35A; text-decoration: underline;}
+		.intro .summary p:last-child a:visited {color: #DEC35A;}
+		.intro .summary p:last-child a:hover {color: #E8D6A3;}
 
 
+.intro .preamble {
+	background: transparent  no-repeat center bottom;
+	padding: 25px 0px 37px 0px;
+	width: 464px;
+	}
+
+	.intro .preamble p:nth-child(2), .intro .preamble p:nth-child(3), .intro .preamble p:nth-child(4), .intro .preamble p:nth-child(5), .intro .preamble p:nth-child(6) {
+		padding: 0px 0px 0px 49px;
+		}
+
+	.intro .preamble h3 {
+		background: transparent no-repeat left top;
+		height: 25px;
+		margin: 0px 0px -9px 27px;
+
+		text-indent: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+		}
+		
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* supportingText Styles
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.supporting .explanation, .supporting .participation, .supporting .benefits, .supporting .requirements {
+	background: transparent no-repeat center bottom;
+	padding: 25px 0px 37px 0px;
+	width: 464px;
+	}
+
+	.supporting p:nth-child(2), .supporting p:nth-child(3), .supporting p:nth-child(4), .supporting p:nth-child(5), .supporting p:nth-child(6) {
+		padding: 0px 0px 0px 49px;
+		} 
+		
+		.supporting a {color: #D2C9BB;}
+		.supporting a:visited {color: #D2C9BB;}
+		.supporting a:hover {color: #D34E1A;}
+	
+	.supporting h3 {
+		height: 25px;
+		margin: 0px 0px -9px 27px;
+
+		text-indent: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+		}
+
+		.supporting .explanation h3 {background: transparent url(../img/txt_participation.gif) no-repeat left top;}
+		.supporting .participation h3 {background: transparent url(../img/txt_benefits.gif) no-repeat left top;}
+		.supporting .benefits h3 {background: transparent url(../img/txt_participation.gif) no-repeat left top;}
+		.supporting .requirements h3 {background: transparent url(../img/txt_requirements.gif) no-repeat left top;}
+
+.supporting footer {
+	background: transparent no-repeat right bottom;
+	height: 20px;
+	padding: 152px 0px 0px 0px;
+	text-align: right;
+	}
+	
+	.supporting footer a {color: #CCAD50; font-weight: bold; text-decoration: none;}
+	.supporting footer a:visited {color: #CCAD50;}
+	.supporting footer a:hover {color: #D2C9BB;}
+
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* linkList Styles
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 .sidebar {
-	background: transparent url(../img/greenbg.gif) repeat-y top left; 
-
-	float:left;
-	position: absolute;
-	top: 424px;
-	left: 0px;
-	margin: 0px;
-	width: 178px;
-	text-align:left;
-	padding: 0px;
-	}
-.sidebar .wrapper { 
-	background: transparent url(../img/fade.gif) no-repeat bottom left; 
-
-	font: 10px verdana, sans-serif; 
-	margin:0px;
-	padding: 0px; 
-
-	padding-bottom:100px;
-	width: 178px; 
-	float:left;
+	color: #E8D6A3;
+	position: absolute;	top: 75px; left: 516px;
+	width: 205px;
 	}
 
-
-.sidebar li {
-
-	list-style-type: none;
-	background:#C1C99A;
-
-	padding: 8px; 
-	margin-bottom: 1px;
-	margin-left:-39px;
-
-	width:160px;
-
-	}
-
-.sidebar li:hover {
-	background: #A6AE72;
-
-}
+	.sidebar a {color: #E8D6A3; text-decoration: none;}
+	.sidebar a:visited {color: #E8D6A3;}
+	.sidebar a:hover {color: #DEC35A; text-decoration: underline;}
 
 
-.sidebar li a { 
+	/* Begin lselect styles */
+	.sidebar .design-selection {
+		font-style: italic;
+		}
+	
+		.sidebar .design-selection h3 {
+			background: transparent url(../img/txt_designs.gif) no-repeat left top;
+			margin: 0px 0px -17px 0px;
+			width: 168px; height: 79px;
 
-	display:block;
-	color:#6E7746;
-	font: bold 11px verdana;
-	text-decoration:underline;
+			text-indent: 100%;
+			white-space: nowrap;
+			overflow: hidden;
+			} 
+			
+		.sidebar .design-selection ul {
+			list-style-type: none;
+			margin: 0px 0px 0px 20px; padding: 0px;
+			}
+			
+			.sidebar .design-selection ul li {
+				background: transparent url(../img/bullet_designs.gif) no-repeat left 4px;
+				padding: 0px 0px 12px 14px;
+				}
+	
+		.sidebar .design-selection a {display: block; font-style: normal; font-weight: bold;}
+		.sidebar .design-selection a.designer-name {display: inline; font-weight: normal;}
+	/* End lselect styles */
+	
+	
+	/* Begin larchives styles */
+	.sidebar .design-archives h3 {
+		background: transparent url(../img/txt_archives.gif) no-repeat left top;		
+		margin: 0px 0px -17px 0px;
+		width: 168px; height: 79px;
 
-	}
+		text-indent: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+		} 
+		
+	.sidebar .design-archives ul {
+		list-style-type: none;
+		margin: 0px 0px 0px 20px; padding: 0px;		
+		}
+		
+		.sidebar .design-archives ul li {
+			background: transparent url(../img/bullet_designs.gif) no-repeat left 4px;
+			padding: 0px 0px 0px 14px;
+			}
+	/* End larchives styles */
+	
+	
+	/* Begin lresources styles */
+	.sidebar . {
+		background: transparent url no-repeat left top;		
+		padding: 117px 0px 0px 38px;
+		position: absolute; top: 950px; left: -37px;
+		width: 233px; height: 422px;
+		}
+		
+		.sidebar . h3 {
+			background: transparent no-repeat left top;
+			margin: 0px 0px -17px 0px;
+			width: 168px; height: 79px;
 
-.sidebar li a:hover { 
-
-	display:block;
-	color:#8F9E28;
-	font: bold 11px verdana;
-	text-decoration:underline;
-
-
-	}
-
-
-.sidebar li a.designer-name { 
-
-	display:inline;
-	color:#FFFFFF;
-	font: 11px verdana;
-	}
-
-.sidebar li a.designer-name:hover { 
-
-	display:inline;
-	color:#6E7746;
-	font: 11px verdana;
-	}
-
-
-.design-selection {
-	background: transparent url(../img/seltxt.gif) no-repeat top left; 
-	padding-top:30px;
-	padding-bottom:0px;
-	margin-bottom:-10px;
-	float:left;
-}
-
-
-.design-archives {
-	background: transparent url(../img/archtxt.gif) no-repeat top left; 
-	padding-top:30px;
-	padding-bottom:0px;
-	margin-bottom:-10px;
-	float:left;
-}
-
-.zen-resources {
-	background: transparent url(../img/restxt.gif) no-repeat top left; 
-	padding-top:30px;
-	padding-bottom:0px;
-	margin-bottom:-10px;
-	float:left;
-}
-
-
-.design-selection h3, .design-archives h3, .zen-resources h3 {display:none;}
-
-.extra1, .extra2, .extra3, .extra4, .extra5, .extra6 {display:none;}
+			text-indent: 100%;
+			white-space: nowrap;
+			overflow: hidden;
+			} 
+			
+	.sidebar . ul {
+		list-style-type: none;
+		margin: 0px 0px 0px 20px; padding: 0px;
+		}
+		
+		.sidebar . ul li {
+			background: transparent no-repeat left 5px;
+			padding: 0px 0px 0px 14px;
+			}
+	/* End lresources styles */
+	
+	
