@@ -1,872 +1,193 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  
-  
-  <meta name="description" content="四方食事，不过一碗人间烟火" />
-  
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  
-  
-  
-  
-  
-  
-  <title>Windflower&#39;s Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="四方食事，不过一碗人间烟火">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Windflower&#39;s Blog">
-<meta property="og:url" content="https://windflower2022.github.io/page/21/index.html">
-<meta property="og:site_name" content="Windflower&#39;s Blog">
-<meta property="og:description" content="四方食事，不过一碗人间烟火">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="风花">
-<meta name="twitter:card" content="summary">
-  
-  
-    <link rel="icon" href="/css/images/favicon.ico">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+    <meta name="author" content="风花">
 
-  
 
-  
-  <!-- baidu webmaster push -->
-  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+    <meta name="description" content="四方食事，不过一碗人间烟火">
+
+
+
+<title>Windflower&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
 <meta name="generator" content="Hexo 6.3.0"></head>
-<body class="home blog custom-background custom-font-enabled single-author">
-  <div id="page" class="hfeed site">
-      <header id="masthead" class="site-header" role="banner">
-    <hgroup>
-      <h1 class="site-title">
-        <a href="/" title="Windflower&#39;s Blog" rel="home">Windflower&#39;s Blog</a>
-      </h1>
-      
-        <h2 class="site-description hitokoto"></h2>
-        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
-      
-    </hgroup>
 
-    <nav id="site-navigation" class="main-navigation" role="navigation">
-            <button class="menu-toggle">菜单</button>
-            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
-            <div class="menu-main-container">
-                <ul id="menu-main" class="nav-menu">
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Windflower&#39;s Blog</a></div>
+            <div class="menu navbar-right">
                 
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                    <a class="menu-item" href="/archives">Posts</a>
                 
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                    <a class="menu-item" href="/category">Categories</a>
                 
-                </ul>
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
             </div>
+        </div>
     </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Windflower&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
 </header>
-
-      <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main">
-  
-    <article id="post-hell0-world7" class="post-hell0-world7 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2022/10/01/hell0-world7/">【059】CSS组合选择器</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="https://windflower2022.github.io/2022/10/01/hell0-world7/" data-id="claf13nth002p9cw70siz8zt5" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-    div h3 {
-        color: blue;
-    }
-
-<pre><code>div li p &#123;
-    color: blue;
-&#125;
-
-div&gt;p &#123;
-        color: red;
-    &#125;
-</code></pre>
-<p></style></p>
-</head>
-<body>
-&nbsp;&nbsp; <h3>CSS组合选择器</h3><br>
-后代选择器：div 空格键 p<br><br>
-匹配作为指定元素后代的所有元素,选择div元素内的所有p元素<br><br>
-div p {<br><br>
-    background-color: yellow;<br><br>
-}<br><br>
-子选择器： div > p<br><br> 
-选择所有父元素是div元素的p元素。<br><br>
-相邻的兄弟选择器：div + p<br><br>
-一般兄弟选择器：div ~ p<br><br>
-<div>
-<h1>
-        “五育并举” 全面发展素质教育
-</h1>
-<p>
-    近日，中共中央、国务院印发《关于深化教育教学改革全面提高义务教育质量的意见》，这是中共中央、国务院印发的第一个聚焦义务教育阶段教育教学改革的重要文件，是新时代我国深化教育教学改革、全面提高义务教育质量的纲领性文件。
-</p>
-<h3>
-    公众留言：
-</h3>
-<ol>
-    <li>
-<p>
-        木子李：党的十八大以来，在以习近平同志为核心的党中央坚强领导下，我国义务教育取得了举世瞩目的成就，实现了全面普及，目前正处于由基本均衡向优质均衡迈进的新阶段。
-</p>
-</li>
-<li>
-<p>
-        潜水小鱼：发展素质教育，培养德智体美劳全面发展的社会主义建设者和接班人。
-</p>
-</li>
-<li>
-<p>
-        落叶有情：该《意见》是新时代我国深化教育教学改革、全面提高义务教育质量的重要文件，既有“培养德智体美劳全面发展的社会主义建设者和接班人”的顶层设计，也有针对素质教育落实不到位、课堂教学质量有待提高、教育评价体系有待完善等热点问题的及时纠偏，充分体现了党中央、国务院对义务教育的高度重视和对亿万少年儿童的亲切关怀。
-</p>
-</li>
-</ol>
-</div><br><br>
-</body>
-</html> 
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2022/10/01/hell0-world7/">
-    <time datetime="2022-10-01T03:41:59.000Z" class="entry-date">
-        2022-10-01
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/CSS/">CSS</a>
-  </div>
-
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-hell0-world6" class="post-hell0-world6 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2022/09/30/hell0-world6/">【053-058】CSS基础</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="https://windflower2022.github.io/2022/09/30/hell0-world6/" data-id="claf13ntg002j9cw7do4a8atk" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            background-color: linen;
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
         }
-        h3 {
-            color: maroon
-            margin-left: 40px
-        }
-        p1 {
-            color:rgb(13, 172, 34);
-        }
-    </style>
-</head>
-<body>
-&nbsp;&nbsp; <h3> </h3><br>  
- 在head末尾添加style双标签,内部添加样式  
-<P1>
-    Hello CSS! 
-</P1>
-<p1>
-    我们开始学习css.Vcode自动刷新网页,扩展-live server，返回编辑页面open with new server就行。
-</p1>
-&nbsp;&nbsp; <h3 style="color:blueviolet;">054 CSS之内联样式 </h3><br>
-<p style="color:green;">
-三种插入样式表的方法：内联CSS,内部CSS,外部CSS<br><br>
-内联CSS：内联样式，行内样式，它被用来为一个单一的元素应用一个独特的样式。样式属性添加到相关的元素中。样式属性可以包含任何CSS属性。如在div里添加style属性，值为任何CSS语法。
-</p>
-&nbsp;&nbsp; <h3>055 CSS之内部样式 </h3><br>
-内部CSS: 如果一个单一的HTML页面有一个独特的风格，可使用一个内部样式表。定义在head元素里。需告诉浏览器给哪个html元素添加样式，就需要选择器。<br><br>
-CSS选择器用来寻找或选择你想要定义样式的HTML元素的。<br><br>
-1、元素选择器<br><br>
-根据元素名称选择HTML元素,如body,h3,p1<br><br>
-弊端1：只能作用于一个页面，不能实现多个页面共享一个样式<br><br>
-弊端2：样式代码不断增加，需要上下滚屏，很不便<br><br>
-&nbsp;&nbsp; <h3>056 CSS之外部样式 </h3><br>
-外部CSS：可改变一个文件，来改变整个网站外观。将CSS代码放在一个独立的以.CSS为后缀名的文件中，使HTML页面结构文件和CSS样式文件完全独立开来。<br><br>
-每个HTML页面都必须在head元素里添加<link>元素,link元素里定义rel(relationship)属性,值为stylesheet,意思是关联一个样式表。后为href,值为CSS文件的路径。<br><br>
-<link rel="stylesheet" href="?.css"><br><br>
-注意：样式名与中括号1空格，每一条样式属性单独一行定义，两组样式定义空一行分隔。<br><br>
-&nbsp;&nbsp; <h3>057 CSS样式表的优先级 </h3><br>
-内联，外部，内部样式修饰同一个html元素，内联样式优先级最高。<br><br>
-在head里添加的内部样式和引入的外部样式，后添加或引入的优先级最高。<br><br>
-浏览器默认的样式优先级最低。<br><br>
-&nbsp;&nbsp; <h3>058 CSS简单选择器</h3><br>
-CSS选择器用来寻找或选择想要修饰的HTML元素。比如前面的h1选择器就是元素选择器。CSS选择器分为5类<br><br>
-1.简单选择器：根据名称，ID，类别来选择元素。<br><br>
-2.组合选择器：根据元素间的特定关系来选择元素。<br><br>
-3.伪类选择器：根据某种状态来选择元素。<br><br>
-4.伪元素选择器：为了一个元素的制定部分设置样式。<br><br>
-5.属性选择器：根据一个属性或属性值来选择元素。<br><br>
-1.简单选择器<br><br>
-元素选择器，如果两段中想要对第二段添加其他样式，就需要ID选择器。<br><br>
-ID选择器：是使用一个HTML元素的id属性来选择一个特定的元素。一个元素的id在页面中是唯一的，所以id选择器是用来选择一个唯一元素的。在前+#。故在第二段P里面加上id属性。<br><br>
-如果想要标题和第二段都设置成斜体，就需要在h1,和#para都设置italic。同一个样式声明写了两遍，很麻烦，可使用类选择器实现。<br><br>
-类选择器：可以选择具有特定class属性的HTML元素。需要写一个点字符后面紧跟类别名称。如.italic。在h1后和第二段P后，使用class="",值可以是1个或多个，可以实现多个样式的叠加。也可以在定义类选择器时候，将元素的名称添加到点的前面。这样的选择器选择的元素就更具体了。<br><br>
-
-<style>
-    h1 {
-        text-align: center;
-        color: purple;
     }
-
-    p {
-        color: rgb(78, 51, 173);
-    }
-
-    #para2 {
-        text-align: center;
-    }
-
-    .italic {
-        font-style: italic;
-    }
-
-    .deco {
-        text-decoration: underline;
-    }
-</style>
-</head>
-<body>
-<h1 class="italic">
-  面朝大海，春暖花开
-</h1>
-<p>
-    这首诗以朴素明朗而又隽永清新的语言，唱出一个诗人的真诚善良。抒情主人公想要做“一个幸福的人”，愿意把“幸福的闪电”告诉每一个人，即使是陌生人他都会真诚的祝愿他“在尘世获得幸福”。诗人想象中的尘世，一切都那样新鲜可爱，充满生机与活力，字里行间透出积极、昂扬的情感。整首诗乍看是以淳朴、欢快的方式发出对人的真诚祝愿。 [5] 
-</p>
-<p id="para2" class="italic deco">
-    大海是作者诗中的核心意象，广阔浩荡，心旷神怡，生机勃勃，是安魂之乡，是搏斗之乡，是理想之乡，是作者作为“海之子”的精神归宿，是他可以找到真正的幸福感的地方。面朝大海，春暖花开，是一种海市蜃楼，然而这是作者所能感受到的一种明丽的幸福感受。这个题目的意蕴张力在于，它将人们现实中的思维定势扯得七零八落，然后万花筒式地重组，用自己强烈的主导意念使它明丽起来。当然，花应该开在炎热的土地上，作者却让他固执地（“我只愿”）开在自己的幸福之海上，开在自己的理想的追求中，现实中的一切（“喂马，劈柴，关心粮食和蔬菜”），只为了养活自己的躯体，以使自己的心能够跳动，使自己的想象能够飞扬。
-</p>  
-id选择器，类选择器都不能数字开头。<br><br>
-分组选择器：能添加多个元素，申明同一样式。选择所有具有相同样式的html元素把多个选择器用，隔开。如h1,p {}
-<style>
-    h1 {
-        text-align: center;
-        color: purple;
-    }
-
-<pre><code>p &#123;
-    color: rgb(78, 51, 173);
-&#125;
-
-#para2 &#123;
-    text-align: center;
-&#125;
-</code></pre>
-<p>   h1,p {<br>    font-style: italic;<br>   }</p>
-<pre><code>.deco &#123;
-    text-decoration: underline;
-&#125;
-</code></pre>
-<p></style></p>
-</head>
-<body>
-<h1 class="italic">
-  面朝大海，春暖花开
-</h1>
-<p>
-    这首诗以朴素明朗而又隽永清新的语言，唱出一个诗人的真诚善良。抒情主人公想要做“一个幸福的人”，愿意把“幸福的闪电”告诉每一个人，即使是陌生人他都会真诚的祝愿他“在尘世获得幸福”。诗人想象中的尘世，一切都那样新鲜可爱，充满生机与活力，字里行间透出积极、昂扬的情感。整首诗乍看是以淳朴、欢快的方式发出对人的真诚祝愿。 [5] 
-</p>
-<p id="para2" class="italic deco">
-    大海是作者诗中的核心意象，广阔浩荡，心旷神怡，生机勃勃，是安魂之乡，是搏斗之乡，是理想之乡，是作者作为“海之子”的精神归宿，是他可以找到真正的幸福感的地方。面朝大海，春暖花开，是一种海市蜃楼，然而这是作者所能感受到的一种明丽的幸福感受。这个题目的意蕴张力在于，它将人们现实中的思维定势扯得七零八落，然后万花筒式地重组，用自己强烈的主导意念使它明丽起来。当然，花应该开在炎热的土地上，作者却让他固执地（“我只愿”）开在自己的幸福之海上，开在自己的理想的追求中，现实中的一切（“喂马，劈柴，关心粮食和蔬菜”），只为了养活自己的躯体，以使自己的心能够跳动，使自己的想象能够飞扬。
-</p>  
-通用选择器：HTML页面全部元素的选择器，定义选择器的通配符*<br><br>
-<style>
-    * {
-        backcolor: rgb(113, 122, 161);
-    }
-
-<pre><code>h1 &#123;
-    text-align: center;
-    color: purple;
-&#125;
-
-p &#123;
-    color: rgb(78, 51, 173);
-&#125;
-
-#para2 &#123;
-    text-align: center;
-&#125;
-</code></pre>
-<p>   h1,p {<br>    font-style: italic;<br>   }</p>
-<pre><code>.deco &#123;
-    text-decoration: underline;
-&#125;
-</code></pre>
-<p></style></p>
-</head>
-<body>
-<h1 class="italic">
-  面朝大海，春暖花开
-</h1>
-<p>
-    这首诗以朴素明朗而又隽永清新的语言，唱出一个诗人的真诚善良。抒情主人公想要做“一个幸福的人”，愿意把“幸福的闪电”告诉每一个人，即使是陌生人他都会真诚的祝愿他“在尘世获得幸福”。诗人想象中的尘世，一切都那样新鲜可爱，充满生机与活力，字里行间透出积极、昂扬的情感。整首诗乍看是以淳朴、欢快的方式发出对人的真诚祝愿。 [5] 
-</p>
-<p id="para2" class="italic deco">
-    大海是作者诗中的核心意象，广阔浩荡，心旷神怡，生机勃勃，是安魂之乡，是搏斗之乡，是理想之乡，是作者作为“海之子”的精神归宿，是他可以找到真正的幸福感的地方。面朝大海，春暖花开，是一种海市蜃楼，然而这是作者所能感受到的一种明丽的幸福感受。这个题目的意蕴张力在于，它将人们现实中的思维定势扯得七零八落，然后万花筒式地重组，用自己强烈的主导意念使它明丽起来。当然，花应该开在炎热的土地上，作者却让他固执地（“我只愿”）开在自己的幸福之海上，开在自己的理想的追求中，现实中的一切（“喂马，劈柴，关心粮食和蔬菜”），只为了养活自己的躯体，以使自己的心能够跳动，使自己的想象能够飞扬。
-</p> 
-<style>
-    * {
-        background-color: rgb(217, 209, 176);
-    }
-
-<pre><code>html,body &#123;
-    background-color: rgb(224, 228, 9);
-&#125;
-
-h1 &#123;
-    text-align: center;
-    color: purple;
-&#125;
-
-p &#123;
-    color: rgb(78, 51, 173);
-&#125;
-
-#para2 &#123;
-    text-align: center;
-&#125;
-
-h1,#para2 &#123;
-    font-style: italic;
-&#125;
-
-.deco &#123;
-    text-decoration: underline;
-&#125;
-</code></pre>
-<p></style></p>
-</head>
-<body>
-<h1 class="italic">
-  面朝大海，春暖花开
-</h1>
-<p>
-    这首诗以朴素明朗而又隽永清新的语言，唱出一个诗人的真诚善良。抒情主人公想要做“一个幸福的人”，愿意把“幸福的闪电”告诉每一个人，即使是陌生人他都会真诚的祝愿他“在尘世获得幸福”。诗人想象中的尘世，一切都那样新鲜可爱，充满生机与活力，字里行间透出积极、昂扬的情感。整首诗乍看是以淳朴、欢快的方式发出对人的真诚祝愿。 [5] 
-</p>
-<p id="para2" class="italic deco">
-    大海是作者诗中的核心意象，广阔浩荡，心旷神怡，生机勃勃，是安魂之乡，是搏斗之乡，是理想之乡，是作者作为“海之子”的精神归宿，是他可以找到真正的幸福感的地方。面朝大海，春暖花开，是一种海市蜃楼，然而这是作者所能感受到的一种明丽的幸福感受。这个题目的意蕴张力在于，它将人们现实中的思维定势扯得七零八落，然后万花筒式地重组，用自己强烈的主导意念使它明丽起来。当然，花应该开在炎热的土地上，作者却让他固执地（“我只愿”）开在自己的幸福之海上，开在自己的理想的追求中，现实中的一切（“喂马，劈柴，关心粮食和蔬菜”），只为了养活自己的躯体，以使自己的心能够跳动，使自己的想象能够飞扬。
-</p>
-</body>
-</html> 
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2022/09/30/hell0-world6/">
-    <time datetime="2022-09-30T13:41:59.000Z" class="entry-date">
-        2022-09-30
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/CSS/">CSS</a>
-  </div>
-
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-hello-world5" class="post-hello-world5 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2022/09/28/hello-world5/">【042-049】iframe以及SVG</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="https://windflower2022.github.io/2022/09/28/hello-world5/" data-id="claf13ntn003f9cw7cdul20k7" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    &nbsp;&nbsp; <h3>042 iframe </h3><br>
-    双标签，用来在一个网页中显示另一个网页。<br><br>
-    属性：src="页面路径"；width="数字:引入页面的宽度";height;frameborder="0"默认引入页面带有边框为0，就是去除边框了。scrolling="auto/yes/no"是否显示框架滚动条。<br><br>
-    <iframe src="https://windflower2022.github.io/2022/09/21/hello-world4/" frameborder="1">               
-    </iframe><br><br>
-    <iframe src="https://windflower2022.github.io/2022/09/21/hello-world4/" frameborder="1" width="800" height="600">       
-    </iframe><br><br>
-    <iframe src="https://windflower2022.github.io/2022/09/21/hello-world4/" frameborder="1" width="800" height="600" scrolling="no">       
-    </iframe><br><br>
-    <iframe src="https://windflower2022.github.io/2022/09/21/hello-world4/">               
-    </iframe><br><br>
-    添加容器，div,实现iframe链接功能换行输入(a[href target=iframe_a]>b)*3<br><br>
-    <div>
-        <a href="https://windflower2022.github.io/2022/09/20/hello-world3/" target="iframe_a"><b></b>内容1</a>
-        <a href="https://windflower2022.github.io/archives/" target="iframe_a"><b></b>目录</a>
-        <a href="https://windflower2022.github.io/2022/09/21/hello-world4/" target="iframe_a"><b></b>内容2</a><br><br> 
-    </div>      
-    <iframe src="https://windflower2022.github.io/2022/09/21/hello-world4/" frameborder="0" width="800" height="600" scrolling="no">       
-    </iframe><br><br>
-    &nbsp;&nbsp; <h3>043 初识SVG </h3><br>
-    全称scalable vector graphics,意为可缩放矢量图。形状描述的文本文件，体积较小。不管放大多少倍，都不会失真。可以绘制。可以用svg双标签。<br><br> 
-    <svg  width="800" height="600">
-    </svg><br><br>
-    点击F12查看,element下svg,就看见上面是一个蓝色矩形。<br><br> 
-    &nbsp;&nbsp; <h3>043 初识SVG </h3><br>
-    全称scalable vector graphics,意为可缩放矢量图。形状描述的文本文件，体积较小。不管放大多少倍，都不会失真。可以绘制。可以用svg双标签。
-    <svg  width="800" height="600">
-    </svg><br><br>
-    点击F12查看,element下svg,就看见一个蓝布矩形。<br><br> 
-    &nbsp;&nbsp; <h3>044 SVG绘制矩形，圆形，椭圆 </h3><br>
-    可画矩形(rect)，圆形(circle)，椭圆(ellipse)，线条(line)，多线条(ployline)，多边形(polygon)，路径(path)<br><br> 
-    单标签（rect width="" height="" fill="填充色"  stroke-width="边框宽" stroke="边框色"> <br><br> 
-    <svg width="400" height="110">
-        <rect width="300" height="100" fill="lightgreen" stoke-width="3" stroke="tomato" />
-    </svg><br><br>
-    加x,y值，以及填充色，边框色透明度。<br><br>
-    <svg width="400" height="110">
-        <rect x="50" y="20" width="300" height="100" fill="lightgreen" fill-opacity="0.1" stoke-width="3" stroke="tomato"  sroke-opacity="0.9"/>
-    </svg><br><br>
-    给rect,增添透明属性<br><br> 
-    <svg width="400" height="110">
-        <rect x="50" y="20" width="300" height="100" fill="lightgreen" stoke-width="3" stroke="tomato" opacity="0.5" />
-    </svg><br><br>
-    <svg width="400" height="110">
-        <rect x="50" y="20" width="300" height="100" fill="lightgreen" stoke-width="3" stroke="tomato" opacity="0.5" rx="20" ry="20"/>
-    </svg><br><br>
-    <svg width="400" height="400">
-        <rect x="50" y="20" width="300" height="100" fill="lightgreen" stoke-width="3" stroke="tomato" opacity="0.5" rx="20" ry="20"/>
-    </svg><br>
-    <svg width="400" height="400">
-        <rect x="50" y="20" width="300" height="300" fill="lightgreen" stoke-width="3" stroke="tomato" opacity="0.5" rx="20" ry="20"/>
-    </svg><br><br>
-    画circle,属性cx,cy相同，r.其它属性和上面一致。<br><br>
-    <svg width="100" height="100">
-        <circle cx="50" cy="50" r="40" fill="red" stroke-width="3" stroke="green" />
-    </svg><br><br>
-    画椭圆ellipse,x,y半径不同。cx椭圆中心x坐标，cy椭圆中心y坐标。rx水平半径，ry垂直半径。<br><br>
-    <svg width="500" height="140">
-        <ellipse cx="200" cy="80" rx="100" ry="50" fill="red" stroke-width="3" stroke="green" />
-    </svg><br><br>
-    堆叠椭圆。<br><br>
-    <svg width="500" height="150">
-        <ellipse cx="240" cy="100" rx="220" ry="30" fill="red" stroke-width="3" stroke="green" />
-        <ellipse cx="220" cy="70" rx="190" ry="20" fill="blue" stroke-width="3" stroke="green" />
-        <ellipse cx="210" cy="45" rx="170" ry="15" fill="yellow" stroke-width="3" stroke="green" />
-    </svg><br><br>
-    空心椭圆<br><br>
-    <svg width="500" height="100">
-        <ellipse cx="240" cy="50" rx="220" ry="30" fill="purple" stroke-width="3" stroke="green" />
-        <ellipse cx="220" cy="50" rx="190" ry="20" fill="yellow" stroke-width="3" stroke="green" />
-        <ellipse cx="210" cy="45" rx="170" ry="15" fill="white" stroke-width="3" stroke="green" />
-    </svg><br><br>
-     &nbsp;&nbsp; <h3>045 SVG绘制线条，多边形，多线条 </h3><br>
-    line单标签，属性x1,y1,x2,y2,与数学中Y轴相反。<br><br>
-   <svg width="500" height="210">
-     <line x1="0" y1="0" x2="200" y2="200" stroke="red" stroke-width="2" />
-   </svg><br><br>
-   多边形单标签polygon，属性points="a,b c,d e,f..."<br><br>
-   <svg width="500" height="210">
-   <polygon points="200,20 250,190 160,210" fill="lime" stroke="purple" stroke-width="1" />
-   </svg><br><br>
-   四边形<br><br>
-   <svg width="500" height="230">
-    <polygon points="200,10 300,210 170,250 123,50" fill="lime" stroke="purple" stroke-width="1" />
-    </svg><br><br>
-    五角星<br><br>
-    <svg width="500" height="210">
-        <polygon points="100,10 40,198 198,78 10,78 160,198" fill="lime" stroke="purple" stroke-width="5" />
-        </svg><br><br>
-    多线条单标签polyline属性points两个以上的x,y<br><br>
-    <svg width="500" height="200">
-        <polyline points="20,10 60,80 120,128 180,88" fill="none" stroke="yellow" stroke-width="3" />
-        </svg><br><br>
-    楼梯剖面<br><br>
-    <svg width="500" height="180">
-        <polyline points="0,40 40,40 40,80 80,80 80,120 120,120 120,160 160,160 160,200 200,200 200,240 240,240,240,280" fill="none" stroke="blue" stroke-width="4" />
-    </svg><br><br> 
-    &nbsp;&nbsp; <h3>046 SVG绘制线条，多边形，多线条 </h3><br>
-    text双标签，属性x,y定义文本坐标，font-size,text-anchor="start/middle/end"<br><br>
-    <svg width="300" height="30">
-        <text x="0" y="15" fill="red">
-           I love my family 
-        </text> 
-    </svg><br><br>
-    用txt进行svg绘制，可旋转，属性transform="ratate(30 50,100)"<br><br> <br><br>
-    <svg width="600" height="280">
-        <text x="0" y="15" fill="red" transform="rotate(40 70,180)">
-           I love my family 
-        </text> 
-    </svg>
-    <svg width="300" height="180">
-        <text x="0" y="15" fill="red">
-           I love my family 
-        <tspan x="10" y="50" fill="red">first line</tspan>
-        <tspan x="10" y="95" fill="red">second line</tspan>
-        </text>         
-    </svg><br>
-    text绘制的文本可以添加链接，用a xlink:href="",但svg开标签里添加 xmlns:xlink="http://www.w3.org/1999/xlink"<br><br>
-    <svg width="200" height="30" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <a xlink:href="https://windflower2022.github.io/about">
-        <text x="10" y="15" fill="green">
-            我的博客
-        </text>
-    </a>
-    </svg>
-    <br><br>
-    &nbsp;&nbsp; <h3>047 SVG绘制路径 </h3><br>
-    path单标签，属性d(draw),M命令d="M150 0",L(lineto)命令，d="M 150 0 L 75 200"大写字母是绝对定位，小写字母是相对定位。 <br><br>
-    <svg width="400" height="210">
-    <path d="M 150 0 L 175 100 L 100 100"/ fill="purple">
-    </svg><br><br>
-    贝塞尔曲线在path命令中用q属性d="M 150 0 l 75 200 q 150 -300 300 0"<br><br>
-    <svg width="450" height="400">
-        <path d="M 100 350 l 150 -300" fill="none" stroke="red" stroke-width="3"/>
-        <path d="M 250 50 l 150 300" fill="none" stroke="red" stroke-width="3"/>
-        <path d="M 175 200 l 150 0" fill="none" stroke="green" stroke-width="3"/>
-        <path d="M 100 350 q 150 -300 300 0" fill="none" stroke="blue" stroke-width="5"/>
-        <g fill="black">
-        <circle cx="100" cy="350" r="3" />
-        <circle cx="250" cy="50" r="3" />
-        <circle cx="400" cy="350" r="3" />
-        </g>
-        <g font-size="30" fill="black" text-anchor="middle">
-            <text x="100" y="350" dx="-30" >A</text>
-            <text x="250" y="50" dx="-10" >B</text>
-            <text x="400" y="350" dx="30" >C</text>
-        </g>  
-        </svg><br><br>
-    <br><br>
-    &nbsp;&nbsp; <h3>047 SVG描边属性 </h3><br>
-    path单标签，属性stroke笔画属性,定义一个元素线条文本轮廓的颜色, stroke-width笔画宽度属性, stroke-linecap笔画笔帽属性：butt无线帽,round,square, stroke-dasharray虚线笔画属性,至少定义两个值如20，20,都可以运用于所有线条，文本和元素的轮廓，如circle<br><br>
-        <br><br>
-    <svg width="350" height="100">
-        <g fill="none">
-        <path stroke="red" d="M 5 20 l 215 0" />
-        <path stroke="black" d="M 5 40 l 215 0" />
-        <path stroke="red" d="M 5 60 l 215 0" />
-      </g>
-    </svg> <br>
-    <svg width="350" height="100">
-        <g fill="none" stroke="black">
-          <path stroke-width="2" d="M 5 20 l 215 0" />
-          <path stroke-width="4" d="M 5 40 l 215 0" />
-          <path stroke-width="6" d="M 5 60 l 215 0" />
-        </g>
-    </svg><br>
-    <svg width="350" height="100">
-        <g fill="none" stroke="green" stroke-width="8">
-          <path stroke-linecap="butt" d="M 5 20 l 215 0" />
-          <path stroke-linecap="round" d="M 5 40 l 215 0" />
-          <path stroke-linecap="square" d="M 5 60 l 215 0" />
-        </g>
-    </svg><br>
-    <svg width="350" height="100">
-        <g fill="none" stroke="red" stroke-width="4">
-          <path stroke-dasharray="5,5" d="M 5 20 l 215 0" />
-          <path stroke-dasharray="10,10,5" d="M 5 40 l 215 0" />
-          <path stroke-dasharray="20,10,15,5" d="M 5 60 l 215 0" />
-        </g>
-    </svg><br><br>
-    &nbsp;&nbsp; <h3>048 SVG模糊和阴影效果 </h3><br>
-    filter双标签，1个或多个效果滤镜。属性为id，值保持唯一性。filter都在defs(definitions)双标签下定义。
-    语法如下：<br><br>
-    <defs>
-       <filter id>
-        <feGaussianBlur stdDeviation="数字" />
-       </filter>
-    </defs>
-    <svg width="110" height="110">
-       <rect width="90" height="90" stroke="green" stroke-width="3" fill="yellow" />
-    </svg><br>
-    模糊效果，单标签feGaussianBlur属性stdDeviation="数字"<br><br>
-    <svg width="110" height="110">
-        <defs>
-            <filter x="0" y="0" id="f1">
-             <feGaussianBlur stdDeviation="15" />
-            </filter>
-         </defs>
-       <rect width="90" height="90" stroke="green" stroke-width="3" fill="yellow" filter="url(#f1)" />
-    </svg><br>
-    投影效果，单标签ffOffset属性dx="数字"引用x轴上的偏移量,dy="数字",in="",阴影图像的来源，黑色阴影值为SourceAlpha,原始图像为阴影值为SourceGraphic。<br><br>
-    还需要在偏移的图像混合原始图像，用feBlend单标签，属性in<br><br>
-    <svg width="110" height="110">
-        <defs>
-            <filter x="0" y="0" width="200" height="200" id="f2">
-             <feOffset dx="20" dy="20" in="SourceAlpha"/>
-             <feBlend in="SourceGraphic" />
-            </filter>
-         </defs>
-       <rect width="90" height="90" stroke="green" stroke-width="3" fill="yellow" filter="url(#f2)" />
-    </svg><br><br>
-    <svg width="110" height="110">
-        <defs>
-            <filter x="0" y="0" width="100" height="100" id="f2">
-             <feOffset dx="20" dy="20" in="SourceAlpha"/>
-             <feGaussianBlur stdDeviation="15" /> 
-             <feBlend in="SourceGraphic" />  
-            </filter>
-         </defs>
-       <rect width="90" height="90" stroke="green" stroke-width="3" fill="yellow" filter="url(#f2)" />
-    </svg><br><br>
-    &nbsp;&nbsp; <h3>049 SVG线性和径向渐变 </h3><br>
-    linearGradient双标签表示，属性x1,y1,x2,y2,嵌套在defs下。y1=y2,x1≠x2，产生水平渐变。x1=x2,y1≠y2产生垂直渐变。两者都不等，产生角度渐变。<br><br>
-    每种颜色都用stop单标签指定，定义属性offset="百分数"  stop-color="渐变色"
-    <svg width="400" height="150">
-       <ellipse cx="200" cy="70" rx="85" ry="55">
-       </ellipse>
-    </svg><br><br>
-    <svg width="400" height="150">
-        <defs >
-            <linearGradient x1="0%" y1="0%" x2="100%" y2="0%" id="grad1">
-                <stop offset="0%" stop-color="rgb(255,255,0)" />
-                <stop offset="100%" stop-color="rgb(255,0,0)" />
-            </linearGradient>
-        </defs> 
-        <ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad1)">
-        </ellipse>
-     </svg><br><br>
-     <svg width="400" height="150">
-        <defs >
-            <linearGradient x1="0%" y1="0%" x2="0%" y2="100%" id="grad1">
-                <stop offset="0%" stop-color="rgb(255,255,0)" />
-                <stop offset="100%" stop-color="rgb(255,0,0)" />
-            </linearGradient>
-        </defs> 
-        <ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad1)" />
-            <text fill="#ffffff" font-size="45" x="150" y="86">wind</text>
-     </svg><br><br>
-     radialGradient双标签嵌套在defs,
-     <svg width="500" height="150">
-        <defs >
-            <radialGradient cx="50%" cy="50%" r="50%" fx="50%" fy="50%" id="grad2">
-                <stop offset="0%" stop-color="rgb(255,255,255)" />
-                <stop offset="100%" stop-color="rgb(0,0,255)" />
-            </radialGradient>
-        </defs> 
-        <ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad2)" />
-            <text fill="#ffffff" font-size="45" x="150" y="86">wind</text>
-     </svg><br><br>
-     <svg width="500" height="150">
-        <defs >
-            <radialGradient cx="30%" cy="30%" r="50%" fx="30%" fy="30%" id="grad2">
-                <stop offset="0%" stop-color="rgb(255,255,255)" />
-                <stop offset="100%" stop-color="rgb(0,0,255)" />
-            </radialGradient>
-        </defs> 
-        <ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad2)" />
-            <text fill="#ffffff" font-size="45" x="150" y="86">wind</text>
-     </svg><br><br>
-     
-</body>  
-</html>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2022/09/28/hello-world5/">
-    <time datetime="2022-09-28T13:13:59.000Z" class="entry-date">
-        2022-09-28
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/html/">html</a>
-  </div>
-
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-  
-    <nav id="pagination">
-      <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/20/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/22/">Next &amp;raquo;</a>
-      </nav>
-    </nav>
-  
-
-</div></div>
-        <div id="secondary" class="widget-area" role="complementary">
-  
-    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
-    <div>
-        <input type="text" value="" name="s" id="s" />
-        <input type="submit" id="searchsubmit" value="搜索" />
-    </div>
-</form></aside>
-  
-    
-  
-    
-  <aside class="widget">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ability/">Ability</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/music/">music</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vocabulary/">vocabulary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BE%8E%E6%96%87/">美文</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9F%B3%E7%94%BB/">音画</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A3%9F%E4%BA%8B/">食事</a><span class="category-list-count">1</span></li></ul>
-    </div>
-  </aside>
-
-  
-    
-  <aside class="widget">
-    <h3 class="widget-title">Recents</h3>
-    <div class="widget-content">
-      <ul>
-        
-          <li>
-            <a href="/2022/11/20/mhwt/">【音乐欣赏】漠河舞厅</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/18/qjysqjy/">【风花音画】千江有水千江月</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/18/ahxs/">【风花音画】暗红心事</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/18/hello-world35/">【089】CSS布局之重叠</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/17/dy/">【风花音画】大鱼</a>
-          </li>
-        
-      </ul>
-    </div>
-  </aside>
-
-  
-    
-  <aside class="widget">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget-content">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/" rel="tag">music</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vocabulary/" rel="tag">vocabulary</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E7%94%BB/" rel="tag">音画</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </aside>
-
-  
-    
-  <aside class="widget">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget-content tagcloud">
-      <a href="/tags/music/" style="font-size: 10px;">music</a> <a href="/tags/vocabulary/" style="font-size: 10px;">vocabulary</a> <a href="/tags/%E9%9F%B3%E7%94%BB/" style="font-size: 10px;">音画</a>
-    </div>
-  </aside>
-
-  
+</script>
+            <div class="main">
+                
+    <div class="container profile-container">
+    <div class="intro">
+        <div class="avatar">
+            <a href="/archives"><img src="/image/w.jpg"></a>
+        </div>
+        <div class="nickname">Wind  Flower</div>
+        <div class="description"><p>We, rustling leaves <strong>have a voice that answers storms。</strong><br>But who are thou so silent? <em>I am a mere flower。</em></p>
 </div>
-      </div>
-      <footer id="colophon" role="contentinfo">
-    <p>&copy; 2022 风花
-    All rights reserved.</p>
-    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+        <div class="links">
+            
+                
+                    <a class="link-item" title="Blog" href="/archives">
+                        
+                        
+                            <i class="iconfont icon-blog"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="ZhiHu" target="_blank" rel="noopener" href="http://www.tingkew.com/">
+                        
+                        
+                            <i class="iconfont icon-zhihu"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="Instagram" target="_blank" rel="noopener" href="https://imgse.com/">
+                        
+                        
+                            <i class="iconfont icon-instagram"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="Reddit" target="_blank" rel="noopener" href="http://dj.fqingy.com/">
+                        
+                        
+                            <i class="iconfont icon-reddit"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="Github" target="_blank" rel="noopener" href="https://github.com/windflower2022">
+                        
+                        
+                            <i class="iconfont icon-github"></i>
+                        
+                    </a>
+                
+            
+        </div>
+    </div>
+</div>
+
+
+<audio style="width: 0px; height: 0px;" src="https://music.163.com/song/media/outer/url?id=1910694933.mp3" autoplay="autoplay" loop="loop" controls="controls" type="audio/mpeg"></audio>
+            </div>
+            <footer id="footer" class="footer">
+   <!-- <div class="copyright">
+        <span>© 风花 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>-->
 </footer>
-    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
 
-<script src="/js/jquery-3.3.1.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-<script src="/js/navigation.js"></script>
-
-<div id="bg"></div>
-
-  </div>
+    </div>
 </body>
+
 </html>
