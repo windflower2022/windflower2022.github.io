@@ -1,140 +1,87 @@
-(function($) {
-    // Search
-    var $searchWrap = $('#search-form-wrap'),
-        isSearchAnim = false,
-        searchAnimDuration = 200;
-    var startSearchAnim = function() {
-        isSearchAnim = true;
+// declaraction of document.ready() function.
+(function () {
+    var ie = !!(window.attachEvent && !window.opera);
+    var wk = /webkit\/(\d+)/i.test(navigator.userAgent) && (RegExp.$1 < 525);
+    var fn = [];
+    var run = function () {
+        for (var i = 0; i < fn.length; i++) fn[i]();
     };
-    var stopSearchAnim = function(callback) {
-        setTimeout(function() {
-            isSearchAnim = false;
-            callback && callback();
-        }, searchAnimDuration);
-    };
-    $('#nav-search-btn').on('click', function() {
-        if (isSearchAnim) return;
-        startSearchAnim();
-        $searchWrap.addClass('on');
-        stopSearchAnim(function() {
-            $('.search-form-input').focus();
-        });
-    });
-    $('.search-form-input').on('blur', function() {
-        startSearchAnim();
-        $searchWrap.removeClass('on');
-        stopSearchAnim();
-    });
-    // Share
-    /*
-    $('body').on('click', function() {
-        $('.article-share-box.on').removeClass('on');
-    }).on('click', '.article-share-link', function(e) {
-        e.stopPropagation();
-        var $this = $(this),
-            url = $this.attr('data-url'),
-            encodedUrl = encodeURIComponent(url),
-            id = 'article-share-box-' + $this.attr('data-id'),
-            offset = $this.offset();
-        if ($('#' + id).length) {
-            var box = $('#' + id);
-            if (box.hasClass('on')) {
-                box.removeClass('on');
-                return;
-            }
-        } else {
-            var html = ['<div id="' + id + '" class="article-share-box">', '<input class="article-share-input" value="' + url + '">', '<div class="article-share-links">', '<a href="http://tieba.baidu.com/f/commit/share/openShareApi?url=' + encodedUrl + '" class="article-share-tieba" target="_blank" title="百度贴吧"></a>', '<a href="http://service.weibo.com/share/share.php?url=' + encodedUrl + '" class="article-share-weibo" target="_blank" title="新浪微博"></a>', '<a href="http://share.v.t.qq.com/index.php?c=share&a=index&url=' + encodedUrl + '" class="article-share-tqq" target="_blank" title="腾讯微博"></a>', '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '" class="article-share-renren" target="_blank" title="人人"></a>', '</div>', '</div>'].join('');
-            var box = $(html);
-            $('body').append(box);
-        }
-        $('.article-share-box.on').hide();
-        box.css({
-            top: offset.top + 25,
-            left: offset.left
-        }).addClass('on');
-    }).on('click', '.article-share-box', function(e) {
-        e.stopPropagation();
-    }).on('click', '.article-share-box-input', function() {
-        $(this).select();
-    }).on('click', '.article-share-box-link', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-    });*/
-    // Caption
-    $('.article-entry').each(function(i) {
-        $(this).find('img').each(function() {
-            if ($(this).parent().hasClass('fancybox')) return;
-            var alt = this.alt;
-            if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-            $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
-        });
-        $(this).find('.fancybox').each(function() {
-            $(this).attr('rel', 'article' + i);
-        });
-    });
-    if ($.fancybox) {
-        $('.fancybox').fancybox();
-    }
-    // Mobile nav
-    var $container = $('#container'),
-        isMobileNavAnim = false,
-        mobileNavAnimDuration = 200;
-    var startMobileNavAnim = function() {
-        isMobileNavAnim = true;
-    };
-    var stopMobileNavAnim = function() {
-        setTimeout(function() {
-            isMobileNavAnim = false;
-        }, mobileNavAnimDuration);
-    }
-    $('#main-nav-toggle').on('click', function() {
-        if (isMobileNavAnim) return;
-        startMobileNavAnim();
-        $container.toggleClass('mobile-nav-on');
-        stopMobileNavAnim();
-    });
-    $('#wrap').on('click', function() {
-        if (isMobileNavAnim || !$container.hasClass('mobile-nav-on')) return;
-        $container.removeClass('mobile-nav-on');
-    });
-    // link
-    var $linkUl = $('#link-list');
-    var $list = $('#link-list li');
-    $linkUl.empty();
-    var count = $list.length;
-    for (var i = 0; i < count; i++) {
-        var ran = Math.floor(Math.random() * $list.length);
-        $linkUl.append($list.eq(ran));
-        $list.splice(ran, 1);
-    }
-    /**
-     * Wrap images with fancybox support.
-     */
-    var wrapImageWithFancyBox = function() {
-        $('.site-content img').not('[hidden]').not('.group-picture img, .post-gallery img').each(function() {
-            var $image = $(this);
-            var imageTitle = $image.attr('title');
-            var $imageWrapLink = $image.parent('a');
-            if ($imageWrapLink.length < 1) {
-                var imageLink = $image.attr('data-original') ? this.getAttribute('data-original') : this.getAttribute('src');
-                $imageWrapLink = $image.wrap('<a data-fancybox="group" href="' + imageLink + '"></a>').parent('a');
-            }
-            $imageWrapLink.addClass('fancybox fancybox.image');
-            $imageWrapLink.attr('rel', 'group');
-            if (imageTitle) {
-                $imageWrapLink.append('<p class="image-caption">' + imageTitle + '</p>');
-                //make sure img title tag will show correctly in fancybox
-                $imageWrapLink.attr('title', imageTitle);
-            }
-        });
-        $('.fancybox').fancybox({
-            helpers: {
-                overlay: {
-                    locked: false
+    var d = document;
+    d.ready = function (f) {
+        if (!ie && !wk && d.addEventListener)
+            return d.addEventListener('DOMContentLoaded', f, false);
+        if (fn.push(f) > 1) return;
+        if (ie)
+            (function () {
+                try {
+                    d.documentElement.doScroll('left');
+                    run();
+                } catch (err) {
+                    setTimeout(arguments.callee, 0);
                 }
+            })();
+        else if (wk)
+            var t = setInterval(function () {
+                if (/^(loaded|complete)$/.test(d.readyState))
+                    clearInterval(t), run();
+            }, 0);
+    };
+})();
+
+
+document.ready(
+    // toggleTheme function.
+    // this script shouldn't be changed.
+    () => {
+        var _Blog = window._Blog || {};
+        const currentTheme = window.localStorage && window.localStorage.getItem('theme');
+        const isDark = currentTheme === 'dark';
+        const pagebody = document.getElementsByTagName('body')[0]
+        if (isDark) {
+            document.getElementById("switch_default").checked = true;
+            // mobile
+            document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+        } else {
+            document.getElementById("switch_default").checked = false;
+            // mobile
+            document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+        }
+        _Blog.toggleTheme = function () {
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
             }
-        });
+            document.getElementsByClassName('toggleBtn')[0].addEventListener('click', () => {
+                if (pagebody.classList.contains('dark-theme')) {
+                    pagebody.classList.remove('dark-theme');
+                } else {
+                    pagebody.classList.add('dark-theme');
+                }
+                window.localStorage &&
+                window.localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light',)
+            })
+            // moblie
+            document.getElementById('mobile-toggle-theme').addEventListener('click', () => {
+                if (pagebody.classList.contains('dark-theme')) {
+                    pagebody.classList.remove('dark-theme');
+                    // mobile
+                    document.getElementById("mobile-toggle-theme").innerText = "· Light"
+
+                } else {
+                    pagebody.classList.add('dark-theme');
+                    // mobile
+                    document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+                }
+                window.localStorage &&
+                window.localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light',)
+            })
+        };
+        _Blog.toggleTheme();
+        // ready function.
     }
-    wrapImageWithFancyBox();
-})(jQuery);
+);
