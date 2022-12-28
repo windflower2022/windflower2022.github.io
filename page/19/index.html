@@ -1,193 +1,444 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="四方食事，不过一碗人间烟火" />
+  
 
+  
+  
+  
+  
+  
+  
+  <title>Windflower&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="四方食事，不过一碗人间烟火">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Windflower&#39;s Blog">
+<meta property="og:url" content="https://windflower2022.github.io/page/19/index.html">
+<meta property="og:site_name" content="Windflower&#39;s Blog">
+<meta property="og:description" content="四方食事，不过一碗人间烟火">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="风花">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Windflower&#39;s Blog" rel="home">Windflower&#39;s Blog</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main">
+  
+    <article id="post-hell0-world13" class="post-hell0-world13 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2022/10/02/hell0-world13/">【065】文本修饰</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="https://windflower2022.github.io/2022/10/02/hell0-world13/" data-id="clc5pzvzq000t6gw7g7ct4oow" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <meta name="author" content="风花">
-
-
-
-    <meta name="description" content="四方食事，不过一碗人间烟火">
-
-
-
-<title>Windflower&#39;s Blog</title>
-
-
-
-    <link rel="icon" href="/favicon.ico">
-
-
-
-
-    <!-- stylesheets list from _config.yml -->
-    
-    <link rel="stylesheet" href="/css/style.css">
-    
-
-
-
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
-
-    
-    
-        
-    
-
-
-<meta name="generator" content="Hexo 6.3.0"></head>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text decoration</title>
+    <link rel="stylesheet" href="./mystyle3.css">  
+</head>
 <body>
-    <script>
-        // this function is used to check current theme before page loaded.
-        (() => {
-            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
-            const isDark = currentTheme === 'dark';
-            const pagebody = document.getElementsByTagName('body')[0]
-            if (isDark) {
-                pagebody.classList.add('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
-            } else {
-                pagebody.classList.remove('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Light"
-            }
-        })();
-    </script>
+    <h1></h1>
+    <p class="wb"> 
+        文本修饰可使用text-decoration-line,文本上方划线：over-line；文本中间：line-through;文本下方：underline
+    </p>
+    <p>
+        同一个文本可设置多个线条，通过text-decoration-line,设置多个值，中间用空格分开。如text-decoration-line: overlines underline<br><br>
+    </p>
+    <p class="sb">
+        使用了超链接的文本就不要用underline装饰了，它自身带有下划线。<br><br>
+        装饰文本颜色通过text-decoration-color实现<br><br>
+        为装饰线指定风格通过text-decoration-style实现，属性值为solid，double,dotted,dashed,wavy。<br><br>
+        为线条设置厚度:text-decoration-thickness,值为auto,Px,百分比。 <br><br>
+    </p>
+</body>
+</html>
+      
+    </div><!-- .entry-content -->
 
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">Windflower&#39;s Blog</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
-        </div>
-    </nav>
+    <footer class="entry-meta">
+    <a href="/2022/10/02/hell0-world13/">
+    <time datetime="2022-10-02T01:45:59.000Z" class="entry-date">
+        2022-10-02
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </div>
 
     
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">Windflower&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-            </div>
-        </div>
-    </nav>
+    </footer>
+</article>
 
-</header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-            <div class="main">
-                
-    <div class="container profile-container">
-    <div class="intro">
-        <div class="avatar">
-            <a href="/archives"><img src="/image/w.jpg"></a>
-        </div>
-        <div class="nickname">Wind  Flower</div>
-        <div class="description"><p>We, rustling leaves <strong>have a voice that answers storms。</strong><br>But who are thou so silent? <em>I am a mere flower。</em></p>
-</div>
-        <div class="links">
+
+
+
+
+
+  
+    <article id="post-hell0-world12" class="post-hell0-world12 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2022/10/01/hell0-world12/">【064】文本对齐和间距</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
             
-                
-                    <a class="link-item" title="Blog" href="/archives">
-                        
-                        
-                            <i class="iconfont icon-blog"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="ZhiHu" target="_blank" rel="noopener" href="http://www.tingkew.com/">
-                        
-                        
-                            <i class="iconfont icon-zhihu"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="Instagram" target="_blank" rel="noopener" href="https://imgse.com/">
-                        
-                        
-                            <i class="iconfont icon-instagram"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="Reddit" target="_blank" rel="noopener" href="http://dj.fqingy.com/">
-                        
-                        
-                            <i class="iconfont icon-reddit"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="Github" target="_blank" rel="noopener" href="https://github.com/windflower2022">
-                        
-                        
-                            <i class="iconfont icon-github"></i>
-                        
-                    </a>
-                
-            
-        </div>
-    </div>
-</div>
+            <a href="javascript:void(0);" data-url="https://windflower2022.github.io/2022/10/01/hell0-world12/" data-id="clc5pzvzp000r6gw7gjniegl5" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
 
+    <div class="entry-content">
+      
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS text alignment & spacing</title>
+    <style>
+        h1 {
+    text-align: center;
+    color: rgb(165, 1, 105);
+    letter-spacing: 5px;
+}
 
-<audio style="width: 0px; height: 0px;" src="https://music.163.com/song/media/outer/url?id=1910694933.mp3" autoplay="autoplay" loop="loop" controls="controls" type="audio/mpeg"></audio>
-            </div>
-            <footer id="footer" class="footer">
-   <!-- <div class="copyright">
-        <span>© 风花 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
-    </div>-->
-</footer>
-
-    </div>
+<p>p {<br>    text-indent: 2em;<br>    line-height: 30px;<br>    word-spacing: 5px;<br>    margin: 20px;<br>}</p>
+<p>p.a {<br>    text-align: left;<br>}</p>
+<p>p.b {<br>    text-align: center;<br>}</p>
+<p>p.c {<br>    text-align: right;<br>    color: rgb(165, 1, 105);<br>    background-color:rgb(225, 225, 221);<br>}</p>
+<p>img.d {<br>   vertical-align: baseline;<br>}</p>
+<p>img.e {<br>    vertical-align: text-top;<br>}</p>
+<p>img.f {<br>    vertical-align: text-bottom;<br>}</p>
+<p>img.g {<br>    vertical-align: super;<br>}</p>
+<p>img.h {<br>    vertical-align: sub;<br>}<br>    </style></p>
+</head>
+<body>
+    <h1>
+        我为什么活着
+    </h1>
+    <p class="a">
+        Three passions, simple but overwhelmingly strong, have governed my life: the longing for love, the search for knowledge, and unbearable pity for the suffering of mankind. These passions, like great winds, have blown me hither and thither, in a wayward course, over a deep ocean of anguish, reaching to the very verge of despair.
+    </p>
+    <p class="b">
+        对爱情的渴望，对知识的探求和对人类苦难不可遏制的同情，是支配我一生的单纯而难以抗拒的三种情感。这些情感如阵阵飓风，随意地把我吹得飘来荡去，有时吹过深沉痛苦的海洋，直抵绝望的边缘。<br><br>
+    </p>
+    <p class="c">
+        水平对齐方式<br>
+        text-align； left/center/right/justify(每一行拉长，有相等宽度边界对齐) <br>
+        垂直对齐方式<br>
+        vertical-align: text-top/text-bottom/baseline(基线对齐)、super(上角标对齐)，sub(下角标对齐)
+        文本缩进<br>
+        p {<br>
+            text-indent:绝对单位px/相对单位一般2em/百分比缩进是根据父元素宽度计算得到的;<br>
+        }<br>
+        letter-spacing属性用于指定中文文字或英文字母之间的空隙<br>
+        line-height:指定行与行间的高度即行高，属性为nomal/一个数字如1.5，此数字与当前的字符大小相乘计算得到，推荐使用、绝对值如20px,设置固定的行间距。<br>
+        word-spacing:单词间距，仅对英文有效。<br>
+        white-space:指定了如何处理元素内部的空白。值nowrap不管包含文本的元素宽度是多少，文本都不会换行，直到遇到br为止。
+    </p><br>
+    <p> <img src="./by.jpg" alt="by" width="9" height="9" class="d"/>
+        I have sought love, first, because it brings ecstasy--ecstasy so great that I would often have sacrificed all the rest of life for a few hours of this joy. I have sought it, next, because it relieves loneliness--that terrible loneliness in which one shivering consciousness looks over the rim of the world into the cold unfathomable lifeless abyss. I have sought it, finally, because in the union of love I have seen, in a mystic miniature, the prefiguring vision of the heaven that saints and poets have imagined. This is what I sought, and though it might seem too good for human life, this is what--at last--I have found.
+    </p>
+    <p> <img src="./by.jpg" alt="by" width="9" height="9" class="e"/>
+        I 我曾经追求过爱情，首先是因为爱情可以给我带来狂喜，这种狂喜竟如此强烈，以至于我常常会为了体验几小时爱的欢娱，而宁愿牺牲生命中的其他一切。我曾经追求过爱情，其次是因为爱情可以摆脱孤寂。置身于那可怕的孤独之中，那令人战栗的感觉，有时会掠过世界的边缘，把人带到寒气袭人且没有生命的无底深渊。我曾经追求过爱情，还因为在爱的结合中，我看到了古今圣贤以及诗人们梦想中天堂的神秘缩影。这也正是我所追寻的人生境界。虽然它对一般的人类生活也许太美好了，但这正是我透过爱情最终所找到的。    
+    </p>
+    <p> <img src="./by.jpg" alt="by" width="9" height="9" class="f"/>
+        With equal passion I have sought knowledge. I have wished to understand the hearts of men. I have wished to know why the stars shine. And I have tried to apprehend the Pythagorean power by which number holds sway above the flux. A little of this, but not much, I have achieved.
+    </p>
+    <p> <img src="./by.jpg" alt="by" width="9" height="9" class="g"/>
+        I 我曾以同样的感情追求知识。我一直渴望去了解人类的心灵，也渴望知道星星为什么会发光，同时我还想理解毕达哥拉斯的力量，通过它的力量，数驾驭了万物的变化。我学到了一点点知识，但仅是皮毛而已。
+    </p>
+    <p> <img src="./by.jpg" alt="by" width="9" height="9" class="h"/>
+        Love and knowledge, so far as they were possible, led upward toward the heavens. But always pity brought me back to earth. Echoes of cries of pain reverberate in my heart. Children in famine, victims tortured by oppressors, helpless old people a hated burden to their sons, and the whole world of loneliness, poverty, and pain make a mockery of what human life should be. I long to alleviate the evil, but I can’t, and I too suffer.
+    </p><br><br>
 </body>
+</html>
+      
+    </div><!-- .entry-content -->
 
+    <footer class="entry-meta">
+    <a href="/2022/10/01/hell0-world12/">
+    <time datetime="2022-10-01T13:11:59.000Z" class="entry-date">
+        2022-10-01
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </div>
+
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-hell0-world11" class="post-hell0-world11 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2022/10/01/hell0-world11/">【063】文本颜色及大小写转换</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="https://windflower2022.github.io/2022/10/01/hell0-world11/" data-id="clc5pzvzn000n6gw78fbdfsln" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS text</title>
+    <style>
+        body {
+    /* 一个页面的默认文本颜色是在 body 选择器中定义的
+    */
+    color: purple;
+}
+
+<p>h1 {<br>    color: green;<br>}</p>
+<p>p.sb {<br>    color: green;<br>}</p>
+<p>p.transform {<br>    text-transform: uppercase;<br>}<br>    </style></p>
+</head>
+<body>
+    <h1>
+        我为什么活着
+    </h1>
+    <p class="transform">
+        Three passions, simple but overwhelmingly strong, have governed my life: the longing for love, the search for knowledge, and unbearable pity for the suffering of mankind. These passions, like great winds, have blown me hither and thither, in a wayward course, over a deep ocean of anguish, reaching to the very verge of despair.
+    </p>
+    <p>
+        对爱情的渴望，对知识的探求和对人类苦难不可遏制的同情，是支配我一生的单纯而难以抗拒的三种情感。这些情感如阵阵飓风，随意地把我吹得飘来荡去，有时吹过深沉痛苦的海洋，直抵绝望的边缘。<br><br>
+    </p>
+    <p class="sb">
+        大小写转换<br><br>
+        p.transform {<br><br>
+            text-transform:capitalize;<br><br>
+        }<br><br>
+        uppercase:文本被转换为大写<br><br>
+        lower case:文本被转换为小写<br><br>
+        capitalize:每个单词的首字母被转换为大写<br><br>
+    </p>
+</body>
+</html>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2022/10/01/hell0-world11/">
+    <time datetime="2022-10-01T11:11:59.000Z" class="entry-date">
+        2022-10-01
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </div>
+
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+  
+    <nav id="pagination">
+      <nav id="page-nav">
+        <a class="extend prev" rel="prev" href="/page/18/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/20/">Next &amp;raquo;</a>
+      </nav>
+    </nav>
+  
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ability/">Ability</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/music/">music</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vocabulary/">vocabulary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BE%8E%E6%96%87/">美文</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9F%B3%E7%94%BB/">音画</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A3%9F%E4%BA%8B/">食事</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/20/mhwt/">【音乐欣赏】漠河舞厅</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/18/qjysqjy/">【风花音画】千江有水千江月</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/18/ahxs/">【风花音画】暗红心事</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/18/hello-world35/">【089】CSS布局之重叠</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/17/dy/">【风花音画】大鱼</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/" rel="tag">music</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vocabulary/" rel="tag">vocabulary</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E7%94%BB/" rel="tag">音画</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/music/" style="font-size: 10px;">music</a> <a href="/tags/vocabulary/" style="font-size: 10px;">vocabulary</a> <a href="/tags/%E9%9F%B3%E7%94%BB/" style="font-size: 10px;">音画</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2022 风花
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
 </html>
