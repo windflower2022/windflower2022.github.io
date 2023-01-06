@@ -4106,13 +4106,12 @@
     <script>
         $(document).ready(function(){
             $("div").click(function(){
-                //方式一
+            	//方式一
                 //var words = new SpeechSynthesisUtterance($(this).context.children[0].textContent);
                 //window.speechSynthesis.speak(words)
-
-<pre><code>            //方式二
-            var audio = new Audio();  
-            audio.src =&#39;https://dict.youdao.com/speech?audio=&#39; + encodeURI($(this).context.children[0].textContent);  
+<pre><code>        	//方式二
+			var audio = new Audio();  
+            audio.src ='https://dict.youdao.com/speech?audio=' + encodeURI($(this).context.children[0].textContent);  
             audio.play(); 
         &#125;);
     &#125;);
