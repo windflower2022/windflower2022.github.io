@@ -211,6 +211,7 @@
                	this._canvas.style["height"] = "100%";
                 this._canvas.style["z-index"] = "-1";
 				this._canvas.style["background-color"]="#1f1f1f";
+				this._canvas.style["background-transparent"]="0";
                 this._canvas.id = "bgCanvas";	
                 this._onResize();
 
