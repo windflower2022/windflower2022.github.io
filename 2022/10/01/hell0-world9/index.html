@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>【061】伪元素选择器 - Windflower&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=生活,博客,前端,游戏>
+  
+    <meta name="description" content="四方食事，不过一碗人间烟火">
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="Windflower&#39;s Blog" type="application/atom+xml">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="container">
+      <header class="header">
+  <div class="blog-title">
+    <a href="/" class="logo">Windflower&#39;s Blog</a>
+    <div class="subtitle"></div>
+  </div>
+  <nav class="navbar">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">Home</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">Archives</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/about" class="menu-item-link">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+</header>
+<article class="post">
+  <div class="post-title">
+    <h1 class="article-title">【061】伪元素选择器</h1>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2022-10-01</span>
+  </div>
+  <div class="post-content">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    div {
+        width: 600px;
+        height: 200px;
+        background-color: red;
+    }
+
+<pre><code>div::first-letter &#123;
+    color: blue;
+    font-size: 30px;     
+&#125;  
+
+div::first-line&#123;
+    color: rgb(236, 245, 241) ;
+    font-size: 20px;
+    font-style: italic;
+&#125;
+
+div::before &#123;
+    content: &quot;我喜欢这句话&quot;;  
+    font-size: 20px;
+    color: green;  
+&#125;  
+
+div::after &#123;
+    content: &quot;《你若盛开 蝴蝶自来》用从容而舒缓的语言，将女人自我经营的智慧娓娓道来，轻柔地提醒世间所有热爱生命、热爱美好生活的女性，要用微笑来经营生活，用真诚来经营情感，用宽容来经营人际，用淡定来经营心灵。你若盛开，蝴蝶自来。你若精彩，天自安排。愿女性朋友们能够一起努力完善自己，创造自然的吸引力。&quot;;
+    font-size: 20px;
+    color: green;
+&#125; 
+
+div::selection &#123;
+   color: red;
+   background-color: skyblue;
+&#125;
+</code></pre>
+<p></style></p>
+</head>
+<body>
+<div>
+    你若盛开，蝴蝶自来。
+    我们生命中的一切所愿，其实不应该用"追求"，而应该用"吸引"。在浮躁而慌乱的世界里，让自己活成一株温婉优雅的玫瑰，让生命吐露芬芳，你所追求的一切才会款款而来。
+</div>
+&nbsp;&nbsp; <h3></h3><br>
+即假元素选择器，通过它，可以设置元素指定部分的样式。主要用来设置元素内文本的首字母，首行的样式，或是在元素内容之前或之后插入其他内容。<br><br>
+语法：selector为目标元素，::Pseudo-element,就是向目标元素添加伪元素。<br><br>
+selector::pseudo-element {<br><br>
+    color: red;<br><br>
+    font-size；3px;<br><br>
+}<br><br>
+伪元素选择器共有5种：<br><br>
+::first-letter:用来实现向文本的首个字符添加特殊样式<br><br>
+::first-line:用来实现向文本的首行添加特殊样式<br><br>
+::before:用来实现元素内容之前插入内容<br><br>
+::after:用来实现元素内容之后插入内容<br><br>
+::selection:用来更改选中文本的样式.只支持color（文本颜色）,background（背景）,cursor（鼠标样式）,outline（描边效果）<br><br>
+</body>
+</html> 
+
+  </div>
+  <div class="post-footer">
+    
+
+    <a href="#top" class="top">Back to Top</a>
+  </div>
+</article>
+<footer>
+  &copy; 2023
+  <span class="author">
+    风花
+  </span>
+</footer>
+    </div>
+  </body>
+</html>

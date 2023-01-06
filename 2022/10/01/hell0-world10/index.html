@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>【062】简单和组合选择器 - Windflower&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=生活,博客,前端,游戏>
+  
+    <meta name="description" content="四方食事，不过一碗人间烟火">
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="Windflower&#39;s Blog" type="application/atom+xml">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="container">
+      <header class="header">
+  <div class="blog-title">
+    <a href="/" class="logo">Windflower&#39;s Blog</a>
+    <div class="subtitle"></div>
+  </div>
+  <nav class="navbar">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">Home</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">Archives</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/about" class="menu-item-link">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+</header>
+<article class="post">
+  <div class="post-title">
+    <h1 class="article-title">【062】简单和组合选择器</h1>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2022-10-01</span>
+  </div>
+  <div class="post-content">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     [type] {
+        width: 50px;
+        height: 50px;
+    }
+    
+<pre><code>[name=&quot;sex&quot;] &#123;
+    width: 20th;
+    height: 20px;
+&#125;
+
+[class~=&quot;box&quot;] &#123;
+    background-color: yellow;
+&#125;
+
+[class|=&quot;box&quot;] &#123;
+    background-color: blue;
+&#125;
+</code></pre>
+<p></style> </p>
+</head>
+<body>
+<h1>
+    基本信息
+</h1>
+用户名：<input type="text" class="box"> <br>
+用户密码：<input type="password"><br>
+回答问题：<input type="text"> <br>
+性别选择：<input type="radio" name="sex" >男<input type="radio" name="sex">女<br>
+是否核酸：<input type="radio" name="yesorno" >是<input type="radio" name="yesorno">否<br>
+<h1>
+   元素修饰
+</h1>
+<P class="box big bobo">我是一个p元素,我有三个类名，分别:box,big,bobo
+</P>
+<P class="box bobo">我是一个p元素,我有两个类名，分别:box,bobo
+</P>
+<div class="box">我是一个div元素,我有个类名:box
+</div><br>
+<div class="box-qf">我是一个div元素,我有个类名:box-qf
+</div><br><br>
+<h1>
+    基本信息
+</h1>
+用户名：<input type="text" class="box"> <br>
+用户密码：<input type="password"><br>
+回答问题：<input type="text"> <br>
+性别选择：<input type="radio" name="sex" >男<input type="radio" name="sex">女<br>
+是否核酸：<input type="radio" name="yesorno" >是<input type="radio" name="yesorno">否<br>
+<h1>
+   元素修饰
+</h1>
+<P class="box big bobo">我是一个p元素,我有三个类名，分别:box,big,bobo
+</P>
+<P class="box bobo">我是一个p元素,我有两个类名，分别:box,bobo
+</P>
+<div class="box">我是一个div元素,我有个类名:box
+</div><br>
+<div class="box-qf">我是一个div元素,我有个类名:box-qf
+</div><br><br>   
+<h1>
+    基本信息
+</h1>
+用户名：<input type="text" class="box"> <br>
+用户密码：<input type="password"><br>
+回答问题：<input type="text"> <br>
+性别选择：<input type="radio" name="sex" >男<input type="radio" name="sex">女<br>
+是否核酸：<input type="radio" name="yesorno" >是<input type="radio" name="yesorno">否<br>
+<h1>
+   元素修饰
+</h1>
+<P class="box big bobo">我是一个p元素,我有三个类名，分别:box,big,bobo
+</P>
+<P class="box bobo">我是一个p元素,我有两个类名，分别:box,bobo
+</P>
+<div class="box">我是一个div元素,我有个类名:box
+</div><br>
+<div class="box-qf">我是一个div元素,我有个类名:box-qf
+</div><br><br>
+&nbsp;&nbsp; <h3>062 CSS属性选择器</h3><br>
+根据属性或属性值来查找元素。基本语法为:<br><br>
+Element[attribute]<br><br>
+Element[attribute="value"]<br><br>
+意思是查找带有该属性的元素，然后添加样式声明。<br><br>
+a[target] {<br><br>
+    background-color:  yellow;<br><br>
+}<br><br>
+本段意思是带有target属性的a元素，并为a元素添加了背景为黄色的样式声明。<br><br>
+CSS属性的四种属性：<br><br>
+1.attribute:来查找HTML结构中，带有attribute属性的所有元素<br><br>
+2.attribute="value":来查找HTML结构中，带有attribute属性，并且属性值为value的元素<br><br>
+3.attribute~="value":来查找HTML结构中，带有attribute属性，并且在多个属性值中包含value的元素<br><br>
+4.attribute|="value":来查找HTML结构中，带有attribute属性，并且属性值以value或者是value-开头的元素<br><br>   
+总结：<br><br>
+    简单选择器和组合选择器，可以完成元素测查找。<br><br>
+    其他选择器可以更加精准高效的查找元素，从而能提高我们编码速度。<br><br>
+    属性选择器，在实际开发的过程中，大部分会应用在表单控件中，因为表单控件可添加的属性比较多。<br><br><br><br>
+</body>
+</html> 
+
+  </div>
+  <div class="post-footer">
+    
+
+    <a href="#top" class="top">Back to Top</a>
+  </div>
+</article>
+<footer>
+  &copy; 2023
+  <span class="author">
+    风花
+  </span>
+</footer>
+    </div>
+  </body>
+</html>
