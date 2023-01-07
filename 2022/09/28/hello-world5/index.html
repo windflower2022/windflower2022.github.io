@@ -1,86 +1,498 @@
-.post-block {
-  color: var(--hty-text-color);
-  margin: 0 1rem;
-  padding: 1rem;
-  background-color: var(--post-block-bg-color);
-mobile()
-}
-.post-body {
-  padding: 0 5rem;
-tablet()
-mobile()
-}
-.post-meta {
-  font-size: 14px;
-  color: var(--hty-secondary-text-color);
-}
-.post-meta .icon {
-  margin-bottom: -1px;
-}
-.post-description {
-  font-weight: normal;
-  padding: 0.5rem;
-}
-.post-author {
-  display: flex;
-  justify-content: center;
-}
-.post-author .author-avatar {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  line-height: 0;
-}
-.post-author .author-avatar img {
-  border-radius: 50%;
-  height: 1rem;
-  width: 1rem;
-  padding: 2px;
-  border: 2px solid #d3d3d3;
-}
-.post-author .author-name {
-  margin-left: 0.5rem;
-  font-size: 1rem;
-}
-.post-meta-item-icon {
-  display: inline-block;
-  color: var(--text-color, --hty-secondary-text-color);
-}
-.post-meta-divider {
-  height: 25px;
-  color: var(--hty-secondary-text-color);
-  margin: 0 0.5rem;
-}
-.post-eof {
-  margin: 50px auto;
-  width: 50%;
-  height: 1px;
-  background: $blue;
-  opacity: 0.1;
-}
-.post-copyright {
-  font-size: 0.9rem;
-  margin: 0.5rem 5rem 1rem 5rem;
-  padding: 0.5rem 1rem;
-  border-left: 4px solid #ff5252;
-  background-color: var(--hty-bg-color);
-  list-style: none;
-  word-break: break-all;
-  position: relative;
-  overflow: hidden;
-mobile()
-}
-.post-copyright::after {
-  position: absolute;
-  color: #fff;
-  background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 496 512'%3E%3Cpath fill='gray' d='M245.8 214.9l-33.2 17.3c-9.4-19.6-25.2-20-27.4-20-22.2 0-33.3 14.6-33.3 43.9 0 23.5 9.2 43.8 33.3 43.8 14.4 0 24.6-7 30.5-21.3l30.6 15.5a73.2 73.2 0 01-65.1 39c-22.6 0-74-10.3-74-77 0-58.7 43-77 72.6-77 30.8-.1 52.7 11.9 66 35.8zm143 0l-32.7 17.3c-9.5-19.8-25.7-20-27.9-20-22.1 0-33.2 14.6-33.2 43.9 0 23.5 9.2 43.8 33.2 43.8 14.5 0 24.7-7 30.5-21.3l31 15.5c-2 3.8-21.3 39-65 39-22.7 0-74-9.9-74-77 0-58.7 43-77 72.6-77C354 179 376 191 389 214.8zM247.7 8C104.7 8 0 123 0 256c0 138.4 113.6 248 247.6 248C377.5 504 496 403 496 256 496 118 389.4 8 247.6 8zm.8 450.8c-112.5 0-203.7-93-203.7-202.8 0-105.5 85.5-203.3 203.8-203.3A201.7 201.7 0 01451.3 256c0 121.7-99.7 202.9-202.9 202.9z'/%3E%3C/svg%3E");
-  content: ' ';
-  height: 10rem;
-  width: 10rem;
-  right: -2rem;
-  top: -2rem;
-  opacity: 0.1;
-}
-.tag-name {
-  padding: 0 0.1rem;
-}
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>
+      
+        【042-049】iframe以及SVG | Windflower's Blog
+      
+    </title>
+    <meta name="description" content="四方食事，不过一碗人间烟火"/>
+    <meta name="keywords" content=""/>
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png"/>
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color=""/>
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/layout.css"/>
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css"/>
+  
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href="/" class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg" />
+        </a>
+        <input id="navBtn" type="checkbox"/>
+        <div class="nav-menu">
+          
+            <a href="/blog/">博客</a>
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner">
+      <div class="post-content__head">
+        <div class="post-title">【042-049】iframe以及SVG</div>
+        <div class="post-info">
+          
+  
+
+
+          <span class="post-date">2022-09-28</span>
+        </div>
+      </div>
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    &nbsp;&nbsp; <h3>042 iframe </h3><br>
+    双标签，用来在一个网页中显示另一个网页。<br><br>
+    属性：src="页面路径"；width="数字:引入页面的宽度";height;frameborder="0"默认引入页面带有边框为0，就是去除边框了。scrolling="auto/yes/no"是否显示框架滚动条。<br><br>
+    <iframe src="https://windflower2022.github.io/2022/09/21/hello-world4/" frameborder="1">               
+    </iframe><br><br>
+    <iframe src="https://windflower2022.github.io/2022/09/21/hello-world4/" frameborder="1" width="800" height="600">       
+    </iframe><br><br>
+    <iframe src="https://windflower2022.github.io/2022/09/21/hello-world4/" frameborder="1" width="800" height="600" scrolling="no">       
+    </iframe><br><br>
+    <iframe src="https://windflower2022.github.io/2022/09/21/hello-world4/">               
+    </iframe><br><br>
+    添加容器，div,实现iframe链接功能换行输入(a[href target=iframe_a]>b)*3<br><br>
+    <div>
+        <a href="https://windflower2022.github.io/2022/09/20/hello-world3/" target="iframe_a"><b></b>内容1</a>
+        <a href="https://windflower2022.github.io/archives/" target="iframe_a"><b></b>目录</a>
+        <a href="https://windflower2022.github.io/2022/09/21/hello-world4/" target="iframe_a"><b></b>内容2</a><br><br> 
+    </div>      
+    <iframe src="https://windflower2022.github.io/2022/09/21/hello-world4/" frameborder="0" width="800" height="600" scrolling="no">       
+    </iframe><br><br>
+    &nbsp;&nbsp; <h3>043 初识SVG </h3><br>
+    全称scalable vector graphics,意为可缩放矢量图。形状描述的文本文件，体积较小。不管放大多少倍，都不会失真。可以绘制。可以用svg双标签。<br><br> 
+    <svg  width="800" height="600">
+    </svg><br><br>
+    点击F12查看,element下svg,就看见上面是一个蓝色矩形。<br><br> 
+	&nbsp;&nbsp; <h3>043 初识SVG </h3><br>
+    全称scalable vector graphics,意为可缩放矢量图。形状描述的文本文件，体积较小。不管放大多少倍，都不会失真。可以绘制。可以用svg双标签。
+    <svg  width="800" height="600">
+    </svg><br><br>
+    点击F12查看,element下svg,就看见一个蓝布矩形。<br><br> 
+    &nbsp;&nbsp; <h3>044 SVG绘制矩形，圆形，椭圆 </h3><br>
+    可画矩形(rect)，圆形(circle)，椭圆(ellipse)，线条(line)，多线条(ployline)，多边形(polygon)，路径(path)<br><br> 
+    单标签（rect width="" height="" fill="填充色"  stroke-width="边框宽" stroke="边框色"> <br><br> 
+    <svg width="400" height="110">
+        <rect width="300" height="100" fill="lightgreen" stoke-width="3" stroke="tomato" />
+    </svg><br><br>
+    加x,y值，以及填充色，边框色透明度。<br><br>
+    <svg width="400" height="110">
+        <rect x="50" y="20" width="300" height="100" fill="lightgreen" fill-opacity="0.1" stoke-width="3" stroke="tomato"  sroke-opacity="0.9"/>
+    </svg><br><br>
+    给rect,增添透明属性<br><br> 
+    <svg width="400" height="110">
+        <rect x="50" y="20" width="300" height="100" fill="lightgreen" stoke-width="3" stroke="tomato" opacity="0.5" />
+    </svg><br><br>
+    <svg width="400" height="110">
+        <rect x="50" y="20" width="300" height="100" fill="lightgreen" stoke-width="3" stroke="tomato" opacity="0.5" rx="20" ry="20"/>
+    </svg><br><br>
+    <svg width="400" height="400">
+        <rect x="50" y="20" width="300" height="100" fill="lightgreen" stoke-width="3" stroke="tomato" opacity="0.5" rx="20" ry="20"/>
+    </svg><br>
+    <svg width="400" height="400">
+        <rect x="50" y="20" width="300" height="300" fill="lightgreen" stoke-width="3" stroke="tomato" opacity="0.5" rx="20" ry="20"/>
+    </svg><br><br>
+    画circle,属性cx,cy相同，r.其它属性和上面一致。<br><br>
+    <svg width="100" height="100">
+        <circle cx="50" cy="50" r="40" fill="red" stroke-width="3" stroke="green" />
+    </svg><br><br>
+    画椭圆ellipse,x,y半径不同。cx椭圆中心x坐标，cy椭圆中心y坐标。rx水平半径，ry垂直半径。<br><br>
+    <svg width="500" height="140">
+        <ellipse cx="200" cy="80" rx="100" ry="50" fill="red" stroke-width="3" stroke="green" />
+    </svg><br><br>
+    堆叠椭圆。<br><br>
+    <svg width="500" height="150">
+        <ellipse cx="240" cy="100" rx="220" ry="30" fill="red" stroke-width="3" stroke="green" />
+        <ellipse cx="220" cy="70" rx="190" ry="20" fill="blue" stroke-width="3" stroke="green" />
+        <ellipse cx="210" cy="45" rx="170" ry="15" fill="yellow" stroke-width="3" stroke="green" />
+    </svg><br><br>
+    空心椭圆<br><br>
+    <svg width="500" height="100">
+        <ellipse cx="240" cy="50" rx="220" ry="30" fill="purple" stroke-width="3" stroke="green" />
+        <ellipse cx="220" cy="50" rx="190" ry="20" fill="yellow" stroke-width="3" stroke="green" />
+        <ellipse cx="210" cy="45" rx="170" ry="15" fill="white" stroke-width="3" stroke="green" />
+    </svg><br><br>
+	 &nbsp;&nbsp; <h3>045 SVG绘制线条，多边形，多线条 </h3><br>
+    line单标签，属性x1,y1,x2,y2,与数学中Y轴相反。<br><br>
+   <svg width="500" height="210">
+     <line x1="0" y1="0" x2="200" y2="200" stroke="red" stroke-width="2" />
+   </svg><br><br>
+   多边形单标签polygon，属性points="a,b c,d e,f..."<br><br>
+   <svg width="500" height="210">
+   <polygon points="200,20 250,190 160,210" fill="lime" stroke="purple" stroke-width="1" />
+   </svg><br><br>
+   四边形<br><br>
+   <svg width="500" height="230">
+    <polygon points="200,10 300,210 170,250 123,50" fill="lime" stroke="purple" stroke-width="1" />
+    </svg><br><br>
+    五角星<br><br>
+    <svg width="500" height="210">
+        <polygon points="100,10 40,198 198,78 10,78 160,198" fill="lime" stroke="purple" stroke-width="5" />
+        </svg><br><br>
+    多线条单标签polyline属性points两个以上的x,y<br><br>
+    <svg width="500" height="200">
+        <polyline points="20,10 60,80 120,128 180,88" fill="none" stroke="yellow" stroke-width="3" />
+        </svg><br><br>
+    楼梯剖面<br><br>
+    <svg width="500" height="180">
+        <polyline points="0,40 40,40 40,80 80,80 80,120 120,120 120,160 160,160 160,200 200,200 200,240 240,240,240,280" fill="none" stroke="blue" stroke-width="4" />
+    </svg><br><br> 
+    &nbsp;&nbsp; <h3>046 SVG绘制线条，多边形，多线条 </h3><br>
+    text双标签，属性x,y定义文本坐标，font-size,text-anchor="start/middle/end"<br><br>
+    <svg width="300" height="30">
+        <text x="0" y="15" fill="red">
+           I love my family 
+        </text> 
+    </svg><br><br>
+    用txt进行svg绘制，可旋转，属性transform="ratate(30 50,100)"<br><br> <br><br>
+    <svg width="600" height="280">
+        <text x="0" y="15" fill="red" transform="rotate(40 70,180)">
+           I love my family 
+        </text> 
+    </svg>
+    <svg width="300" height="180">
+        <text x="0" y="15" fill="red">
+           I love my family 
+        <tspan x="10" y="50" fill="red">first line</tspan>
+        <tspan x="10" y="95" fill="red">second line</tspan>
+        </text>         
+    </svg><br>
+    text绘制的文本可以添加链接，用a xlink:href="",但svg开标签里添加 xmlns:xlink="http://www.w3.org/1999/xlink"<br><br>
+    <svg width="200" height="30" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <a xlink:href="https://windflower2022.github.io/about">
+        <text x="10" y="15" fill="green">
+            我的博客
+        </text>
+    </a>
+    </svg>
+    <br><br>
+	&nbsp;&nbsp; <h3>047 SVG绘制路径 </h3><br>
+    path单标签，属性d(draw),M命令d="M150 0",L(lineto)命令，d="M 150 0 L 75 200"大写字母是绝对定位，小写字母是相对定位。 <br><br>
+    <svg width="400" height="210">
+    <path d="M 150 0 L 175 100 L 100 100"/ fill="purple">
+    </svg><br><br>
+    贝塞尔曲线在path命令中用q属性d="M 150 0 l 75 200 q 150 -300 300 0"<br><br>
+    <svg width="450" height="400">
+        <path d="M 100 350 l 150 -300" fill="none" stroke="red" stroke-width="3"/>
+        <path d="M 250 50 l 150 300" fill="none" stroke="red" stroke-width="3"/>
+        <path d="M 175 200 l 150 0" fill="none" stroke="green" stroke-width="3"/>
+        <path d="M 100 350 q 150 -300 300 0" fill="none" stroke="blue" stroke-width="5"/>
+        <g fill="black">
+        <circle cx="100" cy="350" r="3" />
+        <circle cx="250" cy="50" r="3" />
+        <circle cx="400" cy="350" r="3" />
+        </g>
+        <g font-size="30" fill="black" text-anchor="middle">
+            <text x="100" y="350" dx="-30" >A</text>
+            <text x="250" y="50" dx="-10" >B</text>
+            <text x="400" y="350" dx="30" >C</text>
+        </g>  
+        </svg><br><br>
+    <br><br>
+	&nbsp;&nbsp; <h3>047 SVG描边属性 </h3><br>
+    path单标签，属性stroke笔画属性,定义一个元素线条文本轮廓的颜色, stroke-width笔画宽度属性, stroke-linecap笔画笔帽属性：butt无线帽,round,square, stroke-dasharray虚线笔画属性,至少定义两个值如20，20,都可以运用于所有线条，文本和元素的轮廓，如circle<br><br>
+        <br><br>
+    <svg width="350" height="100">
+        <g fill="none">
+        <path stroke="red" d="M 5 20 l 215 0" />
+        <path stroke="black" d="M 5 40 l 215 0" />
+        <path stroke="red" d="M 5 60 l 215 0" />
+      </g>
+    </svg> <br>
+    <svg width="350" height="100">
+        <g fill="none" stroke="black">
+          <path stroke-width="2" d="M 5 20 l 215 0" />
+          <path stroke-width="4" d="M 5 40 l 215 0" />
+          <path stroke-width="6" d="M 5 60 l 215 0" />
+        </g>
+    </svg><br>
+    <svg width="350" height="100">
+        <g fill="none" stroke="green" stroke-width="8">
+          <path stroke-linecap="butt" d="M 5 20 l 215 0" />
+          <path stroke-linecap="round" d="M 5 40 l 215 0" />
+          <path stroke-linecap="square" d="M 5 60 l 215 0" />
+        </g>
+    </svg><br>
+    <svg width="350" height="100">
+        <g fill="none" stroke="red" stroke-width="4">
+          <path stroke-dasharray="5,5" d="M 5 20 l 215 0" />
+          <path stroke-dasharray="10,10,5" d="M 5 40 l 215 0" />
+          <path stroke-dasharray="20,10,15,5" d="M 5 60 l 215 0" />
+        </g>
+    </svg><br><br>
+    &nbsp;&nbsp; <h3>048 SVG模糊和阴影效果 </h3><br>
+    filter双标签，1个或多个效果滤镜。属性为id，值保持唯一性。filter都在defs(definitions)双标签下定义。
+    语法如下：<br><br>
+    <defs>
+       <filter id>
+        <feGaussianBlur stdDeviation="数字" />
+       </filter>
+    </defs>
+    <svg width="110" height="110">
+       <rect width="90" height="90" stroke="green" stroke-width="3" fill="yellow" />
+    </svg><br>
+    模糊效果，单标签feGaussianBlur属性stdDeviation="数字"<br><br>
+    <svg width="110" height="110">
+        <defs>
+            <filter x="0" y="0" id="f1">
+             <feGaussianBlur stdDeviation="15" />
+            </filter>
+         </defs>
+       <rect width="90" height="90" stroke="green" stroke-width="3" fill="yellow" filter="url(#f1)" />
+    </svg><br>
+    投影效果，单标签ffOffset属性dx="数字"引用x轴上的偏移量,dy="数字",in="",阴影图像的来源，黑色阴影值为SourceAlpha,原始图像为阴影值为SourceGraphic。<br><br>
+    还需要在偏移的图像混合原始图像，用feBlend单标签，属性in<br><br>
+    <svg width="110" height="110">
+        <defs>
+            <filter x="0" y="0" width="200" height="200" id="f2">
+             <feOffset dx="20" dy="20" in="SourceAlpha"/>
+             <feBlend in="SourceGraphic" />
+            </filter>
+         </defs>
+       <rect width="90" height="90" stroke="green" stroke-width="3" fill="yellow" filter="url(#f2)" />
+    </svg><br><br>
+    <svg width="110" height="110">
+        <defs>
+            <filter x="0" y="0" width="100" height="100" id="f2">
+             <feOffset dx="20" dy="20" in="SourceAlpha"/>
+             <feGaussianBlur stdDeviation="15" /> 
+             <feBlend in="SourceGraphic" />  
+            </filter>
+         </defs>
+       <rect width="90" height="90" stroke="green" stroke-width="3" fill="yellow" filter="url(#f2)" />
+    </svg><br><br>
+    &nbsp;&nbsp; <h3>049 SVG线性和径向渐变 </h3><br>
+    linearGradient双标签表示，属性x1,y1,x2,y2,嵌套在defs下。y1=y2,x1≠x2，产生水平渐变。x1=x2,y1≠y2产生垂直渐变。两者都不等，产生角度渐变。<br><br>
+    每种颜色都用stop单标签指定，定义属性offset="百分数"  stop-color="渐变色"
+    <svg width="400" height="150">
+       <ellipse cx="200" cy="70" rx="85" ry="55">
+       </ellipse>
+    </svg><br><br>
+    <svg width="400" height="150">
+        <defs >
+            <linearGradient x1="0%" y1="0%" x2="100%" y2="0%" id="grad1">
+                <stop offset="0%" stop-color="rgb(255,255,0)" />
+                <stop offset="100%" stop-color="rgb(255,0,0)" />
+            </linearGradient>
+        </defs> 
+        <ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad1)">
+        </ellipse>
+     </svg><br><br>
+     <svg width="400" height="150">
+        <defs >
+            <linearGradient x1="0%" y1="0%" x2="0%" y2="100%" id="grad1">
+                <stop offset="0%" stop-color="rgb(255,255,0)" />
+                <stop offset="100%" stop-color="rgb(255,0,0)" />
+            </linearGradient>
+        </defs> 
+        <ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad1)" />
+            <text fill="#ffffff" font-size="45" x="150" y="86">wind</text>
+     </svg><br><br>
+     radialGradient双标签嵌套在defs,
+     <svg width="500" height="150">
+        <defs >
+            <radialGradient cx="50%" cy="50%" r="50%" fx="50%" fy="50%" id="grad2">
+                <stop offset="0%" stop-color="rgb(255,255,255)" />
+                <stop offset="100%" stop-color="rgb(0,0,255)" />
+            </radialGradient>
+        </defs> 
+        <ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad2)" />
+            <text fill="#ffffff" font-size="45" x="150" y="86">wind</text>
+     </svg><br><br>
+     <svg width="500" height="150">
+        <defs >
+            <radialGradient cx="30%" cy="30%" r="50%" fx="30%" fy="30%" id="grad2">
+                <stop offset="0%" stop-color="rgb(255,255,255)" />
+                <stop offset="100%" stop-color="rgb(0,0,255)" />
+            </radialGradient>
+        </defs> 
+        <ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad2)" />
+            <text fill="#ffffff" font-size="45" x="150" y="86">wind</text>
+     </svg><br><br>
+</body>  
+</html>
+
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    
+    <div class="post-nav">
+  
+    <a class="post-nav-item-left" href="/2022/09/30/hell0-world6/">
+      <div class="text-align">
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+        <span class="text-small">上一篇</span>
+      </div>
+      <div>【053-058】CSS基础</div>
+    </a>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2022/09/28/hello-world4/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      【033-041】个人信息表
+    </a>
+  
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              <div class="matts">海</div><div class="matts">内</div><div class="matts">存</div><div class="matts">知</div><div class="matts">己</div>
+            </div>
+          
+            <div class="foot-line">
+              <div class="matts">天</div><div class="matts">涯</div><div class="matts">若</div><div class="matts">比</div><div class="matts">邻</div>
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link"
+                         height="20px"
+                         width="20px"
+                         src="/images/icon/icon-link.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">Theme Tranquility</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link"
+                       height="20px"
+                       width="20px"
+                       src="/images/icon/icon-link+.svg"/>
+                  <a class="foot-link"
+                     href="mailto:example@email.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/">github</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-wx.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI3NzQ4NDkzNg==&mid=2247484469&idx=1&sn=8a442bb67397f52cce5c38c3f9b41e36&chksm=eb64c0d2dc1349c40d2e1bb55615ae28b3f2951be22f00717b9ade98c851082e42dc666ab45d#rd">微信公众号</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-zh.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://www.zhihu.com/">知乎</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link"
+                     height="20px"
+                     width="20px"
+                     src="/images/icon/icon-email.svg"/>
+                <a class="foot-link" href="mailto:example@email.com">example@email.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="https://windflower2022.github.io">Windflower's Blog</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)"
+            d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z" />
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)"
+            d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z" />
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)"
+            d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z" />
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+    
+  
+
+  </body>
+</html>
