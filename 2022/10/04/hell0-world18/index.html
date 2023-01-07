@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1,user-scalable=no"><meta name="renderer" content="webkit"><meta name="color-scheme" content="dark light"><meta name="author" content="风花"><meta name="description" content="四方食事，不过一碗人间烟火"><meta name="keywords" content=""><title>【070】CSS边框</title><link rel="icon" type="image/x-icon" href="/images/favicon.ico"><link rel="stylesheet" href="//at.alicdn.com/t/font_3242539_utq6ykfq7z.css"><link rel="stylesheet" light-src="https://cdn.staticfile.org/highlight.js/11.5.0/styles/default.min.css" dark-src="https://cdn.staticfile.org/highlight.js/11.5.0/styles/tokyo-night-dark.min.css"><link rel="stylesheet" href="https://fonts.font.im/css?family=Noto+Serif" as="font"><link href="/style/index.css" rel="stylesheet"><meta name="generator" content="Hexo 6.3.0"></head><body><header class="page-header"><nav><ul class="router-list"><li class="nav-item"> <a href="/">主页</a></li><li class="nav-item"> <a href="/archives/">归档</a></li><li class="nav-item"> <a href="/about">About</a></li></ul><div class="mode-switch"><span class="iconfont icon-DarkTheme"></span></div></nav></header><main><section class="main-content"><section class="post-page"><div class="title-bar"><h1>【070】CSS边框</h1><div class="post-info"><span>2022-10-04 11:22:59</span><span class="tags"></span></div></div><article> <div class="content"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>border</title>
+    <link rel="stylesheet" href="./border-style.css">
+</head>
+<body>
+    <h1></h1>
+    <p class="a"> 
+        border-style:dotted/dashed/solid/double/none/hidden<br><br>
+        border-width:px/em/thin,medium,thick<br><br>
+        border-color:
+    </p>
+    <p class="b">
+        写table>(tr>td*3)*3 tab键
+    </p>
+    <table border="1">
+        <tr>
+            <td>左上</td>
+            <td>中上</td>
+            <td>右上</td>
+        </tr>
+        <tr>
+            <td class="a">左中</td>
+            <td class="b">中</td>
+            <td>右中</td>
+        </tr>
+        <tr>
+            <td>左下</td>
+            <td>中下</td>
+            <td>右下</td>
+        </tr>
+    </table>   
+    <p class="c">
+        当表格单元格相邻边框产生冲突时,border-style: hidden>solid>...none优先级高到低。<br><br>
+        控制表格中单独的一根线,可在border-style中间添加一个表示方向的词,如border-top-style就可设置单个边框线。可设置top,right,bottom,left方向。除了单个属性外，border-style属性值可使用混合的简写方法<br><br>
+        1:四个值如dotted solid double dashed;(上，右，下，左)<br><br>
+        2:三个值如dotted solid double;(上，左右，下)<br><br>
+        3:两个值如dotted solid:（上下，左右）<br><br>
+        4:四个值如dotted(四边)<br><br>
+    </p><br><br>  
+</body>
+</html></div></article><div class="post-pager"><div class="prev"><a href="/2022/10/12/wanwujing/" title="【美文欣赏】万物静">上一篇 【美文欣赏】万物静</a></div><div class="next"> <a href="/2022/10/04/hell0-world19/" title="【071】CSS边框综合案例">下一篇 【071】CSS边框综合案例</a></div></div><link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css"/><script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script><div id="gitalk-container"></div><script>new Gitalk({
+  clientID: '2ba1e3c0f7a19cb06d46',
+  clientSecret: 'fd213413609aa7d05f4df17a001cea76fe24f95b',
+  repo: 'windflower2022.github.io',
+  owner: 'gitalk windflower2022',
+  admin: 'gitalk windflower2022',
+  id: location.pathname.substr(0, 48),
+  distractionFreeMode: true,
+  labels: ['Gitalk'],
+  title: '【070】CSS边框',
+}).render('gitalk-container');</script></section></section></main><footer class="footer-page"><div><span>Powered by</span><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>| Theme</span><a target="_blank" rel="noopener" href="https://github.com/techmovie/hexo-theme-instapaper">instapaper</a></div></footer><script src="/scripts/dark.js"></script><script src="/scripts/post.js"></script></body></html>
