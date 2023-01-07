@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css-position</title>
+    <link rel="stylesheet" href="./position-style.css">
+</head>
+<body><br><br>
+    <b>定位position:</b><br><br>
+    static(静态定位)，relative(相对定位），fixed(固定定位)，absolute(绝对定位),sticky(粘性定位);<br><br>
+    <b>相对定位的特点：</b><br><br>
+    1.需要配合left,top,right,bottom这些定位属性才能生效。<br><br>
+    2.relative相对的是容器自身的屏幕坐标0,0点<br><br>
+    3.容器位置发生位移后，原来占据的空间依然保留<br><br>
+    4.默认会覆盖没有定位的容器<br><br>
+    <b>绝对定位的特点：</b><br><br>
+    1.绝对定位的元素会脱离文档流<br><br>
+    2.绝对定位的参照点为，有定位设置的离它最近的祖先元素的0,0点坐标<br><br>
+    3.绝对定位的容器默认会覆盖没有定位的容器。<br><br>
+    <b>固定定位的特点：</b><br><br>
+    1.它只相对于body定位，是绝对定位的特例<br><br>
+    2.固定定位的元素是相对于浏览器视口定位的，这意味这既是页面发生滚动，它也始终保存在同一个位置<br><br>
+    3.top、right、bottom、和left属性被用来定位元素，但不是必须的。<br><br>
+    <b>粘性定位的特点：</b><br><br>
+    1.它会产生动态效果，很像static和fixed的结合，某些状态是static/fixed定位<br><br>
+    2.若无效果：
+    a.父元素不能添加overflow: hidden或者overflow: auto属性<br><br>
+    b.元素自身必须声明top、bottom、left、right一个或多个属性才能生效，否则就相当于静态定位了<br><br>
+    c.父元素的高度不能低于sticky定位元素的高度<br><br>
+    d.sticky定位元素仅在其父元素内生效<br><br>
+    div.container>(div[class=box$]{盒子$})*3,回车。<br>
+    3.粘性定位初始状态相当于static定位<br><br>
+    4.相对于父容器的定位条件符合时，容器变现为固定定位<br><br>
+    <div class="container">
+        <div class="box1">盒子1</div>
+        <div class="box2">盒子2</div>
+        <div class="box3">盒子3</div>
+    </div>
+    <div class="box4">盒子4</div><br><br><br><br><br><br><br><br>
+</body>
+</html>
