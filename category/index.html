@@ -1,0 +1,79 @@
+#recent-posts {
+  row-gap: 1rem;
+  padding: 1rem 0;
+}
+#page,
+#archive,
+#tag,
+#category {
+  margin: 0 1rem 1rem 1rem;
+  background-color: var(--post-block-bg-color);
+  padding: 1rem 0.5rem;
+mobile()
+}
+.page-subtitle {
+  text-align: center;
+  color: var(--hty-secondary-text-color);
+  font-size: 1rem;
+  margin: 0.5rem;
+}
+.category-lists,
+.tag-cloud {
+  text-align: center;
+  padding: 1rem 2rem;
+}
+.category-lists a,
+.tag-cloud a {
+  display: inline-block;
+  margin: 0 0.4rem;
+  text-decoration: none;
+}
+.category-lists {
+  text-align: left;
+}
+.category-lists .category-list {
+  padding-inline-start: 0px;
+}
+.category-lists .category-list-item {
+  list-style: none;
+  color: var(--hty-text-color);
+}
+.category-lists .category-list-item:hover::before {
+  color: $blue;
+}
+.category-lists .category-list-item::before {
+  content: '📂';
+}
+.category-lists .category-list-child .category-list-item::before {
+  content: '📁';
+}
+.category-lists .category-list-link {
+  color: var(--hty-text-color);
+  border-bottom: 1px dotted $gray;
+}
+.category-lists .category-list-count::before {
+  content: ' [ ';
+}
+.category-lists .category-list-count::after {
+  content: ' ] ';
+}
+.wordcloud {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+.wordcloud #wordcloud-canvas,
+.wordcloud #wordcloud-sidebar-canvas {
+  cursor: url("$cursor-pointer"), pointer;
+}
+.wordcloud #wordbox {
+  pointer-events: none;
+  position: absolute;
+  box-shadow: 0 0 100px 100px rgba(0,0,0,0.1);
+  border-radius: 50px;
+}
+.wordcloud #wordbox-sidebar {
+  pointer-events: none;
+  position: absolute;
+}

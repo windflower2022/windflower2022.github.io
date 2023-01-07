@@ -1,259 +1,86 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="风花"><meta name="copyright" content="风花"><meta name="generator" content="Hexo 6.3.0"><meta name="theme" content="hexo-theme-yun"><title>【033-041】个人信息表 | Windflower's Blog</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/star-markdown-css@0.4.1/dist/yun/yun-markdown.min.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/prism-theme-vars/base.css"><script src="https://fastly.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>function initScrollReveal() {
-  [".post-card",".markdown-body img"].forEach((target)=> {
-    ScrollReveal().reveal(target);
-  })
+.post-block {
+  color: var(--hty-text-color);
+  margin: 0 1rem;
+  padding: 1rem;
+  background-color: var(--post-block-bg-color);
+mobile()
 }
-document.addEventListener("DOMContentLoaded", initScrollReveal);
-document.addEventListener("pjax:success", initScrollReveal);
-</script><link rel="icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#0078E7"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preconnect" href="https://fastly.jsdelivr.net/npm/" crossorigin><script id="yun-config">
-    window.Yun = {}
-    window.CONFIG = {"hostname":"windflower2022.github.io","root":"/","title":"云游君的小站","version":"1.10.9","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms"},"anonymous_image":"https://cdn.yunyoujun.cn/img/avatar/none.jpg","say":{"api":"https://el-bot-api.vercel.app/api/words/young"},"fireworks":{"colors":null},"vendors":{"host":"https://fastly.jsdelivr.net/npm/","darken":"https://fastly.jsdelivr.net/npm/darken@1.5.0"}};
-  </script><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script src="/js/hexo-theme-yun.js" type="module"></script><meta name="description" content="Document       &amp;nbsp;&amp;nbsp; 033 表单label标签      label双标签的使用可在表格中出现光标表格菜单,只读readonly和禁用disabled属性,              请输入用户名:               您的手机号：     您的性别：男     女     保密          您的性别：男">
-<meta property="og:type" content="article">
-<meta property="og:title" content="【033-041】个人信息表">
-<meta property="og:url" content="https://windflower2022.github.io/2022/09/28/hello-world4/index.html">
-<meta property="og:site_name" content="Windflower&#39;s Blog">
-<meta property="og:description" content="Document       &amp;nbsp;&amp;nbsp; 033 表单label标签      label双标签的使用可在表格中出现光标表格菜单,只读readonly和禁用disabled属性,              请输入用户名:               您的手机号：     您的性别：男     女     保密          您的性别：男">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://s1.ax1x.com/2022/09/02/vIbNjK.jpg">
-<meta property="article:published_time" content="2022-09-28T11:14:59.000Z">
-<meta property="article:modified_time" content="2022-11-13T05:17:48.618Z">
-<meta property="article:author" content="风花">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2022/09/02/vIbNjK.jpg"><script>(function() {
-  if (CONFIG.mode !== 'auto') return
-  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-  const setting = localStorage.getItem('darken-mode') || 'auto'
-  if (setting === 'dark' || (prefersDark && setting !== 'light'))
-    document.documentElement.classList.toggle('dark', true)
-})()</script></head><body><script src="https://code.iconify.design/2/2.1.1/iconify.min.js"></script><script>// Define global variable
-IconifyProviders = {
-  // Empty prefix: overwrite default API provider configuration
-  '': {
-    // Use custom API first, use Iconify public API as backup
-    resources: [
-        'https://api.iconify.design',
-    ],
-    // Wait for 1 second before switching API hosts
-    rotate: 1000,
-  },
-};</script><script defer src="https://fastly.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js" type="module"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="Table of Contents"><span class="icon iconify" data-icon="ri:list-ordered"></span></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="Overview"><span class="icon iconify" data-icon="ri:passport-line"></span></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="风花"><img width="96" loading="lazy" src="/yun.png" alt="风花"></a><div class="site-author-name"><a href="/about/">风花</a></div><span class="site-name">Windflower's Blog</span><sub class="site-subtitle"></sub><div class="site-description">四方食事，不过一碗人间烟火</div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="Home"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:home-4-line"></span></span></a><div class="site-state-item"><a href="/archives/" title="Archives"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:archive-line"></span></span><span class="site-state-item-count">68</span></a></div><div class="site-state-item"><a href="/categories/" title="Categories"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:folder-2-line"></span></span><span class="site-state-item-count">9</span></a></div><div class="site-state-item"><a href="/tags/" title="Tags"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="site-state-item-count">3</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:settings-line"></span></span></a></nav><hr style="margin-bottom:0.5rem"><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><span class="icon iconify" data-icon="ri:genderless-line"></span></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><span class="icon iconify" data-icon="ri:contrast-2-line"></span></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">033 表单label标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">034 表单分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">035 表单按钮（上）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">036 表单按钮（下）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">037-39 表单综合案例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number"></span> <span class="toc-text">社区疫情流掉信息表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">0.1.</span> <span class="toc-text">1.您的名字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">0.2.</span> <span class="toc-text">2.您的电话号码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">0.3.</span> <span class="toc-text">3.您的性别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">0.4.</span> <span class="toc-text">4.您的家庭住址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">0.5.</span> <span class="toc-text">5.您现在的身体状况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">0.6.</span> <span class="toc-text">6.您的健康码颜色目前是</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">0.7.</span> <span class="toc-text">7.是否在14天有个高中风险区旅居史</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">0.8.</span> <span class="toc-text">8.疫苗接种情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">0.9.</span> <span class="toc-text">1.身份证信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">0.10.</span> <span class="toc-text">2.学历信息（最高）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">0.11.</span> <span class="toc-text">3.是否服兵役</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">0.12.</span> <span class="toc-text">4.个人意见</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">040 表单数据采集和提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">041 其它实用标签 </span></a></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#0078E7;"><link itemprop="mainEntityOfPage" href="https://windflower2022.github.io/2022/09/28/hello-world4/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="风花"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="Windflower's Blog"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">【033-041】个人信息表</h1><div class="post-meta"><div class="post-time"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-line"></span></span> <time title="Created: 2022-09-28 19:14:59" itemprop="dateCreated datePublished" datetime="2022-09-28T19:14:59+08:00">2022-09-28</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-2-line"></span></span> <time title="Modified: 2022-11-13 13:17:48" itemprop="dateModified" datetime="2022-11-13T13:17:48+08:00">2022-11-13</time></div><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><span class="icon iconify" data-icon="ri:folder-line"></span></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/categories/html/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">html</span></a></span></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    &nbsp;&nbsp; <h3>033 表单label标签</h3><br>
-     label双标签的使用可在表格中出现光标表格菜单,只读readonly和禁用disabled属性,<br><br>
-    <form action="">
-        <label for="username">请输入用户名:</label>
-        <input type="text" id="username"> <br><br>
-    您的手机号：<input type="text" value="12345678" readonly><br><br>
-    您的性别：<input type="radio" name="gender">男
-    <input type="radio" name="gender">女
-    <input type="radio" name="gender">保密
-    </form><br>
-    您的性别：<input type="radio" name="gender">男
-    <input type="radio" name="gender">女
-    <input type="radio" name="gender" disabled>保密
-    </form><br><br>
-    小技巧：input[type="radio" name=gender]*3再label
-    &nbsp;&nbsp; <h3>034 表单分组</h3><br>
-    带有边框和标题的表单控件字段集双标签fieldset，进行表单控件分组。嵌套双标签legend,说明的意思。<br><br>
-    <fieldset></fieldset><br><br>
-    边框作用就是相关字段进行视觉上的划分。<br><br>
-    <fieldset>
-        <legend>基础信息</legend><br><br>
-        用户名：<input type="text"><br><br>   
-        密码：<input type="password"><br><br>
-    </fieldset>
-    &nbsp;&nbsp; <h3>035 表单按钮（上）</h3><br>
-    提交按钮：input里type属性为submit<br><br>
-    <form action="">
-        姓名: <input type="text"><br><br>
-        邮箱: <input type="text"><br><br>
-        <input type="submit">
-    </form><br><br>
-    form里定义action属性，填服务器地址<br><br>
-    <form action="https://windflower2022.github.io">
-        姓名: <input type="text"><br><br>
-        邮箱: <input type="text"><br><br>
-        <input type="submit">
-    </form><br><br>
-    form里定义target属性，_blank/_self<br><br>
-    <form action="https://windflower2022.github.io" target="_blank">
-        姓名: <input type="text"><br><br>
-        邮箱: <input type="text"><br><br>
-        <input type="submit">
-    </form><br><br>
-    <form action="https://windflower2022.github.io" target="_self">
-        姓名: <input type="text"><br><br>
-        邮箱: <input type="text"><br><br>
-        <input type="submit">
-    </form><br><br>
-    重置按钮：input里type属性为reset<br><br>
-    <form action="https://windflower2022.github.io" target="_self">
-        姓名: <input type="text"><br><br>
-        邮箱: <input type="text"><br><br>
-        <input type="submit">
-        <input type="reset">
-    </form><br><br>
-    普通按钮：input里type属性为button<br><br>
-    <form action="https://windflower2022.github.io" target="_self">
-        姓名: <input type="text"><br><br>
-        邮箱: <input type="text"><br><br>
-        <input type="submit">
-        <input type="reset">
-        <input type="button">
-    </form><br><br>
-    <form action="https://windflower2022.github.io" target="_self">
-        姓名: <input type="text"><br><br>
-        邮箱: <input type="text"><br><br>
-        <input type="submit">
-        <input type="reset">
-        <input type="button" value="普通按钮">
-    </form><br><br>
-    反思：提交按钮也在input里添加属性value为注册，重置为登录。<br><br>
-    <form action="https://windflower2022.github.io" target="_self">
-        姓名: <input type="text"><br><br>
-        邮箱: <input type="text"><br><br>
-        <input type="submit" value="注册">
-        <input type="reset" value="登录">
-        <input type="button" value="普通按钮">
-    </form>
-    &nbsp;&nbsp; <h3>036 表单按钮（下）</h3><br>
-    图像按钮：input里type属性为image,还要定义其属性src<br><br>
-    <form action="https://windflower2022.github.io" target="_self">
-        姓名: <input type="text"><br><br>
-        邮箱: <input type="text"><br><br>
-        <input type="submit" value="注册">
-        <input type="reset" value="登录">
-        <input type="button" value="普通按钮">
-        <input type="image" src="图片地址">
-    </form><br><br>
-    双标签button按钮：button<br><br>
-    <form action="https://windflower2022.github.io" target="_self">
-        姓名: <input type="text"><br><br>
-        邮箱: <input type="text"><br><br>
-        <input type="submit" value="注册">
-        <input type="reset" value="登录">
-        <input type="button" value="普通按钮">
-        <input type="image" src="图片地址">
-        <button>button按钮</button>
-    </form><br><br>
-	 &nbsp;&nbsp; <h3>037-39 表单综合案例</h3><br>
-    <h1 align="center">社区疫情流掉信息表</h1>
-    <p>&emsp;&emsp;请大家做好个人防护，如去过风险地区，请及时向社区报备。</p>
-    <form action="https://raink.net/api/html/signin" target="_blank">
-        <fieldset>
-            <legend>基本信息</legend>
-            <h4>1.您的名字</h4>
-            <input type="text">
-            <h4>2.您的电话号码</h4>
-            <input type="text" value="86113398214301" onlyread>
-            <h4>3.您的性别</h4>
-            <input type="radio" name="gender">男
-            <input type="radio" name="gender">女
-            <input type="radio" name="gender" disabled>保密
-            <h4>4.您的家庭住址</h4>
-            <select name="" id="">
-                <option value="">哪个省</option>
-            </select>
-            <select name="" id="">
-                <option value="">市</option>
-            </select>
-            <select name="" id="">
-                <option value="">县</option>
-            </select>
-            <select name="" id="">
-                <option value="">乡</option>
-            </select><br><br>
-            <textarea name="" id="" cols="65" rows="4">请输入详细地址</textarea>
-        </fieldset><br><br>
-            <legend>目前状况</legend>    
-            <h4>5.您现在的身体状况</h4>
-            <input type="checkbox">健康<br><br>
-            <input type="checkbox">发热<br><br>
-            <input type="checkbox">干咳<br><br>
-            <input type="checkbox">乏力<br><br>
-            <input type="checkbox">呼吸困难<br><br>
-            <input type="checkbox">咽痛<br><br>
-            <input type="checkbox">胸痛<br><br>
-            <input type="checkbox">肌肉酸痛<br><br>
-            <input type="checkbox">呕吐<br><br>
-            <input type="checkbox">腹泻<br><br>
-            <input type="checkbox">味觉异常<br><br>
-            <input type="checkbox">嗅觉异常<br><br>
-         小技巧：input[type="checkbox"]*12再tab
-            <h4>6.您的健康码颜色目前是</h4>
-            <input type="radio" name="color">绿色
-            <input type="radio" name="color">黄色
-            <input type="radio" name="color">红色
-            <h4>7.是否在14天有个高中风险区旅居史</h4>
-            <input type="radio" name="close">是
-            <input type="radio" name="close">否
-            <h4>8.疫苗接种情况</h4>
-            <input type="radio" name="vaccines">已接种第一针
-            <input type="radio" name="vaccines">已接种第二针
-            <input type="radio" name="vaccines">已接种第三针    <br><br>   
-        <fieldset>
-            <legend>保密信息</legend>
-            <h4>1.身份证信息</h4>
-            正面：<input type="file"><br><br>
-            反面：<input type="file"><br><br>
-            <h4>2.学历信息（最高）</h4>
-            <select name="" id="">
-                <option value="">研究生</option>
-                <option value="">本科</option>
-                <option value="">大专</option>
-                <option value="">高中</option>
-                <option value="">高中以下</option>
-            </select>
-            <h4>3.是否服兵役</h4>
-            <input type="radio" name="ismilitary" id="yes">
-            <label for="yes">是</label>
-            <input type="radio" name="ismilitary" id="no">
-            <label for="no">否</label>
-            <h4>4.个人意见</h4>
-            <textarea name="" id="" cols="60" rows="5">请输入详细地址</textarea>
-        </fieldset><br><br>
-            <input type="submit" value="上传信息">
-            <input type="reset" value="清空信息">
-            <input type="image" src="" alt="提交">
-        </form><br><br>
-        &nbsp;&nbsp; <h3>040 表单数据采集和提交</h3><br>
-        <form action="https://raink.net/api/html/signin">
-          手机号码：<input type="text" name="pnumber">  <br> <br>
-          密码框: <input type="password" name="password"><br> <br>
-          <input type="submit" value="登录"><br> <br>
-        </form><br> <br>
-		&nbsp;&nbsp; <h3>041 其它实用标签 </h3><br>
-        hr(horizontal)单标签，表水平线，作用是网页上画出一条水平分割线。视觉上将文档分成多个部分。<br> <br>
-        5个属性，width宽度,size高度,noshade去掉水平线阴影。color用于定义水平线颜色。align水平线水平对齐方式。<br> <br>
-        爱上一朵花的芬芳 爱一朵花的倔强
-        <hr width="300px" size="10px" align="left" noshade color="green">
-        爱上一朵花的姿态 它在黑夜中发亮<br> <br>
-        pre(preformatted)双标签：预格式化的文本，里面文本以固定宽度格式显示，保留了空格和换行。<br> <br>
-        <pre>
-            爱上一个人的目光
-            爱上一个人的家乡
-            爱上一个人的伤疤
-            他在记忆的远方
-        </pre>
-        map双标签:定义一个图像映射，就是一个图片的热点链接。点击图片实现链接跳转。属性name。<br> <br>嵌套area,定义图片的热点区域，其shape属性：
-        default所有区域；rect矩形；circle圆形；poly多边形。coords属性坐标，与shape配合使用。<br> <br>
-        <map name="">
-            <area shape="circle" coords="x,y,r" href="目标地址" alt="">
-            <area shape="poly" coords="x1,y1,x2,y2,x3,y3,...xn,yn" href="目标地址" alt="">
-            <area shape="rect" coords="x1,y1,x2,y2" href="目标地址" alt="">   
-        </map>
-        <img src="https://s1.ax1x.com/2022/09/02/vIbNjK.jpg" alt="windflower" usemap="#flower"><br> <br>
-        <map name="flower">
-            <area shape="rect" coords="0,0,110,260" href="https://s1.ax1x.com/2022/09/15/vzF5es.jpg" alt="ruyuan">
-            <area shape="cirle" coords="129,161,10" href="https://s1.ax1x.com/2022/09/10/vOAQsI.jpg" alt="zhdjt">
-        </map><br><br>       
-</body>
-</html></div></section><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="Donate" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><span class="icon iconify" data-icon="ri:hand-coin-line"></span></span><div id="reward-comment">I'm so cute. Please give me money.</div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>Post author: </strong>风花</li><li class="post-copyright-link"><strong>Post link: </strong><a href="https://windflower2022.github.io/2022/09/28/hello-world4/" title="【033-041】个人信息表">https://windflower2022.github.io/2022/09/28/hello-world4/</a></li><li class="post-copyright-license"><strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><span class="icon iconify" data-icon="ri:creative-commons-line"></span><span class="icon iconify" data-icon="ri:creative-commons-by-line"></span><span class="icon iconify" data-icon="ri:creative-commons-nc-line"></span><span class="icon iconify" data-icon="ri:creative-commons-sa-line"></span></a> unless otherwise stated.</li></ul></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/2022/09/28/hello-world5/" rel="prev" title="【042-049】iframe以及SVG"><span class="icon iconify" data-icon="ri:arrow-left-s-line"></span><span class="post-nav-text">【042-049】iframe以及SVG</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/2022/09/25/music/" rel="next" title="本博代码"><span class="post-nav-text">本博代码</span><span class="icon iconify" data-icon="ri:arrow-right-s-line"></span></a></div></div></div><div class="hty-card" id="comment"></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2023 </span><span class="with-love" id="animate"><span class="icon iconify" data-icon="ri:cloud-line"></span></span><span class="author"> 风花</span></div><div class="powered"><span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v6.3.0</span><span class="footer-separator">|</span><span>Theme - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.10.9</span></div></footer></div><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><span class="icon iconify" data-icon="ri:arrow-up-s-line"></span><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a></body></html>
+.post-body {
+  padding: 0 5rem;
+tablet()
+mobile()
+}
+.post-meta {
+  font-size: 14px;
+  color: var(--hty-secondary-text-color);
+}
+.post-meta .icon {
+  margin-bottom: -1px;
+}
+.post-description {
+  font-weight: normal;
+  padding: 0.5rem;
+}
+.post-author {
+  display: flex;
+  justify-content: center;
+}
+.post-author .author-avatar {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0;
+}
+.post-author .author-avatar img {
+  border-radius: 50%;
+  height: 1rem;
+  width: 1rem;
+  padding: 2px;
+  border: 2px solid #d3d3d3;
+}
+.post-author .author-name {
+  margin-left: 0.5rem;
+  font-size: 1rem;
+}
+.post-meta-item-icon {
+  display: inline-block;
+  color: var(--text-color, --hty-secondary-text-color);
+}
+.post-meta-divider {
+  height: 25px;
+  color: var(--hty-secondary-text-color);
+  margin: 0 0.5rem;
+}
+.post-eof {
+  margin: 50px auto;
+  width: 50%;
+  height: 1px;
+  background: $blue;
+  opacity: 0.1;
+}
+.post-copyright {
+  font-size: 0.9rem;
+  margin: 0.5rem 5rem 1rem 5rem;
+  padding: 0.5rem 1rem;
+  border-left: 4px solid #ff5252;
+  background-color: var(--hty-bg-color);
+  list-style: none;
+  word-break: break-all;
+  position: relative;
+  overflow: hidden;
+mobile()
+}
+.post-copyright::after {
+  position: absolute;
+  color: #fff;
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 496 512'%3E%3Cpath fill='gray' d='M245.8 214.9l-33.2 17.3c-9.4-19.6-25.2-20-27.4-20-22.2 0-33.3 14.6-33.3 43.9 0 23.5 9.2 43.8 33.3 43.8 14.4 0 24.6-7 30.5-21.3l30.6 15.5a73.2 73.2 0 01-65.1 39c-22.6 0-74-10.3-74-77 0-58.7 43-77 72.6-77 30.8-.1 52.7 11.9 66 35.8zm143 0l-32.7 17.3c-9.5-19.8-25.7-20-27.9-20-22.1 0-33.2 14.6-33.2 43.9 0 23.5 9.2 43.8 33.2 43.8 14.5 0 24.7-7 30.5-21.3l31 15.5c-2 3.8-21.3 39-65 39-22.7 0-74-9.9-74-77 0-58.7 43-77 72.6-77C354 179 376 191 389 214.8zM247.7 8C104.7 8 0 123 0 256c0 138.4 113.6 248 247.6 248C377.5 504 496 403 496 256 496 118 389.4 8 247.6 8zm.8 450.8c-112.5 0-203.7-93-203.7-202.8 0-105.5 85.5-203.3 203.8-203.3A201.7 201.7 0 01451.3 256c0 121.7-99.7 202.9-202.9 202.9z'/%3E%3C/svg%3E");
+  content: ' ';
+  height: 10rem;
+  width: 10rem;
+  right: -2rem;
+  top: -2rem;
+  opacity: 0.1;
+}
+.tag-name {
+  padding: 0 0.1rem;
+}
