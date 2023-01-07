@@ -1,12 +1,358 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="风花"><meta name="description" content="四方食事，不过一碗人间烟火"><link rel="alternative" href="/atom.xml" title="Windflower's Blog" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>【026-032】块级内联元素下拉菜单 - Windflower's Blog</title>
-<link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css">
-<!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]-->
-<script src="/js/jquery-3.1.1.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Windflower&#39;s Blog">
+    <title>【026-032】块级内联元素下拉菜单 - Windflower&#39;s Blog</title>
+    <meta name="author" content="风花">
+    
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"风花","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"\n\n\n    \n    \n    \n    Document\n\n\n    &nbsp;&nbsp; 026 块级元素和内联元素\n    &nbsp;&nbsp;HTML元素的显示值分为：块block，内联inline。HTML元素分为块（级）元素block-level块级，行内元素inline内联。\n    &nbsp;&nbsp;块级元素总是从新行开始，浏览器自动在元素的前后添加一些边距。总是占用可用的全部宽度，尽可能向左右伸展。p标签就是常用的快元素。\n        看淡人间烟火，细品岁月静好\n        烟火人生\n        看淡人间烟火，细品岁月静好\n        时光深处，我亦微笑，亦不老\n        烟火人生\n        看淡人间烟火，细品岁月静好\n        时光深处，我亦微笑，亦不老\n    可以用双标签div（division）为分块，引申为盒子，容器。定义HTML的一个分块，或一部分，典型的块级元素。来表达居中，不用处处都写。\n         \n          烟火人生\n          看淡人间烟火，细品岁月静好\n          时光深处，我亦微笑，亦不老\n         \n        \n          烟火人生\n          看淡人间烟火，细品岁月静好\n          时光深处，我亦微笑，亦不老\n         \n    \n    &nbsp;&nbsp;块级元素：\n    标题元素：h1-h6\n    段落元素：p\n    列表元素：ol,ul,li,dl,dt,dd\n    表格元素：table,tr,td,th,thead,tbody,tfoot,caption\n    分块元素：div\n    &nbsp;&nbsp;内联元素不独占一行，只占用必要的宽度。如文本修饰标签b,em,i.strong,sub.sup\n        \n          烟火人生\n          看淡人间烟火，细品岁月静好\n          时光深处，我亦微笑，亦不老\n         \n    如果不想加粗，b就换成span双标签，表范围，标记文本/文档的一部分。典型的内联元素。\n    注意：内联元素不能嵌套块级元素。\n        \n          烟火人生\n          看淡人间烟火，细品岁月静好\n          时光深处，我亦微笑，亦不老\n         \n      &nbsp;&nbsp;内联元素：\n      链接元素：a\n      文本修饰元素：b,em, i,strong,sub,sup\n      折行元素：br\n      图片元素：img\n      范围元素：span\n    &nbsp;&nbsp; 027 初识表单 \n\t分组控件，单行文本框控件，多行文本框控件，单选框控件， 多选框，下拉框，文件选择，普通按钮，自定义按钮控件。\n表单使用form双标签。控件添加在form开标签里。\n    \n     &nbsp;&nbsp; 028 文本框和密码框\n     文本框控件不折行，只能在本行显现，如果超出了只能鼠标拖拽，或键盘右键按钮敲击查看全部信息。\n     使用HTML实现单项文本框：form里嵌入input单标签，里面添加type属性类型.单行文本框的type值text,而密码框的为password,也是单行文本框，只是显示小黑点或星号，内容被屏蔽了\n    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n    \n        请输入用户名：\n    \n    \n        请输入用户名：\n    \n    \n        请输入用户名：\n        \n        请输入密码：\n    \n    &nbsp;&nbsp; 029 多行文本框控件(文域)\n    输入多行文本，自动折行，文本超出底部边界，产生滚动条，可以滚动鼠标滚轮查看完整信息。\n    在HTML中实现: form嵌套textarea双标签.可使用cols(colomns)属性来指定文本区可见宽度，值为数字。\n    \n        请输入你的信息\n        \n      \n    textarea双标签.可使用cols(colomns)属性来指定文本区可见宽度，值为数字。row 为行数，指定值为数字。\n    \n        请输入你的信息\n        \n     \n&nbsp;&nbsp; 030 取值按钮类型\n    单选还是多选，可在table里嵌套input,设置属性type实现，radio,为单选，checkbox为多选。  \n    \n         选择性别：男\n         女\n     \n    单选框控件须成组使用才有意义，每组至少需要两个单选框。“组”是通过name属性来建立的，凡是name值相同的就是一组。同组的单选框，只有一个会处于选中状态，其它的会自动呈现为未选中状态。\n    \n        选择性别：男\n        女\n    \n   单选： \n   \n    选择性别：男\n    女\n    \n    多选： \n    你喜欢哪门学科：语文\n    数学\n    英语单选 \n    若想选项默认状态不为空，可在属性后加checked=\"任意字母\"单选 \n    \n        选择性别：男\n        女 \n        你喜欢哪门学科：语文\n    数学\n    英语\n\n&nbsp;&nbsp; 031 下拉菜单\n    双标签为select,只包含1个或多个option双标签。默认选项需在option里添加selectd定义。 \n    小技巧：option{199$}*9再tab。 \n\n    出生日期：\n    \n        1991\n        1992\n        1993\n        1994\n        1995\n        1996\n        1997\n        1998\n        1999  \n    \n \n多选的话，在select里定义属性为multiple \n\n    所学学科：\n    \n        语文\n        数学\n        外语\n        政治\n        历史\n        地理\n        物理\n        化学\n        生物\n    \n \n小技巧：1.光标停在option行，按住alt+shift，下键敲击8下。\n       2.网页上，ctrl+鼠标就可选择多个。\n       select里定义属性为size,可定义默认多少可见行\n       \n        所学学科：\n        \n            语文\n            数学\n            外语\n            政治\n            历史\n            地理\n            物理\n            化学\n            生物\n        \n     \n    &nbsp;&nbsp; 032 选择文件\n    在表格里,嵌入的input里type属性添加为file就行。\n    \n        附件：\n        \n    \t\n\n\n","dateCreated":"2022-11-13T15:17:16+08:00","dateModified":"2022-11-13T13:17:34+08:00","datePublished":"2022-11-13T15:17:16+08:00","description":"","headline":"【026-032】块级内联元素下拉菜单","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://windflower2022.github.io/2022/11/13/hello-world3/"},"publisher":{"@type":"Organization","name":"风花","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://windflower2022.github.io/2022/11/13/hello-world3/"}</script>
+    <meta name="description" content="Document       &amp;nbsp;&amp;nbsp; 026 块级元素和内联元素     &amp;nbsp;&amp;nbsp;HTML元素的显示值分为：块block，内联inline。HTML元素分为块（级）元素block-level块级，行内元素inline内联。     &amp;nbsp;&amp;nbsp;块级元素总是从新行开始，浏览器自动在元素的前后添加一些边距。总是占">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="【026-032】块级内联元素下拉菜单">
+<meta property="og:url" content="https://windflower2022.github.io/2022/11/13/hello-world3/index.html">
+<meta property="og:site_name" content="Windflower&#39;s Blog">
+<meta property="og:description" content="Document       &amp;nbsp;&amp;nbsp; 026 块级元素和内联元素     &amp;nbsp;&amp;nbsp;HTML元素的显示值分为：块block，内联inline。HTML元素分为块（级）元素block-level块级，行内元素inline内联。     &amp;nbsp;&amp;nbsp;块级元素总是从新行开始，浏览器自动在元素的前后添加一些边距。总是占">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-11-13T07:17:16.240Z">
+<meta property="article:modified_time" content="2022-11-13T05:17:34.851Z">
+<meta property="article:author" content="风花">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/all.css">
 
-<script src="/js/fancybox/jquery.fancybox.min.js"></script>
-<meta name="generator" content="Hexo 6.3.0"></head><body style="opacity:0"><header class="head"><h1 class="head-title u-fl"><a href="/">Windflower's Blog</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a class="head-nav__link" href="/archives">Posts</a></li><li class="head-nav__item"><a class="head-nav__link" href="/category">Categories</a></li><li class="head-nav__item"><a class="head-nav__link" href="/tag">Tags</a></li><li class="head-nav__item"><a class="head-nav__link" href="/about">About</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"><time class="post__time" datetime="2022-11-13T07:17:16.240Z">2022 - 11 - 13 15:17:16</time><h1 class="post__title"><a href="/2022/11/13/hello-world3/">【026-032】块级内联元素下拉菜单</a></h1><div class="post__main echo"><!DOCTYPE html>
+    
+<link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+
+    
+<link rel="stylesheet" href="/assets/css/thumbs.css">
+
+    
+<link rel="stylesheet" href="/assets/css/tranquilpeak.css">
+
+    <!--STYLES END-->
+    
+
+    
+
+    
+        
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            Windflower&#39;s Blog
+        </a>
+    </div>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="Open the link: /#about"
+            >
+        
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
+                            
+                            rel="noopener"
+                            title="Home"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
+                            
+                            rel="noopener"
+                            title="Categories"
+                        >
+                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="Tags"
+                        >
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="Archives"
+                        >
+                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link open-algolia-search"
+                            href="#search"
+                            
+                            rel="noopener"
+                            title="Search"
+                        >
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="#about"
+                            
+                            rel="noopener"
+                            title="About"
+                        >
+                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="http://stackoverflow.com/users"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Stack Overflow"
+                        >
+                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Stack Overflow</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://twitter.com/"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Twitter"
+                        >
+                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://facebook.com/"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Facebook"
+                        >
+                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Facebook</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://plus.google.com/"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Google +"
+                        >
+                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Google +</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://www.linkedin.com/profile/"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="LinkedIn"
+                        >
+                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">LinkedIn</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/mailto"
+                            
+                            rel="noopener"
+                            title="Mail"
+                        >
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/atom.xml"
+                            
+                            rel="noopener"
+                            title="RSS"
+                        >
+                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">RSS</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            【026-032】块级内联元素下拉菜单
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2022-11-13T15:17:16+08:00">
+	
+		    Nov 13, 2022
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/html/">html</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -178,8 +524,327 @@
     </form><br><br>	
 </body>
 </html>
-</div></header></article><section class="reward"><a class="btn-reward" href="#">打赏</a><div class="reward-wrapper clearfix"><img src="/img/wechat.jpg" title="微信"></div></section></main><footer class="foot"><div class="foot-copy">&copy; 2016 - 2023 风花</div></footer>
-<script src="/js/scroller.js"></script>
 
-<script src="/js/main.js"></script>
-</body></html>
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2022/11/13/hello-world1/"
+                    data-tooltip="【001-018 】标签以及有序无序列表"
+                    aria-label="PREVIOUS: 【001-018 】标签以及有序无序列表"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2022/11/13/hello-world2/"
+                    data-tooltip="【019-025】表格基础知识"
+                    aria-label="NEXT: 【019-025】表格基础知识"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://windflower2022.github.io/2022/11/13/hello-world3/"
+                    title="Share on Facebook"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://windflower2022.github.io/2022/11/13/hello-world3/"
+                    title="Share on Twitter"
+                    aria-label="Share on Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://plus.google.com/share?url=https://windflower2022.github.io/2022/11/13/hello-world3/"
+                    title="Share on Google+"
+                    aria-label="Share on Google+"
+                >
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2023 风花. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2022/11/13/hello-world1/"
+                    data-tooltip="【001-018 】标签以及有序无序列表"
+                    aria-label="PREVIOUS: 【001-018 】标签以及有序无序列表"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2022/11/13/hello-world2/"
+                    data-tooltip="【019-025】表格基础知识"
+                    aria-label="NEXT: 【019-025】表格基础知识"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://windflower2022.github.io/2022/11/13/hello-world3/"
+                    title="Share on Facebook"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://windflower2022.github.io/2022/11/13/hello-world3/"
+                    title="Share on Twitter"
+                    aria-label="Share on Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://plus.google.com/share?url=https://windflower2022.github.io/2022/11/13/hello-world3/"
+                    title="Share on Google+"
+                    aria-label="Share on Google+"
+                >
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://www.facebook.com/sharer/sharer.php?u=https://windflower2022.github.io/2022/11/13/hello-world3/"
+                        aria-label="Share on Facebook"
+                    >
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://twitter.com/intent/tweet?text=https://windflower2022.github.io/2022/11/13/hello-world3/"
+                        aria-label="Share on Twitter"
+                    >
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://plus.google.com/share?url=https://windflower2022.github.io/2022/11/13/hello-world3/"
+                        aria-label="Share on Google+"
+                    >
+                        <i class="fab fa-google-plus" aria-hidden="true"></i><span>Share on Google+</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <h4 id="about-card-name">风花</h4>
+        
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </div>
+        
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+
+<script src="/assets/js/jquery.js"></script>
+
+
+<script src="/assets/js/jquery.fancybox.js"></script>
+
+
+<script src="/assets/js/thumbs.js"></script>
+
+
+<script src="/assets/js/tranquilpeak.js"></script>
+
+<!--SCRIPTS END-->
+
+
+    
+
+
+
+
+    </body>
+</html>
