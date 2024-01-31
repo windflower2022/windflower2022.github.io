@@ -1,0 +1,28 @@
+p.a {
+    border-style: dotted;
+    border-color: red;
+    border-width: thin;
+}
+
+p.b {
+    border-style: dashed;
+    border-width: medium;
+}
+
+p.c {
+    border-style: double;
+    border-width: 5px 10px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td.ab {
+    border-style: dashed;
+    border-color: green;
+}
+
+td.m { 
+    text-align: center;
+}

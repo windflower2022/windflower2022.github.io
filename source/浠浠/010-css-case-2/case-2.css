@@ -1,0 +1,83 @@
+#square1 {
+    width: 0px;
+    height: 0px;
+    border-top: 50px solid red;
+    border-right: 50px solid yellow;
+    border-bottom: 50px solid blue;
+    border-left: 50px solid green;
+}
+
+#square2 {
+    width: 150px;
+    height: 150px;
+    border-top: 50px solid red;
+    border-right: 50px solid yellow;
+    border-bottom: 50px solid blue;
+    border-left: 50px solid green;
+}
+
+#triangle1 {
+    width: 0px;
+    height: 0px;
+    border-top: 50px solid red;
+    border-right: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-left: 50px solid transparent;
+}
+
+#triangle2 {
+    width: 0px;
+    height: 0px;
+    /*
+    border-right: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-left: 50px solid transparent;*/
+    border: 50px solid transparent;
+    border-bottom: 50px solid rgb(9, 220, 97);
+}
+
+#trapezium {
+    width: 0px;
+    height: 0px;
+    /*border-top: 50px solid red;*/
+    border-right: 50px solid blue;
+    border-bottom: 50px solid blue;
+    border-left: 50px solid transparent;
+}
+
+#windmills {
+    width: 200px;
+    height: 200px;
+    border: 2px solid gray;
+}
+
+#windmills div {
+    float: left;
+}
+#windmills .box1 {
+    width: 0px;
+    height: 0px;
+    border: 50px solid transparent;
+    border-bottom: 50px solid rgb(230, 31, 31);
+}
+
+#windmills .box2 {
+    width: 0px;
+    height: 0px;
+    border: 50px solid transparent;
+    border-left: 50px solid rgb(230, 31, 31);
+}
+
+#windmills .box3 {
+    width: 0px;
+    height: 0px;
+    border: 50px solid transparent;
+    border-right: 50px solid rgb(230, 31, 31);
+}
+
+#windmills .box4 {
+    width: 0px;
+    height: 0px;
+    border: 50px solid transparent;
+    border-top: 50px solid rgb(230, 31, 31);
+}
