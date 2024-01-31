@@ -1,347 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
+extends base
 
-<head>
-    <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
+block title
+  title= page.title + ' | ' + config.title
 
-    <meta name="author" content="白夜宁月">
+block content
+  .post
+    h1.post-title= page.title
+    .post-meta= page.date.format(config.date_format)
+      if page.categories.length > 0
+        span= ' | '
+        span.category
+          for category in page.categories.toArray()
+            a(href=url_for(category.path))= category.name
+      if theme.busuanzi == true
+        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
+        span#busuanzi_container_page_pv= ' | '
+          span#busuanzi_value_page_pv
+          span= ' ' + __('Hits')
+      if theme.wordcount == true
+        include _partial/wordcount.pug
+    if theme.disqus.enable == true
+      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
+    if theme.changyan
+      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
+        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
+        span= ' ' + __('Comment')
+      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
+    if theme.valine.enable == true
+      a.disqus-comment-count(href=url_for(page.path) + '#vcomment')
+        span.valine-comment-count(data-xid=url_for(page.path))
+        span= ' ' + __('Comment')
+    if theme.waline.enable == true
+      a.disqus-comment-count(href=url_for(page.path) + '#waline')
+        span.waline-comment-count(id=url_for(page.path))
+        span= ' ' + __('Comment')
+    if page.toc
+      .clear
+        #toc.toc-article
+          .toc-title= __('contents')
+          != toc(page.content, {list_number: theme.toc_number})
+    .post-content
+      != page.content
+    if theme.donate.enable == true && page.donate != false
+      include _widget/donate.pug
 
+    if theme.post_copyright.enable == true && page.copyright != false
+      include _widget/copyright.pug
 
-    <meta name="subtitle" content="时间煮雨，岁月缝花。以欢喜心，慢度日常。">
+    if theme.shareto == true
+      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
+      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
 
+    include _partial/tag.pug
+    include _partial/post_nav.pug
 
-
-
-<title>【131-139】第八章 作用域 | 岁月缝花</title>
-
-
-
-    <link rel="icon" href="/favicon.ico">
-
-
-
-
-    <!-- stylesheets list from _config.yml -->
-    
-    <link rel="stylesheet" href="/css/style.css">
-    
-
-
-
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
-
-    
-    
-        
-    
-
-
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-<body>
-    <script>
-        // this function is used to check current theme before page loaded.
-        (() => {
-            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
-            const isDark = currentTheme === 'dark';
-            const pagebody = document.getElementsByTagName('body')[0]
-            if (isDark) {
-                pagebody.classList.add('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
-            } else {
-                pagebody.classList.remove('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Light"
-            }
-        })();
-    </script>
-
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">Windflower&#39;s Blog</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
-        </div>
-    </nav>
-
-    
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">Windflower&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-            </div>
-        </div>
-    </nav>
-
-</header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-            <div class="main">
-                <div class="container">
-    
-    
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    var tocbot_timer;
-    var DEPTH_MAX = 6; // 为 6 时展开所有
-    var tocbot_default_config = {
-        tocSelector: '.tocbot-list',
-        contentSelector: '.post-content',
-        headingSelector: 'h1, h2, h3, h4, h5',
-        orderedList: false,
-        scrollSmooth: true,
-        onClick: extend_click,
-    };
-
-    function extend_click() {
-        clearTimeout(tocbot_timer);
-        tocbot_timer = setTimeout(function() {
-            tocbot.refresh(obj_merge(tocbot_default_config, {
-                hasInnerContainers: true
-            }));
-        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
-    }
-
-    document.ready(function() {
-        tocbot.init(obj_merge(tocbot_default_config, {
-            collapseDepth: 1
-        }));
-    });
-
-    function expand_toc() {
-        var b = document.querySelector('.tocbot-toc-expand');
-        var expanded = b.getAttribute('data-expanded');
-        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
-        tocbot.refresh(obj_merge(tocbot_default_config, {
-            collapseDepth: expanded ? 1 : DEPTH_MAX
-        }));
-        b.innerText = expanded ? 'Expand all' : 'Collapse all';
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-    function obj_merge(target, source) {
-        for (var item in source) {
-            if (source.hasOwnProperty(item)) {
-                target[item] = source[item];
-            }
-        }
-        return target;
-    }
-</script>
-    
-
-	
-    
-    <article class="post-wrap">
-        <header class="post-header">
-            <h1 class="post-title">【131-139】第八章 作用域</h1>
-            
-                <div class="post-meta">
-                    
-                        Author: <a itemprop="author" rel="author" href="/">白夜宁月</a>
-                    
-
-                    
-                        <span class="post-time">
-                        Date: <a href="#">July 5, 2023&nbsp;&nbsp;7:15:59</a>
-                        </span>
-                    
-                    
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/JS/">JS</a>
-                            
-                        </span>
-                    
-                </div>
-            
-        </header>
-
-        <div class="post-content">
-            <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>作用域</title>
-</head>
-<body>
-    <h2>目标</h2>
-    <span id="more"></span>
-    能说出两种作用域</br></br>
-    能区分全局变量和局部变量及特征</br></br>
-    能说出如何在作用域链中查找变量的值</br></br>
-    <h2>目录</h2>
-    作用域</br></br>
-    变量的作用域</br></br>
-    作用域链</br></br>
-    <h3>作用域(es6)</h3>
-    代码的名字在某个范围内起作用或效果，目的是为提高程序的可靠性，更重要的是，减少命名冲突</br></br>
-    1.分为：全局作用域和局部作用域,现阶段没有块级作用域,到了(es6)才会新增块级作用域</br></br>
-    1.1全局作用域： 整个script标签 或是一个单独的js文件</br></br>
-    var num = 10;</br></br>
-    console.log(num);</br></br>
-    1.2局部作用域(函数作用域): 在函数内部就是局部作用域 这个代码的名字只在函数内部起作用</br></br>
-    function fn() {</br></br>
-        // 局部作用域</br></br>
-        var num = 20;</br></br>
-        console.log(num);</br></br>
-    }</br></br>
-    fn();</br></br>
-     2 变量的作用域: 根据作用域不同分为全局变量和局部变量</br></br>
-     2.1. 全局变量： 在全局作用域下的变量 在全局下都可使用</br></br>
-     <b>注意</b>: 在函数内部没有声明,直接赋值的变量也叫全局变量</br></br>
-     var num = 10; // num就是一个全局变量</br></br>
-     console.log(num);</br></br>
-
-<pre><code>fuction fn() &#123;
-    console.log(num);
-&#125;
-fn();
-2.2. 局部变量： 在局部作用域下的变量,只能在函数内部使用
-&lt;b&gt;注意&lt;/b&gt;: 函数的形参也可以看作局部变量
-function fun(aru) &#123;
-    var num1 = 10; // num1就是局部变量 只能在函数内部使用
-    num2 = 20; // 没有声明直接赋值叫全局函数
-&#125;
-fun();
-// console.log(num1);
-// console.log(num2);
-2.3.除范围不一样,从执行效率来看
-1) 全局变量只有关闭了浏览器才会销毁,比较占内存资源
-2) 局部变量,当我们程序执行完毕就会销毁,较节约内存资源
-3.作用域链
-只要有一个代码,就至少有一个作用域
-写在函数内部局部作用域
-如果函数中还有一个函数,那么在这个作用域中就可以诞生一个作用域
-根据在内部函数可以访问外部函数变量的这种机制,用链式查找决定哪些数据被内部函数访问,就成作作用域链,采取就近原则
-var num = 10;
-function fn() &#123; // 外部函数
-    var num = 20;
-    function fun() &#123; // 内部函数
-        console.log(num);
-
-    &#125;
-    fun();
-&#125;
-fn();
-</code></pre>
-<p>   案例1:结果是几? (123)<br>    function f1() {<br>        var num &#x3D; 123;<br>        function f2() {<br>            console.log(num);&#x2F;&#x2F;站在目标出发,一层一层往外查找<br>        }<br>        f2();<br>    }<br>    var num &#x3D; 456;<br>    f1();<br>    0级链: f1 , num &#x3D; 456<br>    1级链: num &#x3D; 123, f2<br>    2级链: console.log(num);<br>    案例2:结果是几？<br>    var a &#x3D; 1;<br>    function fn1() {<br>        var a &#x3D; 2;<br>        var b &#x3D; ‘22’;<br>        fn2();<br>        function fn2() {<br>            var a &#x3D; 3;<br>            fn3 ();<br>            function fn3() {<br>                var a &#x3D; 4;<br>                console.log(a); &#x2F;&#x2F; a的值? 4<br>                console.log(b); &#x2F;&#x2F; b的值? 22<br>            }<br>        }<br>    }<br>    fn1();</p>
-</body>
-</html>
-        </div>
-
-        
-            <section class="post-copyright">
-                
-                
-                
-                
-
-            </section>
-        
-        <section class="post-tags">
-            <div>
-                <span>Tag(s):</span>
-                <span class="tag">
-                    
-                </span>
-            </div>
-            <div>
-                <a href="javascript:window.history.back();">back</a>
-                <span>· </span>
-                <a href="/">home</a>
-            </div>
-        </section>
-        <section class="post-nav">
-            
-                <a class="prev" rel="prev" href="/2023/07/06/JS012/">【140-142】第九章 预解析</a>
-            
-            
-            <a class="next" rel="next" href="/2023/07/02/JS010/">【113-130】第七章 函数</a>
-            
-        </section>
-
-
-    </article>
-</div>
-
-
-            </div>
-            <footer id="footer" class="footer">
-   <!-- <div class="copyright">
-        <span>© 白夜宁月 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
-    </div>-->
-</footer>
-
-    </div>
-</body>
-
-</html>
+    if page.comments
+      include _partial/comments.pug

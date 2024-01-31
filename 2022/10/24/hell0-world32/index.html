@@ -1,244 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
+extends base
 
-<head>
-    <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
+block title
+  title= page.title + ' | ' + config.title
 
-    <meta name="author" content="白夜宁月">
+block content
+  .post
+    h1.post-title= page.title
+    .post-meta= page.date.format(config.date_format)
+      if page.categories.length > 0
+        span= ' | '
+        span.category
+          for category in page.categories.toArray()
+            a(href=url_for(category.path))= category.name
+      if theme.busuanzi == true
+        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
+        span#busuanzi_container_page_pv= ' | '
+          span#busuanzi_value_page_pv
+          span= ' ' + __('Hits')
+      if theme.wordcount == true
+        include _partial/wordcount.pug
+    if theme.disqus.enable == true
+      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
+    if theme.changyan
+      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
+        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
+        span= ' ' + __('Comment')
+      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
+    if theme.valine.enable == true
+      a.disqus-comment-count(href=url_for(page.path) + '#vcomment')
+        span.valine-comment-count(data-xid=url_for(page.path))
+        span= ' ' + __('Comment')
+    if theme.waline.enable == true
+      a.disqus-comment-count(href=url_for(page.path) + '#waline')
+        span.waline-comment-count(id=url_for(page.path))
+        span= ' ' + __('Comment')
+    if page.toc
+      .clear
+        #toc.toc-article
+          .toc-title= __('contents')
+          != toc(page.content, {list_number: theme.toc_number})
+    .post-content
+      != page.content
+    if theme.donate.enable == true && page.donate != false
+      include _widget/donate.pug
 
+    if theme.post_copyright.enable == true && page.copyright != false
+      include _widget/copyright.pug
 
-    <meta name="subtitle" content="时间煮雨，岁月缝花。以欢喜心，慢度日常。">
+    if theme.shareto == true
+      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
+      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
 
+    include _partial/tag.pug
+    include _partial/post_nav.pug
 
-
-
-<title>【086】CSS布局之之浮动清理 | 岁月缝花</title>
-
-
-
-    <link rel="icon" href="/favicon.ico">
-
-
-
-
-    <!-- stylesheets list from _config.yml -->
-    
-    <link rel="stylesheet" href="/css/style.css">
-    
-
-
-
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
-
-    
-    
-        
-    
-
-
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-<body>
-    <script>
-        // this function is used to check current theme before page loaded.
-        (() => {
-            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
-            const isDark = currentTheme === 'dark';
-            const pagebody = document.getElementsByTagName('body')[0]
-            if (isDark) {
-                pagebody.classList.add('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
-            } else {
-                pagebody.classList.remove('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Light"
-            }
-        })();
-    </script>
-
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">Windflower&#39;s Blog</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
-        </div>
-    </nav>
-
-    
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">Windflower&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-            </div>
-        </div>
-    </nav>
-
-</header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-            <div class="main">
-                <div class="container">
-    
-    
-
-	
-    
-    <article class="post-wrap">
-        <header class="post-header">
-            <h1 class="post-title">【086】CSS布局之之浮动清理</h1>
-            
-                <div class="post-meta">
-                    
-                        Author: <a itemprop="author" rel="author" href="/">白夜宁月</a>
-                    
-
-                    
-                        <span class="post-time">
-                        Date: <a href="#">October 24, 2022&nbsp;&nbsp;21:43:27</a>
-                        </span>
-                    
-                    
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/CSS/">CSS</a>
-                            
-                        </span>
-                    
-                </div>
-            
-        </header>
-
-        <div class="post-content">
-            <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0">
-    <title>flow</title>
-    <link rel="stylesheet" href="flow-clear-style.css">
-</head>
-<body>
-   <br><br><br>
-   <div class="box">
-     <!--<div class="container">-->
-     <div class="a">
-       float:left
-     </div> <span id="more"></span>
-     <div class="b">
-        float:left
-     </div> 
-     <div class="c">
-        float:left
-     </div>
-     <!-- </div>-->
-     <div class="d">
-        float:left
-     </div>
-   </div> 
-     若四个元素，前三个都是浮动，第四个不是，<!--则在前三个前添加父元素。<br><br><br><br><br><br>
-    普通元素，子元素大小可以将父元素撑开，但浮动元素未占据空间则不能将父元素撑开。故需为父元素设置高度<br><br>
-    为使父元素高度保持正常，需给父元素增加样式：第一种overflow: auto;对于超出边界的元素，父元素可自动调整<br><br>
-   第二种-->添加clear属性，可清除浮动 ，不想当前元素受到前面最近元素影响，就给当前元素添加clear中的: left/both/right;<br><br>
-  <br><br><br>
-</body>
-</html>
-        </div>
-
-        
-            <section class="post-copyright">
-                
-                
-                
-                
-
-            </section>
-        
-        <section class="post-tags">
-            <div>
-                <span>Tag(s):</span>
-                <span class="tag">
-                    
-                </span>
-            </div>
-            <div>
-                <a href="javascript:window.history.back();">back</a>
-                <span>· </span>
-                <a href="/">home</a>
-            </div>
-        </section>
-        <section class="post-nav">
-            
-                <a class="prev" rel="prev" href="/2022/10/25/hell0-world33/">【087】CSS布局之之浮动综合案例</a>
-            
-            
-            <a class="next" rel="next" href="/2022/10/24/hell0-world31/">【085】CSS布局之之浮动基础</a>
-            
-        </section>
-
-
-    </article>
-</div>
-
-
-            </div>
-            <footer id="footer" class="footer">
-   <!-- <div class="copyright">
-        <span>© 白夜宁月 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
-    </div>-->
-</footer>
-
-    </div>
-</body>
-
-</html>
+    if page.comments
+      include _partial/comments.pug
