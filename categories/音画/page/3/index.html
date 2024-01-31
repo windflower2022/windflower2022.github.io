@@ -3,14 +3,20 @@ extends base
 block title
   if page.category
     title= page.category + ' | ' + config.title
-  if page.tag
+  else if page.tag
     title= page.tag + ' | ' + config.title
-  if page.archive
+  else if page.archive
     title= __('archive') + ' | ' + config.title
+  else if config.subtitle
+    title= config.title + ' | ' + config.subtitle
+  else
+    title= config.title
+
 block content
   if page.category || page.tag
-    h1.label-title=  __('reading_label', page.category || page.tag)
-  .post
+    h1.label-title= __('reading_label', page.category || page.tag)
+
+  if page.archive
     .post-archive
       - var allposts = page.posts.toArray().reduce((r, v, i, a, k = -v.date.format('YYYY')) => ((r[k] || (r[k] = [])).push(v), r), {})
       each posts, year in allposts
@@ -21,4 +27,41 @@ block content
               span.date= post.date.format(config.date_format)
               a(href=url_for(post.path), title=post.title)
                 +title(post)
+
+  else
+    each post in page.posts.toArray()
+      .post
+        h1.post-title
+          if post.sticky
+            span(class="top-post")= __('Sticky')
+          include _partial/helpers.pug
+          a(href=url_for(post.path)) +title(post)
+        .post-meta= post.date.format(config.date_format)
+        if theme.disqus.enable == true
+          a.disqus-comment-count(data-disqus-identifier=post.path, href=url_for(post.path) + '#disqus_thread')
+        if theme.changyan
+          a.ds-thread-count(href=url_for(post.path) + '#SOHUCS')
+            span.cy_cmt_count(id='sourceId::' + post.date.valueOf(), style='margin: 0 3px 0 1px;') 0
+            span= ' ' + __('Comment')
+        if post.description
+          .post-content!= post.description
+        else if post.excerpt
+          .post-content!= post.excerpt
+        else if post.content
+          - const content = strip_html(post.content)
+          - let expert = content.substring(0,theme.post_content_length)
+          - content.length > theme.post_content_length ? expert += '...' : ''
+          .post-content!= expert
+        p.readmore
+          a(href=url_for(post.path))= __('Readmore')
+
   include _partial/paginator.pug
+
+  if theme.disqus.enable == true
+    script#dsq-count-scr(src='//'+ theme.disqus.shortname + '.disqus.com/count.js', async)
+  if theme.changyan
+    script#cy_cmt_num(src='https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=' + theme.changyan, async)
+  if config.mathjax
+    include _partial/mathjax.pug
+  if config.mathjax2
+    include _partial/mathjax2.pug
