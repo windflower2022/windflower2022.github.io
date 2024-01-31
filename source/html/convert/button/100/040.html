@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <title>记句子<</title>
+    <style>
+        div{
+            background-color:rgb(243, 243, 243);
+            margin-bottom: 5px;
+            padding: 5px;
+            border-radius: 55px;
+            font-size: 30px;
+        }
+        div:hover{
+            background-color:rgb(226, 245, 231);
+        }
+        .t{
+            margin-top: 0px;
+            padding-left: 150px;
+        }
+        @media screen and (max-width: 650px) {
+            .t{
+                margin-top: 50px;
+                padding-left: 120px;
+            }
+
+           div.t span #i {
+                color: black
+            }
+    </style>
+</head>
+<body> 
+<div class="text"><span style="color:rgb(72, 73, 70)">
+<br>&emsp;40. On the Mid-Autumn Festival,one of the most important festivals in China,family members will gather together to enjoy moon cakes as well as admire the round moon.
+<br><br>&emsp;On the Mid-Autumn Festival,one of the most important festivals in China,family members will gather together to enjoy moon cakes as well as admire the round moon.On the Mid-Autumn Festival,one of the most important festivals in China,family members will gather together to enjoy moon cakes as well as admire the round moon.
+<br>&emsp;中秋节是中国最重要的节日之一，在这一天全家聚在一起吃月饼、赏月。
+</span></div>
+</body>
+    <script>
+        $(document).ready(function(){
+            $("div").click(function(){
+            	//方式一
+                //var words = new SpeechSynthesisUtterance($(this).context.children[0].textContent);
+                //window.speechSynthesis.speak(words)
+
+            	//方式二
+				var audio = new Audio();  
+                audio.src ='https://dict.youdao.com/speech?audio=' + encodeURI($(this).context.children[0].textContent);  
+                audio.play(); 
+            });
+        });
+    </script>
+</html>

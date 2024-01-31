@@ -1,0 +1,14 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://s1.ax1x.com/2022/11/04/xOP86U.jpg')
+}
+canvas {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  opacity: 0.015;
+}
