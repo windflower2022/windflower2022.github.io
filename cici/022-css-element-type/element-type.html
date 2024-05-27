@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>028</title>
+    <link rel="stylesheet" href="./element-style.css">
+</head>
+<body>
+    <div class="box1">
+      <span>span1</span>
+      <span>span2</span>
+    </div>
+    <div class="box2">
+        <span>span3</span>
+        <span>span4</span>
+      </div>
+    设置样式后,两个span元素大小未变,内填充四个方向均有效,蓝色边框实现，外边距左右方向有效，但上下未变。<br><br>
+    <b>结论：</b><br><br>
+          行内元素不能设置宽高样式<br><br>
+          行内元素可设置边框样式<br><br>
+          行内元素可设置内填充样式<br><br>
+          行内元素可设置左右方向的外边距样式<br><br>
+    <div class="box3">
+      <div>div1</div>
+      <div>div2</div>
+    </div>
+    <div class="box4">
+        <div>div3</div>
+        <div>div4</div>
+      </div>
+      设置样式后,两个div元素大小,内填充，边框，外边距全部发生变化。<br><br>
+      <b>结论：</b><br><br>
+            给块元素设置宽高，边框线，内填充，外边距样式，都有效。display: inline-block;实现并排和解决margin塌陷效果。<br><br>
+    <div class="box5">
+        <div>div5</div>
+        <div>div6</div>
+        </div><br><br><br><br>   
+     <b>嵌套规则说明：</b><br><br> 
+           设置一个元素的display属性只能改变该元素的显示方式，而不能真正的改变html元素的类型。<br><br>
+           比如，一个具有display: inline;的块元素还是不允许在它的内部有其他块元素。 <br><br> 
+           在搭建网页结构时，虽然有很多html元素可以使用，但还是要遵循一些嵌套规则。  <br><br> 
+           规则一：块元素可以包含行内元素或某些块元素，但行内元素却不能包含块元素，它只能包含其它的行内元素；<br><br> 
+           规则二：块元素不能放在p元素里面。
+           规则三：有几个特殊的块级元素只能包含行内元素，不能包含块元素，这几个特殊的元素是：h1-h6、p、dt。<br><br> 
+           规则四：块级元素一般与块级远远并列、行内元素与行内元素并列。
+</body>
+</html>       

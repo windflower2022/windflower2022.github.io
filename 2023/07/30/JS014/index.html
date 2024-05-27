@@ -1,18 +1,10 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>【155-186】第十一章 内置对象 | 岁月缝花</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="">
-    <meta name="description" content="
-
-
-    
-    
-    
-    内置对象
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="内置对象
    
   /*var myMath = {
     PI: 3.14592653,
@@ -26,51 +18,133 @@
       return max;
     },
     min: function() {
-      var m...">
-    
-        <link rel="icon" href="/favicon.ico">
-    
-    
-        
-            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-        
-            <link rel="stylesheet" href="/css/stage.css">
-        
-            <link rel="stylesheet" href="/css/avatar-bg.css">
-        
-    
-<meta name="generator" content="Hexo 6.3.0"></head>
+      var min = arguments[0];
+      for (var i = 1; i &lt; arguments.length; i++) {
+        if (arguments[i] &lt; min ) {
+          min = arguments[i];
+        }
+      }
+      return min;
+    }
+  }
+  console.log(myMath.PI);
+  console.log(myMath.max(1,3,9));
+  console.log(myMath.min(1,3,9));
+  
+  function getRandom(min,max) {    return Math.floor(Math.random() * (max - min + 1)) + min;  }  var random &amp;#x3D; getRandom(1,10);  while(true) { &amp;#x2F;&amp;#x2F; 死循环     var num &amp;#x3D; prompt(‘你来猜？ 输入1~10之间的一个数字’);     if ( num &amp;gt; random) {        alert(‘你猜大了’);     } else if ( num &amp;lt; random) {        alert(‘你猜小了’);     } else {        alert(‘你好帅哦,猜对了’);        break; &amp;#x2F;&amp;#x2F; 退出整个循环 结束程序     }
+  var date &amp;#x3D; new Date(); &amp;#x2F;&amp;#x2F; 如果没给参数 则返回当前系统的当前时间  console.log(date);  var date1 &amp;#x3D; new Date(2019,10,1);  console.log(date1);  var date2 &amp;#x3D; new Date(‘2019&amp;#x2F;10&amp;#x2F;1 8:8:8’);  console.log(date2);  var date &amp;#x3D; new Date();    }  var date &amp;#x3D; new Date();  console.log(date.getFullYear()); &amp;#x2F;&amp;#x2F; 返回当前日期的年  console.log(date.getMonth() + 1); &amp;#x2F;&amp;#x2F; z返回月份小1个月 记得+1  console.log(date.getDate()); &amp;#x2F;&amp;#x2F; 返回当前是几号  console.log(date.getDay()); &amp;#x2F;&amp;#x2F; 返回当前星期几 星期天是0  &amp;#x2F;&amp;#x2F; 2023年7月10日 星期一  var year &amp;#x3D; date.getFullYear();  var month &amp;#x3D; date.getMonth() + 1;  var dates &amp;#x3D; date.getDate();  var arr &amp;#x3D; [‘星期日’,’星期一’,’星期二’,’星期三’,’星期四’,’星期五’,’星期六’]  var day &amp;#x3D; date.getDay();  console.log(‘今天是:’  + year + ‘年’ + month + ‘月’ + dates + ‘日’ + arr[day]);  &amp;#x2F;&amp;#x2F; 格式化时分秒  var date &amp;#x3D; new Date();  console.log(date.getHours());  console.log(date.getMinutes());  console.log(date.getSeconds());  &amp;#x2F;&amp;#x2F; 封装一个函数返回当前的时分秒 格式: 08:08:08  function getTime() {  var time &amp;#x3D; new Date();  var h &amp;#x3D; time.getHours();  h &amp;#x3D; h &amp;lt; 10 ? ‘0’ + h : h;  var m &amp;#x3D; time.getMinutes();  m &amp;#x3D; m &amp;lt; 10 ? ‘0’ + m : m;  var s &amp;#x3D; time.getSeconds();  s &amp;#x3D; s &amp;lt; 10 ? ‘0’ + s : s;  return h + ‘:’ + m + ‘:’ + s;  }  console.log(getTime());  &amp;#x2F;&amp;#x2F; 1) 通过valueOf() getTime()都可获得  var date &amp;#x3D; new Date();  console.log(date.valueOf());  console.log(date.getTime());  &amp;#x2F;&amp;#x2F; 2) 简单写法  var date1 &amp;#x3D; +new Date(); &amp;#x2F;&amp;#x2F;  +new Date()返回的就是总的毫秒数  console.log(date1);  &amp;#x2F;&amp;#x2F; 案例 倒计时  function countDown(time) {  var nowTime &amp;#x3D; +new Date(); &amp;#x2F;&amp;#x2F; 返回的是当前时间总毫秒数  var inputTime &amp;#x3D; +new Date(time); &amp;#x2F;&amp;#x2F; 返回的是用户输入时间的总的毫秒数  var times &amp;#x3D; (inputTime - nowTime) &amp;#x2F; 1000; &amp;#x2F;&amp;#x2F; time时剩余时间总的秒数  var d &amp;#x3D; parseInt(times &amp;#x2F; 60 &amp;#x2F; 60 &amp;#x2F; 24);  d &amp;#x3D; d &amp;lt; 10 ? ‘0’ + d : d;  var h &amp;#x3D; parseInt(times &amp;#x2F; 60 &amp;#x2F; 60 % 24); &amp;#x2F;&amp;#x2F;计算小时  h &amp;#x3D; h &amp;lt; 10 ? ‘0’ + h : h;  var m &amp;#x3D; parseInt(times &amp;#x2F; 60 % 60);    &amp;#x2F;&amp;#x2F;计算分数  m &amp;#x3D; m &amp;lt; 10 ? ‘0’ + m : m;  var s &amp;#x3D; parseInt(times % 60);      &amp;#x2F;&amp;#x2F;计算当前秒数  s &amp;#x3D; s &amp;lt; 10 ? ‘0’ + s : s;  return d + ‘天’ + h + ‘时’ + m + ‘分’ + s + ‘秒’;}console.log(countDown(‘2023-8-1 00:00:00’));var date &amp;#x3D; new Date();console.log(date);&amp;#x2F;&amp;#x2F;1. push()在我们数组的末尾 添加一个或者多个数组元素  var arr &amp;#x3D; [1,2,3];  &amp;#x2F;&amp;#x2F;arr.push(4,’pink’);  console.log(arr.push(4,’pink’));  console.log(arr);  arr.unshift(‘red’,’purple’);  console.log(arr);  var arr &amp;#x3D; [1500,1200,2000,2100,1800];  var newArr &amp;#x3D; [];  for (var i &amp;#x3D; 0; i &amp;lt; arr.length; i++) {    if (arr[i] &amp;lt; 2000) {      &amp;#x2F;&amp;#x2F;  newArr[newArr.length] &amp;#x3D; arr[i];      newArr.push(arr[i]);    }  }  console.log(newArr);  &amp;#x2F;&amp;#x2F; 1).翻转数组  var arr &amp;#x3D; [‘pink’,’red’,’blue’];  arr.reverse();  console.log(arr);  &amp;#x2F;&amp;#x2F; 2) 数组排序(冒泡排序)  var arr1 &amp;#x3D; [13,4,7,1,77];  arr1.sort(function(a,b){   &amp;#x2F;&amp;#x2F; return a - b; 升序排列   return b - a ; &amp;#x2F;&amp;#x2F;降序排列  });  console.log(arr1);  5.5 数组索引的方法  &amp;#x2F;&amp;#x2F;封装一个去重的函数unique  function unique(arr) {    var newArr &amp;#x3D; [];    for (var i &amp;#x3D; 0; i &amp;lt; arr.length; i++) {      if (newArr.indexOf(arr[i]) &amp;#x3D;&amp;#x3D;&amp;#x3D; -1) {        newArr.push(arr[i]);      }    }    return newArr;  }  &amp;#x2F;&amp;#x2F; var demo &amp;#x3D; unique([‘c’,’a’,’z’,’a’,’x’,’a’,’x’,’c’,’b’]);  var demo &amp;#x3D; unique([‘blue’,’green’,’blue’]);  console.log(demo);  &amp;#x2F;&amp;#x2F; 数组转换为字符串  &amp;#x2F;&amp;#x2F; 1) toString()将我们的数组转换为字符串  var arr &amp;#x3D; [1, 2, 3];  console.log(arr.toString()); &amp;#x2F;&amp;#x2F; 1,2,3  &amp;#x2F;&amp;#x2F; 2)join(分隔符)  var arr1 &amp;#x3D; [‘green’, ‘pink’, ‘blue’];  console.log(arr1.join()); &amp;#x2F;&amp;#x2F; green, pink, blue  console.log(arr1.join(‘-‘)); &amp;#x2F;&amp;#x2F; green-pink-blue  console.log(arr1.join(‘&amp;amp;’)); &amp;#x2F;&amp;#x2F; green&amp;amp;pink&amp;amp;blue  &amp;#x2F;&amp;#x2F;字符串不可变 不要大量拼接字符串 会占内存空间  var str &amp;#x3D; “abcoefoxyozzopp”;    var index &amp;#x3D; str.indexOf(“o”);    var num &amp;#x3D; 0;    &amp;#x2F;&amp;#x2F; console.log(index);    while (index !&amp;#x3D;&amp;#x3D; -1) {      console.log(index);      num++;      index &amp;#x3D; str.indexOf(‘o’, index + 1);    }    console.log(‘o出现的次数是’ + num);
+var str1 = [&amp;#39;red&amp;#39;,&amp;#39;blue&amp;#39;,&amp;#39;red&amp;#39;,&amp;#39;green&amp;#39;,&amp;#39;pink&amp;#39;,&amp;#39;red&amp;#39;];
+var index1 = str1.indexOf(&amp;#39;red&amp;#39;);
+var num1 = 0;
+//console.log(index1)
+while (index1 !== -1) &amp;#123;
+  console.log(index1);
+  num1++;
+  index1 = str1.indexOf(&amp;#39;red&amp;#39;, index1 + 1);
+&amp;#125;
+console.log(&amp;#39;red出现的次数是 &amp;#39; + num1);
 
-<body>
-<header id="header">
-    <div class="menu">
-        <i class="fa fa-bars"></i>
-    </div>
-    <div class="header-main">
-        <h1><a href="/">岁月缝花</a></h1>
-    </div>
-    <div id="nav">
-        <div class="nav-img" id="nav-img"></div>
-        <div class="sentences">
-            云里写诗，泥里生活，岁月里洒脱。
-        </div>
-    </div>
+var str = &amp;#39;abcoefoxyozzopp&amp;#39;;
+var o = &amp;#123;&amp;#125;;
+for (var i = 0; i &amp;lt; str.length; i++) &amp;#123;
+  var chars = str.charAt(i);
+  if (o[chars]) &amp;#123;
+    o[chars]++;
+  &amp;#125; else &amp;#123;
+    o[chars] = 1;
+  &amp;#125;
+&amp;#125;
+console.log(o);
+
+   &amp;#x2F;&amp;#x2F; 2.遍历对象   var max &amp;#x3D; 0;   var ch &amp;#x3D; ‘’;   for (var k in o) {    &amp;#x2F;&amp;#x2F; k 得到的是属性    &amp;#x2F;&amp;#x2F; o[k] 得到的是属性值    if (o[k] &amp;gt; max) {      max &amp;#x3D; o[k];      ch &amp;#x3D; k;    }   }   console.log(max);   console.log(‘最多的字符是’ + ch);&amp;#x2F;   var str1 &amp;#x3D; ‘abcoefoxyozzopp’;   while (str1.indexOf(‘o’) !&amp;#x3D;&amp;#x3D; -1) {    str1 &amp;#x3D; str1.replace(‘o’,’‘);   }   console.log(str1);
+   var str2 &amp;#x3D; ‘red, pink, blue’;   console.log(str2.split(‘,’));   var str3 &amp;#x3D; ‘red&amp;amp;pink&amp;amp;blue’;   console.log(str3.split(‘&amp;amp;’));  
+
+
+    目标" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>【155-186】第十一章 内置对象 | 岁月缝花</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="内置对象       &#x2F;*var myMath &#x3D; {     PI: 3.14592653,     max: function() {       var max &#x3D; arguments[0];       for (var i &#x3D; 1; i &lt; arguments.length; i++) {         if (arguments[i] &gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【155-186】第十一章 内置对象">
+<meta property="og:url" content="https://windflower2022.github.io/2023/07/30/JS014/index.html">
+<meta property="og:site_name" content="岁月缝花">
+<meta property="og:description" content="内置对象       &#x2F;*var myMath &#x3D; {     PI: 3.14592653,     max: function() {       var max &#x3D; arguments[0];       for (var i &#x3D; 1; i &lt; arguments.length; i++) {         if (arguments[i] &gt;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-30T08:44:00.000Z">
+<meta property="article:modified_time" content="2023-07-30T08:48:05.363Z">
+<meta property="article:author" content="白夜宁月">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="岁月缝花" rel="home">岁月缝花</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
 </header>
 
-<div id="content-outer">
-    <div id="content-inner">
-        <div class="clearfix">
-    <article id="post">
-        <h1>【155-186】第十一章 内置对象</h1>
-        <div class="create">
-            <span>Created</span>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-JS014" class="post-JS014 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      【155-186】第十一章 内置对象
+    </h1>
+  
+
+        
+        <div class="comments-link">
             
-                <time datetime="2023-07-30T08:44:00.000Z">
-                    2023-07-30
-                </time>
-            
-            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JS/">JS</a></li></ul>
-        </div>
+            <a href="javascript:void(0);" data-url="https://windflower2022.github.io/2023/07/30/JS014/" data-id="cls1q1aa00036m4vkbiv1hmua" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
         <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -598,58 +672,141 @@ console.log(Date.now());</br></br></br></br>
    6. 找出以上字符串中出现次数最多的字符和出现的次数</br></br>
   </body> 
 </html>
-        <div>
-            
-        </div>
-        <div class="bottom-line"></div>
-        
-    <nav id="article-nav">
-        
-            <a href="/2023/08/01/JS015/" id="article-nav-newer" class="article-nav-link-wrap">
-        <span class="article-nav-title">
-            
-                【187-190】第十二章 javaScript简单类型和复杂类型
-            
-        </span>
-                <strong class="article-nav-caption">&gt;</strong>
-            </a>
-        
-        
-            <a href="/2023/07/22/shui/" id="article-nav-older" class="article-nav-link-wrap">
-                <strong class="article-nav-caption">&lt;</strong>
-                <span class="article-nav-title">
-                    
-                        【风花音画】谁
-                </span>
-                
-            </a>
-        
-    </nav>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2023/07/30/JS014/">
+    <time datetime="2023-07-30T08:44:00.000Z" class="entry-date">
+        2023-07-30
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/JS/">JS</a>
+  </div>
+
+    
+    </footer>
+</article>
 
 
-        
-    </article>
-    <div id="toc">
-        
-            <h2>Table of Contents</h2>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.1.</span> <span class="toc-text">1 内置对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.2.</span> <span class="toc-text">2 查文档</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.1 MDN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2 如何学习对象中的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.2.3.</span> <span class="toc-text">3 Math对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.2.4.</span> <span class="toc-text">3.1 Math概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.2.5.</span> <span class="toc-text">3.2 随机数方法 random()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.3.</span> <span class="toc-text">4 Date对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.3.1.</span> <span class="toc-text">4.1 使用Date()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.4.</span> <span class="toc-text">5 数组对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.5.</span> <span class="toc-text">6 字符串对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.5.1.</span> <span class="toc-text">6.1 基本包装类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.5.2.</span> <span class="toc-text"> 6.2 字符串不可变 </span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.5.3.</span> <span class="toc-text"> 6.3 根据字符返回位置 </span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.5.4.</span> <span class="toc-text"> 6.4 根据位置返回字符 </span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.5.5.</span> <span class="toc-text"> 6.5 字符串操作方法 </span></a></li></ol></li></ol></li></ol>
-        
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2023/08/01/JS015/" rel="prev"><span class="meta-nav">←</span> 【187-190】第十二章 javaScript简单类型和复杂类型</a></span>
+    
+    
+        <span class="nav-next"><a href="/2023/07/22/shui/" rel="next">【风花音画】谁 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
     </div>
+</form></aside>
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ability/">Ability</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Alice/">Alice</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cloze/">Cloze</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Error-Correction/">Error Correction</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Grammar-Filling/">Grammar Filling</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sentences/">Sentences</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Writing/">Writing</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/diary/">diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/music/">music</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vocabulary/">vocabulary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/writing/">writing</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%A8%E5%9B%BD%E5%8D%B7/">全国卷</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BE%8E%E6%96%87/">美文</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9F%B3%E7%94%BB/">音画</a><span class="category-list-count">40</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A3%9F%E4%BA%8B/">食事</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2024/05/25/nsrjyh/">【风花音画】你是我的人间烟火</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/19/memory/">【风花音画】你记得花 花就一直开</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/19/memory1/">【风花音画】你记得花 花就一直开</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/06/brjym1/">【风花音画】不如见一面</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/05/brjym/">【风花音画】不如见一面</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/100/" rel="tag">100</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020-2/" rel="tag">2020-2</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020-3/" rel="tag">2020-3</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oral-English/" rel="tag">Oral English</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diary/" rel="tag">diary</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/" rel="tag">music</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vocabulary/" rel="tag">vocabulary</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BE%8E%E6%96%87/" rel="tag">美文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E7%94%BB/" rel="tag">音画</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E8%80%83/" rel="tag">高考</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/100/" style="font-size: 13.33px;">100</a> <a href="/tags/2020-2/" style="font-size: 16.67px;">2020-2</a> <a href="/tags/2020-3/" style="font-size: 16.67px;">2020-3</a> <a href="/tags/Oral-English/" style="font-size: 20px;">Oral English</a> <a href="/tags/diary/" style="font-size: 10px;">diary</a> <a href="/tags/music/" style="font-size: 13.33px;">music</a> <a href="/tags/vocabulary/" style="font-size: 10px;">vocabulary</a> <a href="/tags/%E7%BE%8E%E6%96%87/" style="font-size: 10px;">美文</a> <a href="/tags/%E9%9F%B3%E7%94%BB/" style="font-size: 10px;">音画</a> <a href="/tags/%E9%AB%98%E8%80%83/" style="font-size: 13.33px;">高考</a>
+    </div>
+  </aside>
+
+  
 </div>
-
-    </div>
-</div>
-<footer id="footer">
-    <div id="copyright">&copy; 白夜宁月  2024</div>
-    <div id="theme">
-        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
-    </div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2024 白夜宁月
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
 </footer>
-<script src="/lib/js/waterrippleeffect.min.js"></script>
-<script src="/js/header-bg.main.js"></script>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
 
-    <script src="/lib/js/smooth-scroll.min.js"></script>
-    <script src="/js/toc.main.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
 
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
 </body>
 </html>

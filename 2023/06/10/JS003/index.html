@@ -1,16 +1,10 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>【020-040】第三章 数据 | 岁月缝花</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="">
-    <meta name="description" content="
-
-
-
-数据类型
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="数据类型
 
     //var num;//这里的num我们是不确定属于哪种数据类型
     var num = 10;//num属于数字型
@@ -22,51 +16,229 @@
     var num = 10;//num属于数字型
     var PI = 3.14 //PI数字型
     //1. 八进制 0-7 我们程序里面数字前面加0表示八进制
-   ...">
-    
-        <link rel="icon" href="/favicon.ico">
-    
-    
-        
-            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-        
-            <link rel="stylesheet" href="/css/stage.css">
-        
-            <link rel="stylesheet" href="/css/avatar-bg.css">
-        
-    
-<meta name="generator" content="Hexo 6.3.0"></head>
+    var num1 = 010;
+    console.log(num1);// 010 八进制转换为 10 进制 就是 8
+    var num2 = 012;
+    console.log(num2);
+    //2. 16进制 0-9 a-f #ffffff 数字的前面加0x表示十六进制
+    var num3 = 0x9;
+    console.log(num3);
+    var num4 = 0xa;
+    console.log(num4);
+    //3. 数字的最大值
+    console.log(Number.MAX_VALUE);
+    //4. 数字的最小值
+    console.log(Number.MIN_VALUE);
+    //5. 无穷大
+    console.log(Number.MAX_VALUE * 2 );//Infinity
+    //6. 无穷小
+    console.log(-Number.MAX_VALUE* 2 );//-Infinity
+    //7. 非数字
+    console.log(&#39;pink老师&#39; - 100);//NaN
+    // isNaN() 这个方法用来判断非数字 并且返回一个值 如果是数字返回的是false 如果不是数字，返回的是ture
+    //console.log(isNaN(12));//false
+    //console.log(isNaN(&#39;pink老师&#39;));//true
+    //alert(&#39;I like you to be still \n &#34;Do you have the same feeling? &#34; &#39;)
+    //1. 检测获取字符串的长度 lenth
+    //var str = &#39;my name is andy&#39;;
+    //console.log(str.length);//15
+    //var strMsg = &#39;应该制定一个学习计划&#39;;
+    //alert(strMsg.length);
+    //2. 字符串的拼接 + 
+    console.log(&#39;风飞&#39; + &#34;花起&#34;);//字符串的 风飞花起
+    console.log(&#39;pink&#39; + &#39;18&#39;);
+    console.log(&#39;pink&#39; + true);
+    console.log(12 + 12);//24
+    console.log(&#39;12&#39; + 12);
+    //3. 字符串拼接的加强
+    console.log(&#39;pink老师&#39;+18);//pink老师18
+    console.log(&#39;pink&#39;+18+&#39;岁&#39;);//pink老师18岁
+    var age = 18;
+    console.log(&#39;pink老师age岁&#39;);
+    // 我们变量不要写到字符串里面，是通过和字符串相连的方式实现的
+    console.log(&#39;pink老师&#39;+ age + &#39;岁&#39;);//pink老师18岁 
+    // 变量和字符串相连的口诀： 引引加加
+    console.log(&#39;pink老师&#39;+age+&#39;岁&#39;);
+    // 案例 程序交互三部曲
+    // 1. 弹出一个输入框(prompt),让用户输入年龄(用户输入)
+    // 2. 把用户输入的值用变量保存起来,把刚才输入的年龄与所要输出的字符串拼接(程序内部处理)
+    // 3. 使用alert语句弹出警示框(输出结果)
+    //var age = prompt(&#39;请输入您的年龄&#39;);
+    //var str = &#39;您今年已经&#39;+ age +&#39;岁了&#39;;//内部处理
+    //alert(str);
+    //布尔型
+    var flag = true; //flag 布尔型 参与加法运算当作1
+    var flag1 = false; //flag1 布尔型 加法里当作0
+    console.log(flag + 1); // true  2
+    console.log(flag1 + 1); // false 1
+    //如果一个变量声明未赋值 就是undefined 未定义数据类型
+    var str;
+    console.log(str);
+    var variable = undefined;
+    console.log(variable + &#39;pink&#39;); // underfinedpink
+    console.log(variable + 1);// NaN undefined 和数字相加 最后的结果是 NaN即not a number
+    // null 空值
+    var space = null;
+    console.log(space + &#39;pink&#39;); // nullpink
+    console.log(space + 1); // 1
+    // 获取数据类型
+    var num = 10;
+    console.log(typeof num); // number
+    var str = &#39;pink&#39;;
+    console.log(typeof str); //string
+    var flag = true;
+    console.log(typeof flag); // blean
+    var vari = undefined;
+    console.log(typeof vari); // undefined
+    var timer = null;
+    console.log(typeof timer); // object
+    // prompt 取过来的值是 字符型的
+    var age = prompt(&#39;请输入您的年龄&#39;);
+    console.log(age);
+    console.log(typeof age);
+    // 据输出颜色也可判断什么类型
+    console.log(18);
+    console.log(&#39;18&#39;);
+    console.log(true);
+    console.log(undefined);
+    console.log(null);
+    // 转换字符串
+    // 1.把数字型转换成, 变量.toString()
+    var num = 10;
+    var str = num.toString();
+    console.log(str);
+    console.log(typeof str);
+    // 2.利用String() 把变量放入小括号里
+    console.log(String(num));
+    // 3.利用 + 拼接字符串的方法来实现
+    console.log(num + &#39;1&#39;);
+    //转换为数字型
+    var age = prompt(&#39;请输入您的年龄&#39;);
+    console.log(age);
+    // 1. parseInt(变量) 可以把字符型的转换为数字型 得到的是整数
+    console.log(parseInt(age));
+    console.log(parseInt(&#39;3.94&#39;)); //3
+    console.log(parseInt(&#39;120px&#39;));//120
+    console.log(parseInt(&#39;rem120px&#39;));  //NaN
+    // 2. parseFloat(变量) 可以把字符型的转换为数字型 得到的是小数 浮点数
+    console.log(parseFloat(&#39;3.94&#39;)); //3.94
+    console.log(parseFloat(&#39;120px&#39;)); //120
+    console.log(parseFloat(&#39;rem120px&#39;));  //NaN
+    // 3.利用Number(变量)
+    var str = &#39;123&#39;;
+    console.log(Number(str));
+    console.log(Number(&#39;12&#39;));//12
+    // 4. 利用了算数运算- * /
+    console.log(&#39;12&#39;-0);//12
+    console.log(&#39;123&#39;-&#39;120&#39;);//3
+    console.log(&#39;123&#39;*2);//246
+    console.log(&#39;123&#39;-120);//3
+    console.log(&#39;123&#39;*&#39;2&#39;);//246
+    // 案例 计算年龄
+    //var year = prompt(&#39;请输入您的出生年份&#39;);
+    //var age = 2023 - year;//year取过来的是字符串型 但这是减法 有隐式转换
+    //alert(&#39;您今年已经&#39;+ age +&#39;岁了&#39;);
+    // 案例2 加法计算
+    //var num1 = prompt(&#39;请您输入第一个值&#39;);
+    //var num2 = prompt(&#39;请您输入第二个值&#39;);
+    //var result = parseFloat(num1) + parseFloat(num2);
+    //alert(&#39;您的结果是:&#39; + result);
+    //转换为布尔值
+    console.log(Boolean(&#39;&#39;)); //false
+    console.log(Boolean(0));  //false
+    console.log(Boolean(NaN)); //false
+    console.log(Boolean(null)); //false
+    console.log(Boolean(undefined)); //false
+    console.log(Boolean(&#39;小白&#39;)); //true
+    console.log(Boolean(12)); //true
 
-<body>
-<header id="header">
-    <div class="menu">
-        <i class="fa fa-bars"></i>
-    </div>
-    <div class="header-main">
-        <h1><a href="/">岁月缝花</a></h1>
-    </div>
-    <div id="nav">
-        <div class="nav-img" id="nav-img"></div>
-        <div class="sentences">
-            How goes the world with you?
-        </div>
-    </div>
+
+    
+目标" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>【020-040】第三章 数据 | 岁月缝花</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="数据类型      &#x2F;&#x2F;var num;&#x2F;&#x2F;这里的num我们是不确定属于哪种数据类型     var num &#x3D; 10;&#x2F;&#x2F;num属于数字型     &#x2F;&#x2F;js的变量数据类型是只有程序在运行过程中，根据等号右边的值来确定的     var str &#x3D; &#39;pink&#39;&#x2F;&#x2F;str属于字符串型     &#x2F;&#x2F;js时动态语言 变量的数据类型是可以变化的     var x &#x3D; 10;&#x2F;&#x2F;x是数字型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【020-040】第三章 数据">
+<meta property="og:url" content="https://windflower2022.github.io/2023/06/10/JS003/index.html">
+<meta property="og:site_name" content="岁月缝花">
+<meta property="og:description" content="数据类型      &#x2F;&#x2F;var num;&#x2F;&#x2F;这里的num我们是不确定属于哪种数据类型     var num &#x3D; 10;&#x2F;&#x2F;num属于数字型     &#x2F;&#x2F;js的变量数据类型是只有程序在运行过程中，根据等号右边的值来确定的     var str &#x3D; &#39;pink&#39;&#x2F;&#x2F;str属于字符串型     &#x2F;&#x2F;js时动态语言 变量的数据类型是可以变化的     var x &#x3D; 10;&#x2F;&#x2F;x是数字型">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-06-10T10:41:59.000Z">
+<meta property="article:modified_time" content="2023-06-25T04:46:25.824Z">
+<meta property="article:author" content="白夜宁月">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="岁月缝花" rel="home">岁月缝花</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
 </header>
 
-<div id="content-outer">
-    <div id="content-inner">
-        <div class="clearfix">
-    <article id="post">
-        <h1>【020-040】第三章 数据</h1>
-        <div class="create">
-            <span>Created</span>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-JS003" class="post-JS003 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      【020-040】第三章 数据
+    </h1>
+  
+
+        
+        <div class="comments-link">
             
-                <time datetime="2023-06-10T10:41:59.000Z">
-                    2023-06-10
-                </time>
-            
-            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JS/">JS</a></li></ul>
-        </div>
+            <a href="javascript:void(0);" data-url="https://windflower2022.github.io/2023/06/10/JS003/" data-id="cls1q1a9p001um4vkcnp542we" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
         <!DOCTYPE html>
 <html>
 <head>
@@ -676,58 +848,141 @@ toString()和String()使用方式不一样
     2. 依次询问并获取用户的姓名、年龄、性别、并打印用户信息</br></br>
 </body>
 </html>
-        <div>
-            
-        </div>
-        <div class="bottom-line"></div>
-        
-    <nav id="article-nav">
-        
-            <a href="/2023/06/15/JS004/" id="article-nav-newer" class="article-nav-link-wrap">
-        <span class="article-nav-title">
-            
-                【041-054】第四章 运算符
-            
-        </span>
-                <strong class="article-nav-caption">&gt;</strong>
-            </a>
-        
-        
-            <a href="/2023/06/08/hjhjyq/" id="article-nav-older" class="article-nav-link-wrap">
-                <strong class="article-nav-caption">&lt;</strong>
-                <span class="article-nav-title">
-                    
-                        【风花音画】很久很久以前
-                </span>
-                
-            </a>
-        
-    </nav>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2023/06/10/JS003/">
+    <time datetime="2023-06-10T10:41:59.000Z" class="entry-date">
+        2023-06-10
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/JS/">JS</a>
+  </div>
+
+    
+    </footer>
+</article>
 
 
-        
-    </article>
-    <div id="toc">
-        
-            <h2>Table of Contents</h2>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.1.</span> <span class="toc-text">一、数据类型简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.1 为什么需要数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.1.2.</span> <span class="toc-text">1.2 变量的数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.1.3.</span> <span class="toc-text">1.3 数据类型的分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.2.</span> <span class="toc-text">二、简单数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.1 简单数据类型(基本数据类型)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2 数字型 Number</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.2.3.</span> <span class="toc-text">2.3 字符串型 String</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.2.4.</span> <span class="toc-text">2.4 案例： 弹出网页警示框</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.2.5.</span> <span class="toc-text">2.5 布尔型 Boolean</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.2.6.</span> <span class="toc-text">2.6 Undefined 和 Null</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.3.</span> <span class="toc-text">三、获取变量数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.3.1.</span> <span class="toc-text">3.1 获取检测变量的数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.3.2.</span> <span class="toc-text">3.2 字面量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.4.</span> <span class="toc-text">四、数据类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.4.1.</span> <span class="toc-text">4.1 什么是数据类型转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.4.2.</span> <span class="toc-text">4.2 转换为字符串类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.4.3.</span> <span class="toc-text">4.3 转换为数字型(重点)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.4.4.</span> <span class="toc-text"> 案例1: 计算年龄</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.4.5.</span> <span class="toc-text"> 案例2: 简单加法器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.4.6.</span> <span class="toc-text">4.4 转换为布尔型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">扩展阅读目标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">3.1.</span> <span class="toc-text">一. 解释性语言和编译性语言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">3.1.1.</span> <span class="toc-text">1. 概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">3.1.2.</span> <span class="toc-text">2. 执行过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">3.2.</span> <span class="toc-text">二.  标识符、关键字、保留字</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">3.2.1.</span> <span class="toc-text">1. 标识符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">3.2.2.</span> <span class="toc-text">2. 关键字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">3.2.3.</span> <span class="toc-text">3. 保留字</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">3.3.</span> <span class="toc-text">三.  数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">3.3.1.</span> <span class="toc-text">3. 课后作业</span></a></li></ol></li></ol></li></ol>
-        
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2023/06/15/JS004/" rel="prev"><span class="meta-nav">←</span> 【041-054】第四章 运算符</a></span>
+    
+    
+        <span class="nav-next"><a href="/2023/06/08/hjhjyq/" rel="next">【风花音画】很久很久以前 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
     </div>
+</form></aside>
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ability/">Ability</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Alice/">Alice</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cloze/">Cloze</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Error-Correction/">Error Correction</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Grammar-Filling/">Grammar Filling</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sentences/">Sentences</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Writing/">Writing</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/diary/">diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/music/">music</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vocabulary/">vocabulary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/writing/">writing</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%A8%E5%9B%BD%E5%8D%B7/">全国卷</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BE%8E%E6%96%87/">美文</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9F%B3%E7%94%BB/">音画</a><span class="category-list-count">40</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A3%9F%E4%BA%8B/">食事</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2024/05/25/nsrjyh/">【风花音画】你是我的人间烟火</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/19/memory/">【风花音画】你记得花 花就一直开</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/19/memory1/">【风花音画】你记得花 花就一直开</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/06/brjym1/">【风花音画】不如见一面</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/05/brjym/">【风花音画】不如见一面</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/100/" rel="tag">100</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020-2/" rel="tag">2020-2</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020-3/" rel="tag">2020-3</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oral-English/" rel="tag">Oral English</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diary/" rel="tag">diary</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/" rel="tag">music</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vocabulary/" rel="tag">vocabulary</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BE%8E%E6%96%87/" rel="tag">美文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E7%94%BB/" rel="tag">音画</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E8%80%83/" rel="tag">高考</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/100/" style="font-size: 13.33px;">100</a> <a href="/tags/2020-2/" style="font-size: 16.67px;">2020-2</a> <a href="/tags/2020-3/" style="font-size: 16.67px;">2020-3</a> <a href="/tags/Oral-English/" style="font-size: 20px;">Oral English</a> <a href="/tags/diary/" style="font-size: 10px;">diary</a> <a href="/tags/music/" style="font-size: 13.33px;">music</a> <a href="/tags/vocabulary/" style="font-size: 10px;">vocabulary</a> <a href="/tags/%E7%BE%8E%E6%96%87/" style="font-size: 10px;">美文</a> <a href="/tags/%E9%9F%B3%E7%94%BB/" style="font-size: 10px;">音画</a> <a href="/tags/%E9%AB%98%E8%80%83/" style="font-size: 13.33px;">高考</a>
+    </div>
+  </aside>
+
+  
 </div>
-
-    </div>
-</div>
-<footer id="footer">
-    <div id="copyright">&copy; 白夜宁月  2024</div>
-    <div id="theme">
-        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
-    </div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2024 白夜宁月
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
 </footer>
-<script src="/lib/js/waterrippleeffect.min.js"></script>
-<script src="/js/header-bg.main.js"></script>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
 
-    <script src="/lib/js/smooth-scroll.min.js"></script>
-    <script src="/js/toc.main.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
 
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
 </body>
 </html>
