@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>【069】CSS选择器的权重 | 岁月缝花</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="
+
+
+    
+    
+    
+    selector 
+
+
+    
+     
+        多个选择器修饰同一个元素，优先级的判断：内联&gt;内部&gt;ID选择器&gt;类选择器&gt;元素选择器&gt;通用选择器*
+    
+    
+        即行内样式&gt;ID选择器&gt;类选择器&gt;元素选择器&gt;通用选择器*,选择器选择范围小，越精确，优先级越高。
+    
+    
+       样式发生冲突时，权重值高优先考虑。权重值计算见下面
+          选择器          例子          权重值
+       1. 通用计算器       *             0
+       2.元素选择器     h1,d...">
+    
+        <link rel="icon" href="/favicon.ico">
+    
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">岁月缝花</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            How goes the world with you?
+        </div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    <article id="post">
+        <h1>【069】CSS选择器的权重</h1>
+        <div class="create">
+            <span>Created</span>
+            
+                <time datetime="2022-10-04T01:33:59.000Z">
+                    2022-10-04
+                </time>
+            
+            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CSS/">CSS</a></li></ul>
+        </div>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selector</title> 
+</head>
+<body>
+    <h1></h1>
+    <p> 
+        多个选择器<span id="more"></span>修饰同一个元素，优先级的判断：内联>内部>ID选择器>类选择器>元素选择器>通用选择器*
+    </p>
+    <p>
+        即行内样式>ID选择器>类选择器>元素选择器>通用选择器*,选择器选择范围小，越精确，优先级越高。
+    </p>
+    <p>
+       样式发生冲突时，权重值高优先考虑。权重值计算见下面<br><br>
+          选择器          例子          权重值<br><br>
+       1. 通用计算器       *             0<br><br>
+       2.元素选择器     h1,div,p         1<br><br>
+       3.类选择器       .active,.light   10<br><br>
+       4.ID选择器       #box,#btn        100<br><br>
+       5.行内选择器     <h1 style="">    1000<br><br>
+        如：<br><br>
+        #box p .light{/* 100+1+10=111 */<br><br>
+            color= red;<br><br>
+        }<br><br>
+        
+<pre><code>    #box .light &#123;/* 100+10=110 */
+        color: red;
+    &#125;
+</code></pre>
+</body>
+</html>
+        <div>
+            
+        </div>
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+            <a href="/2022/10/04/hell0-world19/" id="article-nav-newer" class="article-nav-link-wrap">
+        <span class="article-nav-title">
+            
+                【071】CSS边框综合案例
+            
+        </span>
+                <strong class="article-nav-caption">&gt;</strong>
+            </a>
+        
+        
+            <a href="/2022/10/03/hell0-world16/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        【068】谷歌字体和ICON图标
+                </span>
+                
+            </a>
+        
+    </nav>
+
+
+        
+    </article>
+    <div id="toc">
+        
+            <h2>Table of Contents</h2>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">    1000
+        如：
+        #box p .light{&#x2F;* 100+1+10&#x3D;111 *&#x2F;
+            color&#x3D; red;
+        }
+        
+    #box .light {&#x2F;* 100+10&#x3D;110 *&#x2F;
+        color: red;
+    }
+
+</span></a></li></ol>
+        
+    </div>
+</div>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; 白夜宁月  2024</div>
+    <div id="theme">
+        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
+
+</body>
+</html>

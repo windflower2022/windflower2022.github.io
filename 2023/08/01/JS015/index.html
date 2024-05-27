@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>【187-190】第十二章 javaScript简单类型和复杂类型 | 岁月缝花</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="
+
+
+    
+    
+    
+    JavaScript的简单类型和复杂类型
+    
+         function fn(a) { 
+            a++; 
+            console.log(a); // 11 
+        } 
+        var x = 10; 
+        fn(x); 
+        console.log(x); 
+
+    function person(name) &amp;#123;
+        this.name = name;
+    &amp;#125;
+    function f1(x) &amp;#123; // x = p
+       ...">
+    
+        <link rel="icon" href="/favicon.ico">
+    
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">岁月缝花</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            How goes the world with you?
+        </div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    <article id="post">
+        <h1>【187-190】第十二章 javaScript简单类型和复杂类型</h1>
+        <div class="create">
+            <span>Created</span>
+            
+                <time datetime="2023-07-31T23:44:00.000Z">
+                    2023-08-01
+                </time>
+            
+            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JS/">JS</a></li></ul>
+        </div>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript的简单类型和复杂类型</title>
+    <script>
+         function fn(a) { 
+            a++; 
+            console.log(a); // 11 
+        } 
+        var x = 10; 
+        fn(x); 
+        console.log(x); 
+
+<pre><code>    function person(name) &#123;
+        this.name = name;
+    &#125;
+    function f1(x) &#123; // x = p
+        console.log(x.name); // 2. 这个输出是什么 刘德华
+        x.name = &quot;张学友&quot;;
+        console.log(x.name); // 3. 这个输出是什么 张学友
+    &#125;
+    var p = new person(&quot;刘德华&quot;);
+    console.log(p.name);  // 1. 这个输出是什么 刘德华
+    f1(p);
+    console.log(p.name); // 4. 这个输出是什么 张学友
+&lt;/script&gt;
+</code></pre>
+</head>
+<body>
+        <h2>目标</h2>
+        <span id="more"></span>
+        能说出简单数据类型的内存分配</br></br>
+        能说出复杂数据类型的内存分配</br></br>
+        能够说出简单类型如何传参</br></br>
+        能输出复杂类型如何传参</br></br>
+        <h2>目录</h2>
+        简单类型与复杂类型</br></br>
+        堆和栈</br></br>
+        简单类型的内存分配</br></br>
+        复杂类型的内存分配</br></br>
+        简单类型传参</br></br>
+        复杂类型传参</br></br>
+        <h4>1. 简单数据类型和复杂数据类型</h4>
+        简单类型又叫作数据基本类型或者值类型,复杂类型又叫做引用类型</br></br>
+        值类型：简单数据类型/基本数据类型,在存储时变量中存储的是值本身,因此叫做值类型</br></br>
+        string, number, boolean, undefined,null</br></br>
+        引用类型:复杂数据类型,在存储时变量中存储的仅仅时地址(引用),因此叫做引用数据类型</br></br>
+        通过new关键字创建的对象(系统对象、自定义对象),如object, Array, Date等</br></br>
+        简单数据类型 null 返回的是一个空的对象 object </br></br>
+        var timer = null;</br></br>
+        console.log(typeOf timer);</br></br>
+        如果有个变量我们以后打算储存为对象 暂时没想好放啥 这个时候就给null</br></br>
+        <h4>2. 堆和栈</h4>
+        1) 简单数据类型存于栈,里面直接开辟一个空间，存的是一个值</br></br>
+        2) 复杂数据类型 首先在栈里面存放地址 十六进制表示 然后这个地址指向堆里面的数据</br></br>
+        <h4>3. 简单类型传参</h4>
+        函数的形参也看作是一个变量,当我们把一个值类型变量作为参数传给函数的形参时,其实是把变量在栈空间里的值复制了一份给形参,那么在方法内部对形参做任何修改,都不会影响到的外部变量</br></br>
+        function fn(a) { </br></br>
+            a++; </br></br>
+            console.log(a); // 11 </br></br>
+        } </br></br>
+        var x = 10; </br></br>
+        fn(x); </br></br>
+        console.log(x); // 10 </br></br>
+        <h4>3. 复杂类型传参</h4>
+        函数的形参也可以看做是一个变量,当我们把引用类型变量传给形参时,其实是把变量在栈空间里保存的堆地址复制给了形参,形参和实参其实保存的是同一个堆地址，所以操作的是同一个对象</br></br>
+        function person(name) { </br></br>
+            this.name = name; </br></br>
+        } </br></br>
+        function f1(x) { // x = p </br></br>
+            console.log(x.name); // 2. 这个输出是什么 </br></br>
+            x.name = "张学友"; </br></br>
+            console.log(x.name); // 3. 这个输出是什么 </br></br>
+        } </br></br>
+        var p = new person("刘德华"); </br></br>
+        console.log(p.name);  // 1. 这个输出是什么 </br></br>
+        f1(p); </br></br>
+        console.log(p.name); // 4. 这个输出是什么 </br></br>
+</body>
+</html>
+        <div>
+            
+        </div>
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+            <a href="/2023/08/20/ygez/" id="article-nav-newer" class="article-nav-link-wrap">
+        <span class="article-nav-title">
+            
+                【风花音画】因歌而作
+            
+        </span>
+                <strong class="article-nav-caption">&gt;</strong>
+            </a>
+        
+        
+            <a href="/2023/07/30/JS014/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        【155-186】第十一章 内置对象
+                </span>
+                
+            </a>
+        
+    </nav>
+
+
+        
+    </article>
+    <div id="toc">
+        
+            <h2>This post does not have a Table of Contents</h2>
+        
+    </div>
+</div>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; 白夜宁月  2024</div>
+    <div id="theme">
+        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
+
+</body>
+</html>

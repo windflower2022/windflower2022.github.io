@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>【140-142】第九章 预解析 | 岁月缝花</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="
+
+
+    
+    
+    
+    预解析
+ 
+      /* 
+    // 1 问
+     console.log(); // 报错
+    // 2 问
+     console.log(num); // undefined
+     var num = 10;
+    // 3 问
+    fn(); // 写在上,下面均可
+    function fn() {
+        console.log(11); // 11
+    }
+    // 4问
+    var fun = function() {
+        console.log(22); // 22
+    }
+    fn();...">
+    
+        <link rel="icon" href="/favicon.ico">
+    
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">岁月缝花</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            How goes the world with you?
+        </div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    <article id="post">
+        <h1>【140-142】第九章 预解析</h1>
+        <div class="create">
+            <span>Created</span>
+            
+                <time datetime="2023-07-06T00:08:59.000Z">
+                    2023-07-06
+                </time>
+            
+            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JS/">JS</a></li></ul>
+        </div>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>预解析</title>
+ <script>
+      /* 
+    // 1 问
+     console.log(); // 报错
+    // 2 问
+     console.log(num); // undefined
+     var num = 10;
+    // 3 问
+    fn(); // 写在上,下面均可
+    function fn() {
+        console.log(11); // 11
+    }
+    // 4问
+    var fun = function() {
+        console.log(22); // 22
+    }
+    fn(); // 不可以放最上面
+    */
+    </script>
+</head>
+<body>
+    <h2>目标</h2>
+    <span id="more"></span>
+    能知道解析器运行JS分哪两步</br></br>
+    能说出变量提升的步骤和运行过程</br></br>
+    能说出函数提升的步骤和运行过程</br></br>
+    <h2>目录</h2>
+    预解析</br></br>
+    变量预解析和函数预解析</br></br>
+    预解析案例</br></br>
+    <h3>预解析</h3>
+    热身</br></br>
+    // 1 问</br></br>
+     console.log(); // 报错</br></br>
+
+<pre><code>// 2 问
+ console.log(num); // undefined
+ var num = 10;
+ // 预解析时，相当于执行了以下代码
+var num;
+console.log(num);
+num = 10;
+
+// 3 问
+fn(); // 写在上,下面均可
+function fn() &#123;
+    console.log(11); // 11
+&#125;
+// 函数提升 相当于
+function fn() &#123;
+    console.log(11); // 11
+&#125;
+fn(); 
+
+// 4问
+var fun = function() &#123;
+    console.log(22); // 22
+&#125;
+fn(); // 函数表达式 调用必须写在函数表达式下面,不可以放最上面 
+// 如果放上面，预解析时，相当于执行了以下代码
+var fun;
+fun(); 
+fun = function() [
+    console.log(22);
+]
+ 
+1. JavaScript解释器运行js，分两步，先预解析，再执行代码
+1). 预解析 js引擎会把js里面所有的var还有function提升到当前作用域的最前面
+2). 代码执行 按照代码书写的顺序由上往下执行 
+2。 预解析分为变量预解析(变量提升）和函数预解析(函数提升)
+ 1) 变量提升 就是把所有的变量声明提升到当前的作用域最前面 不提升赋值声明
+ 2）函数提升 就是把所有的函数声明提升到当前的作用域最前面 不调用函数
+ &lt;h4&gt;预解析案例1&lt;/h4&gt;
+ 案例1: 结果是几 // undefined
+ var num = 10;
+ fun();
+
+ function fun() &#123;
+    console.log(num);
+    var num = 20;
+ &#125;
+ // 相当于执行以下操作
+ var num;
+
+  function fun() &#123;
+    var num;
+    console.log(num);
+     num = 20;
+ &#125;
+ num = 10 ;
+ fun();
+
+ 案例2: 结果是几？undefined, 20
+var num = 10;
+function fn() &#123;
+    console.log(num);
+    var num = 20;
+    console.log(num);
+&#125;
+fn();
+
+// 相当于
+var num;
+
+function fn() &#123;
+    var num;
+    console.log(num); // undefined
+    num = 20;         // 20
+    console.log(num);
+&#125;
+num = 10;
+fn();
+
+案例3：结果是几 undefined, 9
+var a = 18;
+f1();
+function f1() &#123;
+    var b = 9;
+    console.log(a);
+    console.log(b);
+    var a = &#39;123&#39;;
+&#125;
+// 相当于
+var a;
+ function f1() &#123;
+    var b;
+    var a; // underfined
+    b = 9; // 9
+    console.log(a);
+    console.log(b);
+    a = &#39;123&#39;;
+&#125;
+a = 18;
+f1();
+案例4 结果是几？
+f1();
+console.log(c);
+console.log(b);
+console.log(c);
+
+fuction f1() &#123;
+    var a = b = c = 9;
+    console.log(a);
+    console.log(b);
+    console.log(c);
+&#125;
+// 相当于
+fuction f1() &#123;
+    var a;
+    a = b = c = 9;
+    // 相当于 var a = 9; b = 9; c = 9; b 和 c 直接赋值,没有声明 当 全局变量看
+    // 相当于 var a = 9, b = 9, c = 9;
+    console.log(a); // 9
+    console.log(b); // 9 
+    console.log(c); // 9
+&#125;
+f1();
+console.log(c); // 9
+console.log(b); // 9
+console.log(c); // 报错
+</code></pre>
+</body>
+</html>
+        <div>
+            
+        </div>
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+            <a href="/2023/07/07/JS013/" id="article-nav-newer" class="article-nav-link-wrap">
+        <span class="article-nav-title">
+            
+                【143-154】第十章 对象
+            
+        </span>
+                <strong class="article-nav-caption">&gt;</strong>
+            </a>
+        
+        
+            <a href="/2023/07/05/JS011/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        【131-139】第八章 作用域
+                </span>
+                
+            </a>
+        
+    </nav>
+
+
+        
+    </article>
+    <div id="toc">
+        
+            <h2>Table of Contents</h2>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.1.</span> <span class="toc-text">预解析</span></a></li></ol></li></ol>
+        
+    </div>
+</div>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; 白夜宁月  2024</div>
+    <div id="theme">
+        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
+
+</body>
+</html>

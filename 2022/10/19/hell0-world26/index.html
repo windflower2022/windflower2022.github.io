@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>【080】CSS盒模型 | 岁月缝花</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="
+
+
+    
+    
+    
+    box model
+    
+
+
+    
+    
+    css盒模型本质上是一个包裹每个html元素的盒子，包含四个部分margin,boder,padding,content(图片，文本等)
+    在css里，定义通配符选择器*声明样式margin:0;padding:0;取消所有元素默认的边距和填充样式
+    
+           
+        在浏览器中，正确设置一个盒子的宽度，高度对于精确的页面布局意义重大。
+        盒子的宽度=内容宽度+左填充+右填充+左边框+右边框+左边距+右边距
+        盒子的高度=内容高度+上填充+下填充+上边框...">
+    
+        <link rel="icon" href="/favicon.ico">
+    
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">岁月缝花</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            时光荏苒，旦夕之间，略有遗憾，似白驹过隙，蹉跎自悟。
+        </div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    <article id="post">
+        <h1>【080】CSS盒模型</h1>
+        <div class="create">
+            <span>Created</span>
+            
+                <time datetime="2022-10-19T14:12:27.000Z">
+                    2022-10-19
+                </time>
+            
+            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CSS/">CSS</a></li></ul>
+        </div>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>box model</title>
+    <link rel="stylesheet" href="box-model-style.css">
+</head>
+<body>
+    <br><br>
+    <div class="box1">
+    css盒模型<span id="more"></span>本质上是一个包裹每个html元素的盒子，包含四个部分margin,boder,padding,content(图片，文本等)
+    在css里，定义通配符选择器*声明样式margin:0;padding:0;取消所有元素默认的边距和填充样式
+    </div>
+    <div class="box2">       
+        在浏览器中，正确设置一个盒子的宽度，高度对于精确的页面布局意义重大。
+        盒子的宽度=内容宽度+左填充+右填充+左边框+右边框+左边距+右边距
+        盒子的高度=内容高度+上填充+下填充+上边框+下边框+上边距+右边距
+        css设置的宽度高度，只是内容的宽高，不包括填充，边框，边距。上面这种计算大小的盒子模型叫标准盒模型。<br><br>
+    </div>
+    <div class="box3">
+        怪异盒模型： 设置元素的margin,padding后，固定为Width,height的值。属性设置为box-sizing:border-box;则按照怪异模型呈现大小；值为content-box,则为标准盒模型，通常为设置，容器大小就按标准盒模型计算。
+    </div>
+    <div class="box4">
+        盒子的宽度=css样式设置的width+左边距+右边距<br>
+        盒子的高度=css样式设置的height+上边距+下边距<br>
+    </div><br><br>
+
+    
+</body>
+</html>
+</body>
+</html>
+        <div>
+            
+        </div>
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+            <a href="/2022/10/20/hell0-world27/" id="article-nav-newer" class="article-nav-link-wrap">
+        <span class="article-nav-title">
+            
+                【081】CSS盒模型案例
+            
+        </span>
+                <strong class="article-nav-caption">&gt;</strong>
+            </a>
+        
+        
+            <a href="/2022/10/19/hell0-world25/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        【079】CSS填充和宽高
+                </span>
+                
+            </a>
+        
+    </nav>
+
+
+        
+    </article>
+    <div id="toc">
+        
+            <h2>This post does not have a Table of Contents</h2>
+        
+    </div>
+</div>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; 白夜宁月  2024</div>
+    <div id="theme">
+        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
+
+</body>
+</html>

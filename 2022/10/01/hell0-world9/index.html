@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>【061】伪元素选择器 | 岁月缝花</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="
+
+
+    
+    
+    
+    Document
+    
+    div {
+        width: 600px;
+        height: 200px;
+        background-color: red;
+    }
+
+div::first-letter &amp;#123;
+    color: blue;
+    font-size: 30px;     
+&amp;#125;  
+
+div::first-line&amp;#123;
+    color: rgb(236, 245, 241) ;
+    font-size: 20px;
+    font-style: italic;
+&amp;#125;
+
+...">
+    
+        <link rel="icon" href="/favicon.ico">
+    
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">岁月缝花</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            时光荏苒，旦夕之间，略有遗憾，似白驹过隙，蹉跎自悟。
+        </div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    <article id="post">
+        <h1>【061】伪元素选择器</h1>
+        <div class="create">
+            <span>Created</span>
+            
+                <time datetime="2022-10-01T04:21:59.000Z">
+                    2022-10-01
+                </time>
+            
+            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CSS/">CSS</a></li></ul>
+        </div>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    div {
+        width: 600px;
+        height: 200px;
+        background-color: red;
+    }
+
+<pre><code>div::first-letter &#123;
+    color: blue;
+    font-size: 30px;     
+&#125;  
+
+div::first-line&#123;
+    color: rgb(236, 245, 241) ;
+    font-size: 20px;
+    font-style: italic;
+&#125;
+
+div::before &#123;
+    content: &quot;我喜欢这句话&quot;;  
+    font-size: 20px;
+    color: green;  
+&#125;  
+
+div::after &#123;
+    content: &quot;《你若盛开 蝴蝶自来》用从容而舒缓的语言，将女人自我经营的智慧娓娓道来，轻柔地提醒世间所有热爱生命、热爱美好生活的女性，要用微笑来经营生活，用真诚来经营情感，用宽容来经营人际，用淡定来经营心灵。你若盛开，蝴蝶自来。你若精彩，天自安排。愿女性朋友们能够一起努力完善自己，创造自然的吸引力。&quot;;
+    font-size: 20px;
+    color: green;
+&#125; 
+
+div::selection &#123;
+   color: red;
+   background-color: skyblue;
+&#125;
+</code></pre>
+<p></style></p>
+</head>
+<body>
+<div>
+    你若盛开，蝴蝶自来。
+    <span id="more"></span>
+    我们生命中的一切所愿，其实不应该用"追求"，而应该用"吸引"。在浮躁而慌乱的世界里，让自己活成一株温婉优雅的玫瑰，让生命吐露芬芳，你所追求的一切才会款款而来。
+</div>
+&nbsp;&nbsp; <h3></h3><br>
+即假元素选择器，通过它，可以设置元素指定部分的样式。主要用来设置元素内文本的首字母，首行的样式，或是在元素内容之前或之后插入其他内容。<br><br>
+语法：selector为目标元素，::Pseudo-element,就是向目标元素添加伪元素。<br><br>
+selector::pseudo-element {<br><br>
+    color: red;<br><br>
+    font-size；3px;<br><br>
+}<br><br>
+伪元素选择器共有5种：<br><br>
+::first-letter:用来实现向文本的首个字符添加特殊样式<br><br>
+::first-line:用来实现向文本的首行添加特殊样式<br><br>
+::before:用来实现元素内容之前插入内容<br><br>
+::after:用来实现元素内容之后插入内容<br><br>
+::selection:用来更改选中文本的样式.只支持color（文本颜色）,background（背景）,cursor（鼠标样式）,outline（描边效果）<br><br>
+</body>
+</html> 
+
+        <div>
+            
+        </div>
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+            <a href="/2022/10/01/hell0-world10/" id="article-nav-newer" class="article-nav-link-wrap">
+        <span class="article-nav-title">
+            
+                【062】简单和组合选择器
+            
+        </span>
+                <strong class="article-nav-caption">&gt;</strong>
+            </a>
+        
+        
+            <a href="/2022/10/01/hell0-world8/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        【060】伪类选择器
+                </span>
+                
+            </a>
+        
+    </nav>
+
+
+        
+    </article>
+    <div id="toc">
+        
+            <h2>Table of Contents</h2>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li></ol>
+        
+    </div>
+</div>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; 白夜宁月  2024</div>
+    <div id="theme">
+        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
+
+</body>
+</html>

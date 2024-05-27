@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>【062】简单和组合选择器 | 岁月缝花</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="
+
+
+    
+    
+    
+    Document
+    
+     [type] {
+        width: 50px;
+        height: 50px;
+    }
+    
+[name=&amp;quot;sex&amp;quot;] &amp;#123;
+    width: 20th;
+    height: 20px;
+&amp;#125;
+
+[class~=&amp;quot;box&amp;quot;] &amp;#123;
+    background-color: yellow;
+&amp;#125;
+
+[class|=&amp;quot;box&amp;quot;] &amp;#123;
+    background-color: blue;
+&amp;#125;
+...">
+    
+        <link rel="icon" href="/favicon.ico">
+    
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">岁月缝花</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            How goes the world with you?
+        </div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    <article id="post">
+        <h1>【062】简单和组合选择器</h1>
+        <div class="create">
+            <span>Created</span>
+            
+                <time datetime="2022-10-01T04:41:59.000Z">
+                    2022-10-01
+                </time>
+            
+            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/CSS/">CSS</a></li></ul>
+        </div>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     [type] {
+        width: 50px;
+        height: 50px;
+    }
+    
+<pre><code>[name=&quot;sex&quot;] &#123;
+    width: 20th;
+    height: 20px;
+&#125;
+
+[class~=&quot;box&quot;] &#123;
+    background-color: yellow;
+&#125;
+
+[class|=&quot;box&quot;] &#123;
+    background-color: blue;
+&#125;
+</code></pre>
+<p></style> </p>
+</head>
+<body>
+<h1>
+    基本信息
+</h1>
+<span id="more"></span>
+用户名：<input type="text" class="box"> <br>
+用户密码：<input type="password"><br>
+回答问题：<input type="text"> <br>
+性别选择：<input type="radio" name="sex" >男<input type="radio" name="sex">女<br>
+是否核酸：<input type="radio" name="yesorno" >是<input type="radio" name="yesorno">否<br>
+<h1>
+   元素修饰
+</h1>
+<P class="box big bobo">我是一个p元素,我有三个类名，分别:box,big,bobo
+</P>
+<P class="box bobo">我是一个p元素,我有两个类名，分别:box,bobo
+</P>
+<div class="box">我是一个div元素,我有个类名:box
+</div><br>
+<div class="box-qf">我是一个div元素,我有个类名:box-qf
+</div><br><br>
+<h1>
+    基本信息
+</h1>
+用户名：<input type="text" class="box"> <br>
+用户密码：<input type="password"><br>
+回答问题：<input type="text"> <br>
+性别选择：<input type="radio" name="sex" >男<input type="radio" name="sex">女<br>
+是否核酸：<input type="radio" name="yesorno" >是<input type="radio" name="yesorno">否<br>
+<h1>
+   元素修饰
+</h1>
+<P class="box big bobo">我是一个p元素,我有三个类名，分别:box,big,bobo
+</P>
+<P class="box bobo">我是一个p元素,我有两个类名，分别:box,bobo
+</P>
+<div class="box">我是一个div元素,我有个类名:box
+</div><br>
+<div class="box-qf">我是一个div元素,我有个类名:box-qf
+</div><br><br>   
+<h1>
+    基本信息
+</h1>
+用户名：<input type="text" class="box"> <br>
+用户密码：<input type="password"><br>
+回答问题：<input type="text"> <br>
+性别选择：<input type="radio" name="sex" >男<input type="radio" name="sex">女<br>
+是否核酸：<input type="radio" name="yesorno" >是<input type="radio" name="yesorno">否<br>
+<h1>
+   元素修饰
+</h1>
+<P class="box big bobo">我是一个p元素,我有三个类名，分别:box,big,bobo
+</P>
+<P class="box bobo">我是一个p元素,我有两个类名，分别:box,bobo
+</P>
+<div class="box">我是一个div元素,我有个类名:box
+</div><br>
+<div class="box-qf">我是一个div元素,我有个类名:box-qf
+</div><br><br>
+&nbsp;&nbsp; <h3>062 CSS属性选择器</h3><br>
+根据属性或属性值来查找元素。基本语法为:<br><br>
+Element[attribute]<br><br>
+Element[attribute="value"]<br><br>
+意思是查找带有该属性的元素，然后添加样式声明。<br><br>
+a[target] {<br><br>
+    background-color:  yellow;<br><br>
+}<br><br>
+本段意思是带有target属性的a元素，并为a元素添加了背景为黄色的样式声明。<br><br>
+CSS属性的四种属性：<br><br>
+1.attribute:来查找HTML结构中，带有attribute属性的所有元素<br><br>
+2.attribute="value":来查找HTML结构中，带有attribute属性，并且属性值为value的元素<br><br>
+3.attribute~="value":来查找HTML结构中，带有attribute属性，并且在多个属性值中包含value的元素<br><br>
+4.attribute|="value":来查找HTML结构中，带有attribute属性，并且属性值以value或者是value-开头的元素<br><br>   
+总结：<br><br>
+    简单选择器和组合选择器，可以完成元素测查找。<br><br>
+    其他选择器可以更加精准高效的查找元素，从而能提高我们编码速度。<br><br>
+    属性选择器，在实际开发的过程中，大部分会应用在表单控件中，因为表单控件可添加的属性比较多。<br><br><br><br>
+</body>
+</html> 
+
+        <div>
+            
+        </div>
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+            <a href="/2022/10/01/hell0-world11/" id="article-nav-newer" class="article-nav-link-wrap">
+        <span class="article-nav-title">
+            
+                【063】文本颜色及大小写转换
+            
+        </span>
+                <strong class="article-nav-caption">&gt;</strong>
+            </a>
+        
+        
+            <a href="/2022/10/01/hell0-world9/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        【061】伪元素选择器
+                </span>
+                
+            </a>
+        
+    </nav>
+
+
+        
+    </article>
+    <div id="toc">
+        
+            <h2>Table of Contents</h2>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">
+    基本信息
+</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">
+   元素修饰
+</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">
+    基本信息
+</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">
+   元素修饰
+</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">
+    基本信息
+</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">6.</span> <span class="toc-text">
+   元素修饰
+</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">6.0.1.</span> <span class="toc-text">062 CSS属性选择器</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</div>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; 白夜宁月  2024</div>
+    <div id="theme">
+        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float-case</title>
+</head>
+<body bgcolor="yellowgreen"> 
+   <div id="word" style="text-align: center; vertical-align: middle; margin-top: 250px; color: rgb(5, 3, 0); font-size: 100px;"></div>
+</body>
+	<script>
+      var words = ["twin", "keep doing sth.", "slide", "obvious", "admit", "constantly", "drive sb. adj.", "apparently", "insist", "merely", "keep sb. from doing sth.", "attempt", "request", "lie to sb.", "wake up", "discover", "lie", "tell the truth"," no matter", "consequence", "have a fear", "spiritual","do damage to", "metaphorical", "absolutely", "what if", "come to", "an opportunity of some sort", "instead of", "stare at", "wonder", "unreasonable", "bottom line", "accept", "repeatedly", "hesitate to do sth.", "relief", "target", "reason", "case", "admit", "believe", "mean", "realize", "gradually", "temporarily", "casually", "result", "danger", "method", "truth", "merely", "slightly", "hardly", "partly", "review", "approve", "receive", "win out", "give up", "stand out", "fantasy", "fact", "colleague", "restriction", "explanation", "difference", "demand", "desire", "doubt", "physical", "biological", "behavioral", "traditional", "important", "double", "original", "reply", "history", "by comparison with", "in addition to", "regardless of", "instead of", "get hold of", "knock on", "make use of", "real", "typical", "similar", "limited", "safety", "rule", "comfort zone", "top secret", "delay", "regret", "accept", "intend"];
+
+      let index = 0;
+let intervalId = setInterval(function() {
+  document.getElementById("word").innerHTML = words[index];
+  index++;
+  if (index >= words.length) {
+    index = 0;
+  }
+}, 4000); // 每隔4秒显示一个单词
+    </script>
+</html>

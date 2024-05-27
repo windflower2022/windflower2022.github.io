@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>【代码】音乐播放器 | 岁月缝花</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="
+
+
+    
+    
+    Amazing HTML5 Audio Player, powered by http://amazingaudioplayer.com
+    
+&amp;lt;!-- Insert to your webpage before the &amp;lt;/head&amp;gt; --&amp;gt;
+&amp;lt;script src=&amp;quot;audioplayerengine/jquery.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src=&amp;quot;audioplayerengine/amazingaudioplayer.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+...">
+    
+        <link rel="icon" href="/favicon.ico">
+    
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">岁月缝花</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            时光荏苒，旦夕之间，略有遗憾，似白驹过隙，蹉跎自悟。
+        </div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    <article id="post">
+        <h1>【代码】音乐播放器</h1>
+        <div class="create">
+            <span>Created</span>
+            
+                <time datetime="2022-09-20T03:19:27.000Z">
+                    2022-09-20
+                </time>
+            
+            <ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/code/">code</a></li></ul>
+        </div>
+        <!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+    <title>Amazing HTML5 Audio Player, powered by http://amazingaudioplayer.com</title>
+    
+<pre><code>&lt;!-- Insert to your webpage before the &lt;/head&gt; --&gt;
+&lt;script src=&quot;audioplayerengine/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;audioplayerengine/amazingaudioplayer.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;audioplayerengine/initaudioplayer-1.css&quot;&gt;
+&lt;script src=&quot;audioplayerengine/initaudioplayer-1.js&quot;&gt;&lt;/script&gt;
+&lt;!-- End of head section HTML codes --&gt;
+</code></pre>
+</head>
+<body>
+<div style="margin:12px auto;">
+    
+<pre><code>&lt;!-- Insert to your webpage where you want to display the audio player --&gt;
+&lt;div id=&quot;amazingaudioplayer-1&quot; style=&quot;display:block;position:relative;width:100%;max-width:24px;height:auto;margin:0px auto 0px;&quot;&gt;
+    &lt;ul class=&quot;amazingaudioplayer-audios&quot; style=&quot;display:none;&quot;&gt;
+        &lt;li data-artist=&quot;&quot; data-title=&quot;草予木 - 风花音乐欣赏5&quot; data-album=&quot;&quot; data-info=&quot;&quot; data-image=&quot;&quot; data-duration=&quot;0&quot;&gt;
+            &lt;div class=&quot;amazingaudioplayer-source&quot; data-src=&quot;http://music.163.com/song/media/outer/url?id=1952292953.mp3&quot; data-type=&quot;audio/mpeg&quot; /&gt;
+        &lt;/li&gt;
+        &lt;li data-artist=&quot;&quot; data-title=&quot;彼岸花 - 风花音乐欣赏4&quot; data-album=&quot;&quot; data-info=&quot;&quot; data-image=&quot;&quot; data-duration=&quot;0&quot;&gt;
+            &lt;div class=&quot;amazingaudioplayer-source&quot; data-src=&quot;https://music.163.com/song/media/outer/url?id=1941639510.mp3&quot; data-type=&quot;audio/mpeg&quot; /&gt;
+        &lt;/li&gt;
+        &lt;li data-artist=&quot;&quot; data-title=&quot;秋天不回来 - 风花音乐欣赏8&quot; data-album=&quot;&quot; data-info=&quot;&quot; data-image=&quot;&quot; data-duration=&quot;0&quot;&gt;
+            &lt;div class=&quot;amazingaudioplayer-source&quot; data-src=&quot;http://music.163.com/song/media/outer/url?id=163123.mp3&quot; data-type=&quot;audio/mpeg&quot; /&gt;
+        &lt;/li&gt;
+        &lt;li data-artist=&quot;&quot; data-title=&quot;如果爱忘了 - 风花音乐欣赏2&quot; data-album=&quot;&quot; data-info=&quot;&quot; data-image=&quot;&quot; data-duration=&quot;0&quot;&gt;
+            &lt;div class=&quot;amazingaudioplayer-source&quot; data-src=&quot;http://music.163.com/song/media/outer/url?id=1933915376.mp3&quot; data-type=&quot;audio/mpeg&quot; /&gt;
+        &lt;/li&gt;
+        &lt;li data-artist=&quot;&quot; data-title=&quot;面朝大海春暖花开-风花音乐欣赏1&quot; data-album=&quot;&quot; data-info=&quot;&quot; data-image=&quot;&quot; data-duration=&quot;0&quot;&gt;
+            &lt;div class=&quot;amazingaudioplayer-source&quot; data-src=&quot;http://music.163.com/song/media/outer/url?id=29312951.mp3&quot; data-type=&quot;audio/mpeg&quot; /&gt;
+        &lt;/li&gt;
+        &lt;li data-artist=&quot;&quot; data-title=&quot;天下有情人 - 风花音乐欣赏6&quot; data-album=&quot;&quot; data-info=&quot;&quot; data-image=&quot;&quot; data-duration=&quot;0&quot;&gt;
+            &lt;div class=&quot;amazingaudioplayer-source&quot; data-src=&quot;http://music.163.com/song/media/outer/url?id=1496629559.mp3&quot; data-type=&quot;audio/mpeg&quot; /&gt;
+        &lt;/li&gt;
+        &lt;li data-artist=&quot;&quot; data-title=&quot;终于等到你 - 风花音乐欣赏3&quot; data-album=&quot;&quot; data-info=&quot;&quot; data-image=&quot;&quot; data-duration=&quot;0&quot;&gt;
+            &lt;div class=&quot;amazingaudioplayer-source&quot; data-src=&quot;http://music.163.com/song/media/outer/url?id=481859184.mp3&quot; data-type=&quot;audio/mpeg&quot; /&gt;
+        &lt;/li&gt;
+        &lt;li data-artist=&quot;&quot; data-title=&quot;流浪记 - 风花音乐欣赏9&quot; data-album=&quot;&quot; data-info=&quot;&quot; data-image=&quot;&quot; data-duration=&quot;0&quot;&gt;
+            &lt;div class=&quot;amazingaudioplayer-source&quot; data-src=&quot;http://music.163.com/song/media/outer/url?id=479422064.mp3&quot; data-type=&quot;audio/mpeg&quot; /&gt;
+        &lt;/li&gt;
+        &lt;li data-artist=&quot;&quot; data-title=&quot;灯火里的中国 - 风花音乐欣赏7&quot; data-album=&quot;&quot; data-info=&quot;&quot; data-image=&quot;&quot; data-duration=&quot;0&quot;&gt;
+            &lt;div class=&quot;amazingaudioplayer-source&quot; data-src=&quot;http://music.163.com/song/media/outer/url?id=1837528900.mp3&quot; data-type=&quot;audio/mpeg&quot; /&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;!-- End of body section HTML codes --&gt;
+</code></pre>
+</div>
+</body>
+</html>
+ 
+        <div>
+            
+        </div>
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+            <a href="/2022/09/24/%E8%8B%B1%E6%96%87%E5%8F%91%E9%9F%B3/" id="article-nav-newer" class="article-nav-link-wrap">
+        <span class="article-nav-title">
+            
+                点读4000单词
+            
+        </span>
+                <strong class="article-nav-caption">&gt;</strong>
+            </a>
+        
+        
+            <a href="/2022/02/26/Narrative/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        【风花日志】Narrative
+                </span>
+                
+            </a>
+        
+    </nav>
+
+
+        
+    </article>
+    <div id="toc">
+        
+            <h2>This post does not have a Table of Contents</h2>
+        
+    </div>
+</div>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; 白夜宁月  2024</div>
+    <div id="theme">
+        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
+
+</body>
+</html>

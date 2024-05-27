@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <title>记单词</title>
+    <style>
+        div{
+            background-color:rgb(2243,243, 243);
+            margin-bottom: 15px;
+            margin-bottom: 15px;
+            margin-left: 150px;
+            padding: 10px;
+            border-radius: 55px;
+            font-size: 30px;
+            width: 1200px;
+            text-align: left;
+        }
+        div:hover{
+            background-color:rgb(226, 245, 231);
+        }
+        .t{
+            margin-top: 100px;
+            padding-left: 150px;
+        }
+        @media screen and (max-width: 650px) {
+            .t{
+                margin-top: 50px;
+                padding-left: 20px;
+            }
+         }
+        </style>
+</head>
+<body> 
+        <br><br><br>				
+        <div class="text"><span>&emsp;&emsp;Ecotourism is commonly regarded as low impact (影响) travel to undisturbed places. It is different from traditional tourism because it allows the traveler to become   educated about the areas—both in terms of geographical conditions and cultural characteristics, and often provides money for conservation and benefits the development of the local areas.
+		<br>&emsp;&emsp;生态旅游通常被认为是前往未受干扰的地方的低影响度旅行。它与传统旅游不同，因为它让旅行者了解地理条件和文化特色，并通常为保护提供资金和促进当地发展带来好处。
+		</span></div>
+        <div class="text"><span>&emsp;&emsp;Ecotourism has its origin with the environmental movement of the 1970s. It was not widely accepted as a travel concept unit the late 1980s. During that time, increasing environmental awareness made it desirable.
+		<br>&emsp;&emsp;生态旅游起源于20世纪70年代的环保运动。直到20世纪80年代末，由于越来越多的环境意识的增强，它才被广泛接受为一种旅游概念。
+        </span></div>
+        <div class="text"><span>&emsp;&emsp;Due to the growing popularity of environmentally-related and adventure travel, various types of trips are now being classified as ecotourism. Actually, a true eco-friendly trip must meet the following principles:
+		<br>&emsp;&emsp;由于环境相关和探险类旅游的日益流行，现在各种类型的旅行都被归类为生态旅游。实际上，真正环保的旅行必须符合以下原则：
+        </span></div>
+        <div class="text"><span>&emsp;&emsp;Minimize the impact of visiting the place.
+		<br>&emsp;&emsp;Build respect for and awareness of the environment and cultural practices.
+		<br>&emsp;&emsp;Provide financial aid and other benefits for local peoples.
+		<br>&emsp;&emsp;Make sure that the tourism provides positive experiences for both the visitors and the hosts.
+		<br>&emsp;&emsp;最小化旅游对所到之地的影响。
+		<br>&emsp;&emsp;培养对环境和文化实践的尊重和意识。
+		<br>&emsp;&emsp;为当地人提供财务援助和其他好处。
+		<br>&emsp;&emsp;确保旅游为游客和主人提供积极的体验。
+		</span></div>
+		<div class="text"><span>&emsp;&emsp;Komodo National Park, officially recognized in 1980, is popular for ecotourism because of its unique biodiversity. Activities there range from whale watching to hiking and accommodations aim to have a low impact on the natural environment.
+		<br>&emsp;&emsp;科莫多国家公园于1980年被正式确认，因其独特的生物多样性而成为生态旅游的热门目的地。那里的活动范围从观赏鲸鱼到远足，住宿旨在对自然环境造成最小影响。
+        </span></div>
+        </div><br><br><br><br><br><br></body>
+    <script>
+        $(document).ready(function(){
+            $("div").click(function(){
+            	//方式一
+                //var words = new SpeechSynthesisUtterance($(this).context.children[0].textContent);
+                //window.speechSynthesis.speak(words)
+
+            	//方式二
+				var audio = new Audio();  
+                audio.src ='https://dict.youdao.com/speech?audio=' + encodeURI($(this).context.children[0].textContent);  
+                audio.play(); 
+            });
+        });
+    </script>
+</html>  

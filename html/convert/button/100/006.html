@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <title>记句子<</title>
+    <style>
+        div{
+            background-color:rgb(243, 243, 243);
+            margin-bottom: 5px;
+            padding: 5px;
+            border-radius: 55px;
+            font-size: 30px;
+        }
+        div:hover{
+            background-color:rgb(226, 245, 231);
+        }
+        .t{
+            margin-top: 0px;
+            padding-left: 150px;
+        }
+        @media screen and (max-width: 650px) {
+            .t{
+                margin-top: 50px;
+                padding-left: 120px;
+            }
+
+           div.t span #i {
+                color: black
+            }
+    </style>
+</head>
+<body> 
+<div class="text"><span style="color:rgb(72, 73, 70)">
+<br>&emsp;6. My hobby is reading,which allows me to reduce my stress from my work.
+<br><br>&emsp;My hobby is reading,which allows me to reduce my stress from my work. My hobby is reading,which allows me to reduce my stress from my work.
+<br>&emsp;我的爱好是读书，它能使我减轻工作带来的压力。
+</span></div>
+</body>
+    <script>
+        $(document).ready(function(){
+            $("div").click(function(){
+            	//方式一
+                //var words = new SpeechSynthesisUtterance($(this).context.children[0].textContent);
+                //window.speechSynthesis.speak(words)
+
+            	//方式二
+				var audio = new Audio();  
+                audio.src ='https://dict.youdao.com/speech?audio=' + encodeURI($(this).context.children[0].textContent);  
+                audio.play(); 
+            });
+        });
+    </script>
+</html>
