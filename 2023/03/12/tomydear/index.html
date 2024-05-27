@@ -1,45 +1,168 @@
-{# 文章页面 #}
-{% extends 'includes/layout.swig' %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【风花心语】宝贝,做好规划 飞得更高 | 岁月缝花</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="宝    贝  ｜做好规划　飞得更高｜">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【风花心语】宝贝,做好规划 飞得更高">
+<meta property="og:url" content="https://windflower2022.github.io/2023/03/12/tomydear/index.html">
+<meta property="og:site_name" content="岁月缝花">
+<meta property="og:description" content="宝    贝  ｜做好规划　飞得更高｜">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-12T10:12:27.000Z">
+<meta property="article:modified_time" content="2023-06-18T05:58:23.883Z">
+<meta property="article:author" content="白夜宁月">
+<meta property="article:tag" content="diary">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="岁月缝花" type="application/atom+xml">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0.css">
 
-{# page页面(其实就是about)，也是用的这里来处理文章排版 #}
-{% block body %}
-  <article class="markdown-body">
-    <h2 id="post-title">{{ page.title }}
-      {% if is_post() && page.date %} {# 文章页面才显示日期 #}
-        <div id="post-time" datetime="{{ date_xml(page.date) }}">
-          {{ date(page.date, "YYYY-MM-DD") }}
-        </div>
-      {% endif %}
-    </h2>
-    {{ page.content }}
-  </article>
+  
+<link rel="stylesheet" href="/lib/fancybox/dist/jquery.fancybox.min.css">
 
-  {% if is_post() %}
-    
-    {% if page.prev || page.next  %}
-      <div id="page-prev-next">
-        {# 上一篇文章 #}
-        {% if (page.prev) %}
-          <a id="page-prev-a" href="{{ url_for(page.prev.path) }}"> ← {{ page.prev.title }} </a>
-        {% else %}
-          <div></div> {# 仅用于占位 #}
-        {% endif %}
+  
+<link rel="stylesheet" href="/css/main.css">
 
-        {# 下一篇文章 #}
-        {% if (page.next) %}
-          <a id="page-next-a" href="{{ url_for(page.next.path) }}"> {{ page.next.title }} → </a>
-        {% endif %}
-      </div>
-    {% endif %}
-    
-    {# 背景音频播放 #}
-    {% if theme.post_audio %}
-      {% set bg_color =  theme.theme_color %}
-      {% include 'includes/audio-play.swig' with bg_color %}
-    {% endif %}
+  
+<script src="/lib/jquery/dist/jquery.min.js"></script>
 
-    {# 文章页面才加打赏功能 #}
-    {% include 'includes/reward.swig' %}
-  {% endif %}
-{% endblock %}
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="wrapper">
+    <header id="header" class="clearfix">
+	<a id="logo" href="/" title="岁月缝花">岁月缝花</a>
+	
+	<nav id="nav-menu" class="clearfix">
+		<form id="search" method="post" action="./" role="search">
+			<input id="search-input" type="text" name="s" class="inputbox" value="Search" onfocus="if (value =='Search'){value =''}" onblur="if (value ==''){value='Search'}">
+		</form>
+		<ul>
+      
+				
+        <li><a class="main-nav-link" href="/">Home</a></li>
+      
+				
+        <li><a class="main-nav-link" href="/archives">Archives</a></li>
+      
+		</ul>
+	</nav>
+</header>
+    <section id="main" class="clearfix"><article class="post-detail">
+  <h1 class="post-title"><a href="/">【风花心语】宝贝,做好规划 飞得更高</a></h1>
+  <ul class="post-meta">
+  <li><i class="fa fa-user"></i> Author 白夜宁月</li>
+  <li><i class="fa fa-calendar"></i> Date Mar 12</li>
+  <li><i class="fa fa-folder"></i> Categories
+  
+    <a class="article-category-link" href="/categories/diary/">diary</a>
+  
+  </li>
+</ul>
+  <div class="post-content">
+      
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<br><br>
+<section class="_editor" style="margin: 0px auto; width: 660px;" data-width="100%">
+<section class="assistant" style="text-align: left;">
+<section class="assistant" style="margin-top: -20px; margin-left: -8px; width: 16px; height: 16px; background-color: #719A47; border-radius: 100%; border: 4px solid #ffffff; margin-top:0px;  box-sizing: border-box; display: inline-block; overflow: hidden;"></section>
+<section style="width:100%;margin:10px auto;margin-top: -16px; " data-width="100%">
+<section class="assistant" style="text-align: right;">
+<section class="assistant" style="margin-top: -20px; margin-right: -8px; width: 16px; height: 16px; background-color: #719A47; border-radius: 100%; border: 4px solid #ffffff; margin-top:0px;  box-sizing: border-box; display: inline-block; overflow: hidden;"></section>
+<section style="width:100%;margin:10px auto;margin-top: -8px; " data-width="100%">
+<section class="assistant" style="width:60%;height:5px;background:rgb(254,254,254);margin:0px auto;transform: rotate(0deg);-webkit-transform: rotate(0deg);-moz-transform: rotate(0deg);-o-transform: rotate(0deg);" data-width="60%"></section>
+<section style="border:1px solid #719A47;padding:8px;margin-top:-3px;">
+<section style="border:1px solid #719A47;">
+<section data-autoskip="1" class="135brush" style="font-size: 14px;text-align: justify;letter-spacing: 1.5px;line-height: 1.75em;background-color: #F6FFF2;color: rgb(62,62,62);padding:0px 0em;">
+<section style="background-image: url('https://img.wyc520.com.cn/data/attachment/forum/202303/11/230605dieo3t85ef0z51of.png'); background-position: 0% 0%; background-repeat: no-repeat; box-sizing: border-box; text-align: center;background-size:100%;">
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<section class="_editor">
+<section data-role="title" data-id="105515" style="transform: scale(1.0); margin-top: 9px; margin-bottom: 9px;transform: scale(1.0);-webkit-transform: scale(1.0);-moz-transform: scale(1.0);-ms-transform: scale(1.0);-o-transform: scale(1.0);">
+<section style="text-align: center;margin: -60px auto;">
+<section style="display: flex;justify-content: center;align-items: center;">
+<section style="transform:rotate(0deg);box-sizing:border-box;border:1px solid #719A47;color:#9CAC80;border-radius:100% ;display: inline-block;padding:4px;margin-left: 6px;background: #DBE2C9;">
+<section class="135brush" data-brushtype="text" style="box-sizing:border-box;width:40px;height:40px;color:#719A47;border-radius:100%;font-size:22px;line-height:40px;text-align: center;">
+<strong>宝</strong>
+</section></section>
+<section style="transform:rotate(0deg);box-sizing:border-box;border:1px solid #719A47;color:#719A47;border-radius:100% ;display: inline-block;padding:4px;margin-left: 6px;background: #719A47;margin-left: -6px;">
+<section class="135brush" data-brushtype="text" style="box-sizing:border-box;width:40px;height:40px;background:#719A47;color:#fff;border-radius:100%;font-size:22px;line-height:40px;text-align: center;">
+<strong>贝</strong>
+</section></section></section>
+<section class="135brush" data-brushtype="text" style="font-size: 13px;line-height:30px;letter-spacing: 1.5px;padding: 4px 0em 4px 6px;color: #599062;">｜做好规划　飞得更高｜</section>
+<br/><br/><br>
+<span id="more"></span> 
+</section></section></section></section>
+<p style="margin-right:50px; margin-left: 60px;letter-spacing: 2.4px; line-height: 2em; font-family: 微软雅黑, Microsoft YaHei;text-align:justify;font-size: 15px;color:#599062">
+  　　去办公室，正好X老师在。祝贺之际，顺便向他取经。谈起女儿初中时由于成绩差，老师都不寄予她任何希望，高中只好学体育。<br><br>
+  　　为了改变自己，女儿拼命学专业，学文化，为自己不断定目标，做人生规划: 考艺体本科。考上本科后，又定下个目标，一个个去努力实现，过四六级，考高中教师资格证，争取每期期末成绩优异，并备考985研究生。三年前考上了重庆大学研究生，在学好专业的同时，除了找份兼职工作锻炼自己，其余时间就用来专心准备＂公务员＂考试。<br><br>
+  　　X老师女儿最终用行动证明，一个人无论家庭如何，先天如何，只要有目标有方向有规划，持之以恒努力，勤能补拙。一个不被看好的学生，一个体育生，也可以过英语四六级，考985研究生，与985双一流毕业的文化研究生争高低。他说，我们家长-孩子妈妈没有工作，吃了很多苦。她也懂了如果不努力，大半辈子就会受苦，所以定目标，做规划，拼命学，才有今天的优异成绩。<br><br>
+  　　说到规划、目标，又情不自禁想起楼上L老师的儿子，考上一所好大学，觉得很遗憾，因学校不是985、211，也不是双一流，后悔当初没有早点努力。过去的遗憾促使他高考后奋发图强，狠刷英语网课，快速投入备考985高校研究生的行动中。开学后，向同专业的学长们虚心请教，保研需要的硬软件并积极筹备。<br><br>
+  　　在外见识广了，他抱负更大，对人生规划也更大，也更坚定决心提高自己。无论在校还是放假，别人玩耍，他也在学习，期期专业名列前茅，踊跃参加全国含金量高的比赛，回家也请xx学院老师在假日辅导，并取得全国二等奖的佳绩。<br><br>
+  　　功夫不负有心人，三年多的不懈努力，他获得和其他99名985、211学子参加清华大学研究生选拔赛资格，通过重重角逐，最终打败众多高手，成为20个幸运儿中的一员。考上研究生后，他各方查询咨询，得知研究生学习半年后，会有去日本交流学习的机会，又迅速在网上报名猛攻日语，这一先见之明为他最终如愿出国深造取得很大优势。<br><br>
+  　　孩子一步一步出类拔萃，也归功于他懂得规划，及持之以恒为目标奋斗的行动力。<br><br>
+  　　大学生活，规划很重要，D老师(与儿子同专业的思懿姐姐爸爸，现思懿姐姐作为厦大优秀研究生代表在英国进行汉语国际交流)前不久也对我这样说过。他说，S老师，你儿子也考上大学了，可以对大学四年做出规划，这是尤其重要的。大一做什么，大二做什么，大三做什么，大四才能拥有什么。<br><br>
+  　　是啊，D老师说得对。我们的人生种什么，才会收获什么 : 播种绿色，才有春天；播种希望的种子，也才会收获成功的喜悦。<br><br>
+  　　我想，我的宝贝儿子也会为大学生活做好规划，踔厉前行。<br><br>
+<br> 
+</div>
+<br><br><br><br><br>><br><br><br>
+</section></section></section></section></section>
+<audio style="width:0px;height:0px;" controls="controls" autoplay="autoplay" loop="loop" src="http://music.163.com/song/media/outer/url?id=155961.mp3" type="audio/mpeg"></audio>
+</div></div></div>
+<br><br>
+</body>
+</html>
 
+  </div>
+  
+    <div class="tags">
+    <span><i class="fa fa-tags"></i> Tags</span>
+      
+        <ul class="post-tag-list" itemprop="keywords"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/diary/" rel="tag">diary</a></li></ul>
+      
+    </div>
+  
+
+</article>
+
+<!-- Comments -->
+
+<!-- End Comments --></section>
+    <footer id="footer" role="contentinfo">
+    <div>&copy; 2024 <a href="/">岁月缝花</a>.
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Designed by <a href="http://rainylog.com" target="_blank">Rainy.</a>
+	</div>
+</footer><!-- end #footer -->
+
+  </div>
+  
+<script src="/lib/fancybox/dist/jquery.fancybox.min.js"></script>
+
+
+  
+<script src="/js/helper.js"></script>
+
+  
+<script src="/js/_third-party/gitment.js"></script>
+
+</body>
+</html>

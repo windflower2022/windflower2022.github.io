@@ -1,30 +1,357 @@
-{% extends 'includes/layout.swig' %}   {#  模板继承 #}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>category: 美文 | 岁月缝花</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="岁月缝花">
+<meta property="og:url" content="https://windflower2022.github.io/categories/%E7%BE%8E%E6%96%87/index.html">
+<meta property="og:site_name" content="岁月缝花">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="白夜宁月">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="岁月缝花" type="application/atom+xml">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0.css">
 
-{% block body %}
-<div id="archive-outer">
-  <div id="archive-inter">
-      {% set y = 0; %}
-      {% for postItem in page.posts.toArray() %} 
-        <div classets="archive-item">
-           {% if postItem.date === undefined %} {# 防止日期为空 #}
-           {% set postItem.date = date(Date.now(), 'YYYY/MM/DD') %}
-           {% endif %}
-           {% set year = postItem.date.year(); %} 
-           {% if (y != year) %}  {#  判断年分隔算法 #}
-             {% set y = year %}
-             <div id="archive-year"> {{ y }}年 </div>
-           {% endif %}
-           {% if !postItem.link %}
-            {# 文章链接 #}
-            <a href="{{ url_for(postItem.path) }}">
-              <time id="archive-item-time" datetime="{{ date_xml(postItem.date) }}">
-                {{ date(postItem.date, "MM-DD") }}
-              </time>
-              {{ postItem.title || '没有标题' }} 
-            </a>
-          {% endif %}
-        </div>
-      {% endfor %}
+  
+<link rel="stylesheet" href="/lib/fancybox/dist/jquery.fancybox.min.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="wrapper">
+    <header id="header" class="clearfix">
+	<a id="logo" href="/" title="岁月缝花">岁月缝花</a>
+	
+	<nav id="nav-menu" class="clearfix">
+		<form id="search" method="post" action="./" role="search">
+			<input id="search-input" type="text" name="s" class="inputbox" value="Search" onfocus="if (value =='Search'){value =''}" onblur="if (value ==''){value='Search'}">
+		</form>
+		<ul>
+      
+				
+        <li><a class="main-nav-link" href="/">Home</a></li>
+      
+				
+        <li><a class="main-nav-link" href="/archives">Archives</a></li>
+      
+		</ul>
+	</nav>
+</header>
+    <section id="main" class="clearfix">
+  <article class="post-detail">
+    <h1 class="post-title"><a href="/">【美文欣赏】比别人慢一些都没关系，做自己就好</a></h1>
+    <ul class="post-meta">
+  <li><i class="fa fa-user"></i> Author 白夜宁月</li>
+  <li><i class="fa fa-calendar"></i> Date Apr 10</li>
+  <li><i class="fa fa-folder"></i> Categories
+  
+    <a class="article-category-link" href="/categories/%E7%BE%8E%E6%96%87/">美文</a>
+  
+  </li>
+</ul>
+    <div class="post-content">
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>tobeurself</title>
+  </style>
+</head>
+<body>
+ <br>
+<div align="center"><section style="width:660px;">
+<section class="_135editor"><section style="margin:50px 10px 10px;"><section class="assistant" style="text-align: left;"><section class="assistant" style="width: 16px; height: 16px; background-color: #3B7404; border-radius: 100%; border: 4px solid #ffffff; box-sizing: border-box; display: inline-block; margin-left: -16px; overflow: hidden;"></section></section></section>
+<section style="border: 1px solid #7C945E; padding: 10px; margin-top: -16px; box-sizing: border-box;">
+<section class="135brush" style="background-color: #F4F6F6;border: 1px solid #7C945E; padding: 1em; ">
+<br><br>
+<section style="padding: 0px 10px 10px; box-sizing: border-box;">
+<section style="flex: 1;margin:0 5px 1em 5px;"></section>
+ <section style="margin: 10px auto;"><section style="padding-bottom: 10px;"><section style="display: flex;justify-content: center;align-items: flex-end;"><section style="box-sizing:border-box;width: 45%;margin-bottom: -8px;"><section style="border: 1px solid #7C945E;padding: 8px;background: #f9fbff;"><section style="box-sizing:border-box;width: 100%;"><img style="box-sizing:border-box;width: 100%;display: block;" src="https://img.wyc520.com.cn/data/attachment/forum/202109/20/201902tjqud2diuiz6pcum.jpg" data-ratio="1.038338658146965" data-w="313"/></section></section></section><section style="box-sizing:border-box;width: 35%;transform: rotate(0deg);margin-left: -2em;"><section style="display: flex;justify-content: flex-end;flex-direction: column;align-items: flex-end;"><section class="assistant" style="box-sizing:border-box;width: 40%;height: 1px;background: #687979;"></section><section class="135brush" data-brushtype="text" style="font-size: 14px;letter-spacing: 1px;padding: 0px 0em;color: #687979;font-style: italic;">Photography</section><section class="135brush" data-brushtype="text" style="font-size: 14px;letter-spacing: 1px;padding: 0px 0em;color: #687979;font-style: italic;">yeshiqiu</section></section><section style="border: 8px solid #fff;border-right: none;"><section style="box-sizing:border-box;width: 100%;"><img style="box-sizing:border-box;width: 100%;display: block;" src="https://img.wyc520.com.cn/data/attachment/forum/202109/20/201856v7gtydgmt3etyjyg.jpg" data-ratio="0.8362989323843416" data-w="281"/></section></section></section></section></section></section>
+<br>
+<section style="margin:10px auto;"><section style="display: flex;justify-content:center;align-items:center;"><section class="assistant" style="width:25px;"><section class="assistant" style="width:25px;"><img class="assistant" style="width:100%;display:block;" src="https://img.wyc520.com.cn/data/attachment/forum/202108/18/132549fn6rlnifan26rnlq.png" data-ratio="1.1342281879194631" data-w="149"/></section></section><section style="margin-top:10px;text-align: center; letter-spacing:2px; line-height: 1.8; font-size: 24px; color:#fff; text-shadow: #687979 1px 1px, #687979 1px -1px, #687979 -1px 1px, #687979 -1px -1px, #687979 0px 1.4px, #687979 0px -1.4px, #687979 -1.4px 0px, #687979 1.4px 0px,#C6C6C6 0px -3px 20px;#C6C6C6 0px -3px 20px;#C6C6C6 0px -3px 20px; box-sizing: border-box;"><section style="box-sizing: border-box;"><strong class="135brush" data-brushtype="text" style="box-sizing: border-box;padding:0px 5px;text-align: right;">慢一些也没关系，做自己就好</strong></section></section><section class="assistant" style="width:25px;"><section class="assistant" style="width:25px;"><img class="assistant" style="width:100%;display:block;transform:scaleX(-1);" src="https://img.wyc520.com.cn/data/attachment/forum/202108/18/132549fn6rlnifan26rnlq.png" data-ratio="1.1342281879194631" data-w="149"/></section></section></section></section>
+<section style="text-align: center; line-height: 1.5em;" section="">
+<span style="color: #687979; font-family: 微软雅黑, Microsoft YaHei; font-size: 14px;">
+    文本声音剪辑｜孟飞<br><br><br>
+    <span id="more"></span> 
+    我猜此刻的你或许也很累<br>
+    但请先停止自己精神内耗<br>
+    然后去吹吹风、看看花，<br>
+    感受这个世界的美好<br>
+    因为比别人慢一点都没关系<br>
+    做好自己最重要 <br><br><br>
+</span></section>
+<br>
+<section style="text-align: justify;line-height: 2.0em; letter-spacing: 1.5px; margin-right: 35px; margin-left: 40px;">
+<span style="color: #687979; font-family: 微软雅黑, Microsoft YaHei; font-size: 15px;">
+　　Dear friend, I know life can be tough sometimes. We all have our struggles, our challenges, our worries. And right now, you may feel tired, overwhelmed, or stressed out. That's okay. It's normal to feel that way. But I also know that you're strong, resilient, and capable of overcoming whatever obstacles come your way. So please, don't give up. Don't lose hope. Don't let your mind exhaust itself with endless self-doubt and negativity.<br><br>
+    &emsp;&emsp;亲爱的朋友，我知道生活有时候很艰难。我们都有自己需要面对的挑战、烦恼和担忧。此刻，你可能感到疲倦、不堪重负或者焦虑。别过度焦虑这种正常的情绪。因为我知道你是坚强、有韧性并能够克服任何困难。所以，请不要轻易放弃、不要失去希望，更不要让你的思维耗尽精力，充满无尽的自我怀疑和消极情绪。<br><br><br>
+　　Instead, I really hope you can take a break. To pause for a moment and appreciate the beauty of the world around you. To go outside, breathe in the fresh air, and soak up the sunlight. To look at the flowers, the trees, the birds, and the insects, and marvel at their diversity and complexity. To feel the wind on your skin, the grass under your feet, and the joy in your heart.<br><br>
+    &emsp;&emsp;相反，我希望你能让自己休息一下。给自己按下暂停键，去欣赏周围世界的美丽。走出去，呼吸新鲜空气、享受阳光。看看花草树木、鸟儿昆虫，感叹于它们的多样性和复杂性。感受风吹过皮肤、草地踏在脚底下的喜悦。<br><br><br>
+    &emsp;&emsp;I know it may sound cheesy or cliché, but trust me, it works. Taking a break from your mental fatigue and focusing on the present moment can do wonders for your well-being. It can reduce your stress, boost your mood, and increase your creativity and productivity. It can remind you that you're part of something bigger than yourself, something beautiful, something worth fighting for.<br><br>
+    &emsp;&emsp;我知道这听起来可能有些俗套或陈词滥调，但相信我，这真的有用。从精神疲劳中抽出身来让自己休息一下，专注于此刻，这样会更有利于你的健康。比如可以减轻你的压力、提高你的情绪并增加你的创造力和生产力。它会时刻提醒你，你永远要比自己想象的优秀和重要。<br><br><br>
+    &emsp;&emsp;And don't worry if you feel like you're going slower than others. Don't compare yourself to anyone else. Don't judge yourself harshly for not achieving enough or not being perfect. Life is not a race, and success is not a one-size-fits-all concept. What matters is that you do your best, in your own way, at your own pace. What matters is that you're true to yourself, your values, and your dreams. What matters is that you're kind, compassionate, and respectful to others, and to yourself.<br><br>
+    &emsp;&emsp;如果有时候你感觉自己比别人慢，也不要担心。不因为你不需要与他人比较。不要因为未取得足够大的成就而苛刻地自我评价。因为人生不是竞赛，成功也没有统一标准。任何时候重要的是你全力以赴，用自己的方式、按照自己的节奏做到能力范围内的最好。重要的是你是否追随自己内心、自己的价值观和梦想。重要的是你对别人和自己都要友善、富有同情心和尊重。<br><br><br>
+    &emsp;&emsp;So, my dear friend, please take care of yourself. Please be kind to yourself. Please remember that you're not alone in this world and that there are people who care about you, who support you, who love you. And please, whenever you feel tired, exhausted, or overwhelmed, just take a break, go outside, and enjoy the beauty of the world. You deserve it.<br><br>
+    &emsp;&emsp;亲爱的你，我希望你能好好照顾自己。请对自己好一点，随时记得你并不孤单，有很多人关心你、支持你并爱着你。如果你感到疲惫、筋疲力尽或不知所措，请放松一下，走出去，享受这个美丽的世界。因为你值得拥有这一切。<br><br><br>
+</span></section>
+<br>
+<audio style="width:0px;height:0px;" controls="controls" autoplay="autoplay" loop="loop" src="http://chuangshicdn.data.mvbox.cn/music/fc/23/04/10/23041020163894607688.mp3" type="audio/mpeg"></audio> 
+</body>
+</html>
+
     </div>
-</div>
-{% endblock %}
+  </article>
+
+  <article class="post-detail">
+    <h1 class="post-title"><a href="/">【美文欣赏】万物静</a></h1>
+    <ul class="post-meta">
+  <li><i class="fa fa-user"></i> Author 白夜宁月</li>
+  <li><i class="fa fa-calendar"></i> Date Oct 12</li>
+  <li><i class="fa fa-folder"></i> Categories
+  
+    <a class="article-category-link" href="/categories/%E7%BE%8E%E6%96%87/">美文</a>
+  
+  </li>
+</ul>
+    <div class="post-content">
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>silence</title>
+  </style>
+</head>
+<body>
+  <br><br>
+  <section class="_editor" style=" margin: 0px auto;width:660PX;">
+  <div class="item-content"><section style="padding:20px 0px;">
+  <br><section style="border: 1px dotted rgb(118,162,103);">
+  <section style="margin: -10px 8px; border: 1px dotted #A5DAAA; box-shadow: #A5DAAA 0px 0px 1px ; background-color: #F5FFF6;">
+  <section style="background-image: url('https://img.wyc520.com.cn/data/attachment/forum/202202/06/214033r1ozun0d622ptwli.png'); background-position: 0% 0%; background-repeat: no-repeat; box-sizing: border-box; text-align: center;background-size:100%;">
+  <section style="padding: 50px 0px 10px;">
+  <br/><br/><br/>
+  <br/><br/><br/>
+  <section class="_editor">
+  <section style="margin: 10px auto 10px 6px;">
+  <section style="text-align: left; letter-spacing: 5px; line-height: 1.25; font-size: 16px; color: #17793C; text-shadow: #ffffff 1px 1px, #ffffff 1px -1px, #ffffff -1px 1px, #ffffff -1px -1px, #ffffff 0px 1.4px, #ffffff 0px -1.4px, #ffffff -1.4px 0px, #ffffff 1.4px 0px, #17793C 2px 2px, #17793C 3px 3px, #17793C 3px 1px, #17793C 1px 3px, #17793C 1px 1px, #17793C 2px 3.4px, #17793C 2px 0.6px, #17793C 0.6px 2px, #17793C 3.4px 2px; box-sizing: border-box;">
+  <section style="text-align:center;box-sizing: border-box;" align="center">
+  <span style="font-size: 38px;">
+  <strong style="box-sizing: border-box;">
+  <span class="135brush" data-brushtype="text" style="box-sizing: border-box; text-align: center;">万物静</span>
+  </strong>
+  </span>
+  </section></section></section></section>
+  <section data-id="100928">
+  <section style="margin: 10px auto;text-align: center;">
+  <section style="display: inline-block;">
+  <section style="font-size: 15px; letter-spacing: 2px;line-height: 20px; padding: 4px 1.0em; color: #ffffff; border: 3px solid #ffffff; box-shadow: #ffffff 0px 0px 2px ;border-radius: 20px; background: #17793C;">
+  文字｜温柔的药
+  <span id="more"></span> 
+  </section></section></section></section></section>
+  <p>
+  <br/>
+  </p>
+  <section class="_135editor">
+  <section style="border: 0px none; box-sizing: border-box;" data-id="91718">
+  <section style="padding: 0px; box-sizing: border-box;">
+  <section style="box-sizing:border-box;width: 100%" data-width="100%">
+  <section style="box-sizing:border-box;width: 360px;margin: 0 auto">
+  <section data-role="square" style="box-sizing:border-box;width: 360px; height: 180px;border: 8px solid #ffffff; box-shadow: #A5DAAA 0px 0px 1px ;border-radius: 0px 0px 180px 180px; text-align: center; vertical-align: top; background-image: url('https://img.wyc520.com.cn/data/attachment/forum/202202/06/220642mrkhx6d8wxiaafkk.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center center;">
+  <img data-width="100%" src="https://img.wyc520.com.cn/data/attachment/forum/202202/06/220642mrkhx6d8wxiaafkk.jpg" style="box-sizing:border-box;width:100% !important;height: auto;opacity: 0;visibility: visible !important;" data-ratio="0.6787037037037037" data-w="1080"/>
+  </section>
+  </section></section></section></section>
+  <br><br>
+  <section style="text-align: justify;line-height: 2.0em; letter-spacing: 1.5px; margin-right: 100px; margin-left: 100px;">
+  <span style="color: #7DB884; font-family: 微软雅黑, Microsoft YaHei; font-size: 15px;">
+  <section class="box-edit" style="box-sizing: border-box;margin-top: -8px;">
+  <section style="display: flex;justify-content: flex-start;align-items: center;">
+  <section style="border: 4px solid #ffffff;border-radius: 100%;transform: rotate(0deg);-webkit-transform: rotate(0deg);-moz-transform: rotate(0deg);-ms-transform: rotate(0deg);-o-transform: rotate(0deg);">
+  <section style="box-sizing:border-box;font-size: 16px;width: 30px;height: 30px;background: #17793C;text-align: center;line-height: 30px;color: #f2f2f2;border-radius: 100%;">
+  <section style="letter-spacing: 1px;">
+  01
+  </section></section></section>
+  <section style="background-image: linear-gradient(90deg, #f2f2f2 10%, #F2FAF3 100%);font-size: 15px;letter-spacing: 1.5px;line-height: 1px;padding: 0px 0px 0px 0px;color: #333;flex: 1;text-align: left;color: #fff;margin-left: -10px;">
+  <section style="letter-spacing: 2px;">
+  <span class="135brush" data-brushtype="text" style="color: #17793C;">　</span>
+  </section></section></section>
+  <section style="border-left: 1px solid #17793C; padding-left: 10px; margin-left: 1.3em; margin-top: 0em; padding-top: 5px; box-sizing: border-box;">
+  <section style="padding: 5px; box-sizing: border-box;">
+  <section><section>
+  <section data-autoskip="1" class="135brush" style="background-image: linear-gradient(90deg, #f2f2f2 10%, #F2FAF3 100%); color: #17793C; padding: 1em; letter-spacing: 2px; line-height: 2em; font-size: 15px; text-align: justify; box-sizing: border-box; margin: 0px 0px 10px;border-radius: 15px;">
+  我有动听的小名，昏昏然书写昨日送到的露珠<br>
+  你给的美好不限于此<br>
+  夜雨飘过，想念与晴朗即刻到来<br>
+  </section></section></section></section></section></section>
+  <section class="box-edit" style="box-sizing: border-box;margin-top: -8px;">
+  <section style="display: flex;justify-content: flex-start;align-items: center;">
+  <section style="border: 4px solid #ffffff;border-radius: 100%;transform: rotate(0deg);-webkit-transform: rotate(0deg);-moz-transform: rotate(0deg);-ms-transform: rotate(0deg);-o-transform: rotate(0deg);">
+  <section style="box-sizing:border-box;font-size: 16px;width: 30px;height: 30px;background: #17793C;text-align: center;line-height: 30px;color: #f2f2f2;border-radius: 100%;">
+  <section style="letter-spacing: 1px;">
+  02
+  </section></section></section>
+  <section style="background-image: linear-gradient(90deg, #f2f2f2 10%, #F2FAF3 100%);font-size: 15px;letter-spacing: 1.5px;line-height: 1px;padding: 0px 0px 0px 0px;color: #333;flex: 1;text-align: left;color: #fff;margin-left: -10px;">
+  <section style="letter-spacing: 2px;">
+  <span class="135brush" data-brushtype="text" style="color: #17793C;">　</span>
+  </section></section></section>
+  <section style="border-left: 1px solid #17793C; padding-left: 10px; margin-left: 1.3em; margin-top: 0em; padding-top: 5px; box-sizing: border-box;">
+  <section style="padding: 5px; box-sizing: border-box;">
+  <section><section>
+  <section data-autoskip="1" class="135brush" style="background-image: linear-gradient(90deg, #f2f2f2 10%, #F2FAF3 100%); color: #17793C; padding: 1em; letter-spacing: 2px; font-size: 15px;line-height: 2em; text-align: justify; box-sizing: border-box; margin: 0px 0px 10px;border-radius: 15px;">
+  用你的指尖挑选动听，当我想到远方<br>
+  想到冬天的结尾处有人如你<br>
+  说点情话，再说点伤感<br>
+  </section></section></section></section></section></section>
+  <section class="box-edit" style="box-sizing: border-box;margin-top: -8px;">
+  <section style="display: flex;justify-content: flex-start;align-items: center;">
+  <section style="border: 4px solid #ffffff;border-radius: 100%;transform: rotate(0deg);-webkit-transform: rotate(0deg);-moz-transform: rotate(0deg);-ms-transform: rotate(0deg);-o-transform: rotate(0deg);">
+  <section style="box-sizing:border-box;font-size: 16px;width: 30px;height: 30px;background: #17793C;text-align: center;line-height: 30px;color: #f2f2f2;border-radius: 100%;">
+  <section style="letter-spacing: 1px;">
+  03
+  </section></section></section>
+  <section style="background-image: linear-gradient(90deg, #f2f2f2 10%, #F2FAF3 100%);font-size: 15px;letter-spacing: 1.5px;line-height: 1px;padding: 0px 0px 0px 0px;color: #333;flex: 1;text-align: left;color: #fff;margin-left: -10px;">
+  <section style="letter-spacing: 2px;">
+  <span class="135brush" data-brushtype="text" style="color: #17793C;">　</span>
+  </section></section></section>
+  <section style="border-left: 1px solid #17793C; padding-left: 10px; margin-left: 1.3em; margin-top: 0em; padding-top: 5px; box-sizing: border-box;">
+  <section style="padding: 5px; box-sizing: border-box;">
+  <section><section>
+  <section data-autoskip="1" class="135brush" style="background-image: linear-gradient(90deg, #f2f2f2 10%, #F2FAF3 100%); color: #17793C; padding: 1em; letter-spacing: 2px;line-height: 2em; font-size: 15px; text-align: justify; box-sizing: border-box; margin: 0px 0px 10px;border-radius: 15px;">
+  今晚，月亮会看到你的眼睛<br>
+  我慢慢地经过，带头说起阴晴无定那么必然<br>
+  每段故事等待石头问路，与芳草依偎<br>
+  </section></section></section></section></section>
+  <section class="box-edit" style="box-sizing: border-box;margin-top: -8px;">
+  <section style="display: flex;justify-content: flex-start;align-items: center;">
+  <section style="border: 4px solid #ffffff;border-radius: 100%;transform: rotate(0deg);-webkit-transform: rotate(0deg);-moz-transform: rotate(0deg);-ms-transform: rotate(0deg);-o-transform: rotate(0deg);">
+  <section style="box-sizing:border-box;font-size: 16px;width: 30px;height: 30px;background: #17793C;text-align: center;line-height: 30px;color: #f2f2f2;border-radius: 100%;">
+  <section style="letter-spacing: 1px;">
+  04
+  </section></section></section>
+  <section style="background-image: linear-gradient(90deg, #f2f2f2 10%, #F2FAF3 100%);font-size: 15px;letter-spacing: 1.5px;line-height: 1px;padding: 0px 0px 0px 0px;color: #333;flex: 1;text-align: left;color: #fff;margin-left: -10px;">
+  <section style="letter-spacing: 2px;">
+  <span class="135brush" data-brushtype="text" style="color: #17793C;">　</span>
+  </section></section>
+  </section><section style="border-left: 1px solid #17793C; padding-left: 10px; margin-left: 1.3em; margin-top: 0em; padding-top: 5px; box-sizing: border-box;">
+  <section style="padding: 5px; box-sizing: border-box;">
+  <section><section>
+  <section data-autoskip="1" class="135brush" style="background-image: linear-gradient(90deg, #f2f2f2 10%, #F2FAF3 100%); color: #17793C; padding: 1em; letter-spacing: 2px;line-height: 2em; font-size: 15px; text-align: justify; box-sizing: border-box; margin: 0px 0px 10px;border-radius: 15px;">
+  把闲置多时的水波晃动晃动<br>
+  你看起来大方明亮。我不会随意在唇上涂抹什么<br>
+  当你打开朝向我的窗户<br>
+  </section></section></section></section></section>
+  <section class="box-edit" style="box-sizing: border-box;margin-top: -8px;">
+  <section style="display: flex;justify-content: flex-start;align-items: center;">
+  <section style="border: 4px solid #ffffff;border-radius: 100%;transform: rotate(0deg);-webkit-transform: rotate(0deg);-moz-transform: rotate(0deg);-ms-transform: rotate(0deg);-o-transform: rotate(0deg);">
+  <section style="box-sizing:border-box;font-size: 16px;width: 30px;height: 30px;background: #17793C;text-align: center;line-height: 30px;color: #f2f2f2;border-radius: 100%;">
+  <section style="letter-spacing: 1px;">
+  05
+  </section></section></section>
+  <section style="background-image: linear-gradient(90deg, #f2f2f2 10%, #F2FAF3 100%);font-size: 15px;letter-spacing: 1.5px;line-height: 1px;padding: 0px 0px 0px 0px;color: #333;flex: 1;text-align: left;color: #fff;margin-left: -10px;">
+  <section style="letter-spacing: 2px;">
+  <span class="135brush" data-brushtype="text" style="color: #17793C;">　</span>
+  </section></section></section>
+  <section style="border-left: 1px solid #17793C; padding-left: 10px; margin-left: 1.3em; margin-top: 0em; padding-top: 5px; box-sizing: border-box;">
+  <section style="padding: 5px; box-sizing: border-box;">
+  <section><section>
+  <section data-autoskip="1" class="135brush" style="background-image: linear-gradient(90deg, #f2f2f2 10%, #F2FAF3 100%); color: #17793C; padding: 1em; letter-spacing: 2px;line-height: 2em; font-size: 15px; text-align: justify; box-sizing: border-box; margin: 0px 0px 10px;border-radius: 15px;">
+  异乡与陌生，并不等同<br>
+  穿过一月寒风的我们没有拥抱。那就坐下来<br>
+  让一些字目睹相逢<br>
+  </section></section></section></section></section>
+  <section class="box-edit" style="box-sizing: border-box;margin-top: -8px;">
+  <section style="display: flex;justify-content: flex-start;align-items: center;">
+  <section style="border: 4px solid #ffffff;border-radius: 100%;transform: rotate(0deg);-webkit-transform: rotate(0deg);-moz-transform: rotate(0deg);-ms-transform: rotate(0deg);-o-transform: rotate(0deg);">
+  <section style="box-sizing:border-box;font-size: 16px;width: 30px;height: 30px;background: #17793C;text-align: center;line-height: 30px;color: #f2f2f2;border-radius: 100%;">
+  <section style="letter-spacing: 1px;">
+  06
+  </section></section></section>
+  <section style="background-image: linear-gradient(90deg, #f2f2f2 10%, #F2FAF3 100%);font-size: 15px;letter-spacing: 1.5px;line-height: 1px;padding: 0px 0px 0px 0px;color: #333;flex: 1;text-align: left;color: #fff;margin-left: -10px;">
+  <section style="letter-spacing: 2px;">
+  <span class="135brush" data-brushtype="text" style="color: #17793C;">　</span>
+  </section></section></section>
+  <section style="border-left: 1px solid #17793C; padding-left: 10px; margin-left: 1.3em; margin-top: 0em; padding-top: 5px; box-sizing: border-box;">
+  <section style="padding: 5px; box-sizing: border-box;">
+  <section><section>
+  <section data-autoskip="1" class="135brush" style="background-image: linear-gradient(90deg, #f2f2f2 10%, #F2FAF3 100%); color: #17793C; padding: 1em; letter-spacing: 2px;line-height: 2em; font-size: 15px; text-align: justify; box-sizing: border-box; margin: 0px 0px 10px;border-radius: 15px;">
+  有人送来灯笼，说厮守与死守为了一只兔子<br>
+  这就是一个玩笑<br>
+  我准备另外种几棵大树，长满刺与轻狂<br>
+  </section></section></section></section></section>
+  <section class="box-edit" style="box-sizing: border-box;margin-top: -6px;">
+  <section style="display: flex;justify-content: flex-start;align-items: center;">
+  <section style="border: 4px solid #ffffff;border-radius: 100%;transform: rotate(0deg);-webkit-transform: rotate(0deg);-moz-transform: rotate(0deg);-ms-transform: rotate(0deg);-o-transform: rotate(0deg);">
+  <section style="box-sizing:border-box;font-size: 16px;width: 30px;height: 30px;background: #17793C;text-align: center;line-height: 30px;color: #f2f2f2;border-radius: 100%;">
+  <section style="letter-spacing: 1px;">
+  07
+  </section></section></section>
+  <section style="background-image: linear-gradient(90deg, #f2f2f2 10%, #F2FAF3 100%);font-size: 15px;letter-spacing: 1.5px;line-height: 1px;padding: 0px 0px 0px 0px;color: #333;flex: 1;text-align: left;color: #fff;margin-left: -10px;">
+  <section style="letter-spacing: 2px;">
+  <span class="135brush" data-brushtype="text" style="color: #17793C;">　</span>
+  </section></section></section>
+  <section style="border-left: 1px solid #17793C; padding-left: 10px; margin-left: 1.3em; margin-top: 0em; padding-top: 5px; box-sizing: border-box;">
+  <section style="padding: 5px; box-sizing: border-box;">
+  <section>
+  <section data-autoskip="1" class="135brush" style="background-image: linear-gradient(90deg, #f2f2f2 10%, #F2FAF3 100%); color: #17793C; padding: 1em; letter-spacing: 2px;line-height: 2em; font-size: 15px; text-align: justify; box-sizing: border-box; margin: 0px 0px 10px;border-radius: 15px;">
+  年末的话要藏在箱底<br>
+  如果我是怀旧的，如果手还有翻动的欲望<br>
+  与你说遍来年好风光，人间的炊烟不断飘扬<br>
+  </section></section></section></section></section>
+  <br><br><br><br>
+  <div align="center" style="position: relative;">
+  <script type="text/javascript">
+  document.write("<scr"+"ipt src='http://webftp.bbs.hnol.net/sxrx2016/players/jquery.js'></sc"+"ript>")
+  document.write("<scr"+"ipt src='http://webftp.bbs.hnol.net/sxrx2016/players/player.js'></sc"+"ript>")
+  document.write("<scr"+"ipt src='http://webftp.bbs.hnol.net/sxrx2016/players/songplay/player/songplay.js'></sc"+"ript>")
+  </script>
+  </section>
+  </div>
+  <br><br>
+  </body>
+  </html>
+    </div>
+  </article>
+
+
+</section>
+    <footer id="footer" role="contentinfo">
+    <div>&copy; 2024 <a href="/">岁月缝花</a>.
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Designed by <a href="http://rainylog.com" target="_blank">Rainy.</a>
+	</div>
+</footer><!-- end #footer -->
+
+  </div>
+  
+<script src="/lib/fancybox/dist/jquery.fancybox.min.js"></script>
+
+
+  
+<script src="/js/helper.js"></script>
+
+  
+<script src="/js/_third-party/gitment.js"></script>
+
+</body>
+</html>

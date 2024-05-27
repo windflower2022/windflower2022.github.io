@@ -1,45 +1,325 @@
-{# 文章页面 #}
-{% extends 'includes/layout.swig' %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【033-041】个人信息表 | 岁月缝花</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Document       &amp;nbsp;&amp;nbsp; 033 表单label标签">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【033-041】个人信息表">
+<meta property="og:url" content="https://windflower2022.github.io/2022/09/28/hello-world4/index.html">
+<meta property="og:site_name" content="岁月缝花">
+<meta property="og:description" content="Document       &amp;nbsp;&amp;nbsp; 033 表单label标签">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2022/09/02/vIbNjK.jpg">
+<meta property="article:published_time" content="2022-09-28T11:14:59.000Z">
+<meta property="article:modified_time" content="2023-06-21T11:28:33.968Z">
+<meta property="article:author" content="白夜宁月">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/09/02/vIbNjK.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="岁月缝花" type="application/atom+xml">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0.css">
 
-{# page页面(其实就是about)，也是用的这里来处理文章排版 #}
-{% block body %}
-  <article class="markdown-body">
-    <h2 id="post-title">{{ page.title }}
-      {% if is_post() && page.date %} {# 文章页面才显示日期 #}
-        <div id="post-time" datetime="{{ date_xml(page.date) }}">
-          {{ date(page.date, "YYYY-MM-DD") }}
-        </div>
-      {% endif %}
-    </h2>
-    {{ page.content }}
-  </article>
+  
+<link rel="stylesheet" href="/lib/fancybox/dist/jquery.fancybox.min.css">
 
-  {% if is_post() %}
-    
-    {% if page.prev || page.next  %}
-      <div id="page-prev-next">
-        {# 上一篇文章 #}
-        {% if (page.prev) %}
-          <a id="page-prev-a" href="{{ url_for(page.prev.path) }}"> ← {{ page.prev.title }} </a>
-        {% else %}
-          <div></div> {# 仅用于占位 #}
-        {% endif %}
+  
+<link rel="stylesheet" href="/css/main.css">
 
-        {# 下一篇文章 #}
-        {% if (page.next) %}
-          <a id="page-next-a" href="{{ url_for(page.next.path) }}"> {{ page.next.title }} → </a>
-        {% endif %}
-      </div>
-    {% endif %}
-    
-    {# 背景音频播放 #}
-    {% if theme.post_audio %}
-      {% set bg_color =  theme.theme_color %}
-      {% include 'includes/audio-play.swig' with bg_color %}
-    {% endif %}
+  
+<script src="/lib/jquery/dist/jquery.min.js"></script>
 
-    {# 文章页面才加打赏功能 #}
-    {% include 'includes/reward.swig' %}
-  {% endif %}
-{% endblock %}
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="wrapper">
+    <header id="header" class="clearfix">
+	<a id="logo" href="/" title="岁月缝花">岁月缝花</a>
+	
+	<nav id="nav-menu" class="clearfix">
+		<form id="search" method="post" action="./" role="search">
+			<input id="search-input" type="text" name="s" class="inputbox" value="Search" onfocus="if (value =='Search'){value =''}" onblur="if (value ==''){value='Search'}">
+		</form>
+		<ul>
+      
+				
+        <li><a class="main-nav-link" href="/">Home</a></li>
+      
+				
+        <li><a class="main-nav-link" href="/archives">Archives</a></li>
+      
+		</ul>
+	</nav>
+</header>
+    <section id="main" class="clearfix"><article class="post-detail">
+  <h1 class="post-title"><a href="/">【033-041】个人信息表</a></h1>
+  <ul class="post-meta">
+  <li><i class="fa fa-user"></i> Author 白夜宁月</li>
+  <li><i class="fa fa-calendar"></i> Date Sep 28</li>
+  <li><i class="fa fa-folder"></i> Categories
+  
+    <a class="article-category-link" href="/categories/html/">html</a>
+  
+  </li>
+</ul>
+  <div class="post-content">
+      
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    &nbsp;&nbsp; <h3>033 表单label标签</h3><br>
+    <span id="more"></span>
+     label双标签的使用可在表格中出现光标表格菜单,只读readonly和禁用disabled属性,<br><br>
+    <form action="">
+        <label for="username">请输入用户名:</label>
+        <input type="text" id="username"> <br><br>
+    您的手机号：<input type="text" value="12345678" readonly><br><br>
+    您的性别：<input type="radio" name="gender">男
+    <input type="radio" name="gender">女
+    <input type="radio" name="gender">保密
+    </form><br>
+    您的性别：<input type="radio" name="gender">男
+    <input type="radio" name="gender">女
+    <input type="radio" name="gender" disabled>保密
+    </form><br><br>
+    小技巧：input[type="radio" name=gender]*3再label
+    &nbsp;&nbsp; <h3>034 表单分组</h3><br>
+    带有边框和标题的表单控件字段集双标签fieldset，进行表单控件分组。嵌套双标签legend,说明的意思。<br><br>
+    <fieldset></fieldset><br><br>
+    边框作用就是相关字段进行视觉上的划分。<br><br>
+    <fieldset>
+        <legend>基础信息</legend><br><br>
+        用户名：<input type="text"><br><br>   
+        密码：<input type="password"><br><br>
+    </fieldset>
+    &nbsp;&nbsp; <h3>035 表单按钮（上）</h3><br>
+    提交按钮：input里type属性为submit<br><br>
+    <form action="">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+    </form><br><br>
+    form里定义action属性，填服务器地址<br><br>
+    <form action="https://windflower2022.github.io">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+    </form><br><br>
+    form里定义target属性，_blank/_self<br><br>
+    <form action="https://windflower2022.github.io" target="_blank">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+    </form><br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+    </form><br><br>
+    重置按钮：input里type属性为reset<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+        <input type="reset">
+    </form><br><br>
+    普通按钮：input里type属性为button<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+        <input type="reset">
+        <input type="button">
+    </form><br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+        <input type="reset">
+        <input type="button" value="普通按钮">
+    </form><br><br>
+    反思：提交按钮也在input里添加属性value为注册，重置为登录。<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit" value="注册">
+        <input type="reset" value="登录">
+        <input type="button" value="普通按钮">
+    </form>
+    &nbsp;&nbsp; <h3>036 表单按钮（下）</h3><br>
+    图像按钮：input里type属性为image,还要定义其属性src<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit" value="注册">
+        <input type="reset" value="登录">
+        <input type="button" value="普通按钮">
+        <input type="image" src="图片地址">
+    </form><br><br>
+    双标签button按钮：button<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit" value="注册">
+        <input type="reset" value="登录">
+        <input type="button" value="普通按钮">
+        <input type="image" src="图片地址">
+        <button>button按钮</button>
+    </form><br><br>
+     &nbsp;&nbsp; <h3>037-39 表单综合案例</h3><br>
+    <h1 align="center">社区疫情流掉信息表</h1>
+    <p>&emsp;&emsp;请大家做好个人防护，如去过风险地区，请及时向社区报备。</p>
+    <form action="https://raink.net/api/html/signin" target="_blank">
+        <fieldset>
+            <legend>基本信息</legend>
+            <h4>1.您的名字</h4>
+            <input type="text">
+            <h4>2.您的电话号码</h4>
+            <input type="text" value="86113398214301" onlyread>
+            <h4>3.您的性别</h4>
+            <input type="radio" name="gender">男
+            <input type="radio" name="gender">女
+            <input type="radio" name="gender" disabled>保密
+            <h4>4.您的家庭住址</h4>
+            <select name="" id="">
+                <option value="">哪个省</option>
+            </select>
+            <select name="" id="">
+                <option value="">市</option>
+            </select>
+            <select name="" id="">
+                <option value="">县</option>
+            </select>
+            <select name="" id="">
+                <option value="">乡</option>
+            </select><br><br>
+            <textarea name="" id="" cols="65" rows="4">请输入详细地址</textarea>
+        </fieldset><br><br>
+            <legend>目前状况</legend>    
+            <h4>5.您现在的身体状况</h4>
+            <input type="checkbox">健康<br><br>
+            <input type="checkbox">发热<br><br>
+            <input type="checkbox">干咳<br><br>
+            <input type="checkbox">乏力<br><br>
+            <input type="checkbox">呼吸困难<br><br>
+            <input type="checkbox">咽痛<br><br>
+            <input type="checkbox">胸痛<br><br>
+            <input type="checkbox">肌肉酸痛<br><br>
+            <input type="checkbox">呕吐<br><br>
+            <input type="checkbox">腹泻<br><br>
+            <input type="checkbox">味觉异常<br><br>
+            <input type="checkbox">嗅觉异常<br><br>
+         小技巧：input[type="checkbox"]*12再tab
+            <h4>6.您的健康码颜色目前是</h4>
+            <input type="radio" name="color">绿色
+            <input type="radio" name="color">黄色
+            <input type="radio" name="color">红色
+            <h4>7.是否在14天有个高中风险区旅居史</h4>
+            <input type="radio" name="close">是
+            <input type="radio" name="close">否
+            <h4>8.疫苗接种情况</h4>
+            <input type="radio" name="vaccines">已接种第一针
+            <input type="radio" name="vaccines">已接种第二针
+            <input type="radio" name="vaccines">已接种第三针    <br><br>   
+        <fieldset>
+            <legend>保密信息</legend>
+            <h4>1.身份证信息</h4>
+            正面：<input type="file"><br><br>
+            反面：<input type="file"><br><br>
+            <h4>2.学历信息（最高）</h4>
+            <select name="" id="">
+                <option value="">研究生</option>
+                <option value="">本科</option>
+                <option value="">大专</option>
+                <option value="">高中</option>
+                <option value="">高中以下</option>
+            </select>
+            <h4>3.是否服兵役</h4>
+            <input type="radio" name="ismilitary" id="yes">
+            <label for="yes">是</label>
+            <input type="radio" name="ismilitary" id="no">
+            <label for="no">否</label>
+            <h4>4.个人意见</h4>
+            <textarea name="" id="" cols="60" rows="5">请输入详细地址</textarea>
+        </fieldset><br><br>
+            <input type="submit" value="上传信息">
+            <input type="reset" value="清空信息">
+            <input type="image" src="" alt="提交">
+        </form><br><br>
+        &nbsp;&nbsp; <h3>040 表单数据采集和提交</h3><br>
+        <form action="https://raink.net/api/html/signin">
+          手机号码：<input type="text" name="pnumber">  <br> <br>
+          密码框: <input type="password" name="password"><br> <br>
+          <input type="submit" value="登录"><br> <br>
+        </form><br> <br>
+        &nbsp;&nbsp; <h3>041 其它实用标签 </h3><br>
+        hr(horizontal)单标签，表水平线，作用是网页上画出一条水平分割线。视觉上将文档分成多个部分。<br> <br>
+        5个属性，width宽度,size高度,noshade去掉水平线阴影。color用于定义水平线颜色。align水平线水平对齐方式。<br> <br>
+        爱上一朵花的芬芳 爱一朵花的倔强
+        <hr width="300px" size="10px" align="left" noshade color="green">
+        爱上一朵花的姿态 它在黑夜中发亮<br> <br>
+        pre(preformatted)双标签：预格式化的文本，里面文本以固定宽度格式显示，保留了空格和换行。<br> <br>
+        <pre>
+            爱上一个人的目光
+            爱上一个人的家乡
+            爱上一个人的伤疤
+            他在记忆的远方
+        </pre>
+        map双标签:定义一个图像映射，就是一个图片的热点链接。点击图片实现链接跳转。属性name。<br> <br>嵌套area,定义图片的热点区域，其shape属性：
+        default所有区域；rect矩形；circle圆形；poly多边形。coords属性坐标，与shape配合使用。<br> <br>
+        <map name="">
+            <area shape="circle" coords="x,y,r" href="目标地址" alt="">
+            <area shape="poly" coords="x1,y1,x2,y2,x3,y3,...xn,yn" href="目标地址" alt="">
+            <area shape="rect" coords="x1,y1,x2,y2" href="目标地址" alt="">   
+        </map>
+        <img src="https://s1.ax1x.com/2022/09/02/vIbNjK.jpg" alt="windflower" usemap="#flower"><br> <br>
+        <map name="flower">
+            <area shape="rect" coords="0,0,110,260" href="https://s1.ax1x.com/2022/09/15/vzF5es.jpg" alt="ruyuan">
+            <area shape="cirle" coords="129,161,10" href="https://s1.ax1x.com/2022/09/10/vOAQsI.jpg" alt="zhdjt">
+        </map><br><br>       
+</body>
+</html>
+  </div>
+  
 
+</article>
+
+<!-- Comments -->
+
+<!-- End Comments --></section>
+    <footer id="footer" role="contentinfo">
+    <div>&copy; 2024 <a href="/">岁月缝花</a>.
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Designed by <a href="http://rainylog.com" target="_blank">Rainy.</a>
+	</div>
+</footer><!-- end #footer -->
+
+  </div>
+  
+<script src="/lib/fancybox/dist/jquery.fancybox.min.js"></script>
+
+
+  
+<script src="/js/helper.js"></script>
+
+  
+<script src="/js/_third-party/gitment.js"></script>
+
+</body>
+</html>

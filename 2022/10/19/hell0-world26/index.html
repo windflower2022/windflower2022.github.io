@@ -1,45 +1,136 @@
-{# 文章页面 #}
-{% extends 'includes/layout.swig' %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【080】CSS盒模型 | 岁月缝花</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="box model                      css盒模型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【080】CSS盒模型">
+<meta property="og:url" content="https://windflower2022.github.io/2022/10/19/hell0-world26/index.html">
+<meta property="og:site_name" content="岁月缝花">
+<meta property="og:description" content="box model                      css盒模型">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-10-19T14:12:27.000Z">
+<meta property="article:modified_time" content="2023-06-21T11:19:45.437Z">
+<meta property="article:author" content="白夜宁月">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="岁月缝花" type="application/atom+xml">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0.css">
 
-{# page页面(其实就是about)，也是用的这里来处理文章排版 #}
-{% block body %}
-  <article class="markdown-body">
-    <h2 id="post-title">{{ page.title }}
-      {% if is_post() && page.date %} {# 文章页面才显示日期 #}
-        <div id="post-time" datetime="{{ date_xml(page.date) }}">
-          {{ date(page.date, "YYYY-MM-DD") }}
-        </div>
-      {% endif %}
-    </h2>
-    {{ page.content }}
-  </article>
+  
+<link rel="stylesheet" href="/lib/fancybox/dist/jquery.fancybox.min.css">
 
-  {% if is_post() %}
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="wrapper">
+    <header id="header" class="clearfix">
+	<a id="logo" href="/" title="岁月缝花">岁月缝花</a>
+	
+	<nav id="nav-menu" class="clearfix">
+		<form id="search" method="post" action="./" role="search">
+			<input id="search-input" type="text" name="s" class="inputbox" value="Search" onfocus="if (value =='Search'){value =''}" onblur="if (value ==''){value='Search'}">
+		</form>
+		<ul>
+      
+				
+        <li><a class="main-nav-link" href="/">Home</a></li>
+      
+				
+        <li><a class="main-nav-link" href="/archives">Archives</a></li>
+      
+		</ul>
+	</nav>
+</header>
+    <section id="main" class="clearfix"><article class="post-detail">
+  <h1 class="post-title"><a href="/">【080】CSS盒模型</a></h1>
+  <ul class="post-meta">
+  <li><i class="fa fa-user"></i> Author 白夜宁月</li>
+  <li><i class="fa fa-calendar"></i> Date Oct 19</li>
+  <li><i class="fa fa-folder"></i> Categories
+  
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  
+  </li>
+</ul>
+  <div class="post-content">
+      
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>box model</title>
+    <link rel="stylesheet" href="box-model-style.css">
+</head>
+<body>
+    <br><br>
+    <div class="box1">
+    css盒模型<span id="more"></span>本质上是一个包裹每个html元素的盒子，包含四个部分margin,boder,padding,content(图片，文本等)
+    在css里，定义通配符选择器*声明样式margin:0;padding:0;取消所有元素默认的边距和填充样式
+    </div>
+    <div class="box2">       
+        在浏览器中，正确设置一个盒子的宽度，高度对于精确的页面布局意义重大。
+        盒子的宽度=内容宽度+左填充+右填充+左边框+右边框+左边距+右边距
+        盒子的高度=内容高度+上填充+下填充+上边框+下边框+上边距+右边距
+        css设置的宽度高度，只是内容的宽高，不包括填充，边框，边距。上面这种计算大小的盒子模型叫标准盒模型。<br><br>
+    </div>
+    <div class="box3">
+        怪异盒模型： 设置元素的margin,padding后，固定为Width,height的值。属性设置为box-sizing:border-box;则按照怪异模型呈现大小；值为content-box,则为标准盒模型，通常为设置，容器大小就按标准盒模型计算。
+    </div>
+    <div class="box4">
+        盒子的宽度=css样式设置的width+左边距+右边距<br>
+        盒子的高度=css样式设置的height+上边距+下边距<br>
+    </div><br><br>
+
     
-    {% if page.prev || page.next  %}
-      <div id="page-prev-next">
-        {# 上一篇文章 #}
-        {% if (page.prev) %}
-          <a id="page-prev-a" href="{{ url_for(page.prev.path) }}"> ← {{ page.prev.title }} </a>
-        {% else %}
-          <div></div> {# 仅用于占位 #}
-        {% endif %}
+</body>
+</html>
+</body>
+</html>
+  </div>
+  
 
-        {# 下一篇文章 #}
-        {% if (page.next) %}
-          <a id="page-next-a" href="{{ url_for(page.next.path) }}"> {{ page.next.title }} → </a>
-        {% endif %}
-      </div>
-    {% endif %}
-    
-    {# 背景音频播放 #}
-    {% if theme.post_audio %}
-      {% set bg_color =  theme.theme_color %}
-      {% include 'includes/audio-play.swig' with bg_color %}
-    {% endif %}
+</article>
 
-    {# 文章页面才加打赏功能 #}
-    {% include 'includes/reward.swig' %}
-  {% endif %}
-{% endblock %}
+<!-- Comments -->
 
+<!-- End Comments --></section>
+    <footer id="footer" role="contentinfo">
+    <div>&copy; 2024 <a href="/">岁月缝花</a>.
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Designed by <a href="http://rainylog.com" target="_blank">Rainy.</a>
+	</div>
+</footer><!-- end #footer -->
+
+  </div>
+  
+<script src="/lib/fancybox/dist/jquery.fancybox.min.js"></script>
+
+
+  
+<script src="/js/helper.js"></script>
+
+  
+<script src="/js/_third-party/gitment.js"></script>
+
+</body>
+</html>

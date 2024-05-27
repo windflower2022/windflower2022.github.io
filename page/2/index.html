@@ -1,5 +1,1297 @@
-{% extends 'includes/layout.swig' %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>岁月缝花</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="岁月缝花">
+<meta property="og:url" content="https://windflower2022.github.io/page/2/index.html">
+<meta property="og:site_name" content="岁月缝花">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="白夜宁月">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="岁月缝花" type="application/atom+xml">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0.css">
 
-{% block body %}
-  {% include 'home.swig' %}
-{% endblock %}
+  
+<link rel="stylesheet" href="/lib/fancybox/dist/jquery.fancybox.min.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="wrapper">
+    <header id="header" class="clearfix">
+	<a id="logo" href="/" title="岁月缝花">岁月缝花</a>
+	
+	<nav id="nav-menu" class="clearfix">
+		<form id="search" method="post" action="./" role="search">
+			<input id="search-input" type="text" name="s" class="inputbox" value="Search" onfocus="if (value =='Search'){value =''}" onblur="if (value ==''){value='Search'}">
+		</form>
+		<ul>
+      
+				
+        <li><a class="main-nav-link" href="/">Home</a></li>
+      
+				
+        <li><a class="main-nav-link" href="/archives">Archives</a></li>
+      
+		</ul>
+	</nav>
+</header>
+    <section id="main" class="clearfix">
+  <article class="post">
+      
+        
+          <h1><a href="/2024/01/31/hello-world2/">【019-025】表格基础知识</a></h1>
+        
+      
+      <div class="post-content ">
+        
+  
+
+
+
+
+        <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>表格基础hello world</title>
+ </head>
+ <body>
+&nbsp;&nbsp;<h3>019 表格基础</h3><br><br>
+<span id="more"></span>
+&nbsp;&nbsp;table表格双标签，嵌套tr行双标签,tr嵌套td表格数据单元双标签。只能按照这样顺序嵌套，如果增强表现力，只能在td标签下面嵌套。
+<table>
+    <tr>
+       <td></td> 
+    </tr>
+</table>
+&nbsp;&nbsp;HTML空白页，！+tab生成格式。body下输入table>tr*4>td*5，点击tab，完成格式生成。生成4行5列。
+<br><br><table>
+    <tr>
+        <td>序号</td>
+        <td>姓名</td>
+        <td>语文</td>
+        <td>数学</td>
+        <td>政治</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table> 
+  <br><br> 
+  &nbsp;&nbsp; <h3>020 表格属性</h3><br><br>
+  &nbsp;&nbsp;在tr下，添加th（table header cell）加粗文本双标签.
+<br><br><table>
+    <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table>   &nbsp;&nbsp;<br><br>绘制表格线，在table开标签添加 border=""。
+  <br><br><table border="1">
+    <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table> 
+  <br><br> &nbsp;&nbsp;在table开标签添加 border="",width="",height=""。
+  <br><br><table border="1" width="500" height="150">
+    <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table> 
+  <br><br> cellspacing:单元格之间的距离
+  <br><br> cellpadding:单元格边框和文本间的距离
+  <br><br><table border="1" width="500" height="150" cellspacing="0">
+    <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table> 
+  <br><br><table border="1" width="500" height="150" cellspacing="0" cellpadding="0">
+    <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table>
+  <br><br><table border="1" width="500" height="150" cellspacing="0" cellpadding="0" align="left">
+    <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table><br><br>
+  <br><br><br><br><br><br>&nbsp;&nbsp;还可在里面添加bgcolor="" bordercolor=""<br><br>
+ <table border="1" width="500" height="150" cellspacing="0" cellpadding="0" align="left" bgcolor="red" bordercolor="green">
+    <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table>
+  <br><br><br><br><br><br>&nbsp;&nbsp; <h3>021 表格行属性</h3><br><br>
+  &nbsp;&nbsp;表格添加高度，颜色，水平对齐，垂直对齐，tr开标签里添加height="" bgcolor="" align="left/center/right" valign="top/middle/bottom"
+  <br><br><table border="1" width="500" height="150" cellspacing="0" cellpadding="0" align="left">
+    <tr height="100">
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table><br><br>
+  <br><br><br><br><br><br><br><br><table border="1" width="500" height="150" cellspacing="0" cellpadding="0" align="left" bgcolor="red">
+    <tr height="100" bgcolor="yellow">
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table>
+  <br><br><br><br><br><br><br><br><br><br><table border="1" width="500" height="150" cellspacing="0" cellpadding="0" align="left">
+    <tr height="100" align="center" valign="middle">
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr align="center" valign="middle" >
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table><br><br><br><br><br><br><br><br>&nbsp;&nbsp; <h3>022 单元格属性</h3><br><br>
+  table>tr*3>td*3d,点击tab，创建3行3列的表格。
+  <br><br><table width="300" height="300" border="1">
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+    </tr>
+  </table>   
+  <br><br>&nbsp;&nbsp;单元格属性，在td开标签里添加width=" height="" bgcolor="" align="left/center/right" valign="top/middle/bottom"
+  <br><br><table width="300" height="300" border="1">
+    <tr>
+        <td width="150">1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+    </tr>
+  </table>   
+  <br><br>
+  <br><br><table width="300" height="300" border="1">
+    <tr>
+        <td width="150" height="150" bgcolor="red">1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+    </tr>
+  </table>   
+  <br><br>
+  <br><br><table width="300" height="300" border="1">
+    <tr>
+        <td width="150">1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+    </tr>
+  </table>   
+  <br><br>
+  <br><br><table width="300" height="300" border="1">
+    <tr>
+        <td width="150" height="150" bgcolor="red" align="right" valign="bottom">1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+    </tr>
+  </table>   
+  &nbsp;&nbsp; <h3>023 单元格合并</h3><br><br>
+  <table border="1" width="500" height="150" cellspacing="0" cellpadding="0">
+    <tr height="30" align="center" valign="middle">
+      <td></td>
+      <td>星期一</td>
+      <td>星期二</td>
+      <td>星期三</td>
+      <td>星期四</td>
+      <td>星期五</td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td>早自习</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td>上午</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td>下午</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td></td> 
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td>晚自习</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table><br>&nbsp;&nbsp;水平合并，纵向（垂直）合并,rowspan=""跨几行，纵向几行合并的意思;colspan（columspan）=""跨几列，横向几列合并之意。<br><br><table border="1" width="500" height="150" cellspacing="0" cellpadding="0">
+    <tr height="30" bgcolor="deepskyblue">
+      <th></th>
+      <th>星期一</th>
+      <th>星期二</th>
+      <th>星期三</th>
+      <th>星期四</th>
+      <th>星期五</th>
+    </tr>
+    <tr height="30" align="center" valign="middle" bgcolor="skyblue">
+      <td bgcolor="skyblue">早自习</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td rowspan="4" bgcolor="skyblue">上午</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle" bgcolor="skyblue">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle" bgcolor="skyblue">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td rowspan="4" bgcolor="skyblue">下午</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle" bgcolor="skyblue"> 
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle" bgcolor="skyblue">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td bgcolor="skyblue">晚自习</td>
+      <td colspan="5"></td>
+    </tr>
+  </table><br><br>
+  <table border="1" width="600" height="400" cellspacing="0" cellpadding="0">
+    <tr height="30" align="center" valign="middle">
+      <td colspan="4">1</td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td rowspan="2">6</td>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td>10</td>
+      <td rowspan="3">11</td>
+      <td>12</td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td colspan="2">13</td>
+      <td>14</td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td>15</td>
+      <td>16</td>
+      <td>17</td>
+    </tr>
+  </table><br><br><br><br>
+&nbsp;&nbsp; <h3>024 表格标题和结构分组</h3><br><br>
+  &nbsp;&nbsp;表格标题就是表格的大标题，默认顶部水平居中，双标签caption，位置在table和tr间。
+  <table>
+    <caption></caption>
+    <tr></tr>
+  </table><br>
+  <table border="1" bordercolor="#ffffff" bgcolor="#cde7de" width="500" height="150" cellspacing="0" cellpadding="0">
+    <caption><h3>成绩册</h3></caption>
+    <colgroup span="1" bgcolor="#91c5d4"></colgroup>
+    <thead>
+        <tr align="center" valign="middle">
+            <th rowspan="2" bgcolor="skyblue">序号</th>
+            <th colspan="6" bgcolor="skyblue"> by windflower</th>
+        </tr>
+        <tr bgcolor="skyblue">
+            <th>姓名</th>
+            <th>语文</th>
+            <th>数学</th>
+            <th>外语</th>
+            <th>文综</th>
+            <th>总分</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr align="center" valign="middle"> 
+            <th bgcolor="skyblue">1</th>
+            <td>张三</td>
+            <td>90</td>
+            <td>70</td>
+            <td>80</td>
+            <td>220</td>
+            <td>460</td>
+        </tr>
+        <tr align="center" valign="middle">
+            <th bgcolor="skyblue">2</th>
+            <td>李四</td>
+            <td>80</td>
+            <td>80</td>
+            <td>80</td>
+            <td>218</td>
+            <td>458</td>
+        </tr>
+        <tr align="center" valign="middle">
+            <th bgcolor="skyblue">3</th>
+            <td>王子</td>
+            <td>70</td>
+            <td>80</td>
+            <td>70</td>
+            <td>220</td>
+            <td>440</td>
+        </tr>
+        <tr align="center" valign="middle">
+            <th bgcolor="skyblue">4</th>
+            <td>陈陈</td>
+            <td>60</td>
+            <td>60</td>
+            <td>70</td>
+            <td>200</td>
+            <td>390</td>
+        </tr>
+        <tr align="center" valign="middle">
+            <th bgcolor="skyblue">5</th>
+            <td>周周</td>
+            <td>90</td>
+            <td>80</td>
+            <td>80</td>
+            <td>210</td>
+            <td>460</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr align="center" valign="middle">
+            <th bgcolor="green">说明</th>
+            <td colspan="6" bgcolor="lightgreen">书山有路勤为径</td>
+        </tr>
+    </tfoot>  
+  </table>
+  <br>&nbsp;&nbsp;把该表册分成三部分：thead(table head) ,tbody,tfoot,一个表格只允许1个thead,1个tfoot,多个tbody。<br><br>
+  列也可以分组，colgroup(colum group)双标签,常用于定义一整列一单元的颜色。可定义属性span=""意思是多少列为1组。如果分多组，则需要多个colgroup标签。<br><br>
+  小技巧：选中内容，ctr+d,可实现多光标操作。<br><br>
+  &nbsp;&nbsp; <h3>025 颜色值和长度单位</h3><br><br>
+  &nbsp;&nbsp;颜色名称，red/green/blue;十六进制，#ff0000,00ff00,0000ff;RGB值，rgb(255，0，0，)；rgb(0，255，0；)rgb(0，0，255)<br><br>
+  <table width="100">
+    <tr bgcolor="red">
+      <td width="100px" height="100px">red</td>
+    </tr>
+    <tr bgcolor="green">
+      <td width="50px" height="50px">greem</td>
+    </tr>  
+    <tr bgcolor="blue">
+        <td width="50px" height="50px">blue</td>
+      </tr>
+    </tr>
+  </table>
+  <table width="100">
+    <tr bgcolor="#ff0000">
+      <td width="100px" height="100px">red</td>
+    </tr>
+    <tr bgcolor="#00ff00">
+      <td width="50px" height="50px">greem</td>
+    </tr>
+    <tr bgcolor="#0000ff">
+      <td width="50px" height="50px">blue</td>
+    </tr>
+    <tr bgcolor="rgb(255,0,0)">
+      <td width="100px" height="100px">red</td>
+    </tr>
+    <tr bgcolor="rgb(0,255,0)">
+      <td width="50px" height="50px">greem</td>
+    </tr>  
+    <tr bgcolor="rgb(0,0,255)">
+      <td width="50px" height="50px">blue</td>
+      </tr>
+    </tr>
+  </table>
+
+      </div>
+  </article>
+
+  <article class="post">
+      
+        
+          <h1><a href="/2024/01/31/hello-world3/">【026-032】块级内联元素下拉菜单</a></h1>
+        
+      
+      <div class="post-content ">
+        
+  
+
+
+
+
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    &nbsp;&nbsp; <h3>026 块级元素和内联元素</h3><br><br>
+    <span id="more"></span>
+    &nbsp;&nbsp;HTML元素的显示值分为：块block，内联inline。HTML元素分为块（级）元素block-level块级，行内元素inline内联。<br><br>
+    &nbsp;&nbsp;块级元素总是从新行开始，浏览器自动在元素的前后添加一些边距。总是占用可用的全部宽度，尽可能向左右伸展。p标签就是常用的快元素。<br><br>
+        <p>看淡人间烟火，细品岁月静好</p>
+        <h1>烟火人生</h1>
+        <p>看淡人间烟火，细品岁月静好</p>
+        <p>时光深处，我亦微笑，亦不老</p>
+        <h1 align="center">烟火人生</h1>
+        <p align="center">看淡人间烟火，细品岁月静好</p>
+        <p align="center">时光深处，我亦微笑，亦不老</p>
+    可以用双标签div（division）为分块，引申为盒子，容器。定义HTML的一个分块，或一部分，典型的块级元素。来表达居中，不用处处都写。
+        <p align="center"> 
+          <h1>烟火人生</h1>
+          <p>看淡人间烟火，细品岁月静好</p>
+          <p>时光深处，我亦微笑，亦不老</p>
+        </p> 
+        <div align="center">
+          <h1>烟火人生</h1>
+          <p>看淡人间烟火，细品岁月静好</p>
+          <p>时光深处，我亦微笑，亦不老</p>
+        </div> 
+    </body><br><br>
+    &nbsp;&nbsp;块级元素：<br><br>
+    标题元素：h1-h6<br><br>
+    段落元素：p<br><br>
+    列表元素：ol,ul,li,dl,dt,dd<br><br>
+    表格元素：table,tr,td,th,thead,tbody,tfoot,caption<br><br>
+    分块元素：div<br><br>
+    &nbsp;&nbsp;内联元素不独占一行，只占用必要的宽度。如文本修饰标签b,em,i.strong,sub.sup<br><br>
+        <div align="center">
+          <h1>烟火人生</h1>
+          <p>看淡<b title="inline">人间烟火</b>，细品岁月静好</p>
+          <p>时光深处，<b title="inline">我亦微笑，亦不老</b></p>
+        </div><br><br> 
+    如果不想加粗，b就换成span双标签，表范围，标记文本/文档的一部分。典型的内联元素。<br><br>
+    注意：内联元素不能嵌套块级元素。<br><br>
+        <div align="center">
+          <h1>烟火人生</h1>
+          <p>看淡<b title="inline">人间烟火</b>，细品岁月静好</p>
+          <p>时光深处，<span title="inline">我亦微笑，亦不老</span></p>
+        </div><br><br> 
+      &nbsp;&nbsp;内联元素：<br><br>
+      链接元素：a<br><br>
+      文本修饰元素：b,em, i,strong,sub,sup<br><br>
+      折行元素：br<br><br>
+      图片元素：img<br><br>
+      范围元素：span<br><br><br><br>
+    &nbsp;&nbsp; <h3>027 初识表单</h3><br><br> 
+    分组控件，单行文本框控件，多行文本框控件，单选框控件， 多选框，下拉框，文件选择，普通按钮，自定义按钮控件。<br><br>
+表单使用form双标签。控件添加在form开标签里。<br><br>
+    <form action=""></form>
+     &nbsp;&nbsp; <h3>028 文本框和密码框</h3><br>
+     文本框控件不折行，只能在本行显现，如果超出了只能鼠标拖拽，或键盘右键按钮敲击查看全部信息。<br><br>
+     使用HTML实现单项文本框：form里嵌入input单标签，里面添加type属性类型.单行文本框的type值text,而密码框的为password,也是单行文本框，只是显示小黑点或星号，内容被屏蔽了<br><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=""><br><br>
+    <form action="">
+        请输入用户名：<input>
+    </form><br><br>
+    <form action="">
+        请输入用户名：<input type="text">
+    </form><br>
+    <form action="">
+        请输入用户名：<input type="text">
+        <br><br>
+        请输入密码：<input type="password">
+    </form><br><br><br>
+    &nbsp;&nbsp; <h3>029 多行文本框控件(文域)</h3><br>
+    输入多行文本，自动折行，文本超出底部边界，产生滚动条，可以滚动鼠标滚轮查看完整信息。<br>
+    在HTML中实现: form嵌套textarea双标签.可使用cols(colomns)属性来指定文本区可见宽度，值为数字。<br><br>
+    <form action="">
+        请输入你的信息<br>
+        <textarea name="" id="" cols="5" rows="2"></textarea>
+    </form><br>  
+    textarea双标签.可使用cols(colomns)属性来指定文本区可见宽度，值为数字。row 为行数，指定值为数字。<br><br>
+    <form action="">
+        请输入你的信息<br>
+        <textarea cols="10" rows="3"></textarea>
+    </form><br><br><br> 
+&nbsp;&nbsp; <h3>030 取值按钮类型</h3><br>
+    单选还是多选，可在table里嵌套input,设置属性type实现，radio,为单选，checkbox为多选。 <br> <br>
+    <form action="">
+         选择性别：<input type="radio">男
+         <input type="radio">女
+    </form><br> <br>
+    单选框控件须成组使用才有意义，每组至少需要两个单选框。“组”是通过name属性来建立的，凡是name值相同的就是一组。同组的单选框，只有一个会处于选中状态，其它的会自动呈现为未选中状态。
+    <form action="">
+        选择性别：<input type="radio" name="gender">男
+        <input type="radio" name="gender">女
+   </form><br> <br>
+   单选：<br> <br>
+   <form action="">
+    选择性别：<input type="radio" name="gender">男
+    <input type="radio" name="gender">女
+    <br><br>
+    多选：<br> <br>
+    你喜欢哪门学科：<input type="checkbox">语文
+    <input type="checkbox">数学
+    <input type="checkbox">英语单选<br> <br>
+    若想选项默认状态不为空，可在属性后加checked="任意字母"单选<br> <br>
+    <form action="">
+        选择性别：<input type="radio" name="gender" checked>男
+        <input type="radio" name="gender">女<br> <br>
+        你喜欢哪门学科：<input type="checkbox" checked>语文
+    <input type="checkbox">数学
+    <input type="checkbox">英语
+</form>
+&nbsp;&nbsp; <h3>031 下拉菜单</h3><br>
+    双标签为select,只包含1个或多个option双标签。默认选项需在option里添加selectd定义。<br> <br>
+    小技巧：option{199$}*9再tab。<br> <br>
+<form action="">
+    出生日期：
+    <select>
+        <option value="">1991</option>
+        <option value="">1992</option>
+        <option value="">1993</option>
+        <option value="" selected>1994</option>
+        <option value="">1995</option>
+        <option value="">1996</option>
+        <option value="">1997</option>
+        <option value="">1998</option>
+        <option value="">1999</option>  
+    </select>
+</form><br> <br>
+多选的话，在select里定义属性为multiple<br> <br>
+<form action="">
+    所学学科：
+    <select name="" id="" multiple>
+        <option value="">语文</option>
+        <option value="">数学</option>
+        <option value="">外语</option>
+        <option value="">政治</option>
+        <option value="">历史</option>
+        <option value="">地理</option>
+        <option value="">物理</option>
+        <option value="">化学</option>
+        <option value="">生物</option>
+    </select>
+</form><br> 
+小技巧：1.光标停在option行，按住alt+shift，下键敲击8下。<br><br>
+       2.网页上，ctrl+鼠标就可选择多个。<br><br>
+       select里定义属性为size,可定义默认多少可见行<br><br>
+       <form action="">
+        所学学科：
+        <select name="" id="" multiple size="9" >
+            <option value="">语文</option>
+            <option value="">数学</option>
+            <option value="">外语</option>
+            <option value="">政治</option>
+            <option value="">历史</option>
+            <option value="">地理</option>
+            <option value="">物理</option>
+            <option value="">化学</option>
+            <option value="">生物</option>
+        </select>
+    </form><br> 
+    &nbsp;&nbsp; <h3>032 选择文件</h3><br>
+    在表格里,嵌入的input里type属性添加为file就行。<br><br>
+    <form action="">
+        附件：
+        <input type="file">
+    </form><br><br>	
+</body>
+</html>
+
+
+      </div>
+  </article>
+
+  <article class="post">
+      
+        
+          <h1><a href="/2024/01/29/xinnianhao/">【风花音画】新年好</a></h1>
+        
+      
+      <div class="post-content ">
+        
+  
+
+
+
+
+        <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+  </head>
+  <body>
+  <p align="center" color="black">
+    <a href="https://windflower2022.github.io/html/img/xinnianhao.html" target="_blank">点击全屏</a>
+  </p> 
+  <span id="more"></span>
+    <DIV style="POSITION: relative; WIDTH: 1600px; TOP: 150px; LEFT: -380px"><IFRAME height=1000 marginHeight=0 src="https://windflower2022.github.io/html/img/xinnianhao.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no></IFRAME></DIV><br><br><br><br><br><br><br><br><br><br>
+    <audio style="width: 0px; height: 0px;" src="https://music.163.com/song/media/outer/url?id=36150317.mp3" autoplay="autoplay" loop="loop" controls="controls" type="audio/mpeg"></audio>
+  </body>
+</html>
+      </div>
+  </article>
+
+  <article class="post">
+      
+        
+          <h1><a href="/2024/01/27/nwdsl/">【风花音画】挪威的森林</a></h1>
+        
+      
+      <div class="post-content ">
+        
+  
+
+
+
+
+        <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+  </head>
+  <body>
+  <p align="center" color="black">
+    <a href="https://windflower2022.github.io/html/img/nwdsl.html" target="_blank">点击全屏</a>
+  </p> 
+  <span id="more"></span>
+    <DIV style="POSITION: relative; WIDTH: 1600px; TOP: 150px; LEFT: -380px"><IFRAME height=1000 marginHeight=0 src="https://windflower2022.github.io/html/img/nwdsl.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no></IFRAME></DIV><br><br><br><br><br><br><br><br><br><br>
+    <audio style="width: 0px; height: 0px;" src="https://music.163.com/song/media/outer/url?id=1838919030.mp3" autoplay="autoplay" loop="loop" controls="controls" type="audio/mpeg"></audio>
+  </body>
+</html>
+      </div>
+  </article>
+
+  <article class="post">
+      
+        
+          <h1><a href="/2024/01/26/sdsnxygyb/">【风花音画】谁的思念像月光银白</a></h1>
+        
+      
+      <div class="post-content ">
+        
+  
+
+
+
+
+        <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+  </head>
+  <body>
+  <p align="center" color="black">
+    <a href="https://windflower2022.github.io/html/img/sdsnxygyb.html" target="_blank">点击全屏</a>
+  </p> 
+  <span id="more"></span>
+    <DIV style="POSITION: relative; WIDTH: 1600px; TOP: 150px; LEFT: -380px"><IFRAME height=1000 marginHeight=0 src="https://windflower2022.github.io/html/img/sdsnxygyb.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no></IFRAME></DIV><br><br><br><br><br><br><br><br><br><br>
+    <audio style="width: 0px; height: 0px;" src="https://music.163.com/song/media/outer/url?id=1967211136.mp3" autoplay="autoplay" loop="loop" controls="controls" type="audio/mpeg"></audio>
+  </body>
+</html>
+      </div>
+  </article>
+
+  <article class="post">
+      
+        
+          <h1><a href="/2023/10/09/ry/">【风花音画】如愿</a></h1>
+        
+      
+      <div class="post-content ">
+        
+  
+
+
+
+
+        <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>如愿</title>
+  </head>
+  <body>
+  <p align="center" color="black">
+    <a href="https://windflower2022.github.io/html/img/ry.html" target="_blank">点击全屏</a>
+  </p>
+  <span id="more"></span> 
+    <DIV style="POSITION: relative; WIDTH: 1600px; TOP: 150px; LEFT: -380px"><IFRAME height=869 marginHeight=0 src="https://windflower2022.github.io/html/img/ry.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no></IFRAME></DIV><br><br><br><br><br><br><br><br><br><br>
+    <audio style="width:0px;height:0px;" controls="controls" autoplay="autoplay" loop="loop" src="http://music.163.com/song/media/outer/url?id=1890590098.mp3" type="audio/mpeg"></audio>   
+  </body>
+</html>
+      </div>
+  </article>
+
+  <article class="post">
+      
+        
+          <h1><a href="/2023/09/21/nzbc/">【风花音画】你在别处 我一直在这里</a></h1>
+        
+      
+      <div class="post-content ">
+        
+  
+
+
+
+
+        <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+  </head>
+  <body>
+  <p align="center" color="black">
+    <a href="https://windflower2022.github.io/html/snow/nzbc.html" target="_blank">点击全屏</a>
+  </p> 
+  <span id="more"></span>
+    <DIV style="POSITION: relative; WIDTH: 1600px; TOP: 150px; LEFT: -380px"><IFRAME height=1000 marginHeight=0 src="https://windflower2022.github.io/html/snow/nzbc.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no></IFRAME></DIV><br><br><br><br><br><br><br><br><br><br>
+    <audio style="width: 0px; height: 0px;" src="http://music.163.com/song/media/outer/url?id=304933.mp3" autoplay="autoplay" loop="loop" controls="controls" type="audio/mpeg"></audio>
+  </body>
+</html>
+      </div>
+  </article>
+
+  <article class="post">
+      
+        
+          <h1><a href="/2023/09/17/sky/">【风花音画】天空很高，你有清澈</a></h1>
+        
+      
+      <div class="post-content ">
+        
+  
+
+
+
+
+        <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+  </head>
+  <body>
+  <p align="center" color="black">
+    <a href="https://windflower2022.github.io/html/img/sky.html" target="_blank">点击全屏</a>
+  </p> 
+  <span id="more"></span>
+    <DIV style="POSITION: relative; WIDTH: 1600px; TOP: 150px; LEFT: -380px"><IFRAME height=1000 marginHeight=0 src="https://windflower2022.github.io/html/img/sky.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no></IFRAME></DIV><br><br><br><br><br><br><br><br><br><br>
+    <audio style="width: 0px; height: 0px;" src="http://music.163.com/song/media/outer/url?id=407889118.mp3" autoplay="autoplay" loop="loop" controls="controls" type="audio/mpeg"></audio>
+  </body>
+</html>
+      </div>
+  </article>
+
+  <article class="post">
+      
+        
+          <h1><a href="/2023/09/13/qh/">【风花音画】人间有味是清欢</a></h1>
+        
+      
+      <div class="post-content ">
+        
+  
+
+
+
+
+        <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>rjywsqh</title>
+  </head>
+  <body>
+  <p align="center" color="black">
+    <a href="https://windflower2022.github.io/html/img/dy/rjywsqh.html" target="_blank">点击全屏</a>
+  </p> 
+  <span id="more"></span>
+    <DIV style="POSITION: relative; WIDTH: 1600px; TOP: 150px; LEFT: -380px"><IFRAME height=1000 marginHeight=0 src="https://windflower2022.github.io/html/img/dy/rjywsqh.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no></IFRAME></DIV><br><br><br><br><br><br><br><br><br><br>
+    <audio style="width: 0px; height: 0px;" src="http://chuangshicdn.data.mvbox.cn/music/fc/23/08/07/23080714130155652717.mp3" autoplay="autoplay" loop="loop" controls="controls" type="audio/mpeg"></audio>
+  </body>
+</html>
+      </div>
+  </article>
+
+  <article class="post">
+      
+        
+          <h1><a href="/2023/09/07/th/">【风花音画】听海</a></h1>
+        
+      
+      <div class="post-content ">
+        
+  
+
+
+
+
+        <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+  </head>
+  <body>
+  <p align="center" color="black">
+    <a href="https://windflower2022.github.io/html/img/th.html" target="_blank">点击全屏</a>
+  </p> 
+  <span id="more"></span>
+    <DIV style="POSITION: relative; WIDTH: 1600px; TOP: 150px; LEFT: -380px"><IFRAME height=1000 marginHeight=0 src="https://windflower2022.github.io/html/img/th.html" frameBorder=0 width=1600 marginWidth=0 scrolling=no></IFRAME></DIV><br><br><br><br><br><br><br><br><br><br>
+    <audio style="width: 0px; height: 0px;" src="http://music.163.com/song/media/outer/url?id=1443934873.mp3" autoplay="autoplay" loop="loop" controls="controls" type="audio/mpeg"></audio>
+  </body>
+</html>
+      </div>
+  </article>
+
+
+  <nav class="pagination clearfix">
+  <ul>
+    
+    <a class="extend prev" rel="prev" href="/">&lt;i class&#x3D;&quot;fa fa-chevron-circle-left&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/3/">&lt;i class&#x3D;&quot;fa fa-chevron-circle-right&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;&#x2F;i&gt;</a>
+  </ul>
+</nav>
+
+
+</section>
+    <footer id="footer" role="contentinfo">
+    <div>&copy; 2024 <a href="/">岁月缝花</a>.
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Designed by <a href="http://rainylog.com" target="_blank">Rainy.</a>
+	</div>
+</footer><!-- end #footer -->
+
+  </div>
+  
+<script src="/lib/fancybox/dist/jquery.fancybox.min.js"></script>
+
+
+  
+<script src="/js/helper.js"></script>
+
+  
+<script src="/js/_third-party/gitment.js"></script>
+
+</body>
+</html>

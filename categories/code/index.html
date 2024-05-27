@@ -1,30 +1,151 @@
-{% extends 'includes/layout.swig' %}   {#  模板继承 #}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>category: code | 岁月缝花</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="岁月缝花">
+<meta property="og:url" content="https://windflower2022.github.io/categories/code/index.html">
+<meta property="og:site_name" content="岁月缝花">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="白夜宁月">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="岁月缝花" type="application/atom+xml">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0.css">
 
-{% block body %}
-<div id="archive-outer">
-  <div id="archive-inter">
-      {% set y = 0; %}
-      {% for postItem in page.posts.toArray() %} 
-        <div classets="archive-item">
-           {% if postItem.date === undefined %} {# 防止日期为空 #}
-           {% set postItem.date = date(Date.now(), 'YYYY/MM/DD') %}
-           {% endif %}
-           {% set year = postItem.date.year(); %} 
-           {% if (y != year) %}  {#  判断年分隔算法 #}
-             {% set y = year %}
-             <div id="archive-year"> {{ y }}年 </div>
-           {% endif %}
-           {% if !postItem.link %}
-            {# 文章链接 #}
-            <a href="{{ url_for(postItem.path) }}">
-              <time id="archive-item-time" datetime="{{ date_xml(postItem.date) }}">
-                {{ date(postItem.date, "MM-DD") }}
-              </time>
-              {{ postItem.title || '没有标题' }} 
-            </a>
-          {% endif %}
-        </div>
-      {% endfor %}
-    </div>
+  
+<link rel="stylesheet" href="/lib/fancybox/dist/jquery.fancybox.min.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="wrapper">
+    <header id="header" class="clearfix">
+	<a id="logo" href="/" title="岁月缝花">岁月缝花</a>
+	
+	<nav id="nav-menu" class="clearfix">
+		<form id="search" method="post" action="./" role="search">
+			<input id="search-input" type="text" name="s" class="inputbox" value="Search" onfocus="if (value =='Search'){value =''}" onblur="if (value ==''){value='Search'}">
+		</form>
+		<ul>
+      
+				
+        <li><a class="main-nav-link" href="/">Home</a></li>
+      
+				
+        <li><a class="main-nav-link" href="/archives">Archives</a></li>
+      
+		</ul>
+	</nav>
+</header>
+    <section id="main" class="clearfix">
+  <article class="post-detail">
+    <h1 class="post-title"><a href="/">【代码】音乐播放器</a></h1>
+    <ul class="post-meta">
+  <li><i class="fa fa-user"></i> Author 白夜宁月</li>
+  <li><i class="fa fa-calendar"></i> Date Sep 20</li>
+  <li><i class="fa fa-folder"></i> Categories
+  
+    <a class="article-category-link" href="/categories/code/">code</a>
+  
+  </li>
+</ul>
+    <div class="post-content">
+      <!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+    <title>Amazing HTML5 Audio Player, powered by http://amazingaudioplayer.com</title>
+    
+<pre><code>&lt;!-- Insert to your webpage before the &lt;/head&gt; --&gt;
+&lt;script src=&quot;audioplayerengine/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;audioplayerengine/amazingaudioplayer.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;audioplayerengine/initaudioplayer-1.css&quot;&gt;
+&lt;script src=&quot;audioplayerengine/initaudioplayer-1.js&quot;&gt;&lt;/script&gt;
+&lt;!-- End of head section HTML codes --&gt;
+</code></pre>
+</head>
+<body>
+<div style="margin:12px auto;">
+    
+<pre><code>&lt;!-- Insert to your webpage where you want to display the audio player --&gt;
+&lt;div id=&quot;amazingaudioplayer-1&quot; style=&quot;display:block;position:relative;width:100%;max-width:24px;height:auto;margin:0px auto 0px;&quot;&gt;
+    &lt;ul class=&quot;amazingaudioplayer-audios&quot; style=&quot;display:none;&quot;&gt;
+        &lt;li data-artist=&quot;&quot; data-title=&quot;草予木 - 风花音乐欣赏5&quot; data-album=&quot;&quot; data-info=&quot;&quot; data-image=&quot;&quot; data-duration=&quot;0&quot;&gt;
+            &lt;div class=&quot;amazingaudioplayer-source&quot; data-src=&quot;http://music.163.com/song/media/outer/url?id=1952292953.mp3&quot; data-type=&quot;audio/mpeg&quot; /&gt;
+        &lt;/li&gt;
+        &lt;li data-artist=&quot;&quot; data-title=&quot;彼岸花 - 风花音乐欣赏4&quot; data-album=&quot;&quot; data-info=&quot;&quot; data-image=&quot;&quot; data-duration=&quot;0&quot;&gt;
+            &lt;div class=&quot;amazingaudioplayer-source&quot; data-src=&quot;https://music.163.com/song/media/outer/url?id=1941639510.mp3&quot; data-type=&quot;audio/mpeg&quot; /&gt;
+        &lt;/li&gt;
+        &lt;li data-artist=&quot;&quot; data-title=&quot;秋天不回来 - 风花音乐欣赏8&quot; data-album=&quot;&quot; data-info=&quot;&quot; data-image=&quot;&quot; data-duration=&quot;0&quot;&gt;
+            &lt;div class=&quot;amazingaudioplayer-source&quot; data-src=&quot;http://music.163.com/song/media/outer/url?id=163123.mp3&quot; data-type=&quot;audio/mpeg&quot; /&gt;
+        &lt;/li&gt;
+        &lt;li data-artist=&quot;&quot; data-title=&quot;如果爱忘了 - 风花音乐欣赏2&quot; data-album=&quot;&quot; data-info=&quot;&quot; data-image=&quot;&quot; data-duration=&quot;0&quot;&gt;
+            &lt;div class=&quot;amazingaudioplayer-source&quot; data-src=&quot;http://music.163.com/song/media/outer/url?id=1933915376.mp3&quot; data-type=&quot;audio/mpeg&quot; /&gt;
+        &lt;/li&gt;
+        &lt;li data-artist=&quot;&quot; data-title=&quot;面朝大海春暖花开-风花音乐欣赏1&quot; data-album=&quot;&quot; data-info=&quot;&quot; data-image=&quot;&quot; data-duration=&quot;0&quot;&gt;
+            &lt;div class=&quot;amazingaudioplayer-source&quot; data-src=&quot;http://music.163.com/song/media/outer/url?id=29312951.mp3&quot; data-type=&quot;audio/mpeg&quot; /&gt;
+        &lt;/li&gt;
+        &lt;li data-artist=&quot;&quot; data-title=&quot;天下有情人 - 风花音乐欣赏6&quot; data-album=&quot;&quot; data-info=&quot;&quot; data-image=&quot;&quot; data-duration=&quot;0&quot;&gt;
+            &lt;div class=&quot;amazingaudioplayer-source&quot; data-src=&quot;http://music.163.com/song/media/outer/url?id=1496629559.mp3&quot; data-type=&quot;audio/mpeg&quot; /&gt;
+        &lt;/li&gt;
+        &lt;li data-artist=&quot;&quot; data-title=&quot;终于等到你 - 风花音乐欣赏3&quot; data-album=&quot;&quot; data-info=&quot;&quot; data-image=&quot;&quot; data-duration=&quot;0&quot;&gt;
+            &lt;div class=&quot;amazingaudioplayer-source&quot; data-src=&quot;http://music.163.com/song/media/outer/url?id=481859184.mp3&quot; data-type=&quot;audio/mpeg&quot; /&gt;
+        &lt;/li&gt;
+        &lt;li data-artist=&quot;&quot; data-title=&quot;流浪记 - 风花音乐欣赏9&quot; data-album=&quot;&quot; data-info=&quot;&quot; data-image=&quot;&quot; data-duration=&quot;0&quot;&gt;
+            &lt;div class=&quot;amazingaudioplayer-source&quot; data-src=&quot;http://music.163.com/song/media/outer/url?id=479422064.mp3&quot; data-type=&quot;audio/mpeg&quot; /&gt;
+        &lt;/li&gt;
+        &lt;li data-artist=&quot;&quot; data-title=&quot;灯火里的中国 - 风花音乐欣赏7&quot; data-album=&quot;&quot; data-info=&quot;&quot; data-image=&quot;&quot; data-duration=&quot;0&quot;&gt;
+            &lt;div class=&quot;amazingaudioplayer-source&quot; data-src=&quot;http://music.163.com/song/media/outer/url?id=1837528900.mp3&quot; data-type=&quot;audio/mpeg&quot; /&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;!-- End of body section HTML codes --&gt;
+</code></pre>
 </div>
-{% endblock %}
+</body>
+</html>
+ 
+    </div>
+  </article>
+
+
+</section>
+    <footer id="footer" role="contentinfo">
+    <div>&copy; 2024 <a href="/">岁月缝花</a>.
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Designed by <a href="http://rainylog.com" target="_blank">Rainy.</a>
+	</div>
+</footer><!-- end #footer -->
+
+  </div>
+  
+<script src="/lib/fancybox/dist/jquery.fancybox.min.js"></script>
+
+
+  
+<script src="/js/helper.js"></script>
+
+  
+<script src="/js/_third-party/gitment.js"></script>
+
+</body>
+</html>

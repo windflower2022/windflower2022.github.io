@@ -1,45 +1,140 @@
-{# 文章页面 #}
-{% extends 'includes/layout.swig' %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【083】CSS布局之元素类型 | 岁月缝花</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="types                          span1         span2           行内元素不能设置宽高样式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【083】CSS布局之元素类型">
+<meta property="og:url" content="https://windflower2022.github.io/2022/10/21/hell0-world29/index.html">
+<meta property="og:site_name" content="岁月缝花">
+<meta property="og:description" content="types                          span1         span2           行内元素不能设置宽高样式">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-10-21T03:59:27.000Z">
+<meta property="article:modified_time" content="2023-06-21T11:20:32.610Z">
+<meta property="article:author" content="白夜宁月">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="岁月缝花" type="application/atom+xml">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0.css">
 
-{# page页面(其实就是about)，也是用的这里来处理文章排版 #}
-{% block body %}
-  <article class="markdown-body">
-    <h2 id="post-title">{{ page.title }}
-      {% if is_post() && page.date %} {# 文章页面才显示日期 #}
-        <div id="post-time" datetime="{{ date_xml(page.date) }}">
-          {{ date(page.date, "YYYY-MM-DD") }}
-        </div>
-      {% endif %}
-    </h2>
-    {{ page.content }}
-  </article>
+  
+<link rel="stylesheet" href="/lib/fancybox/dist/jquery.fancybox.min.css">
 
-  {% if is_post() %}
-    
-    {% if page.prev || page.next  %}
-      <div id="page-prev-next">
-        {# 上一篇文章 #}
-        {% if (page.prev) %}
-          <a id="page-prev-a" href="{{ url_for(page.prev.path) }}"> ← {{ page.prev.title }} </a>
-        {% else %}
-          <div></div> {# 仅用于占位 #}
-        {% endif %}
+  
+<link rel="stylesheet" href="/css/main.css">
 
-        {# 下一篇文章 #}
-        {% if (page.next) %}
-          <a id="page-next-a" href="{{ url_for(page.next.path) }}"> {{ page.next.title }} → </a>
-        {% endif %}
-      </div>
-    {% endif %}
-    
-    {# 背景音频播放 #}
-    {% if theme.post_audio %}
-      {% set bg_color =  theme.theme_color %}
-      {% include 'includes/audio-play.swig' with bg_color %}
-    {% endif %}
+  
+<script src="/lib/jquery/dist/jquery.min.js"></script>
 
-    {# 文章页面才加打赏功能 #}
-    {% include 'includes/reward.swig' %}
-  {% endif %}
-{% endblock %}
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="wrapper">
+    <header id="header" class="clearfix">
+	<a id="logo" href="/" title="岁月缝花">岁月缝花</a>
+	
+	<nav id="nav-menu" class="clearfix">
+		<form id="search" method="post" action="./" role="search">
+			<input id="search-input" type="text" name="s" class="inputbox" value="Search" onfocus="if (value =='Search'){value =''}" onblur="if (value ==''){value='Search'}">
+		</form>
+		<ul>
+      
+				
+        <li><a class="main-nav-link" href="/">Home</a></li>
+      
+				
+        <li><a class="main-nav-link" href="/archives">Archives</a></li>
+      
+		</ul>
+	</nav>
+</header>
+    <section id="main" class="clearfix"><article class="post-detail">
+  <h1 class="post-title"><a href="/">【083】CSS布局之元素类型</a></h1>
+  <ul class="post-meta">
+  <li><i class="fa fa-user"></i> Author 白夜宁月</li>
+  <li><i class="fa fa-calendar"></i> Date Oct 21</li>
+  <li><i class="fa fa-folder"></i> Categories
+  
+    no_categories
+  
+  </li>
+</ul>
+  <div class="post-content">
+      
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>types</title>
+    <link rel="stylesheet" href="types-style.css">
+</head>
+<body>
+    <br><br>
+    <div class="box1">
+        <span>span1</span>
+        <span>span2</span> <br><br>
+    </div>
+    行内元素不能设置宽高样式<br><br><span id="more"></span>
+行内元素可以设置边框线样式<br><br>
+行内元素可以设置内填充样式<br><br>
+行内元素可以设置左右方向的外边距样式<br><br>
+    <div class="box2">
+        <div>div1</div>
+        <div>div2</div>
+    </div> <br><br>
+    设置块元素在同一行显示，display:inline-block;可以实现<br><br>
+    既可以设置宽高，又可在一行上显示<br><br>
+    <div class="box3">
+        <div>div1</div>
+        <div>div2</div> <br><br>
+    </div>
+    设置一个元素的display属性只能改变该元素的显示方式，而不能真正改变html元素的类型。<br><br>
+    比如一个具有display:inline;的块元素还是不允许其内部嵌套其他元素。<br><br>
+    在搭建网页时，虽然有很多html元素可以使用，但还是要遵循一些嵌套规则：<br><br>
+    规则1：块元素可以包含行内元素或某些块元素，但行内元素却不能包含块元素，它只能包含其它的行内元素<br><br>
+    规则2：块元素不能放在p元素里面。<br><br>
+    规则3：有几个特殊的块级元素只能包含行内元素，不能包含块元素，这几个特殊元素：h1-h6,p ,dt。<br><br>
+    规则4：块级元素一般与块级元素并列，行内元素与行内元素并列。<br><br> 
+</body>
+</html>
+  </div>
+  
 
+</article>
+
+<!-- Comments -->
+
+<!-- End Comments --></section>
+    <footer id="footer" role="contentinfo">
+    <div>&copy; 2024 <a href="/">岁月缝花</a>.
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Designed by <a href="http://rainylog.com" target="_blank">Rainy.</a>
+	</div>
+</footer><!-- end #footer -->
+
+  </div>
+  
+<script src="/lib/fancybox/dist/jquery.fancybox.min.js"></script>
+
+
+  
+<script src="/js/helper.js"></script>
+
+  
+<script src="/js/_third-party/gitment.js"></script>
+
+</body>
+</html>

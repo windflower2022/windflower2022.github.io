@@ -1,30 +1,614 @@
-{% extends 'includes/layout.swig' %}   {#  模板继承 #}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>category: CSS | 岁月缝花</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="岁月缝花">
+<meta property="og:url" content="https://windflower2022.github.io/categories/CSS/page/2/index.html">
+<meta property="og:site_name" content="岁月缝花">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="白夜宁月">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="岁月缝花" type="application/atom+xml">
+  
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0.css">
 
-{% block body %}
-<div id="archive-outer">
-  <div id="archive-inter">
-      {% set y = 0; %}
-      {% for postItem in page.posts.toArray() %} 
-        <div classets="archive-item">
-           {% if postItem.date === undefined %} {# 防止日期为空 #}
-           {% set postItem.date = date(Date.now(), 'YYYY/MM/DD') %}
-           {% endif %}
-           {% set year = postItem.date.year(); %} 
-           {% if (y != year) %}  {#  判断年分隔算法 #}
-             {% set y = year %}
-             <div id="archive-year"> {{ y }}年 </div>
-           {% endif %}
-           {% if !postItem.link %}
-            {# 文章链接 #}
-            <a href="{{ url_for(postItem.path) }}">
-              <time id="archive-item-time" datetime="{{ date_xml(postItem.date) }}">
-                {{ date(postItem.date, "MM-DD") }}
-              </time>
-              {{ postItem.title || '没有标题' }} 
-            </a>
-          {% endif %}
-        </div>
-      {% endfor %}
+  
+<link rel="stylesheet" href="/lib/fancybox/dist/jquery.fancybox.min.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="wrapper">
+    <header id="header" class="clearfix">
+	<a id="logo" href="/" title="岁月缝花">岁月缝花</a>
+	
+	<nav id="nav-menu" class="clearfix">
+		<form id="search" method="post" action="./" role="search">
+			<input id="search-input" type="text" name="s" class="inputbox" value="Search" onfocus="if (value =='Search'){value =''}" onblur="if (value ==''){value='Search'}">
+		</form>
+		<ul>
+      
+				
+        <li><a class="main-nav-link" href="/">Home</a></li>
+      
+				
+        <li><a class="main-nav-link" href="/archives">Archives</a></li>
+      
+		</ul>
+	</nav>
+</header>
+    <section id="main" class="clearfix">
+  <article class="post-detail">
+    <h1 class="post-title"><a href="/">【079】CSS填充和宽高</a></h1>
+    <ul class="post-meta">
+  <li><i class="fa fa-user"></i> Author 白夜宁月</li>
+  <li><i class="fa fa-calendar"></i> Date Oct 19</li>
+  <li><i class="fa fa-folder"></i> Categories
+  
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  
+  </li>
+</ul>
+    <div class="post-content">
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>padding</title>
+    <link rel="stylesheet" href="padding-style.css">
+</head>
+<body>
+    <h1>内边距</h1>
+    <span id="more"></span>
+    <div>
+    元素内容周围产生空间，用padding顺序为上右下左。lenth以px,pt,cm等为单位指定边距；以父元素宽度的百分比指定边距。<br><br>
+    元素具有指定宽度，加在上面的填充会加入总宽度。<br><br>
+    width,height属性不包含内填充，边框和外边距的。<br><br>
     </div>
-</div>
-{% endblock %}
+</body>
+</html>
+    </div>
+  </article>
+
+  <article class="post-detail">
+    <h1 class="post-title"><a href="/">【078】CSS边距</a></h1>
+    <ul class="post-meta">
+  <li><i class="fa fa-user"></i> Author 白夜宁月</li>
+  <li><i class="fa fa-calendar"></i> Date Oct 19</li>
+  <li><i class="fa fa-folder"></i> Categories
+  
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  
+  </li>
+</ul>
+    <div class="post-content">
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>margin</title>
+    <link rel="stylesheet" href="margin-style.css">
+</head>
+<body>
+    <h1>边距</h1>
+    <span id="more"></span>
+    <h2>边距塌陷</h2>
+    <div>
+     <p>
+     用边距来控制元素边框外的距离，在元素周围创造空间。区块间的间距使之清晰明了整齐有序。通过margin-top/bottom/left/right<br><br>
+     值为auto为自动，lenth以px,pt,cm等为单位指定边距；以父元素宽度的百分比指定边距。为简化代码，可在margin属性中指定所有的边距属性<br><br>
+     margin塌陷，发生在相邻块垂直边距和嵌套块元素垂直边距邻接的时候。比如元素1的顶部边距10，和元素的底部边距20会被折叠成单一的20，<br><br>
+     这个边距等于两个中最大的那个。不会发生在左右，只会发生在顶部底部。如果你的需要是两个容器（元素）的叠加，只需要给一个元素加上就行<br><br>
+    </p>
+    </div> 
+</body>
+</html>
+    </div>
+  </article>
+
+  <article class="post-detail">
+    <h1 class="post-title"><a href="/">【077】CSS轮廓</a></h1>
+    <ul class="post-meta">
+  <li><i class="fa fa-user"></i> Author 白夜宁月</li>
+  <li><i class="fa fa-calendar"></i> Date Oct 17</li>
+  <li><i class="fa fa-folder"></i> Categories
+  
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  
+  </li>
+</ul>
+    <div class="post-content">
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>outline</title>
+    <style>
+        p {
+            border: 2px solid #$caf50;
+}
+
+<pre><code>    p.a &#123;
+/*outline-style: dotted;
+outline-width: 4px;
+outline-color: red;*/
+          outline: dotted 4px red;
+          outline-offset: 5px;
+</code></pre>
+<p>}</p>
+<pre><code>    p.b &#123;
+/*outline-style: dashed;
+outline-width: thin;
+outline-color: green;*/
+          outline: dashed thin green;
+          outline-offset: 5px;
+</code></pre>
+<p>}</p>
+<pre><code>    p.c &#123;
+/*outline-style: solid;
+outline-width: medium;
+outline-color: yellow;*/
+          outline: solid medium rgb(1, 56, 145);
+          outline-offset: 5px;
+</code></pre>
+<p>}</p>
+<pre><code>    p.d &#123;
+/*outline-style: double;
+outline-width: thick;
+outline-color: blue;*/
+         outline: double thick rgb(216, 243, 11);
+         outline-offset: 5px;
+</code></pre>
+<p>}<br>    </style></p>
+</head>
+<body> 
+    <p class="a">CSS轮廓<span id="more"></span>：outline-style:dotted,dashed,solid,double,hidden,none</p>
+    <br>
+    <p class="b">outline-color,outline-widthz:thin(1px),medium(3px),thick(5px),特定尺寸，以px,em为单位</p>
+    <br>
+    <p class="c">outline-offset(轮廓偏移,增加边框和文字之间的空隙)，outline(轮廓简写)</p>
+    <br>
+    <p class="d">(p.a+br)*4按回车</p>
+    <br>
+</body>
+</html>
+    </div>
+  </article>
+
+  <article class="post-detail">
+    <h1 class="post-title"><a href="/">【076】CSS背景滚动视觉差</a></h1>
+    <ul class="post-meta">
+  <li><i class="fa fa-user"></i> Author 白夜宁月</li>
+  <li><i class="fa fa-calendar"></i> Date Oct 17</li>
+  <li><i class="fa fa-folder"></i> Categories
+  
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  
+  </li>
+</ul>
+    <div class="post-content">
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css 视觉差案例</title>
+</head>
+<body>
+    div.box*3回车快速添加带有不同类名的div元素<span id="more"></span>。<br><br>
+    css中通配符*下添加magin,padding,都为0，消除元素默认内外边距<br><br>
+    一定要设置祖父元素的高度如html,body：height: 100%;<br><br>
+    代码简写时，background-size后要先添加位置，若没有指定位置就添加0px空格0px,再添加cover之类<br><br>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>   
+</body>
+</html>
+    </div>
+  </article>
+
+  <article class="post-detail">
+    <h1 class="post-title"><a href="/">【074】CSS背景</a></h1>
+    <ul class="post-meta">
+  <li><i class="fa fa-user"></i> Author 白夜宁月</li>
+  <li><i class="fa fa-calendar"></i> Date Oct 16</li>
+  <li><i class="fa fa-folder"></i> Categories
+  
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  
+  </li>
+</ul>
+    <div class="post-content">
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css background</title>
+    <style>
+    html,body {
+        font: white;
+        height: 100%;
+        background: url(https://s1.ax1x.com/2022/09/15/vzF5es.jpg) no-repeat rgb(0, 15, 0) center center fixed;
+    }
+    </style>
+</head>
+<body>
+    <p>可以把body看着一个容器<span id="more"></span>,给它直接添加一个背景图片，默认水平方向占满整个窗口.</p></br>css里设置body高度100%,相对于它的父元素html高度而言。故在body前加html,这样就都设置了高度,和浏览器窗口保持一致。</p></br>
+    <p> 添加背景属性background-image:url();</p></br>
+    <p>background-repeat,background-color;用background-color: rgba(0,0,0,0.5)实现半透明之类，改变颜色</p></br>
+    <p>background-positon需要写两个值.可以将全部属性写在background后,一句声明搞定</p></br>
+    <p>文字滚动,背景不动:background-attachment:fixed/scrolled;</p></br>
+</body>
+</html>
+    </div>
+  </article>
+
+  <article class="post-detail">
+    <h1 class="post-title"><a href="/">【072-073】边框列表及案例</a></h1>
+    <ul class="post-meta">
+  <li><i class="fa fa-user"></i> Author 白夜宁月</li>
+  <li><i class="fa fa-calendar"></i> Date Oct 15</li>
+  <li><i class="fa fa-folder"></i> Categories
+  
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  
+  </li>
+</ul>
+    <div class="post-content">
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css列表</title>
+    <link rel="stylesheet" href="./list-style.css">
+</head>
+<body>
+    072. 有序列表和无序列表<span id="more"></span>.<br><br> 属性有list-style-type:circle,disc,square,decimal,upper-roman,lower-alpha;<br><br>
+    list-style-type:url(背景图片路径)<br><br>
+    list-style-position:outside,inside;list-style-type:none如果列表不想要符号可以使用。<br><br>
+    list-style:square inside url(./bullet_designs.gif)可以声明所有属性,顺序为list-style-type,list-style-position,list-style-image。<br><br>
+    (ul>li*3) *3回车
+<ul class="a">
+    <li>语文</li>
+    <li>数学</li>
+    <li>历史</li>
+</ul>
+<ul class="b">
+    <li>张三</li>
+    <li>李四</li>
+    <li>王子</li>
+</ul>
+<ul class="c">
+    <li>99</li>
+    <li>93</li>
+    <li>96</li>
+</ul>
+<ol class="d">
+    <li>语文</li>
+    <li>数学</li>
+    <li>历史</li>
+</ol>
+<ol class="e">
+    <li>张三</li>
+    <li>李四</li>
+    <li>王子</li>
+</ol>
+<ol class="f">
+    <li>99</li>
+    <li>93</li>
+    <li>96</li>
+</ol>   
+<ul class="g">
+    <li>语文</li>
+    <li>数学</li>
+    <li>历史</li>
+</ul> <br>
+<h3>课表</h3>
+<ul class="h">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<ul class="i">
+    <li>布鲁姆分类法</li>
+    <li>有助于学生对知识的吸收</li>
+    <li>从认识知识到评价共6个阶梯</li>
+</ul>
+<ul class="j">
+    <li>认识，理解</li>
+    <li>应用，分析</li>
+    <li>综合，评价</li>
+</ul>
+<ul class="k">
+    <li>语文</li>
+    <li>数学</li>
+    <li>历史</li>
+</ul>
+<ul class="l">
+    <li>张三</li>
+    <li>李四</li>
+    <li>王子</li>
+</ul>
+<ul class="m">
+    <li>布鲁姆分类法</li>
+    <li>有助于学生对知识的吸收</li>
+    <li>从认识知识到评价共6个阶梯</li>
+</ul>
+<ol class="n">
+    <li>认识，理解</li>
+    <li>应用，分析</li>
+    <li>综合，评价</li>
+</ol>
+<div class="bigBox">073. 边框和列表案例
+        <div>对于提供文字宽度,颜色,间距不知的话可在ps中查看。</div>
+        <ul>
+            <li>认知</li>
+            <li>理解</li>
+            <li>应用</li>
+            <li>分析</li>
+            <li>综合</li>
+            <li>评价</li>
+        </ul>
+    </div> 
+<br><br><br>
+</body>
+</html>
+    </div>
+  </article>
+
+  <article class="post-detail">
+    <h1 class="post-title"><a href="/">【070】CSS边框</a></h1>
+    <ul class="post-meta">
+  <li><i class="fa fa-user"></i> Author 白夜宁月</li>
+  <li><i class="fa fa-calendar"></i> Date Oct 4</li>
+  <li><i class="fa fa-folder"></i> Categories
+  
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  
+  </li>
+</ul>
+    <div class="post-content">
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>border</title>
+    <link rel="stylesheet" href="./border-style.css">
+</head>
+<body>
+    <h1></h1>
+    <p class="a"> 
+        border-style<span id="more"></span>:dotted/dashed/solid/double/none/hidden<br><br>
+        border-width:px/em/thin,medium,thick<br><br>
+        border-color:
+    </p>
+    <p class="b">
+        写table>(tr>td*3)*3 tab键
+    </p>
+    <table border="1">
+        <tr>
+            <td>左上</td>
+            <td>中上</td>
+            <td>右上</td>
+        </tr>
+        <tr>
+            <td class="a">左中</td>
+            <td class="b">中</td>
+            <td>右中</td>
+        </tr>
+        <tr>
+            <td>左下</td>
+            <td>中下</td>
+            <td>右下</td>
+        </tr>
+    </table>   
+    <p class="c">
+        当表格单元格相邻边框产生冲突时,border-style: hidden>solid>...none优先级高到低。<br><br>
+        控制表格中单独的一根线,可在border-style中间添加一个表示方向的词,如border-top-style就可设置单个边框线。可设置top,right,bottom,left方向。除了单个属性外，border-style属性值可使用混合的简写方法<br><br>
+        1:四个值如dotted solid double dashed;(上，右，下，左)<br><br>
+        2:三个值如dotted solid double;(上，左右，下)<br><br>
+        3:两个值如dotted solid:（上下，左右）<br><br>
+        4:四个值如dotted(四边)<br><br>
+    </p><br><br>  
+</body>
+</html>
+    </div>
+  </article>
+
+  <article class="post-detail">
+    <h1 class="post-title"><a href="/">【071】CSS边框综合案例</a></h1>
+    <ul class="post-meta">
+  <li><i class="fa fa-user"></i> Author 白夜宁月</li>
+  <li><i class="fa fa-calendar"></i> Date Oct 4</li>
+  <li><i class="fa fa-folder"></i> Categories
+  
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  
+  </li>
+</ul>
+    <div class="post-content">
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>css边框案例</title>
+  <link rel="stylesheet" href="../case-2.css">
+</head>
+<body>
+    <div id="square1">正方形</div><br>
+    <span id="more"></span>
+    样式中给元素设置的宽高，是不包含该元素边框宽高的，它只包含元素内容的宽高。<br><br>
+    <div id="square2">正方形</div><br><br>
+    <div id="triangle1">三角形</div>
+    <div id="triangle2">三角形</div><br><br>
+    <div id="trapezium"> 梯形</div><br><br>
+    <div id="windmills"> 
+      <div class="box1"></div>
+      <div class="box2"></div>
+      <div class="box3"></div>
+      <div class="box4"></div>
+    风车</div><br><br>
+  </body>
+  </html>
+    </div>
+  </article>
+
+  <article class="post-detail">
+    <h1 class="post-title"><a href="/">【069】CSS选择器的权重</a></h1>
+    <ul class="post-meta">
+  <li><i class="fa fa-user"></i> Author 白夜宁月</li>
+  <li><i class="fa fa-calendar"></i> Date Oct 4</li>
+  <li><i class="fa fa-folder"></i> Categories
+  
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  
+  </li>
+</ul>
+    <div class="post-content">
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selector</title> 
+</head>
+<body>
+    <h1></h1>
+    <p> 
+        多个选择器<span id="more"></span>修饰同一个元素，优先级的判断：内联>内部>ID选择器>类选择器>元素选择器>通用选择器*
+    </p>
+    <p>
+        即行内样式>ID选择器>类选择器>元素选择器>通用选择器*,选择器选择范围小，越精确，优先级越高。
+    </p>
+    <p>
+       样式发生冲突时，权重值高优先考虑。权重值计算见下面<br><br>
+          选择器          例子          权重值<br><br>
+       1. 通用计算器       *             0<br><br>
+       2.元素选择器     h1,div,p         1<br><br>
+       3.类选择器       .active,.light   10<br><br>
+       4.ID选择器       #box,#btn        100<br><br>
+       5.行内选择器     <h1 style="">    1000<br><br>
+        如：<br><br>
+        #box p .light{/* 100+1+10=111 */<br><br>
+            color= red;<br><br>
+        }<br><br>
+        
+<pre><code>    #box .light &#123;/* 100+10=110 */
+        color: red;
+    &#125;
+</code></pre>
+</body>
+</html>
+    </div>
+  </article>
+
+  <article class="post-detail">
+    <h1 class="post-title"><a href="/">【068】谷歌字体和ICON图标</a></h1>
+    <ul class="post-meta">
+  <li><i class="fa fa-user"></i> Author 白夜宁月</li>
+  <li><i class="fa fa-calendar"></i> Date Oct 3</li>
+  <li><i class="fa fa-folder"></i> Categories
+  
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  
+  </li>
+</ul>
+    <div class="post-content">
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>font-google-icons</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audioweid|Sofia|trirong&effect=fire|neon|outlie|shadow-multiple">
+    <link rel="stylesheet" href="./mystyle3.css">  
+    <script src="https://kit.fontawesome.com/e9f22420f2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <p class="font-effect-fire">
+     谷歌字体和ICON图标
+    </p>
+    <span id="more"></span>
+    <p class="a font-effect-neon""> 
+        <i class="fas fa-cloud"></i>
+        可以链接谷歌，得到各种字体。多个字体|隔开。
+    </p>
+    <p class="b font-effect-outlie"">
+        <i class="fas fa-heart" style="color:red"></i>
+        谷歌字体还可以随心所欲添加字体样式,在链接地址后添加一个&effect=fire,多个同|隔开。
+    </p>
+    <p class="c font-effect-shadow-multiple"">
+        <i class="fas fa-car"></i>
+       图标网站font Awesome.com<br><br>
+       Icon字体图标的强大之处是，你可以将这个图标当成文本，可任意添加样式。
+    </p><br><br>
+</body>
+</html>
+    </div>
+  </article>
+
+
+
+  <nav class="pagination clearfix">
+  <ul>
+    
+    <a class="extend prev" rel="prev" href="/categories/CSS/">&lt;i class&#x3D;&quot;fa fa-chevron-circle-left&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/categories/CSS/">1</a><span class="page-number current">2</span><a class="page-number" href="/categories/CSS/page/3/">3</a><a class="extend next" rel="next" href="/categories/CSS/page/3/">&lt;i class&#x3D;&quot;fa fa-chevron-circle-right&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;&#x2F;i&gt;</a>
+  </ul>
+</nav>
+
+</section>
+    <footer id="footer" role="contentinfo">
+    <div>&copy; 2024 <a href="/">岁月缝花</a>.
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Designed by <a href="http://rainylog.com" target="_blank">Rainy.</a>
+	</div>
+</footer><!-- end #footer -->
+
+  </div>
+  
+<script src="/lib/fancybox/dist/jquery.fancybox.min.js"></script>
+
+
+  
+<script src="/js/helper.js"></script>
+
+  
+<script src="/js/_third-party/gitment.js"></script>
+
+</body>
+</html>
