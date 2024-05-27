@@ -1,11 +1,300 @@
-doctype
-html(lang=config.language)
-  include ./partial/header-base.pug
-  body
-    include ./partial/header.pug
-    main
-      section.main-content !{ body }
-    include ./partial/footer.pug
-    script(src=url_for('scripts/dark.js'))
-    if is_post()
-      script(src=url_for('scripts/post.js'))
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>
+      
+        【187-190】第十二章 javaScript简单类型和复杂类型 | 岁月缝花
+      
+    </title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png"/>
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color=""/>
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/layout.css"/>
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css"/>
+  
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href="/" class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg" />
+        </a>
+        <input id="navBtn" type="checkbox"/>
+        <div class="nav-menu">
+          
+            <a href="/blog/">博客</a>
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner">
+      <div class="post-content__head">
+        <div class="post-title">【187-190】第十二章 javaScript简单类型和复杂类型</div>
+        <div class="post-info">
+          
+  
+
+
+          <span class="post-date">2023-08-01</span>
+        </div>
+      </div>
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript的简单类型和复杂类型</title>
+    <script>
+         function fn(a) { 
+            a++; 
+            console.log(a); // 11 
+        } 
+        var x = 10; 
+        fn(x); 
+        console.log(x); 
+
+<pre><code>    function person(name) &#123;
+        this.name = name;
+    &#125;
+    function f1(x) &#123; // x = p
+        console.log(x.name); // 2. 这个输出是什么 刘德华
+        x.name = &quot;张学友&quot;;
+        console.log(x.name); // 3. 这个输出是什么 张学友
+    &#125;
+    var p = new person(&quot;刘德华&quot;);
+    console.log(p.name);  // 1. 这个输出是什么 刘德华
+    f1(p);
+    console.log(p.name); // 4. 这个输出是什么 张学友
+&lt;/script&gt;
+</code></pre>
+</head>
+<body>
+        <h2>目标</h2>
+        <span id="more"></span>
+        能说出简单数据类型的内存分配</br></br>
+        能说出复杂数据类型的内存分配</br></br>
+        能够说出简单类型如何传参</br></br>
+        能输出复杂类型如何传参</br></br>
+        <h2>目录</h2>
+        简单类型与复杂类型</br></br>
+        堆和栈</br></br>
+        简单类型的内存分配</br></br>
+        复杂类型的内存分配</br></br>
+        简单类型传参</br></br>
+        复杂类型传参</br></br>
+        <h4>1. 简单数据类型和复杂数据类型</h4>
+        简单类型又叫作数据基本类型或者值类型,复杂类型又叫做引用类型</br></br>
+        值类型：简单数据类型/基本数据类型,在存储时变量中存储的是值本身,因此叫做值类型</br></br>
+        string, number, boolean, undefined,null</br></br>
+        引用类型:复杂数据类型,在存储时变量中存储的仅仅时地址(引用),因此叫做引用数据类型</br></br>
+        通过new关键字创建的对象(系统对象、自定义对象),如object, Array, Date等</br></br>
+        简单数据类型 null 返回的是一个空的对象 object </br></br>
+        var timer = null;</br></br>
+        console.log(typeOf timer);</br></br>
+        如果有个变量我们以后打算储存为对象 暂时没想好放啥 这个时候就给null</br></br>
+        <h4>2. 堆和栈</h4>
+        1) 简单数据类型存于栈,里面直接开辟一个空间，存的是一个值</br></br>
+        2) 复杂数据类型 首先在栈里面存放地址 十六进制表示 然后这个地址指向堆里面的数据</br></br>
+        <h4>3. 简单类型传参</h4>
+        函数的形参也看作是一个变量,当我们把一个值类型变量作为参数传给函数的形参时,其实是把变量在栈空间里的值复制了一份给形参,那么在方法内部对形参做任何修改,都不会影响到的外部变量</br></br>
+        function fn(a) { </br></br>
+            a++; </br></br>
+            console.log(a); // 11 </br></br>
+        } </br></br>
+        var x = 10; </br></br>
+        fn(x); </br></br>
+        console.log(x); // 10 </br></br>
+        <h4>3. 复杂类型传参</h4>
+        函数的形参也可以看做是一个变量,当我们把引用类型变量传给形参时,其实是把变量在栈空间里保存的堆地址复制给了形参,形参和实参其实保存的是同一个堆地址，所以操作的是同一个对象</br></br>
+        function person(name) { </br></br>
+            this.name = name; </br></br>
+        } </br></br>
+        function f1(x) { // x = p </br></br>
+            console.log(x.name); // 2. 这个输出是什么 </br></br>
+            x.name = "张学友"; </br></br>
+            console.log(x.name); // 3. 这个输出是什么 </br></br>
+        } </br></br>
+        var p = new person("刘德华"); </br></br>
+        console.log(p.name);  // 1. 这个输出是什么 </br></br>
+        f1(p); </br></br>
+        console.log(p.name); // 4. 这个输出是什么 </br></br>
+</body>
+</html>
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    
+    <div class="post-nav">
+  
+    <a class="post-nav-item-left" href="/2023/08/20/ygez/">
+      <div class="text-align">
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+        <span class="text-small">上一篇</span>
+      </div>
+      <div>【风花音画】因歌而作</div>
+    </a>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2023/07/30/JS014/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      【155-186】第十一章 内置对象
+    </a>
+  
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              <div class="matts">海</div><div class="matts">内</div><div class="matts">存</div><div class="matts">知</div><div class="matts">己</div>
+            </div>
+          
+            <div class="foot-line">
+              <div class="matts">天</div><div class="matts">涯</div><div class="matts">若</div><div class="matts">比</div><div class="matts">邻</div>
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link"
+                         height="20px"
+                         width="20px"
+                         src="/images/icon/icon-link.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">Theme Tranquility</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link"
+                       height="20px"
+                       width="20px"
+                       src="/images/icon/icon-link+.svg"/>
+                  <a class="foot-link"
+                     href="mailto:example@email.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/">github</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-wx.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI3NzQ4NDkzNg==&mid=2247484469&idx=1&sn=8a442bb67397f52cce5c38c3f9b41e36&chksm=eb64c0d2dc1349c40d2e1bb55615ae28b3f2951be22f00717b9ade98c851082e42dc666ab45d#rd">微信公众号</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-zh.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://www.zhihu.com/">知乎</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link"
+                     height="20px"
+                     width="20px"
+                     src="/images/icon/icon-email.svg"/>
+                <a class="foot-link" href="mailto:example@email.com">example@email.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="https://windflower2022.github.io">岁月缝花</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)"
+            d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z" />
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)"
+            d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z" />
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)"
+            d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z" />
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+    
+  
+
+  </body>
+</html>

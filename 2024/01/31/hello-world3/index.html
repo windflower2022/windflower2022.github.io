@@ -1,11 +1,392 @@
-doctype
-html(lang=config.language)
-  include ./partial/header-base.pug
-  body
-    include ./partial/header.pug
-    main
-      section.main-content !{ body }
-    include ./partial/footer.pug
-    script(src=url_for('scripts/dark.js'))
-    if is_post()
-      script(src=url_for('scripts/post.js'))
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>
+      
+        【026-032】块级内联元素下拉菜单 | 岁月缝花
+      
+    </title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png"/>
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color=""/>
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/layout.css"/>
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css"/>
+  
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href="/" class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg" />
+        </a>
+        <input id="navBtn" type="checkbox"/>
+        <div class="nav-menu">
+          
+            <a href="/blog/">博客</a>
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner">
+      <div class="post-content__head">
+        <div class="post-title">【026-032】块级内联元素下拉菜单</div>
+        <div class="post-info">
+          
+  
+
+
+          <span class="post-date">2024-01-31</span>
+        </div>
+      </div>
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    &nbsp;&nbsp; <h3>026 块级元素和内联元素</h3><br><br>
+    <span id="more"></span>
+    &nbsp;&nbsp;HTML元素的显示值分为：块block，内联inline。HTML元素分为块（级）元素block-level块级，行内元素inline内联。<br><br>
+    &nbsp;&nbsp;块级元素总是从新行开始，浏览器自动在元素的前后添加一些边距。总是占用可用的全部宽度，尽可能向左右伸展。p标签就是常用的快元素。<br><br>
+        <p>看淡人间烟火，细品岁月静好</p>
+        <h1>烟火人生</h1>
+        <p>看淡人间烟火，细品岁月静好</p>
+        <p>时光深处，我亦微笑，亦不老</p>
+        <h1 align="center">烟火人生</h1>
+        <p align="center">看淡人间烟火，细品岁月静好</p>
+        <p align="center">时光深处，我亦微笑，亦不老</p>
+    可以用双标签div（division）为分块，引申为盒子，容器。定义HTML的一个分块，或一部分，典型的块级元素。来表达居中，不用处处都写。
+        <p align="center"> 
+          <h1>烟火人生</h1>
+          <p>看淡人间烟火，细品岁月静好</p>
+          <p>时光深处，我亦微笑，亦不老</p>
+        </p> 
+        <div align="center">
+          <h1>烟火人生</h1>
+          <p>看淡人间烟火，细品岁月静好</p>
+          <p>时光深处，我亦微笑，亦不老</p>
+        </div> 
+    </body><br><br>
+    &nbsp;&nbsp;块级元素：<br><br>
+    标题元素：h1-h6<br><br>
+    段落元素：p<br><br>
+    列表元素：ol,ul,li,dl,dt,dd<br><br>
+    表格元素：table,tr,td,th,thead,tbody,tfoot,caption<br><br>
+    分块元素：div<br><br>
+    &nbsp;&nbsp;内联元素不独占一行，只占用必要的宽度。如文本修饰标签b,em,i.strong,sub.sup<br><br>
+        <div align="center">
+          <h1>烟火人生</h1>
+          <p>看淡<b title="inline">人间烟火</b>，细品岁月静好</p>
+          <p>时光深处，<b title="inline">我亦微笑，亦不老</b></p>
+        </div><br><br> 
+    如果不想加粗，b就换成span双标签，表范围，标记文本/文档的一部分。典型的内联元素。<br><br>
+    注意：内联元素不能嵌套块级元素。<br><br>
+        <div align="center">
+          <h1>烟火人生</h1>
+          <p>看淡<b title="inline">人间烟火</b>，细品岁月静好</p>
+          <p>时光深处，<span title="inline">我亦微笑，亦不老</span></p>
+        </div><br><br> 
+      &nbsp;&nbsp;内联元素：<br><br>
+      链接元素：a<br><br>
+      文本修饰元素：b,em, i,strong,sub,sup<br><br>
+      折行元素：br<br><br>
+      图片元素：img<br><br>
+      范围元素：span<br><br><br><br>
+    &nbsp;&nbsp; <h3>027 初识表单</h3><br><br> 
+    分组控件，单行文本框控件，多行文本框控件，单选框控件， 多选框，下拉框，文件选择，普通按钮，自定义按钮控件。<br><br>
+表单使用form双标签。控件添加在form开标签里。<br><br>
+    <form action=""></form>
+     &nbsp;&nbsp; <h3>028 文本框和密码框</h3><br>
+     文本框控件不折行，只能在本行显现，如果超出了只能鼠标拖拽，或键盘右键按钮敲击查看全部信息。<br><br>
+     使用HTML实现单项文本框：form里嵌入input单标签，里面添加type属性类型.单行文本框的type值text,而密码框的为password,也是单行文本框，只是显示小黑点或星号，内容被屏蔽了<br><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=""><br><br>
+    <form action="">
+        请输入用户名：<input>
+    </form><br><br>
+    <form action="">
+        请输入用户名：<input type="text">
+    </form><br>
+    <form action="">
+        请输入用户名：<input type="text">
+        <br><br>
+        请输入密码：<input type="password">
+    </form><br><br><br>
+    &nbsp;&nbsp; <h3>029 多行文本框控件(文域)</h3><br>
+    输入多行文本，自动折行，文本超出底部边界，产生滚动条，可以滚动鼠标滚轮查看完整信息。<br>
+    在HTML中实现: form嵌套textarea双标签.可使用cols(colomns)属性来指定文本区可见宽度，值为数字。<br><br>
+    <form action="">
+        请输入你的信息<br>
+        <textarea name="" id="" cols="5" rows="2"></textarea>
+    </form><br>  
+    textarea双标签.可使用cols(colomns)属性来指定文本区可见宽度，值为数字。row 为行数，指定值为数字。<br><br>
+    <form action="">
+        请输入你的信息<br>
+        <textarea cols="10" rows="3"></textarea>
+    </form><br><br><br> 
+&nbsp;&nbsp; <h3>030 取值按钮类型</h3><br>
+    单选还是多选，可在table里嵌套input,设置属性type实现，radio,为单选，checkbox为多选。 <br> <br>
+    <form action="">
+         选择性别：<input type="radio">男
+         <input type="radio">女
+    </form><br> <br>
+    单选框控件须成组使用才有意义，每组至少需要两个单选框。“组”是通过name属性来建立的，凡是name值相同的就是一组。同组的单选框，只有一个会处于选中状态，其它的会自动呈现为未选中状态。
+    <form action="">
+        选择性别：<input type="radio" name="gender">男
+        <input type="radio" name="gender">女
+   </form><br> <br>
+   单选：<br> <br>
+   <form action="">
+    选择性别：<input type="radio" name="gender">男
+    <input type="radio" name="gender">女
+    <br><br>
+    多选：<br> <br>
+    你喜欢哪门学科：<input type="checkbox">语文
+    <input type="checkbox">数学
+    <input type="checkbox">英语单选<br> <br>
+    若想选项默认状态不为空，可在属性后加checked="任意字母"单选<br> <br>
+    <form action="">
+        选择性别：<input type="radio" name="gender" checked>男
+        <input type="radio" name="gender">女<br> <br>
+        你喜欢哪门学科：<input type="checkbox" checked>语文
+    <input type="checkbox">数学
+    <input type="checkbox">英语
+</form>
+&nbsp;&nbsp; <h3>031 下拉菜单</h3><br>
+    双标签为select,只包含1个或多个option双标签。默认选项需在option里添加selectd定义。<br> <br>
+    小技巧：option{199$}*9再tab。<br> <br>
+<form action="">
+    出生日期：
+    <select>
+        <option value="">1991</option>
+        <option value="">1992</option>
+        <option value="">1993</option>
+        <option value="" selected>1994</option>
+        <option value="">1995</option>
+        <option value="">1996</option>
+        <option value="">1997</option>
+        <option value="">1998</option>
+        <option value="">1999</option>  
+    </select>
+</form><br> <br>
+多选的话，在select里定义属性为multiple<br> <br>
+<form action="">
+    所学学科：
+    <select name="" id="" multiple>
+        <option value="">语文</option>
+        <option value="">数学</option>
+        <option value="">外语</option>
+        <option value="">政治</option>
+        <option value="">历史</option>
+        <option value="">地理</option>
+        <option value="">物理</option>
+        <option value="">化学</option>
+        <option value="">生物</option>
+    </select>
+</form><br> 
+小技巧：1.光标停在option行，按住alt+shift，下键敲击8下。<br><br>
+       2.网页上，ctrl+鼠标就可选择多个。<br><br>
+       select里定义属性为size,可定义默认多少可见行<br><br>
+       <form action="">
+        所学学科：
+        <select name="" id="" multiple size="9" >
+            <option value="">语文</option>
+            <option value="">数学</option>
+            <option value="">外语</option>
+            <option value="">政治</option>
+            <option value="">历史</option>
+            <option value="">地理</option>
+            <option value="">物理</option>
+            <option value="">化学</option>
+            <option value="">生物</option>
+        </select>
+    </form><br> 
+    &nbsp;&nbsp; <h3>032 选择文件</h3><br>
+    在表格里,嵌入的input里type属性添加为file就行。<br><br>
+    <form action="">
+        附件：
+        <input type="file">
+    </form><br><br>	
+</body>
+</html>
+
+
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    
+    <div class="post-nav">
+  
+    <a class="post-nav-item-left" href="/2024/01/31/hello-world2/">
+      <div class="text-align">
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+        <span class="text-small">上一篇</span>
+      </div>
+      <div>【019-025】表格基础知识</div>
+    </a>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2024/01/29/xinnianhao/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      【风花音画】新年好
+    </a>
+  
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              <div class="matts">海</div><div class="matts">内</div><div class="matts">存</div><div class="matts">知</div><div class="matts">己</div>
+            </div>
+          
+            <div class="foot-line">
+              <div class="matts">天</div><div class="matts">涯</div><div class="matts">若</div><div class="matts">比</div><div class="matts">邻</div>
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link"
+                         height="20px"
+                         width="20px"
+                         src="/images/icon/icon-link.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">Theme Tranquility</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link"
+                       height="20px"
+                       width="20px"
+                       src="/images/icon/icon-link+.svg"/>
+                  <a class="foot-link"
+                     href="mailto:example@email.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/">github</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-wx.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI3NzQ4NDkzNg==&mid=2247484469&idx=1&sn=8a442bb67397f52cce5c38c3f9b41e36&chksm=eb64c0d2dc1349c40d2e1bb55615ae28b3f2951be22f00717b9ade98c851082e42dc666ab45d#rd">微信公众号</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-zh.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://www.zhihu.com/">知乎</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link"
+                     height="20px"
+                     width="20px"
+                     src="/images/icon/icon-email.svg"/>
+                <a class="foot-link" href="mailto:example@email.com">example@email.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="https://windflower2022.github.io">岁月缝花</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)"
+            d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z" />
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)"
+            d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z" />
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)"
+            d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z" />
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+    
+  
+
+  </body>
+</html>

@@ -1,11 +1,472 @@
-doctype
-html(lang=config.language)
-  include ./partial/header-base.pug
-  body
-    include ./partial/header.pug
-    main
-      section.main-content !{ body }
-    include ./partial/footer.pug
-    script(src=url_for('scripts/dark.js'))
-    if is_post()
-      script(src=url_for('scripts/post.js'))
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>
+      
+        【143-154】第十章 对象 | 岁月缝花
+      
+    </title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png"/>
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color=""/>
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/layout.css"/>
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css"/>
+  
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href="/" class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg" />
+        </a>
+        <input id="navBtn" type="checkbox"/>
+        <div class="nav-menu">
+          
+            <a href="/blog/">博客</a>
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner">
+      <div class="post-content__head">
+        <div class="post-title">【143-154】第十章 对象</div>
+        <div class="post-info">
+          
+  
+
+
+          <span class="post-date">2023-07-07</span>
+        </div>
+      </div>
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象</title>
+ <script>
+  /*   
+   var num = 10;
+     var obj = {
+      age: 18
+     }
+     console.log(num);
+     console.log(obj.age);
+/* 
+     function Hero(uname,type,blood) {
+      this.name = uname;
+      this.type = type;
+      this.blood = blood;
+      this.attack = function (attacked) {
+        console.log(attacked);
+      }
+     }
+     var lp = new Hero('廉颇','力量型','500血量');
+     console.log(lp.name);
+     console.log(lp.type);
+     console.log(lp.blood);
+     lp.attack('近战');
+     var hy = new Hero('后羿','射手型','100血量');
+     console.log(hy.name);
+     console.log(hy.type);
+     console.log(hy.blood);
+     hy.attack('远程');
+   */
+    </script>
+</head>
+<body>
+    <h2>目标</h2>
+    <span id="more"></span>
+    能说出为什么需要对象</br></br>
+    能使用字面量创建对象</br></br>
+    能使用构造函数创建对象</br></br>
+    能说出new的执行过程</br></br>
+    能遍历对象</br></br>
+    <h2>目录</h2>
+    对象</br></br>
+    创建对象的三种方式</br></br>
+    new关键字</br></br>
+    遍历对象属性</br></br>
+  <h3>1 对象</h3> 
+  <h4>1.1 什么是对象</h4>
+  现实生活中,万物皆对象,对象是<b>一个具体的事物</b>,看得见摸得着的实物。例如: 一本书,一辆汽车,一个人可以是"对象",一个数据库,一张网页,一个与远程服务器的连接也可以使"对象".</br></br>
+  在JavaScript中,对象是一组无序的相关属性和方法的集合,所有的事物都是对象,例如字符串,数值,数组,函数等。</br></br>
+  对象是由<b>属性</b>和<b>方法</b>组成的。</br></br>
+  属性: 事物的<b>特征</b>,在对象中用<b>属性</b>来表示(常用名词)</br></br>
+  方法: 事物的<b>行为</b>,在对象中用<b>方法</b>来表示(常用动词)</br></br>
+  <h4>1.2 为什么需要对象</h4>
+  保存一个值时,可以使用变量;保存多个值(一组值)时,可以使用数组;如果要保存一个人的完整信息,则需要对象.对象表达信息结果更清晰强大,张三疯的个人信息在对象中的表达结构如下:</br></br>
+  person.name = '张三疯'; </br></br>
+  person.sex = '男’；</br></br>
+  person.age = 128;</br></br>
+  person.height = 154;</br></br>
+  <h3>2 创建对象</h3> 
+  <h4>2.1 利用字面量创建对象{}</h4>
+  1 利用字面量创建对象{}</br></br>
+    var obj = {}; // 创建了一个空的对象</br></br>
+    var obj = {</br></br>
+      uname: '张三疯',</br></br>
+      age: 18,</br></br>
+      sex: '男',</br></br>
+      sayHi: function() { </br></br>
+        console.log('hi~');</br></br>
+      }</br></br>
+    }</br></br>
+    1) 里面的属性或方法采取键值对的形式 键即属性名: 值即属性值</br></br>
+    2) 多个属性或方法中间用逗号隔开</br></br>
+    3) 方法冒号后跟的是一个匿名函数</br></br>
+    2 使用对象</br></br>
+    1) 调用对象的属性采取对象名.属性名,在此.为的之意</br></br>
+    console.log(obj.uname);</br></br>
+    2) 也可采取另一方法 对象名['属性名']</br></br>
+    console.log(obj['age']);</br></br>
+    3) 调用对象的方法如sayHi 对象名.方法名()</br></br>
+    console.log(obj.sayHi());</br></br>
+     3 创建对象的三种方式</br></br>
+     变量、属性、函数、方法的区别</br></br>
+     1. 变量和属性都是用来存储数据的</br></br>
+     var num = 10;</br></br>
+     var obj = {</br></br>
+      age: 18</br></br>
+     }</br></br>
+     console.log(obj.age);</br></br>
+     console.log(num);</br></br>
+     变量: 单独声明并赋值 使用的时候直接写变量名 单独存在</br></br>
+     属性：在对象里面的不需要声明 使用的时候必须是对象.属性</br></br>
+     2. 函数和方法都是实现某种功能即做某件事</br></br>
+     函数是单独声明 并且调用的 函数名() 单独存在</br></br>
+     方法在对象里面调用的时候 对象.方法名()</br></br>
+     <h4>2 利用new Object创建对象</h4>
+     var obj = new Object();</br></br>
+     obj.uname = '张三友';</br></br>
+     obj.age = 18;</br></br>
+     obj.sex = '男';</br></br>
+     obj.sayHi = function() {</br></br>
+      console.log{'hi~'};</br></br>
+     }</br></br>
+     1) 利用等号=赋值的方法 添加对象的属性和方法</br></br>
+     2) 每个属性和方法之间用分号结束</br></br>
+     3) 调用方式和创建字面量一致</br></br>
+     console.log(obj.uname);</br></br>
+     console.log(obj['sex']);</br></br>
+     obj.sayHi();</br></br>
+     练习: 请按照要求写出对象</br></br>
+     请用new Object创建一个鸣人对象</br></br>
+     具体信息如下:</br></br>
+     姓名:鸣人</br></br>
+     性别: 男</br></br>
+     年龄: 19岁</br></br>
+     技能(skill): 影分身术</br></br>
+     var obj = new Object();</br></br>
+     obj.uname = '鸣人',</br></br>
+     obj.sex = '男',</br></br>
+     obj.age = 19,</br></br>
+     obj.skill = function () {</br></br>
+      console.log('分身术');</br></br>
+     }</br></br>
+     <h4>2 利用构造函数创建对象</h4>
+     前两种方式一次只能创建一个对象</br></br>
+     var ldr = {</br></br>
+      uname:'刘德华',</br></br>
+      age: 55,</br></br>
+      sing: function() {</br></br>
+        console.log('冰雨')</br></br>
+      }</br></br>
+     }</br></br>
+     var zxy = {</br></br>
+      uname: '张学友',</br></br>
+      age: 58,</br></br>
+      sing: function() {</br></br>
+        console.log('李香兰');</br></br>
+      }</br></br>
+     }</br></br>
+     如果我还要写四大天王的另三个,里面很多的属性和方法是大量相同的 只能复制</br></br>
+     我们可以利用函数的方法 重复这些相同的代码,所以就把这个函数称为构造函数</br></br>
+     这个函数里面封装的不是普通代码 而是对象</br></br>
+     构造函数就是对象里面一些相同的属性和方法抽象出来封装到函数里面</br></br>
+     构造函数的格式:</br></br>
+     function 构造函数名() {</br></br>
+      this.属性 = 值;    // 表明是当前</br></br>
+      this.方法 = function() {}</br></br>
+     }</br></br>
+     new 构造函数名(); // 调用方法</br></br>
+     案例 创建四大天王</br></br>
+     核心思路</br></br>
+     理出相同属性：名字 年龄 性别 相同的方法：唱歌</br></br>
+     // 1.构造函数 明星泛指某一大类</br></br>
+     function Star(uname,age,sex) {</br></br>
+         this.name = uname;</br></br>
+         this.age = age;</br></br>
+         this.sex = sex;</br></br>
+         this.sing = funtion(sang) {</br></br>
+          console.log(sang)</br></br>
+         }</br></br>
+     }</br></br>
+     // 2.对象 特指某一个具体的事物 看得见摸得着</br></br>
+     var ldh = new Star('刘德华',18,'男'); // 调用函数返回的是一个对象</br></br>
+     console.log(ldh.name);</br></br>
+     console.log(ldh['sex']);</br></br>
+     ldh.sing('冰雨'):</br></br>
+     // 3.利用构造函数创建对象的过程称为对象的实例化</br></br>
+     var zxy = new Star('张学友',19,'男'); // 调用函数返回的是一个对象</br></br>
+     console.log(zxy.name);</br></br>
+     console.log(zxy['sex']);</br></br>
+     zxy.sing('李香兰');</br></br>
+     1) 构造函数名首字母大写</br></br>
+     2) 构造函数不需要ruturn就可以返回结果</br></br>
+     3) 调用构造函数必须使用new</br></br>
+     4) 只要new Star()调用函数就创建了一个对象ldh{}</br></br>
+     5) 属性和方法前必须添加this</br></br>
+     案例：请按照要求创建对象</br></br>
+     利用构造函数创建两个英雄对象.函数中的公共部分包括:姓名属性(name),类型属性(type),血量属性(blood)和攻击方式(attack).</br></br>
+     英雄对象的属性如下:</br></br>
+     廉颇 力量型 500血量 攻击: 近战</br></br>
+     后羿 射手型 100血量 攻击: 远程</br></br>
+     function Hero(uname,type,blood) {</br></br>
+      this.name = uname;</br></br>
+      this.type = type;</br></br>
+      this.blood = blood;</br></br>
+      this.attack = function (attacked) {</br></br>
+        console.log(attacked);</br></br>
+      }</br></br>
+     }</br></br>
+     var lp = new Hero('廉颇','力量型','500血量');</br></br>
+     console.log(lp.name);</br></br>
+     console.log(lp.type);</br></br>
+     console.log(lp.blood);</br></br>
+     lp.attack('近战');</br></br>
+     var hy = new Hero('后羿','射手型','100血量');</br></br>
+     console.log(hy.name);</br></br>
+     console.log(hy.type);</br></br>
+     console.log(hy.blood);</br></br>
+     hy.attack('远程');</br></br>
+     <h4>3 new关键字</h4>
+     new 执行过程</br></br>
+     1) new构造函数可以在内存中创建一个空的对象</br></br>
+     2) this就会指向刚才创建的空对象</br></br>
+     3) 执行构造函数里面的代码 给这个空对象添加属性和方法</br></br>
+     4) 返回这个对象(所以就不需要return)</br></br>
+     <h4>4 遍历对象属性</h4>
+      var obj = { </br></br>
+        name: 'pink老师'； </br></br>
+        age；18；</br></br>
+        sex: '男' </br></br>
+        fn: function() { </br></br>
+
+<pre><code>    &#125; 
+  &#125;
+  console.log(obj.name);
+  console.log(obj.age);
+  console.log(obj.sex); //这样一个一个输出很麻烦，所以可以采取遍历对象
+  for in 遍历对象
+  格式: for (变量 对象) &#123;
+   
+  &#125;
+  如：
+  for (var k in obj) &#123; // 使用for in里面的变量 我们喜欢写k或者key
+    console.log(k); // k变量输出 得到的是属性名
+    console.log(obj[k]); // obj[k]得到的是属性值 k不能加引号
+  &#125;
+  &lt;h3&gt;小结&lt;/h3&gt;
+  1. 对象可以让代码结构更清晰
+  2. 对象复杂数据类型object
+  3. 本质: 对象就是一组无序的相关属性和方法的集合
+  4. 构造函数泛指一大类,比如苹果,不管是红苹果还是青苹果,都统称苹果
+  5. 对象实例特指一个事物,比如这个苹果、正在给你们讲课的pink老师等
+  6. for_in语句用于对对象的属性进行循环操作
+  对象习题:
+  1. 创建一个对象,该对象要有颜色、重量、品牌、型号、可以看电影、听音乐、打游戏和敲代码
+  2. 创建一个按钮对象,该对象中需要包含宽、高、背景颜色和点击行为
+  3. 创建一个车的对象,该对象要有重量、颜色、牌子、可以载人、拉货和耕田
+  函数习题:
+  1. 写一个函数,实现反转任意数组
+  2. 写一个函数,实现对数字数组的排序
+  小组项目:做一个简易计算器
+  此网页显示
+  欢迎使用计算器
+  1. 加法运算:
+  2. 减法运算:
+  3. 乘法运算:
+  4. 除法运算:
+  5. 请输入您的选项，确定，取消 
+</code></pre>
+</body>
+</html>
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    
+    <div class="post-nav">
+  
+    <a class="post-nav-item-left" href="/2023/07/22/shui/">
+      <div class="text-align">
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+        <span class="text-small">上一篇</span>
+      </div>
+      <div>【风花音画】谁</div>
+    </a>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2023/07/06/JS012/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      【140-142】第九章 预解析
+    </a>
+  
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              <div class="matts">海</div><div class="matts">内</div><div class="matts">存</div><div class="matts">知</div><div class="matts">己</div>
+            </div>
+          
+            <div class="foot-line">
+              <div class="matts">天</div><div class="matts">涯</div><div class="matts">若</div><div class="matts">比</div><div class="matts">邻</div>
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link"
+                         height="20px"
+                         width="20px"
+                         src="/images/icon/icon-link.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">Theme Tranquility</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link"
+                       height="20px"
+                       width="20px"
+                       src="/images/icon/icon-link+.svg"/>
+                  <a class="foot-link"
+                     href="mailto:example@email.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/">github</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-wx.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI3NzQ4NDkzNg==&mid=2247484469&idx=1&sn=8a442bb67397f52cce5c38c3f9b41e36&chksm=eb64c0d2dc1349c40d2e1bb55615ae28b3f2951be22f00717b9ade98c851082e42dc666ab45d#rd">微信公众号</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-zh.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://www.zhihu.com/">知乎</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link"
+                     height="20px"
+                     width="20px"
+                     src="/images/icon/icon-email.svg"/>
+                <a class="foot-link" href="mailto:example@email.com">example@email.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="https://windflower2022.github.io">岁月缝花</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)"
+            d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z" />
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)"
+            d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z" />
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)"
+            d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z" />
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+    
+  
+
+  </body>
+</html>

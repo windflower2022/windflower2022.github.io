@@ -1,11 +1,501 @@
-doctype
-html(lang=config.language)
-  include ./partial/header-base.pug
-  body
-    include ./partial/header.pug
-    main
-      section.main-content !{ body }
-    include ./partial/footer.pug
-    script(src=url_for('scripts/dark.js'))
-    if is_post()
-      script(src=url_for('scripts/post.js'))
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>
+      
+         | 岁月缝花
+      
+    </title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png"/>
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color=""/>
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/layout.css"/>
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/category.css" />
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href="/" class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg" />
+        </a>
+        <input id="navBtn" type="checkbox"/>
+        <div class="nav-menu">
+          
+            <a href="/blog/">博客</a>
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <div class="wall wall-category">
+    <div class="wall-main">
+      <div class="wall-category-title">
+        <div class="title-icon"
+             style="background-image: url(/)"></div>
+        
+      </div>
+      <div class="wall-category-description"></div>
+      <div class="wall-category-tags">
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.min.js"></script>
+        <script type = "text/javascript">
+          window.onload = function() {
+              try {
+                  TagCanvas.Start('tagCanvas', '', {
+                      outlineThickness: 1,
+                      maxSpeed: 0.03,
+                      // freezeActive: true,
+                      // freezeDecel: true,
+                      textColour: null,
+                      textColour: null,
+                      outlineColour: "#aaa",
+                      weight: true,
+                      padding: 4,
+                      // clickToFront: 200,
+                      fadIn: 200,
+                      // pinchZoom: true,
+                      wheelZoom: false,
+                      initial: [0.1, -0.03]
+                  });
+              } catch (e) {
+                  // something went wrong, hide the canvas container
+                  document.getElementById('tags-outer').style.display = 'none';
+              }
+          };
+        </script>
+        <div id="tags-outer">
+          <canvas width="500" height="500" id="tagCanvas">
+            
+              <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/100/" rel="tag">100</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020-2/" rel="tag">2020-2</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020-3/" rel="tag">2020-3</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oral-English/" rel="tag">Oral English</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diary/" rel="tag">diary</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/" rel="tag">music</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vocabulary/" rel="tag">vocabulary</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BE%8E%E6%96%87/" rel="tag">美文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E7%94%BB/" rel="tag">音画</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E8%80%83/" rel="tag">高考</a><span class="tag-list-count">2</span></li></ul>
+            
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="post-list">
+    
+      
+        <div class="post-card">
+          <div class="post__head">
+            <a href="/2022/11/18/hello-world35/" class="post-title hover-line">【089】CSS布局之重叠</a>
+          </div>
+          <div class="post__body">
+            
+            <div class="post-excerpt"><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>028-css-z-index</title>
+  </style>
+</head>
+<body>
+    <p align="center" color="black">
+    <a href="https://windflower2022.github.io/cici/028-css-z-index/index.html" target="_blank">点击全屏</a>
+  </p></div>
+          </div>
+          <div class="post__foot">
+            <div class="post-tags">
+  
+
+</div>
+          </div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post__head">
+            <a href="/2022/11/13/hello-world34/" class="post-title hover-line">【088】CSS布局之定位</a>
+          </div>
+          <div class="post__body">
+            
+            <div class="post-excerpt"><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>027-css-position</title>
+  </style>
+</head>
+<body>
+    <p align="center" color="black">
+    <a href="https://windflower2022.github.io/cici/027-css-position/027-css-position.html" target="_blank">点击全屏</a>
+  </p></div>
+          </div>
+          <div class="post__foot">
+            <div class="post-tags">
+  
+
+</div>
+          </div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post__head">
+            <a href="/2022/11/10/hello-world33/" class="post-title hover-line">【087】CSS布局之盒模型案例</a>
+          </div>
+          <div class="post__body">
+            
+            <div class="post-excerpt"><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>float-case</title>
+  </style>
+</head>
+<body>
+    <p align="center" color="black">
+    <a href="https://windflower2022.github.io/cici/026-css-float-case/float-case.html" target="_blank">点击全屏</a>
+  </p></div>
+          </div>
+          <div class="post__foot">
+            <div class="post-tags">
+  
+
+</div>
+          </div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post__head">
+            <a href="/2022/10/24/hell0-world32/" class="post-title hover-line">【086】CSS布局之之浮动清理</a>
+          </div>
+          <div class="post__body">
+            
+            <div class="post-excerpt"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0">
+    <title>flow</title>
+    <link rel="stylesheet" href="flow-clear-style.css">
+</head>
+<body>
+   <br><br><br>
+   <div class="box">
+     <!--<div class="container">-->
+     <div class="a">
+       float:left
+     </div></div>
+          </div>
+          <div class="post__foot">
+            <div class="post-tags">
+  
+
+</div>
+          </div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post__head">
+            <a href="/2022/10/24/hell0-world31/" class="post-title hover-line">【085】CSS布局之之浮动基础</a>
+          </div>
+          <div class="post__body">
+            
+            <div class="post-excerpt"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0">
+    <title>flow</title>
+    <link rel="stylesheet" href="flow-style.css">
+</head>
+<body>
+   <div class="box1"></div> 
+   <div class="box2"></div> 
+   <div class="box3"></div> <br><br><br>
+    容器自上而下纵向排列</div>
+          </div>
+          <div class="post__foot">
+            <div class="post-tags">
+  
+
+</div>
+          </div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post__head">
+            <a href="/2022/10/21/hell0-world30/" class="post-title hover-line">【084】CSS布局之溢出处理</a>
+          </div>
+          <div class="post__body">
+            
+            <div class="post-excerpt"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>types</title>
+    <link rel="stylesheet" href="types-style.css">
+</head>
+<body>
+    <br><br>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>overflow</title>
+    <link rel="stylesheet" href="./overflow-style.css">
+</head>
+<body>
+    <div id="overflowTest">
+        <p>
+          内容太大</div>
+          </div>
+          <div class="post__foot">
+            <div class="post-tags">
+  
+
+</div>
+          </div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post__head">
+            <a href="/2022/10/21/hello-world29/" class="post-title hover-line">【083】CSS布局之元素类型</a>
+          </div>
+          <div class="post__body">
+            
+            <div class="post-excerpt"><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>022-css-element-type</title>
+  </style>
+</head>
+<body>
+   <p align="center" color="black">
+    <a href="https://windflower2022.github.io/cici/022-css-element-type/element-type.html" target="_blank">点击全屏</a>
+  </p></div>
+          </div>
+          <div class="post__foot">
+            <div class="post-tags">
+  
+
+</div>
+          </div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post__head">
+            <a href="/2022/10/20/hello-world28/" class="post-title hover-line">【082】CSS布局之显示属性3.0</a>
+          </div>
+          <div class="post__body">
+            
+            <div class="post-excerpt"><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>021-css-display3.0</title>
+  </style>
+</head>
+<body>
+     <p align="center" color="black">
+    <a href="https://windflower2022.github.io/cici/021-css-display3.0/display.html" target="_blank">点击全屏</a>
+  </p></div>
+          </div>
+          <div class="post__foot">
+            <div class="post-tags">
+  
+
+</div>
+          </div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post__head">
+            <a href="/2022/10/20/hell0-world27/" class="post-title hover-line">【081】CSS盒模型案例</a>
+          </div>
+          <div class="post__body">
+            
+            <div class="post-excerpt"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>case model</title>
+    <link rel="stylesheet" href="box-case-model.css">
+</head>
+<body>
+    <br><br>
+    <div class="container">
+        <div class="title">
+           <p class="left">风花博客</p></div>
+          </div>
+          <div class="post__foot">
+            <div class="post-tags">
+  
+
+</div>
+          </div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post__head">
+            <a href="/2022/10/19/hell0-world26/" class="post-title hover-line">【080】CSS盒模型</a>
+          </div>
+          <div class="post__body">
+            
+            <div class="post-excerpt"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>box model</title>
+    <link rel="stylesheet" href="box-model-style.css">
+</head>
+<body>
+    <br><br>
+    <div class="box1">
+    css盒模型</div>
+          </div>
+          <div class="post__foot">
+            <div class="post-tags">
+  
+
+</div>
+          </div>
+        </div>
+      
+    
+    <div class="paginator"><span class="page-number current">1</span><a class="page-number" href="/categories/CSS/page/2/">2</a><a class="page-number" href="/categories/CSS/page/3/">3</a></div>
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              <div class="matts">海</div><div class="matts">内</div><div class="matts">存</div><div class="matts">知</div><div class="matts">己</div>
+            </div>
+          
+            <div class="foot-line">
+              <div class="matts">天</div><div class="matts">涯</div><div class="matts">若</div><div class="matts">比</div><div class="matts">邻</div>
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link"
+                         height="20px"
+                         width="20px"
+                         src="/images/icon/icon-link.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">Theme Tranquility</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link"
+                       height="20px"
+                       width="20px"
+                       src="/images/icon/icon-link+.svg"/>
+                  <a class="foot-link"
+                     href="mailto:example@email.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/">github</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-wx.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI3NzQ4NDkzNg==&mid=2247484469&idx=1&sn=8a442bb67397f52cce5c38c3f9b41e36&chksm=eb64c0d2dc1349c40d2e1bb55615ae28b3f2951be22f00717b9ade98c851082e42dc666ab45d#rd">微信公众号</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-zh.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://www.zhihu.com/">知乎</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link"
+                     height="20px"
+                     width="20px"
+                     src="/images/icon/icon-email.svg"/>
+                <a class="foot-link" href="mailto:example@email.com">example@email.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="https://windflower2022.github.io">岁月缝花</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)"
+            d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z" />
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)"
+            d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z" />
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)"
+            d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z" />
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+    
+    
+  </body>
+</html>

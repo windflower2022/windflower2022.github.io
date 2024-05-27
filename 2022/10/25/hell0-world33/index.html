@@ -1,11 +1,283 @@
-doctype
-html(lang=config.language)
-  include ./partial/header-base.pug
-  body
-    include ./partial/header.pug
-    main
-      section.main-content !{ body }
-    include ./partial/footer.pug
-    script(src=url_for('scripts/dark.js'))
-    if is_post()
-      script(src=url_for('scripts/post.js'))
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>
+      
+        【087】CSS布局之之浮动综合案例 | 岁月缝花
+      
+    </title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png"/>
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color=""/>
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/layout.css"/>
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css"/>
+  
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href="/" class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg" />
+        </a>
+        <input id="navBtn" type="checkbox"/>
+        <div class="nav-menu">
+          
+            <a href="/blog/">博客</a>
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner">
+      <div class="post-content__head">
+        <div class="post-title">【087】CSS布局之之浮动综合案例</div>
+        <div class="post-info">
+          
+  
+
+
+          <span class="post-date">2022-10-25</span>
+        </div>
+      </div>
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float-case</title>
+    <link rel="stylesheet" href="float-case-style.css">
+</head>
+<body>
+    <br><br>
+    <!--顶部导航-->
+    ul>(li>a)*4.回车<br><br><span id="more"></span>
+    <ul class="topmenu">
+        <li ><a href="#home" class="active">首页</a></li>
+        <li><a href="#archieve">归档</a></li>
+        <li><a href="#post">文章</a></li>
+        <li><a href="#about">关于我</a></li>
+    </ul><br><br>
+    <b>思考：</b><br><br>
+    1.为什么使用ul,li两个元素，为什么不使用div or span?<br><br>
+      一般情况下，布置页面结构时，元素选择尽量使用不同标签。这样有利于通过元素选择器可直接添加样式。<br><br>
+    如果使用div,就需分别添加类属性才能区别开。增加样式定义的复杂性。<br><br>
+    另外，导航容器和导航项都有自己的宽高。需要使用块元素，所以span不合适。<br><br>
+    2.为什么多添加a元素？把导航内容直接放到li里不好吗？<br><br>
+      顶部导航是一个其它网站或页面的链接，点击它会打开其它的页面。<br><br>
+    3.为什么链接使用锚点的写法？<br><br>
+      这是一个习惯，也是一个技巧，在不知新页面具体链接前，可以使用锚点写法。也可直接写一个#号，<br><br>
+    切忌不要空着，不然浏览器就不为链接添加默认样式。<br><br>
+
+<pre><code>在通用选择器里输入box-sizing: border-box;这样所有元素的width和height样式属性声明，就可以直接设置元素的宽高。&lt;br&gt;&lt;br&gt;
+再定义body选择器，声明样式margin:0;这样就去掉了浏览器的默认的页面外边距。&lt;br&gt;&lt;br&gt;
+当在顶部导航添加浮动后，灰色背景会失去，所以在topmenu添加去除样式overflow:auto;&lt;br&gt;&lt;br&gt;
+&lt;b&gt;页面主体&lt;/b&gt;&lt;br&gt;&lt;br&gt;
+&lt;b&gt;左侧导航&lt;/b&gt;,与顶部导航思路一致。区别是这个是垂直排列。div下ul&gt;(li&gt;a)*7,回车.&lt;b&gt;内容区域&lt;/b&gt;&lt;br&gt;&lt;br&gt;
+</code></pre>
+<div class="clearfix">
+    <div class="column sidemenu" >
+      <ul>
+        <li><a href="picture">音画</a></li>
+        <li><a href="css" class="active">前端</a></li>
+        <li><a href="music">音乐</a></li>
+        <li><a href="lesson">课程</a></li>
+        <li><a href="food">美食</a></li>
+        <li><a href="diary">日记</a></li>
+        <li><a href="message">留言</a></li>
+      </ul>
+    </div>
+    <div class="column content"> 
+      <div class="header">
+        <h1>音画</h1>
+      </div>
+      <h1>前端</h1>
+      <P>学习前端是一个循序渐进的过程，每天进步一点点。</P>
+      <P>可以先学习CSS，它具有无穷魅力</P>
+    </div><br><br>
+  <b>页面底部</b>
+<div class="footer">
+   <p>十月二十五日</p>
+</div> 
+通用的清理浮动的方法：给主体区域的容器定义属性class="clearfix".<br><br>
+在css中定义伪元素.clear::after;这样就会在容器底部添加一个元素，声明伪元素内容时空的，<br><br>
+视觉上没有什么内容，也不占据页面空间。在这个元素上清理浮动，这样后面的元素footer就不受浮动的影响了。<br><br>
+display: block;很关键，将伪元素转换成块元素，这样才能正常清理浮动。<br><br>
+</body>
+</html>
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    
+    <div class="post-nav">
+  
+    <a class="post-nav-item-left" href="/2022/11/02/gsdqj/">
+      <div class="text-align">
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+        <span class="text-small">上一篇</span>
+      </div>
+      <div>【风花音画】故事的情节</div>
+    </a>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2022/10/24/hell0-world32/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      【086】CSS布局之之浮动清理
+    </a>
+  
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              <div class="matts">海</div><div class="matts">内</div><div class="matts">存</div><div class="matts">知</div><div class="matts">己</div>
+            </div>
+          
+            <div class="foot-line">
+              <div class="matts">天</div><div class="matts">涯</div><div class="matts">若</div><div class="matts">比</div><div class="matts">邻</div>
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link"
+                         height="20px"
+                         width="20px"
+                         src="/images/icon/icon-link.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">Theme Tranquility</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link"
+                       height="20px"
+                       width="20px"
+                       src="/images/icon/icon-link+.svg"/>
+                  <a class="foot-link"
+                     href="mailto:example@email.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/">github</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-wx.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI3NzQ4NDkzNg==&mid=2247484469&idx=1&sn=8a442bb67397f52cce5c38c3f9b41e36&chksm=eb64c0d2dc1349c40d2e1bb55615ae28b3f2951be22f00717b9ade98c851082e42dc666ab45d#rd">微信公众号</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-zh.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://www.zhihu.com/">知乎</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link"
+                     height="20px"
+                     width="20px"
+                     src="/images/icon/icon-email.svg"/>
+                <a class="foot-link" href="mailto:example@email.com">example@email.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="https://windflower2022.github.io">岁月缝花</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)"
+            d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z" />
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)"
+            d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z" />
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)"
+            d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z" />
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+    
+  
+
+  </body>
+</html>

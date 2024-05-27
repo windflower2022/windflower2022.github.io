@@ -1,11 +1,322 @@
-doctype
-html(lang=config.language)
-  include ./partial/header-base.pug
-  body
-    include ./partial/header.pug
-    main
-      section.main-content !{ body }
-    include ./partial/footer.pug
-    script(src=url_for('scripts/dark.js'))
-    if is_post()
-      script(src=url_for('scripts/post.js'))
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>
+      
+        【092-095】第五章 流程控制-continue和break循环 | 岁月缝花
+      
+    </title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png"/>
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color=""/>
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/layout.css"/>
+    
+    
+  <link rel="stylesheet" type="text/css" href="/css/post.css"/>
+  
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href="/" class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg" />
+        </a>
+        <input id="navBtn" type="checkbox"/>
+        <div class="nav-menu">
+          
+            <a href="/blog/">博客</a>
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <article class="post-content">
+    <div class="post-inner">
+      <div class="post-content__head">
+        <div class="post-title">【092-095】第五章 流程控制-continue和break循环</div>
+        <div class="post-info">
+          
+  
+
+
+          <span class="post-date">2023-06-27</span>
+        </div>
+      </div>
+      <div class="post-content__body">
+        
+          <div class="post-gallery">
+            
+          </div>
+        
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //continue 关键字 退出本次(当前的循环) 继续执行剩余次数循环
+        for (var i = 1; i <= 5; i++) {
+           if (i == 3) {
+            continue;//只要遇见continue就退出本次循环 直接跳到i++
+           }
+           console.log('我正在吃第' + i + '个包子');
+        }
+        // 1~100间,除了能被7整除之外的整数和
+        for (i = 1; i <= 100; i++) {
+            if (i % 7 == 0) {
+                continue;
+            }
+            sum += i;
+        }
+        console.log(sum);
+        // break 立即退出循环
+        for (var i = 1; i <= 5; i++) {
+            if (i == 3) {
+                break;
+            }
+            console.log('我正在吃第' + i + '个包子')
+        }
+    </script>
+</head>
+<body>
+   <h3>continue</h3>:
+   <span id="more"></span>
+    关键字 退出本次(当前的循环) 继续执行剩余次数循环</br></br>
+    for (var i = 1; i <= 5; i++) {</br></br>
+       if (i == 3) {</br></br>
+        continue; //只要遇见continue就退出本次循环 直接跳到i++</br></br>
+       }</br></br>
+       console.log('我正在吃第' + i + '个包子');</br></br>
+    }</br></br>
+    <h4>例子</h4>
+    1~100间,除了能被7整除之外的整数和</br></br>
+        for (i = 1; i <= 100; i++) {</br></br>
+            if (i % 7 == 0) {</br></br>
+                continue;</br></br>
+            }</br></br>
+            sum += i;</br></br>
+        }</br></br>
+        console.log(sum);</br></br>
+        <h3>break</h3>:
+    <H2>JavaScript命名规范及语法格式</H2>
+    <h3>目录</h3>
+    标识符命名规范</br></br>
+    操作符规范</br></br>
+    单行注释规范</br></br>
+    其他规范</br></br>
+    <h4>1. 标识符命名规范</h4>
+    变量、函数的命名必须要有意义</br></br>
+    变量的名称一般为名词</br></br>
+    函数的名称一般为动词</br></br>
+    <h4>2. 操作符规范</h4>
+    操作符的左右两侧各保留一个空格</br></br>
+    for (var i = i; i <= 5; i++) {</br></br>
+        if (i == 3) {</br></br>
+            continue; //单行注释</br></br>
+        }</br></br>
+        console.log('这是我吃的第' + i  + '个包子')</br></br>
+    }</br></br>
+    <h4>3. 单行注释规范</h4>
+    用//单行注释，前面有一个空格</br></br>
+    <h4>4. 其他规范</h4>
+    if (true) {</br></br>
+    </br></br>
+    }</br></br>
+    for (var i = 1;i <= 5;i++) </br></br>{
+    </br></br>
+    }</br></br>
+    <h3>流程控制-循环作业</h3>
+    1. 求1-100之间所有数的总和与平均值</br></br>
+    2. 求1-100之间所有偶数的和</br></br>
+    3. 求100以内7的倍数的和</br></br>
+    4. 使用for循环打印矩形,要求每次只能输入一个★</br></br>
+    ★★★★★</br></br>
+    ★★★★★</br></br>
+    ★★★★★</br></br>
+    ★★★★★</br></br>
+    5.使用for循环打印三角形</br></br>
+    ★</br></br>
+    ★★</br></br>
+    ★★★</br></br>
+    ★★★★</br></br>
+    ★★★★★</br></br>
+    6. 使用for循环打印99乘法表</br></br>
+    7. 接收用户输入的用户名和密码,若用户名"admin",密码为"123456",则提示用户登录成功,否则,让用户一直输入</br></br>
+    8. 求整数1-100的累加值,但要求跳过所有个位为3的数(用continue实现)</br></br>
+    9.简易ATM</br></br>
+    里面存有100块钱</br></br>
+    选择1,则为存钱(就用输入钱加上先存的钱数,之后弹出显示余额提示框)</br></br>
+    选择2,则为取钱(就减去取出的钱,之后弹出显示余额提示框)</br></br>
+    选择3,则为显示余额</br></br>
+    选择4,则为退出(就弹出退出信息提示框)</br></br>
+</body>
+</html>
+      </div>
+    </div>
+  </article>
+  <div class="post__foot">
+    
+    <div class="post-nav">
+  
+    <a class="post-nav-item-left" href="/2023/06/29/JS009/">
+      <div class="text-align">
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+        <span class="text-small">上一篇</span>
+      </div>
+      <div>【096-112】第六章 数组</div>
+    </a>
+  
+  <div class="vhr"></div>
+  
+    <a class="post-nav-item-right" href="/2023/06/25/JS007/">
+      <div class="text-align">
+        <span class="text-small">下一篇</span>
+        <svg t="1670570876164"
+             class="icon"
+             viewBox="0 0 1024 1024"
+             transform="scale(-1,-1)"
+             width="16"
+             height="16">
+          <path d="M384 512L731.733333 202.666667c17.066667-14.933333 19.2-42.666667 4.266667-59.733334-14.933333-17.066667-42.666667-19.2-59.733333-4.266666l-384 341.333333c-10.666667 8.533333-14.933333 19.2-14.933334 32s4.266667 23.466667 14.933334 32l384 341.333333c8.533333 6.4 19.2 10.666667 27.733333 10.666667 12.8 0 23.466667-4.266667 32-14.933333 14.933333-17.066667 14.933333-44.8-4.266667-59.733334L384 512z" p-id="14596"/>
+        </svg>
+      </div>
+      【087-091】第五章 流程控制-while和do while循环
+    </a>
+  
+</div>
+
+    
+    
+  </div>
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        <div class="foot__head">
+          
+            <div class="foot-line">
+              <div class="matts">海</div><div class="matts">内</div><div class="matts">存</div><div class="matts">知</div><div class="matts">己</div>
+            </div>
+          
+            <div class="foot-line">
+              <div class="matts">天</div><div class="matts">涯</div><div class="matts">若</div><div class="matts">比</div><div class="matts">邻</div>
+            </div>
+          
+        </div>
+        <div class="foot__body">
+          
+            <div class="foot-item">
+              <div class="foot-item__head">朋友</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link"
+                         height="20px"
+                         width="20px"
+                         src="/images/icon/icon-link.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">Theme Tranquility</a>
+                  </div>
+                
+                <div class="text">
+                  <img alt="link"
+                       height="20px"
+                       width="20px"
+                       src="/images/icon/icon-link+.svg"/>
+                  <a class="foot-link"
+                     href="mailto:example@email.com?subject=%E7%94%B3%E8%AF%B7%20Hozen.site%20%E7%9A%84%E5%8F%8B%E9%93%BE%E4%BD%8D%E7%BD%AE">
+                  申请友链</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__head">账号</div>
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/">github</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-wx.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI3NzQ4NDkzNg==&mid=2247484469&idx=1&sn=8a442bb67397f52cce5c38c3f9b41e36&chksm=eb64c0d2dc1349c40d2e1bb55615ae28b3f2951be22f00717b9ade98c851082e42dc666ab45d#rd">微信公众号</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-zh.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://www.zhihu.com/">知乎</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+          <div class="foot-item">
+            <div class="foot-item__head">联系</div>
+            <div class="foot-item__body">
+              <div class="text">
+                <img alt="link"
+                     height="20px"
+                     width="20px"
+                     src="/images/icon/icon-email.svg"/>
+                <a class="foot-link" href="mailto:example@email.com">example@email.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <a href="https://windflower2022.github.io">岁月缝花</a> &nbsp;|&nbsp;由&nbsp;<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>&nbsp;及&nbsp;
+          <svg width="20" height="20" viewBox="0 0 725 725">
+            <path fill-rule="evenodd" fill="rgb(221, 221, 221)"
+            d="M145.870,236.632 L396.955,103.578 L431.292,419.44 L156.600,522.53 L145.870,236.632 Z" />
+            <path fill-rule="evenodd" fill="rgb(159, 159, 159)"
+            d="M396.955,103.578 L564.345,234.486 L611.558,513.469 L431.292,419.44 L396.955,103.578 Z" />
+            <path fill-rule="evenodd" fill="rgb(0, 0, 0)"
+            d="M431.292,419.44 L611.558,513.469 L358.327,595.18 L156.600,522.53 L431.292,419.44 Z" />
+          </svg>
+          <a target="_blank" rel="noopener" href="https://github.com/hooozen/hexo-theme-tranquility">致远</a>&nbsp;驱动
+        </div>
+      </div>
+    </div>
+    
+    
+  
+
+  </body>
+</html>
