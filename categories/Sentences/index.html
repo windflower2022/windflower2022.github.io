@@ -1,1 +1,30 @@
-<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1"><meta http-equiv=X-UA-Compatible content="ie=edge"><link rel="shortcut icon" href=/static/favicon.ico><title>岁月缝花</title><link href=/static/css/app.c64eadfc8d3abfc9d85514dba4054813.css rel=stylesheet><meta name="generator" content="Hexo 6.3.0"></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.992b63bf2abbf3194771.js></script><script type=text/javascript src=/static/js/vendor.e12dc8c9af1f7aa12436.js></script><script type=text/javascript src=/static/js/app.bc036f9167871d39aecf.js></script></body></html>
+{% extends 'includes/layout.swig' %}   {#  模板继承 #}
+
+{% block body %}
+<div id="archive-outer">
+  <div id="archive-inter">
+      {% set y = 0; %}
+      {% for postItem in page.posts.toArray() %} 
+        <div classets="archive-item">
+           {% if postItem.date === undefined %} {# 防止日期为空 #}
+           {% set postItem.date = date(Date.now(), 'YYYY/MM/DD') %}
+           {% endif %}
+           {% set year = postItem.date.year(); %} 
+           {% if (y != year) %}  {#  判断年分隔算法 #}
+             {% set y = year %}
+             <div id="archive-year"> {{ y }}年 </div>
+           {% endif %}
+           {% if !postItem.link %}
+            {# 文章链接 #}
+            <a href="{{ url_for(postItem.path) }}">
+              <time id="archive-item-time" datetime="{{ date_xml(postItem.date) }}">
+                {{ date(postItem.date, "MM-DD") }}
+              </time>
+              {{ postItem.title || '没有标题' }} 
+            </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+</div>
+{% endblock %}

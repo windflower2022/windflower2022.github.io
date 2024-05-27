@@ -1,1 +1,0 @@
-{"title":"","date":"2022-10-01T13:20:36.993Z","updated":"2022-10-01T11:55:35.968Z","comments":true,"path":"api/pages/source/浠浠/005-text/mystyle.css","covers":null,"excerpt":null,"content":"body {\n    /* 一个页面的默认文本颜色是在 body 选择器中定义的\n    */\n    color: purple;\n}\n\nh1 {\n    color: green;\n}\n\np.sb {\n    color: green;\n}\n\np.transform {\n    text-transform: uppercase;\n}"}

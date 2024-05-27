@@ -1,1 +1,45 @@
-<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1"><meta http-equiv=X-UA-Compatible content="ie=edge"><link rel="shortcut icon" href=/static/favicon.ico><title>岁月缝花</title><link href=/static/css/app.c64eadfc8d3abfc9d85514dba4054813.css rel=stylesheet><meta name="generator" content="Hexo 6.3.0"></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.992b63bf2abbf3194771.js></script><script type=text/javascript src=/static/js/vendor.e12dc8c9af1f7aa12436.js></script><script type=text/javascript src=/static/js/app.bc036f9167871d39aecf.js></script></body></html>
+{# 文章页面 #}
+{% extends 'includes/layout.swig' %}
+
+{# page页面(其实就是about)，也是用的这里来处理文章排版 #}
+{% block body %}
+  <article class="markdown-body">
+    <h2 id="post-title">{{ page.title }}
+      {% if is_post() && page.date %} {# 文章页面才显示日期 #}
+        <div id="post-time" datetime="{{ date_xml(page.date) }}">
+          {{ date(page.date, "YYYY-MM-DD") }}
+        </div>
+      {% endif %}
+    </h2>
+    {{ page.content }}
+  </article>
+
+  {% if is_post() %}
+    
+    {% if page.prev || page.next  %}
+      <div id="page-prev-next">
+        {# 上一篇文章 #}
+        {% if (page.prev) %}
+          <a id="page-prev-a" href="{{ url_for(page.prev.path) }}"> ← {{ page.prev.title }} </a>
+        {% else %}
+          <div></div> {# 仅用于占位 #}
+        {% endif %}
+
+        {# 下一篇文章 #}
+        {% if (page.next) %}
+          <a id="page-next-a" href="{{ url_for(page.next.path) }}"> {{ page.next.title }} → </a>
+        {% endif %}
+      </div>
+    {% endif %}
+    
+    {# 背景音频播放 #}
+    {% if theme.post_audio %}
+      {% set bg_color =  theme.theme_color %}
+      {% include 'includes/audio-play.swig' with bg_color %}
+    {% endif %}
+
+    {# 文章页面才加打赏功能 #}
+    {% include 'includes/reward.swig' %}
+  {% endif %}
+{% endblock %}
+
