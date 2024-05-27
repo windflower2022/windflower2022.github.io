@@ -1,7 +1,7 @@
 (function($){
   // Caption
   $('.article-entry').each(function(i){
-    $(this).find('img').each(function(){
+    $(this).find('img,iframe').each(function(){
       if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
 
       var alt = this.alt;
