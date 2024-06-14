@@ -87,6 +87,72 @@
 
       <div class="outer">
         <section id="main">
+  <article id="post-JS011" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/05/JS011/">【131-139】第八章 作用域</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2023-07-04T23:15:59.000Z" itemprop="datePublished">2023年07月05日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/JS/">JS</a>
+  </div>
+
+      
+      
+<a href="/2023/07/05/JS011/#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  Guestbook
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域</title>
+</head>
+<body>
+    <h2>目标</h2>
+      
+    </div>
+    <footer class="article-footer">
+      
+        
+        <p class="article-more-link">
+          <a href="/2023/07/05/JS011/#more">Read More</a>
+        </p>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
   <article id="post-JS010" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
@@ -1446,221 +1512,10 @@
 </article>
 
 
-  <article id="post-JS003" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/06/10/JS003/">【020-040】第三章 数据</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2023-06-10T10:41:59.000Z" itemprop="datePublished">2023年06月10日</time>
-</span>
-      
-  <div class="article-category">
-    <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/JS/">JS</a>
-  </div>
-
-      
-      
-<a href="/2023/06/10/JS003/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  Guestbook
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>数据类型</title>
-<script>
-    //var num;//这里的num我们是不确定属于哪种数据类型
-    var num = 10;//num属于数字型
-    //js的变量数据类型是只有程序在运行过程中，根据等号右边的值来确定的
-    var str = 'pink'//str属于字符串型
-    //js时动态语言 变量的数据类型是可以变化的
-    var x = 10;//x是数字型
-    x = 'pink';//x是字符串型
-    var num = 10;//num属于数字型
-    var PI = 3.14 //PI数字型
-    //1. 八进制 0-7 我们程序里面数字前面加0表示八进制
-    var num1 = 010;
-    console.log(num1);// 010 八进制转换为 10 进制 就是 8
-    var num2 = 012;
-    console.log(num2);
-    //2. 16进制 0-9 a-f #ffffff 数字的前面加0x表示十六进制
-    var num3 = 0x9;
-    console.log(num3);
-    var num4 = 0xa;
-    console.log(num4);
-    //3. 数字的最大值
-    console.log(Number.MAX_VALUE);
-    //4. 数字的最小值
-    console.log(Number.MIN_VALUE);
-    //5. 无穷大
-    console.log(Number.MAX_VALUE * 2 );//Infinity
-    //6. 无穷小
-    console.log(-Number.MAX_VALUE* 2 );//-Infinity
-    //7. 非数字
-    console.log('pink老师' - 100);//NaN
-    // isNaN() 这个方法用来判断非数字 并且返回一个值 如果是数字返回的是false 如果不是数字，返回的是ture
-    //console.log(isNaN(12));//false
-    //console.log(isNaN('pink老师'));//true
-    //alert('I like you to be still \n "Do you have the same feeling? " ')
-    //1. 检测获取字符串的长度 lenth
-    //var str = 'my name is andy';
-    //console.log(str.length);//15
-    //var strMsg = '应该制定一个学习计划';
-    //alert(strMsg.length);
-    //2. 字符串的拼接 + 
-    console.log('风飞' + "花起");//字符串的 风飞花起
-    console.log('pink' + '18');
-    console.log('pink' + true);
-    console.log(12 + 12);//24
-    console.log('12' + 12);
-    //3. 字符串拼接的加强
-    console.log('pink老师'+18);//pink老师18
-    console.log('pink'+18+'岁');//pink老师18岁
-    var age = 18;
-    console.log('pink老师age岁');
-    // 我们变量不要写到字符串里面，是通过和字符串相连的方式实现的
-    console.log('pink老师'+ age + '岁');//pink老师18岁 
-    // 变量和字符串相连的口诀： 引引加加
-    console.log('pink老师'+age+'岁');
-    // 案例 程序交互三部曲
-    // 1. 弹出一个输入框(prompt),让用户输入年龄(用户输入)
-    // 2. 把用户输入的值用变量保存起来,把刚才输入的年龄与所要输出的字符串拼接(<b>程序内部处理</b>)
-    // 3. 使用alert语句弹出警示框(输出结果)
-    //var age = prompt('请输入您的年龄');
-    //var str = '您今年已经'+ age +'岁了';//内部处理
-    //alert(str);
-    //布尔型
-    var flag = true; //flag 布尔型 参与加法运算当作1
-    var flag1 = false; //flag1 布尔型 加法里当作0
-    console.log(flag + 1); // true  2
-    console.log(flag1 + 1); // false 1
-    //如果一个变量声明未赋值 就是undefined 未定义数据类型
-    var str;
-    console.log(str);
-    var variable = undefined;
-    console.log(variable + 'pink'); // underfinedpink
-    console.log(variable + 1);// NaN undefined 和数字相加 最后的结果是 NaN即not a number
-    // null 空值
-    var space = null;
-    console.log(space + 'pink'); // nullpink
-    console.log(space + 1); // 1
-    // 获取数据类型
-    var num = 10;
-    console.log(typeof num); // number
-    var str = 'pink';
-    console.log(typeof str); //string
-    var flag = true;
-    console.log(typeof flag); // blean
-    var vari = undefined;
-    console.log(typeof vari); // undefined
-    var timer = null;
-    console.log(typeof timer); // object
-    // prompt 取过来的值是 字符型的
-    var age = prompt('请输入您的年龄');
-    console.log(age);
-    console.log(typeof age);
-    // 据输出颜色也可判断什么类型
-    console.log(18);
-    console.log('18');
-    console.log(true);
-    console.log(undefined);
-    console.log(null);
-    // 转换字符串
-    // 1.把数字型转换成, 变量.toString()
-    var num = 10;
-    var str = num.toString();
-    console.log(str);
-    console.log(typeof str);
-    // 2.利用String() 把变量放入小括号里
-    console.log(String(num));
-    // 3.利用 + 拼接字符串的方法来实现
-    console.log(num + '1');
-    //转换为数字型
-    var age = prompt('请输入您的年龄');
-    console.log(age);
-    // 1. parseInt(变量) 可以把字符型的转换为数字型 得到的是整数
-    console.log(parseInt(age));
-    console.log(parseInt('3.94')); //3
-    console.log(parseInt('120px'));//120
-    console.log(parseInt('rem120px'));  //NaN
-    // 2. parseFloat(变量) 可以把字符型的转换为数字型 得到的是小数 浮点数
-    console.log(parseFloat('3.94')); //3.94
-    console.log(parseFloat('120px')); //120
-    console.log(parseFloat('rem120px'));  //NaN
-    // 3.利用Number(变量)
-    var str = '123';
-    console.log(Number(str));
-    console.log(Number('12'));//12
-    // 4. 利用了算数运算- * /
-    console.log('12'-0);//12
-    console.log('123'-'120');//3
-    console.log('123'*2);//246
-    console.log('123'-120);//3
-    console.log('123'*'2');//246
-    // 案例 计算年龄
-    //var year = prompt('请输入您的出生年份');
-    //var age = 2023 - year;//year取过来的是字符串型 但这是减法 有隐式转换
-    //alert('您今年已经'+ age +'岁了');
-    // 案例2 加法计算
-    //var num1 = prompt('请您输入第一个值');
-    //var num2 = prompt('请您输入第二个值');
-    //var result = parseFloat(num1) + parseFloat(num2);
-    //alert('您的结果是:' + result);
-    //转换为布尔值
-    console.log(Boolean('')); //false
-    console.log(Boolean(0));  //false
-    console.log(Boolean(NaN)); //false
-    console.log(Boolean(null)); //false
-    console.log(Boolean(undefined)); //false
-    console.log(Boolean('小白')); //true
-    console.log(Boolean(12)); //true
-</script>
-</head>
-<body>    
-<h2>目标</h2>
-      
-    </div>
-    <footer class="article-footer">
-      
-        
-        <p class="article-more-link">
-          <a href="/2023/06/10/JS003/#more">Read More</a>
-        </p>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
 
     <nav id="page-nav">
 
-<a class="extend prev" rel="prev" href="/page/3/">Previous</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/">Next</a>
+<a class="extend prev" rel="prev" href="/page/3/">Previous</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/5/">Next</a>
 </nav>
 
 
@@ -1679,6 +1534,10 @@
           </li>
         
           <li>
+            <a href="/2024/06/09/122gddsyy/">【风花音画】黄昏</a>
+          </li>
+        
+          <li>
             <a href="/2024/05/31/wzdnszzdbkl/">【风花音画】我知道你是真正的不快乐</a>
           </li>
         
@@ -1688,10 +1547,6 @@
         
           <li>
             <a href="/2024/05/19/memory/">【风花音画】你记得花 花就一直开</a>
-          </li>
-        
-          <li>
-            <a href="/2024/05/19/memory1/">【风花音画】你记得花 花就一直开</a>
           </li>
         
       </ul>
@@ -1713,7 +1568,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-classify"></i> Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ability/">Ability</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Alice/">Alice</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cloze/">Cloze</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Error-Correction/">Error Correction</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Grammar-Filling/">Grammar Filling</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sentences/">Sentences</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Writing/">Writing</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/diary/">diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/music/">music</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vocabulary/">vocabulary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/writing/">writing</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%A8%E5%9B%BD%E5%8D%B7/">全国卷</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BE%8E%E6%96%87/">美文</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9F%B3%E7%94%BB/">音画</a><span class="category-list-count">42</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A3%9F%E4%BA%8B/">食事</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ability/">Ability</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Alice/">Alice</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cloze/">Cloze</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Error-Correction/">Error Correction</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Grammar-Filling/">Grammar Filling</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sentences/">Sentences</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Writing/">Writing</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/diary/">diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/music/">music</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vocabulary/">vocabulary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/writing/">writing</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%A8%E5%9B%BD%E5%8D%B7/">全国卷</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BE%8E%E6%96%87/">美文</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9F%B3%E7%94%BB/">音画</a><span class="category-list-count">43</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A3%9F%E4%BA%8B/">食事</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1723,7 +1578,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-archive"></i> Archive</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024年</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023年</a><span class="archive-list-count">51</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">61</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024年</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023年</a><span class="archive-list-count">51</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">61</span></li></ul>
     </div>
   </div>
 
