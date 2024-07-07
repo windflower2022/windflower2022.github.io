@@ -842,14 +842,12 @@ a.article-title:hover {
   margin-bottom: 1.6em;
 }
 .article-entry img,
-.article-entry video {
+.article-entry video,
+.article-entry iframe {
   max-width: 100%;
   height: auto;
   display: block;
   margin: auto;
-}
-.article-entry iframe {
-  border: none;
 }
 .article-entry table {
   width: 100%;
@@ -896,10 +894,9 @@ a.article-title:hover {
   height: 0;
   overflow: hidden;
 }
-.article-entry .video-container iframe,
 .article-entry .video-container object,
 .article-entry .video-container embed {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -1057,6 +1054,10 @@ a.article-title:hover {
   position: relative;
   overflow: hidden;
 }
+.article-gallery-iframes {
+  position: relative;
+  overflow: hidden;
+}
 .article-gallery-img {
   display: none;
   max-width: 100%;
@@ -1069,6 +1070,22 @@ a.article-title:hover {
   display: block;
 }
 .article-gallery-img img {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.article-gallery-iframe {
+  display: none;
+  max-width: 100%;
+}
+.article-gallery-iframe:first-child {
+  display: block;
+}
+.article-gallery-iframe.loaded {
+  position: absolute;
+  display: block;
+}
+.article-gallery-iframe iframe {
   display: block;
   max-width: 100%;
   margin: 0 auto;
