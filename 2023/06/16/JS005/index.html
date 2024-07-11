@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="风花" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      【055-068】第五章 流程控制-分支 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">LEEDOM</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+    <a title="github" target="_blank" href="https://github.com/leedom92/hexo-theme-leedom">
+      <i class="iconfont icon-github"></i>
+    </a>
+  
+    <a title="email" target="" href="">
+      <i class="iconfont icon-envelope"></i>
+    </a>
+  
+    <a title="facebook" target="" href="">
+      <i class="iconfont icon-facebooksquare"></i>
+    </a>
+  
+    <a title="twitter" target="" href="">
+      <i class="iconfont icon-twitter"></i>
+    </a>
+  
+    <a title="wechat" target="" href="">
+      <i class="iconfont icon-wechat"></i>
+    </a>
+  
+    <a title="weibo" target="" href="">
+      <i class="iconfont icon-weibo"></i>
+    </a>
+  
+    <a title="rss" target="_blank" href="/atom.xml">
+      <i class="iconfont icon-rss"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    Jun 16, 2023
+  </h3>
+  <h1>
+    【055-068】第五章 流程控制-分支
+  </h1>
+  <div class="content markdown-body">
+    <p>
+    能够使用if分支语句<br/><br/>
+    能够使用switch分支语句<br/><br/>
+    能够使用三元表达式<br/><br/>
+</p>
+<h2>目录</h2>
+    流程控制<br/><br/>
+    顺序流程控制<br/><br/>
+    分支流程控制if语句<br/><br/>
+    三元表达式<br/><br/>
+    分支流程控制switch语句<br/><br/>
+<h3>一、流程控制</h3>
+    在一个程序执行过程中,各条代码的执行顺序对程序的结果是由直接影响的.很多时候我们要通过控制代码的执行顺序来实现我们要完成的功能<br/><br/>
+    简单理解:流程控制就是来控制我们的代码按照什么结构顺序来执行<br/><br/>
+    流程控制主要有三种结构: 分别是<b>顺序结果、分支结构、和循环结构</b>,这三种结构代表三种代码执行的顺序。<br/><br/>
+    顺序结构:顺序执行-a-b<br/><br/>
+    分支结构：条件执行<br/><br/>
+             判断-a<br/><br/>
+             判断-b<br/><br/>
+     循环结构:循环执行<br/><br/>
+              a-判断-yes-a<br/><br/>
+              a-判断-no<br/><br/>
+<h3>二、顺序流程控制</h3>
+    顺序结构是程序中最简单、最基本的流程控制,它没有特定的语法结构,程序会按照<b>代码的先后顺序,依次执行</b>,程序中大多数的代码都是这样执行的。
+<h3>三、分支流程控制if语句</h3>
+<h4>3.1 分支结构</h4>
+<p>
+    由上到下执行代码的过程中，根据不同的条件，只想不同的路径代码(执行代码多选一的过程),从而得到不同的结果,JS愉悦提供了两种分支结构语句<br/><br/>
+    if语句<br/><br/>
+    switch语句<br/><br/>
+<h4>3.2 if分支语句</h4>
+    <b>1. 语法结构</b>
+    // 条件成立执行代码,否则什么也不做<br/><br/>
+    if (条件表达式) {<br/><br/>
+        // 条件成立执行的代码语句<br/><br/>
+    }<br/><br/>
+    语句可以理解为一个行为,循环语句和分支语句就是典型的语句,一个程序由很多个语句组成,一般情况下,会分割成一个一个的语句<br/><br/>
+    <h4>案例1: 进入网吧</h4>
+    弹出一个输入框,要求用户输入年龄,如果年龄大于等于18岁,允许进网吧</br></br>
+    // 弹出prompt输入框,用户输入年龄,程序把这个值取过来保存到变量中<br/><br/>
+    //使用if语句来判断年龄,如果年龄大于18就执行if大括号里面的输出语句<br/><br/>
+    var age = prompt('请输入您的年龄');<br/><br/>
+    if (age >= 18) {<br/><br/>
+        alert('我想带你去网吧');<br/><br/>
+    }<br/><br/>
+    <h4>3.2 if else 双分支语句</h4>
+    //4. 使用if else 条件表达句为真,则执行语句1,为假,则执行语句2;执行完后，再执行其他语句<br/><br/>
+    //if (条件表达式1) {<br/><br/>
+        //执行语句1<br/><br/>
+    //}  else {<br/><br/>
+        //执行语句2<br/><br/>
+    //}<br/><br/>
+    //5. if里面的语句1和else里面的语句2最终只能有一个语句执行 2选1<br/><br/>
+    //6. else后面直接跟大括号,没有小括号<br/><br/>
+    var age = prompt('请输入您的年龄');<br/><br/>
+    if (age >= 18) {<br/><br/>
+        alert('我想带你去网吧');<br/><br/>
+    } else {<br/><br/>
+        alert('回家去');<br/><br/>
+    }<br/><br/>
+    <h4>案例2: 判断闰年</h4>
+    接收用户输入的年份,如果是闰年就弹出闰年,否则弹出是平年.判断条件能被4整除且不能被100整除的就是闰年或能够被400整除的就是闰年<br/><br/>
+    year = prompt('请您输入年份')<br/><br/>
+    if (year % 4 == 0 && year % 100 = 0 || yesr % 400 == 0) {<br/><br/>
+        alert('闰年');<br/><br/>
+    } else {<br/><br/>
+        alert('平年');<br/><br/>
+    }<br/><br/>
+    <h4>案例3: 判断是否中奖</h4>
+    接收用户输入的姓名，来判断是否中奖,如果输入的是刘德华,则提示中了5块钱,否则提示没有中奖<br/><br/>
+    var name = prompt('请输入姓名');<br/><br/>
+    if (name = '刘德华') {<br/><br/>
+        alert('恭喜你中了5块');<br/><br/>
+    } else {<br/><br/>
+        alert('谢谢参与');//为什么这个不对呢<br/><br/>
+    }<br/><br/>
+    <h4>3.4 if else if 语句(双分支语句)</h4>
+    //1. 多分支语句 就是利用多个条件来选择不同的语句执行 得到不同的结果 多选1的过程<br/><br/>
+    //2. if else if 多分支语句<br/><br/>
+    //3. 语法规范<br/><br/>
+    if (条件表达1) {<br/><br/>
+        //语句1;<br/><br/>
+    } else if (条件表达式2) {<br/><br/>
+        //语句2;<br/><br/>
+    } else if (条件表达式3) {<br/><br/>
+        //语句3;<br/><br/>
+        ......<br/><br/>
+    } else {<br/><br/>
+        // 最后的语句；<br/><br/>
+    } <br/><br/>
+    //4. 执行思路<br/><br/>
+    //如果条件表达式1满足,则执行语句1,如果不满足,就2,以此类推,如果都不成立,则执行else里面的语句<br/><br/>
+    //多分支语句还是多选1 最后只能一个语句执行<br/><br/>
+    //else if 里面的条件理论上是可以任意多个的<br/><br/>
+    //else if 中间有个空格 <br/><br/>
+    <h4>案例:判断成绩级别</h4>
+    要求: 接收用户输入的分数,根据分数输出对应的等级字母A、B、 C、 D、 E.<br/><br/>
+    其中:<br/><br/>
+    1. 90分(含)以上,输出: A<br/><br/>
+    2. 80分(含)-90分(不含),输出: B<br/><br/>
+    3. 70分(含)-80分(不含),输出: C<br/><br/>
+    4. 60分(含)-70分(不含),输出: D<br/><br/>
+    5. 60分以下,输出: E<br/><br/>
+    var mark = prompt('您的分数');
+    if (mark >= 90) {<br/><br/>
+        alert('A');<br/><br/>
+    } if else (mark ){<br/><br/>
+        alert('B');<br/><br/>
+    } if else (mark ){<br/><br/>
+        alert('C');<br/><br/>
+    } if else (mark ){<br/><br/>
+        alert('D');<br/><br/>
+      else {<br/><br/>
+        alert('E');<br/><br/>
+    }<br/><br/>
+    <h3>四、三元表达式</h3>
+    // 1. 由三元运算符组成式子称为三元表达式,可看作是简化版的if else<br/><br/>
+    // 2. ++num 一元 3+5 二元 ?: 三元表达<br/><br/>
+    // 3. 语法结构<br/><br/>
+    // 条件表达式 ? 表达式1 :表达式2;<br/><br/>
+    // 4 执行思路.<br/><br/>
+    // 如果条件表达式结果为真 则返回 表达式1,为假,则返回表达式2<br/><br/>
+    // 5. 代码体验<br/><br/>
+    var num = 10;<br/><br/>
+    var result = num > 5 ? '是的' : '不是的'; // 我们知result<br/><br/>
+    console.log(result);<br/><br/>
+    // if (num > 5) {<br/><br/>
+    //     result = '是的';<br/><br/>
+    // } else {<br/><br/>
+    //     result = '不是的';<br/><br/>
+    // }<br/><br/>
+    <h4>案例:数字补0</h4>
+    用户输入数字,如果数字小于10,则在前面补0,如01,09,如果数字大于10,则不需要。这为后面的倒计时作铺垫。<br/><br/>
+    思路:<br/><br/>
+    1) 用户输入0-59之间的一个数字<br/><br/>
+    2) 如果数字小于10,则在这个数字前面补0,(加0)否则,不做操作<br/><br/>
+    3) 用一个变量接受这个返回值,输出<br/><br/>
+    var time = prompt('请~59之间的一个数字');<br/><br/>
+    // 三元表达式 条件表达式 ? 表达式1 : 表达式2 ;<br/><br/>
+    var result = time < 10 ? '0' + time : time ; //表达式有返回值 把它赋值给变量result<br/><br/>
+    alert(result); //输出变量<br/><br/><br/><br/><br/><br/><br/><br/>
+    <h3>五、分支流程控制switch语句</h3>
+    <h4>5.1 语法结构</h4>
+    switch语句也是多分支语句,它用于基于不同的条件来执行不同的代码,当要针对变量设置一系列的特定值的选项时,就可以使用switch.<br/><br/>
+    // 1. switch 语句也是多分支语句 也可以实现多选1<br/><br/>
+    // 2. 语法结构 switch 转换、开关 case 小例子或选项的意思<br/><br/>
+    // switch (条件表达式) {<br/><br/>
+    //      case value1:<br/><br/>
+    //          执行语句1;<br/><br/>
+    //           break;<br/><br/>
+    //      case value2:<br/><br/>
+    //          执行语句2;<br/><br/>
+    //          break;<br/><br/>  
+    //          ...<br/><br/>
+    //          default:<br/><br/>
+    //              执行最后的语句;<br/><br/>
+    // }<br/><br/>
+    // 3. 执行思路 利用表达式的值和case后面的选项值相匹配 如果匹配上 就执行case里面的句子 如果都没有匹配上 那么执行default 里面的语句<br/><br/>
+    // 4. 代码验证<br/><br/>
+    switch (2) {<br/><br/>
+        case 1:<br/><br/>
+            console.log('这是1');<br/><br/>
+            break;<br/><br/>
+        case 2:<br/><br/>
+            console.log('这是2');<br/><br/>
+            break;<br/><br/>
+        case 3:<br/><br/>
+            console.log('这是3');<br/><br/>
+        default:<br/><br/>
+            console.log('没有匹配结果');<br/><br/>
+    }  <br/><br/>
+    // switch 注意事项<br/><br/>
+    var num = 1;<br/><br/>
+    switch (num) {<br/><br/>
+        case 1:<br/><br/>
+        console.log(1);<br/><br/>
+        break;<br/><br/>
+        case 2:<br/><br/>
+        console.log(2);<br/><br/>
+        break;<br/><br/>
+        case 3:<br/><br/>
+        console.log(3);<br/><br/>
+        break;<br/><br/>
+    }<br/><br/>
+    // 1. 我们开发里面 表达式我们经常写成变量<br/><br/>
+    // 2. 我们num的值 和 case 里面的值相匹配的时候是 全等于 必须是值和数据类型一致才可以 num === 1<br/><br/>
+    // 3. break 如果当前的 case 里面没有break 则不会退出switch 是继续执行下一个case<br/><br/>
+    <h4>案例: 水果</h4> 
+    1) 弹出prompt输入框,让用户输入水果名称,把这个值取过来保存到变量中。<br/><br/>
+    2) 将这个变量作为switch括号里面的表达式。<br/><br/>
+    3) case后面的值写几个不同的水果名称,注意一定要加引号,以为必须是全等匹配。<br/><br/>
+    4) 弹出不同价格即可。同样注意每个case之后加上break,以便退出switch语句。<br/><br/>
+    5) 将default设置为没有此水果。<br/><br/>
+    var fruit = prompt('请输入水果名称:');<br/><br/>
+    switch (fruit) {<br/><br/>
+        case '香蕉':<br/><br/>
+        console.log('3元1斤');<br/><br/>
+        break;<br/><br/>
+        case '苹果':<br/><br/>
+        console.log('5元1斤');<br/><br/>
+        break;<br/><br/>
+    }<br/><br/>
+    <h4>5.2: switch语句和if else if语句的区别</h4> 
+    1) 一般情况下,它们两个语句可以相互替换<br/><br/>
+    2) switch...case语句通常处理case比较确定值的情况,而if....else...语句更加灵活,常用于范围判断(大于、等于某个范围)。<br/><br/>
+    3) switch语句进行条件判断后直接执行到程序的条件语句,效率更高。而if...else语句有几种条件,就得判断多少次。<br/><br/>
+    4) 当分支比较少时,if...else语句的执行效率比switch语句高。<br/><br/>
+    5) 当分支比较多是,switch语句的执行效率比较高,而且结构更清晰。<br/><br/>
+    <h4>5.3: 作业</h4> 
+    1) 判断时间阶段,比如用户输入12点弹出中午好,输入18点弹出下午好,输入23点,弹出深夜好<br/><br/>
+    2) 比较两个数的最大值(用户一次输入2个值,最后弹出最大的那个值)<br/><br/>
+    3) 用户输入一个数,来判断是奇数还是偶数<br/><br/>
+    4) 根据用户输入的数值(数字1到7),返回星期几<br/><br/>
+    5) 接收班长口袋里的钱数?若大于等于2000,请大家吃西餐.若小于2000,大于等于1500,请大家吃快餐,若。否则提醒班长下次把钱带够<br/><br/>
+    6) 预习下节循环控制for循环<br/><br/><br/><br/><br/><br/><br/><br/>
+</body>
+</html>
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2023/06/15/JS004/">OLDER&nbsp;&gt;</a>
+      
+        
+          <a id="newer" class="blog-nav" href="/2023/06/18/yhll/">&lt;&nbsp;NEWER</a>
+          
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Copyright © Leedom 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Theme by Leedom | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

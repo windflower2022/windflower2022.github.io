@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="风花" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      【020-040】第三章 数据 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">LEEDOM</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+    <a title="github" target="_blank" href="https://github.com/leedom92/hexo-theme-leedom">
+      <i class="iconfont icon-github"></i>
+    </a>
+  
+    <a title="email" target="" href="">
+      <i class="iconfont icon-envelope"></i>
+    </a>
+  
+    <a title="facebook" target="" href="">
+      <i class="iconfont icon-facebooksquare"></i>
+    </a>
+  
+    <a title="twitter" target="" href="">
+      <i class="iconfont icon-twitter"></i>
+    </a>
+  
+    <a title="wechat" target="" href="">
+      <i class="iconfont icon-wechat"></i>
+    </a>
+  
+    <a title="weibo" target="" href="">
+      <i class="iconfont icon-weibo"></i>
+    </a>
+  
+    <a title="rss" target="_blank" href="/atom.xml">
+      <i class="iconfont icon-rss"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    Jun 10, 2023
+  </h3>
+  <h1>
+    【020-040】第三章 数据
+  </h1>
+  <div class="content markdown-body">
+    <p>
+    能够说出5种简单数据类型<br/><br/>
+    能够使用typeof获取变量的类型<br/><br/>
+    能够说出1-2种转换为数据型的方法<br/><br/>
+    能够说出1-2种转换为字符型的方法<br/><br/>
+    能够说出什么是隐式转换<br/>
+</p>
+<h2>目录</h2>
+<h3>一、数据类型简介</h3>
+<h4>1.1 为什么需要数据类型</h4>
+<p>在计算机中，不同的数据所需占用的储存空间是不同的，为了便于把数据分成所需内存大小不同的数据，充分利用储存空间，于是定义了不同的数据类型 
+</p>
+<h4>1.2 变量的数据类型</h4>
+<p>变量是用来储存值的所在处，它们有名字和数据类型。变量的数据类型决定了如何将代表这些值的位储存到计算机的内存中,<b>JaVaScript是一种弱类型或者说动态语言</b>。这意味这不用提前声明变量的类型,在程序运行过程中，类型会自动确定。<br/><br/>
+    var age = 10;  这是一个数字型<br/><br/>
+    var areYouOk = '是的'  这是一个字符串<br/><br/>
+    在代码运行时,变量的数据类型是由JS引擎<b>根据=右边变量值的数据类型判断</b>b>的，运行完毕之后，变量就确定了数据类型。<br/><br/>
+    <b>JavaScript拥有动态类型,同时也意味着相同的变量可用作不同的类型</b>:<br/><br/>
+    var x = 6;       x为数字<br/><br/>
+    var x = "Bill";  x为字符串<br/><br/>
+</p>
+<h4>1.3 数据类型的分类</h4>
+<p>JS把数据类型分为两类:<br/><br/>
+    简单数据类型(Numeber,String,Boolean,Underfined,Null)<br/><br/>
+    复杂数据类型(object)<br/><br/>
+</p>
+<h3>二、简单数据类型</h3>
+<h4>2.1 简单数据类型(基本数据类型)</h4>
+    JavaScript中的简单数据类型及其说明如下:<br/><br/><br/>
+    <table border="1" width="800" height="300" cellspacing="0"  cellpadding="0" align="left">
+        <tr align="center" valign="middle">
+            <th>
+               简单数据类型 
+            </th>
+            <th>
+                说明
+            </th>
+            <th>
+                默认值
+            </th>
+        </tr>
+        <tr align="center" valign="middle">
+            <td>
+                Number
+            </td>
+            <td>
+                数字型,包含整型值和浮点型值,如21,0.21
+            </td>
+            <td>
+                0
+            </td>                    
+        </tr>
+        <tr align="center" valign="middle">
+            <td>
+                Boolean
+            </td>
+            <td>
+                布尔值类型,如true、false,等价于1和0
+            </td>
+            <td>
+                false
+            </td>                    
+        </tr>
+        <tr align="center" valign="middle">
+            <td>
+                String
+            </td>
+            <td>
+                字符串类型,如"张三"注意咱们js里面,字符串都带引号
+            </td>
+            <td>
+                ""
+            </td>                    
+        </tr>
+        <tr align="center" valign="middle">
+            <td>
+                Undefined
+            </td>
+            <td>
+                var a;声明了变量a单数没有给值,此时a = undefined
+            </td>
+            <td>
+                undefined
+            </td>                    
+        </tr>
+        <tr align="center" valign="middle">
+            <td>
+                Null
+            </td>
+            <td>
+                var a = null;声明了变量a为空值
+            </td>
+            <td>
+                null
+            </td>                    
+        </tr>
+    </table><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<h4>2.2 数字型 Number</h4>
+<p>
+    JavaScript数字型类型既可以用来保存整数值,也可以保存小数（浮点数）.<br/><br/>
+    var age = 21; //整数<br/><br/>
+    var Age = 21.3747; //小数<br/><br/>
+</p>
+    1. 数字型进制<br/><br/>
+    最常见的进制有二进制、八进制(<b>程序里面数字前面加0</b>)、十进制、十六进制(<b>程序里面数字前面加0x</b>)。<br/><br/>
+    2. 数字型范围<br/><br/>
+    JavaScript中数值的最大和最小值<br/><br/>
+    alert (Number.MAX_VALUE); // 1.796931348623157E+308<br/><br/>
+    alert (Number.MIN_VALUE); // 5E-324<br/><br/>
+    3.Infinity 无穷大 -Infinity 无穷小 NaN 非数字<br/><br/>
+    4. isNaN()<br/><br/>
+    用来判断一个变量是否为非数字类型,返回为true或者false<br/><br/>
+    isNaN(x) x是数字,返回为false;不是数字,返回为true,x是一个非数字类型<br/><br/>
+    <h4>2.3 字符串型 String</h4>
+    需要用"",或''(推荐使用),可以为引号中的任意文本,'12','pink老师'<br/><br/>
+    1. 字符串引号嵌套<br/><br/>
+    外双内单，外单内双<br/><br/>
+    2. 字符串转义符<br/><br/>
+    类似html里面的特殊字符,字符串中也有特殊字符，我们称之为转义符。<br/><br/>
+    转义符都是\开头的，常用的转义符说明如下：<br/><br/><br/></br></br>
+    <table width="600" border="1" height="400" cellspacing="0" cellpadding="0" align="left">
+         <tr align="center" valign="middle">
+            <th>
+                转义符
+            </th>
+            <th>
+                解释说明
+            </th>
+        </tr>
+         <tr align="center" valign="middle">
+            <td>
+                \n
+            </td>
+            <td>
+                换行符,n是newline的意思
+            </td>
+        </tr>
+         <tr align="center" valign="middle">
+            <td>
+                \\
+            </td>
+            <td>
+                斜杠\   
+            </td>
+        </tr>
+         <tr align="center" valign="middle">
+            <td>
+                \'
+            </td>
+            <td>
+                '单引号
+            </td>
+        </tr>
+         <tr align="center" valign="middle">
+            <td>
+                \"
+            </td>
+            <td>
+                双引号
+            </td>
+        </tr>
+         <tr align="center" valign="middle">
+            <td>
+                \t
+            </td>
+            <td>
+                tab缩进              
+            </td>
+        </tr>
+         <tr align="center" valign="middle">
+            <td>
+                \b
+            </td>
+            <td>
+                空格,b是blank的意思             
+            </td>
+        </tr>
+    </table><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <h4>2.4 案例： 弹出网页警示框</h4>
+    3. 字符串长度<br/><br/>
+    字符串是由若干字符组成的，这些字符的数量就是字符串的长度,通过字符串的lenth属性可以获取整个字符串的长度。<br/><br/>
+    var strMsg = "应该制定一个学习计划";<br/><br/>
+    alert(strMsg.length);<br/><br/>
+    4. 字符串拼接<br/><br/>
+    多个字符串间可以使用+进行拼接，其拼接方式为字符串 + 任何类型 = 拼接之后的新字符串3. 字符串长度<br/><br/>
+    拼接前会把与字符串相加的任何类型转成字符串，再拼接成一个新的字符串. <br/><br/>
+    <b>口诀：数值相加，字符相连</b>
+    4. 字符串拼接的加强<br/><br/>
+    console.log('pink老师'+18); pink老师18<br/><br/>
+    console.log('pink'+18+'岁'); pink老师18岁<br/><br/>
+    var age = 18;<br/><br/>
+    不能console.log('pink老师age岁');<br/><br/>
+    我们变量不要写到字符串里面，是通过和字符串相连的方式实现的<br/><br/>
+    console.log('pink老师'+ age + '岁'); pink老师18岁 <br/><br/>
+    如果变量的两侧都有字符串拼接变量和字符串相连的口诀： 引引加加，删掉数字，变量写++中间<br/><br/>
+    console.log('pink老师'+age+'岁');<br/><br/> 
+    我们经常会将字符串和变量来拼接,因为<b>变量可以很方便地修改里面的值</b><br/><br/>
+    变量是不能添加引号的，因为加引号的变量会变成字符串<br/><br/>
+    5. <b>案例</b>>：显示年龄<br/><br/>
+    弹出一个输入框，需要用户输入年龄，之后弹出一个警示框显示"您今年xx岁啦"(xx表示刚才输入的年龄)<br/><br/>
+    这是利用JS编写的一个非常简单的交互效果程序,交互就像对话<br/><br/>
+    如何在程序中实现？<br/><br/>
+    三步曲<br/><br/>
+    1) 弹出一个输入框(prompt),让用户输入年龄(<b>用户输入</b>)<br/><br/>
+    2) 把用户输入的值用变量保存起来，把刚才输入的年龄与所要输出的字符串拼接（<b>程序内部处理</b>)<br/><br/>
+    3) 使用alert语句弹出警示框(<b>输出结果</b>)<br/><br/>
+    var age = prompt('请输入您的年龄');<br/><br/>
+    var str = '您今年已经'+ age +'岁了';<br/><br/>
+    alert(str);<br/><br/>
+    <h4>2.5 布尔型 Boolean</h4>
+    布尔类型有两个值： true和false,其中true表示真(对),而false表示假(错)<br/><br/>
+    布尔型和数字型相加的时候,true的值为1,false的值为0<br/><br/>
+    console.log(true + 1); // 2<br/><br/>
+    console.log(false + 1); // 1<br/><br/>
+    <h4>2.6 Undefined 和 Null</h4>
+    一个声明后没有被赋值的变量会有一个默认值undefined(如果进行相连或者相加时，注意结果)<br/><br/>
+    var variable;<br/><br/>
+    console.log(variable);      //undefined<br/><br/>
+    console.log('你好' + variable); //你好undefined<br/><br/>
+    console.log(11 + variable); // NaN即not a number<br/><br/>
+    一个声明变量给null值,里面存的值为空(学习对象时,我们继续研究null)<br/><br/>
+    var vari = null;<br/><br/>
+    console.log('你好'+ vari); //你好null<br/><br/>
+    console.log(11 +vari); 11<br/><br/>
+    console.log(true + vari); 1<br/><br/>
+<h3>三、获取变量数据类型</h3>
+<h4>3.1 获取检测变量的数据类型</h4>
+typeof可用来获取检测变量的数据类型<br/><br/>
+var num = 10;<br/><br/>
+console.log(typeof num); // number<br/><br/>
+var str = 'pink';<br/><br/>
+console.log(typeof str); //string<br/><br/>
+var flag = true;<br/><br/>
+console.log(typeof flag); // blean<br/><br/>
+var vari = undefined;<br/><br/>
+console.log(typeof vari); // undefined<br/><br/>
+var timer = null;<br/><br/>
+console.log(typeof timer); // object<br/><br/>
+// prompt 取过来的值是 字符型的<br/><br/>
+var age = prompt('请输入您的年龄');<br/><br/>
+console.log(age);<br/><br/>
+console.log(typeof age);<br/><br/>
+// 据输出到控制台的颜色也可判断什么类型<br/><br/>
+console.log(18);<br/><br/>
+console.log('18');<br/><br/>
+console.log(true);<br/><br/>
+console.log(undefined);<br/><br/>
+console.log(null);<br/><br/>
+<h4>3.2 字面量</h4>
+字面量是在源代码中一个固定值的表示法，通俗来说，就是字面量表示如何表达这个值<br/><br/>
+数字字面量： 8,9,10<br/><br/>
+字符串字面量：'黑马程序员',"大前端"<br/><br/>
+布尔字面量： true,false<br/><br/>
+<h3>四、数据类型转换</h3>
+<h4>4.1 什么是数据类型转换</h4>
+是要表单、prompt获取过来的数据默认是字符串类型的,此时就不能直接简单的进行加法运算,而需要转换变量的数据类型。通俗来说，就是<b>把一种数据类型的变量转换成另外一种数据类型</b>.</br></br>
+我们通常会实现3种方式的转换:</br></br>
+转换为字符串类型</br></br>
+转换为数字型</br></br>
+转换为布尔型</br></br>
+<h4>4.2 转换为字符串类型</h4>
+<table border="1" width="800" height="200" cellspacing="0" cellpadding="0" align="left">
+<tr align="center" valign="middle">
+    <th>
+      方式
+    </th>
+    <th>
+      说明
+    </th>
+    <th>
+      案例
+    </th>
+</tr>
+<tr align="center" valign="middle">
+    <td>
+      toString()
+    </td>
+    <td>
+      转成字符串
+    </td>
+    <td>
+      var num = 1;alert(num.toString());
+    </td>
+</tr>
+<tr align="center" valign="middle">
+    <td>
+      String()强制转换
+    </td>
+    <td>
+      转成字符串
+    </td>
+    <td>
+      var num = 1;alert(String(num));
+    </td>
+</tr>
+<tr align="center" valign="middle">
+    <td>
+      <b>加号拼接字符串</b>
+    </td>
+    <td>
+      和字符串拼接的结果都是字符串
+    </td>
+    <td>
+      var num = 1;alert(num + "我是字符串");
+    </td>
+</tr>
+toString()和String()使用方式不一样
+三种转换方式，我们更喜欢用第三种加号拼接字符串的转换方式,这一种方式也称为隐式转换
+</table></br></br></br></br></br></br></br>
+<h4>4.3 转换为数字型(重点)</h4></br></br>
+<table border="1" width="800" height="200" cellspacing="0" cellpadding="0" align="left">
+    <tr align="center" valign="middle">
+        <th>
+          方式
+        </th>
+        <th>
+          说明
+        </th>
+        <th>
+          案例
+        </th>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+          parseInt(string)函数
+        </td>
+        <td>
+          将string类型转换成整数数值型
+        </td>
+        <td>
+          parseInt('78');
+        </td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+          parseFloat(string)函数
+        </td>
+        <td>
+          将string类型转成浮点数(小数)数值型
+        </td>
+        <td>
+          parseFloat('78.21');
+        </td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+          <b>Number()强制转换函数</b>
+        </td>
+        <td>
+          将string类型转换成数值型
+        </td>
+        <td>
+          Number('12');
+        </td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+          <b>js隐式转换(- * /)</b>
+        </td>
+        <td>
+          利用算术运算隐式转换为数值型
+        </td>
+        <td>
+          '12'- 0;
+        </td>
+    </tr>
+    注意parseInt和parseFloat单词的<b>大小写</b>,这两个是重点</br></br>
+    </table></br></br></br></br></br></br></br>
+    <h4> 案例1: 计算年龄</h4>
+    此案例要求在页面中弹出一个输入框，我们输入出生年份后，能计算出我们的年龄</br></br>
+    三部曲</br></br>
+    1) 弹出一个输入框(prompt),让用户输入出生年份(用户输入)</br></br>
+    2) 把用户输入的值用变量保存起来，然后用今年的年份减去变量值，结果就是现在的年龄(程序内部处理)</br></br>
+    3) 弹出警示框(alert),把计算出的结果输出(输出结果)</br></br>
+    var year = prompt('请输入您的出生年份');</br></br>
+    var age = 2023 - year;//year取过来的是字符串型 但这是减法 有隐式转换</br></br>
+    alert('您今年已经'+ age +'岁了');</br></br>
+    <h4> 案例2: 简单加法器</h4>
+    1) 先弹出第一个输入框,提示用户输入第一个值 保存起来</br></br>
+    2) 再弹出第二个输入框,提示用户输入第二个值 保存起来</br></br>
+    3) 把两个值相加,并将结果赋给新的变量(注意数据类型转换)</br></br>
+    4) 弹出显示框(alert),把计算的结果输出(<b>输出结果</b>)</br></br>
+    var num1 = prompt('请您输入第一个值');</br></br>
+    var num2 = prompt('请您输入第二个值');</br></br>
+    var result = parseFloat(num1) + parseFloat(num2);</br></br>
+    alert('您的结果是:' + result);</br></br>
+    <h4>4.4 转换为布尔型</h4></br></br>
+<table border="1" width="800" height="200" cellspacing="0" cellpadding="0" align="left">
+    <tr align="center" valign="middle">
+        <th>
+          方式
+        </th>
+        <th>
+          说明
+        </th>
+        <th>
+          案例
+        </th>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+          Boolean()函数
+        </td>
+        <td>
+          其他类型转换成布尔值
+        </td>
+        <td>
+          Boolean('true');
+        </td>
+    </tr>
+    </table></br></br></br></br>
+    代表空、否定的值会被转换成false,如 ''、0、NaN、null、underfined</br></br>
+    其余值都会被转换成true</br></br>
+    console.log(Boolean(''));</br></br>
+    console.log(Boolean(0));</br></br>
+    console.log(Boolean('NaN'));</br></br>
+    console.log(Boolean('null'));</br></br>
+    console.log(Boolean('underfined'));</br></br>
+    console.log(Boolean('小白'));</br></br>
+    console.log(Boolean('12'));</br></br>
+    <h2>扩展阅读目标</h2>
+    能够知道解释星语言和编译性语言</br></br>
+    能够知道标识符不能是关键字或保留字</br></br>
+    能够独立完成课后作业</br></br>
+    <h3>一. 解释性语言和编译性语言</h3>
+    <h4>1. 概述</h4>
+    计算机不能直接理解任何除机器语言以外的语言，所以必须要把程序员所写的程序语言翻译成机器语言才能执行程序。程序语言翻译成机器语言的工具，被称为翻译器。</br></br>
+    编程语言——翻译器——机器语言</br></br>
+    翻译器翻译的方式有两种：一个是<b>编译</b>，另外一个是<b>解释</b>。两种方式之间的区别在于<b>翻译的时间点不同</b></br></br>
+    编译器是在<b>代码执行之前进行编译</b>，生成中间代码文件</br></br>
+    解释器是在<b>运行时进行及时解释</b>，并立即执行(当编译器以解释方式运行的时候，也称之为解释器)</br></br>
+    <h4>2. 执行过程</h4>
+    编译性语言(Java)事先全部写完-中间代码文件解释-机器语言-执行</br></br>
+    解释性语言(JavaScrpt)边解释成机器语言边执行</br></br>
+    类似于请客吃饭：</br></br>
+    编译语言：首先把所有菜做好，才能上桌吃饭</br></br>
+    解释语言: 好比吃火锅，边吃边涮，同时进行 </br></br>
+    <h3>二.  标识符、关键字、保留字</h3>
+    <h4>1. 标识符</h4>
+    指开发人员为变量、属性、函数、参赛取的名字</br></br>
+    标识符不能是关键字或保留字</br></br>
+    <h4>2. 关键字</h4>
+    是指JS本身已经使用了的字,不能再用它们充当变量名、方法名</br></br>
+    包括: break case catch contitue default delete do else finallly for function if in instanceof new return switch this throw try typeof var void while with等</br></br>
+    <h4>3. 保留字</h4>
+    预留的"关键字",意思是现在不是，但未来可能会成为关键字,同样不能使用它们当变量名或方法名</br></br>
+    包括: boolean byte char class const debugger double enum export extends fimal float goto implement import int interface long native package private protected public short static super synchronized throws transient volatile等</br></br>
+    <h3>三.  数据类型</h3>
+    <h4>3. 课后作业</h4>
+    1. 给同桌讲讲交换两个变量的值算法</br></br>
+    2. 依次询问并获取用户的姓名、年龄、性别、并打印用户信息</br></br>
+</body>
+</html>
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2023/06/08/hjhjyq/">OLDER&nbsp;&gt;</a>
+      
+        
+          <a id="newer" class="blog-nav" href="/2023/06/15/JS004/">&lt;&nbsp;NEWER</a>
+          
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Copyright © Leedom 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Theme by Leedom | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>
