@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="风花" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      【069-086】第五章 流程控制-for循环 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">WindFlower</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+    <a title="github" target="_blank" href="https://github.com/leedom92/hexo-theme-leedom">
+      <i class="iconfont icon-github"></i>
+    </a>
+  
+    <a title="email" target="" href="">
+      <i class="iconfont icon-envelope"></i>
+    </a>
+  
+    <a title="facebook" target="" href="">
+      <i class="iconfont icon-facebooksquare"></i>
+    </a>
+  
+    <a title="twitter" target="" href="">
+      <i class="iconfont icon-twitter"></i>
+    </a>
+  
+    <a title="wechat" target="" href="">
+      <i class="iconfont icon-wechat"></i>
+    </a>
+  
+    <a title="weibo" target="" href="">
+      <i class="iconfont icon-weibo"></i>
+    </a>
+  
+    <a title="rss" target="_blank" href="/atom.xml">
+      <i class="iconfont icon-rss"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    Jun 24, 2023
+  </h3>
+  <h1>
+    【069-086】第五章 流程控制-for循环
+  </h1>
+  <div class="content markdown-body">
+    能说出循环的目的</br></br>
+能说出for循环的执行过程</br></br>
+能使用断点调试来观察代码的执行过程</br></br>
+能使用for循环完成累加求和等案例</br></br>
+能够使用双重for循环完成乘法表案例</br></br>
+能说出while循环和do while循环的区别</br></br>
+能够说出break和continue的区别</br></br>
+<h2>目录</h2>  
+循环</br></br>
+for 循环 </br></br>
+双重for循环</br></br>
+while循环</br></br>
+do while循环</br></br>
+continue break</br></br>
+<h3>1.循环</h3>
+<h4>循环目的</h4>
+在实际问题中,有许多具有<b>规律性的重复操作</b>,因此在程序中要完成这类操作就需要<b>重复执行某些语句</b></br></br>
+<h4>2. JS中的循环</h4>
+在JS中,有三种类型的循环语句:</br></br>
+for循环</br></br>
+while循环</br></br>
+do while循环</br></br>
+<h3>2.for循环</h3>
+在程序中,一组被重复执行的语句被称为<b>循环体</b>,能否继续重复执行,取决于循环的<b>终止条件</b>.由循环体及循环的终止条件组成的语句,被称之为<b>循环语句</b>.
+<h4>2.1 语法结构</h4>
+for循环主要用于某些代码循环若干次,通常跟计数有关系.其语法结构如下：</br></br>
+for(初始化变量;条件表达式;操作表达式){</br></br>
+    //循环体</br></br>
+}</br></br>
+// 1. for 重复执行某些代码,通常跟计数有关系</br></br>
+// 2. for语法结构</br></br>
+// for(初始化变量;变量表达式;操作表达式)  {</br></br>
+   //循环体;</br></br>
+//} </br></br>
+// 3. 初始化变量 就是用var声明的一个普通变量 通常用于作为计数器</br></br>
+// 4. 条件表达式 就是用来决定每一次循环是否继续执行 就是终止的条件</br></br>
+// 5. 操作表达式 是每次循环最后执行的代码 经常用于我们计数器变量进行更新(递增或递减) </br></br> 
+// 6. 代码体验 我们重复打印100句 hello</br></br>
+for (var i = 1; i <= 100; i++) {</br></br>
+   console.log('hello');</br></br>
+}</br></br>
+// 1.首先执行里面的计算器变量 var i = 1,但这句话在 for 里面只执行1次, index</br></br>
+// 2.去i <= 100 来判断是否满足条件 如果满足条件 就去执行 循环体 不满足条件退出循环</br></br>
+// 3. 最后去执行 i++ i++是单独写的代码 递增 第一轮结束</br></br>
+// 4. 接着去执行i <= 100 来判断是否满足条件 如果满足条件 就去执行 循环体 不满足条件退出循环 第二轮</br></br>
+<h4>2.2 断点调试</h4></br></br>
+断点调试是自己在程序的某一行设置一个断点,调试时,程序运行到这一行就会停住,然后你可以一步一步往下调试,调试过程中可以看到各个变量当前的值,出错的话,调试到出错的代码行即显示错误,停下。</br></br>
+<b>断点调试可以帮助我们观察程序的运行过程</b></br></br>
+浏览器中按F12-->source-->找到需要调试的文件-->在程序的某一行设置断点-->刷新</br></br>
+Watch监视,通过watch可以监视变量的值的变化,非常的常用。</br></br>
+F11:程序单步执行,让程序一步一步的执行,这个时候,观察watch中变量的值的变化</br></br>
+代码测试的能力非常重要,只有学会了代码调试,才能学会自己解决bug的能力.初学者不要觉得调试代码麻烦就不去调试,知识点花点功夫肯定学得会，但是代码调试这个东西,自己不去练,永远都学不会。</br></br>
+今天学的代码非常简单,只要求同学们记住代码调试的这几个按钮的作用即可。</br></br></br></br></br></br></br></br>
+<h4>2.3 for循环重复执行相同代码</h4></br></br>
+for (var i = 1; i <= 100; i++) {</br></br>
+   console.log('您好');</br></br>
+}</br></br>
+我们可以让用户控制输出的次数</br></br>
+var number = prompt('请您输入次数');</br></br>
+for (var i = 1; i <= number, i++) {</br></br>
+   console.log('您好');</br></br>
+}</br></br>
+<h4>for循环重复执行不同代码</h4></br></br>
+for循环也可以重复执行不同代码,因为我们有计数器变量i的存在 i每次循环值都会变化</br></br>
+我们想要输出1个人 1~100岁</br></br>
+for (var i = 1; i <= 100; i++) {</br></br>
+   console.log('这个人今年'+ i + '岁了');</br></br>
+}</br></br>
+也可以这样写</br></br>
+for (var i = 1; i <= 100; i++) {</br></br>
+   if (i == 1) {</br></br>
+      console.log('这个人今年1岁了,他出生了');</br></br>
+   } else if (i == 100) {</br></br>
+      console.log('这个人今年100岁了,他死了');</br></br>
+   }</br></br>
+} else {</br></br>
+   console.log('这个人今年'+i+'岁了');</br></br>
+}</br></br>
+<h4>2.4 for循环重复某些相同操作</h4></br></br>
+for循环因为有了计数器的存在,我们还可以重复的执行某些操作,比如做一些算术运算
+<b>课堂案例: 求1-100之间所有整数的累加和</b></br></br>
+思路:</br></br>
+需要循环100次,我们需要一个计数器i </br></br>
+我们需要一个存储结果的变量sum,但是初始值一定是0</br></br>
+核心算法: 1 + 2 + 3 + 4 + 5 + 6 ....    .sum = sum + i;</br></br>
+var sum = 0;//求和的变量</br></br>
+for (i = 1; i <=100, i++) {</br></br>
+   sum = sum + i;</br></br>
+   也可写成 sum += i;</br></br>
+} </br></br>
+console.log(sum);</br></br>
+<h4>2.4 for循环案例</h4></br></br>
+1). 求1-100之间所有数的平均值 需要一个 sum 和的变量 还需要一个平均值 average 变量</br></br>
+var sum = 0;</br></br>
+var average = 0;</br></br>
+for (i = 1; i <= 100; i++) {</br></br>
+   sum = sum + i;</br></br>
+}</br></br>
+average = sum / 100;</br></br>
+console.log(average);</br></br>
+2). 求1-100之间所有偶数和奇数的和 我们需要一个偶数的和变量 even 还需一个奇数的变量和 odd</br></br>
+var even = 0;</br></br>
+var odd = 0;</br></br>
+for (i = 1, i <=100, i++) {</br></br>
+   if (i % 2 = 0) {</br></br>
+      even = even + i;</br></br>
+   } else {</br></br>
+      odd = odd + i;</br></br>
+   }</br></br>
+}</br></br>
+console.log('1-100之间所有偶数和是:' + even);</br></br>
+console.log('1-100之间所有奇数和是:' + odd);</br></br>
+3). 求1-100之间所有能被3整除的数字的和</br></br>
+var result = 0;</br></br>
+for (i = 1; i <= 100; i++) {</br></br>
+   if ( i % 3 = 0) {</br></br>
+      result = result + i;</br></br>
+   }</br></br>
+}</br></br>
+console.log('1-100之间能被3整除的数字的和是:' + result);</br></br>
+<h4>for循环案例-求学生成绩</h4></br></br>
+要求用户输入班级人数,之后依次输入每个学生的成绩,最后打印出该班级总的成绩以及平均成绩。
+思路分析:
+1) 弹出输入框输入班级总人数(num)</br></br>
+2) 依次输入学生的成绩(保存起来score),此时我们需要用到for循环,弹出的次数跟班级总人数有关系 条件表达式 i <= num</br></br>
+3) 进行业务处理: 计算成绩,先求总成绩(num),之后求平均成绩(average)</br></br>
+4) 弹出结果</br></br>
+      var num = prompt('请输入班级的总人数:'); //num班级总人数</br></br>
+      var sum = 0;//求和的变量</br></br>
+      var average = 0;//求平均值的变量</br></br>
+      for (var i = 1; i <= num; i++); {</br></br>
+      var score = prompt('请您输入第'+i+'个学生成绩')</br></br>
+      sum = sum + score;</br></br>
+     }</br></br>
+     average = sum / num;</br></br>
+     alert('班级总成绩是:'+ sum);</br></br>
+     alert('班级平均成绩是:'+ average);</br></br>
+     <h4>for循环案例-一行打印5颗星星</h4></br></br>
+     // console.log('⭐️⭐️⭐️⭐️⭐️');</br></br>
+     // for (var i = 1; i <= 5; i++) {</br></br>
+     // console.log('⭐️');</br></br>
+     // }</br></br>
+     追加字符串,可以一行打印出来5个</br></br>
+     // var str = '';</br></br>
+     // for (var i = 1; i <= 5; i++) {</br></br>
+     //  str = str + '⭐️';</br></br>
+     // }</br></br>
+     // console.log(str);</br></br>
+     // var num = prompt('请输入星星的个数');</br></br>
+     // var str = '';</br></br>
+     // for (var i = 1; i <= num; i++) {</br></br>
+     //  str = str + "⭐️";</br></br>
+     // }</br></br>
+     // console.log(str);</br></br>
+     <h3>3.双重for循环</h3>
+     <h4>3.1 概述</h4>
+     很多情况下,单层for循环不能满足我们的需求,比如我们要打印一个10行10列的图形、打印一个倒直角三角形等,此时我们就可以通过循环嵌套来实现。</br></br>
+     ⭐️⭐️⭐️⭐️⭐️&nbsp&nbsp&nbsp&nbsp;        ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️</br></br>
+     ⭐️⭐️⭐️⭐️⭐️&nbsp&nbsp&nbsp&nbsp;        ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️</br></br>
+     ⭐️⭐️⭐️⭐️⭐️&nbsp&nbsp&nbsp&nbsp;        ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️</br></br>
+     ⭐️⭐️⭐️⭐️⭐️&nbsp&nbsp&nbsp&nbsp;        ⭐️⭐️⭐️⭐️⭐️⭐️⭐️</br></br>
+     ⭐️⭐️⭐️⭐️⭐️&nbsp&nbsp&nbsp&nbsp;        ⭐️⭐️⭐️⭐️⭐️⭐️</br></br>
+     ⭐️⭐️⭐️⭐️⭐️&nbsp&nbsp&nbsp&nbsp;        ⭐️⭐️⭐️⭐️⭐️</br></br>
+     ⭐️⭐️⭐️⭐️⭐️&nbsp&nbsp&nbsp&nbsp;        ⭐️⭐️⭐️⭐️</br></br>
+     ⭐️⭐️⭐️⭐️⭐️&nbsp&nbsp&nbsp&nbsp;        ⭐️⭐️⭐️</br></br>
+     ⭐️⭐️⭐️⭐️⭐️&nbsp&nbsp&nbsp&nbsp;        ⭐️⭐️</br></br>
+     ⭐️⭐️⭐️⭐️⭐️&nbsp&nbsp&nbsp&nbsp;        ⭐️</br></br>
+     循环嵌套是指在一个循环语句中再定义一个循环语句的语法结构,例如在for循环语句中,可以再嵌套一个for循环,这样的for循环语句我们称之为双重for循环。</br></br>
+     //   for(外层的初始化变量;外层的条件表达式;外层的操作表达式) {</br></br>
+      //        for(内层的初始化变量;内层的条件表达式;内层的操作表达式) {</br></br>
+      //          //执行语句;</br></br>
+      //       }</br></br>
+      // }</br></br>
+      // 2.可以把里面的循环看作是外层循环的语句</br></br>
+      // 3.外层循环执行一次,里面的循环执行全部</br></br>
+      // 4.代码验证</br></br>
+      // for (var i = 1; i <= 3; i++) {</br></br>
+      //  console.log('这是外层循环第'+i+'次');</br></br>
+      //  for (var j = 1; j <= 3; j++ ) {</br></br>
+      //    console.log('这是里层的循环第'+ j + '次');</br></br>
+      //  }</br></br>
+      // }</br></br>
+      <h4>3.2 课堂案例1-打印10行5列星星</h4>
+      // 核心</br></br>
+      // 1. 内存循环负责一行打印5个星星</br></br>
+      // 2. 外层循环负责打印10行</br></br>
+      // var str = '';</br></br>
+      // for (var i = 1; i <=10; i++) {</br></br>
+      //  for (var j = 1; j <= 5; j++) {</br></br>
+      //     str = str + "⭐️";</br></br>
+      // }</br></br>
+      // 如果一行打印完5个星星就要另起一行 加 \n</br></br>
+      // str = str + '\n';</br></br>
+      // }</br></br>
+      // console.log(str);   </br></br> 
+      // 打印n行n列</br></br>
+      var rows = prompt('请您输入行数');</br></br>
+      var cols = prompt('请您输入列数');</br></br>
+      var str = '';</br></br>
+      for (var i = 1; i <= rows; i++) {</br></br>
+       for (var j = 1; j <= cols; j++) {</br></br>
+          str = str + '⭐️';</br></br>
+       }</br></br>
+          str = str + '\n';</br></br>
+      }</br></br>
+      console.log(str);</br></br>
+      <h4>3.2 课堂案例2-打印倒三角形</h4>
+      var str = '';</br></br>
+      for (i = 1; i <= 10; i++) {</br></br>
+       for (j = i; j <= 10; j++) {</br></br>
+          str = str + '⭐️';</br></br>
+       }</br></br>
+       str += '\n';</br></br>
+      }</br></br>
+      console.log(str);</br></br>
+      正三角形</br></br>
+      var str = '';</br></br>
+      for (i = 1; i <= 10; i++) {</br></br>
+       for (j = 1; j <= i; j++) {</br></br>
+          str = str + '⭐️';</br></br>
+       }</br></br>
+       str += '\n';</br></br>
+      }</br></br>
+      console.log(str);</br></br>
+      <h4>3.2 课堂案例3-85集九九乘法表</h4>
+      1) 一共有9行,但是每行的个数不一样,因此需要用到双重for循环</br></br>
+      2) 外层的for控制行数i,循环9次,可以打印9行</br></br>
+      3) 内层的for循环控制每行公式j</br></br>
+      4) 核心算法: 每一行公式的个数正好和行数一致,j <= i;</br></br>
+      5) 每行打印完毕,都需要重新换一行</br></br>
+      <h4>for循环小结</h4>
+      for循环可以重复执行某些相同代码</br></br>
+      for循环可以重复执行些许不同的代码,因为我们有计数器</br></br>
+      for循环可以重复执行某些操作,比如算术运算符加法操作</br></br>
+      随着需求增加,双重for循环可以做更多,更好看的效果</br></br>
+      双重for循环,外层循环一次,内层for循环全部执行</br></br>
+      for循环是循环条件和数字直接相关的循环</br></br>
+      分析要比代码更重要</br></br>
+      一些核心算法想不到,但是要学会,分析她执行过程</br></br>
+      举一反三,经常总结,做一些相似案例</br></br>
+</body> 
+</html>
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2023/06/22/ssn/">OLDER&nbsp;&gt;</a>
+      
+        
+          <a id="newer" class="blog-nav" href="/2023/06/25/JS007/">&lt;&nbsp;NEWER</a>
+          
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Copyright © Leedom 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Theme by Leedom | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

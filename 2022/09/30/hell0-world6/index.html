@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="风花" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      【053-058】CSS基础 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">WindFlower</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+    <a title="github" target="_blank" href="https://github.com/leedom92/hexo-theme-leedom">
+      <i class="iconfont icon-github"></i>
+    </a>
+  
+    <a title="email" target="" href="">
+      <i class="iconfont icon-envelope"></i>
+    </a>
+  
+    <a title="facebook" target="" href="">
+      <i class="iconfont icon-facebooksquare"></i>
+    </a>
+  
+    <a title="twitter" target="" href="">
+      <i class="iconfont icon-twitter"></i>
+    </a>
+  
+    <a title="wechat" target="" href="">
+      <i class="iconfont icon-wechat"></i>
+    </a>
+  
+    <a title="weibo" target="" href="">
+      <i class="iconfont icon-weibo"></i>
+    </a>
+  
+    <a title="rss" target="_blank" href="/atom.xml">
+      <i class="iconfont icon-rss"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    Sep 30, 2022
+  </h3>
+  <h1>
+    【053-058】CSS基础
+  </h1>
+  <div class="content markdown-body">
+    <P1>
+    Hello CSS! 
+</P1>
+<p1>
+    我们开始学习css.Vcode自动刷新网页,扩展-live server，返回编辑页面open with new server就行。
+</p1>
+&nbsp;&nbsp; <h3 style="color:blueviolet;">054 CSS之内联样式 </h3><br>
+<p style="color:green;">
+三种插入样式表的方法：内联CSS,内部CSS,外部CSS<br><br>
+内联CSS：内联样式，行内样式，它被用来为一个单一的元素应用一个独特的样式。样式属性添加到相关的元素中。样式属性可以包含任何CSS属性。如在div里添加style属性，值为任何CSS语法。
+</p>
+&nbsp;&nbsp; <h3>055 CSS之内部样式 </h3><br>
+内部CSS: 如果一个单一的HTML页面有一个独特的风格，可使用一个内部样式表。定义在head元素里。需告诉浏览器给哪个html元素添加样式，就需要选择器。<br><br>
+CSS选择器用来寻找或选择你想要定义样式的HTML元素的。<br><br>
+1、元素选择器<br><br>
+根据元素名称选择HTML元素,如body,h3,p1<br><br>
+弊端1：只能作用于一个页面，不能实现多个页面共享一个样式<br><br>
+弊端2：样式代码不断增加，需要上下滚屏，很不便<br><br>
+&nbsp;&nbsp; <h3>056 CSS之外部样式 </h3><br>
+外部CSS：可改变一个文件，来改变整个网站外观。将CSS代码放在一个独立的以.CSS为后缀名的文件中，使HTML页面结构文件和CSS样式文件完全独立开来。<br><br>
+每个HTML页面都必须在head元素里添加<link>元素,link元素里定义rel(relationship)属性,值为stylesheet,意思是关联一个样式表。后为href,值为CSS文件的路径。<br><br>
+<link rel="stylesheet" href="?.css"><br><br>
+注意：样式名与中括号1空格，每一条样式属性单独一行定义，两组样式定义空一行分隔。<br><br>
+&nbsp;&nbsp; <h3>057 CSS样式表的优先级 </h3><br>
+内联，外部，内部样式修饰同一个html元素，内联样式优先级最高。<br><br>
+在head里添加的内部样式和引入的外部样式，后添加或引入的优先级最高。<br><br>
+浏览器默认的样式优先级最低。<br><br>
+&nbsp;&nbsp; <h3>058 CSS简单选择器</h3><br>
+CSS选择器用来寻找或选择想要修饰的HTML元素。比如前面的h1选择器就是元素选择器。CSS选择器分为5类<br><br>
+1.简单选择器：根据名称，ID，类别来选择元素。<br><br>
+2.组合选择器：根据元素间的特定关系来选择元素。<br><br>
+3.伪类选择器：根据某种状态来选择元素。<br><br>
+4.伪元素选择器：为了一个元素的制定部分设置样式。<br><br>
+5.属性选择器：根据一个属性或属性值来选择元素。<br><br>
+1.简单选择器<br><br>
+元素选择器，如果两段中想要对第二段添加其他样式，就需要ID选择器。<br><br>
+ID选择器：是使用一个HTML元素的id属性来选择一个特定的元素。一个元素的id在页面中是唯一的，所以id选择器是用来选择一个唯一元素的。在前+#。故在第二段P里面加上id属性。<br><br>
+如果想要标题和第二段都设置成斜体，就需要在h1,和#para都设置italic。同一个样式声明写了两遍，很麻烦，可使用类选择器实现。<br><br>
+类选择器：可以选择具有特定class属性的HTML元素。需要写一个点字符后面紧跟类别名称。如.italic。在h1后和第二段P后，使用class="",值可以是1个或多个，可以实现多个样式的叠加。也可以在定义类选择器时候，将元素的名称添加到点的前面。这样的选择器选择的元素就更具体了。<br><br>
+
+<style>
+    h1 {
+        text-align: center;
+        color: purple;
+    }
+
+    p {
+        color: rgb(78, 51, 173);
+    }
+
+    #para2 {
+        text-align: center;
+    }
+
+    .italic {
+        font-style: italic;
+    }
+
+    .deco {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+<h1 class="italic">
+  面朝大海，春暖花开
+</h1>
+<p>
+    这首诗以朴素明朗而又隽永清新的语言，唱出一个诗人的真诚善良。抒情主人公想要做“一个幸福的人”，愿意把“幸福的闪电”告诉每一个人，即使是陌生人他都会真诚的祝愿他“在尘世获得幸福”。诗人想象中的尘世，一切都那样新鲜可爱，充满生机与活力，字里行间透出积极、昂扬的情感。整首诗乍看是以淳朴、欢快的方式发出对人的真诚祝愿。 [5] 
+</p>
+<p id="para2" class="italic deco">
+    大海是作者诗中的核心意象，广阔浩荡，心旷神怡，生机勃勃，是安魂之乡，是搏斗之乡，是理想之乡，是作者作为“海之子”的精神归宿，是他可以找到真正的幸福感的地方。面朝大海，春暖花开，是一种海市蜃楼，然而这是作者所能感受到的一种明丽的幸福感受。这个题目的意蕴张力在于，它将人们现实中的思维定势扯得七零八落，然后万花筒式地重组，用自己强烈的主导意念使它明丽起来。当然，花应该开在炎热的土地上，作者却让他固执地（“我只愿”）开在自己的幸福之海上，开在自己的理想的追求中，现实中的一切（“喂马，劈柴，关心粮食和蔬菜”），只为了养活自己的躯体，以使自己的心能够跳动，使自己的想象能够飞扬。
+</p>  
+id选择器，类选择器都不能数字开头。<br><br>
+分组选择器：能添加多个元素，申明同一样式。选择所有具有相同样式的html元素把多个选择器用，隔开。如h1,p {}
+<style>
+    h1 {
+        text-align: center;
+        color: purple;
+    }
+
+<pre><code>p &#123;
+    color: rgb(78, 51, 173);
+&#125;
+
+#para2 &#123;
+    text-align: center;
+&#125;
+</code></pre>
+<p>   h1,p {<br>    font-style: italic;<br>   }</p>
+<pre><code>.deco &#123;
+    text-decoration: underline;
+&#125;
+</code></pre>
+<p></style></p>
+</head>
+<body>
+<h1 class="italic">
+  面朝大海，春暖花开
+</h1>
+<p>
+    这首诗以朴素明朗而又隽永清新的语言，唱出一个诗人的真诚善良。抒情主人公想要做“一个幸福的人”，愿意把“幸福的闪电”告诉每一个人，即使是陌生人他都会真诚的祝愿他“在尘世获得幸福”。诗人想象中的尘世，一切都那样新鲜可爱，充满生机与活力，字里行间透出积极、昂扬的情感。整首诗乍看是以淳朴、欢快的方式发出对人的真诚祝愿。 [5] 
+</p>
+<p id="para2" class="italic deco">
+    大海是作者诗中的核心意象，广阔浩荡，心旷神怡，生机勃勃，是安魂之乡，是搏斗之乡，是理想之乡，是作者作为“海之子”的精神归宿，是他可以找到真正的幸福感的地方。面朝大海，春暖花开，是一种海市蜃楼，然而这是作者所能感受到的一种明丽的幸福感受。这个题目的意蕴张力在于，它将人们现实中的思维定势扯得七零八落，然后万花筒式地重组，用自己强烈的主导意念使它明丽起来。当然，花应该开在炎热的土地上，作者却让他固执地（“我只愿”）开在自己的幸福之海上，开在自己的理想的追求中，现实中的一切（“喂马，劈柴，关心粮食和蔬菜”），只为了养活自己的躯体，以使自己的心能够跳动，使自己的想象能够飞扬。
+</p>  
+通用选择器：HTML页面全部元素的选择器，定义选择器的通配符*<br><br>
+<style>
+    * {
+        backcolor: rgb(113, 122, 161);
+    }
+
+<pre><code>h1 &#123;
+    text-align: center;
+    color: purple;
+&#125;
+
+p &#123;
+    color: rgb(78, 51, 173);
+&#125;
+
+#para2 &#123;
+    text-align: center;
+&#125;
+</code></pre>
+<p>   h1,p {<br>    font-style: italic;<br>   }</p>
+<pre><code>.deco &#123;
+    text-decoration: underline;
+&#125;
+</code></pre>
+<p></style></p>
+</head>
+<body>
+<h1 class="italic">
+  面朝大海，春暖花开
+</h1>
+<p>
+    这首诗以朴素明朗而又隽永清新的语言，唱出一个诗人的真诚善良。抒情主人公想要做“一个幸福的人”，愿意把“幸福的闪电”告诉每一个人，即使是陌生人他都会真诚的祝愿他“在尘世获得幸福”。诗人想象中的尘世，一切都那样新鲜可爱，充满生机与活力，字里行间透出积极、昂扬的情感。整首诗乍看是以淳朴、欢快的方式发出对人的真诚祝愿。 [5] 
+</p>
+<p id="para2" class="italic deco">
+    大海是作者诗中的核心意象，广阔浩荡，心旷神怡，生机勃勃，是安魂之乡，是搏斗之乡，是理想之乡，是作者作为“海之子”的精神归宿，是他可以找到真正的幸福感的地方。面朝大海，春暖花开，是一种海市蜃楼，然而这是作者所能感受到的一种明丽的幸福感受。这个题目的意蕴张力在于，它将人们现实中的思维定势扯得七零八落，然后万花筒式地重组，用自己强烈的主导意念使它明丽起来。当然，花应该开在炎热的土地上，作者却让他固执地（“我只愿”）开在自己的幸福之海上，开在自己的理想的追求中，现实中的一切（“喂马，劈柴，关心粮食和蔬菜”），只为了养活自己的躯体，以使自己的心能够跳动，使自己的想象能够飞扬。
+</p> 
+<style>
+    * {
+        background-color: rgb(217, 209, 176);
+    }
+
+<pre><code>html,body &#123;
+    background-color: rgb(224, 228, 9);
+&#125;
+
+h1 &#123;
+    text-align: center;
+    color: purple;
+&#125;
+
+p &#123;
+    color: rgb(78, 51, 173);
+&#125;
+
+#para2 &#123;
+    text-align: center;
+&#125;
+
+h1,#para2 &#123;
+    font-style: italic;
+&#125;
+
+.deco &#123;
+    text-decoration: underline;
+&#125;
+</code></pre>
+<p></style></p>
+</head>
+<body>
+<h1 class="italic">
+  面朝大海，春暖花开
+</h1>
+<p>
+    这首诗以朴素明朗而又隽永清新的语言，唱出一个诗人的真诚善良。抒情主人公想要做“一个幸福的人”，愿意把“幸福的闪电”告诉每一个人，即使是陌生人他都会真诚的祝愿他“在尘世获得幸福”。诗人想象中的尘世，一切都那样新鲜可爱，充满生机与活力，字里行间透出积极、昂扬的情感。整首诗乍看是以淳朴、欢快的方式发出对人的真诚祝愿。 [5] 
+</p>
+<p id="para2" class="italic deco">
+    大海是作者诗中的核心意象，广阔浩荡，心旷神怡，生机勃勃，是安魂之乡，是搏斗之乡，是理想之乡，是作者作为“海之子”的精神归宿，是他可以找到真正的幸福感的地方。面朝大海，春暖花开，是一种海市蜃楼，然而这是作者所能感受到的一种明丽的幸福感受。这个题目的意蕴张力在于，它将人们现实中的思维定势扯得七零八落，然后万花筒式地重组，用自己强烈的主导意念使它明丽起来。当然，花应该开在炎热的土地上，作者却让他固执地（“我只愿”）开在自己的幸福之海上，开在自己的理想的追求中，现实中的一切（“喂马，劈柴，关心粮食和蔬菜”），只为了养活自己的躯体，以使自己的心能够跳动，使自己的想象能够飞扬。
+</p>
+</body>
+</html>
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2022/09/28/hello-world5/">OLDER&nbsp;&gt;</a>
+      
+        
+          <a id="newer" class="blog-nav" href="/2022/10/01/hell0-world7/">&lt;&nbsp;NEWER</a>
+          
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Copyright © Leedom 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Theme by Leedom | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

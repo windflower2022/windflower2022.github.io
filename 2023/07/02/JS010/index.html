@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="风花" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      【113-130】第七章 函数 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">WindFlower</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+    <a title="github" target="_blank" href="https://github.com/leedom92/hexo-theme-leedom">
+      <i class="iconfont icon-github"></i>
+    </a>
+  
+    <a title="email" target="" href="">
+      <i class="iconfont icon-envelope"></i>
+    </a>
+  
+    <a title="facebook" target="" href="">
+      <i class="iconfont icon-facebooksquare"></i>
+    </a>
+  
+    <a title="twitter" target="" href="">
+      <i class="iconfont icon-twitter"></i>
+    </a>
+  
+    <a title="wechat" target="" href="">
+      <i class="iconfont icon-wechat"></i>
+    </a>
+  
+    <a title="weibo" target="" href="">
+      <i class="iconfont icon-weibo"></i>
+    </a>
+  
+    <a title="rss" target="_blank" href="/atom.xml">
+      <i class="iconfont icon-rss"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    Jul 02, 2023
+  </h3>
+  <h1>
+    【113-130】第七章 函数
+  </h1>
+  <div class="content markdown-body">
+    能说出为什么需要函数
+    能根据语法书写函数
+    能根据需求封装函数
+    能说出形参和实参的传递过程
+    能使用函数的返回值
+    能使用arguments获取函数的参数
+    <h2>目录</h2>
+    函数的概念
+    函数的使用
+    函数的参数
+    函数的返回值
+    arguments的使用
+    函数案例
+    函数的两种声明方式
+    <h3>一、函数的概念</h3>
+    在JS里面,可能会遇到定义非常多的相同代码或功能相同的代码,这些代码可能会大量偿付使用
+    虽然for循环语句也能实现一些简单的重复操作,但是比较有局限性,此时我们就可以使用JS中的函数
+    <b>函数</b>: 就是封装了一段<b>可能被重复调用执行的代码块</b>。通过代码块可以实现大量代码的重复使用
+    <h3>二、函数的使用</h3>
+    <h4>2.1 声明函数</h4>
+    function 函数名() {
+        // 函数体
+    }
+    function sayHi() {
+        console.log('hi');
+    }
+    1) 声明函数的关键字 全部小写
+    2) 函数是做某件事,函数名一般是动词
+    3) <b>函数不调用自己不执行</b>
+    <h4>2.2 调用函数</h4>
+    函数名 ();
+    sayHi ('hi');
+    <b>调用函数时不能漏掉()</b>
+    <b>注意：声明函数本身并不会执行代码,只有调用函数时才会执行函数体代码</b>
+    <h4>2.3 封装函数</h4>
+    函数的封装是把一个或者多个功能通过<b>2.2 调用函数</b>函数的方式封装起来,对外只提供一个简单的封装接口
+    简单理解: 封装类似于将电脑配件整合组装到机箱中(类似快递打包)
+    <h4>2.4 函数案例</h4>
+    function sayHi() {
+        console.log('hi');
+    }
+    sayHi ('hi');
+    <h3>三、函数的参数</h3>
+    <h4>3.1 形参和实参</h4>
+    function 函数名(形参1,形参2...) { // 形参形式上的,函数定义(声明)的时候 传递的参数 当前并不知
+        函数体
+    }
+    函数名(实参); // 实参实际的 函数调用时传递的参数 实参是传递给形参的
+    执行过程：
+    function cook(aru) { // 形参是接收实参的 aru = '酸辣土豆丝' 类似于一个变量
+        console.log(aru);
+    }
+    cook('酸辣土豆丝');
+    cook('大肘子');
+    函数的参数可以有,也可没有,个数不限
+    <b>参数的作用</b>: 在<b>函数内部</b>某些值不能确定,我们可以通过参数再<b>调用函数的传递</b>不同的值进去
+    <h4>3.2 案例</h4>
+    // 1. 利用函数求任意两个数的和
+    function getSum (num1,num2) {
+        console.log(num1 + num2);
+    }
+    getSum(1,3);
+    getSum(3,8);
+    // 2. 利用函数求任意两个数间的和
+    function getSums (num1,num2) {
+        var sum = 0;
+        for (var i = num1; i <= num2; i++) {
+           sum += i; 
+        }
+        console.log(sum);
+    }
+    getSums(1,100);
+    getSums(1,10);
+    // 3. 注意点
+    1) 多个参数间逗号隔开
+    2) 形参可以看作是不用声明的变量
+    <h4>3.3 形参和实参个数不匹配问题</h4>
+    function getSum(num1,num2) {
+        console.log(num1 + num2);
+    }
+    // 1. 如果个数一致 正常输出
+    getSum(1,2);
+    // 2. 如果实参多余形参个数 会取形参个数
+    getSum(1,2,3);
+    // 3. 如果实参小余形参个数 多余的定义为undefined 结果是NaN
+    getSum(1);
+    所以我们应尽量让形参和实参匹配
+    <h3>四、函数的返回值</h3>
+    <h4>4.1 return语句</h4>
+    有时候,我们会希望函数将值返回给调用者,此时通过使用return语句就可以实现
+    格式
+    function 函数名() {
+        return 需要返回的结果；
+    }
+    函数名();
+    1. 我们函数只是实现某种功能 最终结果会返回函数调用者
+    2. 只要函数遇到return就把后面的结果 返回给函数的调用者 函数名() = return后面的结果
+    funtion getResult() {
+        return 666;
+    }
+    getResult(); //getResult = 666
+    console.log(getResult());
+    所以以下实例需完善
+    1)
+    function cook(aru) {
+        console.log(aru);
+    }
+    cook('酸辣土豆丝');
+    cook('大肘子');
+
+<pre><code>function cook(aru) &#123;
+    return(aru);
+&#125;
+cook(&#39;大肘子&#39;); // 写不写都可以
+console.log(cook(&#39;大肘子&#39;));
+
+2) 求任意两个数的和
+ 
+function getNum(num1,num2) &#123;
+    return num1 + num2 ;
+&#125;
+console.log(getNum(1,2));
+&lt;h4&gt;4.2 return案例&lt;/h4&gt;
+1. 利用函数求任意两个数的最大值
+function getMax(num1,num2) &#123;
+    // if(num1 &gt; num2) &#123;
+    //    return num1; 
+    // &#125; else &#123;
+    //    return num2;
+    // &#125;
+    return num1 &gt; num2 ? num1 : num2; // 另一种三元表达式 :否则的意思
+&#125;
+console.log(getMax(1,3));
+console.log(getMax(11,8));
+2.利用函数求任意一个数组中的最大值 [5,2,99,101,67,77]
+function getArrMax(arr) &#123;
+    var max = arr[0];
+    for (var i = 1; i &lt;=arr.length; i++) &#123;
+        if (arr[i] &gt; max) &#123;
+            max = arr[i];
+        &#125;
+    &#125;
+    return max;
+&#125;
+// getArrMax([5,2,99,101,67,77]); //实参是一个数组送过去
+// 在我们实现开发里面,我们常用一组变量来接收函数的返回结果 使用更简单
+var re = getArrMax([5,2,99,101,67,77]);
+console.log(re);
+var re1 = getArrMax([15,22,99,181,67,47]);
+console.log(re1);
+&lt;h4&gt;4.3 return终止函数&lt;/h4&gt;
+function getSum(num1,num2) &#123;
+    return num1 + num2;
+    alert(&#39;我是不会被执行的哦&#39;)
+&#125;
+console.log(getSum(1,2));
+return只能返回一个值
+function fn(num1,num2) &#123;
+    return num1,num2; //返回的结果是最后的值
+&#125;
+console.log(fn(1,2));
+我们求任意两个数的加减乘除结果;多个值用数组
+function getResult(num1,num2) &#123;
+    return [num1 + num2, num1 - num2, num1 * num2, num1 / num2];
+&#125;
+var re = getResult(1,2);// 返回的是一个数组
+console.log(re);
+如果函数有return,则返回return后面的值; 如果没有return, 则返回undefined
+function fn1() &#123;
+    return 666;
+&#125;
+console.log(fn1());// 返回666
+function fn2() &#123;
+    
+&#125;
+console.log(fn2()); // 返回的是unfined
+break,continue,return的区别
+break: 结束当前的循环体(如: for, while)
+continue: 跳出本次循环,继续执行下次循环(如: for, while)
+return: 不仅可以退出循环,还能够返回return语句中的值,同时还可以结束当前的函数体内的代码
+&lt;h4&gt;4.4 通过榨汁机看透函数&lt;/h4&gt;
+输入原料-输入参数
+内部处理-函数体
+输出榨汁-返回值
+作业：
+写一个函数,用户输入
+1) 任意两个数字的任意算术运算(简单的计数器小功能),并能弹出运算后的结果
+2) 任意两个数字的最大值，并能弹出运算后的结果
+3) 任意三个不同数字的最大值,并能弹出运算后的结果
+4) 一个判断是否是素数,并反弹出回值(又叫质数,只能被1和自身整除的数)
+&lt;h3&gt;五、arguments使用&lt;/h3&gt;
+当我们不确定有多少个参数传递的时候,可以用&lt;b&gt;arguments&lt;/b&gt;来获取.在JavaScript中,arguments实际上它是当时函数的&lt;b&gt;内置对象&lt;/b&gt;.所有函数都内置了一个arguments对象,arguments对象中存储了&lt;b&gt;传递的所有实参&lt;/b&gt;.
+arguments的使用 只有函数才有arguments对象 而且是每个函数都内置了这个arguments
+function fn() &#123;
+    console.log(arguments); // 里面存储了所有传递过来的实参
+    console.log(arguments.length);
+    console.log(arguments[2]);
+
+// 可按照数组方式遍历arguments
+    for (var i = 0; i &lt; arguments.length; i++) &#123;
+        console.log(arguments[i]);
+    &#125;
+&#125;
+fn(1,2,3);
+fn(1,2,3,4,5);
+//利用函数求任意两个数的最大值
+function getMax() &#123; // arguments = [1, 2, 3]
+    var max = arguments[0];
+    for (var i = 1; i &lt; arguments.length; i++) &#123;
+        if (arguments[i] &gt; max) &#123;
+            max = arguments[i];
+        &#125;
+    &#125;
+    return max;
+&#125;
+console.log(getMax(1,2,3));
+console.log(getMax(1,2,3,4,5));
+console.log(getMax(11,2,34,444,5,100));
+//利用函数翻转任意数组 reverse 翻转
+function reverse(arr) &#123;
+    var newArr = [];
+    for (var i = arr.length - 1; i &gt;= 0; i--) &#123;
+        newArr[newArr.length] = arr[i];
+    &#125;
+    return newArr;
+&#125;
+var arr1 = reverse([1,3,4,6,9]);
+console.log(arr1);
+var arr2 = reverse([&#39;red&#39;,&#39;pink&#39;,&#39;blue&#39;]);
+console.log(arr2);
+// 利用函数进行排序,冒泡排序
+function sort(arr) &#123;
+    for (var i = 0; i &lt; arr.length - 1; i++) &#123;
+        for (var j = 0; j &lt; arr.length - i - 1; j++) &#123;
+            if (arr[j] &gt; arr[j + 1]) &#123;
+                var temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            &#125;
+        &#125;
+    &#125;
+    return arr;
+&#125;  
+var arr1 = sort([1,4,2,9]);
+console.log(arr1);
+var arr2 = sort([11,7,22,999]);
+console.log(arr2);
+// 判断闰年
+function isRunYear(year) &#123;
+    // 如果是闰年我们返回true 否则false
+    var flag = false;
+    if (year % 4 == 0 &amp;&amp; year % 100 != 0 || year % 400 == 0) &#123;
+        flag = true;
+    &#125;
+    return flag;
+&#125;
+console.log(isRunYear(2000));
+console.log(isRunYear(1999));
+&lt;H4&gt;函数可以调用另外一个函数&lt;/H4&gt;
+function fn1() &#123;
+    console.log(11);
+&#125;
+fn1();
+function fn2() &#123;
+    console.log(22); // 在fn1函数里面调用了 fn2函数
+&#125;
+看下面函数输出的结果是多少
+function fn1() &#123;
+    console.log(111);
+    fn2();
+    console.log(&#39;fn1&#39;);
+&#125;
+function fn2() &#123;
+    console.log(222);
+    console.log(&#39;fn2&#39;);
+&#125;
+fn1();
+// 用户输入年份 输出当年份2月份的天数
+function backDay () &#123;
+    var year = prompt(&#39;请您输入年份:&#39;);
+    if (isRunYear(year)) &#123;// 调用函数需要加小括号
+    alert(&#39;当前年份是闰年2月份有29天&#39;);
+&#125; else &#123;
+    alert(&#39;当前月份是平年2月份有28天&#39;);
+&#125;
+</code></pre>
+<p>}<br>    backDay();<br>    &#x2F;&#x2F; 判断是否为闰年的函数<br>    function isRunYear(year) {<br>        &#x2F;&#x2F; 如果是闰年我们返回true 否则返回false<br>        var flag &#x3D; false;<br>        if (year % 4 &#x3D;&#x3D; 0 &amp;&amp; year!&#x3D; 0 || year % 400 &#x3D;&#x3D; 0) {<br>            flag &#x3D; true;<br>        }<br>        return flag;<br>    }<br>    <h3>函数的两种声明方式</h3><br>    1.利用函数关键字定义函数(命名函数,名字是fun)<br>    function fn() {</p>
+<pre><code>&#125;
+fn(); // fn是函数名
+2. 函数表达式(匿名函数,没有函数名)
+var 变量名 = function(aru) &#123;&#125;;
+var fun = function(aru) &#123;
+    console.log(&#39;我是函数表达式&#39;);
+    console.log(aru);
+&#125;
+fun(&#39;pink老师&#39;); 
+1) 在此fun是变量名，不是函数名
+2) 函数表达式声明方式跟声明变量差不多,只不过变量里面是值,而函数表达式里面存的是函数
+3) 函数表达式也可以进行传递参数 
+</code></pre>
+</body>
+</html>
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2023/06/29/JS009/">OLDER&nbsp;&gt;</a>
+      
+        
+          <a id="newer" class="blog-nav" href="/2023/07/05/JS011/">&lt;&nbsp;NEWER</a>
+          
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Copyright © Leedom 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Theme by Leedom | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

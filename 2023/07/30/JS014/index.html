@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="风花" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      【155-186】第十一章 内置对象 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">WindFlower</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+    <a title="github" target="_blank" href="https://github.com/leedom92/hexo-theme-leedom">
+      <i class="iconfont icon-github"></i>
+    </a>
+  
+    <a title="email" target="" href="">
+      <i class="iconfont icon-envelope"></i>
+    </a>
+  
+    <a title="facebook" target="" href="">
+      <i class="iconfont icon-facebooksquare"></i>
+    </a>
+  
+    <a title="twitter" target="" href="">
+      <i class="iconfont icon-twitter"></i>
+    </a>
+  
+    <a title="wechat" target="" href="">
+      <i class="iconfont icon-wechat"></i>
+    </a>
+  
+    <a title="weibo" target="" href="">
+      <i class="iconfont icon-weibo"></i>
+    </a>
+  
+    <a title="rss" target="_blank" href="/atom.xml">
+      <i class="iconfont icon-rss"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    Jul 30, 2023
+  </h3>
+  <h1>
+    【155-186】第十一章 内置对象
+  </h1>
+  <div class="content markdown-body">
+    能说出什么是内置对象</br></br>
+    能根据文档查询指定API的使用方法</br></br>
+    能使用Math对象的常用方法</br></br>
+    能使用Date对象的常用方法</br></br>
+    能使用Array对象的常用方法</br></br>
+    能使用String对象的常用方法</br></br>
+    <h2>目录</h2>
+    内置对象</br></br>
+    查文档</br></br>
+    Math对象</br></br>
+    日期对象</br></br>
+    数组对象</br></br>
+    字符串对象</br></br>
+  <h3>1 内置对象</h3> 
+  JavaScript中的对象分为3种: 自定义对象、内置对象、浏览器对象</br></br>
+  前两种对象是JS基础内容,属于ECMAScript;第三个浏览器对象属于JS独有的,JS API讲解</br></br>
+  内置对象指JS语音自带的一些对象,这些对象供开发者使用,并提供了一些常用的或最基本的而必要的功能(属性和方法)</br></br>
+  常用的有：Math, Date, Array,String等</br></br>
+  <h3>2 查文档</h3> 
+  <h4>2.1 MDN</h4>
+  学习一个内置对象的使用,只要学会其常用成员的使用即可,我们可以通过查文档学习,可以通过MDN/W3C来查询</br></br>
+  Mozilla开发者网络(MDN)提供了有关的开放网络技术(Open Web)的信息,包括HTML.CSS.和万维网及HTML5应用的API</br></br>
+  <h4>2.2 如何学习对象中的方法</h4>
+  1. 查阅方法的功能</br></br>
+  2. 查看里面参数的意义和类型</br></br>
+  3. 查看返回值的意义和类型</br></br>
+  4. 通过Demo进行测试</br></br>
+  <h4>3 Math对象</h4>
+  Math 不是一个构造器,不需要new调用,直接使用里面的属性和方法即可</br></br>
+  console.log(Math.PI); 一个属性 圆周率</br></br>
+  console.log(Math.max(1,99,3)); // 99 </br></br>
+  案例: 封装自己的数学对象</br></br>
+  利用对象封装自己的数学对象</br></br>
+  var myMath = {</br></br>
+    Pi: 3.14592653,</br></br>
+    max: function() {</br></br>
+      var max = arguments[0];</br></br>
+      for (var i = 1; i < arguments.lenth; i++) {</br></br>
+        if (arguments[i] > max ) {</br></br>
+          max = arguments[i];</br></br>
+        }</br></br>
+      }</br></br>
+      return max;</br></br>
+    },</br></br>
+  min: function() {</br></br>
+      var min = arguments[0];</br></br>
+      for (var i = 1; i < arguments.length; i++) {</br></br>
+        if (arguments[i] > min ) {</br></br>
+          min = arguments[i];</br></br>
+        }</br></br>
+      }</br></br>
+      return min;</br></br>
+    }</br></br>
+  }</br></br>
+  console.log(myMath.PI);</br></br>
+  console.log(myMath.max(1,3,9));</br></br>
+  console.log(myMath.min(1,3,9));</br></br>
+  <h4>3.1 Math概述</h4>
+  Math对象不是构造函数,它具有数学常数和函数的属性和方法。跟数学相关的运算(求绝对值、取值、求整等)可以使用Math中的成员</br></br>
+  Math.PI // 圆周率</br></br>
+  Math.floor() // 向下取整</br></br>
+  Math.ceil()  // 向上取整</br></br>
+  Math.round() //四舍五入版 就近取整 注意-3.3 结果是-3</br></br>
+  Math.abs()   // 绝对值</br></br>
+  Math.max()/ Math.min()   // 求最大或最小值</br></br>
+  1. 绝对值方法</br></br>
+  console.log(Math.abs(1)); // 1</br></br>
+  console.log(Math.abs(-1)); // 1</br></br>
+  console.log(Math.abs('-1')); // 1 隐式转换 会把字符串型转换成数字型</br></br>
+  console.log(Math.abs('pink')); // NaN</br></br>
+  2. 3个取整方法</br></br>
+  (1) Math.floor() 向下取整 往最小取值</br></br>
+  console.log(Math.floor(1.1));  // 1</br></br>
+  console.log(Math.floor(1.9));  // 1</br></br>
+  (2) Math.ceil() 向上取整 往最大取值</br></br>
+  console.log(Math.ceil(1.1));  // 2</br></br>
+  console.log(Math.ceil(1.9));  // 2</br></br>
+  (3) Math.round() 四舍五入版 但.5特殊 往大取</br></br>
+  console.log(Math.round(1.1)) // 1</br></br>
+  console.log(Math.round(1.5)) // 2</br></br>
+  console.log(Math.round(1.9)) // 2</br></br>
+  console.log(Math.round(-1.1)) // -1</br></br>
+  console.log(Math.round(-1.5)) // -1</br></br>
+  <h4>3.2 随机数方法 random()</h4>
+  1. Math.random() 函数返回一个浮点数即小数,随机数方法 random() 返回一个随机的小数 0 =< x < 1 </br></br>
+  2. 这个方法里面不跟参数</br></br>
+  3. 代码验证</br></br>
+  console.log(Math.random());</br></br>
+  4. 我们想要得到两个数之间的随机整数 并且 包含这2个整数</br></br>
+  Math.floor(Math.random() * (max - min + 1) ) + min ;</br></br> // 公式可以在网址里查询
+  function getRandom(min,max) {</br></br>
+    return Math.floor(Math.random() * (max - min + 1)) + min;</br></br>
+  }</br></br>
+  console.log(getRandom(1,10));</br></br>
+  5. 随机点名</br></br>
+  var arr = ['张三丰','张三','张三疯子','李四','李思思'];</br></br>
+  console.log(arr[getRandom(0, arr.length - 1)]);</br></br>
+  案例: 猜数字游戏</br></br>
+  程序随机生成一个1~10之间的数字,并让用户输入一个数字。</br></br>
+  1. 如果大于该数字,就提示,数字大了,继续猜;</br></br>
+  2. 如果小于该数字,就提示数字小了,继续猜;</br></br>
+  3. 如果等于该数字,就提示猜对了,结束程序。</br></br>
+  核心思路:</br></br>
+  1. 随机生成一个1~10的整数,需要用到Math.random()方法</br></br>
+  2. 需要一直猜到正确为止,所以一直循环</br></br>
+  3. 用while循环合适更简单</br></br>
+  4. 核心算法: 使用if else if 多分支语句来判断大于、小于、等于</br></br>
+  function getRandom(min,max) {</br></br>
+    return Math.floor(Math.random() * (max - min + 1)) + min;</br></br>
+  }</br></br>
+  var random = getRandom(1,10);</br></br>
+  while(true) { // 死循环</br></br>
+     var num = prompt('你来猜？ 输入1~10之间的一个数字');</br></br>
+     if (num > random) {</br></br>
+        alert('你猜大了');</br></br>
+     } else if ( num < random) {</br></br>
+        alert('你猜小了');</br></br>
+     } else {</br></br>
+        alert('你好帅哦,猜对了');</br></br>
+     }</br></br>
+  }</br></br>
+习题: 要求用户猜1~50间的一个数字 但只有10猜的机会</br></br></br></br>
+<h3>4 Date对象</h3> 
+Date()是一个构造函数,必须使用new来调用创建我们的日期对象</br></br>
+var arr = new Array(); // 创建一个数组对象</br></br>
+var obj = new Object(); // 创建了一个对象实例</br></br>
+<h4>4.1 使用Date()</h4> 
+1.获取当前时间必须实例化</br></br>
+var now = new Date();</br></br>
+console.log(now);</br></br>
+var date = new Date(); // 如果没给参数 则返回当前系统的当前时间</br></br>
+console.log(date);</br></br>
+2.Date()构造函数的参数</br></br>
+如果括号里面有时间,就返回参数里面的时间.例如日期格式字符串为'2019-10-1 8:8:8'可以写成new Date('2019-10-1 8:8:8')</br></br>或者new Date('2019/10/1 8:8:8')
+数字型写法 2019, 10, 01 ,会少一个月.通常采用字符串型.</br></br>
+var date1 = new Date(2019,10,1);</br></br>
+console.log(date1);</br></br>
+var date2 = new Date('2019/10/1 8:8:8');</br></br>
+console.log(date2);</br></br>
+3. 日期格式化</br></br>
+可以查询手册，网址上</br></br>
+格式化年月日</br></br>
+var date = new Date(); </br></br>
+console.log(date.getFullYear()); // 返回当前日期的年</br></br>
+console.log(date.getMonth() + 1); // z返回月份小1个月 记得+1</br></br>
+console.log(date.getDate()); // 返回当前是几号</br></br>
+console.log(date.getDay()); // 返回当前星期几 星期天是0</br></br>
+2023年7月10日 星期一</br></br>
+var year = date.getFullYear();</br></br>
+var month = date.getMonth() + 1;</br></br>
+var dates = date.getDate();</br></br>
+var arr = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六']</br></br>
+var day = date.getDay();</br></br>
+console.log('今天是:'  + year + '年' + month + '月' + dates + '日' + arr[day]);</br></br>
+格式化时分秒</br></br>
+var date = new Date(); </br></br>
+console.log(date.getHours());</br></br>
+console.log(date.getMinutes());</br></br>
+console.log(date.getSeconds());</br></br>
+封装一个函数返回当前的时分秒 格式: 08:08:08</br></br>
+function getTime() {</br></br>
+  var time = new Date();</br></br>
+  var h = time.getHours();</br></br>
+  h = h < 10 ? '0' + h : h;</br></br>
+  var m = time.getMinutes();</br></br>
+  m = m < 10 ? '0' + m : m;</br></br>
+  var s = time.getSeconds();</br></br>
+  s = s < 10 ? '0' + s : s;</br></br>
+  return h + ':' + m + ':' + s;</br></br>
+} </br></br>
+console.log(getTime());</br></br>
+4 获取日期总的毫秒形式(时间戳)</br></br>
+Date对象是基于1970年1月1日开始 获得的是现在时间距离它的毫秒数</br></br>
+1) 通过valueOf() getTime()都可获得</br></br>
+var date = new Date();</br></br>
+console.log(date.valueOf());</br></br>
+console.log(date.getTime());</br></br>
+2) 简单写法(最常用的方法)</br></br>
+var date1 = +new Date(); //  +new Date()返回的就是总的毫秒数</br></br>
+console.log(date1);</br></br>
+3) H5新增的方法</br></br>
+console.log(Date.now());</br></br></br></br>
+<h3>5 数组对象</h3> 
+  5.1 创建数组的两种方式</br></br>
+  1). 利用数组字面量</br></br>
+  var arr = [1,2,3];</br></br>
+  console.log(arr[0]);</br></br>
+  2). 利用new Array()</br></br>
+  var arr1 = new Array(); // 创建了一个空的数组</br></br>
+  var arr1 = new Array(2); // 这个2表示数组的长度为2里面有2个空的数组元素</br></br>
+  var arr1 = new Array(2,3); // 等价于[2,3]这样写表示里面有2个数组元素,是2和3</br></br>
+  console.log(arr1);</br></br>
+  5.2 检测是否为数组</br></br>
+  1) instanceof 运算符可用来检测是否为数组</br></br>
+  var arr = [];</br></br>
+  var obj = {};</br></br>
+  console.log(arr instanceof Array);</br></br>
+  console.log(arr instanceof Araray);</br></br>
+  翻转数组</br></br>
+  function reverse(arr) {</br></br>
+    if (arr instanceof Array) {</br></br>
+        var newArr = [];</br></br>
+        for (var i = arr.length - 1; i >= 0; i--) {</br></br>
+            newArr[newArr.length] = arr[i];</br></br>
+        }</br></br>
+        return newArr;</br></br>
+    } else {</br></br>
+        return '这个参数要求必须是数组格式[1,2,3]';</br></br>
+    }</br></br>
+  }</br></br>
+  2) Array.isArray(参数);h5新增的方法ie9以上版本支持</br></br>
+  console.log(Array.isArray(arr));</br></br>
+  console.log(Array.isArray(obj));</br></br>
+  5.3 添加删除数组元素的方法</br></br>
+  1. push()在我们数组的末尾 添加一个或者多个数组元素</br></br>
+  var arr = [1,2,3];</br></br>
+  //arr.push(4,'pink');</br></br>
+  console.log(arr.push(4,'pink'));</br></br>
+  console.log(arr);</br></br>
+  1) push 可以给数组后追加新的元素</br></br>
+  2) push()参数直接写数组元素就可以了</br></br>
+  3) push完毕后返回的结果是新数组的长度</br></br>
+  4) 原数组也会发生变化</br></br>
+  2. unshift() 在我们数组的开头 添加一个或者多个数组元素</br></br>
+  arr.unshift('red','purple');</br></br>
+  console.log(arr);</br></br>
+  1) unshift可以给数组前面追加新的元素</br></br>
+  2) unshift()参数直接写数组元素就可以了</br></br>
+  3) unshift完毕后返回的结果是新数组的长度</br></br>
+  4) 原数组也会发生变化</br></br>
+  3. pop()可以删除数组的最后一个元素</br></br>
+  console.log(arr.pop());</br></br>
+  console.log(arr);</br></br>
+  1) pop 可以给删除数组的最后一个元素 记住一次只能删除一个元素</br></br>
+  2) pop()没有参数</br></br>
+  3) pop完毕后返回的结果是删除的那个元素</br></br>
+  4) 原数组也会发生变化</br></br>
+  4. shift()可以删除数组的第一个元素</br></br>
+  console.log(arr.shift());</br></br>
+  console.log(arr);</br></br>
+  1) shift 可以给删除数组的第一个元素 记住一次只能删除一个元素</br></br>
+  2) shiftp()没有参数</br></br>
+  3) shift完毕后返回的结果是删除的那个元素</br></br>
+  4) 原数组也会发生变化</br></br></br></br>
+  案例：筛选数组</br></br>
+  有一个包含工资的数组[1500,1200,2000,2100,1800],要求把数组中工资超过2000的删除,剩余的放到新数组里面</br></br>
+  var arr = [1500,1200,2000,2100,1800];</br></br>
+  var newArr = [];</br></br>
+  for (var i = 0; i < arr.length; i++) {</br></br>
+    if (arr[i] < 2000) {</br></br>
+      //  newArr[newArr.length] = arr[i];</br></br>
+      newArr.push(arr[i]);</br></br>
+    }  </br></br>
+  }</br></br>
+  console.log(newArr);</br></br>
+  // 1).翻转数组</br></br>
+  var arr = ['pink','red','blue'];</br></br>
+  arr.reverse();</br></br>
+  console.log(arr);</br></br>
+  // 2) 数组排序(冒泡排序)</br></br>
+  var arr1 = [13,4,7,1,77];</br></br>
+  arr1.sort(function(a,b){</br></br>
+   // return a - b; 升序排列</br></br>
+   return b - a ; //降序排列</br></br>
+  });</br></br>
+  console.log(arr1);*/</br></br>
+  5.5 数组索引的方法</br></br></br></br>
+  <table border="1" width="800" height="400" cellspacing="0" cellpadding="0" align="left">
+     <tr align="center" valign="middle">
+      <th>方法名</th>
+      <th>说明</th>
+      <th>返回值</th>
+      </tr>
+     <tr align="center" valign="middle">
+      <td>indexOf()</td>
+      <td>数组中查找给定元素的第一个索引</td>
+      <td>如果存在返回索引号 如果不存在,则返回-1</td>
+      </tr>
+     <tr align="center" valign="middle">
+      <td>lastIndexOf()</td>
+      <td>在数组中的最后一个索引</td>
+      <td>如果存在返回索引号 如果不存在,则返回-1</td>
+      </tr>
+  </table></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+  var arr = ['red','green','blue','pink','blue'];</br></br>
+  console.log(arr.indexOf('blue'));//如果具有相同的元素，只返回第一个满足条件的索引号 2 前面往后面查找</br></br>
+  console.log(arr.lastIndexOf('blue')); // 4 后面往前面查找</br></br>
+  案例：数组去重(重点案例)</br></br>
+  有一个数组['c','a','z','a','x','a','x','c','b'],去除数组中重复的元素</br></br>
+  核心思路:</br></br>
+  1) 目标：把旧数组里面不重复的元素取出来放到新数组中,重复的元素只保留一个</br></br>
+  2) 核心算法: 我们遍历旧数组,然后拿着旧数组元素去查询新数组,如果该元素在新数组里面没有出现过,我们就添加,否则不添加。</br></br>
+  3) 如何知道钙元素是否存在?利用新数组.indexOf(数组元素)如果返回时-1就说明里面没有</br></br>
+  封装一个去重的函数unique</br></br>
+  function unique(arr) {</br></br>
+    var newArr = [];</br></br>
+    for (var i = 0; i < arr.length; i++) {</br></br>
+      if (newArr.indexOf(arr[i]) === -1) {</br></br>
+        newArr.push(arr[i]);</br></br>
+      }</br></br>
+    }</br></br>
+    return newArr;</br></br>
+  }</br></br>
+  var demo = unique(['c','a','z','a','x','a','x','c','b']);</br></br>
+  console.log(demo);</br></br>
+  // 数组转换为字符串</br></br>
+  // 1) toString()将我们的数组转换为字符串</br></br>
+  var arr = [1, 2, 3];</br></br>
+  console.log(arr.toString()); // 1,2,3</br></br>
+  // 2)join(分隔符)</br></br>
+  var arr1 = ['green', 'pink', 'blue'];</br></br>
+  console.log(arr1.join()); // green, pink, blue</br></br>
+  console.log(arr1.join('-')); // green-pink-blue</br></br>
+  console.log(arr1.join('&')); // green&pink&blue</br></br>
+  <table border="1" width="800" height="400" cellspacing="0" cellpadding="0" align="left">
+    <tr align="center" valign="middle">
+     <th>方法名</th>
+     <th>说明</th>
+     <th>返回值</th>
+     </tr>
+    <tr align="center" valign="middle">
+     <td>concat()</td>
+     <td>连接两个或多个数组 不影响原数组</td>
+     <td>返回一个新的数组</td>
+     </tr>
+    <tr align="center" valign="middle">
+     <td>slice()</td>
+     <td>数组截取slice(begin,end)</td>
+     <td>返回被截取数组的新数组</td>
+     </tr>
+     <tr align="center" valign="middle">
+      <td>splice()</td>
+      <td>数组删除splice(第几个开始,要删除个数)</td>
+      <td>返回被删除项目的新数组 注意 这个会影响原数组</td>
+      </tr>
+ </table></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+      sllice和splice()目的基本相同,建议重点看下后者</br></br>
+    <h3>6 字符串对象</h3>  
+    <h4>6.1 基本包装类型</h4>
+    var str = 'andy';</br></br>
+    console.log(str.length);</br></br>
+    // 对象才有属性和方法 复杂数据类型才有属性和方法</br></br>
+    // 简单数据类型为什么会有length属性?</br></br>
+    // 基本包装类型： 就把简单数据类型 包装成复杂数据类型</br></br>
+    // (1) 把简单数据类型包装为复杂数据类型 temp为临时变量</br></br>
+    var temp = new String('andy');</br></br>
+    // (2) 把临时变量的值给声明的字符变量 str</br></br>
+    str = temp;</br></br>
+    // (3) 销毁临时变量</br></br>
+    temp = null;</br></br>
+    <h4> 6.2 字符串不可变 </h4>
+     不要大量拼接字符串 会开辟一个新空间,会占内存空间</br></br>
+     <h4> 6.3 根据字符返回位置 </h4>
+     字符串所有的方法，都不会改变字符本身(字符串是不可变的),操作完成后会返回一个新的字符</br></br>
+     字符串对象 根据字符返回位置 str.indexOf('要查找的字符',[起始的位置]) 从前往后找</br></br>
+    var str = '改革春风吹满地，春天来了';</br></br>
+    console.log(str.indexOf('春'));</br></br>
+    console.log(str.indexOf('春',3)); // 从索引号是3的位置开始往后查找</br></br>
+    lastIndexOf()和indexOf一样,只是从后往前找，只找第一个匹配的 前面已学过</br></br>
+    案例：查找字符串"abcoefoxyozzopp"中所有o出现的位置及次数
+    核心算法: 先查找第一个o出现的位置
+    然后只要indexOf返回的结果不是-1 就继续往后查找
+    因为indexOf只能查找第一个 所以后面的查找 定是当前索引号加1 从而继续查找
+    var str = "abcoefoxyozzopp";</br></br>
+    var index = str.indexOf("o");</br></br>
+    var num = 0;</br></br>
+    // console.log(index);</br></br>
+    while (index !== -1) {</br></br>
+      console.log(index);</br></br>
+      num++;</br></br>
+      index = str.indexOf('o', index + 1);</br></br>
+    }</br></br>
+    console.log('o出现的次数是 ' + num);</br></br>
+    课后作业['red','blue','red','green','pink','red'],求red出现的位置和次数</br></br>
+    var str1 = ['red','blue','red','green','pink','red'];</br></br>
+    var index1 = str1.indexOf('red');</br></br>
+    var num1 = 0;</br></br>
+    //console.log(index1)</br></br>
+    while (index1 !== -1) {</br></br>
+      console.log(index1);</br></br>
+      num1++;</br></br>
+      index1 = str1.indexOf('red', index1 + 1);</br></br>
+    }</br></br>
+    console.log('red出现的次数是 ' + num1);</br></br>
+    <h4> 6.4 根据位置返回字符 </h4>
+    1.charAt(index)根据位置返回字符</br></br>
+    var str = 'andy',</br></br>
+    console.log(str.charAt(3));</br></br>
+    遍历所有的字符</br></br>
+    for (var i = 0; i < str.length; i++) {</br></br>
+      console.log(str.charAt(i));</br></br>
+    }</br></br>
+    2. charCodeAt(index) 返回相应索引号的ASCII值 目的判断用户按下了哪个键</br></br>
+    console.log(str.charCodeAt(0)); // 97</br></br>
+    3.str[index] H5新增的</br></br>
+    console.log(str[0]);</br></br>
+    案例:返回字符位置</br></br>
+    判断一个字符串'abcoefoxyozzopp'中出现次数最多的字符,并统计其次数</br></br>
+    // o.a = 1</br></br>
+    // o.b = 1</br></br>
+    // o.c = 1</br></br>
+    // o.o = 4</br></br>
+    核心算法:利用charAt()遍历这个字符串</br></br>
+    1. 把每个字符都存储给对象 如果对象没有该属性 就为1 如果存在了就+1 如上</br></br>
+    遍历对象 得到最大值和该字符</br></br>
+    var str = 'abcoefoxyozzopp';</br></br>
+    var o = {};</br></br>
+    for (var i = 0; i < str.length; i++) {</br></br>
+      var chars = str.charAt(i); // chars是字符串的每一个字符</br></br>
+      if (o[chars]) { // 得到的是属性值</br></br>
+        o[chars]++;</br></br>
+      } else {</br></br>
+        o[chars] = 1;</br></br>
+      }</br></br>
+    }</br></br>
+    console.log(o);</br></br>
+    2.遍历对象</br></br>
+   var max = 0;</br></br>
+   var ch = '';</br></br>
+   for (var k in o) {</br></br>
+    // k 得到的是属性</br></br>
+    // o[k] 得到的是属性值</br></br>
+    if (o[k] > max) {</br></br>
+      max = o[k];</br></br>
+      ch = k;</br></br>
+    }</br></br>
+   }</br></br>
+   console.log(max);</br></br>
+   console.log('最多的字符是' + ch);</br></br>
+   <h4> 6.5 字符串操作方法 </h4>
+   1. concat('字符串1','字符串2'...)</br></br>
+   var str = 'andy'</br></br>
+   console.log(str.concat('red'));</br></br>
+   2.substr('截取的起始位置'截取几个字符');</br></br>
+   var str1 = '改革春风吹满地'</br></br>
+   console.log(str.substr(2,2)); // 第一个2是索引号2 从第几个开始 第二个2 是取几个字符</br></br>
+   3. 替换字符replace('被替换的字符'替换为的字符') 它只替换第一个字符</br></br>
+   var str = 'andy';</br></br>
+   console.log(str.replace('a','b'));</br></br>
+   4. 有一个字符串'abcoefoxyzzopp'要求把里面所有的o替换为*</br></br>
+   var str1 = 'abcoefoxyozzopp';</br></br>
+   while (str.indexOf('o') !== -1) {</br></br>
+    str1 = str1.replace('o','*');</br></br>
+   }</br></br>
+   console.log(str1);</br></br>
+   5. 字符串转换为数组 split('分隔符') 前面学过join把数组转换为字符串</br></br>
+   var str2 = 'red, pink, blue';</br></br>
+   console.log(str2.split(','));</br></br>
+   var str3 = 'red&pink&blue';</br></br>
+   console.log(str3.split('&'));</br></br>
+   课下查询</br></br>
+   toUpperCase() // 转换大写</br></br>
+   toLowerCase() // 转换小写</br></br>
+   作业</br></br>
+   给定一个字符串,如:'abaasdffggghhjjkkgfddsssss3444343',问题如下:</br></br>
+   1. 字符串的长度</br></br>
+   2. 取出指定位置的字符,如:0,3,5,9等</br></br>
+   3. 查出指定字符是否在以上字符串中存在,如: i, c, b等</br></br>
+   4. 替换指定的:g替换为22,ss替换为b等操作方法</br></br>
+   5. 截取指定开始位置到结束位置的字符串,如:取得1-5的字符串</br></br>
+   6. 找出以上字符串中出现次数最多的字符和出现的次数</br></br>
+  </body> 
+</html>
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2023/07/22/shui/">OLDER&nbsp;&gt;</a>
+      
+        
+          <a id="newer" class="blog-nav" href="/2023/08/01/JS015/">&lt;&nbsp;NEWER</a>
+          
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Copyright © Leedom 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Theme by Leedom | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

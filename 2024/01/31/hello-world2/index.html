@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="风花" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      【019-025】表格基础知识 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">WindFlower</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+    <a title="github" target="_blank" href="https://github.com/leedom92/hexo-theme-leedom">
+      <i class="iconfont icon-github"></i>
+    </a>
+  
+    <a title="email" target="" href="">
+      <i class="iconfont icon-envelope"></i>
+    </a>
+  
+    <a title="facebook" target="" href="">
+      <i class="iconfont icon-facebooksquare"></i>
+    </a>
+  
+    <a title="twitter" target="" href="">
+      <i class="iconfont icon-twitter"></i>
+    </a>
+  
+    <a title="wechat" target="" href="">
+      <i class="iconfont icon-wechat"></i>
+    </a>
+  
+    <a title="weibo" target="" href="">
+      <i class="iconfont icon-weibo"></i>
+    </a>
+  
+    <a title="rss" target="_blank" href="/atom.xml">
+      <i class="iconfont icon-rss"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    Jan 31, 2024
+  </h3>
+  <h1>
+    【019-025】表格基础知识
+  </h1>
+  <div class="content markdown-body">
+    &nbsp;&nbsp;table表格双标签，嵌套tr行双标签,tr嵌套td表格数据单元双标签。只能按照这样顺序嵌套，如果增强表现力，只能在td标签下面嵌套。
+<table>
+    <tr>
+       <td></td> 
+    </tr>
+</table>
+&nbsp;&nbsp;HTML空白页，！+tab生成格式。body下输入table>tr*4>td*5，点击tab，完成格式生成。生成4行5列。
+<br><br><table>
+    <tr>
+        <td>序号</td>
+        <td>姓名</td>
+        <td>语文</td>
+        <td>数学</td>
+        <td>政治</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table> 
+  <br><br> 
+  &nbsp;&nbsp; <h3>020 表格属性</h3><br><br>
+  &nbsp;&nbsp;在tr下，添加th（table header cell）加粗文本双标签.
+<br><br><table>
+    <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table>   &nbsp;&nbsp;<br><br>绘制表格线，在table开标签添加 border=""。
+  <br><br><table border="1">
+    <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table> 
+  <br><br> &nbsp;&nbsp;在table开标签添加 border="",width="",height=""。
+  <br><br><table border="1" width="500" height="150">
+    <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table> 
+  <br><br> cellspacing:单元格之间的距离
+  <br><br> cellpadding:单元格边框和文本间的距离
+  <br><br><table border="1" width="500" height="150" cellspacing="0">
+    <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table> 
+  <br><br><table border="1" width="500" height="150" cellspacing="0" cellpadding="0">
+    <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table>
+  <br><br><table border="1" width="500" height="150" cellspacing="0" cellpadding="0" align="left">
+    <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table><br><br>
+  <br><br><br><br><br><br>&nbsp;&nbsp;还可在里面添加bgcolor="" bordercolor=""<br><br>
+ <table border="1" width="500" height="150" cellspacing="0" cellpadding="0" align="left" bgcolor="red" bordercolor="green">
+    <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table>
+  <br><br><br><br><br><br>&nbsp;&nbsp; <h3>021 表格行属性</h3><br><br>
+  &nbsp;&nbsp;表格添加高度，颜色，水平对齐，垂直对齐，tr开标签里添加height="" bgcolor="" align="left/center/right" valign="top/middle/bottom"
+  <br><br><table border="1" width="500" height="150" cellspacing="0" cellpadding="0" align="left">
+    <tr height="100">
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table><br><br>
+  <br><br><br><br><br><br><br><br><table border="1" width="500" height="150" cellspacing="0" cellpadding="0" align="left" bgcolor="red">
+    <tr height="100" bgcolor="yellow">
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table>
+  <br><br><br><br><br><br><br><br><br><br><table border="1" width="500" height="150" cellspacing="0" cellpadding="0" align="left">
+    <tr height="100" align="center" valign="middle">
+        <th>序号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>政治</th>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>1</td>
+        <td>张三</td>
+        <td>80</td>
+        <td>88</td>
+        <td>70</td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>2</td>
+        <td>李四</td>
+        <td>90</td>
+        <td>83</td>
+        <td>99</td>
+    </tr>
+    <tr align="center" valign="middle" >
+        <td>3</td>
+        <td>王子</td>
+        <td>86</td>
+        <td>75</td>
+        <td>89</td>
+    </tr>
+  </table><br><br><br><br><br><br><br><br>&nbsp;&nbsp; <h3>022 单元格属性</h3><br><br>
+  table>tr*3>td*3d,点击tab，创建3行3列的表格。
+  <br><br><table width="300" height="300" border="1">
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+    </tr>
+  </table>   
+  <br><br>&nbsp;&nbsp;单元格属性，在td开标签里添加width=" height="" bgcolor="" align="left/center/right" valign="top/middle/bottom"
+  <br><br><table width="300" height="300" border="1">
+    <tr>
+        <td width="150">1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+    </tr>
+  </table>   
+  <br><br>
+  <br><br><table width="300" height="300" border="1">
+    <tr>
+        <td width="150" height="150" bgcolor="red">1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+    </tr>
+  </table>   
+  <br><br>
+  <br><br><table width="300" height="300" border="1">
+    <tr>
+        <td width="150">1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+    </tr>
+  </table>   
+  <br><br>
+  <br><br><table width="300" height="300" border="1">
+    <tr>
+        <td width="150" height="150" bgcolor="red" align="right" valign="bottom">1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+    </tr>
+  </table>   
+  &nbsp;&nbsp; <h3>023 单元格合并</h3><br><br>
+  <table border="1" width="500" height="150" cellspacing="0" cellpadding="0">
+    <tr height="30" align="center" valign="middle">
+      <td></td>
+      <td>星期一</td>
+      <td>星期二</td>
+      <td>星期三</td>
+      <td>星期四</td>
+      <td>星期五</td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td>早自习</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td>上午</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td>下午</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td></td> 
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td>晚自习</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table><br>&nbsp;&nbsp;水平合并，纵向（垂直）合并,rowspan=""跨几行，纵向几行合并的意思;colspan（columspan）=""跨几列，横向几列合并之意。<br><br><table border="1" width="500" height="150" cellspacing="0" cellpadding="0">
+    <tr height="30" bgcolor="deepskyblue">
+      <th></th>
+      <th>星期一</th>
+      <th>星期二</th>
+      <th>星期三</th>
+      <th>星期四</th>
+      <th>星期五</th>
+    </tr>
+    <tr height="30" align="center" valign="middle" bgcolor="skyblue">
+      <td bgcolor="skyblue">早自习</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td rowspan="4" bgcolor="skyblue">上午</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle" bgcolor="skyblue">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle" bgcolor="skyblue">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td rowspan="4" bgcolor="skyblue">下午</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle" bgcolor="skyblue"> 
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle" bgcolor="skyblue">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td bgcolor="skyblue">晚自习</td>
+      <td colspan="5"></td>
+    </tr>
+  </table><br><br>
+  <table border="1" width="600" height="400" cellspacing="0" cellpadding="0">
+    <tr height="30" align="center" valign="middle">
+      <td colspan="4">1</td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td rowspan="2">6</td>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td>10</td>
+      <td rowspan="3">11</td>
+      <td>12</td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td colspan="2">13</td>
+      <td>14</td>
+    </tr>
+    <tr height="30" align="center" valign="middle">
+      <td>15</td>
+      <td>16</td>
+      <td>17</td>
+    </tr>
+  </table><br><br><br><br>
+&nbsp;&nbsp; <h3>024 表格标题和结构分组</h3><br><br>
+  &nbsp;&nbsp;表格标题就是表格的大标题，默认顶部水平居中，双标签caption，位置在table和tr间。
+  <table>
+    <caption></caption>
+    <tr></tr>
+  </table><br>
+  <table border="1" bordercolor="#ffffff" bgcolor="#cde7de" width="500" height="150" cellspacing="0" cellpadding="0">
+    <caption><h3>成绩册</h3></caption>
+    <colgroup span="1" bgcolor="#91c5d4"></colgroup>
+    <thead>
+        <tr align="center" valign="middle">
+            <th rowspan="2" bgcolor="skyblue">序号</th>
+            <th colspan="6" bgcolor="skyblue"> by windflower</th>
+        </tr>
+        <tr bgcolor="skyblue">
+            <th>姓名</th>
+            <th>语文</th>
+            <th>数学</th>
+            <th>外语</th>
+            <th>文综</th>
+            <th>总分</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr align="center" valign="middle"> 
+            <th bgcolor="skyblue">1</th>
+            <td>张三</td>
+            <td>90</td>
+            <td>70</td>
+            <td>80</td>
+            <td>220</td>
+            <td>460</td>
+        </tr>
+        <tr align="center" valign="middle">
+            <th bgcolor="skyblue">2</th>
+            <td>李四</td>
+            <td>80</td>
+            <td>80</td>
+            <td>80</td>
+            <td>218</td>
+            <td>458</td>
+        </tr>
+        <tr align="center" valign="middle">
+            <th bgcolor="skyblue">3</th>
+            <td>王子</td>
+            <td>70</td>
+            <td>80</td>
+            <td>70</td>
+            <td>220</td>
+            <td>440</td>
+        </tr>
+        <tr align="center" valign="middle">
+            <th bgcolor="skyblue">4</th>
+            <td>陈陈</td>
+            <td>60</td>
+            <td>60</td>
+            <td>70</td>
+            <td>200</td>
+            <td>390</td>
+        </tr>
+        <tr align="center" valign="middle">
+            <th bgcolor="skyblue">5</th>
+            <td>周周</td>
+            <td>90</td>
+            <td>80</td>
+            <td>80</td>
+            <td>210</td>
+            <td>460</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr align="center" valign="middle">
+            <th bgcolor="green">说明</th>
+            <td colspan="6" bgcolor="lightgreen">书山有路勤为径</td>
+        </tr>
+    </tfoot>  
+  </table>
+  <br>&nbsp;&nbsp;把该表册分成三部分：thead(table head) ,tbody,tfoot,一个表格只允许1个thead,1个tfoot,多个tbody。<br><br>
+  列也可以分组，colgroup(colum group)双标签,常用于定义一整列一单元的颜色。可定义属性span=""意思是多少列为1组。如果分多组，则需要多个colgroup标签。<br><br>
+  小技巧：选中内容，ctr+d,可实现多光标操作。<br><br>
+  &nbsp;&nbsp; <h3>025 颜色值和长度单位</h3><br><br>
+  &nbsp;&nbsp;颜色名称，red/green/blue;十六进制，#ff0000,00ff00,0000ff;RGB值，rgb(255，0，0，)；rgb(0，255，0；)rgb(0，0，255)<br><br>
+  <table width="100">
+    <tr bgcolor="red">
+      <td width="100px" height="100px">red</td>
+    </tr>
+    <tr bgcolor="green">
+      <td width="50px" height="50px">greem</td>
+    </tr>  
+    <tr bgcolor="blue">
+        <td width="50px" height="50px">blue</td>
+      </tr>
+    </tr>
+  </table>
+  <table width="100">
+    <tr bgcolor="#ff0000">
+      <td width="100px" height="100px">red</td>
+    </tr>
+    <tr bgcolor="#00ff00">
+      <td width="50px" height="50px">greem</td>
+    </tr>
+    <tr bgcolor="#0000ff">
+      <td width="50px" height="50px">blue</td>
+    </tr>
+    <tr bgcolor="rgb(255,0,0)">
+      <td width="100px" height="100px">red</td>
+    </tr>
+    <tr bgcolor="rgb(0,255,0)">
+      <td width="50px" height="50px">greem</td>
+    </tr>  
+    <tr bgcolor="rgb(0,0,255)">
+      <td width="50px" height="50px">blue</td>
+      </tr>
+    </tr>
+  </table>
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2024/01/31/hello-world1/">OLDER&nbsp;&gt;</a>
+      
+        
+          <a id="newer" class="blog-nav" href="/2024/01/31/hello-world/">&lt;&nbsp;NEWER</a>
+          
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Copyright © Leedom 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Theme by Leedom | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

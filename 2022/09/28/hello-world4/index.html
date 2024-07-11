@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="风花" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      【033-041】个人信息表 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">WindFlower</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+    <a title="github" target="_blank" href="https://github.com/leedom92/hexo-theme-leedom">
+      <i class="iconfont icon-github"></i>
+    </a>
+  
+    <a title="email" target="" href="">
+      <i class="iconfont icon-envelope"></i>
+    </a>
+  
+    <a title="facebook" target="" href="">
+      <i class="iconfont icon-facebooksquare"></i>
+    </a>
+  
+    <a title="twitter" target="" href="">
+      <i class="iconfont icon-twitter"></i>
+    </a>
+  
+    <a title="wechat" target="" href="">
+      <i class="iconfont icon-wechat"></i>
+    </a>
+  
+    <a title="weibo" target="" href="">
+      <i class="iconfont icon-weibo"></i>
+    </a>
+  
+    <a title="rss" target="_blank" href="/atom.xml">
+      <i class="iconfont icon-rss"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    Sep 28, 2022
+  </h3>
+  <h1>
+    【033-041】个人信息表
+  </h1>
+  <div class="content markdown-body">
+    label双标签的使用可在表格中出现光标表格菜单,只读readonly和禁用disabled属性,<br><br>
+    <form action="">
+        <label for="username">请输入用户名:</label>
+        <input type="text" id="username"> <br><br>
+    您的手机号：<input type="text" value="12345678" readonly><br><br>
+    您的性别：<input type="radio" name="gender">男
+    <input type="radio" name="gender">女
+    <input type="radio" name="gender">保密
+    </form><br>
+    您的性别：<input type="radio" name="gender">男
+    <input type="radio" name="gender">女
+    <input type="radio" name="gender" disabled>保密
+    </form><br><br>
+    小技巧：input[type="radio" name=gender]*3再label
+    &nbsp;&nbsp; <h3>034 表单分组</h3><br>
+    带有边框和标题的表单控件字段集双标签fieldset，进行表单控件分组。嵌套双标签legend,说明的意思。<br><br>
+    <fieldset></fieldset><br><br>
+    边框作用就是相关字段进行视觉上的划分。<br><br>
+    <fieldset>
+        <legend>基础信息</legend><br><br>
+        用户名：<input type="text"><br><br>   
+        密码：<input type="password"><br><br>
+    </fieldset>
+    &nbsp;&nbsp; <h3>035 表单按钮（上）</h3><br>
+    提交按钮：input里type属性为submit<br><br>
+    <form action="">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+    </form><br><br>
+    form里定义action属性，填服务器地址<br><br>
+    <form action="https://windflower2022.github.io">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+    </form><br><br>
+    form里定义target属性，_blank/_self<br><br>
+    <form action="https://windflower2022.github.io" target="_blank">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+    </form><br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+    </form><br><br>
+    重置按钮：input里type属性为reset<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+        <input type="reset">
+    </form><br><br>
+    普通按钮：input里type属性为button<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+        <input type="reset">
+        <input type="button">
+    </form><br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit">
+        <input type="reset">
+        <input type="button" value="普通按钮">
+    </form><br><br>
+    反思：提交按钮也在input里添加属性value为注册，重置为登录。<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit" value="注册">
+        <input type="reset" value="登录">
+        <input type="button" value="普通按钮">
+    </form>
+    &nbsp;&nbsp; <h3>036 表单按钮（下）</h3><br>
+    图像按钮：input里type属性为image,还要定义其属性src<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit" value="注册">
+        <input type="reset" value="登录">
+        <input type="button" value="普通按钮">
+        <input type="image" src="图片地址">
+    </form><br><br>
+    双标签button按钮：button<br><br>
+    <form action="https://windflower2022.github.io" target="_self">
+        姓名: <input type="text"><br><br>
+        邮箱: <input type="text"><br><br>
+        <input type="submit" value="注册">
+        <input type="reset" value="登录">
+        <input type="button" value="普通按钮">
+        <input type="image" src="图片地址">
+        <button>button按钮</button>
+    </form><br><br>
+     &nbsp;&nbsp; <h3>037-39 表单综合案例</h3><br>
+    <h1 align="center">社区疫情流掉信息表</h1>
+    <p>&emsp;&emsp;请大家做好个人防护，如去过风险地区，请及时向社区报备。</p>
+    <form action="https://raink.net/api/html/signin" target="_blank">
+        <fieldset>
+            <legend>基本信息</legend>
+            <h4>1.您的名字</h4>
+            <input type="text">
+            <h4>2.您的电话号码</h4>
+            <input type="text" value="86113398214301" onlyread>
+            <h4>3.您的性别</h4>
+            <input type="radio" name="gender">男
+            <input type="radio" name="gender">女
+            <input type="radio" name="gender" disabled>保密
+            <h4>4.您的家庭住址</h4>
+            <select name="" id="">
+                <option value="">哪个省</option>
+            </select>
+            <select name="" id="">
+                <option value="">市</option>
+            </select>
+            <select name="" id="">
+                <option value="">县</option>
+            </select>
+            <select name="" id="">
+                <option value="">乡</option>
+            </select><br><br>
+            <textarea name="" id="" cols="65" rows="4">请输入详细地址</textarea>
+        </fieldset><br><br>
+            <legend>目前状况</legend>    
+            <h4>5.您现在的身体状况</h4>
+            <input type="checkbox">健康<br><br>
+            <input type="checkbox">发热<br><br>
+            <input type="checkbox">干咳<br><br>
+            <input type="checkbox">乏力<br><br>
+            <input type="checkbox">呼吸困难<br><br>
+            <input type="checkbox">咽痛<br><br>
+            <input type="checkbox">胸痛<br><br>
+            <input type="checkbox">肌肉酸痛<br><br>
+            <input type="checkbox">呕吐<br><br>
+            <input type="checkbox">腹泻<br><br>
+            <input type="checkbox">味觉异常<br><br>
+            <input type="checkbox">嗅觉异常<br><br>
+         小技巧：input[type="checkbox"]*12再tab
+            <h4>6.您的健康码颜色目前是</h4>
+            <input type="radio" name="color">绿色
+            <input type="radio" name="color">黄色
+            <input type="radio" name="color">红色
+            <h4>7.是否在14天有个高中风险区旅居史</h4>
+            <input type="radio" name="close">是
+            <input type="radio" name="close">否
+            <h4>8.疫苗接种情况</h4>
+            <input type="radio" name="vaccines">已接种第一针
+            <input type="radio" name="vaccines">已接种第二针
+            <input type="radio" name="vaccines">已接种第三针    <br><br>   
+        <fieldset>
+            <legend>保密信息</legend>
+            <h4>1.身份证信息</h4>
+            正面：<input type="file"><br><br>
+            反面：<input type="file"><br><br>
+            <h4>2.学历信息（最高）</h4>
+            <select name="" id="">
+                <option value="">研究生</option>
+                <option value="">本科</option>
+                <option value="">大专</option>
+                <option value="">高中</option>
+                <option value="">高中以下</option>
+            </select>
+            <h4>3.是否服兵役</h4>
+            <input type="radio" name="ismilitary" id="yes">
+            <label for="yes">是</label>
+            <input type="radio" name="ismilitary" id="no">
+            <label for="no">否</label>
+            <h4>4.个人意见</h4>
+            <textarea name="" id="" cols="60" rows="5">请输入详细地址</textarea>
+        </fieldset><br><br>
+            <input type="submit" value="上传信息">
+            <input type="reset" value="清空信息">
+            <input type="image" src="" alt="提交">
+        </form><br><br>
+        &nbsp;&nbsp; <h3>040 表单数据采集和提交</h3><br>
+        <form action="https://raink.net/api/html/signin">
+          手机号码：<input type="text" name="pnumber">  <br> <br>
+          密码框: <input type="password" name="password"><br> <br>
+          <input type="submit" value="登录"><br> <br>
+        </form><br> <br>
+        &nbsp;&nbsp; <h3>041 其它实用标签 </h3><br>
+        hr(horizontal)单标签，表水平线，作用是网页上画出一条水平分割线。视觉上将文档分成多个部分。<br> <br>
+        5个属性，width宽度,size高度,noshade去掉水平线阴影。color用于定义水平线颜色。align水平线水平对齐方式。<br> <br>
+        爱上一朵花的芬芳 爱一朵花的倔强
+        <hr width="300px" size="10px" align="left" noshade color="green">
+        爱上一朵花的姿态 它在黑夜中发亮<br> <br>
+        pre(preformatted)双标签：预格式化的文本，里面文本以固定宽度格式显示，保留了空格和换行。<br> <br>
+        <pre>
+            爱上一个人的目光
+            爱上一个人的家乡
+            爱上一个人的伤疤
+            他在记忆的远方
+        </pre>
+        map双标签:定义一个图像映射，就是一个图片的热点链接。点击图片实现链接跳转。属性name。<br> <br>嵌套area,定义图片的热点区域，其shape属性：
+        default所有区域；rect矩形；circle圆形；poly多边形。coords属性坐标，与shape配合使用。<br> <br>
+        <map name="">
+            <area shape="circle" coords="x,y,r" href="目标地址" alt="">
+            <area shape="poly" coords="x1,y1,x2,y2,x3,y3,...xn,yn" href="目标地址" alt="">
+            <area shape="rect" coords="x1,y1,x2,y2" href="目标地址" alt="">   
+        </map>
+        <img src="https://s1.ax1x.com/2022/09/02/vIbNjK.jpg" alt="windflower" usemap="#flower"><br> <br>
+        <map name="flower">
+            <area shape="rect" coords="0,0,110,260" href="https://s1.ax1x.com/2022/09/15/vzF5es.jpg" alt="ruyuan">
+            <area shape="cirle" coords="129,161,10" href="https://s1.ax1x.com/2022/09/10/vOAQsI.jpg" alt="zhdjt">
+        </map><br><br>       
+</body>
+</html>
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2022/09/25/music/">OLDER&nbsp;&gt;</a>
+      
+        
+          <a id="newer" class="blog-nav" href="/2022/09/28/hello-world5/">&lt;&nbsp;NEWER</a>
+          
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Copyright © Leedom 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Theme by Leedom | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="风花" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      【026-032】块级内联元素下拉菜单 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">WindFlower</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+    <a title="github" target="_blank" href="https://github.com/leedom92/hexo-theme-leedom">
+      <i class="iconfont icon-github"></i>
+    </a>
+  
+    <a title="email" target="" href="">
+      <i class="iconfont icon-envelope"></i>
+    </a>
+  
+    <a title="facebook" target="" href="">
+      <i class="iconfont icon-facebooksquare"></i>
+    </a>
+  
+    <a title="twitter" target="" href="">
+      <i class="iconfont icon-twitter"></i>
+    </a>
+  
+    <a title="wechat" target="" href="">
+      <i class="iconfont icon-wechat"></i>
+    </a>
+  
+    <a title="weibo" target="" href="">
+      <i class="iconfont icon-weibo"></i>
+    </a>
+  
+    <a title="rss" target="_blank" href="/atom.xml">
+      <i class="iconfont icon-rss"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    Jan 31, 2024
+  </h3>
+  <h1>
+    【026-032】块级内联元素下拉菜单
+  </h1>
+  <div class="content markdown-body">
+    &nbsp;&nbsp;HTML元素的显示值分为：块block，内联inline。HTML元素分为块（级）元素block-level块级，行内元素inline内联。<br><br>
+    &nbsp;&nbsp;块级元素总是从新行开始，浏览器自动在元素的前后添加一些边距。总是占用可用的全部宽度，尽可能向左右伸展。p标签就是常用的快元素。<br><br>
+        <p>看淡人间烟火，细品岁月静好</p>
+        <h1>烟火人生</h1>
+        <p>看淡人间烟火，细品岁月静好</p>
+        <p>时光深处，我亦微笑，亦不老</p>
+        <h1 align="center">烟火人生</h1>
+        <p align="center">看淡人间烟火，细品岁月静好</p>
+        <p align="center">时光深处，我亦微笑，亦不老</p>
+    可以用双标签div（division）为分块，引申为盒子，容器。定义HTML的一个分块，或一部分，典型的块级元素。来表达居中，不用处处都写。
+        <p align="center"> 
+          <h1>烟火人生</h1>
+          <p>看淡人间烟火，细品岁月静好</p>
+          <p>时光深处，我亦微笑，亦不老</p>
+        </p> 
+        <div align="center">
+          <h1>烟火人生</h1>
+          <p>看淡人间烟火，细品岁月静好</p>
+          <p>时光深处，我亦微笑，亦不老</p>
+        </div> 
+    </body><br><br>
+    &nbsp;&nbsp;块级元素：<br><br>
+    标题元素：h1-h6<br><br>
+    段落元素：p<br><br>
+    列表元素：ol,ul,li,dl,dt,dd<br><br>
+    表格元素：table,tr,td,th,thead,tbody,tfoot,caption<br><br>
+    分块元素：div<br><br>
+    &nbsp;&nbsp;内联元素不独占一行，只占用必要的宽度。如文本修饰标签b,em,i.strong,sub.sup<br><br>
+        <div align="center">
+          <h1>烟火人生</h1>
+          <p>看淡<b title="inline">人间烟火</b>，细品岁月静好</p>
+          <p>时光深处，<b title="inline">我亦微笑，亦不老</b></p>
+        </div><br><br> 
+    如果不想加粗，b就换成span双标签，表范围，标记文本/文档的一部分。典型的内联元素。<br><br>
+    注意：内联元素不能嵌套块级元素。<br><br>
+        <div align="center">
+          <h1>烟火人生</h1>
+          <p>看淡<b title="inline">人间烟火</b>，细品岁月静好</p>
+          <p>时光深处，<span title="inline">我亦微笑，亦不老</span></p>
+        </div><br><br> 
+      &nbsp;&nbsp;内联元素：<br><br>
+      链接元素：a<br><br>
+      文本修饰元素：b,em, i,strong,sub,sup<br><br>
+      折行元素：br<br><br>
+      图片元素：img<br><br>
+      范围元素：span<br><br><br><br>
+    &nbsp;&nbsp; <h3>027 初识表单</h3><br><br> 
+    分组控件，单行文本框控件，多行文本框控件，单选框控件， 多选框，下拉框，文件选择，普通按钮，自定义按钮控件。<br><br>
+表单使用form双标签。控件添加在form开标签里。<br><br>
+    <form action=""></form>
+     &nbsp;&nbsp; <h3>028 文本框和密码框</h3><br>
+     文本框控件不折行，只能在本行显现，如果超出了只能鼠标拖拽，或键盘右键按钮敲击查看全部信息。<br><br>
+     使用HTML实现单项文本框：form里嵌入input单标签，里面添加type属性类型.单行文本框的type值text,而密码框的为password,也是单行文本框，只是显示小黑点或星号，内容被屏蔽了<br><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=""><br><br>
+    <form action="">
+        请输入用户名：<input>
+    </form><br><br>
+    <form action="">
+        请输入用户名：<input type="text">
+    </form><br>
+    <form action="">
+        请输入用户名：<input type="text">
+        <br><br>
+        请输入密码：<input type="password">
+    </form><br><br><br>
+    &nbsp;&nbsp; <h3>029 多行文本框控件(文域)</h3><br>
+    输入多行文本，自动折行，文本超出底部边界，产生滚动条，可以滚动鼠标滚轮查看完整信息。<br>
+    在HTML中实现: form嵌套textarea双标签.可使用cols(colomns)属性来指定文本区可见宽度，值为数字。<br><br>
+    <form action="">
+        请输入你的信息<br>
+        <textarea name="" id="" cols="5" rows="2"></textarea>
+    </form><br>  
+    textarea双标签.可使用cols(colomns)属性来指定文本区可见宽度，值为数字。row 为行数，指定值为数字。<br><br>
+    <form action="">
+        请输入你的信息<br>
+        <textarea cols="10" rows="3"></textarea>
+    </form><br><br><br> 
+&nbsp;&nbsp; <h3>030 取值按钮类型</h3><br>
+    单选还是多选，可在table里嵌套input,设置属性type实现，radio,为单选，checkbox为多选。 <br> <br>
+    <form action="">
+         选择性别：<input type="radio">男
+         <input type="radio">女
+    </form><br> <br>
+    单选框控件须成组使用才有意义，每组至少需要两个单选框。“组”是通过name属性来建立的，凡是name值相同的就是一组。同组的单选框，只有一个会处于选中状态，其它的会自动呈现为未选中状态。
+    <form action="">
+        选择性别：<input type="radio" name="gender">男
+        <input type="radio" name="gender">女
+   </form><br> <br>
+   单选：<br> <br>
+   <form action="">
+    选择性别：<input type="radio" name="gender">男
+    <input type="radio" name="gender">女
+    <br><br>
+    多选：<br> <br>
+    你喜欢哪门学科：<input type="checkbox">语文
+    <input type="checkbox">数学
+    <input type="checkbox">英语单选<br> <br>
+    若想选项默认状态不为空，可在属性后加checked="任意字母"单选<br> <br>
+    <form action="">
+        选择性别：<input type="radio" name="gender" checked>男
+        <input type="radio" name="gender">女<br> <br>
+        你喜欢哪门学科：<input type="checkbox" checked>语文
+    <input type="checkbox">数学
+    <input type="checkbox">英语
+</form>
+&nbsp;&nbsp; <h3>031 下拉菜单</h3><br>
+    双标签为select,只包含1个或多个option双标签。默认选项需在option里添加selectd定义。<br> <br>
+    小技巧：option{199$}*9再tab。<br> <br>
+<form action="">
+    出生日期：
+    <select>
+        <option value="">1991</option>
+        <option value="">1992</option>
+        <option value="">1993</option>
+        <option value="" selected>1994</option>
+        <option value="">1995</option>
+        <option value="">1996</option>
+        <option value="">1997</option>
+        <option value="">1998</option>
+        <option value="">1999</option>  
+    </select>
+</form><br> <br>
+多选的话，在select里定义属性为multiple<br> <br>
+<form action="">
+    所学学科：
+    <select name="" id="" multiple>
+        <option value="">语文</option>
+        <option value="">数学</option>
+        <option value="">外语</option>
+        <option value="">政治</option>
+        <option value="">历史</option>
+        <option value="">地理</option>
+        <option value="">物理</option>
+        <option value="">化学</option>
+        <option value="">生物</option>
+    </select>
+</form><br> 
+小技巧：1.光标停在option行，按住alt+shift，下键敲击8下。<br><br>
+       2.网页上，ctrl+鼠标就可选择多个。<br><br>
+       select里定义属性为size,可定义默认多少可见行<br><br>
+       <form action="">
+        所学学科：
+        <select name="" id="" multiple size="9" >
+            <option value="">语文</option>
+            <option value="">数学</option>
+            <option value="">外语</option>
+            <option value="">政治</option>
+            <option value="">历史</option>
+            <option value="">地理</option>
+            <option value="">物理</option>
+            <option value="">化学</option>
+            <option value="">生物</option>
+        </select>
+    </form><br> 
+    &nbsp;&nbsp; <h3>032 选择文件</h3><br>
+    在表格里,嵌入的input里type属性添加为file就行。<br><br>
+    <form action="">
+        附件：
+        <input type="file">
+    </form><br><br>	
+</body>
+</html>
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2024/01/29/xinnianhao/">OLDER&nbsp;&gt;</a>
+      
+        
+          <a id="newer" class="blog-nav" href="/2024/01/31/hello-world1/">&lt;&nbsp;NEWER</a>
+          
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Copyright © Leedom 2021</a>
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/leedom92/hexo-theme-leedom">Theme by Leedom | Powered by Hexo</a>
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>
