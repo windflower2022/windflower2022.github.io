@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <title>2202g</title>
+  <link rel="stylesheet" href="word4.css">
+  <style>
+        div{
+            background-color:rgb(2243,243, 243);
+            margin-bottom: 15px;
+            margin-bottom: 15px;
+            margin-left: 185px;
+            padding: 10px;
+            border-radius: 55px;
+            font-size: 30px;
+            width: 1080px;
+            text-align: left;
+        }
+        div:hover{
+            background-color:rgb(226, 245, 231);
+        }
+        .t{
+            margin-top: 100px;
+            padding-left: 100px;
+        }
+        @media screen and (max-width: 650px) {
+            .t{
+                margin-top: 50px;
+                padding-left: 20px;
+            }
+         }
+        </style>
+</head>
+<body>
+<p style="font-size: 20px;"> </br> </br> 
+<div class="t2"><span>&emsp;&emsp; May 21st this year marks the first International Tea Day, which was named officially by the United Nations on November 27th, 2019. To celebrate the festival, a number of events took place at the Chinese Businessman Museum in Beijing on Thursday. 
+</br>&emsp;  
+今年的5月21日是首个国际茶日，这个节日于2019年11月27日由联合国正式命名。为了庆祝这个节日，周四在北京的中国商人博物馆举办了一系列活动。
+</br></br>
+</span></div>	   
+<div class="t2"><span>&emsp;&emsp;<a>The chairman of the China Culture Promotion Society addressed the opening ceremony. "As a main promoter of the International Tea Day, the birthplace of tea and the largest tea-producing country, China has a responsiblility to work with other countries to promote the healthy development of the tea industry. It can help to build a community with a shared future for mankind," he said. 
+</br>&emsp;
+中国文化促进会主席在开幕式上发表讲话。他说：“作为国际茶日的主要推动者、茶叶的发源地和最大的产茶国家，中国有责任与其他国家共同促进茶叶产业的健康发展。这可以帮助构建人类命运共同体。”
+</br></br>
+</span></div> 
+<div class="t2"><span>&emsp;&emsp; The "First International Tea Day Tea Road Cooperative Initiative" issued（发布）at the ceremony calls for people working in the tea industry to come together to promote international cooperation and cultural exchanges. A four-year tea promotion—Tea Road Cooperative Plan—was also issued in accordance with the initiative. 
+</br>&emsp; 
+在仪式上发布的“第一个国际茶日茶道合作倡议”呼吁从事茶叶行业的人们团结起来，促进国际合作和文化交流。同时还制定了为期四年的茶业推广计划——茶道合作计划。
+</br></br>
+</span></div>
+<div class="t2"><span>&emsp;&emsp; <a>To strengthen the connection with young people, the event included a number of public promotional activities on social media, inviting twenty-nine tea professionals from around the world to have thirty-six hours of uninterrupted live broadcasts. 
+</br>&emsp; 
+为了加强与年轻人的联系，本次活动包括了许多社交媒体上的宣传活动，邀请来自全球的29名茶叶专业人士进行36小时不间断的直播。
+</br></br> 
+</span></div>
+<div class="t2"><span>&emsp;&emsp; <a>The Chinese Ancient Tea Museum was officially unveiled（揭幕）at the ceremony, opening   its first exhibition: The Avenue of Truth—A Special Exhibition of Pu'er Tea. 
+</br>&emsp; 
+中国古茶博物馆在仪式上正式揭幕，并开展了其第一场展览：“真理大道——普洱茶特别展览”。
+</br></br> 
+</span></div>
+</div><br><br><br><br><br><br> 
+</p>
+</body>
+<script>
+        $(document).ready(function(){
+            $("div").click(function(){
+            	//方式一
+                //var words = new SpeechSynthesisUtterance($(this).context.children[0].textContent);
+                //window.speechSynthesis.speak(words)
+
+            	//方式二
+				var audio = new Audio();  
+                audio.src ='https://dict.youdao.com/speech?audio=' + encodeURI($(this).context.children[0].textContent);  
+                audio.play(); 
+            });
+        });
+    </script>
+</html>
+
+
+
+
+

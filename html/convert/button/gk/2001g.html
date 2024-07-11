@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <title>记单词</title>
+    <style>
+        div{
+            background-color:rgb(2243,243, 243);
+            margin-bottom: 15px;
+            margin-bottom: 15px;
+            margin-left: 150px;
+            padding: 10px;
+            border-radius: 55px;
+            font-size: 30px;
+            width: 1200px;
+            text-align: left;
+        }
+        div:hover{
+            background-color:rgb(226, 245, 231);
+        }
+        .t{
+            margin-top: 100px;
+            padding-left: 150px;
+        }
+        @media screen and (max-width: 650px) {
+            .t{
+                margin-top: 50px;
+                padding-left: 20px;
+            }
+         }
+        </style>
+</head>
+<body> 
+        <br><br><br>
+        <div class="t1"><span>&emsp;&emsp;China has become the first country to land a spacecraft on the far side of the moon. The unmanned Chang’e-4 probe (探测器) - the name was inspired by an ancient Chinese moon goddess- <b>touched</b> down last week in the South Pole-Aitken basin. 
+		<br>&emsp;&emsp;无人月球探测器嫦娥四号——名字的灵感来源于古代的中国月亮女神——上周在南极艾特肯盆地着陆。
+		</span></div>
+        <div class="t3"><span>&emsp;&emsp; Landing on the moon’s far side is <b>extremely </b>challenging. Because the moon’s body blocks direct radio communication with a probe, China first had to put a satellite in orbit above the moon in a spot <b> where </b>  it could send signals to the spacecraft and to Earth. The far side of the moon is of particular <b> interest </b> to scientists because it has a lot of deep craters (环形山), more so </b>than</b> the familiar near side. 
+		<br>&emsp;&emsp;登录月球的背面是极其有挑战性的。因为月球的天体阻断了探测器的无线电通讯，所以中国首先必须把一颗人造卫星送入月球轨道上的一个点，人造卫星可以在这个点向航天器和地球发射信号。月球背面让科学家尤其感兴趣。
+		</span></div>
+        <div class="t4"><span>&emsp;&emsp;Chinese researchers hope to use the instruments onboard Chang’e-4 <b> to find </b> and study areas of the South Pole-Aitken basin. “This really excites scientists,” Carle Pieters, a scientist at Brown University, says, “because it  <b>means</b> we have the chance to obtain information about how the moon  <b>is constructed. </b>” Data about the moon’s composition, such as how  <b>much </b> ice and other treasures it contains, could help China decide whether <b> its </b> plans for a future lunar (月球的) base are practical.
+		<br>&emsp;&emsp;中国的研究者希望使用嫦娥四号上的设备来发现和研究南极艾特肯盆地。“这真的使科学家们激动，”布朗大学的一位科学家Carle Pieters说：“因为它意味着我们有机会获得月球是如何构造的信息。”关于月亮构成的数据，比如它含有多少水和其他财富，可以帮助中国决定它未来月球基地的计划是否实用
+		</span></div>
+        </div><br><br><br><br><br><br>
+</body>
+    <script>
+        $(document).ready(function(){
+            $("div").click(function(){
+            	//方式一
+                //var words = new SpeechSynthesisUtterance($(this).context.children[0].textContent);
+                //window.speechSynthesis.speak(words)
+
+            	//方式二
+				var audio = new Audio();  
+                audio.src ='https://dict.youdao.com/speech?audio=' + encodeURI($(this).context.children[0].textContent);  
+                audio.play(); 
+            });
+        });
+    </script>
+</html>        

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float-case</title>
+</head>
+<body bgcolor="yellowgreen"> 
+   <div id="word" style="text-align: center; vertical-align: middle; margin-top: 250px; color: rgb(5, 3, 0); font-size: 100px;"></div>
+</body>
+	<script>
+      var words = [ "seaside", "deserve", "blame", "blacklist", "pack", "flock", "seagull", "mess", "immediately", "responsibility", "action", "damage", "ban", "work", "mature", "lifetime", "indirectly", "reconsider", "renew", "deliberately", "cautiously", "driveway","at least", "at the same time", "part of", "blame for sth.", "on business", "lay sth. out", "break in", "fall down", "walk down", "go wrong", "go wild", "get out", "chalk sth. up to sth.", "apologize for","hat in hand","nose in the air","feet in the ground", "hands in pockets"
+];
+
+      let index = 0;
+let intervalId = setInterval(function() {
+  document.getElementById("word").innerHTML = words[index];
+  index++;
+  if (index >= words.length) {
+    index = 0;
+  }
+}, 4000); // 每隔4秒显示一个单词
+    </script>
+</html>
