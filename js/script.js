@@ -1,87 +1,84 @@
-// declaraction of document.ready() function.
-(function () {
-    var ie = !!(window.attachEvent && !window.opera);
-    var wk = /webkit\/(\d+)/i.test(navigator.userAgent) && (RegExp.$1 < 525);
-    var fn = [];
-    var run = function () {
-        for (var i = 0; i < fn.length; i++) fn[i]();
-    };
-    var d = document;
-    d.ready = function (f) {
-        if (!ie && !wk && d.addEventListener)
-            return d.addEventListener('DOMContentLoaded', f, false);
-        if (fn.push(f) > 1) return;
-        if (ie)
-            (function () {
-                try {
-                    d.documentElement.doScroll('left');
-                    run();
-                } catch (err) {
-                    setTimeout(arguments.callee, 0);
-                }
-            })();
-        else if (wk)
-            var t = setInterval(function () {
-                if (/^(loaded|complete)$/.test(d.readyState))
-                    clearInterval(t), run();
-            }, 0);
-    };
-})();
+(function($){
+  // Caption
+  $('.article-entry').each(function(i){
+    $(this).find('img,iframe').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
 
+      var alt = this.alt;
 
-document.ready(
-    // toggleTheme function.
-    // this script shouldn't be changed.
-    () => {
-        var _Blog = window._Blog || {};
-        const currentTheme = window.localStorage && window.localStorage.getItem('theme');
-        const isDark = currentTheme === 'dark';
-        const pagebody = document.getElementsByTagName('body')[0]
-        if (isDark) {
-            document.getElementById("switch_default").checked = true;
-            // mobile
-            document.getElementById("mobile-toggle-theme").innerText = "· Dark"
-        } else {
-            document.getElementById("switch_default").checked = false;
-            // mobile
-            document.getElementById("mobile-toggle-theme").innerText = "· Dark"
-        }
-        _Blog.toggleTheme = function () {
-            if (isDark) {
-                pagebody.classList.add('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
-            } else {
-                pagebody.classList.remove('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Light"
-            }
-            document.getElementsByClassName('toggleBtn')[0].addEventListener('click', () => {
-                if (pagebody.classList.contains('dark-theme')) {
-                    pagebody.classList.remove('dark-theme');
-                } else {
-                    pagebody.classList.add('dark-theme');
-                }
-                window.localStorage &&
-                window.localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light',)
-            })
-            // moblie
-            document.getElementById('mobile-toggle-theme').addEventListener('click', () => {
-                if (pagebody.classList.contains('dark-theme')) {
-                    pagebody.classList.remove('dark-theme');
-                    // mobile
-                    document.getElementById("mobile-toggle-theme").innerText = "· Light"
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
 
-                } else {
-                    pagebody.classList.add('dark-theme');
-                    // mobile
-                    document.getElementById("mobile-toggle-theme").innerText = "· Dark"
-                }
-                window.localStorage &&
-                window.localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light',)
-            })
-        };
-        _Blog.toggleTheme();
-        // ready function.
+      $(this).wrap('<a href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+    });
+
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+
+  if ($.fancybox){
+    $('.fancybox').fancybox();
+  }
+
+  // reward
+  $('#reward-btn').on("click", function(){
+    $('#reward-content').slideToggle(500);
+    return false;
+  });
+
+  var isPC = ($(window).width()>768);
+  // toc
+  if($('#toc-article').length>0){
+    if(isPC) {
+      $('#sidebar').prepend($('#toc-article').html());
     }
-);
+    $('#toc-article').remove();
+  }
+
+  $(window).on("scroll", function(){
+    var scroll = document.documentElement.scrollTop || document.body.scrollTop || window.scrollY;
+    // go to top
+    if (scroll >= 300) {
+      $('#totop').addClass("show");
+    } else {
+      $('#totop').removeClass("show").removeClass("launch");
+    }
+    //toc fixed
+    if(isPC && $('#toc-wrap').length>0){
+      var tocWrap = $('#toc-wrap'),
+          changeSize = document.getElementById("header").offsetHeight + document.getElementById("sidebar").offsetHeight;
+      scroll >= changeSize ? tocWrap.addClass("fixed") : tocWrap.removeClass("fixed");
+      if (tocWrap.hasClass("fixed")){
+        tocWrap.css("width", $('#sidebar').width());
+      }
+      var maxHeight;
+      if ((document.body) && (document.body.clientHeight)) {
+        maxHeight = document.body.clientHeight - 50;
+      }
+      if (document.documentElement && document.documentElement.clientHeight && document.documentElement.clientWidth) {
+        maxHeight = document.documentElement.clientHeight -50;
+      }
+      if(maxHeight && tocWrap.height() > maxHeight ) {
+        tocWrap.css("height", maxHeight);
+        tocWrap.addClass("scroll");
+      }
+    }
+  });
+  $('#totop').on("click", function(){
+    gotoTop(0.1, 20);
+    $(this).addClass("launch");
+    return false;
+  });
+})(jQuery);
+
+function gotoTop(aSpeed, time) {
+  aSpeed = aSpeed || 0.1;
+  time = time || 10;
+  var scroll = document.documentElement.scrollTop || document.body.scrollTop || window.scrollY || 0;
+  var speeding = 1 + aSpeed;
+  window.scrollTo(0, Math.floor(scroll / speeding));
+  if (scroll > 0) {
+    var run = "gotoTop(" + aSpeed + ", " + time + ")";
+    window.setTimeout(run, time);
+  }
+}
