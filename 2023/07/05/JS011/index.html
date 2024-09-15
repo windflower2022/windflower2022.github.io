@@ -69,12 +69,12 @@ fn();
 </code></pre>
 <p>   案例1:结果是几? (123)<br>    function f1() {<br>        var num &#x3D; 123;<br>        function f2() {<br>            console.log(num);&#x2F;&#x2F;站在目标出发,一层一层往外查找<br>        }<br>        f2();<br>    }<br>    var num &#x3D; 456;<br>    f1();<br>    0级链: f1 , num &#x3D; 456<br>    1级链: num &#x3D; 123, f2<br>    2级链: console.log(num);<br>    案例2:结果是几？<br>    var a &#x3D; 1;<br>    function fn1() {<br>        var a &#x3D; 2;<br>        var b &#x3D; ‘22’;<br>        fn2();<br>        function fn2() {<br>            var a &#x3D; 3;<br>            fn3 ();<br>            function fn3() {<br>                var a &#x3D; 4;<br>                console.log(a); &#x2F;&#x2F; a的值? 4<br>                console.log(b); &#x2F;&#x2F; b的值? 22<br>            }<br>        }<br>    }<br>    fn1();</p>
 </body>
-</html></div></article><!--.copyright-wrapper<p>原文作者:<a href="https://windflower2022.github.io">白夜宁月</a></p><p>原文链接:<a href="https://windflower2022.github.io/2023/07/05/JS011/">【131-139】第八章 作用域</a></p><p>发表日期: 2023-07-05 07:15:59</p><p>更新日期: 2024-09-15 19:59:09</p><p>版权声明: 本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可--></p><div class="post-pager"><div class="prev"><a href="/2023/07/06/JS012/" title="【140-142】第九章 预解析">上一篇 【140-142】第九章 预解析</a></div><div class="next"> <a href="/2023/07/02/JS010/" title="【113-130】第七章 函数">下一篇 【113-130】第七章 函数</a></div></div><link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css"/><script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script><div id="gitalk-container"></div><script>new Gitalk({
-  clientID: '2ba1e3c0f7a19cb06d46',
-  clientSecret: 'de59ad386e88955b74e35fc951121be36a9128e3',
-  repo: 'windflower2022.github.io',
-  owner: 'windflower2022',
-  admin: 'windflower2022',
+</html></div></article><!--.copyright-wrapper<p>原文作者:<a href="https://windflower2022.github.io">白夜宁月</a></p><p>原文链接:<a href="https://windflower2022.github.io/2023/07/05/JS011/">【131-139】第八章 作用域</a></p><p>发表日期: 2023-07-05 07:15:59</p><p>更新日期: 2024-09-15 20:08:34</p><p>版权声明: 本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可--></p><div class="post-pager"><div class="prev"><a href="/2023/07/06/JS012/" title="【140-142】第九章 预解析">上一篇 【140-142】第九章 预解析</a></div><div class="next"> <a href="/2023/07/02/JS010/" title="【113-130】第七章 函数">下一篇 【113-130】第七章 函数</a></div></div><link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css"/><script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script><div id="gitalk-container"></div><script>new Gitalk({
+  clientID: '',
+  clientSecret: '',
+  repo: '',
+  owner: '',
+  admin: '',
   id: location.pathname.substr(0, 48),
   distractionFreeMode: true,
   labels: ['Gitalk'],
