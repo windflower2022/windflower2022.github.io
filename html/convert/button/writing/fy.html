@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <title>记单词</title>
+    <style>
+        div{
+            background-color:rgb(2243,243, 243);
+            margin-bottom: 15px;
+            margin-bottom: 15px;
+            margin-left: 185px;
+            padding: 10px;
+            border-radius: 35px;
+            font-size: 30px;
+            width: 1080px;
+            text-align: left;
+        }
+        div:hover{
+            background-color:rgb(226, 245, 231);
+        }
+        .t{
+            margin-top: 100px;
+            padding-left: 100px;
+        }
+        @media screen and (max-width: 650px) {
+            .t{
+                margin-top: 50px;
+                padding-left: 20px;
+            }
+         }
+        </style>
+</head>
+<body> 
+        <br><br><br>
+		<div class="t1" style="text-align: center; font-size: 40px;"><span><br>&emsp;&emsp;【the text of a speech】
+        </br>发言稿1-高中最感激的人
+		</span></div>
+		<div class="text"><span>Dear boys and girls, good afternoon.It's my honor to stand here to express my gratitude and share some personal reflections with you about my Senior High school life . 
+        </br><br>&emsp;&emsp;各位同学，下午好。我很荣幸能够站在这里向大家表达感激之情，并与大家分享我在高中期间的个人感悟。
+        </span></div>	
+        <div class="text"><span>&emsp;&emsp;First of all ,I would like to extend my deepest appreciation to my English teacher. She has been an essential part of my growth during the past three years. Her outgoing and easy-going personality drew me closer to her, and she had a way of making me feel warmly welcomed in her class.Besides, being kind-hearted, she not only cares about our studies but also our physical and mental health. Whenever any of us encounter difficulties, she always listens to us patiently and helps us out readily. Her selflessness has touched my heart deeply.With her help, I have made remarkable progress in English. For this reason, I'm sincerely grateful to her.
+		<br><br>&emsp;&emsp;首先，我想要向我的英语老师表达最深的谢意。在过去的三年里，她是我成长不可或缺的一部分。她外向、随和的个性让我更加亲近她，也让我在她的课堂上感到温暖。此外，她不仅关心我们的学业，还关心我们的身体和心理健康。每当我们遇到困难时，她总是耐心地倾听我们并乐意帮助我们。她的无私精神深深打动了我的心灵。有了她的帮助，我在英语方面取得了显著的进步。出于这个原因，我由衷地感激她。
+        </span></div>					
+        <div class="text"><span>&emsp;&emsp;Looking back on my senior high school life ,I find it unforgettable and full of joy . As I move forward, I will cherish the memories and strive for better things in the future.Thanks for your listening !
+		<br><br>&emsp;&emsp;回顾我的高中生活，我发现它令我难以忘怀，充满了欢乐。在未来的日子里，我会珍惜这些回忆，并为更好的事物而努力奋斗。谢谢大家的聆听！          
+		</span></div>
+		<div class="t1" style="text-align: center; font-size: 40px;"><span>&emsp;&emsp;
+		发言稿2-参观植物园-活动时间和地点+ 活动内容( 参加劳动和了解植物等) + 活动意义
+		</span></div>
+		<div class="text"><span>&emsp;&emsp;Hello, everyone. Today, I'll share a meaningful outing with you. Last Saturday afternoon, our foreign teacher David organized our class to visit the local botanical garden which is a habitat of various plants. Under the guidance of the gardeners, we did some physical labour,including loosening the soil, getting rid of weeds and adding fertilizers to the plants. We also planted some young flowers and trees. Meanwhile, David introduced some plants to us, interms of their classification and usefulness.        
+		</br><br>&emsp;&emsp;大家好。今天我想和大家分享一个有意义的经历。上周六下午，我们的外教David组织了我们班去参观当地的植物园，这里是各种植物的栖息地。在园丁的指导下，我们进行了一些体力劳动，包括松土、除草和给植物施肥。我们还种了一些年轻的花和树。同时，David向我们介绍了一些植物，包括它们的分类和用途。
+        </span></div>	
+        <div class="text"><span>&emsp;&emsp;This activity made us deeply understand the importance of labor and broaden plant knowledge. And it also strengthened our consciousness of loving and protecting nature.		
+		<br><br>&emsp;&emsp;这次活动让我们深刻认识到劳动的重要性，扩大了我们对植物的知识面。它也增强了我们热爱和保护自然的意识。        </span></div>					
+        <div class="text"><span>&emsp;&emsp;Thanks for your listening !
+		<br><br>&emsp;&emsp;谢谢大家的聆听！          
+		</span></div>
+        </div><br><br><br><br><br><br>
+</body>
+    <script>
+        $(document).ready(function(){
+            $("div").click(function(){
+            	//方式一
+                //var words = new SpeechSynthesisUtterance($(this).context.children[0].textContent);
+                //window.speechSynthesis.speak(words)
+
+            	//方式二
+				var audio = new Audio();  
+                audio.src ='https://dict.youdao.com/speech?audio=' + encodeURI($(this).context.children[0].textContent);  
+                audio.play(); 
+            });
+        });
+    </script>
+</html>        

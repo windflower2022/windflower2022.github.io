@@ -1,12 +1,19 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+    
 <head>
-  <meta charset="utf-8">
-  
-  <title>【011-019】第二章 变量 | 岁月缝花</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="变量">
-<meta property="og:type" content="article">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="岁月缝花">
+    <title>【011-019】第二章 变量 - 岁月缝花</title>
+    <meta name="author" content="白夜宁月">
+    
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"白夜宁月","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"\n\n\n\n变量\n\n  \n\n    //1.声明了一个age的变量\n    var age;\n    //2.赋值，把这个值存入这个变量中\n    age = 18;\n    //3.输出结果\n    console.log(age);\n    //4.变量的初始化\n    //case1 声明多个变量\n    var myname = 'Windflower';\n    var address = '火影村';\n    var age = 30;\n    var email = 'kakaxi@itcast.cn';\n    var salary = 2000;\n    console.log(myname);\n    console.log(address);\n    console.log(age);\n    console.log(email);\n    console.log(salary);\n    //case2 a 用户输出姓名 存储到一个myname的变量里面\n    //var myname = prompt('请输入您的名字');\n    //case2 b 弹出这个用户名\n    //alert(myname);\n    //更新变量\n    var myname = 'Windflower';\n    console.log(myname);\n        myname = 'Marry';\n    console.log(myname);\n    //声明多个变量的简写\n    var myname = 'Windflower',\n        address = '火影村',\n        age = 30,\n        email = 'kakaxi@itcast.cn',\n        salary = 2000;\n    //声明变量的特殊情况\n    //a 只声明不赋值 结果是？程序也不知存的是啥，所以结果是undefine 未定义的\n    var sex;//undefined\n    console.log(sex);\n    //b 不声明不赋值会直接使用某个变量，会报错\n    //console.log(tel);\n    //c 不声明直接赋值使用 可使用，但不提倡\n    qq = 110;\n    console.log(qq);\n    // 案例：交换变量值 \n    //1、需要一个临时变量帮助\n    //2.把变量apple1给临时变量temp\n    //3.把变量apple2里面的苹果给apple1\n    //4.把临时变量的里面的值给apple2\n    var temp;//声明了一个临时变量为空\n    var apple1 = '青苹果';\n    var apple2 = '红苹果';\n    temp = apple1; //把apple1里面的值给临时变量temp 把右边给左边\n    apple1 = apple2;\n    apple2 = temp;\n    console.log(apple1);\n    console.log(apple2);\n\n\n\n    一、变量概述\n    \n     1.1 什么是变量\n    \n        白话：变量就是一个装东西的盒子。\n        通俗：变量是用于存放数据的容器，我们通过变量名获取数据，甚至数据可以修改。\n     1.2 变量在内存中的存储\n        本质：变量是程序在内存中申请的一块用来存放数据的空间。类似我们酒店的房间，一个房间可以看作是一个变量\n    \n    二、变量的使用\n    变量在使用时分为两步:1.声明变量 2.赋值\n     1.1 声明变量\n    \n    \n    var age;  \n    var是一个JS关键字,用来声明变量(variable变量的意思)，使用该关键字声明变量后，计算机会自动为变量分配内存空间，不需要程序员管。\n    age是程序员定义的变量名，我们通过变量名来访问内存中分配的空间。\n    \n     1.2 赋值变量\n    \n    age = 10;\n    用来把右边的值赋给左边的变量空间中，此处代表赋值的意思\n    变量值是程序员保存到变量空间里的值\n    \n     1.3 变量的初始化\n    var age = 18 ; \n    声明一个变量并赋值，我们称之为变量的初始化\n    \n     1.4 案例：变量的使用\n    \n        1) 有个叫卡卡西的人在旅店登记的时候前台让他填一张表，这张表里的内容要存到电脑上，表中的内容有：姓名，年龄，邮箱，家庭住址和工资，存储之后需要把这些信息显示出来，所显示的内容如下：\n        我叫旗木卡卡西，我住在火影村，我今年30岁了，我的邮箱是kakaxi@itcast.cn,我的工资2000\n        2) a.弹出一个输入框，提示用户输入姓名\n           b.弹出一个对话框，输出用户刚才输入的姓名\n    \n    三、变量的语法扩展\n     1.1 更新变量\n    \n        一个变量被重新赋值后，它原有的值就会被覆盖，变量值将以最后一次赋的值为准。\n        var age = 18;\n        age = 81;\n    \n     1.2 同时声明多个变量  \n    \n        同时声明多个变量时,只需要写一个var,多个变量名之间使用英文逗号隔开。\n        var age = 10, name = 'zs', sex = 2;\n    \n     1.3 声明变量特殊情况 \n    var age;console.log(age);   只声明不赋值              undefined\n    console.log(age)            不声明不赋值 直接使用        报错\n    age = 10;console.log(age);  不声明只赋值                  10\n    四、变量命名规范\n    \n        由字母(A-Za-z)、数字(0-9)、下划线()、美元符号{$}组成 如:usrAge,num01,_name\n        严格区分大小写,var app;和var App;是两个变量\n        不能以数字开头,18age是错误的\n        不能是关键字，保留字.例如: var、for、while、name也不要直接使用为变量名\n        变量名必须有意义。MMD BBD nl最好换成age\n        遵守驼峰命名法。首字母小写,后面单词的首字母需要大写。myFirstName\n        推荐翻译网站：有道 爱词霸\n    \n    五、变换变量案例\n      案例：课堂练习\n    \n        要求：交换两个变量的值(实现思路：使用一个临时变量，用来做中间存储)\n    \n     小结\n        为啥需要变量？\n        变量是什么？\n        变量的本质是什么？\n        变量怎么使用的？\n        什么是变量的初始化？\n        变量命名规范有哪些？\n        交换2个变量值的思路?\n\n","dateCreated":"2023-06-06T18:41:59+08:00","dateModified":"2023-06-25T12:47:25+08:00","datePublished":"2023-06-06T18:41:59+08:00","description":"\n\n\n\n变量","headline":"【011-019】第二章 变量","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://windflower2022.github.io/2023/06/06/JS002/"},"publisher":{"@type":"Organization","name":"白夜宁月","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://windflower2022.github.io/2023/06/06/JS002/"}</script>
+    <meta name="description" content="变量">
+<meta property="og:type" content="blog">
 <meta property="og:title" content="【011-019】第二章 变量">
 <meta property="og:url" content="https://windflower2022.github.io/2023/06/06/JS002/index.html">
 <meta property="og:site_name" content="岁月缝花">
@@ -16,262 +23,336 @@
 <meta property="article:modified_time" content="2023-06-25T04:47:25.305Z">
 <meta property="article:author" content="白夜宁月">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternative" href="/atom.xml" title="岁月缝花" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/img/favicon.png">
-  
-  
-      
-<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+    
+    
+        
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    
+<link rel="stylesheet" href="/assets/css/all.css">
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
 
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  
-  
-      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  
-  <!-- 加载特效 -->
-    <script src="/js/pace.js"></script>
-    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
-  <script>
-      var yiliaConfig = {
-          rootUrl: '/',
-          fancybox: true,
-          animate: true,
-          isHome: false,
-          isPost: true,
-          isArchive: false,
-          isTag: false,
-          isCategory: false,
-          open_in_new: false
-      }
-  </script>
-<meta name="generator" content="Hexo 6.3.0"></head>
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            
-            <img lazy-src="/img/head.jpg" class="js-avatar">
-            
+    
+<link rel="stylesheet" href="/assets/css/thumbs.css">
+
+    
+<link rel="stylesheet" href="/assets/css/tranquilpeak.css">
+
+    <!--STYLES END-->
+    
+
+    
+
+    
+        
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a
+            class="header-title-link"
+            href="/"
+            aria-label=""
+        >
+            岁月缝花
         </a>
-
-        <hgroup>
-          <h1 class="header-author"><a href="/" title="Hi Mate"></a></h1>
-        </hgroup>
-
-        
-        
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
-                        
-                        <li>友情链接</li>
-                        
-                        
-                        <li>关于我</li>
-                        
-                    </ul>
-                </div>
-            </div>
-        
-
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/Home">博客首页</a></li>
-                        
-                            <li><a href="/works">作品展示</a></li>
-                        
-                            <li><a href="/about">留言打卡</a></li>
-                        
-                            <li><a href="/FrontEndGuide">前端导航</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=PAkNDgsKBQ4MCnxNTRJfU1E" title="mail">mail</a>
-                            
-                                <a class="fl github" target="_blank" href="https://github.com/luuman" title="github">github</a>
-                            
-                                <a class="fl zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
-                            
-                                <a class="fl weibo" target="_blank" href="#" title="weibo">weibo</a>
-                            
-                                <a class="fl google" target="_blank" href="#" title="google">google</a>
-                            
-                                <a class="fl twitter" target="_blank" href="#" title="twitter">twitter</a>
-                            
-                                <a class="fl linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/100/" style="font-size: 13.33px;">100</a> <a href="/tags/2020-2/" style="font-size: 16.67px;">2020-2</a> <a href="/tags/2020-3/" style="font-size: 16.67px;">2020-3</a> <a href="/tags/Oral-English/" style="font-size: 20px;">Oral English</a> <a href="/tags/diary/" style="font-size: 10px;">diary</a> <a href="/tags/music/" style="font-size: 13.33px;">music</a> <a href="/tags/vocabulary/" style="font-size: 10px;">vocabulary</a> <a href="/tags/%E7%BE%8E%E6%96%87/" style="font-size: 10px;">美文</a> <a href="/tags/%E9%9F%B3%E7%94%BB/" style="font-size: 10px;">音画</a> <a href="/tags/%E9%AB%98%E8%80%83/" style="font-size: 13.33px;">高考</a>
-                    </div>
-                </section>
-                
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">name</a>
-                    
-                    </div>
-                </section>
-                
-
-                
-                
-                <section class="switch-part switch-part4">
-                
-                    <div id="js-aboutme">纯海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>                
-</div>
     </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me"></a></h1>
-      </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                
-                    <img lazy-src="/img/head.jpg" class="js-avatar">
-                
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="Me"></a></h1>
-            </hgroup>
+    
+        
+            <a
+                class="header-right-picture "
+                href="#about"
+                aria-label="Open the link: /#about"
+            >
+        
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+        
+            <ul class="sidebar-buttons">
             
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/Home">博客首页</a></li>
-                
-                    <li><a href="/works">作品展示</a></li>
-                
-                    <li><a href="/about">留言打卡</a></li>
-                
-                    <li><a href="/FrontEndGuide">前端导航</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                <div class="social">
+                <li class="sidebar-button">
                     
-                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=PAkNDgsKBQ4MCnxNTRJfU1E" title="mail">mail</a>
+                        <a
+                            class="sidebar-button-link "
+                            href="/"
+                            
+                            rel="noopener"
+                            title="Home"
+                        >
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
                     
-                        <a class="github" target="_blank" href="https://github.com/luuman" title="github">github</a>
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-categories"
+                            
+                            rel="noopener"
+                            title="Categories"
+                        >
+                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
                     
-                        <a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-tags"
+                            
+                            rel="noopener"
+                            title="Tags"
+                        >
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
                     
-                        <a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+                        <a
+                            class="sidebar-button-link "
+                            href="/all-archives"
+                            
+                            rel="noopener"
+                            title="Archives"
+                        >
+                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
                     
-                        <a class="google" target="_blank" href="#" title="google">google</a>
+                        <a
+                            class="sidebar-button-link open-algolia-search"
+                            href="#search"
+                            
+                            rel="noopener"
+                            title="Search"
+                        >
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
                     
-                        <a class="twitter" target="_blank" href="#" title="twitter">twitter</a>
+                        <a
+                            class="sidebar-button-link "
+                            href="#about"
+                            
+                            rel="noopener"
+                            title="About"
+                        >
+                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
                     
-                        <a class="linkedin" target="_blank" href="#" title="linkedin">linkedin</a>
+                        <a
+                            class="sidebar-button-link "
+                            href="https://github.com/"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="GitHub"
+                        >
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
                     
-                </div>
-            </nav>
-        </header>                
+                        <a
+                            class="sidebar-button-link "
+                            href="http://stackoverflow.com/users"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Stack Overflow"
+                        >
+                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Stack Overflow</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://twitter.com/"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Twitter"
+                        >
+                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://facebook.com/"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Facebook"
+                        >
+                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Facebook</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://plus.google.com/"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="Google +"
+                        >
+                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Google +</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="https://www.linkedin.com/profile/"
+                            
+                                target="_blank"
+                            
+                            rel="noopener"
+                            title="LinkedIn"
+                        >
+                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">LinkedIn</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/mailto"
+                            
+                            rel="noopener"
+                            title="Mail"
+                        >
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a
+                            class="sidebar-button-link "
+                            href="/atom.xml"
+                            
+                            rel="noopener"
+                            title="RSS"
+                        >
+                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">RSS</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-JS002" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2023/06/06/JS002/" class="article-date">
-      <time datetime="2023-06-06T10:41:59.000Z" itemprop="datePublished">2023-06-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      【011-019】第二章 变量
-    </h1>
-  
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JS/">JS</a>
-    </div>
-
-
-        
-        <div class="clearfix"></div>
-      </div>
-      
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <!DOCTYPE html>
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            【011-019】第二章 变量
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2023-06-06T18:41:59+08:00">
+	
+		    Jun 06, 2023
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/JS/">JS</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -413,304 +494,326 @@
         交换2个变量值的思路?<br/><br/><br/><br/>
 </body>
 </html>
-      
-      
-        <div class="page-reward">
-          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">赏</a></p>
-          <div class="hide_box"></div>
-          <div class="shang_box">
-            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
-            <div class="shang_tit">
-              <p>纯属好玩</p>
-            </div>
-            <div class="shang_payimg">
-              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
-            </div>
-              <div class="pay_explain">扫码打赏，你说多少就多少</div>
-            <div class="shang_payselect">
-              
-                <div class="pay_item checked" data-id="alipay">
-                  <span class="radiobox"></span>
-                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
-                </div>
-              
-              
-                <div class="pay_item" data-id="wechat">
-                  <span class="radiobox"></span>
-                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
-                </div>
-              
-            </div>
-            <div class="shang_info">
-              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
-            </div>
-          </div>
-        </div>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
-        <script type="text/javascript">
-          $(".pay_item").click(function(){
-            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
-            var dataid=$(this).attr('data-id');
-            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
-            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
-          });
-          function dashangToggle(){
             
-            $(".hide_box").fadeToggle();
-            $(".shang_box").fadeToggle();
-          }
-        </script>
-      
+
+
+        </div>
     </div>
-    
-  </div>
-  
-    
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2023/06/06/JS002/">【011-019】第二章 变量</a></p>
-        <p><span>文章作者:</span><a href="/" title="访问  的个人博客"></a></p>
-        <p><span>发布时间:</span>2023年06月06日 - 18时41分</p>
-        <p><span>最后更新:</span>2023年06月25日 - 12时47分</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2023/06/06/JS002/" title="【011-019】第二章 变量">https://windflower2022.github.io/2023/06/06/JS002/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://windflower2022.github.io/2023/06/06/JS002/　　作者: " title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script src="/js/clipboard.min.js"></script>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
-        </p>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2023/06/06/ywsc/"
+                    data-tooltip="【风花音画】于无声处"
+                    aria-label="PREVIOUS: 【风花音画】于无声处"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2023/06/05/JS001/"
+                    data-tooltip="【0007-010】第一章 初识"
+                    aria-label="NEXT: 【0007-010】第一章 初识"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://windflower2022.github.io/2023/06/06/JS002/"
+                    title="Share on Facebook"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://windflower2022.github.io/2023/06/06/JS002/"
+                    title="Share on Twitter"
+                    aria-label="Share on Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://plus.google.com/share?url=https://windflower2022.github.io/2023/06/06/JS002/"
+                    title="Share on Google+"
+                    aria-label="Share on Google+"
+                >
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
     </div>
-
-
-
-<nav id="article-nav">
-  
-    <a href="/2023/06/06/ywsc/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          【风花音画】于无声处
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2023/06/05/JS001/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【0007-010】第一章 初识</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
-  
 </article>
 
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">一、变量概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.1.</span> <span class="toc-text"> 1.1 什么是变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.2.</span> <span class="toc-text"> 1.2 变量在内存中的存储</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">二、变量的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.1.</span> <span class="toc-text"> 1.1 声明变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.2.</span> <span class="toc-text"> 1.2 赋值变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.3.</span> <span class="toc-text"> 1.3 变量的初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.4.</span> <span class="toc-text"> 1.4 案例：变量的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">三、变量的语法扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">3.1.</span> <span class="toc-text"> 1.1 更新变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">3.2.</span> <span class="toc-text"> 1.2 同时声明多个变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">3.3.</span> <span class="toc-text"> 1.3 声明变量特殊情况</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">四、变量命名规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">五、变换变量案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">5.1.</span> <span class="toc-text">  案例：课堂练习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">5.2.</span> <span class="toc-text"> 小结</span></a></li></ol></li></ol>
-</div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
 
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
-</script>
-
-
-
-
-
-<div class="bdsharebuttonbox">
-	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
-	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
-</div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-
-
-
-    
-        <div id="gitments"></div>
-<script src="/js/gitment.browser.js"></script>
-<script>
-    var gitment = new Gitment({
-      id: window.location.pathname,
-      owner: 'luuman',
-      repo: 'luuman.github.io',
-      oauth: {
-        client_id: '',
-        client_secret: '',
-      },
-    })
-    gitment.render('gitments')
-</script>
-    
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2023/06/06/ywsc/" title="上一篇: 【风花音画】于无声处">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-        
-            <a href="/2023/06/05/JS001/" title="下一篇: 【0007-010】第一章 初识">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2024/05/25/nsrjyh/">【风花音画】你是我的人间烟火</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/05/19/memory/">【风花音画】你记得花 花就一直开</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/05/19/memory1/">【风花音画】你记得花 花就一直开</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/05/06/brjym1/">【风花音画】不如见一面</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/05/05/brjym/">【风花音画】不如见一面</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/02/25/js/">【风花音画】锦瑟</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/02/05/yx/">【风花音画】余香</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/31/zsyf/">zsyf</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/31/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/31/hello-world1/">【001-018 】标签以及有序无序列表</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/31/hello-world2/">【019-025】表格基础知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/31/hello-world3/">【026-032】块级内联元素下拉菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/29/xinnianhao/">【风花音画】新年好</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/27/nwdsl/">【风花音画】挪威的森林</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/01/26/sdsnxygyb/">【风花音画】谁的思念像月光银白</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/09/ry/">【风花音画】如愿</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/09/21/nzbc/">【风花音画】你在别处 我一直在这里</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/09/17/sky/">【风花音画】天空很高，你有清澈</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/09/13/qh/">【风花音画】人间有味是清欢</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/09/07/th/">【风花音画】听海</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/08/20/ygez/">【风花音画】因歌而作</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/08/01/JS015/">【187-190】第十二章 javaScript简单类型和复杂类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/30/JS014/">【155-186】第十一章 内置对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/22/shui/">【风花音画】谁</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/07/JS013/">【143-154】第十章 对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/06/JS012/">【140-142】第九章 预解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/05/JS011/">【131-139】第八章 作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/07/02/JS010/">【113-130】第七章 函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/06/29/JS009/">【096-112】第六章 数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/06/27/JS008/">【092-095】第五章 流程控制-continue和break循环</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/06/25/JS007/">【087-091】第五章 流程控制-while和do while循环</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/06/24/JS006/">【069-086】第五章 流程控制-for循环</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/06/22/ssn/">【风花日记】 风花说</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/06/18/yhll/">【风花音画】 音画浏览</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/06/16/JS005/">【055-068】第五章 流程控制-分支</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/06/15/JS004/">【041-054】第四章 运算符</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/06/10/JS003/">【020-040】第三章 数据</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/06/08/hjhjyq/">【风花音画】很久很久以前</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/06/06/ywsc/">【风花音画】于无声处</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/06/06/JS002/">【011-019】第二章 变量</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/06/05/JS001/">【0007-010】第一章 初识</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/13/byg/">【风花音画】白月光</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/11/test/">【全国真题】2018-2022</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/09/writing/">【写作训练】作文</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/08/A008/">【英语口语】008</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/07/A007/">【英语口语】007</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/05/A006/">【英语口语】006</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/03/A005/">【英语口语】005</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/02/A004/">【英语口语】004</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/05/02/A003/">【英语口语】003</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/04/24/100sentences/">【句子积累】100sentences</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/04/23/100/">【句子积累】100句</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/04/22/A002/">【英语口语】002</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/04/21/A001/">【英语口语】001</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/04/14/kn/">【音乐欣赏】可能</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/04/10/tobeurself/">【美文欣赏】比别人慢一些都没关系，做自己就好</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/03/12/tomydear/">【风花心语】宝贝,做好规划 飞得更高</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/03/11/202002Grammarfillingthechinesenewyear/">【风花日志】The Chinese New Year</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/03/11/202003Clozedifficult%20customers/">【风花日志】Difficult Customers</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/03/11/202003Grammarfillingtheartist/">【风花日志】The Artist</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/03/11/202003Errorcorrectionmymomcaresforour%20family/">【风花日志】My Mom Cares For Our Family</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/03/10/202002ErrorcorrectionlearnKangfu/">【风花日志】Learning Kangfu</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/02/16/nyzsctjll/">【风花音画】你一转身，春天就来了</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/01/25/bury1/">【风花音画】葬我以风</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/01/22/smmsne/">【音乐欣赏】是妈妈 是女儿</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/01/12/soledad/">【风花音画】Soledad特效版</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/20/mhwt/">【音乐欣赏】漠河舞厅</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/18/qjysqjy/">【风花音画】千江有水千江月</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/18/ahxs/">【风花音画】暗红心事</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/18/hello-world35/">【089】CSS布局之重叠</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/17/dy/">【风花音画】大鱼</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/15/3500/">【词汇积累】3500在线发音</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/15/pd/">【风花音画】片段</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/15/action%20plan-case/">【资源收藏】行动计划案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/14/action%20plan/">【资源收藏】行动计划</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/13/hello-world34/">【088】CSS布局之定位</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/12/soledad1/">【风花音画】Soledad</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/11/waiting/">【风花音画】Waiting</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/11/qssh/">【风花珍藏】秋十四行.甘蓝赠</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/10/empty/">【风花音画】 迷失在虚无中</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/10/zjqc/">【风花音画】再见青春</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/10/hello-world33/">【087】CSS布局之盒模型案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/05/wysmcnlzn/">【风花音画】我用什么才能留住你</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/05/dust/">【风花音画】尘埃</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/04/rjyh/">【风花食事】豆花*苞谷粑</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/04/dnll/">【风花音画】当你老了</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/02/br/">【风花音画】不染</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/11/02/gsdqj/">【风花音画】故事的情节</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/25/hell0-world33/">【087】CSS布局之之浮动综合案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/24/hell0-world32/">【086】CSS布局之之浮动清理</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/24/hell0-world31/">【085】CSS布局之之浮动基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/22/xrj/">【风花音画】 心如镜</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/21/hell0-world30/">【084】CSS布局之溢出处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/21/hell0-world29/">【083】CSS布局之元素类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/21/hello-world29/">【083】CSS布局之元素类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/20/hell0-world28/">【082】CSS布局之显示属性3.0</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/20/hello-world28/">【082】CSS布局之显示属性3.0</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/20/hell0-world27/">【081】CSS盒模型案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/19/hell0-world26/">【080】CSS盒模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/19/hell0-world25/">【079】CSS填充和宽高</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/19/hell0-world24/">【078】CSS边距</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/17/hell0-world23/">【077】CSS轮廓</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/17/hell0-world22/">【076】CSS背景滚动视觉差</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/16/hell0-world21/">【074】CSS背景</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/15/hell0-world20/">【072-073】边框列表及案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/12/wanwujing/">【美文欣赏】万物静</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/04/hell0-world18/">【070】CSS边框</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/04/hell0-world19/">【071】CSS边框综合案例</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/04/hell0-world17/">【069】CSS选择器的权重</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/03/hell0-world16/">【068】谷歌字体和ICON图标</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/03/hell0-world15/">【067】字体风格和样式简写</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/02/hell0-world14/">【066】字体和字号</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/02/hell0-world13/">【065】文本修饰</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/01/hell0-world12/">【064】文本对齐和间距</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/01/hell0-world11/">【063】文本颜色及大小写转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/01/hell0-world10/">【062】简单和组合选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/01/hell0-world9/">【061】伪元素选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/01/hell0-world8/">【060】伪类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/01/hell0-world7/">【059】CSS组合选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/09/30/hell0-world6/">【053-058】CSS基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/09/28/hello-world5/">【042-049】iframe以及SVG</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/09/28/hello-world4/">【033-041】个人信息表</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/09/25/music/">本博代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/09/24/%E8%8B%B1%E6%96%87%E5%8F%91%E9%9F%B3/">点读4000单词</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/09/20/code/">【代码】音乐播放器</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/26/Narrative/">【风花日志】Narrative</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/06/yryh/">【风花音画】一人一花</a></li></ul>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-    <script>
-        $(".post-list").addClass("toc-article");
-        $(".post-list-item a").attr("target","_blank");
-        $("#post-nav-button > a:nth-child(2)").click(function() {
-            $(".fa-bars, .fa-times").toggle();
-            $(".post-list").toggle(300);
-            if ($(".toc").length > 0) {
-                $("#toc, #tocButton").toggle(200, function() {
-                    if ($(".switch-area").is(":visible")) {
-                        $("#tocButton").attr("value", valueHide);
-                        }
-                    })
-            }
-            else {
-            }
-        })
-    </script>
-
-
-
-    <script>
-        
-    </script>
-</div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                &copy; 2024 白夜宁月
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
-            </div>
-        </div>
-        
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >海贼到访数: 
-                            <span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>, </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">本页阅读量: 
-                            <span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
-        
-    </div>
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2024 白夜宁月. All Rights Reserved.
+    </span>
 </footer>
 
-    </div>
-    
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-
-<script src="/js/main.js"></script>
-
-
-    <script>
-        $(document).ready(function() {
-            var backgroundnum = 24;
-            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-        })
-    </script>
-
-
-
-
-
-<div class="scroll" id="scroll">
-    <a href="#"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2023/06/06/ywsc/"
+                    data-tooltip="【风花音画】于无声处"
+                    aria-label="PREVIOUS: 【风花音画】于无声处"
+                >
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a
+                    class="post-action-btn btn btn--default tooltip--top"
+                    href="/2023/06/05/JS001/"
+                    data-tooltip="【0007-010】第一章 初识"
+                    aria-label="NEXT: 【0007-010】第一章 初识"
+                >
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a
+                class="post-action-btn btn btn--default btn-open-shareoptions"
+                href="#btn-open-shareoptions"
+                aria-label="Share this post"
+            >
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://windflower2022.github.io/2023/06/06/JS002/"
+                    title="Share on Facebook"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://twitter.com/intent/tweet?text=https://windflower2022.github.io/2023/06/06/JS002/"
+                    title="Share on Twitter"
+                    aria-label="Share on Twitter"
+                >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a
+                    class="post-action-btn btn btn--default"
+                    target="new" href="https://plus.google.com/share?url=https://windflower2022.github.io/2023/06/06/JS002/"
+                    title="Share on Google+"
+                    aria-label="Share on Google+"
+                >
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
 </div>
-<script>
-    $(document).ready(function() {
-        if ($("#comments").length < 1) {
-            $("#scroll > a:nth-child(2)").hide();
-        };
-    })
-</script>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-  <script language="javascript">
-    $(function() {
-        $("a[title]").each(function() {
-            var a = $(this);
-            var title = a.attr('title');
-            if (title == undefined || title == "") return;
-            a.data('title', title).removeAttr('title').hover(
-
-            function() {
-                var offset = a.offset();
-                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
-                    top: offset.top - a.outerHeight() - 15,
-                    left: offset.left + a.outerWidth()/2 + 1
-                }).fadeIn(function() {
-                    var pop = $(this);
-                    setTimeout(function() {
-                        pop.remove();
-                    }, pop.text().length * 800);
-                });
-            }, function() {
-                $("#anchortitlecontainer").remove();
-            });
-        });
-    });
-</script>
 
 
-  </div>
-</body>
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://www.facebook.com/sharer/sharer.php?u=https://windflower2022.github.io/2023/06/06/JS002/"
+                        aria-label="Share on Facebook"
+                    >
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://twitter.com/intent/tweet?text=https://windflower2022.github.io/2023/06/06/JS002/"
+                        aria-label="Share on Twitter"
+                    >
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a
+                        class="share-option-btn"
+                        target="new"
+                        href="https://plus.google.com/share?url=https://windflower2022.github.io/2023/06/06/JS002/"
+                        aria-label="Share on Google+"
+                    >
+                        <i class="fab fa-google-plus" aria-hidden="true"></i><span>Share on Google+</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <h4 id="about-card-name">白夜宁月</h4>
+        
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </div>
+        
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+
+<script src="/assets/js/jquery.js"></script>
+
+
+<script src="/assets/js/jquery.fancybox.js"></script>
+
+
+<script src="/assets/js/thumbs.js"></script>
+
+
+<script src="/assets/js/tranquilpeak.js"></script>
+
+<!--SCRIPTS END-->
+
+
+    
+
+
+
+
+    </body>
 </html>
