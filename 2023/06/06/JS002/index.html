@@ -1,0 +1,152 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1,user-scalable=no"><meta name="renderer" content="webkit"><meta name="color-scheme" content="dark light"><meta name="author" content="白夜宁月"><meta name="description" content=""><meta name="keywords" content=""><title>【011-019】第二章 变量</title><link rel="icon" type="image/x-icon" href="/images/favicon.ico"><link rel="stylesheet" href="//at.alicdn.com/t/font_3242539_utq6ykfq7z.css"><link rel="stylesheet" light-src="https://cdn.staticfile.org/highlight.js/11.5.0/styles/github.min.css" dark-src="https://cdn.staticfile.org/highlight.js/11.5.0/styles/github-dark.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif" as="font"><link href="/style/index.css" rel="stylesheet"><meta name="generator" content="Hexo 6.3.0"></head><body><header class="page-header"><nav><ul class="router-list"><li class="nav-item"> <a href="/">主页</a></li><li class="nav-item"> <a href="/archives/">归档</a></li><li class="nav-item"> <a href="/atom.xml">RSS</a></li></ul><div class="mode-switch"><span class="iconfont icon-DarkTheme"></span></div></nav></header><main><section class="main-content"><section class="post-page"><div class="title-bar"><h1>【011-019】第二章 变量</h1><div class="post-info"><span>2023-06-06 18:41:59</span><span class="tags"></span></div></div><article> <div class="content"><!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>变量</title>
+<span id="more"></span>
+<link rel="stylesheet" href="./测试.css">  
+<script>
+    //1.声明了一个age的变量
+    var age;
+    //2.赋值，把这个值存入这个变量中
+    age = 18;
+    //3.输出结果
+    console.log(age);
+    //4.变量的初始化
+    //case1 声明多个变量
+    var myname = 'Windflower';
+    var address = '火影村';
+    var age = 30;
+    var email = 'kakaxi@itcast.cn';
+    var salary = 2000;
+    console.log(myname);
+    console.log(address);
+    console.log(age);
+    console.log(email);
+    console.log(salary);
+    //case2 a 用户输出姓名 存储到一个myname的变量里面
+    //var myname = prompt('请输入您的名字');
+    //case2 b 弹出这个用户名
+    //alert(myname);
+    //更新变量
+    var myname = 'Windflower';
+    console.log(myname);
+        myname = 'Marry';
+    console.log(myname);
+    //声明多个变量的简写
+    var myname = 'Windflower',
+        address = '火影村',
+        age = 30,
+        email = 'kakaxi@itcast.cn',
+        salary = 2000;
+    //声明变量的特殊情况
+    //a 只声明不赋值 结果是？程序也不知存的是啥，所以结果是undefine 未定义的
+    var sex;//undefined
+    console.log(sex);
+    //b 不声明不赋值会直接使用某个变量，会报错
+    //console.log(tel);
+    //c 不声明直接赋值使用 可使用，但不提倡
+    qq = 110;
+    console.log(qq);
+    // 案例：交换变量值 
+    //1、需要一个临时变量帮助
+    //2.把变量apple1给临时变量temp
+    //3.把变量apple2里面的苹果给apple1
+    //4.把临时变量的里面的值给apple2
+    var temp;//声明了一个临时变量为空
+    var apple1 = '青苹果';
+    var apple2 = '红苹果';
+    temp = apple1; //把apple1里面的值给临时变量temp 把右边给左边
+    apple1 = apple2;
+    apple2 = temp;
+    console.log(apple1);
+    console.log(apple2);
+</script>
+</head>
+<body>
+    <h2>一、变量概述</h2>
+    <!--more-->
+    <h3> 1.1 什么是变量</h3>
+    <p>
+        白话：变量就是一个装东西的盒子。<br/>
+        通俗：变量是用于存放数据的容器，我们通过变量名获取数据，甚至数据可以修改。<br/>
+    <h3> 1.2 变量在内存中的存储</h3>
+        本质：变量是程序在内存中申请的一块用来存放数据的空间。类似我们酒店的房间，一个房间可以看作是一个变量<br/>
+    </p>
+    <h2>二、变量的使用</h2>
+    <p>变量在使用时分为两步:1.声明变量 2.赋值</p>
+    <h3> 1.1 声明变量</h3>
+    <!--声明变量-->
+    <p>
+    var age;  <!--声明一个名称为age的变量--><br/>
+    var是一个JS关键字,用来声明变量(variable变量的意思)，使用该关键字声明变量后，计算机会自动为变量分配内存空间，不需要程序员管。<br/>
+    age是程序员定义的变量名，我们通过变量名来访问内存中分配的空间。<br/>
+    </p>
+    <h3> 1.2 赋值变量</h3>
+    <p>
+    age = 10;<!--给age这个变量赋值为10--><br/>
+    用来把右边的值赋给左边的变量空间中，此处代表赋值的意思<br/>
+    变量值是程序员保存到变量空间里的值<br/>
+    </p>
+    <h3> 1.3 变量的初始化</h3>
+    <p>var age = 18 ; <br/><!--声明变量同时赋值为18-->
+    声明一个变量并赋值，我们称之为变量的初始化<br/>
+    </p>
+    <h3> 1.4 案例：变量的使用</h3>
+    <p>
+        1) 有个叫卡卡西的人在旅店登记的时候前台让他填一张表，这张表里的内容要存到电脑上，表中的内容有：姓名，年龄，邮箱，家庭住址和工资，存储之后需要把这些信息显示出来，所显示的内容如下：<br/>
+        我叫旗木卡卡西，我住在火影村，我今年30岁了，我的邮箱是kakaxi@itcast.cn,我的工资2000<br/>
+        2) a.弹出一个输入框，提示用户输入姓名<br/>
+           b.弹出一个对话框，输出用户刚才输入的姓名<br/>
+    </p>
+    <h2>三、变量的语法扩展</h2>
+    <h3> 1.1 更新变量</h3>
+    <P>
+        一个变量被重新赋值后，它原有的值就会被覆盖，变量值将以最后一次赋的值为准。<br/>
+        var age = 18;<br/>
+        age = 81;<br/>
+    </P><!--最后的结果就是81因为18被覆盖掉了-->
+    <h3> 1.2 同时声明多个变量</h3>  
+    <P>
+        同时声明多个变量时,只需要写一个var,多个变量名之间使用英文逗号隔开。<br/>
+        var age = 10, name = 'zs', sex = 2;<br/>
+    </P>
+    <h3> 1.3 声明变量特殊情况</h3> 
+    var age;console.log(age);   只声明不赋值              undefined<br/>
+    console.log(age)            不声明不赋值 直接使用        报错<br/>
+    age = 10;console.log(age);  不声明只赋值                  10<br/>
+    <h2>四、变量命名规范</h2>
+    <p>
+        由字母(A-Za-z)、数字(0-9)、下划线()、美元符号{$}组成 如:usrAge,num01,_name<br/>
+        严格区分大小写,var app;和var App;是两个变量<br/>
+        不能以数字开头,18age是错误的<br/>
+        不能是关键字，保留字.例如: var、for、while、name也不要直接使用为变量名<br/>
+        变量名必须有意义。MMD BBD nl最好换成age<br/>
+        遵守驼峰命名法。首字母小写,后面单词的首字母需要大写。myFirstName<br/>
+        推荐翻译网站：有道 爱词霸<br/>
+    </p>
+    <h2>五、变换变量案例</h2>
+    <h3>  案例：课堂练习</h3>
+    <p>
+        要求：交换两个变量的值(实现思路：使用一个临时变量，用来做中间存储)<br/>
+    </p>
+    <h3> 小结</h3>
+        为啥需要变量？<br/>
+        变量是什么？<br/>
+        变量的本质是什么？<br/>
+        变量怎么使用的？<br/><br/>
+        什么是变量的初始化？<br/>
+        变量命名规范有哪些？<br/>
+        交换2个变量值的思路?<br/><br/><br/><br/>
+</body>
+</html></div></article><!--.copyright-wrapper<p>原文作者:<a href="https://windflower2022.github.io">白夜宁月</a></p><p>原文链接:<a href="https://windflower2022.github.io/2023/06/06/JS002/">【011-019】第二章 变量</a></p><p>发表日期: 2023-06-06 18:41:59</p><p>更新日期: 2024-09-15 20:27:00</p><p>版权声明: 本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可--></p><div class="post-pager"><div class="prev"><a href="/2023/06/06/ywsc/" title="【风花音画】于无声处">上一篇 【风花音画】于无声处</a></div><div class="next"> <a href="/2023/06/05/JS001/" title="【0007-010】第一章 初识">下一篇 【0007-010】第一章 初识</a></div></div><link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css"/><script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script><div id="gitalk-container"></div><script>new Gitalk({
+  clientID: '',
+  clientSecret: '',
+  repo: '',
+  owner: '',
+  admin: '',
+  id: location.pathname.substr(0, 48),
+  distractionFreeMode: true,
+  labels: ['Gitalk'],
+  title: '【011-019】第二章 变量',
+}).render('gitalk-container');</script></section></section></main><footer class="footer-page"><div><span>Powered by</span><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>| Theme</span><a target="_blank" rel="noopener" href="https://github.com/techmovie/hexo-theme-instapaper">instapaper</a></div></footer><script src="/scripts/dark.js"></script><script src="/scripts/post.js"></script></body></html>
