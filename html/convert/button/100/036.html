@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <title>记句子<</title>
+    <style>
+        div{
+            background-color:rgb(243, 243, 243);
+            margin-bottom: 5px;
+            padding: 5px;
+            border-radius: 55px;
+            font-size: 30px;
+        }
+        div:hover{
+            background-color:rgb(226, 245, 231);
+        }
+        .t{
+            margin-top: 0px;
+            padding-left: 150px;
+        }
+        @media screen and (max-width: 650px) {
+            .t{
+                margin-top: 50px;
+                padding-left: 120px;
+            }
+
+           div.t span #i {
+                color: black
+            }
+    </style>
+</head>
+<body> 
+<div class="text"><span style="color:rgb(72, 73, 70)">
+<br>&emsp;36. Recently,I have been busy preparing for my college entrance exam,but unfortunately I find it quite hard to concentrate on my study. 
+<br><br>&emsp;Recently,I have been busy preparing for my college entrance exam,but unfortunately I find it quite hard to concentrate on my study. Recently,I have been busy preparing for my college entrance exam,but unfortunately I find it quite hard to concentrate on my study. 
+<br>&emsp;最近我忙于为高考做准备，但不幸的是，我发现集中精力学习很困难，所以写信向您求助。
+</span></div>
+</body>
+    <script>
+        $(document).ready(function(){
+            $("div").click(function(){
+            	//方式一
+                //var words = new SpeechSynthesisUtterance($(this).context.children[0].textContent);
+                //window.speechSynthesis.speak(words)
+
+            	//方式二
+				var audio = new Audio();  
+                audio.src ='https://dict.youdao.com/speech?audio=' + encodeURI($(this).context.children[0].textContent);  
+                audio.play(); 
+            });
+        });
+    </script>
+</html>
