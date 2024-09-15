@@ -1,48 +1,979 @@
-extends base
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Hexo</title>
+  <meta property="og:type" content="website">
+<meta property="og:title" content="岁月缝花">
+<meta property="og:url" content="https://windflower2022.github.io/page/11/index.html">
+<meta property="og:site_name" content="岁月缝花">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="白夜宁月">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://windflower2022.github.io/page/11/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="岁月缝花" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-block title
-  if config.subtitle
-    title= config.title + ' | ' + config.subtitle
-  else
-    title= config.title
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
 
-block content
-  for post in page.posts.toArray()
-    .post
-      h1.post-title
-        if post.sticky
-          span(class="top-post")= __('Sticky')
-        include _partial/helpers.pug
-        a(href=url_for(post.path))
-          +title(post)
-      .post-meta= post.date.format(config.date_format)
-      if theme.disqus.enable == true
-        a.disqus-comment-count(data-disqus-identifier=post.path, href=url_for(post.path) + '#disqus_thread')
-      if theme.changyan
-        a.ds-thread-count(href=url_for(post.path) + '#SOHUCS')
-          span.cy_cmt_count(id='sourceId::' + post.date.valueOf() style='margin: 0 3px 0 1px;') 0
-          span= ' ' + __('Comment')
-      if post.description
-        .post-content
-          != post.description
-      else if post.excerpt
-        .post-content
-          != post.excerpt
-      else if post.content
-        - const content = strip_html(post.content)
-        - let expert = content.substring(0,theme.post_content_length)
-        - content.length > theme.post_content_length ? expert += '...' : ''
-        .post-content
-          != expert
-      p.readmore
-        a(href=url_for(post.path))= __('Readmore')
 
-  include _partial/paginator.pug
-  if theme.disqus.enable == true
-    script#dsq-count-scr(src='//'+ theme.disqus.shortname + '.disqus.com/count.js', async)
-  if theme.changyan
-    script#cy_cmt_num(src='https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=' + theme.changyan, async)
-  if config.mathjax
-    include _partial/mathjax.pug
-  if config.mathjax2
-    include _partial/mathjax2.pug
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/cofess" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">昵称</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer &amp; Designer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ability/">Ability</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Alice/">Alice</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cloze/">Cloze</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Error-Correction/">Error Correction</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Grammar-Filling/">Grammar Filling</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sentences/">Sentences</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Writing/">Writing</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/diary/">diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/music/">music</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vocabulary/">vocabulary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/writing/">writing</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%A8%E5%9B%BD%E5%8D%B7/">全国卷</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BE%8E%E6%96%87/">美文</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9F%B3%E7%94%BB/">音画</a><span class="category-list-count">40</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A3%9F%E4%BA%8B/">食事</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/100/" rel="tag">100</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020-2/" rel="tag">2020-2</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020-3/" rel="tag">2020-3</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oral-English/" rel="tag">Oral English</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diary/" rel="tag">diary</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/" rel="tag">music</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vocabulary/" rel="tag">vocabulary</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BE%8E%E6%96%87/" rel="tag">美文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E7%94%BB/" rel="tag">音画</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E8%80%83/" rel="tag">高考</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/100/" style="font-size: 13.33px;">100</a> <a href="/tags/2020-2/" style="font-size: 13.67px;">2020-2</a> <a href="/tags/2020-3/" style="font-size: 13.67px;">2020-3</a> <a href="/tags/Oral-English/" style="font-size: 14px;">Oral English</a> <a href="/tags/diary/" style="font-size: 13px;">diary</a> <a href="/tags/music/" style="font-size: 13.33px;">music</a> <a href="/tags/vocabulary/" style="font-size: 13px;">vocabulary</a> <a href="/tags/%E7%BE%8E%E6%96%87/" style="font-size: 13px;">美文</a> <a href="/tags/%E9%9F%B3%E7%94%BB/" style="font-size: 13px;">音画</a> <a href="/tags/%E9%AB%98%E8%80%83/" style="font-size: 13.33px;">高考</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E9%9F%B3%E7%94%BB/">音画</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/25/nsrjyh/" class="title">【风花音画】你是我的人间烟火</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-25T05:13:27.000Z" itemprop="datePublished">2024-05-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E9%9F%B3%E7%94%BB/">音画</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/19/memory/" class="title">【风花音画】你记得花 花就一直开</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-19T11:13:27.000Z" itemprop="datePublished">2024-05-19</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E9%9F%B3%E7%94%BB/">音画</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/19/memory1/" class="title">【风花音画】你记得花 花就一直开</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-19T11:11:27.000Z" itemprop="datePublished">2024-05-19</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E9%9F%B3%E7%94%BB/">音画</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/06/brjym1/" class="title">【风花音画】不如见一面</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-06T05:11:27.000Z" itemprop="datePublished">2024-05-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E9%9F%B3%E7%94%BB/">音画</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/05/brjym/" class="title">【风花音画】不如见一面</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-05T13:21:27.000Z" itemprop="datePublished">2024-05-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  <main class="main" role="main">
+  
+  <div class="content article-list">
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/19/hell0-world24/">【078】CSS边距</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>margin</title>
+    <link rel="stylesheet" href="margin-style.css">
+</head>
+<body>
+    <h1>边距</h1>
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/10/19/hell0-world24/" class="article-date">
+	  <time datetime="2022-10-19T04:26:27.000Z" itemprop="datePublished">Oct 19</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </span>
+
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/10/19/hell0-world24/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/17/hell0-world23/">【077】CSS轮廓</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>outline</title>
+    <style>
+        p {
+            border: 2px solid #$caf50;
+}
+
+<pre><code>    p.a &#123;
+/*outline-style: dotted;
+outline-width: 4px;
+outline-color: red;*/
+          outline: dotted 4px red;
+          outline-offset: 5px;
+</code></pre>
+<p>}</p>
+<pre><code>    p.b &#123;
+/*outline-style: dashed;
+outline-width: thin;
+outline-color: green;*/
+          outline: dashed thin green;
+          outline-offset: 5px;
+</code></pre>
+<p>}</p>
+<pre><code>    p.c &#123;
+/*outline-style: solid;
+outline-width: medium;
+outline-color: yellow;*/
+          outline: solid medium rgb(1, 56, 145);
+          outline-offset: 5px;
+</code></pre>
+<p>}</p>
+<pre><code>    p.d &#123;
+/*outline-style: double;
+outline-width: thick;
+outline-color: blue;*/
+         outline: double thick rgb(216, 243, 11);
+         outline-offset: 5px;
+</code></pre>
+<p>}<br>    </style></p>
+</head>
+<body> 
+    <p class="a">CSS轮廓
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/10/17/hell0-world23/" class="article-date">
+	  <time datetime="2022-10-17T14:15:27.000Z" itemprop="datePublished">Oct 17</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </span>
+
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/10/17/hell0-world23/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/17/hell0-world22/">【076】CSS背景滚动视觉差</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css 视觉差案例</title>
+</head>
+<body>
+    div.box*3回车快速添加带有不同类名的div元素
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/10/17/hell0-world22/" class="article-date">
+	  <time datetime="2022-10-17T13:28:27.000Z" itemprop="datePublished">Oct 17</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </span>
+
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/10/17/hell0-world22/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/16/hell0-world21/">【074】CSS背景</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css background</title>
+    <style>
+    html,body {
+        font: white;
+        height: 100%;
+        background: url(https://s1.ax1x.com/2022/09/15/vzF5es.jpg) no-repeat rgb(0, 15, 0) center center fixed;
+    }
+    </style>
+</head>
+<body>
+    <p>可以把body看着一个容器
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/10/16/hell0-world21/" class="article-date">
+	  <time datetime="2022-10-16T15:25:27.000Z" itemprop="datePublished">Oct 16</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </span>
+
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/10/16/hell0-world21/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/15/hell0-world20/">【072-073】边框列表及案例</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css列表</title>
+    <link rel="stylesheet" href="./list-style.css">
+</head>
+<body>
+    072. 有序列表和无序列表
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/10/15/hell0-world20/" class="article-date">
+	  <time datetime="2022-10-15T11:58:27.000Z" itemprop="datePublished">Oct 15</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </span>
+
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/10/15/hell0-world20/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/12/wanwujing/">【美文欣赏】万物静</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>silence</title>
+  </style>
+</head>
+<body>
+  <br><br>
+  <section class="_editor" style=" margin: 0px auto;width:660PX;">
+  <div class="item-content"><section style="padding:20px 0px;">
+  <br><section style="border: 1px dotted rgb(118,162,103);">
+  <section style="margin: -10px 8px; border: 1px dotted #A5DAAA; box-shadow: #A5DAAA 0px 0px 1px ; background-color: #F5FFF6;">
+  <section style="background-image: url('https://img.wyc520.com.cn/data/attachment/forum/202202/06/214033r1ozun0d622ptwli.png'); background-position: 0% 0%; background-repeat: no-repeat; box-sizing: border-box; text-align: center;background-size:100%;">
+  <section style="padding: 50px 0px 10px;">
+  <br/><br/><br/>
+  <br/><br/><br/>
+  <section class="_editor">
+  <section style="margin: 10px auto 10px 6px;">
+  <section style="text-align: left; letter-spacing: 5px; line-height: 1.25; font-size: 16px; color: #17793C; text-shadow: #ffffff 1px 1px, #ffffff 1px -1px, #ffffff -1px 1px, #ffffff -1px -1px, #ffffff 0px 1.4px, #ffffff 0px -1.4px, #ffffff -1.4px 0px, #ffffff 1.4px 0px, #17793C 2px 2px, #17793C 3px 3px, #17793C 3px 1px, #17793C 1px 3px, #17793C 1px 1px, #17793C 2px 3.4px, #17793C 2px 0.6px, #17793C 0.6px 2px, #17793C 3.4px 2px; box-sizing: border-box;">
+  <section style="text-align:center;box-sizing: border-box;" align="center">
+  <span style="font-size: 38px;">
+  <strong style="box-sizing: border-box;">
+  <span class="135brush" data-brushtype="text" style="box-sizing: border-box; text-align: center;">万物静</span>
+  </strong>
+  </span>
+  </section></section></section></section>
+  <section data-id="100928">
+  <section style="margin: 10px auto;text-align: center;">
+  <section style="display: inline-block;">
+  <section style="font-size: 15px; letter-spacing: 2px;line-height: 20px; padding: 4px 1.0em; color: #ffffff; border: 3px solid #ffffff; box-shadow: #ffffff 0px 0px 2px ;border-radius: 20px; background: #17793C;">
+  文字｜温柔的药
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/10/12/wanwujing/" class="article-date">
+	  <time datetime="2022-10-12T13:03:27.000Z" itemprop="datePublished">Oct 12</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E7%BE%8E%E6%96%87/">美文</a>
+  </span>
+
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/10/12/wanwujing/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/04/hell0-world18/">【070】CSS边框</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>border</title>
+    <link rel="stylesheet" href="./border-style.css">
+</head>
+<body>
+    <h1></h1>
+    <p class="a"> 
+        border-style
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/10/04/hell0-world18/" class="article-date">
+	  <time datetime="2022-10-04T03:22:59.000Z" itemprop="datePublished">Oct 4</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </span>
+
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/10/04/hell0-world18/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/04/hell0-world19/">【071】CSS边框综合案例</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>css边框案例</title>
+  <link rel="stylesheet" href="../case-2.css">
+</head>
+<body>
+    <div id="square1">正方形</div><br>
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/10/04/hell0-world19/" class="article-date">
+	  <time datetime="2022-10-04T03:22:59.000Z" itemprop="datePublished">Oct 4</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </span>
+
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/10/04/hell0-world19/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/04/hell0-world17/">【069】CSS选择器的权重</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selector</title> 
+</head>
+<body>
+    <h1></h1>
+    <p> 
+        多个选择器
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/10/04/hell0-world17/" class="article-date">
+	  <time datetime="2022-10-04T01:33:59.000Z" itemprop="datePublished">Oct 4</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </span>
+
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/10/04/hell0-world17/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/03/hell0-world16/">【068】谷歌字体和ICON图标</a>
+    </h1>
+  
+
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>font-google-icons</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audioweid|Sofia|trirong&effect=fire|neon|outlie|shadow-multiple">
+    <link rel="stylesheet" href="./mystyle3.css">  
+    <script src="https://kit.fontawesome.com/e9f22420f2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <p class="font-effect-fire">
+     谷歌字体和ICON图标
+    </p>
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/10/03/hell0-world16/" class="article-date">
+	  <time datetime="2022-10-03T15:21:59.000Z" itemprop="datePublished">Oct 3</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </span>
+
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/10/03/hell0-world16/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+  </div>
+
+  
+    
+    <nav class="bar bar-footer clearfix" data-stick-bottom>
+        <div class="bar-inner">
+        <ul class="pager pull-left">
+            
+            <li class="prev">
+                <a href="/page/10/">
+                    <i class="icon icon-angle-left"></i>
+                    Prev
+                </a>
+            </li>
+            
+            
+            <li class="next">
+                <a href="/page/12/">
+                    Next
+                    <i class="icon icon-angle-right"></i>
+                </a>
+            </li>
+            
+        </ul>
+            <div class="total-article bar-right">Page 11 of 13</div>
+        </div>
+    </nav>
+    
+ 
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+</body>
+</html>

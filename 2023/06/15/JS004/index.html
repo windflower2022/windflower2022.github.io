@@ -1,58 +1,1102 @@
-extends base
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>【041-054】第四章 运算符 | Hexo</title>
+  <meta name="description" content="运算符     console.log(1 + 1);&#x2F;&#x2F;2    console.log(1 - 1);&#x2F;&#x2F;0    console.log(1 * 1);&#x2F;&#x2F;1    console.log(1 &#x2F; 1);&#x2F;&#x2F;1    &#x2F;&#x2F; 1. %取余(取模)    console.log(4 % 2);&#x2F;&#x2F;0    console.log(5 % 3);&#x2F;&#x2F;2    console.log(3 %">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【041-054】第四章 运算符">
+<meta property="og:url" content="https://windflower2022.github.io/2023/06/15/JS004/index.html">
+<meta property="og:site_name" content="岁月缝花">
+<meta property="og:description" content="运算符     console.log(1 + 1);&#x2F;&#x2F;2    console.log(1 - 1);&#x2F;&#x2F;0    console.log(1 * 1);&#x2F;&#x2F;1    console.log(1 &#x2F; 1);&#x2F;&#x2F;1    &#x2F;&#x2F; 1. %取余(取模)    console.log(4 % 2);&#x2F;&#x2F;0    console.log(5 % 3);&#x2F;&#x2F;2    console.log(3 %">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-06-15T01:41:59.000Z">
+<meta property="article:modified_time" content="2023-06-25T04:48:27.750Z">
+<meta property="article:author" content="白夜宁月">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://windflower2022.github.io/2023/06/15/JS004/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="岁月缝花" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-block title
-  title= page.title + ' | ' + config.title
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
 
-block content
-  .post
-    h1.post-title= page.title
-    .post-meta= page.date.format(config.date_format)
-      if page.categories.length > 0
-        span= ' | '
-        span.category
-          for category in page.categories.toArray()
-            a(href=url_for(category.path))= category.name
-      if theme.busuanzi == true
-        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
-        span#busuanzi_container_page_pv= ' | '
-          span#busuanzi_value_page_pv
-          span= ' ' + __('Hits')
-      if theme.wordcount == true
-        include _partial/wordcount.pug
-    if theme.disqus.enable == true
-      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
-    if theme.changyan
-      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
-        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
-        span= ' ' + __('Comment')
-      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
-    if theme.valine.enable == true
-      a.disqus-comment-count(href=url_for(page.path) + '#vcomment')
-        span.valine-comment-count(data-xid=url_for(page.path))
-        span= ' ' + __('Comment')
-    if theme.waline.enable == true
-      a.disqus-comment-count(href=url_for(page.path) + '#waline')
-        span.waline-comment-count(id=url_for(page.path))
-        span= ' ' + __('Comment')
-    if page.toc
-      .clear
-        #toc.toc-article
-          .toc-title= __('contents')
-          != toc(page.content, {list_number: theme.toc_number})
-    .post-content
-      != page.content
-    if theme.donate.enable == true && page.donate != false
-      include _widget/donate.pug
 
-    if theme.post_copyright.enable == true && page.copyright != false
-      include _widget/copyright.pug
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/cofess" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">昵称</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer &amp; Designer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
 
-    if theme.shareto == true
-      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
-      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
 
-    include _partial/tag.pug
-    include _partial/post_nav.pug
 
-    if page.comments
-      include _partial/comments.pug
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ability/">Ability</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Alice/">Alice</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cloze/">Cloze</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Error-Correction/">Error Correction</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Grammar-Filling/">Grammar Filling</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Sentences/">Sentences</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Writing/">Writing</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/diary/">diary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/music/">music</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vocabulary/">vocabulary</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/writing/">writing</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%A8%E5%9B%BD%E5%8D%B7/">全国卷</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BE%8E%E6%96%87/">美文</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9F%B3%E7%94%BB/">音画</a><span class="category-list-count">40</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A3%9F%E4%BA%8B/">食事</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/100/" rel="tag">100</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020-2/" rel="tag">2020-2</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020-3/" rel="tag">2020-3</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oral-English/" rel="tag">Oral English</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diary/" rel="tag">diary</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/music/" rel="tag">music</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vocabulary/" rel="tag">vocabulary</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BE%8E%E6%96%87/" rel="tag">美文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E7%94%BB/" rel="tag">音画</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E8%80%83/" rel="tag">高考</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/100/" style="font-size: 13.33px;">100</a> <a href="/tags/2020-2/" style="font-size: 13.67px;">2020-2</a> <a href="/tags/2020-3/" style="font-size: 13.67px;">2020-3</a> <a href="/tags/Oral-English/" style="font-size: 14px;">Oral English</a> <a href="/tags/diary/" style="font-size: 13px;">diary</a> <a href="/tags/music/" style="font-size: 13.33px;">music</a> <a href="/tags/vocabulary/" style="font-size: 13px;">vocabulary</a> <a href="/tags/%E7%BE%8E%E6%96%87/" style="font-size: 13px;">美文</a> <a href="/tags/%E9%9F%B3%E7%94%BB/" style="font-size: 13px;">音画</a> <a href="/tags/%E9%AB%98%E8%80%83/" style="font-size: 13.33px;">高考</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">March 2023</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">February 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a><span class="archive-list-count">31</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E9%9F%B3%E7%94%BB/">音画</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/25/nsrjyh/" class="title">【风花音画】你是我的人间烟火</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-25T05:13:27.000Z" itemprop="datePublished">2024-05-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E9%9F%B3%E7%94%BB/">音画</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/19/memory/" class="title">【风花音画】你记得花 花就一直开</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-19T11:13:27.000Z" itemprop="datePublished">2024-05-19</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E9%9F%B3%E7%94%BB/">音画</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/19/memory1/" class="title">【风花音画】你记得花 花就一直开</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-19T11:11:27.000Z" itemprop="datePublished">2024-05-19</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E9%9F%B3%E7%94%BB/">音画</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/06/brjym1/" class="title">【风花音画】不如见一面</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-06T05:11:27.000Z" itemprop="datePublished">2024-05-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E9%9F%B3%E7%94%BB/">音画</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/05/brjym/" class="title">【风花音画】不如见一面</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-05T13:21:27.000Z" itemprop="datePublished">2024-05-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-JS004" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【041-054】第四章 运算符
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2023/06/15/JS004/" class="article-date">
+	  <time datetime="2023-06-15T01:41:59.000Z" itemprop="datePublished">2023-06-15</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/JS/">JS</a>
+  </span>
+
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/06/15/JS004/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>运算符</title>
+<script>
+   console.log(1 + 1);//2
+   console.log(1 - 1);//0
+   console.log(1 * 1);//1
+   console.log(1 / 1);//1
+   // 1. %取余(取模)
+   console.log(4 % 2);//0
+   console.log(5 % 3);//2
+   console.log(3 % 5);//3
+   //浮点数 算数运算里面会有问题 尽量避免用浮点数直接参与运算
+   console.log(0.1 + 0.2); // 0.30000000000000004
+   console.log(0.07 * 100); // 7.000000000000001
+   // 3. 我们不能直接拿着浮点数来进行比较 是否相等
+   var num = 0.1 + 0.2;
+   console.log(num == 0.3); //false
+   // 表达式 
+   console.log(1 + 1); //2就是返回值
+   // 在我们程序里面 2 = 1 + 1 把我们的右边表达式计算完毕把返回值给左边
+   var num = 1 + 1; 
+   //1. 想要一个变量自己加1
+   var num = 1;
+   num = num + 1;//++num
+   console.log(num); //2
+   //2. 前置递增运算符 ++写在变量的前面
+   var age = 10;
+   ++age; //类似于age = age + 1
+   console.log(age);
+   //3. 前置递增运算符
+   var p = 10;
+   console.log(++p + 10);//21
+   //4. 后置递增或递减运算符
+   var num = 10;
+   num++; //num = num + 1 ++num;
+   console.log(num);
+   // 前置递增和后置递增如果单独使用 效果一样
+   // 后置递增 口诀: 先返回原值 后自加1
+   var age = 10;
+   console.log(age++ + 10); // 20
+   //小练习
+   var a = 10;
+   ++a; //++a 11  a = 11
+   var b = ++a + 2; // a = 12 ++a=12
+   console.log(b); // 14
+
+<p>   var c &#x3D; 10;<br>   c++;&#x2F;&#x2F; c++ 11 c &#x3D; 11<br>   var d &#x3D; c++ + 2; &#x2F;&#x2F; c++ &#x3D; 11  c &#x3D; 12<br>   console.log(d); &#x2F;&#x2F; 13</p>
+<p>   var e &#x3D; 10;<br>   var f &#x3D; e++ + ++e; &#x2F;&#x2F; 1. e++ &#x3D; 10 e&#x3D;11 2. e &#x3D; 12 ++e &#x3D; 12<br>   console.log(f); &#x2F;&#x2F; 22<br>   &#x2F;&#x2F;比较运算符<br>   console.log(3 &gt;&#x3D; 5); &#x2F;&#x2F;false<br>   console.log(2 &lt;&#x3D; 4); &#x2F;&#x2F;true<br>   &#x2F;&#x2F;1. 我们程序里面的等于符号是 &#x3D;&#x3D; 默认转换数据类型 会把字符串型的数据转换为数字型<br>   console.log(3 &#x3D;&#x3D; 5);&#x2F;&#x2F;false<br>   console.log(‘风飞花’ &#x3D;&#x3D; ‘叶画’);&#x2F;&#x2F;false<br>   console.log(18 &#x3D;&#x3D; 18);&#x2F;&#x2F;true<br>   console.log(18 &#x3D;&#x3D; ‘18’); &#x2F;&#x2F;true<br>   console.log(18 !&#x3D; 18); &#x2F;&#x2F;false<br>   &#x2F;&#x2F; 2. 我们程序里面有全等 一模一样 要求 两侧的值 还有数据类型完全一致才可以<br>   console.log(18 &#x3D;&#x3D;&#x3D; 18);<br>   console.log(18 &#x3D;&#x3D;&#x3D; ‘18’); &#x2F;&#x2F;false<br>   &#x2F;&#x2F; 逻辑与 两侧为true,结果为true,否则为false<br>   console.log(3 &gt; 5 &amp;&amp; 3 &gt; 2); &#x2F;&#x2F;false<br>   console.log(3 &lt; 5 &amp;&amp; 3 &gt; 2); &#x2F;&#x2F;true<br>   &#x2F;&#x2F; 逻辑或 || 两侧都为false,则为false 只要两侧有一个为true,则为true；<br>   console.log(3 &gt; 5 || 3 &gt; 2); &#x2F;&#x2F;false<br>   &#x2F;&#x2F; 逻辑非 not !<br>   console.log(!true); &#x2F;&#x2F;false<br>   &#x2F;&#x2F;小练习<br>   var num &#x3D; 7;<br>   var str &#x3D; ‘我爱你<del>中国</del>‘;<br>   console.log(num &gt; 5 &amp;&amp; str.length &gt;&#x3D; num); &#x2F;&#x2F;true<br>   console.log(num &lt; 5 &amp;&amp; str.length &gt;&#x3D; num); &#x2F;&#x2F;false<br>   console.log(!(num &lt; 10)); &#x2F;&#x2F;false<br>   console.log(!(num &lt; 10 || str.length &#x3D;&#x3D; num)); &#x2F;&#x2F;false<br>   &#x2F;&#x2F;逻辑与短路运算<br>   &#x2F;&#x2F;1. 用我们的布尔值参与的逻辑运算 true &amp;&amp; false &#x3D;&#x3D;false<br>   &#x2F;&#x2F;2. 123 &amp;&amp; 456 是值 或者是 表达式 参与逻辑运算？<br>   &#x2F;&#x2F;3. 逻辑与短路运算 如果表达式1 结果为真 则返回表达式2 如果表达式1为假 那么返回表达式1<br>   console.log(123 &amp;&amp; 456); &#x2F;&#x2F;456<br>   console.log(0 &amp;&amp; 456); &#x2F;&#x2F;0<br>   console.log(0 &amp;&amp; 1 + 2 &amp;&amp; 456 * 56789); &#x2F;&#x2F;0<br>   console.log(‘’ &amp; 1 + 2 &amp;&amp; 456 * 56789); &#x2F;&#x2F;‘’<br>   &#x2F;&#x2F;如果有空的或者否定的为假 其余是真的  0 ‘’ null undefined NaN<br>   &#x2F;&#x2F; 4. 逻辑或短路运算 如果表达式1 结果为真 则返回的是表达式1 如果表达式1 结果为假 则返回表达式2<br>    console.log(123 || 456); &#x2F;&#x2F;123<br>    console.log(123 || 456 || 456 + 123); &#x2F;&#x2F;123<br>    console.log(0 || 456 || 456 + 123); &#x2F;&#x2F;456<br>    &#x2F;&#x2F;逻辑中断很重要 它会影响到程序运行结果思密达<br>    console.log(123 || num++);&#x2F;&#x2F;123<br>    console.log(num);&#x2F;&#x2F;0<br>    &#x2F;&#x2F;赋值运算符<br>    var num &#x3D; 10;<br>    &#x2F;&#x2F; num &#x3D; num + 1; num++<br>    &#x2F;&#x2F; num &#x3D; num + 2; num +&#x3D; 2;<br>    num +&#x3D; 2;<br>    consolelog(num); &#x2F;&#x2F;12<br>    num +&#x3D; 5; &#x2F;&#x2F;相当于age &#x3D; age + 5;<br>    consolelog(num); &#x2F;&#x2F;15<br>    var age &#x3D; 2;<br>    age *&#x3D; 3;<br>    console(age);&#x2F;&#x2F;6<br></script> </p>
+</head>
+<body>    
+<h2>目标</h2>
+<span id="more"></span>
+<p>
+    能够使用常用运算符<br/><br/>
+    能够说出前置递增和后置递增的区别<br/><br/>
+    能够说出运算符的优先级<br/><br/>
+    能够说出1-2种转换为字符型的方法<br/><br/>
+    能够说出什么是隐式转换<br/>
+</p>
+<h2>目录</h2>
+    运算符<br/><br/>
+    算术运算符<br/><br/>
+    能够说出运算符的优先级<br/><br/>
+    递增和递减运算符<br/><br/>
+    比较运算符<br/><br/>
+    逻辑运算符<br/><br/>
+    赋值运算符<br/><br/>
+    运算符优先级<br/><br/>
+<h3>一、运算符</h3>
+<p>
+    运算符(operator)也被称为操作符，用于实现赋值，比较和执行算数运算等功能的符号<br/><br/>
+    JavaScript常用的运算符有:<br/><br/>
+    算术运算符<br/><br/>
+    能够说出运算符的优先级<br/><br/>
+    递增和递减运算符<br/><br/>
+    比较运算符<br/><br/>
+    逻辑运算符<br/><br/>
+    赋值运算符<br/><br/>
+    运算符优先级<br/><br/>
+
+<h3>二、算术运算符</h3>
+<h4>2.1 算术运算符概述</h4>
+<P>
+    概念： 算术运算符使用的符号，用于执行两个变量或值的算术运算。<br/><br/>
+    <table border="1" width="800" height="400" cellspacing="0" cellpadding="0" align="left">
+        <tr align="center" valign="middle">
+            <th>
+                运算符   
+               </th>
+               <th>
+                描述  
+               </th>
+               <th>
+                实例  
+               </th>
+        </tr>
+        <tr align="center" valign="middle">
+            <td>
+                +   
+               </td>
+               <td>
+                加
+               </td>
+               <td>
+                10 + 20 = 30 
+               </td>
+        </tr>
+        <tr align="center" valign="middle">
+            <td>
+                -   
+               </td>
+               <td>
+                减 
+               </td>
+               <td>
+                10 - 20 = -10 
+               </td>
+        </tr>
+        <tr align="center" valign="middle">
+            <td>
+                *   
+               </td>
+               <td>
+                乘  
+               </td>
+               <td>
+                10 * 20 = 200 
+               </td>
+        </tr>
+        <tr align="center" valign="middle">
+            <td>
+                /   
+               </td>
+               <td>
+                除  
+               </td>
+               <td>
+                10 / 20 = 0.5
+               </td>
+        </tr>
+        <tr align="center" valign="middle">
+            <td>
+                %   
+               </td>
+               <td>
+                取余数(取模)  
+               </td>
+               <td>
+                返回除法的余数9 % 2 =1
+               </td>
+        </tr>
+    </table><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</P>
+<h4>2.2 浮点数的精度问题</h4>
+<p>
+    浮点数的值的最高精度是17位小数,但在进行算术计算时其精确度远远不如整数。<br/><br/>
+    var result = 0.1 + 0.2; //结果不是0.3,而是0.30000000000000004<br/><br/>
+    console.log(0.07 + 100);//结果不是7,而是:7.000000000000001<br/><br/>
+    <b> 所以: 不要直接判断两个浮点数是否相等！</b>
+</p>
+<h4>2.3 课堂提问</h4>
+<p>1. 我们怎么判断一个数能够被整除呢 <br/><br/>
+    <b>它的余数是0,就说明这个数能被整除，这就是% 取余运算符的主要用途</b><br/><br/>
+    2. 请问1 + 2 * 3 结果是？<br/><br/>
+    <b>结果是7,注意算术运算符优先级的,先乘除,后加减,有小括号先算小括号里的</b><br/><br/>
+</p>
+<h4>2.4 表达式和返回值</h4>
+<p>
+    <b>表达式</b>: 是由数字、运算符、变量等以能求得数值的有意义排列方法说得的组合<br/><br/>
+    简单理解：是由数字、运算符、变量等组成的式子<br/><br/>
+    <b>表达式最终都会有一个结果,返回给我们,我们称为返回值</b><br/><br/>
+</p>
+<h3>三、递增递减运算符</h3>
+<h4>3.1 概述</h4>
+<p>
+    如果需要反复给数字变量添加或减去1,可以使用<b>递增(++)和递减(--)</b>运算符来完成。<br/><br/>
+    在JavaScript中,递增(++)和递减(--)既可放变量前，也可后，<b>放在变量前</b>时,我们可以称为<b>前置递增或递减,放后,后置递增或递减运算符</b><br/><br/>
+    注意：递增或递减运算符必须和变量配合使用<br/><br/>
+</p>
+<h4>3.2 前置递增运算符</h4>
+<b>++num前置递增,就自加1,类似于num = num + 1 ,但是++num写起来更简单</b>
+<b>使用口诀： 先自加,后返回值</b>
+<h4>3.2 后置递增运算符</h4>
+    var num = 10;<br/><br/>
+    num++; //num = num + 1 ++num;<br/><br/>
+    console.log(num);<br/><br/>
+    // 前置递增和后置递增如果单独使用 效果一样<br/><br/>
+    // 后置递增 <b>口诀: 先返回原值 后自加1</b><br/><br/>
+    var age = 10;<br/><br/>
+    console.log(age++ + 10); // 20<br/><br/>
+    <h4>3.3 小结</h4> 
+<h3>四、比较运算符</h3> 
+    console.log(3 >= 5); //false<br/><br/>
+    console.log(2 <= 4); //true<br/><br/>
+    //1. 我们程序里面的等于符号是 == 默认转换数据类型 会把字符串型的数据转换为数字型 <br/><br/>
+    console.log(3 == 5);//false<br/><br/>
+    console.log('风飞花' == '叶画');//false<br/><br/>
+    console.log(18 == 18);//true<br/><br/>
+    console.log(18 == '18'); //true<br/><br/>
+    console.log(18 != 18); //false<br/><br/>
+    // 2. 我们程序里面有全等 一模一样 要求 两侧的值 还有数据类型完全一致才可以<br/><br/>
+    console.log(18 === 18);<br/><br/> 
+    console.log(18 === '18'); //false<br/><br/>
+<h4>3.1 比较运算符</h4>
+<h4>3.2、小结</h4>
+<table border="1" width="800" height="400" cellspacing="0" cellpadding="0" align="left">
+    <tr align="center" valign="middle">
+        <th>
+            符号 
+           </th>
+           <th>
+            作用
+           </th>
+           <th>
+            用法 
+           </th>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+            =  
+           </td>
+           <td>
+            赋值
+           </td>
+           <td>
+           把右边给左边
+           </td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+            ==  
+           </td>
+           <td>
+            判断
+           </td>
+           <td>
+            判断两边值是否相等（注意此时有隐式转换)
+           </td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+            ===  
+           </td>
+           <td>
+            全等 
+           </td>
+           <td>
+            判断两边的值和数据类型是否完全相同
+           </td>
+    </tr>
+</table><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<h3>四、逻辑运算符</h3> 
+<h4>5.1 概述</h4>
+概念: 逻辑运算符是用来进行布尔值运算的运算符，其返回值也是布尔值，后面开发中经常用于多个条件的判断<br/><br/>
+<table border="1" width="800" height="400" cellspacing="0" cellpadding="0" align="left">
+    <tr align="center" valign="middle">
+        <th>
+            逻辑运算符
+           </th>
+           <th>
+            说明
+           </th>
+           <th>
+            案例
+           </th>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+            && 
+           </td>
+           <td>
+            "逻辑与",简称"与" and
+           </td>
+           <td>
+           true && false
+           </td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+            || 
+           </td>
+           <td>
+            "逻辑或",简称"或" or
+           </td>
+           <td>
+            true || false
+           </td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+            !
+           </td>
+           <td>
+            "逻辑非",简称"非" not
+           </td>
+           <td>
+            !true
+           </td>
+    </tr>
+</table><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<h3>五、逻辑运算符</h3> 
+<h4>5.1 逻辑与 &&</h4>
+    // 逻辑与 两侧为true,结果为true,否则为false<br/><br/>
+    console.log(3 > 5 && 3 > 2); //false<br/><br/>
+    console.log(3 < 5 && 3 > 2); //true<br/><br/>
+<h4>5.2 逻辑或 ||</h4>
+    // 逻辑或 || 两侧都为false,则为false 只要两侧有一个为true,则为true;<br/><br/>
+    console.log(3 > 5 || 3 > 2); //false<br/><br/>
+<h4>5.3 逻辑非 not !</h4>
+    // 逻辑非 not !<br/><br/>
+    console.log(!true); //false<br/><br/>
+<h4>小结练习</h4>
+    var num = 7;<br/><br/>
+    var str = "我爱你~中国~"<br/><br/>
+    console.log(num > 5 && str.length >= num); //true<br/><br/>
+    console.log(num < 5 && str.length >= num); //false<br/><br/>
+    console.log(!(num < 10)); //false<br/><br/>
+    console.log(!(num < 10 || str.length == num)); //false<br/><br/>
+<h4>5.4 短路运算(逻辑中断)</h4>  
+<b>短路运算的原理</b>: 当有多个表达式(值)时,左边的表达式值可以确定结果时,就不再继续运算右边的表达式的值<br/><br/>
+<b>1. 逻辑与</b>
+语法： 表达式1 && 表达式2<br/><br/>
+如果第一个表达式的值为真,则返回表达式2<br/><br/>
+如果第一表达式的值为假,则返回表达式1<br/><br/>
+<b>1. 逻辑或</b>
+语法: <b>表达式1 || 表达式2</b>
+如果第一个表达式的值为真,则返回的是表达式1<br/><br/>
+如果第一个表达式值为假,则返回表达式2<br/><br/>
+var num = 0;<br/><br/>
+console.log(123 || num++);//123<br/><br/>
+console.log(num);//0 上面第一个真,就停止执行,num++没有执行<br/><br/>
+<h3>六 赋值运算符</h3>
+概念: 用来把数据赋值给变量的运算符<br/><br/>
+<table border="1" width="800" height="400" cellspacing="0" cellpadding="0" align="left">
+    <tr align="center" valign="middle">
+        <th>
+            赋值运算符
+           </th>
+           <th>
+            说明
+           </th>
+           <th>
+            案例
+           </th>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+            = 
+           </td>
+           <td>
+            直接赋值
+           </td>
+           <td>
+           var usrName = '我是谁'
+           </td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+            += -= 
+           </td>
+           <td>
+            加、减一个数后在赋值
+           </td>
+           <td>
+            var age = 10; age += 5; //15
+           </td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+            *=、 /=、%=
+        </td>
+           <td>
+             乘、除、取模后在赋值
+           </td>
+           <td>
+           var age = 2; age *= 5; //10
+           </td>
+    </tr>
+</table><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+num += 5; //相当于age = age + 5;<br/><br/>
+num -= 5; //相当于age = age - 5;<br/><br/>
+num *= 10;//相当于age = age * 10;<br/><br/>
+<h3>七 运算符优先级</h3> 
+<table border="1" width="800" height="400" cellspacing="0" cellpadding="0" align="left">
+    <tr align="center" valign="middle">
+        <th>
+            逻辑运算符
+           </th>
+           <th>
+            说明
+           </th>
+           <th>
+            案例
+           </th>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+            1 
+           </td>
+           <td>
+            小括号
+           </td>
+           <td>
+           ()
+           </td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+            2
+           </td>
+           <td>
+            一元运算符
+           </td>
+           <td>
+           ++ -- =
+           </td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+            3
+           </td>
+           <td>
+            算术运算符使用的符号，用于执行两个变量或值的算术运算。
+           </td>
+           <td>
+           <b>先* / % 后 + -</b>
+           </td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+           4
+           </td>
+           <td>
+            关系运算符
+           </td>
+           <td>
+          > >= < <=
+           </td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+            5 
+           </td>
+           <td>
+            相等运算符
+           </td>
+           <td>
+            == != === !==
+           </td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+           6
+           </td>
+           <td>
+            逻辑运算符
+           </td>
+           <td>
+            <b>先&& 后 ||</b>
+           </td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+            7
+           </td>
+           <td>
+            赋值运算符
+           </td>
+           <td>
+           =
+           </td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>
+            8 
+           </td>
+           <td>
+            逗号运算符
+           </td>
+           <td>
+            ,
+           </td>
+    </tr>
+</table><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<h4>7.2 练习1</h4>
+console.log(4 >= 6 || '人' = '阿凡达' && !(12 * 2 == 144) && true),()<br/><br/>
+var num = 10;<br/><br/>
+console.log(5 == num / 2 * num).toString() == '22');<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://windflower2022.github.io/2023/06/15/JS004/" title="【041-054】第四章 运算符" target="_blank" rel="external">https://windflower2022.github.io/2023/06/15/JS004/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/cofess" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/cofess" target="_blank"><span class="text-dark">昵称</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2023/06/16/JS005/" title="【055-068】第五章 流程控制-分支"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2023/06/10/JS003/" title="【020-040】第三章 数据"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/cofess" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
