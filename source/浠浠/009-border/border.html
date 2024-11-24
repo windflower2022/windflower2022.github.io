@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Lunar Ser.">
+
+
+    <meta name="subtitle" content="时间煮雨，岁月缝花。以欢喜心，慢度日常。">
+
+
+
+
+<title>Lunar Ser.&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Lunar Ser.&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Lunar Ser.&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    <article class="post-wrap page">
+        
+        <h2 class="post-title"></h2>
+        
+        <section class="post-content">
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>border</title>
+    <link rel="stylesheet" href="./border-style.css">
+</head>
+<body>
+    <h1>
+        070 CSS边框
+    </h1>
+    <p class="a"> 
+        border-style:dotted/dashed/solid/double/none/hidden<br><br>
+        border-width:px/em/thin,medium,thick<br><br>
+        border-color:
+    </p>
+    <p class="b">
+        写table>(tr>td*3)*3，tab键
+    </p>
+    <table border="1">
+        <tr>
+            <td>左上</td>
+            <td>中上</td>
+            <td>右上</td>
+        </tr>
+        <tr>
+            <td class="a">左中</td>
+            <td class="b">中</td>
+            <td>右中</td>
+        </tr>
+        <tr>
+            <td>左下</td>
+            <td>中下</td>
+            <td>右下</td>
+        </tr>
+    </table>   
+    <p class="c">
+        当表格单元格相邻边框产生冲突时,border-style: hidden>solid>...none优先级高到低。<br><br>
+        控制表格中单独的一根线,可在border-style中间添加一个表示方向的词,如border-top-style就可设置单个边框线。可设置top,right,bottom,left方向。除了单个属性外，border-style属性值可使用混合的简写方法<br><br>
+        1:四个值如dotted solid double dashed;(上，右，下，左)<br><br>
+        2:三个值如dotted solid double;(上，左右，下)<br><br>
+        3:两个值如dotted solid:（上下，左右）<br><br>
+        4:四个值如dotted(四边)<br><br>
+    </p><br><br>  
+</body>
+</html>
+        </section>
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+   <!-- <div class="copyright">
+        <span>© Lunar Ser. | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>-->
+</footer>
+
+    </div>
+</body>
+
+</html>
