@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <title>记句子<</title>
+    <style>
+        div{
+            background-color:rgb(243, 243, 243);
+            margin-bottom: 5px;
+            padding: 5px;
+            border-radius: 55px;
+            font-size: 30px;
+        }
+        div:hover{
+            background-color:rgb(226, 245, 231);
+        }
+        .t{
+            margin-top: 0px;
+            padding-left: 150px;
+        }
+        @media screen and (max-width: 650px) {
+            .t{
+                margin-top: 50px;
+                padding-left: 120px;
+            }
+
+           div.t span #i {
+                color: black
+            }
+    </style>
+</head>
+<body> 
+<div class="text"><span style="color:rgb(72, 73, 70)">
+<br><br>&emsp;75.Microblog can provide a platform to show our talent and release our pressure,thus making it more and more popular with high school students.
+<br><br>&emsp;Microblog can provide a platform to show our talent and release our pressure,thus making it more and more popular with high school students.Microblog can provide a platform to show our talent and release our pressure,thus making it more and more popular with high school students.
+<br>&emsp;微博能提供一个展示我们的天赋、释放压力的平台，因此它越来越受中学生的欢迎。
+</span></div>
+</body>
+    <script>
+        $(document).ready(function(){
+            $("div").click(function(){
+            	//方式一
+                //var words = new SpeechSynthesisUtterance($(this).context.children[0].textContent);
+                //window.speechSynthesis.speak(words)
+
+            	//方式二
+				var audio = new Audio();  
+                audio.src ='https://dict.youdao.com/speech?audio=' + encodeURI($(this).context.children[0].textContent);  
+                audio.play(); 
+            });
+        });
+    </script>
+</html>
