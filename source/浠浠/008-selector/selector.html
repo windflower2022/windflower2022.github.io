@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        Lunar Ser.&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="/css/style/github.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div class="container">
+        <div class="header">
+    <!-- <div class="logo">
+        <a href="/">Lunar Ser.&#39;s Blog</a>
+    </div> -->
+    <div class="logo">
+        <img src="/images/logo.png" alt="Logo">
+    </div>
+    <div class="nav">
+        <ul class="menu">
+            
+                <li class="menu-item">
+                    <a href="/" class="menu-item-link">
+                        Home
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a href="/archives" class="menu-item-link">
+                        Archives
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a target="_blank" rel="noopener" href="https://user.qzone.qq.com/3838567901/" class="menu-item-link">
+                        Menu.Link
+                    </a>
+                </li>
+                
+        </ul>
+    </div>
+</div>
+        <div class="article">
+    <!-- <div class="article-title">
+        <h2>
+            
+        </h2>
+    </div> -->
+    <div class="article-meta">
+        <div class="article-date">
+            <i class="fas fa-edit"></i>
+            2024/11/24 Sun 11:37&nbsp;&nbsp;&nbsp;
+            <span class="just-a-temp"><span>
+            <i class="fas fa-redo"></i>
+            2022/10/04 Tue 11:27
+        </div>
+    </div>
+    <div class="article-content">
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selector</title> 
+</head>
+<body>
+    <h1>
+        069-CSS选择器的权重
+    </h1>
+    <p> 
+        多个选择器修饰同一个元素，优先级的判断：内联>内部>ID选择器>类选择器>元素选择器>通用选择器*
+    </p>
+    <p>
+        即行内样式>ID选择器>类选择器>元素选择器>通用选择器*,选择器选择范围小，越精确，优先级越高。
+    </p>
+    <p>
+       样式发生冲突时，权重值高优先考虑。权重值计算见下面<br><br>
+          选择器          例子          权重值<br><br>
+       1. 通用计算器       *             0<br><br>
+       2.元素选择器     h1,div,p         1<br><br>
+       3.类选择器       .active,.light   10<br><br>
+       4.ID选择器       #box,#btn        100<br><br>
+       5.行内选择器     <h1 style=""    1000<br><br>
+        如：#box p .light{/* 100+1+10=111 */<br><br>
+            color= red;<br><br>
+        }<br><br>
+
+        #box .light {/* 100+10=110 */<br><br>
+            color: red;<br><br>
+        }<br><br>
+</body>
+</html>
+    </div>
+
+    <div class="totop">ToTOP</div>
+</div>
+        <div class="footer">
+    <a href="#">
+        2018 <i class="fab fa-studiovinari"></i> Lunar Ser. <i class="fas fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/js/totop.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+    </div>
+</body>
+
+</html>
