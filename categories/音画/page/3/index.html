@@ -1,428 +1,254 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>category: 音画 | Lunar Ser.&#39;s Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
-  
-  
-    <link rel="alternate" href="/atom.xml" title="Lunar Ser.'s Blog" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Lunar Ser.">
+
+
+    <meta name="subtitle" content="时间煮雨，岁月缝花。以欢喜心，慢度日常。">
+
+
+
+
+<title>Category: 音画 | Lunar Ser.&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
-
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
+    <link rel="stylesheet" href="/css/style.css">
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-  
-  
+
+
+    <!-- scripts list from _config.yml -->
     
-<link rel="stylesheet" href="/localshare/css/share.css">
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
 
-  
-  
-  
+
+
+    
+    
+        
+    
+
+
 <meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Lunar Ser.&#39;s Blog</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">时间煮雨，岁月缝花。以欢喜心，慢度日常。</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        
-          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> Home</a>
-        
-          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> Archive</a>
-        
-          <a class="main-nav-link" href="/about/"><i class="fa fa-user"></i> About</a>
-        
-          <a class="main-nav-link" target="_blank" rel="noopener" href="http://dj.fqingy.com/forum.php/"><i class="fa fa-rss"></i> Dimple</a>
-        
-      </nav>
-    </div>
-    <div id="search-form">
-      <div id="result-mask" class="hide"></div>
-      <label><input id="search-key" type="text" autocomplete="off" placeholder="search"></label>
-      <div id="result-wrap" class="hide">
-        <div id="search-result"></div>
-      </div>
-      <div class="hide">
-        <template id="search-tpl">
-          <div class="item">
-            <a href="/{path}" title="{title}">
-              <div class="title">{title}</div>
-              <div class="time">{date}</div>
-              <div class="tags">{tags}</div>
-            </a>
-          </div>
-        </template>
-      </div>
-    </div>
-  </div>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Lunar Ser.&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Lunar Ser.&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
 </header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                
 
-      <div class="outer">
-        <section id="main">
 
-  
-  
     
-    
-    <section class="archives-wrap">
-      <div class="archive-title">
-        
-          <i class="fa fa-classify"></i>
-          音画
-        
-      </div>
-      <div class="archives">
-  
-  <ul class="archive-article archive-type-post">
-  <li class="archive-article-inner">
-    <a href="/2024/05/05/brjym/">
-      <time class="dt-published" datetime="2024-05-05T13:21:27.000Z" itemprop="datePublished">2024年05月05日</time>
-      | <span class="archive-article-title">【风花音画】不如见一面</span>
-    </a>
-  </li>
-</ul>
-
-
-  
-  
-  <ul class="archive-article archive-type-post">
-  <li class="archive-article-inner">
-    <a href="/2024/02/05/yx/">
-      <time class="dt-published" datetime="2024-02-05T05:57:27.000Z" itemprop="datePublished">2024年02月05日</time>
-      | <span class="archive-article-title">【风花音画】余香</span>
-    </a>
-  </li>
-</ul>
-
-
-  
-  
-  <ul class="archive-article archive-type-post">
-  <li class="archive-article-inner">
-    <a href="/2024/01/29/xinnianhao/">
-      <time class="dt-published" datetime="2024-01-29T14:07:27.000Z" itemprop="datePublished">2024年01月29日</time>
-      | <span class="archive-article-title">【风花音画】新年好</span>
-    </a>
-  </li>
-</ul>
-
-
-  
-  
-  <ul class="archive-article archive-type-post">
-  <li class="archive-article-inner">
-    <a href="/2024/01/27/nwdsl/">
-      <time class="dt-published" datetime="2024-01-27T14:07:27.000Z" itemprop="datePublished">2024年01月27日</time>
-      | <span class="archive-article-title">【风花音画】挪威的森林</span>
-    </a>
-  </li>
-</ul>
-
-
-  
-  
-  <ul class="archive-article archive-type-post">
-  <li class="archive-article-inner">
-    <a href="/2024/01/26/sdsnxygyb/">
-      <time class="dt-published" datetime="2024-01-26T14:07:27.000Z" itemprop="datePublished">2024年01月26日</time>
-      | <span class="archive-article-title">【风花音画】谁的思念像月光银白</span>
-    </a>
-  </li>
-</ul>
-
-
-  
-  
-    
-      </div></section>
-    
-    
-    <section class="archives-wrap">
-      <div class="archive-title">
-        
-          <i class="fa fa-classify"></i>
-          音画
-        
-      </div>
-      <div class="archives">
-  
-  <ul class="archive-article archive-type-post">
-  <li class="archive-article-inner">
-    <a href="/2023/12/30/cxqd/">
-      <time class="dt-published" datetime="2023-12-30T05:13:27.000Z" itemprop="datePublished">2023年12月30日</time>
-      | <span class="archive-article-title">【风花音画】春夏秋冬</span>
-    </a>
-  </li>
-</ul>
-
-
-  
-  
-  <ul class="archive-article archive-type-post">
-  <li class="archive-article-inner">
-    <a href="/2023/10/09/ry/">
-      <time class="dt-published" datetime="2023-10-09T14:30:27.000Z" itemprop="datePublished">2023年10月09日</time>
-      | <span class="archive-article-title">【风花音画】如愿</span>
-    </a>
-  </li>
-</ul>
-
-
-  
-  
-  <ul class="archive-article archive-type-post">
-  <li class="archive-article-inner">
-    <a href="/2023/09/21/nzbc/">
-      <time class="dt-published" datetime="2023-09-21T15:41:27.000Z" itemprop="datePublished">2023年09月21日</time>
-      | <span class="archive-article-title">【风花音画】你在别处 我一直在这里</span>
-    </a>
-  </li>
-</ul>
-
-
-  
-  
-  <ul class="archive-article archive-type-post">
-  <li class="archive-article-inner">
-    <a href="/2023/09/17/sky/">
-      <time class="dt-published" datetime="2023-09-17T08:07:27.000Z" itemprop="datePublished">2023年09月17日</time>
-      | <span class="archive-article-title">【风花音画】天空很高，你有清澈</span>
-    </a>
-  </li>
-</ul>
-
-
-  
-  
-  <ul class="archive-article archive-type-post">
-  <li class="archive-article-inner">
-    <a href="/2023/09/13/qh/">
-      <time class="dt-published" datetime="2023-09-13T00:27:27.000Z" itemprop="datePublished">2023年09月13日</time>
-      | <span class="archive-article-title">【风花音画】人间有味是清欢</span>
-    </a>
-  </li>
-</ul>
-
-
-
-  </div></section>
-
-
-    <nav id="page-nav">
-
-<a class="extend prev" rel="prev" href="/categories/%E9%9F%B3%E7%94%BB/page/2/">Previous</a><a class="page-number" href="/categories/%E9%9F%B3%E7%94%BB/">1</a><a class="page-number" href="/categories/%E9%9F%B3%E7%94%BB/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/categories/%E9%9F%B3%E7%94%BB/page/4/">4</a><a class="page-number" href="/categories/%E9%9F%B3%E7%94%BB/page/5/">5</a><a class="page-number" href="/categories/%E9%9F%B3%E7%94%BB/page/6/">6</a><a class="extend next" rel="next" href="/categories/%E9%9F%B3%E7%94%BB/page/4/">Next</a>
-</nav>
-
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title"><i class="fa fa-posts"></i> Recent</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2024/12/10/liag/">【风花音画】Let It All Go</a>
-          </li>
-        
-          <li>
-            <a href="/2024/12/04/baiye/">【风花音画】白夜</a>
-          </li>
-        
-          <li>
-            <a href="/2024/12/01/ekol/">【风花音画】十一种孤独</a>
-          </li>
-        
-          <li>
-            <a href="/2024/11/24/zsyf/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2024/11/17/qrycys/">【风花音画】契入一场永生</a>
-          </li>
-        
-      </ul>
+<div class="container">
+    <div class="post-wrap categories">
+        <h2 class="post-title">-&nbsp;Categories&nbsp;·&nbsp;音画-</h2>
     </div>
-  </div>
-
-
-  
+    <div class="post-wrap archive">
     
-  <div class="widget-wrap">
-    <h3 class="widget-title"><i class="fa fa-tag"></i> Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/%E9%9F%B3%E7%94%BB/" style="font-size: 10px;">音画</a>
-    </div>
-  </div>
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title"><i class="fa fa-classify"></i> Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ability/">Ability</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E8%AE%B0/">日记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9F%B3%E7%94%BB/">音画</a><span class="category-list-count">56</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title"><i class="fa fa-archive"></i> Archive</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024年</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023年</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年</a><span class="archive-list-count">20</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title"><i class="fa fa-tag"></i> Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E7%94%BB/" rel="tag">音画</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title"><i class="fa fa-link"></i> Blogroll</h3>
-    <div class="widget">
-      <ul>
-      
-        <li>
-          <a target="_blank" rel="noopener" href="http://www.example1.com/">site-name1</a>
-        </li>
-      
-        <li>
-          <a target="_blank" rel="noopener" href="http://www.example2.com/">site-name2</a>
-        </li>
-      
-        <li>
-          <a target="_blank" rel="noopener" href="http://www.example3.com/">site-name3</a>
-        </li>
-      
-      </ul>
-    </div>
-  </div>
-
-
-  
-</aside>
         
-      </div>
-      <a id="totop" href="#top"></a>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      <p>
-        <a href="/sitemap.xml">Site Map</a>
-        <span> | </span><a href="/atom.xml">Subscribe to this site</a>
-        <span> | </span><a href="/about/">Contact the blogger</a>
-      </p>
-      
-        <p>
-          <i class="fa fa-visitors"></i>
-          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
-          ，
-          <i class="fa fa-views"></i>
-          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
-        </p>
-      
-      <p>
-        <span>Copyright &copy; 2024 Lunar Ser..</span>
-        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
-        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
-      </p>
-    </div>
-  </div>
+
+        
+            <h3>2024</h3>
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2024/05/05/brjym/">【风花音画】不如见一面</a>
+            <span class="archive-item-date">May 5, 2024</span>
+        </article>
+    
+        
+
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2024/02/05/yx/">【风花音画】余香</a>
+            <span class="archive-item-date">February 5, 2024</span>
+        </article>
+    
+        
+
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2024/01/29/xinnianhao/">【风花音画】新年好</a>
+            <span class="archive-item-date">January 29, 2024</span>
+        </article>
+    
+        
+
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2024/01/27/nwdsl/">【风花音画】挪威的森林</a>
+            <span class="archive-item-date">January 27, 2024</span>
+        </article>
+    
+        
+
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2024/01/26/sdsnxygyb/">【风花音画】谁的思念像月光银白</a>
+            <span class="archive-item-date">January 26, 2024</span>
+        </article>
+    
+        
+
+        
+            <h3>2023</h3>
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2023/12/30/cxqd/">【风花音画】春夏秋冬</a>
+            <span class="archive-item-date">December 30, 2023</span>
+        </article>
+    
+        
+
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2023/10/09/ry/">【风花音画】如愿</a>
+            <span class="archive-item-date">October 9, 2023</span>
+        </article>
+    
+        
+
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2023/09/21/nzbc/">【风花音画】你在别处 我一直在这里</a>
+            <span class="archive-item-date">September 21, 2023</span>
+        </article>
+    
+        
+
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2023/09/17/sky/">【风花音画】天空很高，你有清澈</a>
+            <span class="archive-item-date">September 17, 2023</span>
+        </article>
+    
+        
+
+        
+
+        <article class="archive-item">
+            <a class="archive-item-link" href="/2023/09/13/qh/">【风花音画】人间有味是清欢</a>
+            <span class="archive-item-date">September 13, 2023</span>
+        </article>
+    
+    
+    <nav class="pagination">
+        <a class="page-number" href="/categories/%E9%9F%B3%E7%94%BB/">1</a><a class="page-number" href="/categories/%E9%9F%B3%E7%94%BB/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/categories/%E9%9F%B3%E7%94%BB/page/4/">4</a><a class="page-number" href="/categories/%E9%9F%B3%E7%94%BB/page/5/">5</a><a class="page-number" href="/categories/%E9%9F%B3%E7%94%BB/page/6/">6</a>
+    </nav>
+
+</div>
+<audio style="width: 0px; height: 0px;" src="http://music.163.com/song/media/outer/url?id=28907016.mp3" autoplay="autoplay" loop="loop" controls="controls" type="audio/mpeg"></audio>
+</div>
+
+<audio style="width: 0px; height: 0px;" src="http://music.163.com/song/media/outer/url?id=1497216744.mp3" autoplay="autoplay" loop="loop" controls="controls" type="audio/mpeg"></audio>
+            </div>
+            <footer id="footer" class="footer">
+   <!-- <div class="copyright">
+        <span>© Lunar Ser. | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>-->
 </footer>
 
     </div>
-  </div>
-  
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-<script src="/js/search.json.js"></script>
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-
-  
-<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-
-
-
-
 </body>
+
 </html>
