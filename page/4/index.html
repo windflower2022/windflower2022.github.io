@@ -1,192 +1,471 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <meta name="author" content="Lunar Ser.">
-
-
-    <meta name="subtitle" content="时间煮雨，岁月缝花。以欢喜心，慢度日常。">
-
-
-
-
-<title>Lunar Ser.&#39;s Blog</title>
-
-
-
-    <link rel="icon" href="/favicon.ico">
-
-
-
-
-    <!-- stylesheets list from _config.yml -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        Lunar Ser.&#39;s Blog
+    </title>
     
-    <link rel="stylesheet" href="/css/style.css">
-    
+<link rel="stylesheet" href="/css/style.css">
 
-
-
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
-
-    
-    
-        
-    
-
-
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="/css/style/github.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 <meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
-    <script>
-        // this function is used to check current theme before page loaded.
-        (() => {
-            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
-            const isDark = currentTheme === 'dark';
-            const pagebody = document.getElementsByTagName('body')[0]
-            if (isDark) {
-                pagebody.classList.add('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
-            } else {
-                pagebody.classList.remove('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Light"
-            }
-        })();
-    </script>
-
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">Lunar Ser.&#39;s Blog</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
-        </div>
-    </nav>
-
-    
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">Lunar Ser.&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-            </div>
-        </div>
-    </nav>
-
-</header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-            <div class="main">
-                
-    <div class="container profile-container">
-    <div class="intro">
-        <div class="avatar">
-            <a href="/archives"><img src="/image/1.jpg"></a>
-        </div>
-        <div class="nickname">Lunar Ser.</div>
-        <div class="description"><p>Dear dad cold or lonely”<strong>No pain or <br>sadness</strong>“in heaven do be happy<br>We will miss you and <em>love you forever</em></p>
-</div>
-        <div class="links">
+    <div class="container">
+        <div class="header">
+    <!-- <div class="logo">
+        <a href="/">Lunar Ser.&#39;s Blog</a>
+    </div> -->
+    <div class="logo">
+        <img src="/images/logo.png" alt="Logo">
+    </div>
+    <div class="nav">
+        <ul class="menu">
             
-                
-                    <a class="link-item" title="Blog" href="/archives">
-                        
-                        
-                            <i class="iconfont icon-blog"></i>
-                        
+                <li class="menu-item">
+                    <a href="/" class="menu-item-link">
+                        Home
                     </a>
-                
-                    <a class="link-item" title="ZhiHu" target="_blank" rel="noopener" href="http://www.tingkew.com/">
-                        
-                        
-                            <i class="iconfont icon-zhihu"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="Instagram" target="_blank" rel="noopener" href="https://imgse.com/">
-                        
-                        
-                            <i class="iconfont icon-instagram"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="Reddit" target="_blank" rel="noopener" href="http://dj.fqingy.com/">
-                        
-                        
-                            <i class="iconfont icon-reddit"></i>
-                        
-                    </a>
-                
-                    <a class="link-item" title="Github" target="_blank" rel="noopener" href="https://github.com/windflower2022">
-                        
-                        
-                            <i class="iconfont icon-github"></i>
-                        
-                    </a>
-                
+                </li>
             
-        </div>
+                <li class="menu-item">
+                    <a target="_blank" rel="noopener" href="https://github.com/loveminimal" class="menu-item-link">
+                        Github
+                    </a>
+                </li>
+                
+        </ul>
     </div>
 </div>
-
-
-<audio style="width: 0px; height: 0px;" src="http://music.163.com/song/media/outer/url?id=20936390.mp3" autoplay="autoplay" loop="loop" controls="controls" type="audio/mpeg"></audio>
-
+        <div class="main">
+    <!-- <div class="posts">
+        
+        <div class="post">
+            <div class="post-title">
+                <a href="/2023/09/13/qh/" class="post-title-link">
+                    【风花音画】人间有味是清欢
+                </a>
             </div>
-            <footer id="footer" class="footer">
-   <!-- <div class="copyright">
-        <span>© Lunar Ser. | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
-    </div>-->
-</footer>
+            <div class="post-content">
+                <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+  </head>
+  <body>
+  <p align="center" color="black">
+    <a href="https://windflower2022.github.io/html/img/dy/rjywsqh.html" target="_blank">点击全屏</a>
+  </p>
+            </div>
+            <div class="post-more">
+                <a href="/2023/09/13/qh/" class="post-title-link">
+                    Read More
+                </a>
+            </div>
+            <div class="post-meta">
+                <div class="post-date">
+                    23-09-13
+                </div>
+            </div>
+        </div>
+        
+        <div class="post">
+            <div class="post-title">
+                <a href="/2023/09/07/th/" class="post-title-link">
+                    【风花音画】听海
+                </a>
+            </div>
+            <div class="post-content">
+                <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+  </head>
+  <body>
+  <p align="center" color="black">
+    <a href="https://windflower2022.github.io/html/img/th.html" target="_blank">点击全屏</a>
+  </p>
+            </div>
+            <div class="post-more">
+                <a href="/2023/09/07/th/" class="post-title-link">
+                    Read More
+                </a>
+            </div>
+            <div class="post-meta">
+                <div class="post-date">
+                    23-09-07
+                </div>
+            </div>
+        </div>
+        
+        <div class="post">
+            <div class="post-title">
+                <a href="/2023/08/20/ygez/" class="post-title-link">
+                    【风花音画】因歌而作
+                </a>
+            </div>
+            <div class="post-content">
+                <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+  </head>
+  <body>
+  <p align="center" color="black">
+    <a href="https://windflower2022.github.io/html/img/ygez.html" target="_blank">点击全屏</a>
+  </p>
+            </div>
+            <div class="post-more">
+                <a href="/2023/08/20/ygez/" class="post-title-link">
+                    Read More
+                </a>
+            </div>
+            <div class="post-meta">
+                <div class="post-date">
+                    23-08-20
+                </div>
+            </div>
+        </div>
+        
+        <div class="post">
+            <div class="post-title">
+                <a href="/2023/07/22/shui/" class="post-title-link">
+                    【风花音画】谁
+                </a>
+            </div>
+            <div class="post-content">
+                <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>shui</title>
+  </head>
+  <body>
+  <p align="center" color="black">
+    <a href="https://windflower2022.github.io/html/img/dy/shui.html" target="_blank">点击全屏</a>
+  </p>
+            </div>
+            <div class="post-more">
+                <a href="/2023/07/22/shui/" class="post-title-link">
+                    Read More
+                </a>
+            </div>
+            <div class="post-meta">
+                <div class="post-date">
+                    23-07-22
+                </div>
+            </div>
+        </div>
+        
+        <div class="post">
+            <div class="post-title">
+                <a href="/2023/06/22/ssn/" class="post-title-link">
+                    【风花日记】 风花说
+                </a>
+            </div>
+            <div class="post-content">
+                <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ssn</title>
+  </style>
+</head>
+<body>
+  <p align="center" color="black">
+    <a href="https://windflower2022.github.io/html/css/sjz/sjz1.html" target="_blank">点击全屏</a>
+  </p>
+            </div>
+            <div class="post-more">
+                <a href="/2023/06/22/ssn/" class="post-title-link">
+                    Read More
+                </a>
+            </div>
+            <div class="post-meta">
+                <div class="post-date">
+                    23-06-22
+                </div>
+            </div>
+        </div>
+        
+        <div class="post">
+            <div class="post-title">
+                <a href="/2023/06/18/yhll/" class="post-title-link">
+                    【风花音画】 音画浏览
+                </a>
+            </div>
+            <div class="post-content">
+                <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>yhll</title>
+  </style>
+</head>
+<body>
+  <p align="center" color="black">
+    <a href="https://windflower2022.github.io/html/convert/button/yhll.html" target="_blank">点击全屏</a>
+  </p>
+            </div>
+            <div class="post-more">
+                <a href="/2023/06/18/yhll/" class="post-title-link">
+                    Read More
+                </a>
+            </div>
+            <div class="post-meta">
+                <div class="post-date">
+                    23-06-18
+                </div>
+            </div>
+        </div>
+        
+        <div class="post">
+            <div class="post-title">
+                <a href="/2023/06/08/hjhjyq/" class="post-title-link">
+                    【风花音画】很久很久以前
+                </a>
+            </div>
+            <div class="post-content">
+                <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+  </head>
+  <body>
+  <p align="center" color="black">
+    <a href="https://windflower2022.github.io/html/img/hjhjyq.html" target="_blank">点击全屏</a>
+  </p>
+            </div>
+            <div class="post-more">
+                <a href="/2023/06/08/hjhjyq/" class="post-title-link">
+                    Read More
+                </a>
+            </div>
+            <div class="post-meta">
+                <div class="post-date">
+                    23-06-08
+                </div>
+            </div>
+        </div>
+        
+        <div class="post">
+            <div class="post-title">
+                <a href="/2023/06/06/ywsc/" class="post-title-link">
+                    【风花音画】于无声处
+                </a>
+            </div>
+            <div class="post-content">
+                <!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>waiting</title>
+  </style>
+</head>
+<body>
+  <p align="center" color="black">
+    <a href="https://windflower2022.github.io/html/bg/14.html" target="_blank">点击全屏</a>
+  </p>
+            </div>
+            <div class="post-more">
+                <a href="/2023/06/06/ywsc/" class="post-title-link">
+                    Read More
+                </a>
+            </div>
+            <div class="post-meta">
+                <div class="post-date">
+                    23-06-06
+                </div>
+            </div>
+        </div>
+        
+        <div class="post">
+            <div class="post-title">
+                <a href="/2023/05/13/byg/" class="post-title-link">
+                    【风花音画】白月光
+                </a>
+            </div>
+            <div class="post-content">
+                <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+  </head>
+  <body>
+  <p align="center" color="black">
+    <a href="https://windflower2022.github.io/html/img/byg.html" target="_blank">点击全屏</a>
+  </p>
+            </div>
+            <div class="post-more">
+                <a href="/2023/05/13/byg/" class="post-title-link">
+                    Read More
+                </a>
+            </div>
+            <div class="post-meta">
+                <div class="post-date">
+                    23-05-13
+                </div>
+            </div>
+        </div>
+        
+        <div class="post">
+            <div class="post-title">
+                <a href="/2023/02/16/nyzsctjll/" class="post-title-link">
+                    【风花音画】你一转身，春天就来了
+                </a>
+            </div>
+            <div class="post-content">
+                <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>你一转身，春天就来了</title>
+  </head>
+  <body>
+    <p align="center" color="black">
+    <a href="https://windflower2022.github.io/html/img/nyzsctjll.html" target="_blank">点击全屏</a>
+  </p>
+            </div>
+            <div class="post-more">
+                <a href="/2023/02/16/nyzsctjll/" class="post-title-link">
+                    Read More
+                </a>
+            </div>
+            <div class="post-meta">
+                <div class="post-date">
+                    23-02-16
+                </div>
+            </div>
+        </div>
+        
+    </div> -->
+    <div class="search-wrapper">
+    <form id="search-form"> <!-- 搜索框相关 -->
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off"/>
+        <i class="fa fa-times" onclick="resetSearch()"></i> <!-- 清空/重置搜索框 -->
+    </form>
+    <div id="local-search-result"></div> <!-- 搜索结果区 -->
+    <p class='no-result'>No results found </p> <!-- 无匹配时显示，注意请在 CSS 中设置默认隐藏 -->
+</div>
+    <div class="archive">
+    <ul class="post-archive">
+        
+        <li class="post-item">
+            <span class="post-date">
+                23/09/13</span>
+            <a href="/2023/09/13/qh/" class="post-title">
+                【风花音画】人间有味是清欢
+            </a>
+        </li>
+        
+        <li class="post-item">
+            <span class="post-date">
+                23/09/07</span>
+            <a href="/2023/09/07/th/" class="post-title">
+                【风花音画】听海
+            </a>
+        </li>
+        
+        <li class="post-item">
+            <span class="post-date">
+                23/08/20</span>
+            <a href="/2023/08/20/ygez/" class="post-title">
+                【风花音画】因歌而作
+            </a>
+        </li>
+        
+        <li class="post-item">
+            <span class="post-date">
+                23/07/22</span>
+            <a href="/2023/07/22/shui/" class="post-title">
+                【风花音画】谁
+            </a>
+        </li>
+        
+        <li class="post-item">
+            <span class="post-date">
+                23/06/22</span>
+            <a href="/2023/06/22/ssn/" class="post-title">
+                【风花日记】 风花说
+            </a>
+        </li>
+        
+        <li class="post-item">
+            <span class="post-date">
+                23/06/18</span>
+            <a href="/2023/06/18/yhll/" class="post-title">
+                【风花音画】 音画浏览
+            </a>
+        </li>
+        
+        <li class="post-item">
+            <span class="post-date">
+                23/06/08</span>
+            <a href="/2023/06/08/hjhjyq/" class="post-title">
+                【风花音画】很久很久以前
+            </a>
+        </li>
+        
+        <li class="post-item">
+            <span class="post-date">
+                23/06/06</span>
+            <a href="/2023/06/06/ywsc/" class="post-title">
+                【风花音画】于无声处
+            </a>
+        </li>
+        
+        <li class="post-item">
+            <span class="post-date">
+                23/05/13</span>
+            <a href="/2023/05/13/byg/" class="post-title">
+                【风花音画】白月光
+            </a>
+        </li>
+        
+        <li class="post-item">
+            <span class="post-date">
+                23/02/16</span>
+            <a href="/2023/02/16/nyzsctjll/" class="post-title">
+                【风花音画】你一转身，春天就来了
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+<div class="page-nav">
+    <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo;Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next&amp;raquo;</a>
+</div>
+
+</div>
+
+<div class="page-nav">
+    <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo;Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next&amp;raquo;</a>
+</div>
+
+        <div class="footer">
+    <a href="#">
+        2018 <i class="fab fa-studiovinari"></i> Lunar Ser. <i class="fas fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/js/totop.js"></script>
+
+
+<script src="/js/search.js"></script>
 
     </div>
 </body>
