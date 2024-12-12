@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>光影特效</title>
+  </head>
+  <style>#mydiv { margin: 0 0 0 calc(50% - 881px); display: grid; place-items: center; width: 1600px; height:1000px; background: lightblue url('https://cccimg.com/view.php/d72a6ea0f865d5896340ec60d9edec15.jpg') no-repeat center/cover; box-shadow: 0px 0px 0px #000; user-select: none; overflow: hidden; position: relative; z-index: 1; --state: running; }
+    #codePre { font: normal 14px/20px Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; }
+    .green { color: green; }
+    #vid1 {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top:-100px;
+    left:-101px;
+      object-fit: cover;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      z-index:3;
+      opacity: .29;
+    }
+    #vid2{
+      position: absolute;
+      width: 110%;
+      height: 120%;
+      top:-100px;
+    
+      object-fit: cover;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      z-index: 2;
+      opacity: .10;
+    }
+    </style>    
+    
+  <body>
+    <div id="mydiv"><video id="vid1" src="https://fd.aigei.com/src/vdo/mp4/1c/1cf00bee0d134bb3a950de4555bce030.mp4?e=1728774900&token=P7S2Xpzfz11vAkASLTkfHN7Fw-oOZBecqeJaxypL:jCQzFGGaMprcVKkyTT1uoYzhTzg=" autoplay="" loop="" muted=""></video><video id="vid2" src="2.mp4" autoplay="" loop="" muted=""></video></div>
+     <audio id="aud" src="https://music.16.com/song/media/outer/url?id=1450588967" autoplay="" loop=""></audio> 
+    </body>
+</html>
