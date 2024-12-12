@@ -1,136 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>
-        Lunar Ser.&#39;s Blog
-    </title>
-    
-<link rel="stylesheet" href="/css/style.css">
+extends ./_layout.pug
 
-    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
-    <link rel="stylesheet" href="/css/style/github.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-<meta name="generator" content="Hexo 6.3.0"></head>
+block content
+  include ./_mixins/gallery.pug
 
-<body>
-    <div class="container">
-        <div class="header">
-    <!-- <div class="logo">
-        <a href="/">Lunar Ser.&#39;s Blog</a>
-    </div> -->
-    <div class="logo">
-        <img src="/images/logo.png" alt="Logo">
-    </div>
-    <div class="nav">
-        <ul class="menu">
-            
-                <li class="menu-item">
-                    <a href="/" class="menu-item-link">
-                        Home
-                    </a>
-                </li>
-            
-                <li class="menu-item">
-                    <a target="_blank" rel="noopener" href="https://user.qzone.qq.com/3838567901" class="menu-item-link">
-                        Menu.Link
-                    </a>
-                </li>
-                
-        </ul>
-    </div>
-</div>
-        <div class="article">
-    <!-- <div class="article-title">
-        <h2>
-            
-        </h2>
-    </div> -->
-    <div class="article-meta">
-        <div class="article-date">
-            <i class="fas fa-edit"></i>
-            2022/10/01 Sat 21:34&nbsp;&nbsp;&nbsp;
-            <span class="just-a-temp"><span>
-            <i class="fas fa-redo"></i>
-            2022/10/01 Sat 13:19
-        </div>
-    </div>
-    <div class="article-content">
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS属性选择器</title>
-    <style>
-        [type] {
-            width: 50px;
-            height: 50px;
-        }
-        
-        [name="sex"] {
-            width: 20th;
-            height: 20px;
-        }
+  if page.type === 'tags'
+    div.tagcloud
+      div.tagcloud-total= __('page.tags') + ' - '
+        span= site.tags.length
+      - var min_font = theme.tag_cloud ? theme.tag_cloud.min_size : 14;
+      - var max_font = theme.tag_cloud ? theme.tag_cloud.max_size : 24;
+      - var start_color = theme.tag_cloud ? theme.tag_cloud.start_color : '#a4d8fa';
+      - var end_color = theme.tag_cloud ? theme.tag_cloud.end_color : '#1b9ef3';
+      div.tagcloud-item
+        != tagcloud({min_font: min_font, max_font: max_font, amount: theme.tag_cloud.max_amount, color: true, start_color, end_color})
+  else if page.type === 'categories'
+    div.category
+      div.category-total= __('page.categories') + ' - '
+        span= site.categories.length
+      != list_categories()
+  else
+    div.custompage
+      if page.photos && page.photos.length
+        +gallery(page)
+      != page.content
 
-        [class~="box"] {
-        background-color: yellow;
-        }
+  if isShowReward
+    include ./_partials/widgets/reward.pug
 
-        [class|="box"] {
-        background-color: blue;
-        } 
-    </style>
-</head>
-<body>   
-    <h1>
-        基本信息
-    </h1>
-    用户名：<input type="text" class="box"> <br>
-    用户密码：<input type="password"><br>
-    回答问题：<input type="text"> <br>
-    性别选择：<input type="radio" name="sex" >男<input type="radio" name="sex">女<br>
-    是否核酸：<input type="radio" name="yesorno" >是<input type="radio" name="yesorno">否<br>
-    <h1>
-       元素修饰
-    </h1>
-    <P class="box big bobo">我是一个p元素,我有三个类名，分别:box,big,bobo
-    </P>
-    <P class="box bobo">我是一个p元素,我有两个类名，分别:box,bobo
-    </P>
-    <div class="box">我是一个div元素,我有个类名:box
-    </div><br>
-    <div class="box-qf">我是一个div元素,我有个类名:box-qf
-    </div><br><br>
-    总结：
-    简单选择器和组合选择器，可以完成元素测查找。<br><br>
-    其他选择器可以更加精准高效的查找元素，从而能提高我们编码速度。<br><br>
-    属性选择器，在实际开发的过程中，大部分会应用在表单控件中，因为表单控件可添加的属性比较多。<br><br>
-</body>
-</html>
-    </div>
-
-    <div class="totop">ToTOP</div>
-</div>
-        <div class="footer">
-    <a href="#">
-        2018 <i class="fab fa-studiovinari"></i> Lunar Ser. <i class="fas fa-angle-double-up"></i>
-    </a>
-</div>
-
-
-<script src="/js/totop.js"></script>
-
-
-<script src="/js/search.js"></script>
-
-    </div>
-</body>
-
-</html>
+  if isShowCC
+    include ./_partials/widgets/copyright.pug

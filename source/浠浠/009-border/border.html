@@ -1,131 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>
-        Lunar Ser.&#39;s Blog
-    </title>
-    
-<link rel="stylesheet" href="/css/style.css">
+extends ./_layout.pug
 
-    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
-    <link rel="stylesheet" href="/css/style/github.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-<meta name="generator" content="Hexo 6.3.0"></head>
+block content
+  include ./_mixins/gallery.pug
 
-<body>
-    <div class="container">
-        <div class="header">
-    <!-- <div class="logo">
-        <a href="/">Lunar Ser.&#39;s Blog</a>
-    </div> -->
-    <div class="logo">
-        <img src="/images/logo.png" alt="Logo">
-    </div>
-    <div class="nav">
-        <ul class="menu">
-            
-                <li class="menu-item">
-                    <a href="/" class="menu-item-link">
-                        Home
-                    </a>
-                </li>
-            
-                <li class="menu-item">
-                    <a target="_blank" rel="noopener" href="https://user.qzone.qq.com/3838567901" class="menu-item-link">
-                        Menu.Link
-                    </a>
-                </li>
-                
-        </ul>
-    </div>
-</div>
-        <div class="article">
-    <!-- <div class="article-title">
-        <h2>
-            
-        </h2>
-    </div> -->
-    <div class="article-meta">
-        <div class="article-date">
-            <i class="fas fa-edit"></i>
-            2022/10/04 Tue 11:22&nbsp;&nbsp;&nbsp;
-            <span class="just-a-temp"><span>
-            <i class="fas fa-redo"></i>
-            2022/10/04 Tue 11:22
-        </div>
-    </div>
-    <div class="article-content">
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>border</title>
-    <link rel="stylesheet" href="./border-style.css">
-</head>
-<body>
-    <h1>
-        070 CSS边框
-    </h1>
-    <p class="a"> 
-        border-style:dotted/dashed/solid/double/none/hidden<br><br>
-        border-width:px/em/thin,medium,thick<br><br>
-        border-color:
-    </p>
-    <p class="b">
-        写table>(tr>td*3)*3，tab键
-    </p>
-    <table border="1">
-        <tr>
-            <td>左上</td>
-            <td>中上</td>
-            <td>右上</td>
-        </tr>
-        <tr>
-            <td class="a">左中</td>
-            <td class="b">中</td>
-            <td>右中</td>
-        </tr>
-        <tr>
-            <td>左下</td>
-            <td>中下</td>
-            <td>右下</td>
-        </tr>
-    </table>   
-    <p class="c">
-        当表格单元格相邻边框产生冲突时,border-style: hidden>solid>...none优先级高到低。<br><br>
-        控制表格中单独的一根线,可在border-style中间添加一个表示方向的词,如border-top-style就可设置单个边框线。可设置top,right,bottom,left方向。除了单个属性外，border-style属性值可使用混合的简写方法<br><br>
-        1:四个值如dotted solid double dashed;(上，右，下，左)<br><br>
-        2:三个值如dotted solid double;(上，左右，下)<br><br>
-        3:两个值如dotted solid:（上下，左右）<br><br>
-        4:四个值如dotted(四边)<br><br>
-    </p><br><br>  
-</body>
-</html>
-    </div>
+  if page.type === 'tags'
+    div.tagcloud
+      div.tagcloud-total= __('page.tags') + ' - '
+        span= site.tags.length
+      - var min_font = theme.tag_cloud ? theme.tag_cloud.min_size : 14;
+      - var max_font = theme.tag_cloud ? theme.tag_cloud.max_size : 24;
+      - var start_color = theme.tag_cloud ? theme.tag_cloud.start_color : '#a4d8fa';
+      - var end_color = theme.tag_cloud ? theme.tag_cloud.end_color : '#1b9ef3';
+      div.tagcloud-item
+        != tagcloud({min_font: min_font, max_font: max_font, amount: theme.tag_cloud.max_amount, color: true, start_color, end_color})
+  else if page.type === 'categories'
+    div.category
+      div.category-total= __('page.categories') + ' - '
+        span= site.categories.length
+      != list_categories()
+  else
+    div.custompage
+      if page.photos && page.photos.length
+        +gallery(page)
+      != page.content
 
-    <div class="totop">ToTOP</div>
-</div>
-        <div class="footer">
-    <a href="#">
-        2018 <i class="fab fa-studiovinari"></i> Lunar Ser. <i class="fas fa-angle-double-up"></i>
-    </a>
-</div>
+  if isShowReward
+    include ./_partials/widgets/reward.pug
 
-
-<script src="/js/totop.js"></script>
-
-
-<script src="/js/search.js"></script>
-
-    </div>
-</body>
-
-</html>
+  if isShowCC
+    include ./_partials/widgets/copyright.pug
