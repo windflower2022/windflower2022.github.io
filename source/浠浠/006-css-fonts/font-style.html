@@ -1,256 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--Head-->
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="google-site-verification" content="GZh2jRE6IgVXx8SYpoRZYwcs4_Wy7vWEAeSIHCs3UE8"/>
-    <meta name="baidu-site-verification" content="5EmnBCPDrY" />
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Lunar Ser.">
+
+
+    <meta name="subtitle" content="时间煮雨，岁月缝花。以欢喜心，慢度日常。">
+
+
+
+
+<title>Lunar Ser.&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
     
 
-    <title> - Lunar Ser.&#39;s Blog</title>
-
-    <meta property="og:url" content="https://windflower2022.github.io">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content=" - Lunar Ser.&#39;s Blog | Lunar Ser.&#39;s Blog">
-    
-    
-
-    
-
-    <!--mdui-->
-    <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
-    <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
-    <!--jquery-->
-    
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 
-    <!--https://github.com/Dreamer365/FunLazy-->
-    <script src="https://unpkg.com/funlazy@latest"></script>
-
-    <!--theme-->
+    <!-- scripts list from _config.yml -->
     
-<link rel="stylesheet" href="/css/mdm.css">
-
+    <script src="/js/script.js"></script>
     
-<link rel="stylesheet" href="/css/mdm_theme_dark.css">
-
-    
-<script src="/js/mdm.js"></script>
-
-    
-    <!--高亮-->
-    
-<link rel="stylesheet" href="/css/solarized-light.css">
-
-    
-    <!--全局变灰-->
+    <script src="/js/tocbot.min.js"></script>
     
 
-    <!--点击特效-->
-    
-        <script async src="/js/click-effect.js"></script>
-    
 
-    <!--代码块-->
-    
-<script src="/libs/codeblock/codeblock.js"></script>
 
     
-<link rel="stylesheet" href="/libs/codeblock/codeblock.css">
-
-
-    <!--一言-->
-    <script defer src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto"></script>
-
-
-    <!--本地搜索-->
-    <!-- <script src="js/search.js"></script> -->
-    <!--自动提交给百度-->
     
+        
+    
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
     <script>
-        (function(){
-            var bp = document.createElement('script');
-            var curProtocol = window.location.protocol.split(':')[0];
-            if (curProtocol === 'https') {
-                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
             }
-            else {
-                bp.src = 'https://push.zhanzhang.baidu.com/push.js';
-            }
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(bp, s);
         })();
     </script>
-    
 
-    <!---google ad config-->
-    
-        <script data-ad-client="ca-pub-8181303774570877" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    
-<meta name="generator" content="Hexo 6.3.0"></head>
-<!--header_bar-->
-<div class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide">
-    <div class="mdui-toolbar mdui-color-indigo">  
-        <a class="mdui-btn mdui-btn-icon mdui-hidden-sm-up" mdui-menu="{target: '#example-2'}">
-            <i class="mdui-icon material-icons">menu</i>
-        </a>
-        <ul class="mdui-menu" id="example-2">
-            
-                <li class="mdui-menu-item">
-                    
-                    <a href="/" class="mdui-ripple"  target='_self'>
-                    <i class="mdui-menu-item-icon mdui-icon material-icons">home</i>
-                    首页
-                </a>
-                </li>
-                <li class="mdui-divider"></li>
-            
-                <li class="mdui-menu-item">
-                    
-                    <a href="http://space.mvbox.cn/497862010.html" class="mdui-ripple"  target='_blank'>
-                    <i class="mdui-menu-item-icon mdui-icon material-icons">public</i>
-                    音乐
-                </a>
-                </li>
-                <li class="mdui-divider"></li>
-            
-                <li class="mdui-menu-item">
-                    
-                    <a href="/archives" class="mdui-ripple"  target='_self'>
-                    <i class="mdui-menu-item-icon mdui-icon material-icons">library_books</i>
-                    归档
-                </a>
-                </li>
-                <li class="mdui-divider"></li>
-            
-                <li class="mdui-menu-item">
-                    
-                    <a href="/about" class="mdui-ripple"  target='_self'>
-                    <i class="mdui-menu-item-icon mdui-icon material-icons">error_outline</i>
-                    关于
-                </a>
-                </li>
-                <li class="mdui-divider"></li>
-            
-        </ul>
-        <!--大屏-->
-        
-            
-            <a href="/" class="mdui-typo-title mdui-ripple mdui-ripple-white mdui-hidden-xs" target='_self'>
-                首页
-            </a>
-        
-            
-            <a href="http://space.mvbox.cn/497862010.html" class="mdui-typo-title mdui-ripple mdui-ripple-white mdui-hidden-xs" target='_blank'>
-                音乐
-            </a>
-        
-            
-            <a href="/archives" class="mdui-typo-title mdui-ripple mdui-ripple-white mdui-hidden-xs" target='_self'>
-                归档
-            </a>
-        
-            
-            <a href="/about" class="mdui-typo-title mdui-ripple mdui-ripple-white mdui-hidden-xs" target='_self'>
-                关于
-            </a>
-        
-        <div class="mdui-toolbar-spacer"></div>
-
-        <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>
-
-        <!--分享-->
-        
-        <button class="mdui-btn mdui-btn-icon" mdui-menu="{target: '#share_menu'}">
-            <i class="mdui-icon material-icons">share</i>
-        </button>
-        
-        <ul class="mdui-menu" id="share_menu">
-            
-                <li class="mdui-menu-item">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://windflower2022.github.io//category/index.html" target="_blank" class="mdui-ripple">
-                        facebook
-                    </a>
-                </li>
-            
-            
-            
-                <li class="mdui-menu-item">
-                    <a href="https://connect.qq.com/widget/shareqq/index.html?site=Lunar Ser.&#39;s Blog&title=category&summary=&pics=https://windflower2022.github.ioundefined&url=https://windflower2022.github.io/category/index.html" target="_blank" class="mdui-ripple">
-                        QQ
-                    </a>
-                </li>
-            
-
-            
-                <li class="mdui-menu-item">
-                    <a href="https://twitter.com/intent/tweet?text=category&url=https://windflower2022.github.io//category/index.html&via=Lunar Ser." target="_blank" class="mdui-ripple">
-                        twitter
-                    </a>
-                </li>
-            
-        
-            
-                <li class="mdui-menu-item">
-                    <a href="https://service.weibo.com/share.php?appkey=&title=category&url=https://windflower2022.github.io//category/index.html&pic=&searchPic=false&style=simple" target="_blank" class="mdui-ripple">
-                        weibo
-                    </a>
-                </li>
-            
-
-            
-                <li class="mdui-menu-item">
-                    <a href="https://telegram.me/share/url?url=https://windflower2022.github.io//category/index.html&text=category" target="_blank" class="mdui-ripple">
-                        telegram
-                    </a>
-                </li>
-            
-
-            
-                <li class="mdui-menu-item">
-                    <a href="https://plus.google.com/share?url=https://windflower2022.github.io//category/index.html" target="_blank" class="mdui-ripple">
-                        googleplus
-                    </a>
-                </li>
-              
-        
-              
-                <li class="mdui-menu-item">
-                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://windflower2022.github.io//category/index.html&title=category" target="_blank" class="mdui-ripple">
-                        linkedin
-                    </a>
-                </li>
-              
-            </ul>
-        
-        
-        <button onclick="themeChange()"
-            class="mdui-btn mdui-btn-icon mdui-ripple mdui-text-color-white" 
-            mdui-tooltip="{content: '切换亮/暗色模式'}">
-            <i class="mdui-icon material-icons" id="themeIcon">brightness_7</i>
-        </button>
-        <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">more_vert</i></a>
-    </div>
-  </div>
-<!--Header-->
-
-
-<div class="header" style="background-image: url(https://cdn.jsdelivr.net/gh/TonyChenn/BlogPicture/main/img1.jpg)">
-    <div class="mdui-card-media" style="overflow: hidden;">
-        <div class="header-content">
-            <span class="header_title">Lunar Ser.&#39;s Blog</span></br>
-            <p id="hitokoto">一言加载中...</p>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Lunar Ser.&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
         </div>
-    </div>
-</div>
+    </nav>
 
-<div class="mdui-center article-section" id="content-inner">
-  
-<article id="page">
-  <h1></h1>
-  <!DOCTYPE html>
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Lunar Ser.&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    <article class="post-wrap page">
+        
+        <h2 class="post-title"></h2>
+        
+        <section class="post-content">
+            <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -275,36 +157,18 @@
     </p><br><br>
 </body>
 </html>
-</article>
-
-<div id="paginator">
-  
+        </section>
+    </article>
 </div>
 
-
-  <!--footer-->
-  <footer class="mdui-color-indigo">
-    <div class="mdui-container">
-        <div style="text-align: center; padding: 20px;">
-            <div >
-                Copyright &copy;
-                Lunar Ser.&nbsp&nbsp2024
-                &nbspTheme By
-                <a target="_blank" rel="noopener" href="https://github.com/TonyChenn/hexo-theme-mdm">mdm</a>
-                <iframe style="margin-left: 2px; margin-bottom:-5px;" 
-                        src="https://ghbtns.com/github-btn.html?user=TonyChenn&repo=hexo-theme-mdm&type=star&count=true" 
-                        frameborder="0" scrolling="0" width="91px" height="20px">
-                </iframe>
             </div>
-        <!-- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        总访问量 <span id="busuanzi_value_site_pv"></span> 次&nbsp&nbsp&nbsp总访客<span id="busuanzi_value_site_uv"></span>人 -->
-        </div>
-    </div>
+            <footer id="footer" class="footer">
+   <!-- <div class="copyright">
+        <span>© Lunar Ser. | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>-->
 </footer>
-</div>
 
-<!--goTop-->
-<div class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-pink">
-    <i class="mdui-icon material-icons">arrow_upward</i>
-</div>
+    </div>
+</body>
+
 </html>
