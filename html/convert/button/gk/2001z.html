@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <title>记单词</title>
+    <style>
+        div{
+            background-color:rgb(2243,243, 243);
+            margin-bottom: 15px;
+            margin-bottom: 15px;
+            margin-left: 150px;
+            padding: 10px;
+            border-radius: 55px;
+            font-size: 30px;
+            width: 1200px;
+            text-align: left;
+        }
+        div:hover{
+            background-color:rgb(226, 245, 231);
+        }
+        .t{
+            margin-top: 100px;
+            padding-left: 150px;
+        }
+        @media screen and (max-width: 650px) {
+            .t{
+                margin-top: 50px;
+                padding-left: 20px;
+            }
+         }
+        </style>
+</head>
+<body> 
+        <br><br><br>				
+        <div class="text"><span>&emsp;&emsp;Since our twins began learning to walk, my wife and I have kept telling them that our sliding glass door is just a window. The reason is obvious. If we admit it is a door, they will want to go outside constantly . It will drive us crazy. The kids apparently know the truth. But our insisting it is merely a window has kept them from  attempting millions of requests to open the door.
+		<br>&emsp;&emsp;自从我们的双胞胎孩子开始学步以来，我和妻子一直告诉他们，我们家的玻璃推拉门只是一扇窗户。妻子和我这么做的原因是显而易见的。如果我们承认那是一扇门，孩子们就会不断地想出去。那会把我们逼疯的。孩子们显然知道真相。但我们坚持说它只是一扇窗户，这就阻止了他们无数次试图打开那扇门的请求。
+		</span></div>
+		<div class="text"><span>&emsp;&emsp;I hate lying to the kids. One day they will wake up and discover that everything they have always known about windows is a lie. 
+		<br>&emsp;&emsp;我讨厌对孩子撒谎。有朝一日他们会醒悟并发现他们一直以为的窗户实际上是一扇门。
+		</span></div>
+        <div class="text"><span>&emsp;&emsp;I wonder if parents should always tell the truth no matter the consequences . I have a very strong fear that the lie we are telling is doing spiritual damage to our children. Windows and doors have important metaphorical (比喻) meanings. I am telling them they can not open what they absolutely know is a door. What if later in life they come to a metaphorical door, like an opportunity (机会) of some sort, and  instead of  opening the door and taking the opportunity, they just star at it and wonder,“What if it is not a door?”That is,“What if it is not a real opportunity?”
+		<br>&emsp;&emsp;我讨厌对孩子撒谎。有朝一日他们会醒悟并发现他们一直以为的窗户实际上是一扇门。我想知道父母是否应该不计后果总是对孩子说真话。我非常害怕我们说的谎言会对孩子造成精神上的伤害。窗户和门有着重要的比喻意义。我总是告诉他们，不能打开他们绝对知道的那一扇门。如果在以后的生活中，他们来到一扇比喻性的门前，比如某种机会，他们不去打开门、抓住机会，而只是盯着它并且寻思着，“万一它不是一扇门怎么办？”也就是说，他们会怀疑“万一它不是一个真正的机会怎么办?”
+		</span></div>
+        <div class="text"><span>&emsp;&emsp;Maybe it is an unreasonable fear. But the  bottom line  is that I should not lie to my kids. I should just  accept repeatedly having to say, “No. We can not go outside now.” Then when they come to other doors in life, be they real or metaphorical, they will not  hesitate to open them and walk through.
+		<br>&emsp;&emsp;或许我的担心害怕不太合理，但底线是我不该对孩子们撒谎。我应该接受反复地说“不，我们现在不能出去。” 这样，当他们面对生活中的其他门时，无论是真实的门还是比喻性的门，他们都会毫不犹豫地打开门，然后走过去。
+		</span></div>
+        </div><br><br><br><br><br><br></body>
+    <script>
+        $(document).ready(function(){
+            $("div").click(function(){
+            	//方式一
+                //var words = new SpeechSynthesisUtterance($(this).context.children[0].textContent);
+                //window.speechSynthesis.speak(words)
+
+            	//方式二
+				var audio = new Audio();  
+                audio.src ='https://dict.youdao.com/speech?audio=' + encodeURI($(this).context.children[0].textContent);  
+                audio.play(); 
+            });
+        });
+    </script>
+</html>        
