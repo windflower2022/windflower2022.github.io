@@ -1,0 +1,13 @@
+a {
+    background: linear-gradient(90deg, #ff3c41, #fc0, #0ebeff);
+    background-size: 0 3px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: 1s all;
+    color: #000;
+}
+
+a:hover {
+    background-size: 100% 3px;
+    color: #000;
+}
