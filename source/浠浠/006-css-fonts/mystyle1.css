@@ -1,0 +1,17 @@
+body {
+    font-size: 32px;
+}
+
+h1 {
+    font-family: MSYH;
+    font-size: 32px;
+}
+
+p.wb {
+    font-family: SIMKAI;
+    font-size: 80%;
+}
+
+p.sb {
+    font-family: SIMSUN;
+}

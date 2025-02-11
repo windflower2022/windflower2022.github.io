@@ -1,0 +1,46 @@
+h1 {
+    text-align: center;
+    color: rgb(165, 1, 105);
+    letter-spacing: 5px;
+}
+
+p {
+    text-indent: 2em;
+    line-height: 30px;
+    word-spacing: 5px;
+    margin: 20px;
+}
+
+p.a {
+    text-align: left;
+}
+
+p.b {
+    text-align: center;
+}
+
+p.c {
+    text-align: right;
+    color: rgb(165, 1, 105);
+    background-color:rgb(225, 225, 221);
+}
+
+img.d {
+   vertical-align: baseline; 
+}
+
+img.e {
+    vertical-align: text-top;
+}
+
+img.f {
+    vertical-align: text-bottom;
+}
+
+img.g {
+    vertical-align: super;
+}
+
+img.h {
+    vertical-align: sub;
+}
