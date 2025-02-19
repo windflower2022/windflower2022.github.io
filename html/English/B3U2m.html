@@ -1,0 +1,304 @@
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        #instruction {
+            background: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: red;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        #game-container {
+            flex: 1;
+            display: flex;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .column {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            padding: 0 10px;
+        }
+        .bubble {
+            margin: 10px;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            user-select: none;
+        }
+        .english {
+            background: #FF6B6B;
+            color: white;
+        }
+        .chinese {
+            background: #4ECDC4;
+            color: white;
+        }
+        .selected {
+            transform: scale(1.2) rotate(5deg);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .matched {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s;
+        }
+        #completion-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-align: center;
+            font-size: 24px;
+            display: none;
+        }
+        #completion-message p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="instruction">请完成英文单词和中文单词的配对</div>
+    <div id="game-container">
+        <div id="left-column" class="column"></div>
+        <div id="right-column" class="column"></div>
+    </div>
+    <div id="completion-message">
+        <p>恭喜完成所有配对！</p>
+        <p>配对错误次数：<span id="error-count">0</span></p>
+        <p>完成时间：<span id="completion-time"></span></p>
+        <p>花费时长：<span id="time-spent"></span></p>
+    </div>
+
+    <script>
+        // 单词数据（可自行扩展）
+        const wordList = [
+        { english: '	contribution	', chinese: '	贡献	', key: '1' },
+{ english: '	relief	', chinese: '	减轻,缓解	', key: '2' },
+{ english: '	shortage	', chinese: '	短缺,不足,缺乏	', key: '3' },
+{ english: '	internal	', chinese: '	内部的	', key: '4' },
+{ english: '	effective	', chinese: '	有效的,产生预期效果	', key: '5' },
+{ english: '	fund	', chinese: '	为…提供资金,资助	', key: '6' },
+{ english: '	recycle	', chinese: '	再利用,回收利用	', key: '7' },
+{ english: '	fountain	', chinese: '	喷水池	', key: '8' },
+{ english: '	earn	', chinese: '	挣(钱)	', key: '9' },
+{ english: '	donate	', chinese: '	捐赠,捐献	', key: '10' },
+{ english: '	foundation	', chinese: '	基金会	', key: '11' },
+{ english: '	insight	', chinese: '	顿悟,猛醒	', key: '12' },
+{ english: '	perseverance	', chinese: '	不屈不挠,坚持不懈	', key: '13' },
+{ english: '	reality	', chinese: '	真实,现实	', key: '14' },
+{ english: '	extend	', chinese: '	持续;延伸	', key: '15' },
+{ english: '	mission	', chinese: '	职责;使命	', key: '16' },
+{ english: '	disease	', chinese: '	疾病,病	', key: '17' },
+{ english: '	disability	', chinese: '	残疾,残障	', key: '18' },
+{ english: '	territory	', chinese: '	地区,地方	', key: '19' },
+{ english: '	sensitive	', chinese: '	敏感的,容易生气的	', key: '20' },
+{ english: '	generous	', chinese: '	慷慨的,大方的	', key: '21' },
+{ english: '	hesitate	', chinese: '	迟疑,犹豫	', key: '22' },
+{ english: '	cancer	', chinese: '	癌症	', key: '23' },
+{ english: '	royal	', chinese: '	王室的,皇家的	', key: '24' },
+{ english: '	institution	', chinese: '	机构,团体	', key: '25' },
+{ english: '	assistance	', chinese: '	帮助,援助	', key: '26' },
+{ english: '	registration	', chinese: '	登记,注册	', key: '27' },
+{ english: '	confirmation	', chinese: '	证实,证明	', key: '28' },
+{ english: '	Nazi	', chinese: '	纳粹党员,纳粹分子	', key: '29' },
+{ english: '	Jewish	', chinese: '	犹太人的,犹太教的	', key: '30' },
+{ english: '	aid	', chinese: '	帮助,援助	', key: '31' },
+{ english: '	temporary	', chinese: '	短期的,短暂的;临时的	', key: '32' },
+{ english: '	military	', chinese: '	军队	', key: '33' },
+{ english: '	achievement	', chinese: '	成绩,成就	', key: '34' },
+{ english: '	knighthood	', chinese: '	(英国的)爵士封号或头衔	', key: '35' },
+{ english: '	chief	', chinese: '	最高级别的,首席的	', key: '36' },
+{ english: '	major	', chinese: '	重要的,主要的	', key: '37' },
+{ english: '	treatment	', chinese: '	治疗;疗法	', key: '38' },
+{ english: '	obtain	', chinese: '	获得,得到	', key: '39' },
+{ english: '	drug	', chinese: '	药物,药材	', key: '40' },
+{ english: '	certificate	', chinese: '	证明书,证书	', key: '41' },
+{ english: '	ministry	', chinese: '	(政府的)部	', key: '42' },
+{ english: '	further	', chinese: '	更多的,附加的	', key: '43' },
+{ english: '	break into a smile	', chinese: '	突然笑起来	', key: '44' },
+{ english: '	rise to ones feet	', chinese: '	站起身来	', key: '45' }
+
+        ];
+
+        // 游戏状态
+        let selected = [];
+        let errorCount = 0;
+        let startTime = null;
+        let endTime = null;
+
+        // 语音合成相关
+        let synth = window.speechSynthesis;
+        let englishVoice = null;
+
+        // 初始化语音
+        function initSpeech() {
+            const voices = synth.getVoices();
+            englishVoice = voices.find(voice => 
+                voice.lang === 'en-US' || voice.lang.startsWith('en-')
+            );
+        }
+
+        // 发音函数
+        function speakWord(text) {
+            if (!synth || !englishVoice) return;
+            
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.voice = englishVoice;
+            utterance.rate = 0.9;
+            synth.speak(utterance);
+        }
+
+        // 创建泡泡
+        function createBubbles() {
+            const leftColumn = document.getElementById('left-column');
+            const rightColumn = document.getElementById('right-column');
+            
+            // 分离中英文泡泡
+            const englishBubbles = wordList.map(word => ({ 
+                text: word.english, 
+                type: 'english', 
+                key: word.key 
+            }));
+            const chineseBubbles = wordList.map(word => ({ 
+                text: word.chinese, 
+                type: 'chinese', 
+                key: word.key 
+            }));
+
+            // 随机排序
+            englishBubbles.sort(() => Math.random() - 0.5);
+            chineseBubbles.sort(() => Math.random() - 0.5);
+
+            // 创建英文泡泡（左侧）
+            englishBubbles.forEach(bubble => {
+                const element = document.createElement('div');
+                element.className = `bubble ${bubble.type}`;
+                element.textContent = bubble.text;
+                element.dataset.type = bubble.type;
+                element.dataset.key = bubble.key;
+                leftColumn.appendChild(element);
+            });
+
+            // 创建中文泡泡（右侧）
+            chineseBubbles.forEach(bubble => {
+                const element = document.createElement('div');
+                element.className = `bubble ${bubble.type}`;
+                element.textContent = bubble.text;
+                element.dataset.type = bubble.type;
+                element.dataset.key = bubble.key;
+                rightColumn.appendChild(element);
+            });
+
+            // 记录游戏开始时间
+            startTime = new Date();
+        }
+
+        // 检查是否完成所有配对
+        function checkCompletion() {
+            const matchedBubbles = document.querySelectorAll('.matched');
+            if (matchedBubbles.length === wordList.length * 2) {
+                endTime = new Date();
+                showCompletionMessage();
+            }
+        }
+
+        // 显示完成消息
+        function showCompletionMessage() {
+            const completionMessage = document.getElementById('completion-message');
+            const errorCountElement = document.getElementById('error-count');
+            const completionTimeElement = document.getElementById('completion-time');
+            const timeSpentElement = document.getElementById('time-spent');
+
+            // 计算花费时长
+            const timeSpent = Math.floor((endTime - startTime) / 1000);
+            const minutes = Math.floor(timeSpent / 60);
+            const seconds = timeSpent % 60;
+
+            // 更新消息内容
+            errorCountElement.textContent = errorCount;
+            completionTimeElement.textContent = endTime.toLocaleString();
+            timeSpentElement.textContent = `${minutes} 分 ${seconds} 秒`;
+
+            // 显示消息
+            completionMessage.style.display = 'block';
+        }
+
+        // 点击处理逻辑
+        document.getElementById('game-container').addEventListener('click', function(e) {
+            const bubble = e.target;
+            if (!bubble.classList.contains('bubble') || bubble.classList.contains('matched')) return;
+
+            // 点击英文单词立即发音
+            if (bubble.classList.contains('english')) {
+                speakWord(bubble.textContent);
+            }
+
+            // 添加选中效果
+            bubble.classList.add('selected');
+            selected.push(bubble);
+
+            // 如果选中了两个泡泡
+            if (selected.length === 2) {
+                const [first, second] = selected;
+                
+                // 检查是否匹配
+                const isPair = (
+                    first.dataset.key === second.dataset.key &&
+                    first.dataset.type !== second.dataset.type
+                );
+
+                if (isPair) {
+                    // 匹配成功
+                    first.classList.add('matched');
+                    second.classList.add('matched');
+                    checkCompletion();
+                } else {
+                    // 匹配失败
+                    errorCount++;
+                    setTimeout(() => {
+                        first.classList.remove('selected');
+                        second.classList.remove('selected');
+                    }, 500);
+                }
+                selected = [];
+            }
+        });
+
+        // 初始化语音
+        setTimeout(() => {
+            initSpeech();
+            if (speechSynthesis.onvoiceschanged !== undefined) {
+                speechSynthesis.onvoiceschanged = initSpeech;
+            }
+        }, 100);
+
+        // 初始化游戏
+        createBubbles();
+    </script>
+</body>
+</html>
