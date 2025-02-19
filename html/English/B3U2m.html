@@ -1,6 +1,47 @@
 <html>
 <head>
     <style>
+        /* 密码框样式 */
+        .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .password-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        .password-input {
+            padding: 12px;
+            font-size: 16px;
+            margin: 15px 0;
+            border: 2px solid #4A90E2;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .password-btn {
+            padding: 12px 30px;
+            background: #4A90E2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .password-btn:hover {
+            background: #357ABD;
+        }
+
         body {
             margin: 0;
             overflow: hidden;
@@ -82,6 +123,15 @@
     </style>
 </head>
 <body>
+    <!-- 密码验证模态框 -->
+    <div class="password-modal" id="passwordModal">
+        <div class="password-box">
+            <h2>请输入访问密码</h2>
+            <input type="password" class="password-input" id="passwordInput" autocomplete="off" autofocus>
+            <button class="password-btn" onclick="checkPassword()">进入系统</button>
+        </div>
+    </div>
+
     <div id="instruction">请完成英文单词和中文单词的配对</div>
     <div id="game-container">
         <div id="left-column" class="column"></div>
@@ -95,6 +145,35 @@
     </div>
 
     <script>
+        // 密码验证功能
+        const CORRECT_PASSWORD = "Luna";
+        let attemptCount = 0;
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            if (input.value === CORRECT_PASSWORD) {
+                document.getElementById('passwordModal').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+            } else {
+                attemptCount++;
+                alert(`密码错误（剩余尝试次数：${5 - attemptCount}）`);
+                input.value = '';
+                if (attemptCount >= 5) {
+                    alert("尝试次数过多，页面即将关闭");
+                    window.close();
+                }
+            }
+        }
+
+        // 禁止翻译和文本选择
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+        
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+        });
+
         // 单词数据（可自行扩展）
         const wordList = [
         { english: '	contribution	', chinese: '	贡献	', key: '1' },
@@ -142,7 +221,6 @@
 { english: '	further	', chinese: '	更多的,附加的	', key: '43' },
 { english: '	break into a smile	', chinese: '	突然笑起来	', key: '44' },
 { english: '	rise to ones feet	', chinese: '	站起身来	', key: '45' }
-
         ];
 
         // 游戏状态
