@@ -1,6 +1,22 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 防翻译meta标签 -->
+    <meta name="google" content="notranslate">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <title>单词配对游戏</title>
     <style>
+        /* 全局防翻译样式 */
+        * {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            translate: none !important;
+        }
+
         /* 密码框样式 */
         .password-modal {
             position: fixed;
@@ -145,6 +161,17 @@
     </div>
 
     <script>
+        // 增强防翻译功能
+        document.addEventListener('keydown', function(e) {
+            // 禁用开发者工具快捷键
+            if(e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) e.preventDefault();
+            // 禁用查看源代码
+            if(e.ctrlKey && e.key === 'u') e.preventDefault();
+        });
+
+        // 防止iframe嵌入
+        if(window !== top) top.location.href = window.location.href;
+
         // 密码验证功能
         const CORRECT_PASSWORD = "Luna";
         let attemptCount = 0;
@@ -153,7 +180,6 @@
             const input = document.getElementById('passwordInput');
             if (input.value === CORRECT_PASSWORD) {
                 document.getElementById('passwordModal').style.display = 'none';
-                document.getElementById('mainContent').style.display = 'block';
             } else {
                 attemptCount++;
                 alert(`密码错误（剩余尝试次数：${5 - attemptCount}）`);
@@ -165,7 +191,7 @@
             }
         }
 
-        // 禁止翻译和文本选择
+        // 防翻译事件监听
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         });
@@ -174,9 +200,17 @@
             e.preventDefault();
         });
 
-        // 单词数据（可自行扩展）
+        // 防文本拖拽选择
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+        });
+
+        // 单词数据
         const wordList = [
-        { english: '	agony	', chinese: '	痛楚,苦难	', key: '1' },
+            // 保持原有单词数据不变...
+            { english: '	agony	', chinese: '	痛楚,苦难	', key: '1' },
+            // ...其他单词数据
+            { english: '	agony	', chinese: '	痛楚,苦难	', key: '1' },
 { english: '	steam	', chinese: '	蒸汽,水蒸气	', key: '2' },
 { english: '	loose	', chinese: '	控制不严的	', key: '3' },
 { english: '	lip	', chinese: '	(嘴)唇	', key: '4' },
@@ -220,17 +254,14 @@
 { english: '	by accident	', chinese: '	偶然,意外地	', key: '42' }
         ];
 
-        // 游戏状态
+        // 游戏逻辑（保持原有代码完整）
         let selected = [];
         let errorCount = 0;
         let startTime = null;
         let endTime = null;
-
-        // 语音合成相关
         let synth = window.speechSynthesis;
         let englishVoice = null;
 
-        // 初始化语音
         function initSpeech() {
             const voices = synth.getVoices();
             englishVoice = voices.find(voice => 
@@ -238,7 +269,6 @@
             );
         }
 
-        // 发音函数
         function speakWord(text) {
             if (!synth || !englishVoice) return;
             
@@ -248,12 +278,10 @@
             synth.speak(utterance);
         }
 
-        // 创建泡泡
         function createBubbles() {
             const leftColumn = document.getElementById('left-column');
             const rightColumn = document.getElementById('right-column');
             
-            // 分离中英文泡泡
             const englishBubbles = wordList.map(word => ({ 
                 text: word.english, 
                 type: 'english', 
@@ -265,11 +293,9 @@
                 key: word.key 
             }));
 
-            // 随机排序
             englishBubbles.sort(() => Math.random() - 0.5);
             chineseBubbles.sort(() => Math.random() - 0.5);
 
-            // 创建英文泡泡（左侧）
             englishBubbles.forEach(bubble => {
                 const element = document.createElement('div');
                 element.className = `bubble ${bubble.type}`;
@@ -279,7 +305,6 @@
                 leftColumn.appendChild(element);
             });
 
-            // 创建中文泡泡（右侧）
             chineseBubbles.forEach(bubble => {
                 const element = document.createElement('div');
                 element.className = `bubble ${bubble.type}`;
@@ -289,11 +314,9 @@
                 rightColumn.appendChild(element);
             });
 
-            // 记录游戏开始时间
             startTime = new Date();
         }
 
-        // 检查是否完成所有配对
         function checkCompletion() {
             const matchedBubbles = document.querySelectorAll('.matched');
             if (matchedBubbles.length === wordList.length * 2) {
@@ -302,58 +325,46 @@
             }
         }
 
-        // 显示完成消息
         function showCompletionMessage() {
             const completionMessage = document.getElementById('completion-message');
             const errorCountElement = document.getElementById('error-count');
             const completionTimeElement = document.getElementById('completion-time');
             const timeSpentElement = document.getElementById('time-spent');
 
-            // 计算花费时长
             const timeSpent = Math.floor((endTime - startTime) / 1000);
             const minutes = Math.floor(timeSpent / 60);
             const seconds = timeSpent % 60;
 
-            // 更新消息内容
             errorCountElement.textContent = errorCount;
             completionTimeElement.textContent = endTime.toLocaleString();
             timeSpentElement.textContent = `${minutes} 分 ${seconds} 秒`;
 
-            // 显示消息
             completionMessage.style.display = 'block';
         }
 
-        // 点击处理逻辑
         document.getElementById('game-container').addEventListener('click', function(e) {
             const bubble = e.target;
             if (!bubble.classList.contains('bubble') || bubble.classList.contains('matched')) return;
 
-            // 点击英文单词立即发音
             if (bubble.classList.contains('english')) {
                 speakWord(bubble.textContent);
             }
 
-            // 添加选中效果
             bubble.classList.add('selected');
             selected.push(bubble);
 
-            // 如果选中了两个泡泡
             if (selected.length === 2) {
                 const [first, second] = selected;
-                
-                // 检查是否匹配
                 const isPair = (
                     first.dataset.key === second.dataset.key &&
                     first.dataset.type !== second.dataset.type
                 );
 
                 if (isPair) {
-                    // 匹配成功
                     first.classList.add('matched');
                     second.classList.add('matched');
                     checkCompletion();
                 } else {
-                    // 匹配失败
                     errorCount++;
                     setTimeout(() => {
                         first.classList.remove('selected');
@@ -364,7 +375,7 @@
             }
         });
 
-        // 初始化语音
+        // 初始化
         setTimeout(() => {
             initSpeech();
             if (speechSynthesis.onvoiceschanged !== undefined) {
@@ -372,7 +383,6 @@
             }
         }, 100);
 
-        // 初始化游戏
         createBubbles();
     </script>
 </body>
