@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>春日点名器</title>
+    <style>
+        body {
+            background: linear-gradient(160deg, #E8F5E9 0%, #E3F2FD 100%);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', 'Quicksand', sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2.5rem;
+            background: rgba(255,255,255,0.95);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(129, 212, 250, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        #display {
+            font-size: 3.2rem;
+            margin: 2rem;
+            padding: 1.8rem 3rem;
+            background: #F0F4C3;
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            color: #2E7D32;
+            border: 2px solid #C8E6C9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #display::before {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 40px;
+            background: linear-gradient(45deg, transparent 25%, rgba(178, 235, 242, 0.3) 50%, transparent 75%);
+            animation: shine 2s infinite;
+            transform: rotate(-20deg);
+            top: -50%;
+        }
+
+        button {
+            padding: 1rem 2.2rem;
+            font-size: 1.4rem;
+            background: #81C784;
+            color: #FFF;
+            border: none;
+            border-radius: 28px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+
+        button:hover {
+            background: #66BB6A;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(129, 199, 132, 0.3);
+        }
+
+        button:hover::after {
+            left: 120%;
+        }
+
+        button.stop {
+            background: #4DD0E1;
+        }
+
+        .history {
+            margin-top: 1.8rem;
+            color: #4DB6AC;
+            font-size: 1.1rem;
+            background: rgba(178, 235, 242, 0.15);
+            padding: 0.8rem;
+            border-radius: 8px;
+        }
+
+        @keyframes shine {
+            0% { left: -20% }
+            100% { left: 120% }
+        }
+
+        .leaf {
+            position: fixed;
+            pointer-events: none;
+            animation: float 8s linear infinite;
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(110vh) rotate(0deg) }
+            100% { transform: translateY(-10vh) rotate(360deg) }
+        }
+    </style>
+</head>
+<body>
+    <!-- 随机飘落的叶子 -->
+    <div class="leaf" style="left:10%;animation-delay:0s">🍃</div>
+    <div class="leaf" style="left:30%;animation-delay:2s">🌱</div>
+    <div class="leaf" style="left:70%;animation-delay:4s">🍀</div>
+
+    <div class="container">
+        <h1 style="color:#4CAF50;margin-bottom:1.5rem;">🌸 做更好的我 🌸</h1>
+        <div id="display">Ready!</div>
+        <button onclick="toggleRoll()">🎉 开始随机</button>
+        <div class="history" id="history">最近结果：</div>
+    </div>
+
+    <script>
+        const names = [
+            'AJ', 'Loong', 'Jane', 'Nostalgia', 'Avery', 'Pluto', 'Starry',
+            'Paul', 'Roin', 'Saturday', 'Ava', 'Evelyn', 'Skura', 'Rosalie',
+            'Chloe', 'Mia', 'Hessen', 'Moonlight', 'Sophia', 'Claire', 'Eleanor',
+            'Jasmine', 'Aurora', 'Tsuki', 'Lance', 'Ellie', 'Lotus', 'Tracy',
+            'Scaramzi', 'Angelika', 'Denise', 'Grace', 'Vesper', 'Nancy', 'Echo',
+            'Lvy', 'Jennifer', 'Emily', 'Alita', 'Arlan', 'Stars', 'Heidi', 'Azura',
+            'Nora', 'Lucy', 'Daisy', 'Lanse', 'Cock', 'Camel', 'King', 'River',
+            'Shark', 'Success', 'Brave', 'Cloud', 'June'
+        ];
+
+        let isRolling = false;
+        let rollInterval;
+        const display = document.getElementById('display');
+        const history = document.getElementById('history');
+        let lastResult = '';
+
+        function getRandomName() {
+            return names[Math.floor(Math.random() * names.length)];
+        }
+
+        function toggleRoll() {
+            const button = document.querySelector('button');
+            if (!isRolling) {
+                isRolling = true;
+                button.textContent = '🛑 停止';
+                button.classList.add('stop');
+                
+                rollInterval = setInterval(() => {
+                    const current = display.textContent;
+                    let newName;
+                    do {
+                        newName = getRandomName();
+                    } while (newName === current);
+                    
+                    display.textContent = newName;
+                    display.style.background = `hsl(${Math.random()*40 + 80}, 60%, 85%)`;
+                }, 80);
+            } else {
+                isRolling = false;
+                clearInterval(rollInterval);
+                button.textContent = '🎉 开始随机';
+                button.classList.remove('stop');
+                
+                // 记录历史
+                if (lastResult) {
+                    history.innerHTML += ` <span style="color:#81C784;">→</span> ${display.textContent}`;
+                } else {
+                    history.textContent = `最近结果：${display.textContent}`;
+                }
+                lastResult = display.textContent;
+            }
+        }
+    </script>
+</body>
+</html>

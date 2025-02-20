@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Word War</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .game-title {
+            color: #2c3e50;
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .game-description {
+            color: #666;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .game-container {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .divider {
+            width: 2px;
+            background-color: #fff;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+            position: absolute;
+            height: 80%;
+        }
+
+        .game-area {
+            flex: 1;
+            padding: 20px;
+            max-width: 45%;
+        }
+
+        .words-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            min-height: 300px;
+        }
+
+        .word {
+            padding: 10px 15px;
+            background-color: rgba(255,255,255,0.9);
+            border-radius: 5px;
+            cursor: pointer;
+            color: #666;
+            transition: all 0.3s;
+            flex: 1 1 calc(33% - 10px);
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .word:hover {
+            color: #2c3e50;
+            transform: translateY(-2px);
+        }
+
+        .disabled {
+            opacity: 0.5 !important;
+            pointer-events: none;
+        }
+
+        .controls {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .start-btn {
+            background-color: #87CEEB;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(135,206,235,0.3);
+        }
+
+        .start-btn:hover {
+            background-color: #6ca6cd;
+            transform: scale(1.05);
+        }
+
+        .progress-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            width: 48%;
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background-color: #87CEEB;
+            transition: width 0.3s;
+        }
+
+        .game-over {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .result-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .rule-text {
+            color: #666;
+            margin: 20px auto;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="game-title">Word War</h1>
+        <p class="game-description">考验手速与单词认知，快来开启单词消除大战！</p>
+    </div>
+
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill left-progress"></div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill right-progress"></div>
+        </div>
+    </div>
+
+    <div class="game-container">
+        <div class="game-area left-area">
+            <div class="words-container"></div>
+        </div>
+        <div class="divider"></div>
+        <div class="game-area right-area">
+            <div class="words-container"></div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="start-btn" onclick="startGame()">开始游戏</button>
+        <p class="rule-text">
+            游戏规则：左右两侧显示相同单词，点击单词可使其消失，先点击的一方成功消除单词，
+            率先消除一定数量单词者获胜。快来挑战吧！
+        </p>
+    </div>
+
+    <div class="game-over">
+        <div class="result-box">
+            <h2 id="result-title"></h2>
+            <p>左方消除：<span id="left-score">0</span> 个</p>
+            <p>右方消除：<span id="right-score">0</span> 个</p>
+            <button class="start-btn" onclick="restartGame()">重新对战</button>
+            <button class="start-btn" onclick="location.reload()" style="margin-top:10px">返回首页</button>
+        </div>
+    </div>
+
+    <script>
+        const words = [
+            'ignore', 'out', 'complete', 'refuse', 
+            'revise', 'cite', 'drop', 'budget', 
+            'influence', 'react', 'effect'
+        ];
+
+        let gameStarted = false;
+        let eliminated = new Set();
+        let leftCount = 0, rightCount = 0;
+
+        function startGame() {
+            if (gameStarted) return;
+            gameStarted = true;
+            eliminated.clear();
+            leftCount = rightCount = 0;
+            updateProgress();
+            setupWords();
+        }
+
+        function setupWords() {
+            const containers = document.querySelectorAll('.words-container');
+            containers.forEach(container => {
+                container.innerHTML = shuffle([...words])
+                    .map(word => `<div class="word" data-word="${word}">${word}</div>`)
+                    .join('');
+            });
+        }
+
+        function shuffle(array) {
+            return array.sort(() => Math.random() - 0.5);
+        }
+
+        document.addEventListener('click', function(e) {
+            if (!gameStarted || !e.target.classList.contains('word')) return;
+            const word = e.target.dataset.word;
+            if (eliminated.has(word)) return;
+
+            const isLeft = e.target.closest('.left-area');
+            eliminated.add(word);
+            
+            if (isLeft) leftCount++;
+            else rightCount++;
+
+            e.target.style.opacity = '0';
+            const otherSide = document.querySelector(
+                `${isLeft ? '.right-area' : '.left-area'} [data-word="${word}"]`
+            );
+            otherSide.classList.add('disabled');
+
+            updateProgress();
+            checkGameEnd();
+        });
+
+        function updateProgress() {
+            const total = words.length;
+            document.querySelector('.left-progress').style.width = 
+                `${(leftCount / total) * 100}%`;
+            document.querySelector('.right-progress').style.width = 
+                `${(rightCount / total) * 100}%`;
+        }
+
+        function checkGameEnd() {
+            if (eliminated.size === words.length) {
+                gameStarted = false;
+                showResult();
+            }
+        }
+
+        function showResult() {
+            const resultBox = document.querySelector('.game-over');
+            const winner = leftCount > rightCount ? '左方胜利！' : 
+                         rightCount > leftCount ? '右方胜利！' : '平局！';
+            
+            document.getElementById('result-title').textContent = winner;
+            document.getElementById('left-score').textContent = leftCount;
+            document.getElementById('right-score').textContent = rightCount;
+            resultBox.style.display = 'flex';
+        }
+
+        function restartGame() {
+            document.querySelector('.game-over').style.display = 'none';
+            startGame();
+        }
+    </script>
+</body>
+</html>
