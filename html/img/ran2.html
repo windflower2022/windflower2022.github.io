@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <style>
+       /* 新增密码框样式 */
+       .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .password-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        .password-input {
+            padding: 12px;
+            font-size: 16px;
+            margin: 15px 0;
+            border: 2px solid #4A90E2;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .password-btn {
+            padding: 12px 30px;
+            background: #4A90E2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .password-btn:hover {
+            background: #357ABD;
+        }
+
+      #mydiv { margin : 0 0 0 ;
+      display: grid;
+      place-items: center;
+         width: 1600px; 
+         height: 900px; 
+      top:0px;
+      background: lightblue url('https://cccimg.com/view.php/c454bc760e7306a112e59caa2733b5dd.png') no-repeat center/cover;
+      box-shadow: 0px 0px 0px #000;
+      user-select: none;
+      overflow: hidden;
+      position: relative;
+      z-index: 3;  }
+      
+      .mypic {
+              position: absolute;
+          right:1060px;
+          top:100px;
+              cursor: pointer;
+          mix-blend-mode: Multiply;
+          z-index: 3;
+          }
+          
+          
+      
+      #vid3 {
+        position: absolute;
+        width: 100%;
+        height: 110%;
+                    right:0%;    
+        top: -280px;
+        object-fit: cover;
+        pointer-events: none;
+      mix-blend-mode: screen; //滤色
+      
+        z-index: 2;
+        opacity: .20;
+      }
+      
+      
+      
+      #vid4 {
+        position: absolute;
+        
+        width: 100%;
+        height: 110%;
+        top:-160px;
+        object-fit: cover;
+        pointer-events: none;
+      mix-blend-mode: screen;
+      
+        z-index: 2;
+        opacity: .08;
+      }
+
+      #vid5 {
+        position: absolute;
+        
+        width: 100%;
+        height: 110%;
+        top:-80px;
+        object-fit: cover;
+        pointer-events: none;
+      mix-blend-mode: screen;
+      
+        z-index: 2;
+        opacity: .12;
+      }
+      </style>        
+  </head>
+  <body>
+    <!-- 密码验证模态框 -->
+    <div class="password-modal" id="passwordModal">
+      <div class="password-box">
+          <h2>请输入访问密码</h2>
+          <input type="password" class="password-input" id="passwordInput" autocomplete="off" autofocus>
+          <button class="password-btn" onclick="checkPassword()">进入系统</button>
+      </div>
+  </div>
+    <div id="mydiv">   <div class="mypic"><img src="" alt="" /></div>        
+<video id="vid3" src="https://img.tukuppt.com/video_show/2269348/00/14/66/5e5a2c53955d7.mp4" autoplay="" loop="" muted=""></video>
+<video id="vid4" src="https://video.699pic.com/videos/ing_left_all/ING_VID_2461737.mp4" autoplay="" loop="" muted=""></video>
+<video id="vid5" src="https://img.tukuppt.com/video_show/15653652/00/80/83/60d04564c32f7.mp4" autoplay="" loop="" muted=""></video>
+</div>
+    </body>
+    </center></div><div style="height:0px"></div>   
+    <script>
+      // 密码验证功能
+      const CORRECT_PASSWORD = "Luna";
+     let attemptCount = 0;
+
+     function checkPassword() {
+         const input = document.getElementById('passwordInput');
+         if (input.value === CORRECT_PASSWORD) {
+             document.getElementById('passwordModal').style.display = 'none';
+             document.getElementById('mainContent').style.display = 'block';
+         } else {
+             attemptCount++;
+             alert(`密码错误（剩余尝试次数：${5 - attemptCount}）`);
+             input.value = '';
+             if (attemptCount >= 5) {
+                 alert("尝试次数过多，页面即将关闭");
+                 window.close();
+             }
+         }
+     }
+    </script>
+</html>
