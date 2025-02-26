@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>迪士尼单词拼读练习</title>
+    <title>迪士尼智能单词练习</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <style>
         :root {
@@ -115,6 +115,19 @@
             gap: 10px;
         }
 
+        .auto-play-indicator {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffd9e6(0,0,0,0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 1px;
+            display: none;
+            backdrop-filter: blur(5px);
+        }
+
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.15); }
@@ -142,6 +155,7 @@
     <input type="file" id="fileInput" hidden accept=".xlsx">
     <div id="progressBar"><div id="progress"></div></div>
     <div id="audioStatus">🔊 播放中...</div>
+    <div class="auto-play-indicator">🔁<span id="playCount"></span> </div>
 
     <div id="cardA" class="card" style="width: 700px">
         <div id="wordContainer">
@@ -160,9 +174,9 @@
 
 <script>
 let words = [], currentIndex = 0, mistakes = [];
+let currentAudio = null, autoPlayTimeout = null;
 const successSound = new Audio('https://dict.youdao.com/dictvoice?type=0&audio=great');
 const errorSound = new Audio('https://dict.youdao.com/dictvoice?type=0&audio=oh%20no');
-let currentAudio = null;
 
 document.getElementById('fileInput').addEventListener('change', function(e) {
     const reader = new FileReader();
@@ -177,7 +191,7 @@ document.getElementById('fileInput').addEventListener('change', function(e) {
             hideProgressBar();
             showWord(currentIndex);
             preloadNextAudio();
-        }, 1500);
+        }, 500);
     };
     reader.readAsArrayBuffer(e.target.files[0]);
 });
@@ -198,18 +212,75 @@ function hideProgressBar() {
     document.getElementById('progress').style.width = '0%';
 }
 
-function showWord(index) {
+async function showWord(index) {
+    clearTimeout(autoPlayTimeout);
     const word = words[index];
     document.getElementById('word').innerHTML = word.word;
     document.getElementById('sound').textContent = word.sound;
     document.getElementById('meaning').textContent = word.meaning;
+    
+    // 自动播放逻辑
+    document.querySelector('.auto-play-indicator').style.display = 'block';
+    for(let i = 0; i < 3; i++) {
+        await playAudio(word.audio || word.word);
+        document.getElementById('playCount').textContent = 3 - i - 1;
+        if(i < 2) await new Promise(r => setTimeout(r, 1500));
+    }
+    document.querySelector('.auto-play-indicator').style.display = 'none';
+    startPractice();
 }
 
-function preloadNextAudio() {
-    if(words.length > currentIndex + 1) {
-        const audio = new Audio(words[currentIndex + 1].audio);
+async function playAudio(url) {
+    return new Promise((resolve, reject) => {
+        if(currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+        }
+        
+        const audio = new Audio(url);
         audio.preload = 'auto';
-    }
+        showAudioStatus('🔊 播放中...', '#4CAF50');
+        
+        audio.addEventListener('ended', () => {
+            hideAudioStatus();
+            resolve();
+        });
+        
+        audio.addEventListener('error', () => {
+            showAudioStatus('❌ 播放失败', '#f44336');
+            playTTS(words[currentIndex].word).finally(resolve);
+        });
+        
+        audio.play().catch(err => {
+            if(err.name === 'NotAllowedError') {
+                showAudioStatus('⚠️ 点击页面后重试', '#FF9800');
+                document.body.addEventListener('click', function retry() {
+                    document.body.removeEventListener('click', retry);
+                    audio.play().then(resolve).catch(reject);
+                }, {once: true});
+            } else {
+                reject(err);
+            }
+        });
+        
+        currentAudio = audio;
+    });
+}
+
+function playTTS(text) {
+    return new Promise(resolve => {
+        if('speechSynthesis' in window) {
+            const msg = new SpeechSynthesisUtterance(text);
+            msg.lang = 'en-US';
+            msg.rate = 0.9;
+            msg.onend = resolve;
+            window.speechSynthesis.speak(msg);
+            showAudioStatus('🔊 TTS播放中...', '#9C27B0');
+        } else {
+            showAudioStatus('⚠️ 音频不可用', '#FF9800');
+            resolve();
+        }
+    });
 }
 
 function startPractice() {
@@ -247,7 +318,7 @@ function checkAnswer() {
 
     if(answer === words[currentIndex].word) {
         showResult('✅', successSound);
-        setTimeout(nextWord, 1200);
+        autoPlayTimeout = setTimeout(nextWord, 800);
     } else if(answer.length === words[currentIndex].word.length) {
         showResult('❌', errorSound);
         resetSyllables();
@@ -285,6 +356,13 @@ function nextWord() {
     preloadNextAudio();
 }
 
+function preloadNextAudio() {
+    if(words.length > currentIndex + 1) {
+        const audio = new Audio(words[currentIndex + 1].audio);
+        audio.preload = 'auto';
+    }
+}
+
 function generateReport() {
     const report = [
         "📚 学习报告 📚",
@@ -317,32 +395,7 @@ document.getElementById('word').addEventListener('click', function() {
 
 function playCurrentAudio() {
     const url = words[currentIndex]?.audio;
-    if(!url) return playTTS(words[currentIndex].word);
-    
-    showAudioStatus('🔊 播放中...', '#4CAF50');
-    if(currentAudio) currentAudio.pause();
-    
-    currentAudio = new Audio(url);
-    currentAudio.preload = 'auto';
-    currentAudio.play().catch(err => handleAudioError(err));
-    
-    currentAudio.onended = () => hideAudioStatus();
-    currentAudio.onerror = () => {
-        showAudioStatus('❌ 播放失败', '#f44336');
-        playTTS(words[currentIndex].word);
-    };
-}
-
-function playTTS(text) {
-    if('speechSynthesis' in window) {
-        const msg = new SpeechSynthesisUtterance(text);
-        msg.lang = 'en-US';
-        msg.rate = 0.9;
-        window.speechSynthesis.speak(msg);
-        showAudioStatus('🔊 TTS播放中...', '#9C27B0');
-    } else {
-        showAudioStatus('⚠️ 音频不可用', '#FF9800');
-    }
+    url ? playAudio(url) : playTTS(words[currentIndex].word);
 }
 
 function highlightLetters(element) {
@@ -364,14 +417,9 @@ function hideAudioStatus() {
     document.getElementById('audioStatus').style.display = 'none';
 }
 
-function handleAudioError(error) {
-    console.error('播放错误:', error);
-    showAudioStatus('⚠️ 点击页面后重试', '#FF9800');
-}
-
 document.body.addEventListener('click', () => {
     if(currentAudio && currentAudio.paused) {
-        currentAudio.play().catch(err => handleAudioError(err));
+        currentAudio.play().catch(console.error);
     }
 });
 </script>
