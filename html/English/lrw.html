@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>迪士尼单词拼读练习</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        :root {
+            --disney-blue: #0066cc;
+            --disney-red: #ff3366;
+            --disney-gold: #ffcc00;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffd9e6, #cce6ff);
+            min-height: 100vh;
+            font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--disney-blue);
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+            margin: 20px 0;
+            letter-spacing: 2px;
+        }
+
+        .control-btn {
+            background: var(--disney-red);
+            border: none;
+            border-radius: 25px;
+            padding: 15px 30px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            margin: 0 10px;
+            font-size: 28px;
+        }
+
+        .control-btn:hover {
+            transform: scale(1.1);
+            background: #ff0044;
+            box-shadow: 0 6px 8px rgba(0,0,0,0.3);
+        }
+
+        .card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 30px;
+            padding: 40px;
+            margin: 30px auto;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            text-align: center;
+            transition: transform 0.5s;
+        }
+
+        #progressBar {
+            width: 300px;
+            height: 20px;
+            background: #eee;
+            border-radius: 10px;
+            margin: 20px auto;
+            display: none;
+            overflow: hidden;
+        }
+
+        #progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--disney-blue), var(--disney-red));
+            transition: width 0.3s;
+        }
+
+        .syllable {
+            background: var(--disney-blue);
+            color: white;
+            padding: 12px 24px;
+            margin: 8px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+            font-size: 48px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+        }
+
+        .syllable:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+        }
+
+        #answerLine {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            min-height: 80px;
+            padding: 20px 0;
+            margin: 30px 0;
+            border-bottom: 4px dashed var(--disney-gold);
+        }
+
+        #audioStatus {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            border-radius: 25px;
+            background: rgba(0,0,0,0.85);
+            color: white;
+            display: none;
+            font-size: 18px;
+            align-items: center;
+            gap: 10px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        .vowel { color: var(--disney-red) !important; }
+        .consonant { color: var(--disney-blue) !important; }
+    </style>
+</head>
+<body>
+    <h1 id="title">Listen, read and spell.</h1>
+    
+    <div style="text-align: center; margin: 30px">
+        <button class="control-btn" onclick="document.getElementById('fileInput').click()">📥 Input</button>
+        <button class="control-btn" onclick="generateReport()">📊 Report</button>
+    </div>
+
+    <input type="file" id="fileInput" hidden accept=".xlsx">
+    <div id="progressBar"><div id="progress"></div></div>
+    <div id="audioStatus">🔊 播放中...</div>
+
+    <div id="cardA" class="card" style="width: 700px">
+        <div id="wordContainer">
+            <div id="word" style="font-size: 72px; font-weight: bold; margin: 20px 0"></div>
+            <div id="sound" style="font-size: 36px; color: var(--disney-blue)"></div>
+            <div id="meaning" style="font-size: 36px; margin: 30px 0; color: #666"></div>
+        </div>
+        <button class="control-btn" onclick="startPractice()">🎮 Practice</button>
+    </div>
+
+    <div id="cardB" class="card" style="width: 900px; display: none">
+        <div id="answerLine"></div>
+        <div id="syllablesContainer"></div>
+        <button class="control-btn" onclick="nextWord()" style="margin-top: 40px">⏭ Next</button>
+    </div>
+
+<script>
+let words = [], currentIndex = 0, mistakes = [];
+const successSound = new Audio('https://dict.youdao.com/dictvoice?type=0&audio=great');
+const errorSound = new Audio('https://dict.youdao.com/dictvoice?type=0&audio=oh%20no');
+let currentAudio = null;
+
+document.getElementById('fileInput').addEventListener('change', function(e) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, {type: 'array'});
+        const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+        words = XLSX.utils.sheet_to_json(worksheet);
+        
+        showProgressBar();
+        setTimeout(() => {
+            hideProgressBar();
+            showWord(currentIndex);
+            preloadNextAudio();
+        }, 1500);
+    };
+    reader.readAsArrayBuffer(e.target.files[0]);
+});
+
+function showProgressBar() {
+    const pb = document.getElementById('progressBar');
+    pb.style.display = 'block';
+    let width = 0;
+    const timer = setInterval(() => {
+        width += (100 - width) * 0.1;
+        document.getElementById('progress').style.width = width + '%';
+        if(width >= 99.9) clearInterval(timer);
+    }, 50);
+}
+
+function hideProgressBar() {
+    document.getElementById('progressBar').style.display = 'none';
+    document.getElementById('progress').style.width = '0%';
+}
+
+function showWord(index) {
+    const word = words[index];
+    document.getElementById('word').innerHTML = word.word;
+    document.getElementById('sound').textContent = word.sound;
+    document.getElementById('meaning').textContent = word.meaning;
+}
+
+function preloadNextAudio() {
+    if(words.length > currentIndex + 1) {
+        const audio = new Audio(words[currentIndex + 1].audio);
+        audio.preload = 'auto';
+    }
+}
+
+function startPractice() {
+    document.getElementById('cardA').style.display = 'none';
+    document.getElementById('cardB').style.display = 'block';
+    generateSyllables();
+}
+
+function generateSyllables() {
+    const word = words[currentIndex].word;
+    const syllables = splitSyllables(word);
+    const container = document.getElementById('syllablesContainer');
+    container.innerHTML = shuffleArray(syllables).map(s => `
+        <div class="syllable" onclick="selectSyllable(this)">${s}</div>
+    `).join('');
+}
+
+function splitSyllables(word) {
+    const vowels = /[aeiouy]/i;
+    return word.split(/(?=.[aeiouy])/gi).filter(Boolean);
+}
+
+function selectSyllable(el) {
+    const answerLine = document.getElementById('answerLine');
+    el.parentNode === answerLine ? 
+        document.getElementById('syllablesContainer').appendChild(el) : 
+        answerLine.appendChild(el);
+    checkAnswer();
+}
+
+function checkAnswer() {
+    const answer = [...document.getElementById('answerLine').children]
+        .map(s => s.textContent).join('');
+    const result = document.getElementById('result') || createResultDiv();
+
+    if(answer === words[currentIndex].word) {
+        showResult('✅', successSound);
+        setTimeout(nextWord, 1200);
+    } else if(answer.length === words[currentIndex].word.length) {
+        showResult('❌', errorSound);
+        resetSyllables();
+    }
+}
+
+function showResult(icon, sound) {
+    const result = document.getElementById('result');
+    result.innerHTML = icon;
+    result.style.animation = 'pulse 0.6s';
+    sound.play();
+}
+
+function createResultDiv() {
+    const div = document.createElement('div');
+    div.id = 'result';
+    div.style.fontSize = '80px';
+    div.style.margin = '30px';
+    document.getElementById('cardB').appendChild(div);
+    return div;
+}
+
+function resetSyllables() {
+    document.getElementById('answerLine').innerHTML = '';
+    generateSyllables();
+}
+
+function nextWord() {
+    document.getElementById('cardA').style.display = 'block';
+    document.getElementById('cardB').style.display = 'none';
+    currentIndex = (currentIndex + 1) % words.length;
+    showWord(currentIndex);
+    document.getElementById('answerLine').innerHTML = '';
+    document.getElementById('result')?.remove();
+    preloadNextAudio();
+}
+
+function generateReport() {
+    const report = [
+        "📚 学习报告 📚",
+        `📅 日期: ${new Date().toLocaleDateString()}`,
+        `✅ 答题总数: ${currentIndex + 1}`,
+        `📌 需复习单词: ${[...new Set(mistakes)].join(', ') || '无'}`
+    ].join('\n\n');
+    
+    const blob = new Blob([report], {type: 'text/plain'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `学习报告_${Date.now()}.txt`;
+    a.click();
+}
+
+function shuffleArray(arr) {
+    for(let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
+document.getElementById('word').addEventListener('click', function() {
+    this.style.animation = 'pulse 0.5s';
+    playCurrentAudio();
+    highlightLetters(this);
+});
+
+function playCurrentAudio() {
+    const url = words[currentIndex]?.audio;
+    if(!url) return playTTS(words[currentIndex].word);
+    
+    showAudioStatus('🔊 播放中...', '#4CAF50');
+    if(currentAudio) currentAudio.pause();
+    
+    currentAudio = new Audio(url);
+    currentAudio.preload = 'auto';
+    currentAudio.play().catch(err => handleAudioError(err));
+    
+    currentAudio.onended = () => hideAudioStatus();
+    currentAudio.onerror = () => {
+        showAudioStatus('❌ 播放失败', '#f44336');
+        playTTS(words[currentIndex].word);
+    };
+}
+
+function playTTS(text) {
+    if('speechSynthesis' in window) {
+        const msg = new SpeechSynthesisUtterance(text);
+        msg.lang = 'en-US';
+        msg.rate = 0.9;
+        window.speechSynthesis.speak(msg);
+        showAudioStatus('🔊 TTS播放中...', '#9C27B0');
+    } else {
+        showAudioStatus('⚠️ 音频不可用', '#FF9800');
+    }
+}
+
+function highlightLetters(element) {
+    element.innerHTML = [...element.textContent].map(l => 
+        /[aeiou]/i.test(l) ? 
+        `<span class="vowel">${l}</span>` : 
+        `<span class="consonant">${l}</span>`
+    ).join('');
+}
+
+function showAudioStatus(text, color) {
+    const status = document.getElementById('audioStatus');
+    status.innerHTML = text;
+    status.style.background = color;
+    status.style.display = 'flex';
+}
+
+function hideAudioStatus() {
+    document.getElementById('audioStatus').style.display = 'none';
+}
+
+function handleAudioError(error) {
+    console.error('播放错误:', error);
+    showAudioStatus('⚠️ 点击页面后重试', '#FF9800');
+}
+
+document.body.addEventListener('click', () => {
+    if(currentAudio && currentAudio.paused) {
+        currentAudio.play().catch(err => handleAudioError(err));
+    }
+});
+</script>
+</body>
+</html>
