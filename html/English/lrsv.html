@@ -162,28 +162,53 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: #ffd9e6(0,0,0,0.8);
-            color: rgb(255, 255, 255);
+            background: rgba(0,0,0,0.8);
+            color: white;
             padding: 10px 20px;
-            border-radius: 1px;
+            border-radius: 25px;
             display: none;
             backdrop-filter: blur(5px);
         }
 
+        /* 新增字母样式 */
+        .letter {
+            display: inline-block;
+            min-width: 60px;
+            text-align: center;
+            transition: all 0.3s;
+            transform-origin: center;
+            font-weight: bold;
+        }
+
+        .vowel {
+            color: #ff3366;
+            text-shadow: 0 4px 8px rgba(255,51,102,0.2);
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .consonant {
+            color: #0066cc;
+            text-shadow: 0 4px 8px rgba(0,102,204,0.2);
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-            100% { transform: scale(1); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0.3; }
-            100% { opacity: 1; }
+        @keyframes rainbow {
+            0% { color: #ff3366; }
+            25% { color: #ffcc00; }
+            50% { color: #00cc66; }
+            75% { color: #0066cc; }
+            100% { color: #ff3366; }
         }
-
-        .vowel { color: var(--disney-red) !important; }
-        .consonant { color: var(--disney-blue) !important; }
     </style>
 </head>
 <body>
@@ -210,7 +235,7 @@
 
     <div id="cardA" class="card" style="width: 700px">
         <div id="wordContainer">
-            <div id="word" style="font-size: 72px; font-weight: bold; margin: 20px 0"></div>
+            <div id="word" style="font-size: 72px; margin: 20px 0"></div>
             <div id="sound" style="font-size: 36px; color: var(--disney-blue)"></div>
             <div id="meaning" style="font-size: 36px; margin: 30px 0; color: #666"></div>
         </div>
@@ -286,11 +311,10 @@ function hideProgressBar() {
 async function showWord(index) {
     clearTimeout(autoPlayTimeout);
     const word = words[index];
-    document.getElementById('word').innerHTML = word.word;
+    document.getElementById('word').innerHTML = highlightLetters(word.word);
     document.getElementById('sound').textContent = word.sound;
     document.getElementById('meaning').textContent = word.meaning;
     
-    // 自动播放逻辑
     document.querySelector('.auto-play-indicator').style.display = 'block';
     for(let i = 0; i < 3; i++) {
         await playAudio(word.audio || word.word);
@@ -299,6 +323,13 @@ async function showWord(index) {
     }
     document.querySelector('.auto-play-indicator').style.display = 'none';
     startPractice();
+}
+
+function highlightLetters(word) {
+    return [...word].map(l => {
+        const isVowel = /[aeiou]/i.test(l);
+        return `<span class="letter ${isVowel ? 'vowel' : 'consonant'}">${l}</span>`;
+    }).join('');
 }
 
 async function playAudio(url) {
@@ -458,25 +489,6 @@ function shuffleArray(arr) {
     return arr;
 }
 
-document.getElementById('word').addEventListener('click', function() {
-    this.style.animation = 'pulse 0.5s';
-    playCurrentAudio();
-    highlightLetters(this);
-});
-
-function playCurrentAudio() {
-    const url = words[currentIndex]?.audio;
-    url ? playAudio(url) : playTTS(words[currentIndex].word);
-}
-
-function highlightLetters(element) {
-    element.innerHTML = [...element.textContent].map(l => 
-        /[aeiou]/i.test(l) ? 
-        `<span class="vowel">${l}</span>` : 
-        `<span class="consonant">${l}</span>`
-    ).join('');
-}
-
 function showAudioStatus(text, color) {
     const status = document.getElementById('audioStatus');
     status.innerHTML = text;
@@ -488,9 +500,10 @@ function hideAudioStatus() {
     document.getElementById('audioStatus').style.display = 'none';
 }
 
-document.body.addEventListener('click', () => {
-    if(currentAudio && currentAudio.paused) {
-        currentAudio.play().catch(console.error);
+document.addEventListener('DOMContentLoaded', () => {
+    if(document.getElementById('word').textContent) {
+        document.getElementById('word').innerHTML = 
+            highlightLetters(document.getElementById('word').textContent);
     }
 });
 </script>
