@@ -6,46 +6,6 @@
     <title>魔法句子工坊 - 迪士尼梦幻版</title>
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@500&display=swap" rel="stylesheet">
     <style>
-         /* 新增密码框样式 */
-       .password-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-        .password-box {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
-        }
-        .password-input {
-            padding: 12px;
-            font-size: 16px;
-            margin: 15px 0;
-            border: 2px solid #4A90E2;
-            border-radius: 5px;
-            width: 200px;
-        }
-        .password-btn {
-            padding: 12px 30px;
-            background: #4A90E2;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .password-btn:hover {
-            background: #357ABD;
-        }
         body {
             background: linear-gradient(135deg, #8ec5fc 0%, #e0c3fc 100%);
             min-height: 100vh;
@@ -221,19 +181,11 @@
     </style>
 </head>
 <body>
-    <div class="password-modal" id="passwordModal">
-        <div class="password-box">
-            <h2>请输入访问密码</h2>
-            <input type="password" class="password-input" id="passwordInput" autocomplete="off" autofocus>
-            <button class="password-btn" onclick="checkPassword()">进入系统</button>
-        </div>
-    </div>
-
     <div class="container">
         <div id="chinese-sentence"></div>
 
         <div class="button-row">
-            <button class="component-btn" id="other1-btn" data-type="other1">分句/饰语</button>
+            <button class="component-btn" id="other1-btn" data-type="other1">修饰语</button>
             <button class="component-btn" id="subject-btn" data-type="subject">主语(n.)</button>
             <button class="component-btn" id="other3-btn" data-type="other3">修饰语</button>
             <button class="component-btn" id="predicate-btn" data-type="predicate">谓语(v.)</button>
@@ -245,12 +197,16 @@
         <button id="reset-btn">魔法重置 ✨</button>
 
         <select id="sentence-selector">
-            <option value="0">1: 玛丽笑了笑，但她的眼神表明她根本不快乐。</option>
-            <option value="1">2: 此外，夏令营还为会员提供一个参观一些博物馆的机会，这是了解我们历史的一个好方法。</option>
-            <option value="2">3: 就我个人而言，一个人的成功不能总是从金钱的角度来衡量。</option>
-            <option value="3">4: 我能说一口流利的英语，与外国游客交流没有困难。</option>
-            <option value="4">5: 既然你渴望学习中文，我认为北京语言大学是你的理想去处。</option>
-            <option value="5">6: 正是他的毅力和决心不放弃，帮助他实现了梦想。</option>
+            <option value="0">1、正如中国谚语所说，好人长命。</option>
+            <option value="1">2: 玛丽笑了笑，但她的眼神表明她根本不快乐。</option>
+            <option value="2">3、中国的四大发明——造纸术、指南针、火药和印刷术，对世界文明的发展产生了深远的影响。</option>
+            <option value="3">4: 正是他的毅力和决心不放弃，帮助他实现了梦想。</option>
+            <option value="4">5: 此外，夏令营还为会员提供一个参观一些博物馆的机会，这是了解我们历史的一个好方法。</option>
+            <option value="5">6: 就我个人而言，一个人的成功不能总是从金钱的角度来衡量。</option>
+            <option value="6">7: 我能说一口流利的英语，与外国游客交流没有困难。</option>
+            <option value="7">8: 既然你渴望学习中文，我认为北京语言大学是你的理想去处。</option>
+            
+            
         </select>
     </div>
 
@@ -258,55 +214,43 @@
         document.addEventListener('DOMContentLoaded', function() {
             const sentences = [
             {
-                    chinese: "1、玛丽笑了笑，但她的眼神表明她根本不快乐。",
+                    chinese: "1、正如中国谚语所说，好人长命。",
                     components: {
-                        other1: { text: "Mary smiled,but", colorClass: "other1-color" },
-                        subject: { text: "her eyes", colorClass: "subject-color" },
+                        other1: { text: "As the Chinese saying goes", colorClass: "other1-color" },
+                        subject: { text: "a kind-hearted man ", colorClass: "subject-color" },
                         other3: { text: "", colorClass: "other3-color" },
-                        predicate: { text: "suggested ", colorClass: "predicate-color" },
-                        object: { text: "that she was not happy at all．", colorClass: "object-color" },
+                        predicate: { text: "lives, ", colorClass: "predicate-color" },
+                        object: { text: "a long life", colorClass: "object-color" },
                         other2: { text: "", colorClass: "other2-color" }
                     },
                     wordOrder: ['other1', 'subject', 'other3', 'predicate', 'object', 'other2']
                 },
                 {
-                    chinese: "2、此外，夏令营还为会员提供一个参观一些博物馆的机会，这是了解我们历史的一个好方法。",
+                    chinese: "2、玛丽笑了笑，但她的眼神表明她根本不快乐。",
                     components: {
-                        other1: { text: "In addition,", colorClass: "other1-color" },
-                        subject: { text: "the summer camp", colorClass: "subject-color" },
+                        other1: { text: "", colorClass: "other1-color" },
+                        subject: { text: "Mary ", colorClass: "subject-color" },
                         other3: { text: "", colorClass: "other3-color" },
-                        predicate: { text: "provides ", colorClass: "predicate-color" },
-                        object: { text: "a chance for members", colorClass: "object-color" },
-                        other2: { text: "to visit some museums, which is a good way to learn about our history.", colorClass: "other2-color" }
-                    },
-                    wordOrder: ['other1', 'subject', 'other3', 'predicate', 'object', 'other2']
-                },
-                {
-                    chinese: "3、就我个人而言，一个人的成功不能总是从金钱的角度来衡量。",
-                    components: {
-                        other1: { text: "As far as I'm concerned,", colorClass: "other1-color" },
-                        subject: { text: "one's success", colorClass: "subject-color" },
-                        other3: { text: "", colorClass: "other3-color" },
-                        predicate: { text: "cannot always be measured ", colorClass: "predicate-color" },
+                        predicate: { text: "smiled, ", colorClass: "predicate-color" },
                         object: { text: "", colorClass: "object-color" },
-                        other2: { text: "in terms of money.", colorClass: "other2-color" }
+                        other2: { text: "but her eyes suggested that she was not happy at all．", colorClass: "other2-color" }
                     },
                     wordOrder: ['other1', 'subject', 'other3', 'predicate', 'object', 'other2']
                 },
                 {
-                    chinese: "4、我能说一口流利的英语，与外国游客交流没有困难。",
+                    chinese: "3、中国的四大发明——造纸术、指南针、火药和印刷术，对世界文明的发展产生了深远的影响。",
                     components: {
-                        other1: { text: "Capable of speaking fluent English,", colorClass: "other1-color" },
-                        subject: { text: "I", colorClass: "subject-color" },
-                        other3: { text: "a", colorClass: "other3-color" },
-                        predicate: { text: "have no difficulty communicating with", colorClass: "predicate-color" },
-                        object: { text: " foreign visitors.", colorClass: "object-color" },
+                        other1: { text: "", colorClass: "other1-color" },
+                        subject: { text: "The Four Great Inventions of ancient China—papermaking, the compass, gunpowder, and printing", colorClass: "subject-color" },
+                        other3: { text: "", colorClass: "other3-color" },
+                        predicate: { text: "have had a profound impact on", colorClass: "predicate-color" },
+                        object: { text: "the development of world civilization.", colorClass: "object-color" },
                         other2: { text: "", colorClass: "other2-color" }
                     },
                     wordOrder: ['other1', 'subject', 'other3', 'predicate', 'object', 'other2']
                 },
                 {
-                    chinese: "5、正是他的毅力和决心不放弃，帮助他实现了梦想。",
+                    chinese: "4、正是他的毅力和决心不放弃，帮助他实现了梦想。",
                     components: {
                         other1: { text: "", colorClass: "other1-color" },
                         subject: { text: "It was his perseverance and determination not to give up that", colorClass: "subject-color" },
@@ -318,7 +262,43 @@
                     wordOrder: ['other1', 'subject', 'other3', 'predicate', 'object', 'other2']
                 },
                 {
-                    chinese: "6、既然你渴望学习中文，我认为北京语言大学是你的理想去处。。",
+                    chinese: "5、此外，夏令营还为会员提供一个参观一些博物馆的机会，这是了解我们历史的一个好方法。",
+                    components: {
+                        other1: { text: "In addition,", colorClass: "other1-color" },
+                        subject: { text: "the summer camp", colorClass: "subject-color" },
+                        other3: { text: "", colorClass: "other3-color" },
+                        predicate: { text: "provides ", colorClass: "predicate-color" },
+                        object: { text: "a chance for members", colorClass: "object-color" },
+                        other2: { text: "to visit some museums, which is a good way to learn about our history.", colorClass: "other2-color" }
+                    },
+                    wordOrder: ['other1', 'subject', 'other3', 'predicate', 'object', 'other2']
+                },
+                {
+                    chinese: "6、就我个人而言，一个人的成功不能总是从金钱的角度来衡量。",
+                    components: {
+                        other1: { text: "As far as I'm concerned,", colorClass: "other1-color" },
+                        subject: { text: "one's success", colorClass: "subject-color" },
+                        other3: { text: "", colorClass: "other3-color" },
+                        predicate: { text: "cannot always be measured ", colorClass: "predicate-color" },
+                        object: { text: "", colorClass: "object-color" },
+                        other2: { text: "in terms of money.", colorClass: "other2-color" }
+                    },
+                    wordOrder: ['other1', 'subject', 'other3', 'predicate', 'object', 'other2']
+                },
+                {
+                    chinese: "7、我能说一口流利的英语，与外国游客交流没有困难。",
+                    components: {
+                        other1: { text: "Capable of speaking fluent English,", colorClass: "other1-color" },
+                        subject: { text: "I", colorClass: "subject-color" },
+                        other3: { text: "a", colorClass: "other3-color" },
+                        predicate: { text: "have no difficulty communicating with", colorClass: "predicate-color" },
+                        object: { text: " foreign visitors.", colorClass: "object-color" },
+                        other2: { text: "", colorClass: "other2-color" }
+                    },
+                    wordOrder: ['other1', 'subject', 'other3', 'predicate', 'object', 'other2']
+                },
+                {
+                    chinese: "8、既然你渴望学习中文，我认为北京语言大学是你的理想去处。。",
                     components: {
                         other1: { text: "Now that you have a desire to learn Chinese,", colorClass: "other1-color" },
                         subject: { text: "I", colorClass: "subject-color" },
@@ -413,25 +393,6 @@
             initSpeech();
             initSentence(0);
         });
-        // 密码验证功能
-      const CORRECT_PASSWORD = "Luna";
-     let attemptCount = 0;
-
-     function checkPassword() {
-         const input = document.getElementById('passwordInput');
-         if (input.value === CORRECT_PASSWORD) {
-             document.getElementById('passwordModal').style.display = 'none';
-             document.getElementById('mainContent').style.display = 'block';
-         } else {
-             attemptCount++;
-             alert(`密码错误（剩余尝试次数：${5 - attemptCount}）`);
-             input.value = '';
-             if (attemptCount >= 5) {
-                 alert("尝试次数过多，页面即将关闭");
-                 window.close();
-             }
-         }
-     }
     </script>
 </body>
 </html>
