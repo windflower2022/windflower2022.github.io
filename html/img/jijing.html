@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>光影特效</title>
+  </head>
+  <style>#mydiv { margin: 0 0 0 ; display: grid; place-items: center; width: 1600px; height:900px; background: lightblue url('https://cccimg.com/view.php/625358578c8d46abb9967d1fa7d8d6f6.png') no-repeat center/cover;box-shadow: 0px 0px 0px #000; user-select: none; overflow: hidden; position: relative; z-index: 1; --state: running; }
+        #codePre { font: normal 14px/20px Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; }
+    .green { color: green; }
+    #vid1 {
+      position: absolute;
+      width: 120%;
+      height: 120%;
+      top:-100px;
+    left:-101px;
+      object-fit: cover;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      z-index:3;
+      opacity: 0.5;
+    }
+    #vid2{
+      position: absolute;
+      width: 110%;
+      height: 120%;
+      top:-100px;
+    
+      object-fit: cover;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      z-index: 2;
+      opacity: .20;
+    }
+    </style>    
+    
+  <body>
+    <div id="mydiv">
+     <img id="dt" src="https://pic1.imgdb.cn/item/66ab61a3d9c307b7e93f3c26.gif" alt="" style="position: absolute; width: 90px; top: 345px; left: 260px;" />   
+     <video id="vid1" src="https://img.tukuppt.com/video_show/7165162/00/17/65/5ecb8fa5f0765.mp4" autoplay="" loop="" muted=""></video><video id="vid2" src="./lii.mp4" autoplay="" loop="" muted=""></video></div>
+     <audio id="aud" src="" autoplay="" loop=""></audio> 
+    </body>
+</html>
