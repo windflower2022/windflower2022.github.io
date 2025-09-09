@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <title>记单词</title>
+    <style>
+        div{
+            background-color:rgb(2243,243, 243);
+            margin-bottom: 15px;
+            margin-bottom: 15px;
+            margin-left: 150px;
+            padding: 10px;
+            border-radius: 55px;
+            font-size: 30px;
+            width: 1200px;
+            text-align: left;
+        }
+        div:hover{
+            background-color:rgb(226, 245, 231);
+        }
+        .t{
+            margin-top: 100px;
+            padding-left: 150px;
+        }
+        @media screen and (max-width: 650px) {
+            .t{
+                margin-top: 50px;
+                padding-left: 20px;
+            }
+         }
+        </style>
+</head>
+<body> 
+        <br><br><br>				
+        <div class="text"><span>&emsp;&emsp;Race walking shares many fitness benefits with running, research shows, while most likely contributing to fewer injuries. It does, however, have its own problem.
+        <br>&emsp;&emsp;研究表明，竞走和跑步一样可以带来很多健身好处，但可能会导致更少的伤害。然而，竞走也有它自己的问题。
+		</span></div>
+		<div class="text"><span>&emsp;&emsp;Race walkers are conditioned athletes. The longest track and field event at the Summer Olympics is the 50-kilometer race walk, which is about five miles longer than the marathon. But the sport’s rules require that a race walker’s knees stay straight through most of the leg swing and one foot remain in contact (接触) with the ground at all times. It is this strange form that makes race walking such an attractive activity, however, says Jaclyn Norberg, an assistant professor of exercise science at Salem State University in Salem, Mass.
+        <br>&emsp;&emsp;竞走运动员经过训练，夏季奥运会上最长的田径比赛项目是50公里竞走，比马拉松长约5英里。但是，该运动的规则要求竞走选手的膝盖在大部分的腿摆动过程中要保持笔直，并且一只脚始终要接触地面。萨勒姆州立大学锻炼科学助理教授Jaclyn Norberg说，正是这种奇怪的形式使竞走成为如此吸引人的活动。
+		</span></div>
+        <div class="text"><span>&emsp;&emsp;Like running, race walking is physically demanding, she says. According to most calculations, race walkers moving at a pace of six miles per hour would burn about 800 calories(卡路里) per hour, which is approximately twice as many as they would burn walking, although fewer than running, which would probably burn about 1,000 or more calories per hour.
+        <br>&emsp;&emsp;她说，和慢跑一样，竞走需要有很好的体力。根据大多数计算，竞走者以每小时六英里的速度行走，每小时会燃烧约800卡路里，大约是步行燃烧的两倍，但比起慢跑的每小时燃烧约1000或更多的卡路里来说少一些。
+		</span></div>
+        <div class="text"><span>&emsp;&emsp;However, race walking does not pound the body as much as running does, Dr. Norberg says. According to her research, runners hit the ground with as much as four times their body weight per step, while race walkers, who do not leave the ground, create only about 1.4 times their body weight with each step.
+        <br>&emsp;&emsp;然而，Norberg博士表示，竞走对身体的冲击并不像跑步那么大。根据她的研究，跑步者每步的冲击力甚至达到了其体重的4倍，而竞走者每步仅仅产生其体重的1.4倍，因为竞走员不离开地面。
+		</span></div>
+        <div class="text"><span>&emsp;&emsp;As a result, she says, some of the injuries associated with running, such as runner’s knee, are uncommon among race walkers. But the sport’s strange form does place considerable stress on the ankles and hips, so people with a history of such injuries might want to be cautious in adopting the sport. In fact, anyone wishing to try race walking should probably first consult a coach or experienced racer to learn proper technique, she says. It takes some practice.<br>&emsp;&emsp;
+		<br>&emsp;&emsp;因此，她说，一些与跑步有关的伤病，如跑步者膝盖，在竞走员中并不常见。但是，该运动的奇怪形式确实会给脚踝和臀部带来相当大的压力，因此有过这类伤病史的人可能需要在尝试竞走之前要注意。事实上，她说，任何想要尝试竞走的人都应该先咨询专业教练或有经验的竞走选手，以了解正确的技术，这需要一些练习。
+		</span></div>
+        </div><br><br><br><br><br><br></body>
+    <script>
+        $(document).ready(function(){
+            $("div").click(function(){
+            	//方式一
+                //var words = new SpeechSynthesisUtterance($(this).context.children[0].textContent);
+                //window.speechSynthesis.speak(words)
+
+            	//方式二
+				var audio = new Audio();  
+                audio.src ='https://dict.youdao.com/speech?audio=' + encodeURI($(this).context.children[0].textContent);  
+                audio.play(); 
+            });
+        });
+    </script>
+</html>        

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <title>2020-3语法</title>
+    <style>
+        div{
+            background-color:rgb(2243,243, 243);
+            margin-bottom: 15px;
+            margin-bottom: 15px;
+            margin-left: 150px;
+            padding: 10px;
+            border-radius: 55px;
+            font-size: 30px;
+            width: 1200px;
+            text-align: left;
+        }
+        div:hover{
+            background-color:rgb(226, 245, 231);
+        }
+        .t{
+            margin-top: 100px;
+            padding-left: 150px;
+        }
+        @media screen and (max-width: 650px) {
+            .t{
+                margin-top: 50px;
+                padding-left: 20px;
+            }
+         }
+        </style>
+</head>
+<body> 
+        <br><br><br> 					
+        <div class="t2"><span>&emsp;&emsp;In ancient China lived an artist,whose paintings were almost lifelike. The artist's reputation had made him proud. One day the emperor wanted to get his portrait (画像) done so he called all great artists to come and present their finest work, so that he could choose the best. The artist was sure he would be chosen, but when he presented his masterpiece to the emperor's chief minister, the old nan laughed. The wise old man told him to travel to the Li River - perhaps he could learn a little from the greatest artist in the world.
+		</br>&emsp;&emsp;中国古代有一位画家,他的画几乎栩栩如生。这位画家的声誉使他感到骄傲。有一天,皇帝想完成他的肖像画,于是他召集了所有伟大的艺术家来展示他们最好的作品,这样他就可以挑选最好的了。画家确信他会被选中,但当他把他的杰作呈献给皇帝的首席大臣时,这个老人笑了。这位聪明的老人告诉他去丽江旅游--也许他可以向世界上最伟大的艺术家学习一点。
+		</span></div>
+		<div class="t2"><span>&emsp;&emsp;Filled with curiosity, the artist packed his bags and left.When he asked the villagers on the banks of the river where he could find the legendary (传奇的) artist, they smiled and pointed down the river. The next morning he hired a boat and set out to find the well-known painter. As the small boat moved, gently along the river he was left speechless by the mountains being silently reflected in the water. He 
+		</span></div>
+		<div class="t2"><span>passed milky white waterfalls and mountains in many shades of blue. And when he saw the mists rising from the river and the soft clouds surrounding the mountain tops, he was reduced to tears. The artist was finally humbled (谦卑) by the greatest artist on  earth, Mother Nature.
+		</br>&emsp;&emsp;艺术家满怀好奇,收拾好行囊离开了。当他问河岸上的在哪里可以找到这位传奇的艺术家时,他们微笑着指天早上,他租了一艘船,出发去找那位著名的画家。当边轻轻地移动时,群山静静地倒映在水中,他说不出话来。他走过乳白色的瀑布和深蓝的群山。当他看到从河里升起的薄雾和环绕着山顶的软云,他泪流满面。这位艺术家最终因为地球上最伟大的艺术家自然母亲而变得谦卑。
+		</span></div>
+		</div><br><br><br><br><br><br>
+</body>
+    <script>
+        $(document).ready(function(){
+            $("div").click(function(){
+            	//方式一
+                //var words = new SpeechSynthesisUtterance($(this).context.children[0].textContent);
+                //window.speechSynthesis.speak(words)
+
+            	//方式二
+				var audio = new Audio();  
+                audio.src ='https://dict.youdao.com/speech?audio=' + encodeURI($(this).context.children[0].textContent);  
+                audio.play(); 
+            });
+        });
+    </script>
+</html>        

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <title>2202B</title>
+  <link rel="stylesheet" href="word4.css">
+  <style>
+        div{
+            background-color:rgb(2243,243, 243);
+            margin-bottom: 15px;
+            margin-bottom: 15px;
+            margin-left: 185px;
+            padding: 10px;
+            border-radius: 55px;
+            font-size: 30px;
+            width: 1080px;
+            text-align: left;
+        }
+        div:hover{
+            background-color:rgb(226, 245, 231);
+        }
+        .t{
+            margin-top: 100px;
+            padding-left: 100px;
+        }
+        @media screen and (max-width: 650px) {
+            .t{
+                margin-top: 50px;
+                padding-left: 20px;
+            }
+         }
+        </style>
+</head>
+<body>
+<p style="font-size: 20px;">
+
+ B</br> </br> 
+<div class="t2"><span>&emsp;&emsp; <a>In 1916, two girls of wealthy families, best friends from Auburn, N. Y.—Dorothy Woodruff
+and Rosamond Underwood—traveled to a settlement in the Rocky Mountains to teach in a
+one-room schoolhouse. </a> The girls had gone to Smith College. They wore expensive clothes. So for
+them to move to Elkhead, Colo. to instruct the children whose shoes were held together with 
+string was a surprise. Their stay in Elkhead is the subject of Nothing Daunted: The Unexpected 
+Education of Two Society Girls in the West by Dorothy Wickenden, who is a magazine editor 
+and Dorothy Woodruff's granddaughter.</br>  
+1916年，两位来自纽约奥本的富有家庭的女孩——多萝西·伍德拉夫和罗莎芒德·安德伍德，她们是同学也是最好的朋友，  
+到落基山脉的一个定居点去教一间小学。这两个女孩毕业于史密斯学院，穿着昂贵的衣服。所以她们要搬到科罗拉  
+多州的埃尔克黑德为那些用绳子缚着鞋的孩子上课，这着实让人吃惊。她们在埃尔克黑德的经历是《未见曾有：  
+两位社交名媛在西部的意外教育》的主题，作者是多萝西·威肯登，她是杂志编辑，也是多萝西·伍德拉夫的孙女。</br></br>
+</span></div>	   
+<div class="t2"><span>&emsp;&emsp; Why did they go then? Well, they wanted to do something useful. Soon, however, they 
+realized what they had undertaken.</br>
+  那么，她们为什么会去呢？哦，她们想要做一些有用的事情。然而，很快她们就意识到了自己所承担的任务。
+</span></div> 
+<div class="t2"><span>&emsp;&emsp; <a>They moved in with a local family, the Harrisons, and, like them, had little privacy, rare baths, 
+and a blanket of snow on their quilt when they woke up in the morning.</a> Some mornings, 
+Rosamond and Dorothy would arrive at the schoolhouse to find the children weeping from the 
+cold. In spring, the snow was replaced by mud over ice. </br> 
+她们搬进了当地的哈里森一家人的家中，和他们一样，生活几乎没有什么隐私，洗澡的机会也很少，
+当她们早上醒来时，被冰雪覆盖的棉被让她们很不适应。有些早晨，罗莎芒德和多萝西到达学校教书时，
+会发现孩子们因寒冷而哭泣。到了春天，积雪被冻土替换。
+</span></div>
+<div class="t2"><span>&emsp;&emsp; In Wickenden's book, she expanded on the history of the West and also on feminism, which  
+of course influenced the girls' decision to go to Elkhead. <a>A hair-raising section concerns the 
+building of the railroads, which entailed（牵涉）drilling through the Rockies, often in blinding 
+snowstorms.</a> <a>The book ends with Rosamond and Dorothy's return to Auburn.</a> </br> 
+在威肯登的书中，她对西部的历史和女权主义进行了扩展，这当然影响了女孩们去埃尔克黑德的决定。书中还
+包括了一个让人毛骨悚然的章节，涉及修建铁路的故事，这通常需要在刺眼的暴风雪中穿越落基山脉。书的结尾 
+是罗莎芒德和多萝西回到奥本。
+</span></div> 
+<div class="t2"><span>&emsp;&emsp; <a>Wickenden is a very good storyteller. The sweep of the 
+land and the stoicism（坚忍）of the people move her to some beautiful writing.</a> Here is a picture of Dorothy Woodruff, on her horse, 
+looking down from a hill top: "When the sun slipped behind the mountains, it shed a rosy glow all 
+around them. Then a full moon rose. The snow was marked only by small animals: foxes, coyotes,
+mice, and varying hares, which turned white in the winter."</br> 
+威肯登是一个非常好的文学故事讲述者。广阔的土地和人民的坚忍性格，启发了她一些美丽的文字。以下是
+多萝西·伍德拉夫骑马站在山顶上观望的一幅画面：“当太阳滑落在山后，它在它们周围洒下了玫瑰色的光芒。然后， 
+满月升起。只有小动物的踪迹在雪地上呈现：狐狸、土狼、老鼠和变色鸟，它们在冬天变成白色。”
+</span></div>
+</div><br><br><br><br><br><br> 
+</p>
+</body>
+<script>
+        $(document).ready(function(){
+            $("div").click(function(){
+            	//方式一
+                //var words = new SpeechSynthesisUtterance($(this).context.children[0].textContent);
+                //window.speechSynthesis.speak(words)
+
+            	//方式二
+				var audio = new Audio();  
+                audio.src ='https://dict.youdao.com/speech?audio=' + encodeURI($(this).context.children[0].textContent);  
+                audio.play(); 
+            });
+        });
+    </script>
+</html>

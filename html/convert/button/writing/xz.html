@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <title>记单词</title>
+    <style>
+       div{
+            background-color:rgb(2243,243, 243);
+            margin-bottom: 15px;
+            margin-bottom: 15px;
+            margin-left: 185px;
+            padding: 10px;
+            border-radius: 55px;
+            font-size: 30px;
+            width: 1080px;
+            text-align: left;
+        }
+        div:hover{
+            background-color:rgb(226, 245, 231);
+        }
+        .t{
+            margin-top: 100px;
+            padding-left: 100px;
+        }
+        @media screen and (max-width: 650px) {
+            .t{
+                margin-top: 50px;
+                padding-left: 20px;
+            }
+         }
+        </style>
+</head>
+<body> 
+        <br><br><br> 
+        <div class="t1" style="text-align: center; font-size: 40px;"><span><br>&emsp;&emsp;【Letter of Inquiry or Letter for Help】<br>&emsp;&emsp;一、Knowing about What Kind of Chinese Clulture Attracts Foreigners Most<br>	          
+        </span></div>					
+        <div class="t2"><span>Dear Chris,</br>&emsp;&emsp;How is everything going? A class meeting about Chinese traditional culture will be held in my school and displayed on the English website. I am writing to ask some advice from you on what kind of Chinese traditional culture attracts the foreigners like you most.
+        </br></br>&emsp;&emsp;最近怎么样？我们学校将举办一个关于中国传统文化的班级会议，并在英文网站上展示。我写这封信是想请教你，什么样的中国传统文化最吸引像你这样的外国人？
+		</span></div>
+		<div class="t2"><span>&emsp;&emsp;As we all know, there is a variety of Chinese traditional culture which has gained wide acceptance both at home and abroad. At first, Chinese traditional festivals can well reflect Chinese traditional customs. Besides, the poems of the Tang and Song Dynasties are shining pearls in the treasure-house of Chinese literature. Finally, traditional Chinese paintings, calligraphy and Chinese national dramas are also national treasures. Would you lease tell me which part you are curious about most?    
+        </br></br>&emsp;&emsp;众所周知，中国传统文化丰富多彩，在国内外都得到了广泛的接受。首先，中国传统节日能很好地反映中国传统习俗。唐宋诗歌是中国文学宝库中的一颗璀璨明珠。最后，中国传统绘画、书法和中国民族戏剧也是国宝。你能告诉我你对哪一部分最感兴趣吗？
+		</span></div>
+		<div class="t2"><span>&emsp;&emsp; I would appreciate it if  you could reply to me as soon as possible.
+        </br>&emsp;&emsp; Best wishes!
+		</br></br>&emsp;&emsp;如果你能尽快回复我，我将不胜感激。致以最好的祝福！
+        </br></br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Yours,
+		</br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Li Hua
+		</br>
+		</span></div>
+        </div><br><br><br><br><br><br>
+</body>
+    <script>
+        $(document).ready(function(){
+            $("div").click(function(){
+            	//方式一
+                //var words = new SpeechSynthesisUtterance($(this).context.children[0].textContent);
+                //window.speechSynthesis.speak(words)
+
+            	//方式二
+				var audio = new Audio();  
+                audio.src ='https://dict.youdao.com/speech?audio=' + encodeURI($(this).context.children[0].textContent);  
+                audio.play(); 
+            });
+        });
+    </script>
+</html>        

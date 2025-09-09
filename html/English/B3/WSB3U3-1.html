@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魔法句子工坊 - 迪士尼梦幻版</title>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #8ec5fc 0%, #e0c3fc 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Patrick Hand', cursive;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            background: rgba(255,255,255,0.95);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23FFD700" d="M50 10L63.3 37.5H93.3L69.1 55.6L82.3 83.1L50 65.6L17.7 83.1L30.9 55.6L6.7 37.5H36.7L50 10z"/></svg>');
+            opacity: 0.2;
+            transform: rotate(30deg);
+        }
+
+        #sentence-selector {
+            padding: 15px 25px;
+            font-size: 20px;
+            margin: 20px 0;
+            width: 100%;
+            border-radius: 15px;
+            border: 3px solid #FF6B6B;
+            background: #FFF9F2;
+            color: #2d3436;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23FF6B6B' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+        }
+
+        #chinese-sentence {
+            font-size: 30px;
+            margin: 30px 0;
+            color: #2d3436;
+            padding: 25px;
+            min-height: 20px;
+            background: #FFF3D8;
+            border-radius: 15px;
+            border: 3px solid #FFA726;
+            position: relative;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .component-btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            color: white;
+            font-size: 23px;
+            transition: all 0.3s;
+            flex-shrink: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(255,107,107,0.3);
+        }
+
+        #subject-btn { background: linear-gradient(145deg, #FFD700 0%, #FFA500 100%); }
+        #predicate-btn { background: linear-gradient(145deg, #FF3366 0%, #FF1493 100%); }
+        #object-btn { background: linear-gradient(145deg, #00C7B5 0%, #009F95 100%); }
+        #other1-btn { background: linear-gradient(145deg, #A663CC 0%, #6C5CE7 100%); }
+        #other2-btn { background: linear-gradient(145deg, #A663CC 0%, #6C5CE7 100%); }
+        #other3-btn { background: linear-gradient(145deg, #A663CC 0%, #6C5CE7 100%); }
+
+        .component-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(255,107,107,0.5);
+        }
+
+        #translation-result {
+            font-size: 40px;
+            min-height: 120px;
+            margin: 40px 0;
+            padding: 30px;
+            line-height: 1.8;
+            border: 3px dashed #FF6B6B;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.9);
+            color: #2d3436;
+            position: relative;
+        }
+
+        #translation-result::after {
+            content: "✨";
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 24px;
+            animation: sparkle 1.5s infinite;
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        @keyframes text-pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        .word-container.highlight {
+            animation: text-pop 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+            text-shadow: 0 0 12px rgba(255,215,0,0.4);
+        }
+
+        .subject-color { color: #FFD700;font-weight: bolder;}
+        .predicate-color { color: #FF3366;font-weight: bolder;  }
+        .object-color { color: #00C7B5;font-weight: bolder; }
+        .other1-color { color: #A663CC;font-weight: lighter; }
+        .other2-color { color: #A663CC;font-weight:lighter;}
+        .other3-color { color: #A663CC;font-weight:lighter;}
+
+        .word-container {
+            display: inline-block;
+            margin: 0 5px;
+            position: relative;
+            transition: 0.3s;
+            cursor: pointer;
+            font-family: 'Comic Sans MS', 'Patrick Hand', cursive;
+            font-weight: 600;
+        }
+
+        .word-container:hover {
+            transform: translateY(-3px) scale(1.05);
+            filter: drop-shadow(0 5px 15px rgba(255,215,0,0.3));
+        }
+
+        #reset-btn {
+            padding: 15px 50px;
+            background: linear-gradient(145deg, #81ecec 0%, #00CEC9 100%);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: 0.3s;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(129,236,236,0.3);
+            display: block;
+            margin: 0 auto;
+        }
+
+        #reset-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(129,236,236,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="chinese-sentence"></div>
+
+        <div class="button-row">
+            <button class="component-btn" id="other1-btn" data-type="other1">修饰语</button>
+            <button class="component-btn" id="subject-btn" data-type="subject">主语(n.)</button>
+            <button class="component-btn" id="other3-btn" data-type="other3">修饰语</button>
+            <button class="component-btn" id="predicate-btn" data-type="predicate">谓语(v.)</button>
+            <button class="component-btn" id="object-btn" data-type="object">宾语(n.)</button>
+            <button class="component-btn" id="other2-btn" data-type="other2">修饰语(a./adv.)</button>
+        </div>
+
+        <div id="translation-result"></div>
+        <button id="reset-btn">魔法重置 ✨</button>
+
+        <select id="sentence-selector">
+            <option value="0">1、正如中国谚语所说，好人长命。</option>
+            <option value="1">2: 玛丽笑了笑，但她的眼神表明她根本不快乐。</option>
+            <option value="2">3、中国的四大发明——造纸术、指南针、火药和印刷术，对世界文明的发展产生了深远的影响。</option>
+            <option value="3">4: 正是他的毅力和决心不放弃，帮助他实现了梦想。</option>
+            <option value="4">5: 此外，夏令营还为会员提供一个参观一些博物馆的机会，这是了解我们历史的一个好方法。</option>
+            <option value="5">6: 就我个人而言，一个人的成功不能总是从金钱的角度来衡量。</option>
+            <option value="6">7: 我能说一口流利的英语，与外国游客交流没有困难。</option>
+            <option value="7">8: 既然你渴望学习中文，我认为北京语言大学是你的理想去处。</option>
+            
+            
+        </select>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sentences = [
+            {
+                    chinese: "1、正如中国谚语所说，好人长命。",
+                    components: {
+                        other1: { text: "As the Chinese saying goes", colorClass: "other1-color" },
+                        subject: { text: "a kind-hearted man ", colorClass: "subject-color" },
+                        other3: { text: "", colorClass: "other3-color" },
+                        predicate: { text: "lives, ", colorClass: "predicate-color" },
+                        object: { text: "a long life", colorClass: "object-color" },
+                        other2: { text: "", colorClass: "other2-color" }
+                    },
+                    wordOrder: ['other1', 'subject', 'other3', 'predicate', 'object', 'other2']
+                },
+                {
+                    chinese: "2、玛丽笑了笑，但她的眼神表明她根本不快乐。",
+                    components: {
+                        other1: { text: "", colorClass: "other1-color" },
+                        subject: { text: "Mary ", colorClass: "subject-color" },
+                        other3: { text: "", colorClass: "other3-color" },
+                        predicate: { text: "smiled, ", colorClass: "predicate-color" },
+                        object: { text: "", colorClass: "object-color" },
+                        other2: { text: "but her eyes suggested that she was not happy at all．", colorClass: "other2-color" }
+                    },
+                    wordOrder: ['other1', 'subject', 'other3', 'predicate', 'object', 'other2']
+                },
+                {
+                    chinese: "3、中国的四大发明——造纸术、指南针、火药和印刷术，对世界文明的发展产生了深远的影响。",
+                    components: {
+                        other1: { text: "", colorClass: "other1-color" },
+                        subject: { text: "The Four Great Inventions of ancient China—papermaking, the compass, gunpowder, and printing", colorClass: "subject-color" },
+                        other3: { text: "", colorClass: "other3-color" },
+                        predicate: { text: "have had a profound impact on", colorClass: "predicate-color" },
+                        object: { text: "the development of world civilization.", colorClass: "object-color" },
+                        other2: { text: "", colorClass: "other2-color" }
+                    },
+                    wordOrder: ['other1', 'subject', 'other3', 'predicate', 'object', 'other2']
+                },
+                {
+                    chinese: "4、正是他的毅力和决心不放弃，帮助他实现了梦想。",
+                    components: {
+                        other1: { text: "", colorClass: "other1-color" },
+                        subject: { text: "It was his perseverance and determination not to give up that", colorClass: "subject-color" },
+                        other3: { text: "grandly", colorClass: "other3-color" },
+                        predicate: { text: "helped", colorClass: "predicate-color" },
+                        object: { text: "him", colorClass: "object-color" },
+                        other2: { text: "make his dream a reality.", colorClass: "other2-color" }
+                    },
+                    wordOrder: ['other1', 'subject', 'other3', 'predicate', 'object', 'other2']
+                },
+                {
+                    chinese: "5、此外，夏令营还为会员提供一个参观一些博物馆的机会，这是了解我们历史的一个好方法。",
+                    components: {
+                        other1: { text: "In addition,", colorClass: "other1-color" },
+                        subject: { text: "the summer camp", colorClass: "subject-color" },
+                        other3: { text: "", colorClass: "other3-color" },
+                        predicate: { text: "provides ", colorClass: "predicate-color" },
+                        object: { text: "a chance for members", colorClass: "object-color" },
+                        other2: { text: "to visit some museums, which is a good way to learn about our history.", colorClass: "other2-color" }
+                    },
+                    wordOrder: ['other1', 'subject', 'other3', 'predicate', 'object', 'other2']
+                },
+                {
+                    chinese: "6、就我个人而言，一个人的成功不能总是从金钱的角度来衡量。",
+                    components: {
+                        other1: { text: "As far as I'm concerned,", colorClass: "other1-color" },
+                        subject: { text: "one's success", colorClass: "subject-color" },
+                        other3: { text: "", colorClass: "other3-color" },
+                        predicate: { text: "cannot always be measured ", colorClass: "predicate-color" },
+                        object: { text: "", colorClass: "object-color" },
+                        other2: { text: "in terms of money.", colorClass: "other2-color" }
+                    },
+                    wordOrder: ['other1', 'subject', 'other3', 'predicate', 'object', 'other2']
+                },
+                {
+                    chinese: "7、我能说一口流利的英语，与外国游客交流没有困难。",
+                    components: {
+                        other1: { text: "Capable of speaking fluent English,", colorClass: "other1-color" },
+                        subject: { text: "I", colorClass: "subject-color" },
+                        other3: { text: "a", colorClass: "other3-color" },
+                        predicate: { text: "have no difficulty communicating with", colorClass: "predicate-color" },
+                        object: { text: " foreign visitors.", colorClass: "object-color" },
+                        other2: { text: "", colorClass: "other2-color" }
+                    },
+                    wordOrder: ['other1', 'subject', 'other3', 'predicate', 'object', 'other2']
+                },
+                {
+                    chinese: "8、既然你渴望学习中文，我认为北京语言大学是你的理想去处。。",
+                    components: {
+                        other1: { text: "Now that you have a desire to learn Chinese,", colorClass: "other1-color" },
+                        subject: { text: "I", colorClass: "subject-color" },
+                        other3: { text: "", colorClass: "other3-color" },
+                        predicate: { text: "think", colorClass: "predicate-color" },
+                        object: { text: " Beijing Language and Culture University is an ideal place for you.", colorClass: "object-color" },
+                        other2: { text: "", colorClass: "other2-color" }
+                    },
+                    wordOrder: ['other1', 'subject', 'other3', 'predicate', 'object', 'other2']
+                }
+                    
+            ];
+
+            const synth = window.speechSynthesis;
+            let englishVoice;
+            let currentSentence;
+            let selectedWords = [];
+
+            function initSpeech() {
+                const voices = synth.getVoices();
+                englishVoice = voices.find(voice => 
+                    voice.lang === 'en-US' && voice.name.includes('Disney')) || 
+                    voices.find(voice => voice.lang.startsWith('en'));
+            }
+
+            function speakWord(text) {
+                if (synth.speaking) synth.cancel();
+                const cleanText = text.replace(/[.!?]/g, '');
+                
+                document.querySelectorAll('.word-container').forEach(word => {
+                    if (word.textContent.includes(cleanText)) {
+                        word.classList.add('highlight');
+                        setTimeout(() => word.classList.remove('highlight'), 600);
+                    }
+                });
+
+                const utterance = new SpeechSynthesisUtterance(cleanText);
+                utterance.voice = englishVoice;
+                utterance.rate = 0.92;
+                utterance.pitch = 1.1;
+                synth.speak(utterance);
+            }
+
+            function initSentence(index) {
+                currentSentence = sentences[index];
+                document.getElementById('chinese-sentence').textContent = currentSentence.chinese;
+                selectedWords = [];
+                updateTranslation();
+            }
+
+            function updateTranslation() {
+                const resultDiv = document.getElementById('translation-result');
+                resultDiv.innerHTML = currentSentence.wordOrder
+                    .filter(type => selectedWords.some(w => w.type === type))
+                    .map(type => {
+                        const word = selectedWords.find(w => w.type === type);
+                        return `<span class="word-container" onclick="speakWord('${word.text}')">
+                            <span class="${word.colorClass}">${word.text}</span>
+                        </span>`;
+                    }).join(' ');
+            }
+
+            document.getElementById('sentence-selector').addEventListener('change', function() {
+                initSentence(parseInt(this.value));
+            });
+
+            document.querySelectorAll('.component-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const type = btn.dataset.type;
+                    const component = currentSentence.components[type];
+                    
+                    if (!selectedWords.some(item => item.type === type)) {
+                        selectedWords.push({
+                            type: type,
+                            text: component.text,
+                            colorClass: component.colorClass
+                        });
+                        updateTranslation();
+                        speakWord(component.text);
+                    }
+                });
+            });
+
+            document.getElementById('reset-btn').addEventListener('click', () => {
+                selectedWords = [];
+                updateTranslation();
+            });
+
+            if (synth.onvoiceschanged !== undefined) {
+                synth.onvoiceschanged = initSpeech;
+            }
+            initSpeech();
+            initSentence(0);
+        });
+    </script>
+</body>
+</html>

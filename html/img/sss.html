@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+  </head>
+  <style>
+    #papa  { margin: 100px 0px;width: 1600px;box-shadow: 0px 0px 0px 0px #cccccc, 0px 0px 0px 0px #880000; overflow: hidden;height: 900px;background: url('https://cccimg.com/view.php/c55213ede26e3b983e5079a9ec715858.png') no-repeat center/cover;border: 0px solid;display: grid;  position: relative;z-index: 1234567891011; --state: running;  }
+    
+    .photo {width: 100%; height: 100%;
+        position: absolute;z-index: 1;
+        top:0px; left:0px;
+        opacity: 0;
+        animation: round 180s linear infinite;}
+    @keyframes round {
+    0% { -webkit-transform:rotate(0)scale(1)translate(0%,0%); opacity:0}
+    8% { -webkit-transform:rotate(0)scale(1)translate(0%,0%); opacity:1}
+    16% { -webkit-transform:rotate(0)scale(1)translate(0%,0%)rotateZ(0deg); opacity:1}
+    24% { -webkit-transform:rotate(0)scale(1)translate(0%,0%)rotateZ(0deg); opacity:0}
+    32% { -webkit-transform:rotate(0)scale(1)translate(0%,0%)rotateZ(0deg); opacity:1}
+    40% { -webkit-transform:rotate(0deg)scale(1)translate(0%,0%)rotateZ(0deg); opacity:0}
+    }
+    img:nth-child(1) {animation-delay: 100s;}
+    img:nth-child(2) {animation-delay: 90s;}
+    img:nth-child(3) {animation-delay: 80s;}
+    img:nth-child(4) {animation-delay: 70s;}
+    img:nth-child(5) {animation-delay: 60s;}
+    img:nth-child(6) {animation-delay: 50s;}
+    img:nth-child(7) {animation-delay: 40s;}
+    img:nth-child(8) {animation-delay: 30s;}
+    img:nth-child(9) {animation-delay: 20s;}
+    img:nth-child(10) {animation-delay: 10s;}
+    img:nth-child(11) {animation-delay: 0s;}
+    .stop img:nth-child(1), 
+    .stop img:nth-child(2), 
+    .stop img:nth-child(3), 
+    .stop img:nth-child(4), 
+    .stop img:nth-child(5),  
+    .stop img:nth-child(6), 
+    .stop img:nth-child(7), 
+    .stop img:nth-child(8),
+    .stop img:nth-child(9),
+    .stop img:nth-child(10)
+    .stop img:nth-child(11){animation-play-state: paused;}
+    
+    </style> 
+  <body>
+    <div id="papa">
+      <span id="fullscreen"></span>
+      <div id='dt'><img id="Img" src="https://cccimg.com/view.php/9868a4bca180a70f3ae52a0ae393cbd2.png" width="100%" height="100%"></div>
+      
+      <div id="testImg" >
+      <img class="photo" 
+      src="https://cccimg.com/view.php/9868a4bca180a70f3ae52a0ae393cbd2.png" /><img class="photo" 
+      src="https://cccimg.com/view.php/eb2a64db79f32c4f30d0d98373ebe15a.png" /><img class="photo" 
+      src="https://cccimg.com/view.php/1c82b0c6ffaeba759853b5d6c205e1b2.png" /><img class="photo" 
+      src="https://cccimg.com/view.php/9868a4bca180a70f3ae52a0ae393cbd2.png" /><img class="photo" 
+      src="https://cccimg.com/view.php/de72fd6da44d6df7754a44ec52963b41.png" /><img class="photo" 
+      src="https://cccimg.com/view.php/1c82b0c6ffaeba759853b5d6c205e1b2.png" /><img class="photo" 
+      src="https://cccimg.com/view.php/9868a4bca180a70f3ae52a0ae393cbd2.png" /><img class="photo" 
+      src="https://cccimg.com/view.php/eb2a64db79f32c4f30d0d98373ebe15a.png" /><img class="photo" 
+      src="https://cccimg.com/view.php/1c82b0c6ffaeba759853b5d6c205e1b2.png" /><img class="photo" 
+      src="https://cccimg.com/view.php/de72fd6da44d6df7754a44ec52963b41.png" /><img class="photo"
+      src="https://cccimg.com/view.php/1c82b0c6ffaeba759853b5d6c205e1b2.png" />
+      </div>
+    </body>
+</html>

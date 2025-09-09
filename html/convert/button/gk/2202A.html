@@ -1,0 +1,110 @@
+<head>
+  <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <title>2202B</title>
+  <link rel="stylesheet" href="word4.css">
+  <style>
+        div{
+            background-color:rgb(2243,243, 243);
+            margin-bottom: 15px;
+            margin-bottom: 15px;
+            margin-left: 185px;
+            padding: 10px;
+            border-radius: 55px;
+            font-size: 30px;
+            width: 1080px;
+            text-align: left;
+        }
+        div:hover{
+            background-color:rgb(226, 245, 231);
+        }
+        .t{
+            margin-top: 100px;
+            padding-left: 100px;
+        }
+        @media screen and (max-width: 650px) {
+            .t{
+                margin-top: 50px;
+                padding-left: 20px;
+            }
+         }
+        </style>
+</head>
+<body>
+<p style="font-size: 20px;">
+	<b>A</b> </br> </br> 
+<div class="t2"><span><b>Henry Raeburn（1756-1823）</b></br> 
+<b>The Exhibition</b></br> 
+This exhibition of some sixty masterpieces celebrating the life and work of Scotland's best
+loved painter, Sir Henry Raeburn, comes to London. Selected from collections throughout the
+world, it is the first major exhibition of his work to be held in over forty years.</br>  
+展览</br> 
+这次展览展出了约60件杰作，以庆祝苏格兰最受喜爱的画家亨利·雷本爵士的一生和事业，并来到了伦敦。这些作品是从世界各地的收藏中挑选而来的，是40多年来举办的他的首个重要展览。</br> 
+<b>Lecture Series</b></br> 
+Scottish National Portrait（肖像画）Gallery presents a series of lectures for the general public.
+They are held in the Lecture Room. Admission to lectures is free.
+讲座系列</br> 
+苏格兰国家肖像画廊为公众提供一系列的讲座。这些讲座将在讲座室内举行，入场免费，适合大众参加。</br> 
+</span></div>
+<div class="t2"><span>&emsp;&emsp; <table border="1" width="900" height="70" cellspacing="0"  cellpadding="0" align="center" vertical-align="middle"  style="font-size: 20px;"> 
+           <tr  align="center" valign="middle">
+            <td>An Introduction to Raeburn</br> 
+                Sunday 26 Oct., 15.00</br>
+				DUNCAN THOMSON</td></br>
+            <td><a>Raeburn's English Contemporaries</br> 
+                   Thursday 30 Oct., 13.10 </a></br>  
+                   JUDY EGERTON</td> 
+			</tr>
+			<tr align="center" valign="middle">
+            <td>Characters and Characterisation in Raeburn's Portraits</br>
+			Thursday 6 Nov., 13.10</br> 
+            NICHOLAS PHILLIPSON	</td></br> 
+			<td>Raeburn and Artist's Training in the 18th Century</br> 
+			Thursday 13 Nov., 13.10</br>
+			MARTIN POSTLE</td>
+			</tr>
+         </table></br></br>
+</span></div>		 
+</p>
+<p style="font-size: 20px;"><div class="t2"><span><b>Exhibition Times</b></br> 
+Monday-Saturday 10.00—17.45        Sunday 12.00—17.45</br> 
+Last admission to the exhibition: 17.15. There is no re-admission. </br> 
+Closed: 24—26 December and 1 January. </br> 
+展览时间：</br> 
+周一至周六 10:00-17:45，周日 12:00-17:45。</br> 
+展览最后入场时间为17:15，不可重复入场。</br> 
+节假日休息：12月24日至26日和1月1日。</br> 
+<b>Admission</b></br> 
+ <a>£4. Children under 12 years accompanied by an adult are admitted free. </a> </br> 
+门票：</br> 
+成人票价为 £4。12岁以下儿童需由成年人陪同方可免费入场。</br> 
+<b>Schools and Colleges</b></br>
+ <a>A special low entrance charge of f2 per person is available to all in full-time education, up to and including those at first degree level, in organised groups with teachers.  </a></br> 
+学校和大专院校：</br> 
+有组织地带老师的在全日制教育中的学生，包括本科阶段，每人可享受特别门票优惠价为£2。</br> 
+</span></div>
+</div><br><br><br><br><br><br> 
+
+
+
+
+</p>
+</body>
+<script>
+        $(document).ready(function(){
+            $("div").click(function(){
+            	//方式一
+                //var words = new SpeechSynthesisUtterance($(this).context.children[0].textContent);
+                //window.speechSynthesis.speak(words)
+
+            	//方式二
+				var audio = new Audio();  
+                audio.src ='https://dict.youdao.com/speech?audio=' + encodeURI($(this).context.children[0].textContent);  
+                audio.play(); 
+            });
+        });
+    </script>
+</html>

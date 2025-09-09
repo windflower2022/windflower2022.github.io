@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <title>记单词</title>
+    <style>
+       div{
+            background-color:rgb(2243,243, 243);
+            margin-bottom: 15px;
+            margin-bottom: 15px;
+            margin-left: 185px;
+            padding: 10px;
+            border-radius: 55px;
+            font-size: 30px;
+            width: 1080px;
+            text-align: left;
+        }
+        div:hover{
+            background-color:rgb(226, 245, 231);
+        }
+        .t{
+            margin-top: 100px;
+            padding-left: 100px;
+        }
+        @media screen and (max-width: 650px) {
+            .t{
+                margin-top: 50px;
+                padding-left: 20px;
+            }
+         }
+        </style>
+</head>
+<body> 
+        <br><br><br>
+		<div class="t1" style="text-align: center; font-size: 40px;"><span><br>&emsp;&emsp;【Letter of Recommendation】        
+        </br>【Cherish electricity节约用电】 
+		</span></div>	
+        <div class="text"><span>Dear fellow students,
+        </br>&emsp;&emsp; As is known to us, without electricity the society cannot run smoothly. But around us, electricity is often regrettably wasted,in contrast to which many places have been suffering severe power shortage since this summer. So it's necessaryfor us to save electricity. 		    
+		</br><br>&emsp;&emsp;亲爱的同学们，众所周知，没有电，社会就不能平稳运转。但在我们周围，电力往往令人遗憾地被浪费。相比之下，自从今年夏天许多地方已经遭受严重的电力短缺，所以我们有必要节约用电。
+		</span></div>	
+        <div class="text"><span>&emsp;&emsp; First and foremost,we should make it a habit to save electricity and practice it in our daily life.For example,when leaving the room, we should turn off the lights. Moreover,we should remind more people around us,such as our parents,relatives and friends,of the importance of saving electricity. 
+        <br><br>&emsp;&emsp;首先，我们应该养成节约用电的习惯，并在日常生活中加以实践。例如，离开房间时，我们应该关灯。此外，我们应该提醒我们周围更多的人，如我们的父母，亲戚和朋友，节约用电的重要性。
+        </span></div>					
+        <div class="text"><span>&emsp;&emsp;Many hands make light work. Dear fellow students, let’s join in the power saving action, start from ourselves, and act from now on .        
+        <br><br>&emsp;&emsp;人多力量大。亲爱的同学们，让我们加入到节能行动中来，从我们自己做起，从现在开始行动起来。	          
+        </br></br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;The student’'s Union
+		</br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;学生会
+		</br>
+		</span></div>					
+        </div><br><br><br><br><br><br>
+</body>
+    <script>
+        $(document).ready(function(){
+            $("div").click(function(){
+            	//方式一
+                //var words = new SpeechSynthesisUtterance($(this).context.children[0].textContent);
+                //window.speechSynthesis.speak(words)
+
+            	//方式二
+				var audio = new Audio();  
+                audio.src ='https://dict.youdao.com/speech?audio=' + encodeURI($(this).context.children[0].textContent);  
+                audio.play(); 
+            });
+        });
+    </script>
+</html>      
+

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>单词拼读练习</title>
+    <style>
+        /* 密码框样式 */
+        .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .password-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        .password-input {
+            padding: 12px;
+            font-size: 16px;
+            margin: 15px 0;
+            border: 2px solid #4A90E2;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .password-btn {
+            padding: 12px 30px;
+            background: #4A90E2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .password-btn:hover {
+            background: #357ABD;
+        }
+
+        body {
+            background: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .word-display {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        #word {
+            font-family: Arial, sans-serif;
+            font-size: 72px;
+            color: #1d1d1f;
+            margin: 20px 0;
+            cursor: pointer;
+            line-height: 1.2;
+        }
+
+        .phonetic {
+            font-family: 'Times New Roman', serif;
+            font-size: 32px;
+            color: #86868b;
+            margin: 15px 0;
+        }
+
+        .meaning {
+            font-family: '微软雅黑', sans-serif;
+            font-size: 32px;
+            color: #1d1d1f;
+            margin: 25px 0;
+        }
+
+        .syllable-area {
+            background: #f5f5f7;
+            border-radius: 18px;
+            padding: 40px;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .line {
+            width: 80%;
+            height: 4px;
+            background: #86868b;
+            margin: 0 auto 60px;
+        }
+
+        .syllable-blocks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            min-height: 120px;
+        }
+
+        .syllable {
+            background: #ffffff;
+            border: 2px solid #d2d2d7;
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-family: Arial, sans-serif;
+            font-size: 36px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .syllable.selected {
+            background: #0071e3;
+            color: white;
+            border-color: #0071e3;
+            transform: translateY(-5px);
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .nav-btn {
+            background: #0071e3;
+            color: white;
+            padding: 18px 45px;
+            border: none;
+            border-radius: 25px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: #0077ed;
+            transform: scale(1.05);
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .wrong {
+            animation: shake 0.4s;
+        }
+
+        .vowel { color: #ff3b30; }
+        .consonant { color: #0071e3; }
+
+        #answerLine {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            min-height: 60px;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="password-modal" id="passwordModal">
+        <div class="password-box">
+            <h2>请输入访问密码</h2>
+            <input type="password" class="password-input" id="passwordInput" autocomplete="off" autofocus>
+            <button class="password-btn" onclick="checkPassword()">进入系统</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="word-display">
+            <div id="word"></div>
+            <div class="phonetic" id="phonetic"></div>
+            <div class="meaning" id="meaning"></div>
+        </div>
+        
+        <div class="syllable-area">
+            <div id="answerLine"></div>
+            <div class="line"></div>
+            <div class="syllable-blocks" id="syllableBlocks"></div>
+        </div>
+        
+        <div class="button-container">
+            <button class="nav-btn" id="prevBtn">上一词</button>
+            <button class="nav-btn" id="nextBtn">下一词</button>
+        </div>
+    </div>
+
+    <script>
+        // 密码验证功能
+        const CORRECT_PASSWORD = "Luna";
+        let attemptCount = 0;
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            if (input.value === CORRECT_PASSWORD) {
+                document.getElementById('passwordModal').style.display = 'none';
+            } else {
+                attemptCount++;
+                alert(`密码错误（剩余尝试次数：${5 - attemptCount}）`);
+                input.value = '';
+                if (attemptCount >= 5) {
+                    alert("尝试次数过多，页面即将关闭");
+                    window.close();
+                }
+            }
+        }
+                 
+        const wordData = [
+                 { word:'agony', syllables:['a','go','ny'], phonetic:'/ˈæɡəni/', meaning:'n.痛楚,苦难'},
+                 { word:'steam', syllables:['steam'], phonetic:'/stiːm/', meaning:'n.蒸汽,水蒸气'},
+                 { word:'loose', syllables:['loose'], phonetic:'/luːs/', meaning:'adj.控制不严的'},
+                 { word:'lip', syllables:['lip'], phonetic:'/lɪp/', meaning:'n.(嘴)唇'},
+                 { word:'sink', syllables:['sink'], phonetic:'/sɪŋk/', meaning:'v.使(船)沉没'},
+                 { word:'fault', syllables:['fault'], phonetic:'/fɔːlt/', meaning:'n.责任,过错'},
+                 { word:'resolve', syllables:['re','solve'], phonetic:'/rɪˈzɒlv/', meaning:'v.解决(问题、困难)'},
+                 { word:'strategy', syllables:['stra','te','gy'], phonetic:'/ˈstrætədʒi/', meaning:'n.计谋,策略;行动计划'},
+                 { word:'signal', syllables:['sig','nal'], phonetic:'/ˈsɪɡnəl/', meaning:'n.信号;暗号'},
+                 { word:'breath', syllables:['breath'], phonetic:'/breθ/', meaning:'n.呼出的气'},
+                 { word:'concern', syllables:['con','cern'], phonetic:'/kənˈsɜːn/', meaning:'n.忧虑,担心'},
+                 { word:'annoyed', syllables:['annoy','ed'], phonetic:'/əˈnɔɪd/', meaning:'adj.恼怒的,烦恼的'},
+                 { word:'adjust', syllables:['ad','just'], phonetic:'/əˈdʒʌst/', meaning:'v.适应,(使)习惯'},
+                 { word:'duty', syllables:['du','ty'], phonetic:'/ˈdjuːti/', meaning:'n.职责,义务;责任'},
+                 { word:'accident', syllables:['ac','ci','dent'], phonetic:'/ˈæksɪdənt/', meaning:'n.意外事件,偶然因素'},
+                 { word:'core', syllables:['core'], phonetic:'/kɔː(r)/', meaning:'adj.核心的(课程、团体等)'},
+                 { word:'ensure', syllables:['en','sure'], phonetic:'/ɪnˈʃʊə(r)/', meaning:'v.确保,保证'},
+                 { word:'complexity', syllables:['com','plex','ity'], phonetic:'/kəmˈpleksəti/', meaning:'n.复杂性,错综复杂'},
+                 { word:'forgive', syllables:['for','give'], phonetic:'/fəˈɡɪv/', meaning:'v.原谅,宽恕'},
+                 { word:'criticise', syllables:['cri','ti','cise'], phonetic:'/ˈkrɪtɪˌsaɪz/', meaning:'v.批评,指责'},
+                 { word:'embarrassment', syllables:['em','ba','rrass','ment'], phonetic:'/ɪmˈbærəsmənt/', meaning:'n.尴尬,难为情'}
+        ];
+
+        let currentWordIndex = 0;
+        let selectedSyllables = [];
+        const synth = window.speechSynthesis;
+        let voices = [];
+
+        function loadVoices() {
+            voices = synth.getVoices().filter(v => v.lang === 'en-US');
+            if (voices.length === 0) {
+                setTimeout(loadVoices, 100);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadVoices();
+            initWord();
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', nextWord);
+        document.getElementById('prevBtn').addEventListener('click', prevWord);
+        document.getElementById('syllableBlocks').addEventListener('click', handleSyllableClick);
+
+        function initWord() {
+            if (synth.speaking) synth.cancel();
+            
+            const currentWord = wordData[currentWordIndex];
+            
+            document.getElementById('word').innerHTML = currentWord.word.split('').map(l => 
+                `<span class="${/[aeiou]/i.test(l) ? 'vowel' : 'consonant'}">${l}</span>`
+            ).join('');
+            
+            document.getElementById('phonetic').textContent = currentWord.phonetic;
+            document.getElementById('meaning').textContent = currentWord.meaning;
+            
+            createSyllableBlocks([...currentWord.syllables].sort(() => Math.random() - 0.5));
+            clearAnswerLine();
+            
+            speakWord(currentWord.word, 3);
+        }
+
+        function createSyllableBlocks(syllables) {
+            const container = document.getElementById('syllableBlocks');
+            container.innerHTML = syllables.map(s => 
+                `<div class="syllable">${s}</div>`
+            ).join('');
+        }
+
+        function handleSyllableClick(e) {
+            const syllable = e.target.closest('.syllable');
+            if (!syllable) return;
+
+            syllable.classList.toggle('selected');
+            const syllableText = syllable.textContent;
+            
+            if (selectedSyllables.includes(syllableText)) {
+                selectedSyllables = selectedSyllables.filter(s => s !== syllableText);
+            } else {
+                selectedSyllables.push(syllableText);
+            }
+            
+            updateAnswerLine();
+            checkAnswer();
+        }
+
+        function updateAnswerLine() {
+            const answerLine = document.getElementById('answerLine');
+            answerLine.innerHTML = selectedSyllables.map(s => 
+                `<div class="syllable selected">${s}</div>`
+            ).join('');
+        }
+
+        function clearAnswerLine() {
+            document.getElementById('answerLine').innerHTML = '';
+            selectedSyllables = [];
+            document.querySelectorAll('.syllable').forEach(s => s.classList.remove('selected'));
+        }
+
+        function checkAnswer() {
+            const currentWord = wordData[currentWordIndex];
+            if (selectedSyllables.join('') === currentWord.word) {
+                showSuccessAnimation();
+                setTimeout(nextWord, 1500);
+            }
+        }
+
+        function showSuccessAnimation() {
+            document.getElementById('syllableBlocks').style.opacity = '0';
+            const word = document.getElementById('word');
+            word.style.transform = 'scale(1.5)';
+            word.style.transition = 'transform 0.5s';
+            setTimeout(() => {
+                word.style.transform = 'scale(1)';
+                document.getElementById('syllableBlocks').style.opacity = '1';
+            }, 1000);
+        }
+
+        function speakWord(word, times) {
+            if (synth.speaking) synth.cancel();
+            
+            let count = 0;
+            const speak = () => {
+                if (count >= times || !voices.length) return;
+                
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.voice = voices.find(v => v.name.includes('Samantha')) || voices[0];
+                utterance.rate = 0.9;
+                utterance.onend = () => {
+                    count++;
+                    if (count < times) speak();
+                };
+                synth.speak(utterance);
+            };
+            speak();
+        }
+
+        function nextWord() {
+            currentWordIndex = (currentWordIndex + 1) % wordData.length;
+            initWord();
+        }
+
+        function prevWord() {
+            currentWordIndex = (currentWordIndex - 1 + wordData.length) % wordData.length;
+            initWord();
+        }
+    </script>
+</body>
+</html>

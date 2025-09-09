@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>星海紫晶点名系统</title>
+    <style>
+        :root {
+            --primary: #2A1A42;
+            --secondary: #5B2F97;
+            --accent: #CD84FF;
+            --neon: #D6A2E9;
+        }
+
+        /* 星空效果 */
+        .galaxy {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(205, 132, 255, 0.3);
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255,255,255,0.8),
+                transparent);
+            animation: shooting 3s linear infinite;
+            transform-origin: left;
+        }
+
+
+        body {
+            background: radial-gradient(circle at center, 
+                rgba(179, 51, 196, 0.7), 
+                rgba(1, 20, 40, 0.9));
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Inter', system-ui;
+            color: white;
+            overflow: hidden;
+        }
+
+        /* 原有其他样式保持不变... */
+        .cyber-container {
+            width: 800px;
+            height: 600px;
+            background: rgba(42, 26, 66, 0.9);
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(214, 162, 233, 0.2);
+            box-shadow: 0 0 80px rgba(205, 132, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-border {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                transparent 48%, 
+                rgba(205, 132, 255, 0.8) 50%, 
+                transparent 52%);
+            animation: scan 8s linear infinite;
+            pointer-events: none;
+            opacity: 0.1;
+        }
+
+        .hud-display {
+            padding: 40px;
+            height: calc(100% - 80px);
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+        }
+
+        .header {
+            border-bottom: 1px solid rgba(214, 162, 233, 0.3);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .main-display {
+            position: relative;
+            background: linear-gradient(160deg, 
+                rgba(67, 43, 114, 0.8) 0%, 
+                rgba(44, 28, 82, 0.6) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(214, 162, 233, 0.2);
+            box-shadow: inset 0 0 60px rgba(205, 132, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+        }
+
+        #name-display {
+            font-size: 4.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FFF 30%, #CD84FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(205, 132, 255, 0.3));
+            transform-style: preserve-3d;
+        }
+
+        .control-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .cyber-button {
+            background: rgba(214, 162, 233, 0.1);
+            border: 1px solid var(--neon);
+            padding: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-button::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent 45%, 
+                rgba(214, 162, 233, 0.3) 50%, 
+                transparent 55%);
+            animation: flow 3s linear infinite;
+        }
+
+        .cyber-button:hover {
+            background: rgba(214, 162, 233, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(205, 132, 255, 0.2);
+        }
+
+        .stats {
+            font-family: 'JetBrains Mono', monospace;
+            color: #CD84FF;
+            font-size: 0.9rem;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        @keyframes shooting {
+            0% {
+                transform: translate(-100%, -100%) rotate(45deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(200%, 200%) rotate(45deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="galaxy" id="galaxy"></div>
+
+    <div class="cyber-container">
+        <div class="cyber-border"></div>
+        <div class="hud-display">
+            <div class="header">
+                <h1>Come on ! Be No. One</h1>
+                <div class="stats">在线用户: 48 | 内存占用: 23% | 延迟: 17ms</div>
+            </div>
+            
+            <div class="main-display">
+                <div id="name-display">READY</div>
+            </div>
+
+            <div class="control-panel">
+                <div class="cyber-button" onclick="toggleRoll()">
+                    <span>▶️ 启动随机序列</span>
+                </div>
+                <div class="cyber-button" onclick="showStats()">
+                    <span>📊 查看分析报告</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 生成星空
+        function createGalaxy() {
+            const galaxy = document.getElementById('galaxy');
+            
+            // 创建150颗基础星
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.cssText = `
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    width: ${Math.random() * 2 + 1}px;
+                    height: ${Math.random() * 2 + 1}px;
+                    animation-delay: ${Math.random() * 3}s;
+                `;
+                galaxy.appendChild(star);
+            }
+
+            // 创建流星
+            setInterval(() => {
+                const meteor = document.createElement('div');
+                meteor.className = 'shooting-star';
+                meteor.style.cssText = `
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    animation-duration: ${Math.random() * 2 + 1.5}s;
+                `;
+                galaxy.appendChild(meteor);
+                setTimeout(() => meteor.remove(), 3000);
+            }, 2500);
+        }
+
+        // 初始化星空
+        document.addEventListener('DOMContentLoaded', createGalaxy);
+
+        // 原有JavaScript功能保持不变...
+        const names = [
+            'AJ', 'Loong', 'Jane', 'Nostalgia', 'Avery', 'Pluto', 'Starry',
+            'Paul', 'Roin', 'Saturday', 'Ava', 'Evelyn', 'Skura', 'Rosalie',
+            'Chloe', 'Mia', 'Hessen', 'Moonlight', 'Sophia', 'Claire', 'Eleanor',
+            'Jasmine', 'Aurora', 'Tsuki', 'Lance', 'Ellie', 'Lotus', 'Tracy',
+            'Scaramzi', 'Angelika', 'Denise', 'Grace', 'Vesper', 'Nancy', 'Echo',
+            'Lvy', 'Jennifer', 'Emily', 'Alita', 'Arlan', 'Stars', 'Heidi', 'Azura',
+            'Nora', 'Lucy', 'Daisy', 'Lanse', 'Cock', 'Camel', 'King', 'River',
+            'Shark', 'Success', 'Brave', 'Cloud', 'June'
+        ];
+
+        let isRolling = false;
+        let rollInterval;
+        const display = document.getElementById('name-display');
+        const particles = [];
+
+        function createParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = Math.random() * 10 + 5 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            document.body.appendChild(particle);
+            
+            particles.push({
+                element: particle,
+                x: Math.random() * 4 - 2,
+                y: Math.random() * 4 - 2
+            });
+        }
+
+        function animateParticles() {
+            particles.forEach((p, index) => {
+                p.element.style.opacity -= 0.02;
+                if (p.element.style.opacity <= 0) {
+                    p.element.remove();
+                    particles.splice(index, 1);
+                } else {
+                    p.element.style.left = 
+                        parseFloat(p.element.style.left) + p.x + 'px';
+                    p.element.style.top = 
+                        parseFloat(p.element.style.top) + p.y + 'px';
+                }
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        function getRandomName() {
+            const x = window.innerWidth/2;
+            const y = window.innerHeight/2;
+            createParticle(x, y);
+            return names[Math.floor(Math.random() * names.length)];
+        }
+
+        function toggleRoll() {
+            const button = document.querySelector('.cyber-button');
+            if (!isRolling) {
+                isRolling = true;
+                button.innerHTML = '⏹️ 终止进程';
+                
+                rollInterval = setInterval(() => {
+                    const current = display.textContent;
+                    let newName;
+                    do {
+                        newName = getRandomName();
+                    } while (newName === current);
+                    
+                    display.textContent = newName;
+                    display.style.transform = `
+                        rotateX(${Math.random()*10-5}deg)
+                        rotateY(${Math.random()*10-5}deg)
+                    `;
+                }, 60);
+            } else {
+                isRolling = false;
+                clearInterval(rollInterval);
+                button.innerHTML = '▶️ 重启序列';
+                display.style.transform = 'none';
+                
+                // 粒子爆发效果
+                const x = window.innerWidth/2;
+                const y = window.innerHeight/2;
+                for(let i=0; i<30; i++) createParticle(x, y);
+            }
+        }
+
+        function showStats() {
+            alert('高级分析功能需连接星云数据库...');
+        }
+    </script>
+    </script>
+</body>
+</html>

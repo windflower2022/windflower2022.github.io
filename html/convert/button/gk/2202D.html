@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <title>2202C</title>
+  <link rel="stylesheet" href="word4.css">
+  <style>
+        div{
+            background-color:rgb(2243,243, 243);
+            margin-bottom: 15px;
+            margin-bottom: 15px;
+            margin-left: 185px;
+            padding: 10px;
+            border-radius: 55px;
+            font-size: 30px;
+            width: 1080px;
+            text-align: left;
+        }
+        div:hover{
+            background-color:rgb(226, 245, 231);
+        }
+        .t{
+            margin-top: 100px;
+            padding-left: 100px;
+        }
+        @media screen and (max-width: 650px) {
+            .t{
+                margin-top: 50px;
+                padding-left: 20px;
+            }
+         }
+        </style>
+</head>
+<body>
+<p style="font-size: 20px;">
+
+ D</br> </br> 
+<div class="t2"><span>&emsp;&emsp; The Government's sugar tax on soft drinks has brought in half as much money as Ministers first predicted it would generate, the first official data on the policy has shown. 
+</br>&emsp;  
+政府对软饮料的糖税所带入的资金仅为政府最初预测的一半，这是这项政策的首次官方数据显示。
+</br></br>
+</span></div>	   
+<div class="t2"><span>&emsp;&emsp;<a>First announced in April, 2016, the tax which applies to soft drinks containing more than 5g of sugar per 100ml, was introduced to help reduce childhood obesity（肥胖）. </a>It is believed that today's children and teenagers are consuming three times the recommended level of sugar, putting them at a higher risk of the disease. 
+</br>&emsp;
+这项税于2016年4月首次公布，适用于每100毫升含有超过5克的糖分的软饮料，旨在帮助减少儿童肥胖问题。据信，现今的儿童和青少年消耗的糖分是推荐量的三倍，这增加了他们罹患该疾病的风险。
+</br></br>
+</span></div> 
+<div class="t2"><span>&emsp;&emsp; Initially the sugar tax was expected to make £520m a year for the Treasury. However, data of the first six months showed it would make less than half this amount. At present it is expected to generate £240m for the year ending in April 2019, which will go to school sports. 
+</br>&emsp; 
+最初，糖税预计每年将提供 5.2 亿英镑的财政收入。然而，首六个月的数据表明，它的收入仅仅是该金额的一半不到。目前，预计它将为截至2019年4月的期间产生2.4亿英镑的收入，这些资金将用于学校体育活动。
+</br></br>
+</span></div>
+<div class="t2"><span>&emsp;&emsp; <a>It comes after more than half of soft drinks sold in shops have had their sugar levels cut by manufacturers（制造商）so they can avoid paying the tax. </a>Drinks now contain 45 million fewer kilos of sugar as a result of manufacturers' efforts to avoid the charge, according to Treasury figures. Since April drinks companies have been forced to pay between 18p and 24p for every litre of sugary drink they produce or import, depending on the sugar content. 
+</br>&emsp; 
+此前，超过一半的售出在商店的软饮已经被制造商降低了糖分，以避免支付糖税。 根据财政部的数据，由于制造商的努力避免缴税，现在饮料中包含的糖分相比原来减少了4500亿克。自4月份以来，饮料公司被迫支付每公升生产或进口含糖饮料的18-24便士的税款，具体金额取决于其中所含糖分的多少。
+</br></br> 
+</span></div>
+<div class="t2"><span>&emsp;&emsp; <a>However, some high sugar brands, like Classic Coca Cola, have accepted the sugar tax and are refusing to change for fear of upsetting consumers. Fruit juices, milk-based drinks and most alcoholic drinks are free of the tax, as are small companies manufacturing fewer than 1m litres per year.</a>
+</br>&emsp; 
+然而，一些高糖饮料品牌，如可口可乐经典款已接受这项糖税并拒绝改变以避免影响消费者。果汁、奶基饮料和大部分酒类饮料均不在此项税的范围内，同样，年产量少于100万升的小型公司也免于缴税。
+</br></br> 
+</span></div>
+<div class="t2"><span>&emsp;&emsp; <a>Today's figures, according to one government official, show the positive influence the sugar tax is having by raising millions of pounds for sports facilities（设施）and healthier eating in schools. </a>Helping the next generation to have a healthy and active childhood is of great importance, and the industry is playing its part. 
+</br>&emsp; 
+根据一位政府官员，今天的数据显示了糖税带来的正面影响，通过为学校的体育设施和更健康的饮食筹集数百万英镑的资金，帮助下一代过上健康和积极的童年生活。帮助儿童拥有健康和积极的童年生活至关重要，而整个行业也在尽力承担责任。
+</br></br> 
+</span></div>
+</div><br><br><br><br><br><br> 
+</p>
+</body>
+<script>
+        $(document).ready(function(){
+            $("div").click(function(){
+            	//方式一
+                //var words = new SpeechSynthesisUtterance($(this).context.children[0].textContent);
+                //window.speechSynthesis.speak(words)
+
+            	//方式二
+				var audio = new Audio();  
+                audio.src ='https://dict.youdao.com/speech?audio=' + encodeURI($(this).context.children[0].textContent);  
+                audio.play(); 
+            });
+        });
+    </script>
+</html>
+
+
+
+
+

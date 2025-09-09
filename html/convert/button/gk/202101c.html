@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <title>记单词</title>
+    <style>
+        div{
+            background-color:rgb(2243,243, 243);
+            margin-bottom: 15px;
+            margin-bottom: 15px;
+            margin-left: 150px;
+            padding: 10px;
+            border-radius: 55px;
+            font-size: 30px;
+            width: 1200px;
+            text-align: left;
+        }
+        div:hover{
+            background-color:rgb(226, 245, 231);
+        }
+        .t{
+            margin-top: 100px;
+            padding-left: 150px;
+        }
+        @media screen and (max-width: 650px) {
+            .t{
+                margin-top: 50px;
+                padding-left: 20px;
+            }
+         }
+        </style>
+</head>
+<body> 
+        <br><br><br>				
+        <div class="text"><span>&emsp;&emsp;It's the seaside birds that deserve at least part of the blame for getting Nick Burchill blacklisted at the Fairmont Empress Hotel in Victoria, Canada.
+		<br>&emsp;&emsp;在加拿大维多利亚州费尔蒙特皇后酒店，尼克·伯奇尔（Nick-Burchill）被列入黑名单，但是，至少部分责任应该归咎于海边的鸟类。
+		</span></div>
+		<div class="text"><span>&emsp;&emsp;Burchill was packing at the hotel on business and planning to visit some friends in the area. They had asked him to bring some pepperoni(辣香肠) from back east. So he filled a suitcase full of pepperoni. As he was worried that it would be too warm, he laid it out on the table near an open window. He thought his pepperoni was safe and well chilled (冷却) and he left.
+		<br>&emsp;&emsp;伯奇尔因为公事正在酒店收拾行李并准备去拜访当地的一些朋友，他们让他带些意大利香肠来（辣香肠），"于是他把一个手提箱装满了意大利香肠。因为他担心香肠在箱子里会太热，他把行李箱放在一个打开着的窗户附近的桌子上。他认为他的意大利香肠是安全的，而且很快会凉，然后他离开了...
+		</span></div>
+        <div class="text"><span>&emsp;&emsp;That's when things went wrong. “I remember walking down the long hall and opening the door to my room to find an entire flock of seagulls," Burchill said in a recent letter of apology to the 4-star hotel. “The seagulls immediately went wild. They rushed to the window, 30 or 40 birds all trying to get out at the same time, and pepperoni—everywhere. The curtains were falling down, the lamps were falling down, It was a real mess.
+		<br>&emsp;&emsp;正是这时事情变糟了：伯奇尔在最近给这家四星级酒店的致歉信中说： “我记得我走过长长的大厅，打开房间的门，发现了一群海鸥。". "海鸥们立刻疯了，它们冲到窗户前，30或 40只鸟都想同时飞出去，到处都是意大利香肠。窗帘正在掉下来，灯正在掉下来，真是一团糟。"
+        </span></div>
+		<div class="text"><span>&emsp;&emsp;Older and wiser now, Burchill chalked up the incident to youthful indiscretion (莽撞).
+        <br>&emsp;&emsp;现在，"伯奇尔年纪大了，也更聪明了，他把这件事归咎于年轻人的莽撞行为。
+		</span></div>
+		<div class="text"><span>&emsp;&emsp;“I have matured and I admit responsibility for my actions,” he said in the letter. “I come to you, hat in hand, to apologize for the damage I had indirectly caused and to ask you to reconsider my lifetime ban from the hotel.”
+		<br>&emsp;&emsp;他在信中说：“我已经成熟了，我承认对我的行为负责。我手里拿着帽子来向你道歉，为我间接造成的伤害道歉，并请你重新考虑我终身禁止入住酒店的问题。"
+		</span></div>
+		<div class="text"><span>&emsp;&emsp;His letter worked Banned from the hotel since 2001, Burchill is now welcome to come back, the Fairmont said.
+		<br>&emsp;&emsp;费尔蒙特说，他的信起了作用．自2001年起被禁止进入酒店．现在欢迎伯奇尔回来.
+</span></div>
+        </div><br><br><br><br><br><br></body>
+    <script>
+        $(document).ready(function(){
+            $("div").click(function(){
+            	//方式一
+                //var words = new SpeechSynthesisUtterance($(this).context.children[0].textContent);
+                //window.speechSynthesis.speak(words)
+
+            	//方式二
+				var audio = new Audio();  
+                audio.src ='https://dict.youdao.com/speech?audio=' + encodeURI($(this).context.children[0].textContent);  
+                audio.play(); 
+            });
+        });
+    </script>
+</html>        

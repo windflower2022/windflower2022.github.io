@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>单词王者争霸</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+        }
+
+        #home {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .title {
+            font-size: 3em;
+            color: #333;
+            margin-bottom: 2em;
+        }
+
+        .start-btn {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.1);
+        }
+
+        #arena {
+            display: none;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .arena-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            height: 100%;
+        }
+
+        .area {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .word-card {
+            background: #FFEB3B;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5em;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .score {
+            font-size: 2em;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .drop-zone {
+            height: 400px;
+            border: 3px solid gold;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .block {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #FF9800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 12px;
+            cursor: pointer;
+            animation: fall 4s linear;
+        }
+
+        @keyframes fall {
+            from { top: -50px; }
+            to { top: 100%; }
+        }
+
+        #result {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .win-text {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- 首页 -->
+    <div id="home">
+        <div class="title">单词王者争霸</div>
+        <button class="start-btn" onclick="startGame()">开始挑战</button>
+    </div>
+
+    <!-- 竞技场 -->
+    <div id="arena">
+        <div class="arena-container">
+            <div class="area">
+                <div class="word-card" id="wordA">Process</div>
+                <div class="score" id="scoreA">0</div>
+                <div class="drop-zone" id="dropA"></div>
+            </div>
+            <div class="area">
+                <div class="word-card" id="wordB">Process</div>
+                <div class="score" id="scoreB">0</div>
+                <div class="drop-zone" id="dropB"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 结算页面 -->
+    <div id="result">
+        <h2>游戏结束</h2>
+        <p>A方得分: <span id="finalA">0</span></p>
+        <p>B方得分: <span id="finalB">0</span></p>
+        <button class="start-btn" onclick="restart()">重新开始</button>
+    </div>
+
+    <script>
+        const words = [
+            { word: 'process', meaning: '过程' },
+            { word: 'growth', meaning: '增加' },
+            { word: 'technology', meaning: '工艺' },
+            { word: 'theory', meaning: '理论' },
+            { word: 'economy', meaning: '经济(制度)' },
+            { word: 'behavio(u)r', meaning: '行为' },
+            { word: 'account', meaning: '账(目)' },
+            { word: 'individual', meaning: '单独的' },
+            { word: 'product', meaning: '产品' }
+        ];
+
+        let currentWordIndex = 0;
+        let scoreA = 0, scoreB = 0;
+        let timeoutId, intervalId;
+        let lastMeaning = '';
+        let gameActive = false;
+
+        function startGame() {
+            document.getElementById('home').style.display = 'none';
+            document.getElementById('arena').style.display = 'block';
+            gameActive = true;
+            updateWord();
+            intervalId = setInterval(createBlock, 1000);
+            startTimeout();
+        }
+
+        function updateWord() {
+            document.getElementById('wordA').textContent = words[currentWordIndex].word;
+            document.getElementById('wordB').textContent = words[currentWordIndex].word;
+        }
+
+        function createBlock() {
+            if (!gameActive) return;
+            
+            // 生成正确答案色块
+            if (Math.random() < 0.3 && lastMeaning !== words[currentWordIndex].meaning) {
+                createSingleBlock(words[currentWordIndex].meaning);
+                lastMeaning = words[currentWordIndex].meaning;
+                setTimeout(() => lastMeaning = '', 3000);
+                return;
+            }
+
+            // 生成错误答案色块
+            const wrongMeanings = words.filter(w => w.meaning !== words[currentWordIndex].meaning);
+            const randomMeaning = wrongMeanings[Math.floor(Math.random() * wrongMeanings.length)].meaning;
+            createSingleBlock(randomMeaning);
+        }
+
+        function createSingleBlock(meaning) {
+            const pos = Math.random() * 80;
+            [document.getElementById('dropA'), document.getElementById('dropB')].forEach(dropZone => {
+                const block = document.createElement('div');
+                block.className = 'block';
+                block.style.left = pos + '%';
+                block.textContent = meaning;
+                block.onclick = (e) => handleClick(e, dropZone.id === 'dropA' ? 'A' : 'B');
+                dropZone.appendChild(block);
+                setTimeout(() => block.remove(), 4000);
+            });
+        }
+
+        function handleClick(e, area) {
+            if (!gameActive) return;
+            
+            const isCorrect = e.target.textContent === words[currentWordIndex].meaning;
+            e.target.style.background = isCorrect ? '#4CAF50' : '#f44336';
+            
+            if (isCorrect) {
+                if (area === 'A') scoreA += 10;
+                else scoreB += 10;
+                
+                document.getElementById(`score${area}`).textContent = area === 'A' ? scoreA : scoreB;
+                nextWord();
+            }
+            
+            setTimeout(() => e.target.remove(), 200);
+        }
+
+        function nextWord() {
+            clearTimeout(timeoutId);
+            currentWordIndex++;
+            
+            if (currentWordIndex >= words.length) {
+                endGame();
+                return;
+            }
+            
+            updateWord();
+            startTimeout();
+        }
+
+        function startTimeout() {
+            timeoutId = setTimeout(() => {
+                currentWordIndex++;
+                currentWordIndex < words.length ? updateWord() : endGame();
+                startTimeout();
+            }, 8000);
+        }
+
+        function endGame() {
+            gameActive = false;
+            clearInterval(intervalId);
+            clearTimeout(timeoutId);
+            document.getElementById('arena').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('finalA').textContent = scoreA;
+            document.getElementById('finalB').textContent = scoreB;
+        }
+
+        function restart() {
+            currentWordIndex = 0;
+            scoreA = 0;
+            scoreB = 0;
+            document.getElementById('scoreA').textContent = '0';
+            document.getElementById('scoreB').textContent = '0';
+            document.getElementById('result').style.display = 'none';
+            startGame();
+        }
+    </script>
+</body>
+</html>

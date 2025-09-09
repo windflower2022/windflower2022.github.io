@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+    <title>单词拼写练习</title>
+    <style>
+        /* 密码框样式 */
+        .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .password-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        .password-input {
+            padding: 12px;
+            font-size: 16px;
+            margin: 15px 0;
+            border: 2px solid #4A90E2;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .password-btn {
+            padding: 12px 30px;
+            background: #4A90E2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .password-btn:hover {
+            background: #357ABD;
+        }
+
+        /* 主要样式 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(240, 248, 255);
+            margin: 0;
+            padding: 20px;
+            color: rgb(60, 60, 60);
+            user-select: none;
+        }
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: rgb(72, 132, 255);
+            text-align: center;
+            width: 100%;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        .stat-item span:first-child {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .stat-item span:last-child {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .container {
+            background-color: rgb(240, 255, 250);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        .word-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .word-row {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .word-item {
+            flex: 0 0 calc(20% - 12px);
+            min-width: 180px;
+            display: flex;
+            flex-direction: column;
+            padding: 12px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .chinese-word {
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #666;
+            line-height: 1.4;
+            min-height: 40px;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+        }
+        .english-input {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        .english-input.correct {
+            border-color: #28a745;
+            background-color: #e8f5e9;
+        }
+        .english-input.incorrect {
+            border-color: #dc3545;
+            background-color: #f8d7da;
+        }
+        .summary {
+            margin-top: 25px;
+            padding: 18px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+        }
+        .summary h3 {
+            margin-top: 0;
+            color: #343a40;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 8px;
+            font-size: 18px;
+        }
+        #current-date {
+            color: #6c757d;
+            font-size: 16px;
+        }
+        .comment {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .excellent { background: #d4edda; color: #155724; }
+        .good { background: #fff3cd; color: #856404; }
+        .average { background: #f8d7da; color: #721c24; }
+
+        @media (max-width: 1200px) {
+            .word-item {
+                flex: 0 0 calc(25% - 12px);
+            }
+        }
+        @media (max-width: 992px) {
+            .word-item {
+                flex: 0 0 calc(33.333% - 12px);
+            }
+        }
+        @media (max-width: 768px) {
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            .word-item {
+                flex: 0 0 calc(50% - 12px);
+            }
+        }
+        @media (max-width: 576px) {
+            .word-item {
+                flex: 0 0 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 密码验证模态框 -->
+    <div class="password-modal" id="passwordModal">
+        <div class="password-box">
+            <h2>请输入访问密码</h2>
+            <input type="password" class="password-input" id="passwordInput" autocomplete="off" autofocus>
+            <button class="password-btn" onclick="checkPassword()">进入系统</button>
+        </div>
+    </div>
+
+    <!-- 主内容容器 -->
+    <div id="mainContent" style="display: none;">
+        <div class="header">拼写练习 - <span id="current-date"></span></div>
+        
+        <div class="stats">
+            <div class="stat-item" style="background: #e8f5e9;">
+                <span>正确数量</span>
+                <span id="correct-count">0</span>
+            </div>
+            <div class="stat-item" style="background: #f8d7da;">
+                <span>错误数量</span>
+                <span id="wrong-count">0</span>
+            </div>
+            <div class="stat-item" style="background: #fff3cd;">
+                <span>当前分数</span>
+                <span id="current-score">0</span>%
+            </div>
+            <div class="comment" id="comment"></div>
+        </div>
+
+        <div class="container">
+            <div class="word-list" id="word-list"></div>
+            <div class="summary" id="summary" style="display: none;">
+                <h3>拼写测试结果：</h3>
+                <p>开始时间：<span id="start-time"></span></p>
+                <p>结束时间：<span id="end-time"></span></p>
+                <p>持续时间：<span id="duration"></span></p>
+                <p>最终分数：<span id="final-score"></span>%</p>
+                <p>最终评语：<span id="final-comment"></span></p>
+                <p>请将此页面截图发给老师。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 密码验证功能
+        const CORRECT_PASSWORD = "Luna";
+        let attemptCount = 0;
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            if (input.value === CORRECT_PASSWORD) {
+                document.getElementById('passwordModal').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+            } else {
+                attemptCount++;
+                alert(`密码错误（剩余尝试次数：${5 - attemptCount}）`);
+                input.value = '';
+                if (attemptCount >= 5) {
+                    alert("尝试次数过多，页面即将关闭");
+                    window.close();
+                }
+            }
+        }
+
+        // 禁止翻译和文本选择
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+        
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+        });
+
+        // 单词数据
+        const words = [
+            ["贡献", "contribution"],
+            ["减轻,缓解", "relief"],
+            ["短缺,不足,缺乏", "shortage"],
+            ["内部的", "internal"],
+            ["有效的", "effective"],
+            ["资金", "fund"],
+            ["回收", "recycle"],
+            ["喷泉", "fountain"],
+            ["挣钱", "earn"],
+            ["捐赠", "donate"],
+            ["基金会", "foundation"],
+            ["顿悟", "insight"],
+            ["坚持", "perseverance"],
+            ["现实", "reality"],
+            ["延伸", "extend"],
+            ["使命", "mission"],
+            ["疾病", "disease"],
+            ["残疾", "disability"],
+            ["地区", "territory"],
+            ["敏感", "sensitive"],
+            ["慷慨", "generous"],
+            ["犹豫", "hesitate"],
+            ["癌症", "cancer"],
+            ["皇家", "royal"],
+            ["机构", "institution"],
+            ["帮助", "assistance"],
+            ["注册", "registration"],
+            ["证明", "confirmation"],
+            ["纳粹", "nazi"],
+            ["犹太", "jewish"],
+            ["援助", "aid"],
+            ["临时", "temporary"],
+            ["军队", "military"],
+            ["成就", "achievement"],
+            ["爵士", "knighthood"],
+            ["首席", "chief"],
+            ["主要", "major"],
+            ["治疗", "treatment"],
+            ["获得", "obtain"],
+            ["药物", "drug"],
+            ["证书", "certificate"],
+            ["部门", "ministry"],
+            ["更多", "further"],
+            ["突然笑", "break into a smile"],
+            ["站起来", "rise to one's feet"]
+        ];
+
+        // 初始化练习
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentDate = new Date().toLocaleDateString();
+            document.getElementById('current-date').textContent = currentDate;
+
+            const wordList = document.getElementById('word-list');
+            const chunkSize = 5;
+
+            // 创建单词行
+            for (let i = 0; i < words.length; i += chunkSize) {
+                const row = document.createElement('div');
+                row.className = 'word-row';
+                
+                words.slice(i, i + chunkSize).forEach(([chinese, english]) => {
+                    const wordItem = document.createElement('div');
+                    wordItem.className = 'word-item';
+                    wordItem.innerHTML = `
+                        <div class="chinese-word">${chinese}</div>
+                        <input type="text" class="english-input" data-correct="${english.trim()}">
+                    `;
+                    row.appendChild(wordItem);
+                });
+
+                // 补全空位
+                while (row.children.length < 5) {
+                    const emptyItem = document.createElement('div');
+                    emptyItem.className = 'word-item';
+                    emptyItem.style.visibility = 'hidden';
+                    row.appendChild(emptyItem);
+                }
+                wordList.appendChild(row);
+            }
+
+            const inputs = document.querySelectorAll('.english-input');
+            let startTime = null;
+
+            function updateStats() {
+                const correct = Array.from(inputs).filter(input => 
+                    input.value.trim().toLowerCase() === input.dataset.correct.toLowerCase()
+                ).length;
+                
+                const total = inputs.length;
+                const wrong = total - correct;
+                const score = Math.round((correct / total) * 100);
+
+                document.getElementById('correct-count').textContent = correct;
+                document.getElementById('wrong-count').textContent = wrong;
+                document.getElementById('current-score').textContent = score;
+
+                const comment = document.getElementById('comment');
+                comment.className = 'comment ' + getCommentClass(score);
+                comment.textContent = getComment(score);
+            }
+
+            function getComment(score) {
+                if (score === 100) return '完美！所有单词都正确！';
+                if (score >= 90) return '优秀！继续保持！';
+                if (score >= 75) return '良好，还有进步空间！';
+                if (score >= 60) return '及格，需要更多练习！';
+                return '加油！继续努力！';
+            }
+
+            function getCommentClass(score) {
+                if (score >= 90) return 'excellent';
+                if (score >= 75) return 'good';
+                return 'average';
+            }
+
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    if (!startTime) {
+                        startTime = new Date();
+                        document.getElementById('start-time').textContent = startTime.toLocaleTimeString();
+                    }
+
+                    const correctWord = this.dataset.correct.toLowerCase();
+                    const userInput = this.value.trim().toLowerCase();
+
+                    this.classList.remove('correct', 'incorrect');
+                    if (userInput === correctWord) {
+                        this.classList.add('correct');
+                    } else if (userInput !== '') {
+                        this.classList.add('incorrect');
+                    }
+
+                    updateStats();
+                    checkCompletion();
+                });
+            });
+
+            function checkCompletion() {
+                const correct = document.getElementById('correct-count').textContent;
+                if (parseInt(correct) === inputs.length) {
+                    const endTime = new Date();
+                    const duration = ((endTime - startTime) / 1000).toFixed(1);
+                    document.getElementById('end-time').textContent = endTime.toLocaleTimeString();
+                    document.getElementById('duration').textContent = `${duration} 秒`;
+                    document.getElementById('final-score').textContent = document.getElementById('current-score').textContent;
+                    document.getElementById('final-comment').textContent = getComment(parseInt(document.getElementById('current-score').textContent));
+                    document.getElementById('summary').style.display = 'block';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

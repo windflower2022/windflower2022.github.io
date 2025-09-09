@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>单词拼读练习</title>
+    <style>
+        /* 密码框样式 */
+        .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .password-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        .password-input {
+            padding: 12px;
+            font-size: 16px;
+            margin: 15px 0;
+            border: 2px solid #4A90E2;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .password-btn {
+            padding: 12px 30px;
+            background: #4A90E2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .password-btn:hover {
+            background: #357ABD;
+        }
+
+        body {
+            background: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .word-display {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        #word {
+            font-family: Arial, sans-serif;
+            font-size: 72px;
+            color: #1d1d1f;
+            margin: 20px 0;
+            cursor: pointer;
+            line-height: 1.2;
+        }
+
+        .phonetic {
+            font-family: 'Times New Roman', serif;
+            font-size: 32px;
+            color: #86868b;
+            margin: 15px 0;
+        }
+
+        .meaning {
+            font-family: '微软雅黑', sans-serif;
+            font-size: 32px;
+            color: #1d1d1f;
+            margin: 25px 0;
+        }
+
+        .syllable-area {
+            background: #f5f5f7;
+            border-radius: 18px;
+            padding: 40px;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .line {
+            width: 80%;
+            height: 4px;
+            background: #86868b;
+            margin: 0 auto 60px;
+        }
+
+        .syllable-blocks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            min-height: 120px;
+        }
+
+        .syllable {
+            background: #ffffff;
+            border: 2px solid #d2d2d7;
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-family: Arial, sans-serif;
+            font-size: 36px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .syllable.selected {
+            background: #0071e3;
+            color: white;
+            border-color: #0071e3;
+            transform: translateY(-5px);
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .nav-btn {
+            background: #0071e3;
+            color: white;
+            padding: 18px 45px;
+            border: none;
+            border-radius: 25px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: #0077ed;
+            transform: scale(1.05);
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .wrong {
+            animation: shake 0.4s;
+        }
+
+        .vowel { color: #ff3b30; }
+        .consonant { color: #0071e3; }
+
+        #answerLine {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            min-height: 60px;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="password-modal" id="passwordModal">
+        <div class="password-box">
+            <h2>请输入访问密码</h2>
+            <input type="password" class="password-input" id="passwordInput" autocomplete="off" autofocus>
+            <button class="password-btn" onclick="checkPassword()">进入系统</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="word-display">
+            <div id="word"></div>
+            <div class="phonetic" id="phonetic"></div>
+            <div class="meaning" id="meaning"></div>
+        </div>
+        
+        <div class="syllable-area">
+            <div id="answerLine"></div>
+            <div class="line"></div>
+            <div class="syllable-blocks" id="syllableBlocks"></div>
+        </div>
+        
+        <div class="button-container">
+            <button class="nav-btn" id="prevBtn">上一词</button>
+            <button class="nav-btn" id="nextBtn">下一词</button>
+        </div>
+    </div>
+
+    <script>
+        // 密码验证功能
+        const CORRECT_PASSWORD = "Luna";
+        let attemptCount = 0;
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            if (input.value === CORRECT_PASSWORD) {
+                document.getElementById('passwordModal').style.display = 'none';
+            } else {
+                attemptCount++;
+                alert(`密码错误（剩余尝试次数：${5 - attemptCount}）`);
+                input.value = '';
+                if (attemptCount >= 5) {
+                    alert("尝试次数过多，页面即将关闭");
+                    window.close();
+                }
+            }
+        }
+
+        const wordData = [
+          { word:'press', syllables:['press'], phonetic:'/pres/', meaning:'v.按'},
+          { word:'shoot', syllables:['shoot'], phonetic:'/ʃuːt/', meaning:'v.射出(光、亮等),放射'},
+          { word:'gunpowder', syllables:['gun','pow','der'], phonetic:'/ˈɡʌnpaʊdə(r)/', meaning:'n.火药'},
+          { word:'compass', syllables:['com','pass'], phonetic:'/ˈkʌmpəs/', meaning:'n.指南针,罗盘'},
+          { word:'virtual', syllables:['vir','tu','al'], phonetic:'/ˈvɜːtʃuəl/', meaning:'adj.虚拟的,模拟的'},
+          { word:'flexible', syllables:['fle','xi','ble'], phonetic:'/ˈfleksəbl/', meaning:'adj.易弯曲的,柔韧的'},
+          { word:'battery', syllables:['ba','ttery'], phonetic:'/ˈbætri/', meaning:'n.电池'},
+          { word:'compute', syllables:['com','pute'], phonetic:'/kəmˈpjuːt/', meaning:'v.计算'},
+          { word:'capable', syllables:['ca','pa','ble'], phonetic:'/ˈkeɪpəbl/', meaning:'adj.有能力的'},
+          { word:'stuff', syllables:['stuff'], phonetic:'/stʌf/', meaning:'n.东西,物品'},
+          { word:'desire', syllables:['de','sire'], phonetic:'/dɪˈzaɪə(r)/', meaning:'n.渴望,欲望'},
+          { word:'passive', syllables:['pass','ive'], phonetic:'/ˈpæsɪv/', meaning:'adj.被动的'},
+          { word:'beyond', syllables:['be','yond'], phonetic:'/bɪˈjɒnd/', meaning:'prep.无法……'},
+          { word:'instance', syllables:['ins','tance',''], phonetic:'/ˈɪnstəns/', meaning:'n.例子,实例'},
+          { word:'significant', syllables:['sig','ni','fi','cant'], phonetic:'/sɪɡˈnɪfɪkənt/', meaning:'adj.重要的,影响深远的'},
+          { word:'injure', syllables:['in','jure'], phonetic:'/ˈɪndʒə(r)/', meaning:'v.使受伤,弄伤'},
+          { word:'chemist', syllables:['che','mist'], phonetic:'/ˈkemɪst/', meaning:'n.化学家'},
+          { word:'astronomer', syllables:['a','stro','no','mer'], phonetic:'/əˈstrɒnəmə(r)/', meaning:'n.天文学家'},
+          { word:'biologist', syllables:['bi','o','lo','gist'], phonetic:'/baɪˈɒlədʒɪst/', meaning:'n.生物学家'},
+          { word:'accurate', syllables:['a','ccur','ate'], phonetic:'/ˈækjərət/', meaning:'adj.精确的'},
+          { word:'minor', syllables:['mi','nor'], phonetic:'/ˈmaɪnə(r)/', meaning:'adj.小的'},
+          { word:'origin', syllables:['ori','gin'], phonetic:'/ˈɒrɪdʒɪn/', meaning:'n.起源,起因'},
+          { word:'species', syllables:['spe','cies'], phonetic:'/ˈspiːʃiːz/', meaning:'n.物种'},
+          { word:'stream', syllables:['stream'], phonetic:'/striːm/', meaning:'n.小河,小溪'},
+          { word:'extraordinary', syllables:['extra','or','din','ary'], phonetic:'/ɪkˈstrɔːdnri/', meaning:'adj.非凡的,出色的'},
+          { word:'brilliant', syllables:['bri','lli','ant'], phonetic:'/ˈbrɪliənt/', meaning:'adj.聪颖的,才华横溢的'},
+          { word:'radium', syllables:['ra','dium'], phonetic:'/ˈreɪdiəm/', meaning:'n.镭(一种化学元素)'},
+          { word:'theory', syllables:['theo','ry'], phonetic:'/ˈθɪəri/', meaning:'n.学说,理论'},
+          { word:'mental', syllables:['men','tal'], phonetic:'/ˈmentl/', meaning:'adj.精神的;精神健康的'},
+          { word:'cure', syllables:['cure'], phonetic:'/kjʊə(r)/', meaning:'n.药剂;疗法'},
+          { word:'draft', syllables:['draft'], phonetic:'/drɑːft/', meaning:'v.起草,草拟'},
+          { word:'declaration', syllables:['de','clar','ation'], phonetic:'/ˌdekləˈreɪʃn/', meaning:'n.声明,宣告'},
+          { word:'experiment', syllables:['ex','pe','ri','ment'], phonetic:'/ɪkˈsperɪmənt/', meaning:'n.(科学)实验'},
+          { word:'lightning', syllables:['light','ning'], phonetic:'/ˈlaɪtnɪŋ/', meaning:'n.闪电'},
+          { word:'fiction', syllables:['fic','tion'], phonetic:'/ˈfɪkʃn/', meaning:'n.虚构的事,想象的事'},
+          { word:'metal', syllables:['me','tal'], phonetic:'/ˈmetl/', meaning:'n.金属'},
+          { word:'attach', syllables:['attach'], phonetic:'/əˈtætʃ/', meaning:'v.系,绑;贴'},
+          { word:'flash', syllables:['flash'], phonetic:'/flæʃ/', meaning:'n.闪光'},
+          { word:'conduct', syllables:['con','duct'], phonetic:'/kənˈdʌkt/', meaning:'v.传导(热、电)'},
+          { word:'scientific', syllables:['scien','ti','fic'], phonetic:'/ˌsaɪənˈtɪfɪk/', meaning:'adj.科学(上)的'},
+          { word:'entirely', syllables:['en','tire','ly'], phonetic:'/ɪnˈtaɪəli/', meaning:'adv.完全地,彻底地'},
+          { word:'gravity', syllables:['grav','ity'], phonetic:'/ˈɡrævəti/', meaning:'n.重力,引力'},
+          { word:'account', syllables:['ac','count'], phonetic:'/əˈkaʊnt/', meaning:'n.记述,描述'},
+          { word:'proof', syllables:['proof'], phonetic:'/pruːf/', meaning:'n.证明,证据'},
+          { word:'procedure', syllables:['pro','ce','dure'], phonetic:'/prəˈsiːdʒə(r)/', meaning:'n.程序,步骤,手续'},
+          { word:'Goldbach s Conjecture', syllables:['Goldbach s Conjecture'], phonetic:' ', meaning:'哥德巴赫猜想'},
+          { word:'natural selection', syllables:['natural selection'], phonetic:' ', meaning:'自然选择'},
+          { word:'field research', syllables:['field research'], phonetic:' ', meaning:'实地研究,实地调研'},
+          { word:'Gregorian calendar', syllables:['Gregorian calendar'], phonetic:' ', meaning:'公历,阳历（自1582年起西方使用的历法）'},
+          { word:'virtual reality', syllables:['virtual reality'], phonetic:' ', meaning:'虚拟现实'},
+          { word:'wearable tech', syllables:['wearable tech'], phonetic:' ', meaning:'可穿戴技术'},
+          { word:'in addition', syllables:['in addition'], phonetic:' ', meaning:'除此之外,另外'},
+          { word:'never say never', syllables:['never say never'], phonetic:' ', meaning:'别轻易说决不'}
+        ];
+
+        let currentWordIndex = 0;
+        let selectedSyllables = [];
+        const synth = window.speechSynthesis;
+        let voices = [];
+
+        function loadVoices() {
+            voices = synth.getVoices().filter(v => v.lang === 'en-US');
+            if (voices.length === 0) {
+                setTimeout(loadVoices, 100);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadVoices();
+            initWord();
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', nextWord);
+        document.getElementById('prevBtn').addEventListener('click', prevWord);
+        document.getElementById('syllableBlocks').addEventListener('click', handleSyllableClick);
+
+        function initWord() {
+            if (synth.speaking) synth.cancel();
+            
+            const currentWord = wordData[currentWordIndex];
+            
+            document.getElementById('word').innerHTML = currentWord.word.split('').map(l => 
+                `<span class="${/[aeiou]/i.test(l) ? 'vowel' : 'consonant'}">${l}</span>`
+            ).join('');
+            
+            document.getElementById('phonetic').textContent = currentWord.phonetic;
+            document.getElementById('meaning').textContent = currentWord.meaning;
+            
+            createSyllableBlocks([...currentWord.syllables].sort(() => Math.random() - 0.5));
+            clearAnswerLine();
+            
+            speakWord(currentWord.word, 3);
+        }
+
+        function createSyllableBlocks(syllables) {
+            const container = document.getElementById('syllableBlocks');
+            container.innerHTML = syllables.map(s => 
+                `<div class="syllable">${s}</div>`
+            ).join('');
+        }
+
+        function handleSyllableClick(e) {
+            const syllable = e.target.closest('.syllable');
+            if (!syllable) return;
+
+            syllable.classList.toggle('selected');
+            const syllableText = syllable.textContent;
+            
+            if (selectedSyllables.includes(syllableText)) {
+                selectedSyllables = selectedSyllables.filter(s => s !== syllableText);
+            } else {
+                selectedSyllables.push(syllableText);
+            }
+            
+            updateAnswerLine();
+            checkAnswer();
+        }
+
+        function updateAnswerLine() {
+            const answerLine = document.getElementById('answerLine');
+            answerLine.innerHTML = selectedSyllables.map(s => 
+                `<div class="syllable selected">${s}</div>`
+            ).join('');
+        }
+
+        function clearAnswerLine() {
+            document.getElementById('answerLine').innerHTML = '';
+            selectedSyllables = [];
+            document.querySelectorAll('.syllable').forEach(s => s.classList.remove('selected'));
+        }
+
+        function checkAnswer() {
+            const currentWord = wordData[currentWordIndex];
+            if (selectedSyllables.join('') === currentWord.word) {
+                showSuccessAnimation();
+                setTimeout(nextWord, 1500);
+            }
+        }
+
+        function showSuccessAnimation() {
+            document.getElementById('syllableBlocks').style.opacity = '0';
+            const word = document.getElementById('word');
+            word.style.transform = 'scale(1.5)';
+            word.style.transition = 'transform 0.5s';
+            setTimeout(() => {
+                word.style.transform = 'scale(1)';
+                document.getElementById('syllableBlocks').style.opacity = '1';
+            }, 1000);
+        }
+
+        function speakWord(word, times) {
+            if (synth.speaking) synth.cancel();
+            
+            let count = 0;
+            const speak = () => {
+                if (count >= times || !voices.length) return;
+                
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.voice = voices.find(v => v.name.includes('Samantha')) || voices[0];
+                utterance.rate = 0.9;
+                utterance.onend = () => {
+                    count++;
+                    if (count < times) speak();
+                };
+                synth.speak(utterance);
+            };
+            speak();
+        }
+
+        function nextWord() {
+            currentWordIndex = (currentWordIndex + 1) % wordData.length;
+            initWord();
+        }
+
+        function prevWord() {
+            currentWordIndex = (currentWordIndex - 1 + wordData.length) % wordData.length;
+            initWord();
+        }
+    </script>
+</body>
+</html>

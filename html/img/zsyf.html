@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>在水一方</title>
+  </head>
+  <style>#mydiv { margin: 0 0 0 calc(50% - 881px); display: grid; place-items: center; width: 1600px; height:1000px; background: lightblue url('https://z1.ax1x.com/2023/12/08/pi2KGz6.jpg') no-repeat center/cover; box-shadow: 0px 0px 0px #000; user-select: none; overflow: hidden; position: relative; z-index: 1; --state: running; }
+    #codePre { font: normal 14px/20px Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; }
+    .green { color: green; }
+    #vid1 {
+      position: absolute;
+      width: 110%;
+      height: 100%;
+      top: 0px;
+    left:-101px;
+      object-fit: cover;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      z-index:3;
+      opacity: .05;
+    }
+    #vid2{
+      position: absolute;
+      width: 110%;
+      height: 120%;
+      top: 650px;
+    
+      object-fit: cover;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      z-index: 2;
+      opacity: .10;
+    }
+    </style>    
+    
+  <body>
+    <div id="mydiv"><video id="vid1" src="https://img.tukuppt.com/video_show/2475824/00/01/75/5b49a81fc972d.mp4" autoplay="" loop="" muted=""></video><video id="vid2" src="https://img.tukuppt.com/video_show/2421007/00/01/58/5b46943c40746.mp4" autoplay="" loop="" muted=""></video></div>
+    <audio style="width: 100px; height: 30px;" src="http://music.163.com/song/media/outer/url?id=2096190893.mp3" autoplay="autoplay" loop="loop" controls="controls" type="audio/mpeg"></audio>
+    </body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 防翻译meta标签 -->
+    <meta name="google" content="notranslate">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <title>单词配对游戏</title>
+    <style>
+        /* 全局防翻译样式 */
+        * {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            translate: none !important;
+        }
+
+        /* 密码框样式 */
+        .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .password-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        .password-input {
+            padding: 12px;
+            font-size: 16px;
+            margin: 15px 0;
+            border: 2px solid #4A90E2;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .password-btn {
+            padding: 12px 30px;
+            background: #4A90E2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .password-btn:hover {
+            background: #357ABD;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        #instruction {
+            background: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: red;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        #game-container {
+            flex: 1;
+            display: flex;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .column {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            padding: 0 10px;
+        }
+        .bubble {
+            margin: 10px;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            user-select: none;
+        }
+        .english {
+            background: #FF6B6B;
+            color: white;
+        }
+        .chinese {
+            background: #4ECDC4;
+            color: white;
+        }
+        .selected {
+            transform: scale(1.2) rotate(5deg);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .matched {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s;
+        }
+        #completion-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-align: center;
+            font-size: 24px;
+            display: none;
+        }
+        #completion-message p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 密码验证模态框 -->
+    <div class="password-modal" id="passwordModal">
+        <div class="password-box">
+            <h2>请输入访问密码</h2>
+            <input type="password" class="password-input" id="passwordInput" autocomplete="off" autofocus>
+            <button class="password-btn" onclick="checkPassword()">进入系统</button>
+        </div>
+    </div>
+
+    <div id="instruction">请完成英文单词和中文单词的配对</div>
+    <div id="game-container">
+        <div id="left-column" class="column"></div>
+        <div id="right-column" class="column"></div>
+    </div>
+    <div id="completion-message">
+        <p>恭喜完成所有配对！</p>
+        <p>配对错误次数：<span id="error-count">0</span></p>
+        <p>完成时间：<span id="completion-time"></span></p>
+        <p>花费时长：<span id="time-spent"></span></p>
+    </div>
+
+    <script>
+        // 增强防翻译功能
+        document.addEventListener('keydown', function(e) {
+            // 禁用开发者工具快捷键
+            if(e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) e.preventDefault();
+            // 禁用查看源代码
+            if(e.ctrlKey && e.key === 'u') e.preventDefault();
+        });
+
+        // 防止iframe嵌入
+        if(window !== top) top.location.href = window.location.href;
+
+        // 密码验证功能
+        const CORRECT_PASSWORD = "Luna";
+        let attemptCount = 0;
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            if (input.value === CORRECT_PASSWORD) {
+                document.getElementById('passwordModal').style.display = 'none';
+            } else {
+                attemptCount++;
+                alert(`密码错误（剩余尝试次数：${5 - attemptCount}）`);
+                input.value = '';
+                if (attemptCount >= 5) {
+                    alert("尝试次数过多，页面即将关闭");
+                    window.close();
+                }
+            }
+        }
+
+        // 防翻译事件监听
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+        
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+        });
+
+        // 防文本拖拽选择
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+        });
+
+        // 单词数据
+        const wordList = [
+        { english: '	greet	', chinese: '	问候,迎接,招呼	', key: '1' },
+{ english: '	broadcast	', chinese: '	广播节目,电视节目	', key: '2' },
+{ english: '	stair	', chinese: '	楼梯	', key: '3' },
+{ english: '	load	', chinese: '	某物的量	', key: '4' },
+{ english: '	battle	', chinese: '	战斗,战役	', key: '5' },
+{ english: '	fold	', chinese: '	折起	', key: '6' },
+{ english: '	sculptor	', chinese: '	雕刻家,雕塑家	', key: '7' },
+{ english: '	portrait	', chinese: '	人物照片;肖像	', key: '8' },
+{ english: '	selfie	', chinese: '	自拍照	', key: '9' },
+{ english: '	exhibition	', chinese: '	展出,展览	', key: '10' },
+{ english: '	neighbourhood	', chinese: '	社区,街坊	', key: '11' },
+{ english: '	embroidery	', chinese: '	刺绣图案,刺绣品	', key: '12' },
+{ english: '	seal	', chinese: '	印章,图章	', key: '13' },
+{ english: '	calligraphy	', chinese: '	书法	', key: '14' },
+{ english: '	porcelain	', chinese: '	瓷器	', key: '15' },
+{ english: '	demonstrate	', chinese: '	示范,演示	', key: '16' },
+{ english: '	vividly	', chinese: '	生动地	', key: '17' },
+{ english: '	needle	', chinese: '	缝衣针	', key: '18' },
+{ english: '	elegant	', chinese: '	高雅的,优美的	', key: '19' },
+{ english: '	carve	', chinese: '	刻(图形或字母)	', key: '20' },
+{ english: '	contemporary	', chinese: '	当代的	', key: '21' },
+{ english: '	cigarette	', chinese: '	香烟	', key: '22' },
+{ english: '	lack	', chinese: '	没有,缺乏	', key: '23' },
+{ english: '	stimulate	', chinese: '	刺激,促使,促进	', key: '24' },
+{ english: '	magnificent	', chinese: '	宏伟的,壮丽的	', key: '25' },
+{ english: '	bare	', chinese: '	使暴露,露出	', key: '26' },
+{ english: '	hoof	', chinese: '	蹄	', key: '27' },
+{ english: '	wine	', chinese: '	葡萄酒	', key: '28' },
+{ english: '	dirt	', chinese: '	灰尘,尘土	', key: '29' },
+{ english: '	sponsor	', chinese: '	资助	', key: '30' },
+{ english: '	emperor	', chinese: '	皇帝	', key: '31' },
+{ english: '	fond	', chinese: '	喜爱的	', key: '32' },
+{ english: '	frequent	', chinese: '	经常发生的,频繁的	', key: '33' },
+{ english: '	majesty	', chinese: '	陛下	', key: '34' },
+{ english: '	gallop	', chinese: '	(马)飞奔,疾驰	', key: '35' },
+{ english: '	vase	', chinese: '	花瓶	', key: '36' },
+{ english: '	mostly	', chinese: '	大部分;主要地	', key: '37' },
+{ english: '	shade	', chinese: '	(色彩的)浓淡,深浅,色度	', key: '38' },
+{ english: '	be fond of…	', chinese: '	喜欢	', key: '39' },
+{ english: '	seal cutting	', chinese: '	篆刻	', key: '40' },
+{ english: '	get a load of…	', chinese: '	注意,仔细看(常用于表示惊讶或羨慕)	', key: '41' }
+        ];
+
+        // 游戏逻辑（保持原有代码完整）
+        let selected = [];
+        let errorCount = 0;
+        let startTime = null;
+        let endTime = null;
+        let synth = window.speechSynthesis;
+        let englishVoice = null;
+
+        function initSpeech() {
+            const voices = synth.getVoices();
+            englishVoice = voices.find(voice => 
+                voice.lang === 'en-US' || voice.lang.startsWith('en-')
+            );
+        }
+
+        function speakWord(text) {
+            if (!synth || !englishVoice) return;
+            
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.voice = englishVoice;
+            utterance.rate = 0.9;
+            synth.speak(utterance);
+        }
+
+        function createBubbles() {
+            const leftColumn = document.getElementById('left-column');
+            const rightColumn = document.getElementById('right-column');
+            
+            const englishBubbles = wordList.map(word => ({ 
+                text: word.english, 
+                type: 'english', 
+                key: word.key 
+            }));
+            const chineseBubbles = wordList.map(word => ({ 
+                text: word.chinese, 
+                type: 'chinese', 
+                key: word.key 
+            }));
+
+            englishBubbles.sort(() => Math.random() - 0.5);
+            chineseBubbles.sort(() => Math.random() - 0.5);
+
+            englishBubbles.forEach(bubble => {
+                const element = document.createElement('div');
+                element.className = `bubble ${bubble.type}`;
+                element.textContent = bubble.text;
+                element.dataset.type = bubble.type;
+                element.dataset.key = bubble.key;
+                leftColumn.appendChild(element);
+            });
+
+            chineseBubbles.forEach(bubble => {
+                const element = document.createElement('div');
+                element.className = `bubble ${bubble.type}`;
+                element.textContent = bubble.text;
+                element.dataset.type = bubble.type;
+                element.dataset.key = bubble.key;
+                rightColumn.appendChild(element);
+            });
+
+            startTime = new Date();
+        }
+
+        function checkCompletion() {
+            const matchedBubbles = document.querySelectorAll('.matched');
+            if (matchedBubbles.length === wordList.length * 2) {
+                endTime = new Date();
+                showCompletionMessage();
+            }
+        }
+
+        function showCompletionMessage() {
+            const completionMessage = document.getElementById('completion-message');
+            const errorCountElement = document.getElementById('error-count');
+            const completionTimeElement = document.getElementById('completion-time');
+            const timeSpentElement = document.getElementById('time-spent');
+
+            const timeSpent = Math.floor((endTime - startTime) / 1000);
+            const minutes = Math.floor(timeSpent / 60);
+            const seconds = timeSpent % 60;
+
+            errorCountElement.textContent = errorCount;
+            completionTimeElement.textContent = endTime.toLocaleString();
+            timeSpentElement.textContent = `${minutes} 分 ${seconds} 秒`;
+
+            completionMessage.style.display = 'block';
+        }
+
+        document.getElementById('game-container').addEventListener('click', function(e) {
+            const bubble = e.target;
+            if (!bubble.classList.contains('bubble') || bubble.classList.contains('matched')) return;
+
+            if (bubble.classList.contains('english')) {
+                speakWord(bubble.textContent);
+            }
+
+            bubble.classList.add('selected');
+            selected.push(bubble);
+
+            if (selected.length === 2) {
+                const [first, second] = selected;
+                const isPair = (
+                    first.dataset.key === second.dataset.key &&
+                    first.dataset.type !== second.dataset.type
+                );
+
+                if (isPair) {
+                    first.classList.add('matched');
+                    second.classList.add('matched');
+                    checkCompletion();
+                } else {
+                    errorCount++;
+                    setTimeout(() => {
+                        first.classList.remove('selected');
+                        second.classList.remove('selected');
+                    }, 500);
+                }
+                selected = [];
+            }
+        });
+
+        // 初始化
+        setTimeout(() => {
+            initSpeech();
+            if (speechSynthesis.onvoiceschanged !== undefined) {
+                speechSynthesis.onvoiceschanged = initSpeech;
+            }
+        }, 100);
+
+        createBubbles();
+    </script>
+</body>
+</html>
