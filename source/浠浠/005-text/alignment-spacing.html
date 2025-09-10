@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="白夜宁月">
+
+
+    <meta name="subtitle" content="时间煮雨，水月风花。以平常心，慢度日常。">
+
+
+
+
+<title>水月风花</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Windflower&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Windflower&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    <article class="post-wrap page">
+        
+        <h2 class="post-title"></h2>
+        
+        <section class="post-content">
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS text alignment & spacing</title>
+    <link rel="stylesheet" href="./mystyle2.css">
+</head>
+<body>
+    <h1>
+        我为什么活着-064文本对齐和间距
+    </h1>
+    <p class="a">
+        Three passions, simple but overwhelmingly strong, have governed my life: the longing for love, the search for knowledge, and unbearable pity for the suffering of mankind. These passions, like great winds, have blown me hither and thither, in a wayward course, over a deep ocean of anguish, reaching to the very verge of despair.
+    </p>
+    <p class="b">
+        对爱情的渴望，对知识的探求和对人类苦难不可遏制的同情，是支配我一生的单纯而难以抗拒的三种情感。这些情感如阵阵飓风，随意地把我吹得飘来荡去，有时吹过深沉痛苦的海洋，直抵绝望的边缘。<br><br>
+    </p>
+    <p class="c">
+        水平对齐方式<br>
+        text-align； left/center/right/justify(每一行拉长，有相等宽度边界对齐) <br>
+        垂直对齐方式<br>
+        vertical-align: text-top/text-bottom/baseline(基线对齐)、super(上角标对齐)，sub(下角标对齐)
+        文本缩进<br>
+        p {<br>
+            text-indent:绝对单位px/相对单位一般2em/百分比缩进是根据父元素宽度计算得到的;<br>
+        }<br>
+        letter-spacing属性用于指定中文文字或英文字母之间的空隙<br>
+        line-height:指定行与行间的高度即行高，属性为nomal/一个数字如1.5，此数字与当前的字符大小相乘计算得到，推荐使用、绝对值如20px,设置固定的行间距。<br>
+        word-spacing:单词间距，仅对英文有效。<br>
+        white-space:指定了如何处理元素内部的空白。值nowrap不管包含文本的元素宽度是多少，文本都不会换行，直到遇到br为止。<br>
+    </p>
+    <p> <img src="./by.jpg" alt="by" width="9" height="9" class="d"/>
+        I have sought love, first, because it brings ecstasy--ecstasy so great that I would often have sacrificed all the rest of life for a few hours of this joy. I have sought it, next, because it relieves loneliness--that terrible loneliness in which one shivering consciousness looks over the rim of the world into the cold unfathomable lifeless abyss. I have sought it, finally, because in the union of love I have seen, in a mystic miniature, the prefiguring vision of the heaven that saints and poets have imagined. This is what I sought, and though it might seem too good for human life, this is what--at last--I have found.
+    </p>
+    <p> <img src="./by.jpg" alt="by" width="9" height="9" class="e"/>
+        I 我曾经追求过爱情，首先是因为爱情可以给我带来狂喜，这种狂喜竟如此强烈，以至于我常常会为了体验几小时爱的欢娱，而宁愿牺牲生命中的其他一切。我曾经追求过爱情，其次是因为爱情可以摆脱孤寂。置身于那可怕的孤独之中，那令人战栗的感觉，有时会掠过世界的边缘，把人带到寒气袭人且没有生命的无底深渊。我曾经追求过爱情，还因为在爱的结合中，我看到了古今圣贤以及诗人们梦想中天堂的神秘缩影。这也正是我所追寻的人生境界。虽然它对一般的人类生活也许太美好了，但这正是我透过爱情最终所找到的。    
+    </p>
+    <p> <img src="./by.jpg" alt="by" width="9" height="9" class="f"/>
+        With equal passion I have sought knowledge. I have wished to understand the hearts of men. I have wished to know why the stars shine. And I have tried to apprehend the Pythagorean power by which number holds sway above the flux. A little of this, but not much, I have achieved.
+    </p>
+    <p> <img src="./by.jpg" alt="by" width="9" height="9" class="g"/>
+        I 我曾以同样的感情追求知识。我一直渴望去了解人类的心灵，也渴望知道星星为什么会发光，同时我还想理解毕达哥拉斯的力量，通过它的力量，数驾驭了万物的变化。我学到了一点点知识，但仅是皮毛而已。
+    </p>
+    <p> <img src="./by.jpg" alt="by" width="9" height="9" class="h"/>
+        Love and knowledge, so far as they were possible, led upward toward the heavens. But always pity brought me back to earth. Echoes of cries of pain reverberate in my heart. Children in famine, victims tortured by oppressors, helpless old people a hated burden to their sons, and the whole world of loneliness, poverty, and pain make a mockery of what human life should be. I long to alleviate the evil, but I can’t, and I too suffer.
+    </p><br><br>
+</body>
+</html>
+        </section>
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+   <!-- <div class="copyright">
+        <span>© 白夜宁月 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>-->
+</footer>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="白夜宁月">
+
+
+    <meta name="subtitle" content="时间煮雨，水月风花。以平常心，慢度日常。">
+
+
+
+
+<title>水月风花</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Windflower&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Windflower&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    <article class="post-wrap page">
+        
+        <h2 class="post-title"></h2>
+        
+        <section class="post-content">
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    &nbsp;&nbsp; <h3>042 iframe </h3><br>
+    双标签，用来在一个网页中显示另一个网页。<br><br>
+    属性：src="页面路径"；width="数字:引入页面的宽度";height;frameborder="0"默认引入页面带有边框为0，就是去除边框了。scrolling="auto/yes/no"是否显示框架滚动条。<br><br>
+    <iframe src="https://windflower2022.github.io/2022/09/21/hello-world4/" frameborder="1">               
+    </iframe><br><br>
+    <iframe src="https://windflower2022.github.io/2022/09/21/hello-world4/" frameborder="1" width="800" height="600">       
+    </iframe><br><br>
+    <iframe src="https://windflower2022.github.io/2022/09/21/hello-world4/" frameborder="1" width="800" height="600" scrolling="no">       
+    </iframe><br><br>
+    <iframe src="https://windflower2022.github.io/2022/09/21/hello-world4/">               
+    </iframe><br><br>
+    添加容器，div,实现iframe链接功能换行输入(a[href target=iframe_a]>b)*3<br><br>
+    <div>
+        <a href="https://windflower2022.github.io/2022/09/20/hello-world3/" target="iframe_a"><b></b>内容1</a>
+        <a href="https://windflower2022.github.io/archives/" target="iframe_a"><b></b>目录</a>
+        <a href="https://windflower2022.github.io/2022/09/21/hello-world4/" target="iframe_a"><b></b>内容2</a><br><br> 
+    </div>      
+    <iframe src="https://windflower2022.github.io/2022/09/21/hello-world4/" frameborder="0" width="800" height="600" scrolling="no">       
+    </iframe><br><br>
+    &nbsp;&nbsp; <h3>043 初识SVG </h3><br>
+    全称scalable vector graphics,意为可缩放矢量图。形状描述的文本文件，体积较小。不管放大多少倍，都不会失真。可以绘制。可以用svg双标签。<br><br> 
+    <svg  width="800" height="600">
+    </svg><br><br>
+    点击F12查看,element下svg,就看见上面是一个蓝色矩形。<br><br> 
+	&nbsp;&nbsp; <h3>043 初识SVG </h3><br>
+    全称scalable vector graphics,意为可缩放矢量图。形状描述的文本文件，体积较小。不管放大多少倍，都不会失真。可以绘制。可以用svg双标签。
+    <svg  width="800" height="600">
+    </svg><br><br>
+    点击F12查看,element下svg,就看见一个蓝布矩形。<br><br> 
+    &nbsp;&nbsp; <h3>044 SVG绘制矩形，圆形，椭圆 </h3><br>
+    可画矩形(rect)，圆形(circle)，椭圆(ellipse)，线条(line)，多线条(ployline)，多边形(polygon)，路径(path)<br><br> 
+    单标签（rect width="" height="" fill="填充色"  stroke-width="边框宽" stroke="边框色"> <br><br> 
+    <svg width="400" height="110">
+        <rect width="300" height="100" fill="lightgreen" stoke-width="3" stroke="tomato" />
+    </svg><br><br>
+    加x,y值，以及填充色，边框色透明度。<br><br>
+    <svg width="400" height="110">
+        <rect x="50" y="20" width="300" height="100" fill="lightgreen" fill-opacity="0.1" stoke-width="3" stroke="tomato"  sroke-opacity="0.9"/>
+    </svg><br><br>
+    给rect,增添透明属性<br><br> 
+    <svg width="400" height="110">
+        <rect x="50" y="20" width="300" height="100" fill="lightgreen" stoke-width="3" stroke="tomato" opacity="0.5" />
+    </svg><br><br>
+    <svg width="400" height="110">
+        <rect x="50" y="20" width="300" height="100" fill="lightgreen" stoke-width="3" stroke="tomato" opacity="0.5" rx="20" ry="20"/>
+    </svg><br><br>
+    <svg width="400" height="400">
+        <rect x="50" y="20" width="300" height="100" fill="lightgreen" stoke-width="3" stroke="tomato" opacity="0.5" rx="20" ry="20"/>
+    </svg><br>
+    <svg width="400" height="400">
+        <rect x="50" y="20" width="300" height="300" fill="lightgreen" stoke-width="3" stroke="tomato" opacity="0.5" rx="20" ry="20"/>
+    </svg><br><br>
+    画circle,属性cx,cy相同，r.其它属性和上面一致。<br><br>
+    <svg width="100" height="100">
+        <circle cx="50" cy="50" r="40" fill="red" stroke-width="3" stroke="green" />
+    </svg><br><br>
+    画椭圆ellipse,x,y半径不同。cx椭圆中心x坐标，cy椭圆中心y坐标。rx水平半径，ry垂直半径。<br><br>
+    <svg width="500" height="140">
+        <ellipse cx="200" cy="80" rx="100" ry="50" fill="red" stroke-width="3" stroke="green" />
+    </svg><br><br>
+    堆叠椭圆。<br><br>
+    <svg width="500" height="150">
+        <ellipse cx="240" cy="100" rx="220" ry="30" fill="red" stroke-width="3" stroke="green" />
+        <ellipse cx="220" cy="70" rx="190" ry="20" fill="blue" stroke-width="3" stroke="green" />
+        <ellipse cx="210" cy="45" rx="170" ry="15" fill="yellow" stroke-width="3" stroke="green" />
+    </svg><br><br>
+    空心椭圆<br><br>
+    <svg width="500" height="100">
+        <ellipse cx="240" cy="50" rx="220" ry="30" fill="purple" stroke-width="3" stroke="green" />
+        <ellipse cx="220" cy="50" rx="190" ry="20" fill="yellow" stroke-width="3" stroke="green" />
+        <ellipse cx="210" cy="45" rx="170" ry="15" fill="white" stroke-width="3" stroke="green" />
+    </svg><br><br>
+    &nbsp;&nbsp; <h3>045 SVG绘制线条，多边形，多线条 </h3><br>
+    line单标签，属性x1,y1,x2,y2,与数学中Y轴相反。<br><br>
+   <svg width="500" height="210">
+     <line x1="0" y1="0" x2="200" y2="200" stroke="red" stroke-width="2" />
+   </svg><br><br>
+   多边形单标签polygon，属性points="a,b c,d e,f..."<br><br>
+   <svg width="500" height="210">
+   <polygon points="200,20 250,190 160,210" fill="lime" stroke="purple" stroke-width="1" />
+   </svg><br><br>
+   四边形<br><br>
+   <svg width="500" height="230">
+    <polygon points="200,10 300,210 170,250 123,50" fill="lime" stroke="purple" stroke-width="1" />
+    </svg><br><br>
+    五角星<br><br>
+    <svg width="500" height="210">
+        <polygon points="100,10 40,198 198,78 10,78 160,198" fill="lime" stroke="purple" stroke-width="5" />
+        </svg><br><br>
+    多线条单标签polyline属性points两个以上的x,y<br><br>
+    <svg width="500" height="200">
+        <polyline points="20,10 60,80 120,128 180,88" fill="none" stroke="yellow" stroke-width="3" />
+        </svg><br><br>
+    楼梯剖面<br><br>
+    <svg width="500" height="180">
+        <polyline points="0,40 40,40 40,80 80,80 80,120 120,120 120,160 160,160 160,200 200,200 200,240 240,240,240,280" fill="none" stroke="blue" stroke-width="4" />
+    </svg><br><br> 
+    &nbsp;&nbsp; <h3>046 SVG绘制线条，多边形，多线条 </h3><br>
+    text双标签，属性x,y定义文本坐标，font-size,text-anchor="start/middle/end"<br><br>
+    <svg width="300" height="30">
+        <text x="0" y="15" fill="red">
+           I love my family 
+        </text> 
+    </svg><br><br>
+    用txt进行svg绘制，可旋转，属性transform="ratate(30 50,100)"<br><br> <br><br>
+    <svg width="600" height="280">
+        <text x="0" y="15" fill="red" transform="rotate(40 70,180)">
+           I love my family 
+        </text> 
+    </svg>
+    <svg width="300" height="180">
+        <text x="0" y="15" fill="red">
+           I love my family 
+        <tspan x="10" y="50" fill="red">first line</tspan>
+        <tspan x="10" y="95" fill="red">second line</tspan>
+        </text>         
+    </svg><br>
+    text绘制的文本可以添加链接，用a xlink:href="",但svg开标签里添加 xmlns:xlink="http://www.w3.org/1999/xlink"<br><br>
+    <svg width="200" height="30" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <a xlink:href="https://windflower2022.github.io/about">
+        <text x="10" y="15" fill="green">
+            我的博客
+        </text>
+    </a>
+    </svg>
+    <br><br>
+    &nbsp;&nbsp; <h3>047 SVG绘制路径 </h3><br>
+    path单标签，属性d(draw),M命令d="M150 0",L(lineto)命令，d="M 150 0 L 75 200"大写字母是绝对定位，小写字母是相对定位。 <br><br>
+    <svg width="400" height="210">
+    <path d="M 150 0 L 175 100 L 100 100"/ fill="purple">
+    </svg><br><br>
+    贝塞尔曲线在path命令中用q属性d="M 150 0 l 75 200 q 150 -300 300 0"<br><br>
+    <svg width="450" height="400">
+        <path d="M 100 350 l 150 -300" fill="none" stroke="red" stroke-width="3"/>
+        <path d="M 250 50 l 150 300" fill="none" stroke="red" stroke-width="3"/>
+        <path d="M 175 200 l 150 0" fill="none" stroke="green" stroke-width="3"/>
+        <path d="M 100 350 q 150 -300 300 0" fill="none" stroke="blue" stroke-width="5"/>
+        <g fill="black">
+        <circle cx="100" cy="350" r="3" />
+        <circle cx="250" cy="50" r="3" />
+        <circle cx="400" cy="350" r="3" />
+        </g>
+        <g font-size="30" fill="black" text-anchor="middle">
+            <text x="100" y="350" dx="-30" >A</text>
+            <text x="250" y="50" dx="-10" >B</text>
+            <text x="400" y="350" dx="30" >C</text>
+        </g>  
+        </svg><br><br>
+    &nbsp;&nbsp; <h3>047 SVG描边属性 </h3><br>
+    path单标签，属性stroke笔画属性,定义一个元素线条文本轮廓的颜色, stroke-width笔画宽度属性, stroke-linecap笔画笔帽属性：butt无线帽,round,square, stroke-dasharray虚线笔画属性,至少定义两个值如20，20,都可以运用于所有线条，文本和元素的轮廓，如circle<br><br>
+        <br><br>
+    <svg width="350" height="100">
+        <g fill="none">
+        <path stroke="red" d="M 5 20 l 215 0" />
+        <path stroke="black" d="M 5 40 l 215 0" />
+        <path stroke="red" d="M 5 60 l 215 0" />
+      </g>
+    </svg> <br>
+    <svg width="350" height="100">
+        <g fill="none" stroke="black">
+          <path stroke-width="2" d="M 5 20 l 215 0" />
+          <path stroke-width="4" d="M 5 40 l 215 0" />
+          <path stroke-width="6" d="M 5 60 l 215 0" />
+        </g>
+    </svg><br>
+    <svg width="350" height="100">
+        <g fill="none" stroke="green" stroke-width="8">
+          <path stroke-linecap="butt" d="M 5 20 l 215 0" />
+          <path stroke-linecap="round" d="M 5 40 l 215 0" />
+          <path stroke-linecap="square" d="M 5 60 l 215 0" />
+        </g>
+    </svg><br>
+    <svg width="350" height="100">
+        <g fill="none" stroke="red" stroke-width="4">
+          <path stroke-dasharray="5,5" d="M 5 20 l 215 0" />
+          <path stroke-dasharray="10,10,5" d="M 5 40 l 215 0" />
+          <path stroke-dasharray="20,10,15,5" d="M 5 60 l 215 0" />
+        </g>
+    </svg><br><br>
+    &nbsp;&nbsp; <h3>048 SVG模糊和阴影效果 </h3><br>
+    filter双标签，1个或多个效果滤镜。属性为id，值保持唯一性。filter都在defs(definitions)双标签下定义。
+    语法如下：<br><br>
+    <defs>
+       <filter id>
+        <feGaussianBlur stdDeviation="数字" />
+       </filter>
+    </defs>
+    <svg width="110" height="110">
+       <rect width="90" height="90" stroke="green" stroke-width="3" fill="yellow" />
+    </svg><br>
+    模糊效果，单标签feGaussianBlur属性stdDeviation="数字"<br><br>
+    <svg width="110" height="110">
+        <defs>
+            <filter x="0" y="0" id="f1">
+             <feGaussianBlur stdDeviation="15" />
+            </filter>
+         </defs>
+       <rect width="90" height="90" stroke="green" stroke-width="3" fill="yellow" filter="url(#f1)" />
+    </svg><br>
+    投影效果，单标签ffOffset属性dx="数字"引用x轴上的偏移量,dy="数字",in="",阴影图像的来源，黑色阴影值为SourceAlpha,原始图像为阴影值为SourceGraphic。<br><br>
+    还需要在偏移的图像混合原始图像，用feBlend单标签，属性in<br><br>
+    <svg width="110" height="110">
+        <defs>
+            <filter x="0" y="0" width="200" height="200" id="f2">
+             <feOffset dx="20" dy="20" in="SourceAlpha"/>
+             <feBlend in="SourceGraphic" />
+            </filter>
+         </defs>
+       <rect width="90" height="90" stroke="green" stroke-width="3" fill="yellow" filter="url(#f2)" />
+    </svg><br><br>
+    <svg width="110" height="110">
+        <defs>
+            <filter x="0" y="0" width="100" height="100" id="f2">
+             <feOffset dx="20" dy="20" in="SourceAlpha"/>
+             <feGaussianBlur stdDeviation="15" /> 
+             <feBlend in="SourceGraphic" />  
+            </filter>
+         </defs>
+       <rect width="90" height="90" stroke="green" stroke-width="3" fill="yellow" filter="url(#f2)" />
+    </svg><br><br>
+    &nbsp;&nbsp; <h3>049 SVG线性和径向渐变 </h3><br>
+    linearGradient双标签表示，属性x1,y1,x2,y2,嵌套在defs下。y1=y2,x1≠x2，产生水平渐变。x1=x2,y1≠y2产生垂直渐变。两者都不等，产生角度渐变。<br><br>
+    每种颜色都用stop单标签指定，定义属性offset="百分数"  stop-color="渐变色"
+    <svg width="400" height="150">
+       <ellipse cx="200" cy="70" rx="85" ry="55">
+       </ellipse>
+    </svg><br><br>
+    <svg width="400" height="150">
+        <defs >
+            <linearGradient x1="0%" y1="0%" x2="100%" y2="0%" id="grad1">
+                <stop offset="0%" stop-color="rgb(255,255,0)" />
+                <stop offset="100%" stop-color="rgb(255,0,0)" />
+            </linearGradient>
+        </defs> 
+        <ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad1)">
+        </ellipse>
+     </svg><br><br>
+     <svg width="400" height="150">
+        <defs >
+            <linearGradient x1="0%" y1="0%" x2="0%" y2="100%" id="grad1">
+                <stop offset="0%" stop-color="rgb(255,255,0)" />
+                <stop offset="100%" stop-color="rgb(255,0,0)" />
+            </linearGradient>
+        </defs> 
+        <ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad1)" />
+            <text fill="#ffffff" font-size="45" x="150" y="86">wind</text>
+     </svg><br><br>
+     radialGradient双标签嵌套在defs,
+     <svg width="500" height="150">
+        <defs >
+            <radialGradient cx="50%" cy="50%" r="50%" fx="50%" fy="50%" id="grad2">
+                <stop offset="0%" stop-color="rgb(255,255,255)" />
+                <stop offset="100%" stop-color="rgb(0,0,255)" />
+            </radialGradient>
+        </defs> 
+        <ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad2)" />
+            <text fill="#ffffff" font-size="45" x="150" y="86">wind</text>
+     </svg><br><br>
+     <svg width="500" height="150">
+        <defs >
+            <radialGradient cx="30%" cy="30%" r="50%" fx="30%" fy="30%" id="grad2">
+                <stop offset="0%" stop-color="rgb(255,255,255)" />
+                <stop offset="100%" stop-color="rgb(0,0,255)" />
+            </radialGradient>
+        </defs> 
+        <ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad2)" />
+            <text fill="#ffffff" font-size="45" x="150" y="86">wind</text>
+     </svg><br><br>
+</body>  
+</html>
+
+        </section>
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+   <!-- <div class="copyright">
+        <span>© 白夜宁月 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>-->
+</footer>
+
+    </div>
+</body>
+
+</html>

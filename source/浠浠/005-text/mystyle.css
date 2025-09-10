@@ -1,0 +1,17 @@
+body {
+    /* 一个页面的默认文本颜色是在 body 选择器中定义的
+    */
+    color: purple;
+}
+
+h1 {
+    color: green;
+}
+
+p.sb {
+    color: green;
+}
+
+p.transform {
+    text-transform: uppercase;
+}

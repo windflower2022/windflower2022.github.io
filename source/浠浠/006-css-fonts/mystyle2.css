@@ -1,0 +1,26 @@
+h1{
+    font-weight: normal;
+    font-variant: normal;
+}
+   
+
+p.p1{
+    font: normal;
+    font-weight: lighter;
+    font-variant: small-caps;
+}
+    
+
+p.p2{
+    font-style: italic;
+    font-weight: bold;
+    font-variant: normal;
+}
+
+p.p3{
+    font-style: oblique;
+    font-weight: 100;
+    font-variant: small-caps;
+    font-size: 30px;
+    line-height: 15px;
+}
