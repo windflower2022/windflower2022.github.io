@@ -210,6 +210,7 @@
         // 内容序列：移除重复内容，保持正确顺序
         const contentSequence = [
             { main: "traditional Chinese festivals,", pair: "Spring Festival" },
+            { main: "traditional Chinese festivals,", pair: "Spring Festival" },
             { main: "the person I admire most,", pair: "Yuan Longping" },
             { main: "Chinese tourist attractions,", pair: "the Great Wall" },
             { main: "Chinese traditional culture,", pair: "kung fu" },
@@ -245,7 +246,7 @@
                         <span class="fixed-text">When it comes to </span>
                         <span class="variable-text">${nextContent.main}</span>
                     </button>
-                    <div class="placeholder">点击上一行右侧按钮，生成对应示例</div>
+                    <div class="placeholder"></div>
                 `;
                 
                 container.appendChild(newRow);
