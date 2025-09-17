@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>自动切换效果的幻灯片</title>
+<style>
+#mydiv { 
+        margin: 150px 0 30px calc(42% - 800px);
+	display: grid;
+	place-items: center;
+	width: 1600px;
+	height: 900px;
+	background-color: #6088d8;
+	/* box-shadow: 3px 3px 20px #000;*/
+	user-select: none;
+	overflow: hidden;
+	position: relative;
+	z-index: 1;  
+}
+
+/* 滚动文字样式 */
+.scrolling-text {
+  position: absolute;
+  top: 20px;
+  right: -100%;
+  white-space: nowrap;
+  color: blue;
+  font-size: 0px;
+  font-weight: bold;
+  z-index: 200;
+  animation: scrollText 30s linear infinite;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
+    right: -100%;
+  }
+  100% {
+    transform: translateX(-100%);
+    right: 100%;
+  }
+}
+
+/* 幻灯片样式 */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translate(0, 0);
+}
+
+.slide img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 控制按钮和当前效果显示 */
+#controls {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 100;
+  padding: 0px;
+  background: rgba(0,0,0,0.3);
+}
+
+#current-effect {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+/* 覆盖视频 */
+#overlay {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 80px);
+  object-fit: cover;
+  mix-blend-mode: overlay;
+  opacity: 0.0;
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* 百叶窗滑块容器 */
+.blinds-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+}
+
+/* 百叶窗滑块 */
+.blind-slider {
+  flex: 1;
+  height: 100%;
+  background-color: #6088d8;
+  transition: transform 1.5s ease;
+  transform: translateY(0);
+}
+
+#vid1 {
+  position: absolute;
+  width: 100%;
+  height: 110%;
+  top:-80px;
+  object-fit: cover;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 2;
+  opacity: 0.04;
+}
+#vid2 {
+  position: absolute;
+  width: 100%;
+  height: 110%;
+  top:-80px;
+  object-fit: cover;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  -webkit-mask: linear-gradient(to bottom, red 50%, transparent 55%, transparent);
+  z-index: 3;
+  opacity: 0.32;
+}
+</style>  
+<body>
+<div id="mydiv">
+  <!-- 滚动文字 -->
+  <div class="scrolling-text">.</div>
+  
+  <!-- 图片幻灯片 -->
+  <div class="slide" style="opacity: 1;">
+    <img src="https://cccimg.com/view.php/b6ced4a91938c9fcd22b356908d6c8a1.png" alt="图片1">
+  </div>
+  <div class="slide">
+    <img src="https://cccimg.com/view.php/21cf2c1183e1efa34430b085adb3f9d5.png" alt="图片2">
+  </div>
+  <div class="slide">
+    <img src="https://cccimg.com/view.php/b6ced4a91938c9fcd22b356908d6c8a1.png" alt="图片3">
+  </div>
+  <div class="slide">
+    <img src="https://cccimg.com/view.php/21cf2c1183e1efa34430b085adb3f9d5.png" alt="图片4">
+  </div>
+  
+  <!-- 视频覆盖层 -->
+  <video id="overlay" autoplay loop muted playsinline>
+    <source src="https://img.tukuppt.com/video_show/2422006/00/01/70/5b4b1e2590ccc.mp4" type="video/mp4">
+  </video>
+  
+  <video id="vid1" src="https://img.tukuppt.com/video_show/2629112/00/02/23/5b5885f450f50.mp4" autoplay loop muted></video>
+  <video id="vid2" src="https://img.tukuppt.com/video_show/15653652/00/80/83/60d04564c32f7.mp4" autoplay loop muted></video>
+  
+  <!-- 控制区 -->
+  <div id="controls">
+    <div id="current-effect"><!--当前效果: 淡入淡出 --></div>
+  </div>
+</div>  
+<!--<audio id="aud" src="https://ting8.yymp3.com/new23/yangyuying4/10.mp3" autoplay loop></audio>-->
+</body>
+
+<script>
+// 基础变量
+let currentIndex = 0;
+let slides = document.querySelectorAll('.slide');
+let totalSlides = slides.length;
+let timer;
+let currentEffectElement = document.getElementById('current-effect');
+// 所有可用效果
+const effects = [
+  {name: '', value: 'fade'},
+  {name: '', value: 'slideLeft'},
+  {name: '', value: 'slideRight'},
+  {name: '', value: 'slideTop'},
+  {name: '', value: 'slideBottom'},
+  {name: '', value: 'zoom'},
+  {name: '', value: 'rotate'},
+  {name: '', value: 'fade-zoom'},
+  {name: '', value: 'swing'},
+  {name: '', value: 'blinds'}
+];
+
+// 初始化
+function init() {
+  // 尝试自动播放音乐
+  autoPlayAudio();
+  
+  // 开始自动播放
+  startTimer();
+}
+
+// 自动播放音乐
+function autoPlayAudio() {
+  const audio = document.getElementById('aud');
+  if (audio) {
+    audio.play().then(() => {
+      console.log('音乐播放成功');
+    }).catch(e => {
+      // 处理浏览器自动播放限制
+      document.body.addEventListener('click', function playOnClick() {
+        audio.play();
+        document.body.removeEventListener('click', playOnClick);
+      }, { once: true });
+    });
+  }
+}
+
+// 清除所有特效残留
+function clearEffects() {
+  // 移除百叶窗元素
+  const blinds = document.querySelector('.blinds-wrapper');
+  if (blinds) blinds.remove();
+  
+  // 重置所有幻灯片样式
+  slides.forEach(slide => {
+    slide.style.opacity = '0';
+    slide.style.transform = 'translate(0, 0) scale(1) rotate(0)';
+    slide.style.transition = 'none'; // 清除过渡效果
+  });
+}
+
+// 显示下一张
+function showNext() {
+  // 清除之前的效果
+  clearEffects();
+  
+  // 计算下一张索引
+  currentIndex = (currentIndex + 1) % totalSlides;
+  
+  // 随机选择一个效果
+  const randomIndex = Math.floor(Math.random() * effects.length);
+  const effect = effects[randomIndex];
+  
+  // 更新当前效果显示
+  currentEffectElement.textContent = ` ${effect.name}`;
+  
+  // 获取当前幻灯片
+  const slide = slides[currentIndex];
+  
+  // 应用相应的效果
+  applyEffect(slide, effect.value);
+  
+  // 重置定时器
+  resetTimer();
+}
+
+// 应用切换效果
+function applyEffect(slide, effect) {
+  // 显示幻灯片（确保元素可见）
+  slide.style.display = 'block';
+  
+  // 根据不同效果设置初始状态和过渡动画
+  switch(effect) {
+    case 'fade':
+      slide.style.opacity = '0';
+      setTimeout(() => {
+        slide.style.transition = 'opacity 2s';
+        slide.style.opacity = '1';
+      }, 50);
+      break;
+      
+    case 'slideLeft':
+      // 从左侧滑入
+      slide.style.transform = 'translateX(-100%)';
+      slide.style.opacity = '1';
+      setTimeout(() => {
+        slide.style.transition = 'transform 1.5s ease-out';
+        slide.style.transform = 'translateX(0)';
+      }, 50);
+      break;
+      
+    case 'slideRight':
+      // 从右侧滑入
+      slide.style.transform = 'translateX(100%)';
+      slide.style.opacity = '1';
+      setTimeout(() => {
+        slide.style.transition = 'transform 1.5s ease-out';
+        slide.style.transform = 'translateX(0)';
+      }, 50);
+      break;
+      
+    case 'slideTop':
+      // 从顶部滑入
+      slide.style.transform = 'translateY(-100%)';
+      slide.style.opacity = '1';
+      setTimeout(() => {
+        slide.style.transition = 'transform 1.5s ease-out';
+        slide.style.transform = 'translateY(0)';
+      }, 50);
+      break;
+      
+    case 'slideBottom':
+      // 从底部滑入
+      slide.style.transform = 'translateY(100%)';
+      slide.style.opacity = '1';
+      setTimeout(() => {
+        slide.style.transition = 'transform 1.5s ease-out';
+        slide.style.transform = 'translateY(0)';
+      }, 50);
+      break;
+      
+    case 'zoom':
+      slide.style.transform = 'scale(0.5)';
+      slide.style.opacity = '0';
+      setTimeout(() => {
+        slide.style.transition = 'transform 2s, opacity 2s';
+        slide.style.transform = 'scale(1)';
+        slide.style.opacity = '1';
+      }, 50);
+      break;
+      
+    case 'rotate':
+      slide.style.transform = 'rotate(-15deg) scale(0.8)';
+      slide.style.opacity = '0';
+      setTimeout(() => {
+        slide.style.transition = 'transform 2s, opacity 2s';
+        slide.style.transform = 'rotate(0) scale(1)';
+        slide.style.opacity = '1';
+      }, 50);
+      break;
+      
+    case 'fade-zoom':
+      slide.style.transform = 'scale(0.8)';
+      slide.style.opacity = '0';
+      setTimeout(() => {
+        slide.style.transition = 'transform 2s, opacity 2s';
+        slide.style.transform = 'scale(1)';
+        slide.style.opacity = '1';
+      }, 50);
+      break;
+      
+    case 'swing':
+      slide.style.transform = 'rotate(-10deg) translateX(-50%)';
+      slide.style.opacity = '0';
+      setTimeout(() => {
+        slide.style.transition = 'transform 2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 2s';
+        slide.style.transform = 'rotate(0) translateX(0)';
+        slide.style.opacity = '1';
+      }, 50);
+      break;
+      
+    case 'blinds':
+      // 百叶窗效果
+      slide.style.opacity = '1';
+      
+      // 创建百叶窗容器
+      const wrapper = document.createElement('div');
+      wrapper.className = 'blinds-wrapper';
+      slide.appendChild(wrapper);
+      
+      // 创建8个滑块
+      const sliderCount = 8;
+      for(let i = 0; i < sliderCount; i++) {
+        const slider = document.createElement('div');
+        slider.className = 'blind-slider';
+        slider.style.transitionDelay = `${i * 0.1}s`;
+        wrapper.appendChild(slider);
+      }
+      
+      // 触发动画
+      setTimeout(() => {
+        const sliders = wrapper.querySelectorAll('.blind-slider');
+        sliders.forEach(slider => {
+          slider.style.transform = 'translateY(-100%)';
+        });
+      }, 100);
+      break;
+  }
+}
+
+// 开始定时器
+function startTimer() {
+  // 每5秒切换一次
+  timer = setInterval(showNext, 5000);
+}
+
+// 重置定时器
+function resetTimer() {
+  clearInterval(timer);
+  startTimer();
+}
+
+// 页面加载完成后初始化
+window.onload = init;
+</script>
+</body><br><br><br>
+</html>
