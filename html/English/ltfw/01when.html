@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中文句子与英文翻译练习</title>
+    <style>
+        /* 密码框样式 */
+       .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .password-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        .password-input {
+            padding: 12px;
+            font-size: 16px;
+            margin: 15px 0;
+            border: 2px solid #4A90E2;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .password-btn {
+            padding: 12px 30px;
+            background: #4A90E2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .password-btn:hover {
+            background: #357ABD;
+        }
+
+        /* 主体样式 */
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            max-width: 1050px;
+            margin: 30px auto;
+            padding: 0 20px;
+            background-color: #f7fbff;
+            text-align: left;
+        }
+
+        .instructions {
+            background-color: #e8f4fd;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            border-left: 4px solid #1e88e5;
+            color: #264653;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sentence-group {
+            margin-bottom: 15px;
+        }
+
+        .chinese-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+
+        .chinese-part {
+            cursor: pointer;
+            transition: background-color 0.2s;
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        .chinese-part:hover {
+            background-color: #f0f7ff;
+        }
+
+        .chinese-row:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+            background-color: #f9fbff;
+        }
+
+        /* 英文翻译行样式 */
+        .english-row {
+            display: none; /* 默认隐藏整行 */
+            align-items: center;
+            gap: 20px;
+            padding: 10px;
+            margin-left: 30px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .english-part {
+            display: none; /* 英文部分也默认隐藏 */
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .main-part, .pair-part {
+            padding: 12px 18px;
+            font-size: 20px;
+            border-radius: 6px;
+            text-align: left;
+            flex: 1;
+            min-width: 320px;
+        }
+
+        .main-part {
+            border-left: 4px solid #1976d2;
+        }
+
+        .pair-part {
+            border-left: 4px solid #26a69a;
+        }
+
+        .fixed-text {
+            color: #1976d2;
+            font-weight: 500;
+        }
+
+        .variable-text {
+            color: #26a69a;
+            font-weight: 600;
+        }
+
+        .generated {
+            padding: 12px 18px;
+            font-size: 22px;
+            border-radius: 6px;
+            flex: 1;
+            min-width: 300px;
+            background-color: transparent;
+            text-align: left;
+        }
+
+        .generated .fixed-text {
+            color: #1e88e5;
+        }
+
+        .generated .variable-text {
+            color: #2ab6a1;
+        }
+
+        .row-number {
+            color: #4a7cb8;
+            font-size: 14px;
+            font-weight: 600;
+            min-width: 24px;
+            text-align: center;
+            padding: 4px 6px;
+            background-color: #eef5ff;
+            border-radius: 4px;
+        }
+
+        /* 翻译标识标签 */
+        .translation-tag {
+            color: #666;
+            font-size: 14px;
+            padding: 2px 8px;
+            background-color: #eee;
+            border-radius: 4px;
+            margin-right: 10px;
+            min-width: 60px;
+        }
+
+        /* 箭头指示 */
+        .toggle-arrow {
+            color: #4a7cb8;
+            transition: transform 0.3s ease;
+            margin-right: 5px;
+        }
+
+        .chinese-part.expanded .toggle-arrow {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- 密码验证模态框 -->
+    <div class="password-modal" id="passwordModal">
+        <div class="password-box">
+            <h2>请输入访问密码</h2>
+            <input type="password" class="password-input" id="passwordInput" autocomplete="off" autofocus>
+            <button class="password-btn" onclick="checkPassword()">进入系统</button>
+        </div>
+    </div>
+
+    <!-- 主内容区域 -->
+    <div id="mainContent" style="display: none;">
+        <div class="instructions">
+            <h2>每日一练   龙头1——when引导的时间状语</h2>
+            <h2>公式：<span class="fixed-text">When it comes to</span> +<span class="variable-text">大话题，</span><span class="variable-text">子话题</span>+<span class="fixed-text">comes to my mind.</span></h2> 
+            <h3>&emsp;&emsp;&emsp;&emsp;<span class="fixed-text">说到</span>+<span class="variable-text">大话题，</span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="fixed-text">我就立刻想到了</span>+<span class="variable-text">子话题</span></h3> 
+            <p>&emsp;&emsp;&emsp;&emsp;&emsp;(说明：蓝色文本为固定框架，绿色文本为可替换内容)</p><br>
+        </div>
+        
+        <div class="container" id="contentContainer">
+            <!-- 所有中文句子默认直接显示 -->
+        </div>
+    </div>
+
+    <script>  
+        // 密码验证功能
+        const CORRECT_PASSWORD = "Luna";
+        let attemptCount = 0;
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            if (input.value === CORRECT_PASSWORD) {
+                document.getElementById('passwordModal').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+                initSentences(); // 密码正确后初始化句子
+            } else {
+                attemptCount++;
+                alert(`密码错误（剩余尝试次数：${5 - attemptCount}）`);
+                input.value = '';
+                if (attemptCount >= 5) {
+                    alert("尝试次数过多，页面即将关闭");
+                    window.close();
+                }
+            }
+        }
+        
+        const container = document.getElementById('contentContainer');
+        
+        // 内容序列：所有句子一次性加载
+        const contentSequence = [
+            {
+                chinese: { main: "中国传统节日,", pair: "春节" },
+                english: { main: "traditional Chinese festivals,", pair: "Spring Festival" }
+            },
+            {
+                chinese: { main: "我最敬佩的人,", pair: "袁隆平" },
+                english: { main: "the person I admire most,", pair: "Yuan Longping" }
+            },
+            {
+                chinese: { main: "中国的旅游景点,", pair: "万里长城" },
+                english: { main: "Chinese tourist attractions,", pair: "the Great Wall" }
+            },
+            {
+                chinese: { main: "中国的传统文化,", pair: "功夫" },
+                english: { main: "Chinese traditional culture,", pair: "kung fu" }
+            },
+            {
+                chinese: { main: "环保措施,", pair: "垃圾分类" },
+                english: { main: "environmental protection measures,", pair: "garbage classification" }
+            },
+            {
+                chinese: { main: "有效的学习方法,", pair: "制作思维导图" },
+                english: { main: "effective learning methods,", pair: "making mind maps" }
+            },
+            {
+                chinese: { main: "健康的生活方式,", pair: "经常锻炼" },
+                english: { main: "healthy lifestyles,", pair: "regular exercise" }
+            },
+            {
+                chinese: { main: "学校活动,", pair: "英语演讲比赛" },
+                english: { main: "school activities,", pair: "the English speech contest" }
+            },
+            {
+                chinese: { main: "志愿工作,", pair: "为老年人提供的社区服务" },
+                english: { main: "volunteer work,", pair: "community service for the elderly" }
+            },
+            {
+                chinese: { main: "课余爱好,", pair: "阅读经典小说" },
+                english: { main: "extra-curricular hobbies,", pair: "reading classic novels" }
+            },
+            {
+                chinese: { main: "中国现代技术,", pair: "5G通信" },
+                english: { main: "modern Chinese technology,", pair: "5G communication" }
+            },
+            {
+                chinese: { main: "深受欢迎的中国菜,", pair: "北京烤鸭" },
+                english: { main: "popular Chinese cuisines,", pair: "Peking Duck" }
+            }
+        ];
+        
+        // 初始化所有中文句子
+        function initSentences() {
+            contentSequence.forEach((item, index) => {
+                // 创建句子组容器
+                const sentenceGroup = document.createElement('div');
+                sentenceGroup.className = 'sentence-group';
+                sentenceGroup.dataset.index = index;
+                
+                // 创建中文行
+                const chineseRow = document.createElement('div');
+                chineseRow.className = 'chinese-row';
+                chineseRow.innerHTML = `
+                    <span class="row-number">${index + 1}</span>
+                    <div class="main-part chinese-part" data-part="main" data-index="${index}">
+                        <span class="toggle-arrow">▶</span>
+                        <span class="fixed-text">说到 </span>
+                        <span class="variable-text">${item.chinese.main}</span>
+                    </div>
+                    <div class="pair-part chinese-part" data-part="pair" data-index="${index}">
+                        <span class="toggle-arrow">▶</span>
+                        <span class="fixed-text">我就立刻想到了</span>
+                        <span class="variable-text">${item.chinese.pair}。</span>
+                    </div>
+                `;
+                
+                // 创建英文翻译行
+                const englishRow = document.createElement('div');
+                englishRow.className = 'english-row';
+                englishRow.dataset.index = index;
+                englishRow.innerHTML = `
+                    <span class="translation-tag">英文翻译</span>
+                    <div class="generated english-part" data-part="main" data-index="${index}">
+                        <span class="fixed-text">When it comes to </span>
+                        <span class="variable-text">${item.english.main}</span>
+                    </div>
+                    <div class="generated english-part" data-part="pair" data-index="${index}">
+                        <span class="variable-text">${item.english.pair}</span>
+                        <span class="fixed-text"> immediately comes to my mind.</span>
+                    </div>
+                `;
+                
+                // 添加到组容器
+                sentenceGroup.appendChild(chineseRow);
+                sentenceGroup.appendChild(englishRow);
+                
+                // 添加到主容器
+                container.appendChild(sentenceGroup);
+            });
+        }
+        
+        // 点击事件处理 - 实现分句显示/隐藏效果
+        container.addEventListener('click', function(e) {
+            const chinesePart = e.target.closest('.chinese-part');
+            if (chinesePart) {
+                const index = chinesePart.dataset.index;
+                const part = chinesePart.dataset.part;
+                const englishRow = container.querySelector(`.english-row[data-index="${index}"]`);
+                const englishPart = container.querySelector(`.english-part[data-index="${index}"][data-part="${part}"]`);
+                
+                // 先显示英文整行
+                englishRow.style.display = 'flex';
+                
+                // 再切换对应英文部分的显示状态
+                if (englishPart.style.display === 'block') {
+                    englishPart.style.display = 'none';
+                    chinesePart.classList.remove('expanded');
+                    
+                    // 如果两个部分都隐藏了，就隐藏整个英文行
+                    const allParts = container.querySelectorAll(`.english-part[data-index="${index}"]`);
+                    const allHidden = Array.from(allParts).every(p => p.style.display !== 'block');
+                    if (allHidden) {
+                        englishRow.style.display = 'none';
+                    }
+                } else {
+                    englishPart.style.display = 'block';
+                    chinesePart.classList.add('expanded');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+    

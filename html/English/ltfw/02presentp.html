@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中文句子与英文翻译练习</title>
+    <style>
+        /* 密码框样式 */
+       .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .password-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        .password-input {
+            padding: 12px;
+            font-size: 16px;
+            margin: 15px 0;
+            border: 2px solid #4A90E2;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .password-btn {
+            padding: 12px 30px;
+            background: #4A90E2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .password-btn:hover {
+            background: #357ABD;
+        }
+
+        /* 主体样式 */
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            max-width: 1050px;
+            margin: 30px auto;
+            padding: 0 20px;
+            background-color: #f7fbff;
+            text-align: left;
+        }
+
+        .instructions {
+            background-color: #e8f4fd;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            border-left: 4px solid #1e88e5;
+            color: #264653;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sentence-group {
+            margin-bottom: 15px;
+        }
+
+        .chinese-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+
+        .chinese-part {
+            cursor: pointer;
+            transition: background-color 0.2s;
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        .chinese-part:hover {
+            background-color: #f0f7ff;
+        }
+
+        .chinese-row:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+            background-color: #f9fbff;
+        }
+
+        /* 英文翻译行样式 - 默认完全隐藏 */
+        .english-row {
+            display: none; /* 默认完全隐藏整行 */
+            align-items: center;
+            gap: 20px;
+            padding: 10px;
+            margin-left: 30px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .english-part {
+            display: none; /* 英文部分也默认隐藏 */
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .main-part, .pair-part {
+            padding: 12px 18px;
+            font-size: 20px;
+            border-radius: 6px;
+            text-align: left;
+            flex: 1;
+            min-width: 320px;
+        }
+
+        .main-part {
+            border-left: 4px solid #1976d2;
+        }
+
+        .pair-part {
+            border-left: 4px solid #26a69a;
+        }
+
+        .fixed-text {
+            color: #1976d2;
+            font-weight: 500;
+        }
+
+        .variable-text {
+            color: #26a69a;
+            font-weight: 600;
+        }
+
+        .generated {
+            padding: 12px 18px;
+            font-size: 22px;
+            border-radius: 6px;
+            flex: 1;
+            min-width: 300px;
+            background-color: transparent;
+            text-align: left;
+        }
+
+        .generated .fixed-text {
+            color: #1e88e5;
+        }
+
+        .generated .variable-text {
+            color: #2ab6a1;
+        }
+
+        .row-number {
+            color: #4a7cb8;
+            font-size: 14px;
+            font-weight: 600;
+            min-width: 24px;
+            text-align: center;
+            padding: 4px 6px;
+            background-color: #eef5ff;
+            border-radius: 4px;
+        }
+
+        /* 翻译标识标签 */
+        .translation-tag {
+            color: #666;
+            font-size: 14px;
+            padding: 2px 8px;
+            background-color: #eee;
+            border-radius: 4px;
+            margin-right: 10px;
+            min-width: 60px;
+        }
+
+        /* 箭头指示 */
+        .toggle-arrow {
+            color: #4a7cb8;
+            transition: transform 0.3s ease;
+            margin-right: 5px;
+        }
+
+        .chinese-part.expanded .toggle-arrow {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- 密码验证模态框 -->
+    <div class="password-modal" id="passwordModal">
+        <div class="password-box">
+            <h2>请输入访问密码</h2>
+            <input type="password" class="password-input" id="passwordInput" autocomplete="off" autofocus>
+            <button class="password-btn" onclick="checkPassword()">进入系统</button>
+        </div>
+    </div>
+
+    <!-- 主内容区域 -->
+    <div id="mainContent" style="display: none;">
+        <div class="instructions">
+            <h2>每日一练   龙头2——现在分词作原因状语</h2> 
+            <h2>公式：<span class="fixed-text">Hearing/Learning</span> <span class="variable-text"> ...&emsp;,&emsp;</span><span class="fixed-text">I am writing to</span> <span class="variable-text">...</span></h2> 
+            <h3>&emsp;&emsp;&emsp;&emsp;<span class="fixed-text">得知</span>+<span class="variable-text">情况,</span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="fixed-text">我写信来</span>+<span class="variable-text">目的</span></h3> 
+            <p>&emsp;&emsp;&emsp;&emsp;(说明：蓝色文本为固定框架，绿色文本为可替换内容)</p><br>   
+        </div>
+        
+        <div class="container" id="contentContainer">
+            <!-- 所有句子默认直接显示 -->
+        </div>
+    </div>
+
+    <script>  
+        // 密码验证功能
+        const CORRECT_PASSWORD = "Luna";
+        let attemptCount = 0;
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            if (input.value === CORRECT_PASSWORD) {
+                document.getElementById('passwordModal').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+                initSentences(); // 密码正确后初始化句子
+            } else {
+                attemptCount++;
+                alert(`密码错误（剩余尝试次数：${5 - attemptCount}）`);
+                input.value = '';
+                if (attemptCount >= 5) {
+                    alert("尝试次数过多，页面即将关闭");
+                    window.close();
+                }
+            }
+        }
+        
+        const container = document.getElementById('contentContainer');
+        
+        // 内容序列：所有句子一次性加载
+        const contentSequence = [
+            {
+                chinese: { 
+                    main: "你对中国传统文化感兴趣，", 
+                    pair: "介绍中国功夫。" 
+                },
+                english: { 
+                    main: "you are interested in Chinese traditional culture,", 
+                    pair: "introduce kung fu to you." 
+                },
+                verb: "Learning that"
+            },
+            {
+                chinese: { 
+                    main: "你想了解中国的餐桌礼仪，", 
+                    pair: "告诉你一些基本常识。" 
+                },
+                english: { 
+                    main: "you want to know about Chinese table manners,", 
+                    pair: "tell you some basic knowledge." 
+                },
+                verb: "Learning that"
+            },
+            {
+                chinese: { 
+                    main: "你暑假要来中国，", 
+                    pair: "推荐一个著名的景点——长城。" 
+                },
+                english: { 
+                    main: "you are coming to China this summer holiday,", 
+                    pair: "recommend a famous tourist attraction to you, the Great Wall." 
+                },
+                verb: "Hearing that"
+            },
+            {
+                chinese: { 
+                    main: "你对中国的春节非常感兴趣，", 
+                    pair: "简单介绍一下。" 
+                },
+                english: { 
+                    main: "you are very interested in the Chinese Spring Festival,", 
+                    pair: "give you a brief introduction." 
+                },
+                verb: "Learning that"
+            },
+            {
+                chinese: { 
+                    main: "你适应高中生活有困难，", 
+                    pair: "给你提供一些有效的建议。" 
+                },
+                english: { 
+                    main: "you are having difficulty adapting to high school life,", 
+                    pair: "offer you some effective suggestions." 
+                },
+                verb: "Learning that"
+            },
+            {
+                chinese: { 
+                    main: "你在学习中文方面遇到了困难，", 
+                    pair: "分享一些我的学习经验。" 
+                },
+                english: { 
+                    main: "you are having difficulty in learning Chinese,", 
+                    pair: "share some of my learning experiences." 
+                },
+                verb: "Learning that"
+            },
+            {
+                chinese: { 
+                    main: "我们学校下个月将举办文化节，", 
+                    pair: "邀请你参加。" 
+                },
+                english: { 
+                    main: "our school is going to hold a cultural festival next month,", 
+                    pair: "invite you to participate." 
+                },
+                verb: "Learning that"
+            },
+            {
+                chinese: { 
+                    main: "你对中国的经典小说感兴趣，", 
+                    pair: "推荐一下西游记。" 
+                },
+                english: { 
+                    main: "you are interested in Chinese classic novels,", 
+                    pair: "recommend Journey to the West to you." 
+                },
+                verb: "Learning that"
+            },
+            {
+                chinese: { 
+                    main: "学校正在为当地养老院招募志愿者，", 
+                    pair: "申请这个机会。" 
+                },
+                english: { 
+                    main: "our school is recruiting volunteers for the local nursing home,", 
+                    pair: "apply for the chance." 
+                },
+                verb: "Learning that"
+            },
+            {
+                chinese: { 
+                    main: "我市将举办一场国际文化交流活动，", 
+                    pair: "申请担任志愿者口译员。" 
+                },
+                english: { 
+                    main: "an international cultural exchange event will be held in our city,", 
+                    pair: "volunteer as an interpreter." 
+                },
+                verb: "Hearing that"
+            },
+            {
+                chinese: { 
+                    main: "学校推出了一个海外留学交流项目，", 
+                    pair: "询问具体要求。" 
+                },
+                english: { 
+                    main: "our school has launched an overseas study exchange program,", 
+                    pair: "inquire about the specific requirements." 
+                },
+                verb: "Hearing that"
+            },
+            {
+                chinese: { 
+                    main: "我校下周将举办一场书法比赛，", 
+                    pair: "通知你们一些相关细节。" 
+                },
+                english: { 
+                    main: "our school will hold a calligraphy competition next week,", 
+                    pair: "inform you of some related details." 
+                },
+                verb: "Learning that"
+            }     
+        ];
+        
+        // 初始化所有句子
+        function initSentences() {
+            contentSequence.forEach((item, index) => {
+                // 创建句子组容器
+                const sentenceGroup = document.createElement('div');
+                sentenceGroup.className = 'sentence-group';
+                sentenceGroup.dataset.index = index;
+                
+                // 创建中文行
+                const chineseRow = document.createElement('div');
+                chineseRow.className = 'chinese-row';
+                chineseRow.innerHTML = `
+                    <span class="row-number">${index + 1}</span>
+                    <div class="main-part chinese-part" data-part="main" data-index="${index}">
+                        <span class="toggle-arrow">▶</span>
+                        <span class="fixed-text">得知 </span>
+                        <span class="variable-text">${item.chinese.main}</span>
+                    </div>
+                    <div class="pair-part chinese-part" data-part="pair" data-index="${index}">
+                        <span class="toggle-arrow">▶</span>
+                        <span class="fixed-text">我写信来</span>
+                        <span class="variable-text">${item.chinese.pair}</span>
+                    </div>
+                `;
+                
+                // 创建英文翻译行（默认完全隐藏）
+                const englishRow = document.createElement('div');
+                englishRow.className = 'english-row';
+                englishRow.dataset.index = index;
+                englishRow.innerHTML = `
+                    <span class="translation-tag">英文翻译</span>
+                    <div class="generated english-part" data-part="main" data-index="${index}">
+                        <span class="fixed-text">${item.verb} </span>
+                        <span class="variable-text">${item.english.main}</span>
+                    </div>
+                    <div class="generated english-part" data-part="pair" data-index="${index}">
+                        <span class="fixed-text">I am writing to </span>
+                        <span class="variable-text">${item.english.pair}</span>
+                    </div>
+                `;
+                
+                // 添加到组容器
+                sentenceGroup.appendChild(chineseRow);
+                sentenceGroup.appendChild(englishRow);
+                
+                // 添加到主容器
+                container.appendChild(sentenceGroup);
+            });
+        }
+        
+        // 点击事件处理 - 实现分句显示/隐藏效果
+        container.addEventListener('click', function(e) {
+            const chinesePart = e.target.closest('.chinese-part');
+            if (chinesePart) {
+                const index = chinesePart.dataset.index;
+                const part = chinesePart.dataset.part;
+                const englishRow = container.querySelector(`.english-row[data-index="${index}"]`);
+                const englishPart = container.querySelector(`.english-part[data-index="${index}"][data-part="${part}"]`);
+                
+                // 先显示英文整行
+                englishRow.style.display = 'flex';
+                
+                // 再切换对应英文部分的显示状态
+                if (englishPart.style.display === 'block') {
+                    englishPart.style.display = 'none';
+                    chinesePart.classList.remove('expanded');
+                    
+                    // 如果两个部分都隐藏了，就隐藏整个英文行
+                    const allParts = container.querySelectorAll(`.english-part[data-index="${index}"]`);
+                    const allHidden = Array.from(allParts).every(p => p.style.display !== 'block');
+                    if (allHidden) {
+                        englishRow.style.display = 'none';
+                    }
+                } else {
+                    englishPart.style.display = 'block';
+                    chinesePart.classList.add('expanded');
+                }
+            }
+        });
+        
+        // 支持回车键提交密码
+        document.getElementById('passwordInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
+    

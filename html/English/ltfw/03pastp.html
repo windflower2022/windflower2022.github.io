@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中文句子与英文翻译练习</title>
+    <style>
+        /* 密码框样式 */
+       .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .password-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        .password-input {
+            padding: 12px;
+            font-size: 16px;
+            margin: 15px 0;
+            border: 2px solid #4A90E2;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .password-btn {
+            padding: 12px 30px;
+            background: #4A90E2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .password-btn:hover {
+            background: #357ABD;
+        }
+
+        /* 主体样式 */
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            max-width: 1050px;
+            margin: 30px auto;
+            padding: 0 20px;
+            background-color: #f7fbff;
+            text-align: left;
+        }
+
+        .instructions {
+            background-color: #e8f4fd;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            border-left: 4px solid #1e88e5;
+            color: #264653;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sentence-group {
+            margin-bottom: 15px;
+        }
+
+        /* 例句标题样式 */
+        .example-heading {
+            font-size: 18px;
+            color: #e64a19;
+            margin: 20px 0 15px;
+            padding-left: 10px;
+            border-left: 3px solid #e64a19;
+            font-weight: 600;
+        }
+
+        .chinese-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+
+        .chinese-part {
+            cursor: pointer;
+            transition: background-color 0.2s;
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        .chinese-part:hover {
+            background-color: #f0f7ff;
+        }
+
+        .chinese-row:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+            background-color: #f9fbff;
+        }
+
+        /* 英文翻译行样式 */
+        .english-row {
+            display: none; /* 默认隐藏整行 */
+            align-items: center;
+            gap: 20px;
+            padding: 10px;
+            margin-left: 30px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .english-part {
+            display: none; /* 英文部分也默认隐藏 */
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .main-part, .pair-part {
+            padding: 12px 18px;
+            font-size: 20px;
+            border-radius: 6px;
+            text-align: left;
+            flex: 1;
+            min-width: 320px;
+        }
+
+        .main-part {
+            border-left: 4px solid #1976d2;
+        }
+
+        .pair-part {
+            border-left: 4px solid #26a69a;
+        }
+
+        .fixed-text {
+            color: #1976d2;
+            font-weight: 500;
+        }
+
+        .variable-text {
+            color: #26a69a;
+            font-weight: 600;
+        }
+
+        .generated {
+            padding: 12px 18px;
+            font-size: 22px;
+            border-radius: 6px;
+            flex: 1;
+            min-width: 300px;
+            background-color: transparent;
+            text-align: left;
+        }
+
+        .generated .fixed-text {
+            color: #1e88e5;
+        }
+
+        .generated .variable-text {
+            color: #2ab6a1;
+        }
+
+        .row-number {
+            color: #4a7cb8;
+            font-size: 14px;
+            font-weight: 600;
+            min-width: 24px;
+            text-align: center;
+            padding: 4px 6px;
+            background-color: #eef5ff;
+            border-radius: 4px;
+        }
+
+        /* 翻译标识标签 */
+        .translation-tag {
+            color: #666;
+            font-size: 14px;
+            padding: 2px 8px;
+            background-color: #eee;
+            border-radius: 4px;
+            margin-right: 10px;
+            min-width: 60px;
+        }
+
+        /* 箭头指示 */
+        .toggle-arrow {
+            color: #4a7cb8;
+            transition: transform 0.3s ease;
+            margin-right: 5px;
+        }
+
+        .chinese-part.expanded .toggle-arrow {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- 密码验证模态框 -->
+    <div class="password-modal" id="passwordModal">
+        <div class="password-box">
+            <h2>请输入访问密码</h2>
+            <input type="password" class="password-input" id="passwordInput" autocomplete="off" autofocus>
+            <button class="password-btn" onclick="checkPassword()">进入系统</button>
+        </div>
+    </div>
+
+    <!-- 主内容区域 -->
+    <div id="mainContent" style="display: none;">
+        <div class="instructions">
+            <h2>每日一练   龙头3——过去分词作原因状语</h2>
+            <h2>公式：<span class="fixed-text">过去分词短语，&emsp;&emsp;&emsp;</span><span class="variable-text">主句</span></h2> 
+            <h3>&emsp;&emsp;&emsp;<span class="fixed-text">（表示原因）</span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<span class="fixed-text">（说明结果）</span></h3> 
+            <p>&emsp;&emsp;&emsp;&emsp;(说明：蓝色文本为固定框架，绿色文本为可替换内容)</p>
+            <h2>常用结构：</h2>
+            <h3><span class="fixed-text">Considered/Regarded as+n.,</span><span class="variable-text">主句.</span> <span style="color: #666;">被认为是......,</span><span class="variable-text">主句。</span></h3>
+            <h3><span class="fixed-text">Equipped with+n.,</span><span class="variable-text">主句.</span> <span style="color: #666;">具备......,</span><span class="variable-text">主句。</span></h3>
+            <h3><span class="fixed-text">Impressed by+n.,</span><span class="variable-text">主句.</span><span style="color: #666;">被......所打动，</span><span class="variable-text">主句。</span></h3>
+            <h3><span class="fixed-text">Motivated/Inspired by+n.,</span><span class="variable-text">主句.</span> <span style="color: #666;">受......所鼓舞，</span><span class="variable-text">主句。</span></h3>
+            <h3><span class="fixed-text">Concerned about+n.,</span><span class="variable-text">主句.</span> <span style="color: #666;">出于对......的担忧，</span><span class="variable-text">主句。</span></h3>
+            <h3><span class="fixed-text">Delighted by+n.,</span><span class="variable-text">主句.</span> <span style="color: #666;">因......而高兴，</span><span class="variable-text">主句。</span></h3>
+        </div>
+        
+        <div class="container" id="contentContainer">
+            <!-- 例句标题 -->
+            <div class="example-heading">例句：</div>
+            
+            <!-- 所有句子（包括例句）将通过JS动态生成 -->
+        </div>
+    </div>
+
+    <script>  
+        // 密码验证功能
+        const CORRECT_PASSWORD = "Luna";
+        let attemptCount = 0;
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            if (input.value === CORRECT_PASSWORD) {
+                document.getElementById('passwordModal').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+                initSentences(); // 密码正确后初始化句子
+            } else {
+                attemptCount++;
+                alert(`密码错误（剩余尝试次数：${5 - attemptCount}）`);
+                input.value = '';
+                if (attemptCount >= 5) {
+                    alert("尝试次数过多，页面即将关闭");
+                    window.close();
+                }
+            }
+        }
+        
+        const container = document.getElementById('contentContainer');
+        
+        // 内容序列：先包含例句，再包含练习句
+        const contentSequence = [
+            // 例句1
+            {
+                chinese: { 
+                    main: "从窗户望去，", 
+                    pair: "天空是蓝色的。" 
+                },
+                english: { 
+                    main: "Seen from the window,", 
+                    pair: "the sky is blue." 
+                },
+                isExample: true
+            },
+            // 例句2
+            {
+                chinese: { 
+                    main: "被长城的壮美所打动，", 
+                    pair: "我决定下次再去游览一番。" 
+                },
+                english: { 
+                    main: "Impressed by the beauty of the Great Wall,", 
+                    pair: "I decide to visit it again." 
+                },
+                isExample: true
+            },
+            // 练习句1（客观介绍）
+            {
+                chinese: { 
+                    main: "作为世界八大奇迹之一，", 
+                    pair: "长城在国内外都享有极高的知名度。" 
+                },
+                english: { 
+                    main: "Considered as one of the eight wonders in the world,", 
+                    pair: "the Great Wall enjoys great popularity at home and abroad." 
+                }
+            },
+            // 练习句2（客观介绍）
+            {
+                chinese: { 
+                    main: "具备扎实的英文知识，", 
+                    pair: "我有资格胜任这个职位。" 
+                },
+                english: { 
+                    main: "Equipped with a good knowledge of English,", 
+                    pair: "I am qualified for this position." 
+                }
+            },
+            // 练习句3（加强描述）
+            {
+                chinese: { 
+                    main: "被春节热烈的节日氛围所打动，", 
+                    pair: "许多外国人渴望体验一下。" 
+                },
+                english: { 
+                    main: "Impressed by the warm festive atmosphere of the Spring Festival,", 
+                    pair: "many foreigners are eager to experience it." 
+                }
+            },
+            // 练习句4（加强描述）
+            {
+                chinese: { 
+                    main: "被功夫的魅力所打动，", 
+                    pair: "我们学校组织了一系列以功夫为主题的活动。" 
+                },
+                english: { 
+                    main: "Impressed by the charm of kung fu,", 
+                    pair: "our school organized a series of kung fu-themed activities." 
+                }
+            },
+            // 练习句5（表决心）
+            {
+                chinese: { 
+                    main: "受到老师的鼓励，", 
+                    pair: "我有信心申请这个职位。" 
+                },
+                english: { 
+                    main: "Encouraged by my teacher,", 
+                    pair: "I have the confidence to apply for the position." 
+                }
+            },
+            // 练习句6（表决心）
+            {
+                chinese: { 
+                    main: "受到袁隆平的故事的鼓舞，", 
+                    pair: "我决定追求自己的梦想。" 
+                },
+                english: { 
+                    main: "Motivated by Yuan Longping's story,", 
+                    pair: "I am determined to pursue my own dream." 
+                }
+            },
+            // 练习句7（建议信）
+            {
+                chinese: { 
+                    main: "出于对食物浪费的担忧，", 
+                    pair: "我写信来提出一些建议。" 
+                },
+                english: { 
+                    main: "Concerned about the problem of food waste,", 
+                    pair: "I am writing to offer some suggestions." 
+                }
+            },
+            // 练习句8（邀请信）
+            {
+                chinese: { 
+                    main: "因新年将至而高兴，", 
+                    pair: "我写信邀请你与我们一同庆祝。" 
+                },
+                english: { 
+                    main: "Delighted by the coming New Year,", 
+                    pair: "I am writing to invite you to celebrate with us." 
+                }
+            }
+        ];
+        
+        // 添加分类标题
+        function addCategoryTitle(title) {
+            const titleElement = document.createElement('div');
+            titleElement.className = 'example-heading';
+            titleElement.textContent = title;
+            container.appendChild(titleElement);
+        }
+        
+        // 初始化所有句子（包括例句）
+        function initSentences() {
+            let exampleCount = 0;
+            let exerciseCount = 0;
+            
+            // 添加练习句分类标题
+            let currentCategory = "";
+            
+            contentSequence.forEach((item, index) => {
+                // 检查是否需要添加分类标题
+                if (!item.isExample) {
+                    let category = "";
+                    if (index >= 2 && index <= 3) category = "1. 客观介绍";
+                    else if (index >= 4 && index <= 5) category = "2. 加强描述";
+                    else if (index >= 6 && index <= 7) category = "3. 表决心";
+                    else if (index === 8) category = "4. 建议信";
+                    else if (index === 9) category = "5. 邀请信";
+                    
+                    if (category && category !== currentCategory) {
+                        addCategoryTitle(category);
+                        currentCategory = category;
+                        exerciseCount = 0; // 重置练习计数
+                    }
+                }
+                
+                // 创建句子组容器
+                const sentenceGroup = document.createElement('div');
+                sentenceGroup.className = 'sentence-group';
+                sentenceGroup.dataset.index = index;
+                
+                // 确定是否为例句
+                const isExample = item.isExample || false;
+                if (isExample) {
+                    exampleCount++;
+                } else {
+                    exerciseCount++;
+                }
+                
+                // 显示序号
+                const displayNumber = isExample ? `例${exampleCount}` : `${exerciseCount}`;
+                
+                // 创建中文行
+                const chineseRow = document.createElement('div');
+                chineseRow.className = 'chinese-row';
+                chineseRow.innerHTML = `
+                    <span class="row-number">${displayNumber}</span>
+                    <div class="main-part chinese-part" data-part="main" data-index="${index}">
+                        <span class="toggle-arrow">▶</span>
+                        <span class="fixed-text">${item.chinese.main}</span>
+                    </div>
+                    <div class="pair-part chinese-part" data-part="pair" data-index="${index}">
+                        <span class="toggle-arrow">▶</span>
+                        <span class="variable-text">${item.chinese.pair}</span>
+                    </div>
+                `;
+                
+                // 创建英文翻译行
+                const englishRow = document.createElement('div');
+                englishRow.className = 'english-row';
+                englishRow.dataset.index = index;
+                englishRow.innerHTML = `
+                    <span class="translation-tag">${isExample ? "英文原句" : "英文翻译"}</span>
+                    <div class="generated english-part" data-part="main" data-index="${index}">
+                        <span class="fixed-text">${item.english.main}</span>
+                    </div>
+                    <div class="generated english-part" data-part="pair" data-index="${index}">
+                        <span class="variable-text">${item.english.pair}</span>
+                    </div>
+                `;
+                
+                // 添加到组容器
+                sentenceGroup.appendChild(chineseRow);
+                sentenceGroup.appendChild(englishRow);
+                
+                // 添加到主容器
+                container.appendChild(sentenceGroup);
+            });
+        }
+        
+        // 点击事件处理 - 实现分句显示/隐藏效果
+        container.addEventListener('click', function(e) {
+            const chinesePart = e.target.closest('.chinese-part');
+            if (chinesePart) {
+                const index = chinesePart.dataset.index;
+                const part = chinesePart.dataset.part;
+                const englishRow = container.querySelector(`.english-row[data-index="${index}"]`);
+                const englishPart = container.querySelector(`.english-part[data-index="${index}"][data-part="${part}"]`);
+                
+                // 先显示英文整行
+                englishRow.style.display = 'flex';
+                
+                // 再切换对应英文部分的显示状态
+                if (englishPart.style.display === 'block') {
+                    englishPart.style.display = 'none';
+                    chinesePart.classList.remove('expanded');
+                    
+                    // 如果两个部分都隐藏了，就隐藏整个英文行
+                    const allParts = container.querySelectorAll(`.english-part[data-index="${index}"]`);
+                    const allHidden = Array.from(allParts).every(p => p.style.display !== 'block');
+                    if (allHidden) {
+                        englishRow.style.display = 'none';
+                    }
+                } else {
+                    englishPart.style.display = 'block';
+                    chinesePart.classList.add('expanded');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+    
