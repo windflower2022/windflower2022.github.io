@@ -1,83 +1,660 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title></title>
-    <style>
-      #mydiv { margin : 0 0 0 ;
-      display: grid;
-      place-items: center;
-         width: 1600px; 
-         height: 900px; 
-      top:0px;
-      background: lightblue url('https://cccimg.com/view.php/bff6fab6a1941db2c9fd856d36524754.png') no-repeat center/cover;
-      box-shadow: 0px 0px 0px #000;
-      user-select: none;
-      overflow: hidden;
-      position: relative;
-      z-index: 3;  }
-      
-      .mypic {
-              position: absolute;
-          right:1060px;
-          top:100px;
-              cursor: pointer;
-          mix-blend-mode: Multiply;
-          z-index: 3;
-          }
-          
-          
-      
-      #vid3 {
-        position: absolute;
-        width: 100%;
-        height: 110%;
-                    right:0%;    
-        top: -280px;
-        object-fit: cover;
-        pointer-events: none;
-      mix-blend-mode: screen; //滤色
-      
-        z-index: 2;
-        opacity: 0.0;
-      }
-      
-      
-      
-      #vid4 {
-        position: absolute;
-        
-        width: 100%;
-        height: 110%;
-        top:-160px;
-        object-fit: cover;
-        pointer-events: none;
-      mix-blend-mode: screen;
-      
-        z-index: 2;
-        opacity: .0;
-      }
+<html>
+<head>
+<meta charset="UTF-8">
+<title>流畅切换的幻灯片效果</title>
+<style>
+#mydiv { 
+	margin: 50px auto;
+	display: grid;
+	place-items: center;
+	width: 1600px;
+	height: 900px;
+  background-color: #010d11;
+	/* box-shadow: 3px 3px 20px #000;*/
+	user-select: none;
+	overflow: hidden;
+	position: relative;
+	z-index: 1;  
+}
 
-      #vid5 {
-        position: absolute;
-        
-        width: 100%;
-        height: 110%;
-        top:-80px;
-        object-fit: cover;
-        pointer-events: none;
-      mix-blend-mode: screen;
+/* 滚动文字样式 */
+.scrolling-text {
+  position: absolute;
+  top: 0px;
+  right: -100%;
+  white-space: nowrap;
+  color: blue;
+  font-size: 0px;
+  font-weight: bold;
+  z-index: 200;
+  animation: scrollText 30s linear infinite;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
+    right: -100%;
+  }
+  100% {
+    transform: translateX(-100%);
+    right: 100%;
+  }
+}
+
+/* 幻灯片样式 */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translate(0, 0);
+}
+
+.slide img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 控制按钮和当前效果显示 */
+#controls {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 100;
+  padding: 0px;
+  background: rgba(0,0,0,0.3);
+}
+
+#current-effect {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+/* 视频覆盖层 */
+#overlay {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 80px);
+  object-fit: cover;
+  mix-blend-mode: overlay;
+  opacity: 0.0;
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* 1. 淡入淡出效果 */
+/* 基础效果，无额外样式 */
+
+/* 2. 模糊显现效果 */
+.blur-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  backdrop-filter: blur(15px);
+  background-color: #010d11;
+  transition: backdrop-filter 1.8s ease, background-color 1.8s ease;
+}
+
+/* 3. 线条显现效果（替代原缩放旋转） */
+.lines-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  overflow: hidden;
+}
+.line-slider {
+  position: absolute;
+  width: 100%;
+  height: 11%; /* 线条高度 */
+  background-color: #010d11;
+  transition: transform 1.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(0);
+}
+
+/* 4. 水平分割效果（上下分开） 
+.split-h-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  overflow: hidden;
+}
+.split-h-top, .split-h-bottom {
+  position: absolute;
+  width: 100%;
+  background-color: #6088d8;
+  transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.split-h-top {
+  top: 0;
+  height: 50%;
+  transform: translateY(0);
+}
+.split-h-bottom {
+  bottom: 0;
+  height: 50%;
+  transform: translateY(0);
+}
+
+ 5. 垂直分割效果（左右分开） 
+.split-v-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  overflow: hidden;
+}
+.split-v-left, .split-v-right {
+  position: absolute;
+  height: 100%;
+  background-color: #6088d8;
+  transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.split-v-left {
+  left: 0;
+  width: 50%;
+  transform: translateX(0);
+}
+.split-v-right {
+  right: 0;
+  width: 50%;
+  transform: translateX(0);
+}
+
+6. 梳理效果 
+.comb-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  overflow: hidden;
+}
+.comb-slider {
+  position: absolute;
+  width: 100%;
+  height: 20%; /* 5个滑块，每个占20%高度 
+  background-color: #6088d8;
+  transition: transform 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+}
+.comb-slider:nth-child(1) { top: 0; }
+.comb-slider:nth-child(2) { top: 20%; }
+.comb-slider:nth-child(3) { top: 40%; }
+.comb-slider:nth-child(4) { top: 60%; }
+.comb-slider:nth-child(5) { top: 80%; }*/
+
+/* 7. 百叶窗效果 */
+.blinds-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+}
+.blind-slider {
+  flex: 1;
+  height: 100%;
+  background-color: #010d11;
+  transition: transform 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+}
+
+/* 8. 棋盘效果 */
+.chessboard-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+.chess-piece {
+  background-color: #010d11;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+/* 9. 翻页效果（3D旋转） */
+.page-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  perspective: 1500px;
+}
+.page-turn {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: 010d11;
+  transform-origin: left center;
+  transform: rotateY(0deg);
+  transition: transform 1.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* 10. 闪烁效果 */
+.flicker-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: #010d11;
+}
+
+/* 11. 溶解效果 */
+.dissolve-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+}
+.dissolve-piece {
+  background-color: #010d11;
+  opacity: 1;
+  transition: opacity 1.2s ease;
+}
+
+/* 视频样式 */
+#vid1 {
+  position: absolute;
+  width: 100%;
+  height: 110%;
+  top:-80px;
+  object-fit: cover;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 2;
+  opacity: .0;
+}
+#vid2 {
+  position: absolute;
+  width: 100%;
+  height: 110%;
+  top:-80px;
+  object-fit: cover;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  -webkit-mask: linear-gradient(to bottom, red 50%, transparent 55%, transparent);
+  z-index: 3;
+  opacity: .50;
+}
+</style>  
+<body>
+<div id="mydiv">
+  <!-- 滚动文字 -->
+  <div class="scrolling-text">流畅幻灯片效果：淡入淡出、模糊显现、线条显现、水平分割、垂直分割、梳理、百叶窗、棋盘、翻页、闪烁、溶解</div>
+  
+  <!-- 图片幻灯片 -->
+  <div class="slide" style="opacity: 1;">
+    <img src="https://cccimg.com/view.php/bff6fab6a1941db2c9fd856d36524754.png" alt="图片1">
+  </div>
+  <div class="slide">
+    <img src="https://cccimg.com/view.php/bff6fab6a1941db2c9fd856d36524754.png" alt="图片2">
+  </div>
+  <div class="slide">
+    <img src="https://cccimg.com/view.php/bff6fab6a1941db2c9fd856d36524754.png" alt="图片3">
+  </div>
+  <div class="slide">
+    <img src="https://cccimg.com/view.php/bff6fab6a1941db2c9fd856d36524754.png" alt="图片4">
+  </div>
+  
+  <!-- 视频覆盖层 -->
+  <video id="overlay" autoplay loop muted playsinline>
+    <source src="https://img.tukuppt.com/video_show/2422006/00/01/70/5b4b1e2590ccc.mp4" type="video/mp4">
+  </video>
+  
+  <video id="vid1" src="https://img.tukuppt.com/video_show/7165162/00/17/65/5ecb8fa5f0765.mp4" autoplay loop muted></video>
+  <video id="vid2" src="https://video.699pic.com/videos/21/32/78/a_nHiUErPziP051556213278.mp4" autoplay loop muted></video>
+  
+  <!-- 控制区 -->
+  <div id="controls">
+    <div id="current-effect"></div>
+  </div>
+</div>  
+
+<script>
+// 基础变量
+let currentIndex = 0;
+let slides = document.querySelectorAll('.slide');
+let totalSlides = slides.length;
+let timer;
+let currentEffectElement = document.getElementById('current-effect');
+let lastEffectIndex = -1; // 记录上一个效果索引，避免连续重复
+
+// 效果列表，将缩放旋转替换为线条显现
+const effects = [
+  {name: '', value: 'fade'},
+  {name: '', value: 'blurReveal'},
+  {name: '', value: 'lineReveal'},  // 新效果
+  /*{name: '水平分割', value: 'splitHorizontal'},
+  {name: '垂直分割', value: 'splitVertical'},
+  {name: '梳理', value: 'comb'},
+  {name: '百叶窗', value: 'blinds'},*/
+  {name: '', value: 'chessboard'},
+  {name: '', value: 'pageTurn'},
+  {name: '', value: 'flicker'},
+  {name: '', value: 'dissolve'}
+];
+
+// 初始化
+function init() {
+  autoPlayAudio();
+  startTimer();
+}
+
+// 自动播放音乐（若有）
+function autoPlayAudio() {
+  const audio = document.getElementById('aud');
+  if (audio) {
+    audio.play().then(() => {
+      console.log('音乐播放成功');
+    }).catch(e => {
+      document.body.addEventListener('click', function playOnClick() {
+        audio.play();
+        document.body.removeEventListener('click', playOnClick);
+      }, { once: true });
+    });
+  }
+}
+
+// 清除所有特效残留
+function clearEffects() {
+  // 移除所有特效容器，包括新的线条容器
+  const containers = document.querySelectorAll(
+    '.blinds-wrapper, .chessboard-wrapper, .comb-wrapper, .dissolve-wrapper, ' +
+    '.split-h-wrapper, .split-v-wrapper, .page-wrapper, .flicker-wrapper, .blur-wrapper, .lines-wrapper'
+  );
+  containers.forEach(container => container.remove());
+  
+  // 重置所有幻灯片样式
+  slides.forEach(slide => {
+    slide.style.opacity = '0';
+    slide.style.transform = 'translate(0, 0) scale(1) rotate(0)';
+    slide.style.filter = 'none';
+    slide.style.transition = 'none';
+  });
+}
+
+// 显示下一张幻灯片
+function showNext() {
+  clearEffects();
+  currentIndex = (currentIndex + 1) % totalSlides;
+  
+  // 选择效果，确保不与上一个效果相同
+  let randomIndex;
+  do {
+    randomIndex = Math.floor(Math.random() * effects.length);
+  } while (randomIndex === lastEffectIndex && effects.length > 1);
+  
+  lastEffectIndex = randomIndex;
+  const effect = effects[randomIndex];
+  currentEffectElement.textContent = ` ${effect.name}`;
+  const slide = slides[currentIndex];
+  applyEffect(slide, effect.value);
+  resetTimer();
+}
+
+// 应用切换效果（新增线条显现效果）
+function applyEffect(slide, effect) {
+  slide.style.display = 'block';
+
+  switch(effect) {
+    // 1. 淡入淡出效果
+    case 'fade':
+      slide.style.opacity = '0';
+      setTimeout(() => {
+        slide.style.transition = 'opacity 2s ease-in-out';
+        slide.style.opacity = '1';
+      }, 50);
+      break;
+
+    // 2. 模糊显现效果
+    case 'blurReveal':
+      slide.style.opacity = '1';
+      slide.style.filter = 'blur(20px)';
+      const blurWrap = document.createElement('div');
+      blurWrap.className = 'blur-wrapper';
+      slide.appendChild(blurWrap);
+      setTimeout(() => {
+        slide.style.transition = 'filter 2s ease-in-out';
+        slide.style.filter = 'blur(0)';
+        blurWrap.style.backdropFilter = 'blur(0)';
+        blurWrap.style.backgroundColor = 'rgba(96, 136, 216, 0)';
+      }, 50);
+      break;
+
+    // 3. 线条显现效果（替代原缩放旋转）
+    case 'lineReveal':
+      slide.style.opacity = '1';
+      const linesWrap = document.createElement('div');
+      linesWrap.className = 'lines-wrapper';
+      slide.appendChild(linesWrap);
       
-        z-index: 2;
-        opacity: 0.42;
+      // 创建20条水平线条，覆盖整个幻灯片
+      const lineCount = 20;
+      for(let i = 0; i < lineCount; i++) {
+        const line = document.createElement('div');
+        line.className = 'line-slider';
+        // 计算每条线的位置
+        line.style.top = `${i * 5}%`;
+        // 交错延迟，创造波浪效果
+        const delay = i % 2 === 0 ? i * 0.05 : (lineCount - i) * 0.05;
+        line.style.transitionDelay = `${delay}s`;
+        linesWrap.appendChild(line);
       }
-      </style>        
-  </head>
-  <body>
-    <div id="mydiv">   <div class="mypic"><img src="" alt="" /></div>        
-<video id="vid3" src="https://img.tukuppt.com/video_show/2269348/00/14/66/5e5a2c53955d7.mp4" autoplay="" loop="" muted=""></video>
-<video id="vid4" src="https://video.699pic.com/videos/ing_left_all/ING_VID_2461737.mp4" autoplay="" loop="" muted=""></video>
-<video id="vid5" src="https://img.tukuppt.com/video_show/15653652/00/80/83/60d04564c32f7.mp4" autoplay="" loop="" muted=""></video>
-</div>
-    </body>
-   </div><div style="height:0px"></div>   
+      
+      // 触发线条向两侧滑出，显示图片
+      setTimeout(() => {
+        document.querySelectorAll('.line-slider').forEach((line, index) => {
+          // 奇数行向左滑，偶数行向右滑，创造交错效果
+          line.style.transform = index % 2 === 0 ? 'translateX(-100%)' : 'translateX(100%)';
+        });
+      }, 100);
+      break;
+
+    /* 4. 水平分割效果
+    case 'splitHorizontal':
+      slide.style.opacity = '1';
+      const splitHWrap = document.createElement('div');
+      splitHWrap.className = 'split-h-wrapper';
+      const splitHTop = document.createElement('div');
+      splitHTop.className = 'split-h-top';
+      const splitHBottom = document.createElement('div');
+      splitHBottom.className = 'split-h-bottom';
+      splitHWrap.appendChild(splitHTop);
+      splitHWrap.appendChild(splitHBottom);
+      slide.appendChild(splitHWrap);
+      setTimeout(() => {
+        splitHTop.style.transform = 'translateY(-100%)';
+        splitHBottom.style.transform = 'translateY(100%)';
+      }, 100);
+      break;
+
+    // 5. 垂直分割效果
+    case 'splitVertical':
+      slide.style.opacity = '1';
+      const splitVWrap = document.createElement('div');
+      splitVWrap.className = 'split-v-wrapper';
+      const splitVLeft = document.createElement('div');
+      splitVLeft.className = 'split-v-left';
+      const splitVRight = document.createElement('div');
+      splitVRight.className = 'split-v-right';
+      splitVWrap.appendChild(splitVLeft);
+      splitVWrap.appendChild(splitVRight);
+      slide.appendChild(splitVWrap);
+      setTimeout(() => {
+        splitVLeft.style.transform = 'translateX(-100%)';
+        splitVRight.style.transform = 'translateX(100%)';
+      }, 100);
+      break; 
+
+    // 6. 梳理效果
+    case 'comb':
+      slide.style.opacity = '1';
+      const combWrap = document.createElement('div');
+      combWrap.className = 'comb-wrapper';
+      slide.appendChild(combWrap);
+      
+      const combCount = 5;
+      for(let i = 0; i < combCount; i++) {
+        const comb = document.createElement('div');
+        comb.className = 'comb-slider';
+        comb.style.transitionDelay = `${i * 0.15}s`;
+        combWrap.appendChild(comb);
+      }
+      
+      setTimeout(() => {
+        document.querySelectorAll('.comb-slider').forEach(comb => {
+          comb.style.transform = 'translateY(-100%)';
+        });
+      }, 100);
+      break;*/
+
+    // 7. 百叶窗效果
+    case 'blinds':
+      slide.style.opacity = '1';
+      const blindsWrap = document.createElement('div');
+      blindsWrap.className = 'blinds-wrapper';
+      slide.appendChild(blindsWrap);
+      const blindCount = 12;
+      for(let i = 0; i < blindCount; i++) {
+        const blind = document.createElement('div');
+        blind.className = 'blind-slider';
+        blind.style.transitionDelay = `${i * 0.07}s`;
+        blindsWrap.appendChild(blind);
+      }
+      setTimeout(() => {
+        document.querySelectorAll('.blind-slider').forEach(blind => {
+          blind.style.transform = 'translateY(-100%)';
+        });
+      }, 100);
+      break;
+
+    // 8. 棋盘效果
+    case 'chessboard':
+      slide.style.opacity = '1';
+      const chessWrap = document.createElement('div');
+      chessWrap.className = 'chessboard-wrapper';
+      slide.appendChild(chessWrap);
+      const chessTotal = 40;
+      for(let i = 0; i < chessTotal; i++) {
+        const chess = document.createElement('div');
+        chess.className = 'chess-piece';
+        const row = Math.floor(i / 8);
+        chess.style.transitionDelay = `${(row % 2 === 0 ? i : chessTotal - i) * 0.04}s`;
+        chessWrap.appendChild(chess);
+      }
+      setTimeout(() => {
+        document.querySelectorAll('.chess-piece').forEach(piece => {
+          piece.style.opacity = '0';
+        });
+      }, 100);
+      break;
+
+    // 9. 翻页效果
+    case 'pageTurn':
+      slide.style.opacity = '1';
+      const pageWrap = document.createElement('div');
+      pageWrap.className = 'page-wrapper';
+      const pageTurn = document.createElement('div');
+      pageTurn.className = 'page-turn';
+      pageWrap.appendChild(pageTurn);
+      slide.appendChild(pageWrap);
+      setTimeout(() => {
+        pageTurn.style.transform = 'rotateY(-180deg)';
+      }, 100);
+      break;
+
+    // 10. 闪烁效果
+    case 'flicker':
+      slide.style.opacity = '0';
+      slide.style.transition = 'opacity 0.15s ease-in-out';
+      let flickerCount = 0;
+      const flickerInterval = setInterval(() => {
+        flickerCount++;
+        const opacity = flickerCount % 2 === 0 ? '1' : '0';
+        slide.style.opacity = opacity;
+        
+        if (flickerCount >= 8) {
+          clearInterval(flickerInterval);
+          slide.style.opacity = '1';
+          slide.style.transition = 'none';
+        }
+      }, 80);
+      break;
+
+    // 11. 溶解效果
+    case 'dissolve':
+      slide.style.opacity = '1';
+      const dissolveWrap = document.createElement('div');
+      dissolveWrap.className = 'dissolve-wrapper';
+      slide.appendChild(dissolveWrap);
+      const dissolveTotal = 96;
+      for(let i = 0; i < dissolveTotal; i++) {
+        const dissolve = document.createElement('div');
+        dissolve.className = 'dissolve-piece';
+        dissolve.style.transitionDelay = `${(0.2 + Math.random() * 0.8)}s`;
+        dissolveWrap.appendChild(dissolve);
+      }
+      setTimeout(() => {
+        document.querySelectorAll('.dissolve-piece').forEach(piece => {
+          piece.style.opacity = '0';
+        });
+      }, 100);
+      break;
+  }
+}
+
+// 定时器控制
+function startTimer() {
+  timer = setInterval(showNext, 6000);
+}
+function resetTimer() {
+  clearInterval(timer);
+  startTimer();
+}
+
+// 页面加载完成后初始化
+window.onload = init;
+</script>
+</body>
 </html>
+    
