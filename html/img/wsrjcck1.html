@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+
+#mydiv { 
+    margin: 50px auto;
+	display: grid;
+	place-items: center;
+	width: 1600px;
+	height: 900px;
+	background-color: #000205;
+	user-select: none;
+	overflow: hidden;
+	position: relative;
+	z-index: 1;  
+}
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000205;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+.loading.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  border-top: 5px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.slide img {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.slide img.loaded {
+  opacity: 1;
+}
+
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.5s ease; 
+}
+
+.slide img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+.camera-shake {
+  animation: cameraShake 0.8s ease-in-out;
+}
+
+@keyframes cameraShake {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  10% { transform: translate(-5px, -5px) rotate(-1deg); }
+  20% { transform: translate(5px, 5px) rotate(1deg); }
+  30% { transform: translate(-5px, 5px) rotate(-1deg); }
+  40% { transform: translate(5px, -5px) rotate(1deg); }
+  50% { transform: translate(-3px, -3px) rotate(-0.5deg); }
+  60% { transform: translate(3px, 3px) rotate(0.5deg); }
+  70% { transform: translate(-3px, 3px) rotate(-0.5deg); }
+  80% { transform: translate(3px, -3px) rotate(0.5deg); }
+  90% { transform: translate(-2px, -2px) rotate(-0.2deg); }
+}
+
+
+.snow-fault {
+  position: relative;
+  overflow: hidden;
+}
+
+.snow-fault::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: snowFaultAnimation 0.8s linear;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes snowFaultAnimation {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+
+.snow-dot {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 15;
+}
+
+
+.shake {
+  animation: shake 0.6s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10% { transform: translateX(-5px); }
+  20% { transform: translateX(5px); }
+  30% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  50% { transform: translateX(-3px); }
+  60% { transform: translateX(3px); }
+  70% { transform: translateX(-3px); }
+  80% { transform: translateX(3px); }
+  90% { transform: translateX(-2px); }
+}
+
+
+
+
+.shake-scale {
+  animation: shakeScale 1s ease-in-out;
+}
+
+@keyframes shakeScale {
+  0% { transform: scale(1) translateX(0); opacity: 1; }
+  10% { transform: scale(0.98) translateX(-5px); }
+  20% { transform: scale(0.98) translateX(5px); }
+  30% { transform: scale(0.96) translateX(-5px); }
+  40% { transform: scale(0.96) translateX(5px); }
+  50% { transform: scale(0.94) translateX(-3px); }
+  60% { transform: scale(0.94) translateX(3px); }
+  70% { transform: scale(0.92) translateX(-3px); }
+  80% { transform: scale(0.92) translateX(3px); }
+  90% { transform: scale(0.9) translateX(-2px); }
+  100% { transform: scale(0.8) translateX(0); opacity: 0; }
+}
+
+
+@keyframes snowDotAnimation {
+  0% { transform: translateY(0); opacity: 0.8; }
+  100% { transform: translateY(20px); opacity: 0; }
+}
+
+
+</style> 
+<body>
+<div id="mydiv">
+
+  <div class="slide" style="opacity: 1;">
+    <img src="https://i.ibb.co/sdPBn9WS/wsrjcck1.jpg" alt="图片1">
+  </div>
+  <div class="slide">
+    <img src="https://i.ibb.co/WNDynD3X/wsrjcck3.jpg" alt="图片2">
+  </div>
+  <div class="slide">
+    <img src="https://i.ibb.co/cSkScBb0/wsrjcck2.jpg" alt="图片3">
+  </div>
+  <div class="slide">
+    <img src="https://i.ibb.co/v413rpmn/wsrjcck4.jpg" alt="图片4">
+  </div>
+  <div class="slide">
+    <img src="https://i.ibb.co/mF1hP4qM/wsrjcck5.jpg" alt="图片5">
+  </div>
+  <div class="slide">
+    <img src="https://i.ibb.co/0VXmrndC/wsrjcck6.jpg" alt="图片6">
+  </div>
+  
+  
+</div>  
+
+<script>
+  
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length; 
+    let timer;
+    let effectIndex = 0;
+    let isTransitioning = false;
+    
+   
+    function preloadImages() {
+      const promises = [];
+      
+      slides.forEach(slide => {
+        const img = slide.querySelector('img');
+        if (img) {
+          const promise = new Promise((resolve, reject) => {
+            
+            const preloadImg = new Image();
+            preloadImg.src = img.src;
+            
+            preloadImg.onload = () => {
+            
+              img.classList.add('loaded');
+              resolve();
+            };
+            
+            preloadImg.onerror = () => {
+              console.error(`图片预加载失败: ${img.src}`);
+             
+              img.classList.add('loaded');
+              resolve();
+            };
+            
+            // 超时处理
+            setTimeout(() => {
+              if (!img.classList.contains('loaded')) {
+                console.warn(`图片预加载超时: ${img.src}`);
+                img.classList.add('loaded');
+                resolve();
+              }
+            }, 5000);
+          });
+          promises.push(promise);
+        }
+      });
+      
+      return Promise.all(promises);
+    }
+    
+   
+    const effects = [
+      {func: applyCameraShakeEffect},    
+      {func: applySnowFaultEffect},      
+      {func: applyShakeEffect},          
+      {func: applyShakeScaleEffect}      
+    ];
+    
+    
+    function init() {
+      
+      preloadImages().then(() => {
+   
+        const loadingIndicator = document.querySelector('.loading');
+        if (loadingIndicator) {
+          loadingIndicator.classList.add('hidden');
+   
+          setTimeout(() => {
+            loadingIndicator.style.display = 'none';
+          }, 500);
+        }
+        
+    
+        const firstSlide = slides[0];
+        if (firstSlide) {
+          firstSlide.style.opacity = '1';
+          const firstImage = firstSlide.querySelector('img');
+          if (firstImage) {
+            firstImage.classList.add('loaded');
+          }
+        }
+        
+       
+        startTimer();
+      });
+    }
+    
+    
+    function clearEffects() {
+    
+      slides.forEach(slide => {
+        slide.classList.remove('camera-shake', 'snow-fault', 'shake', 'shake-scale');
+        slide.style.opacity = '0';
+        slide.style.transition = 'opacity 1.5s ease';
+        
+ 
+        
+        const snowDots = slide.querySelectorAll('.snow-dot');
+        snowDots.forEach(dot => dot.remove());
+      });
+    }
+    
+
+    function showNext() {
+
+      if (isTransitioning) return;
+      
+      isTransitioning = true;
+      clearEffects(); 
+      
+  
+      const prevIndex = currentIndex;
+      currentIndex = (currentIndex + 1) % totalSlides;
+      
+    
+      const effect = effects[effectIndex];
+      effectIndex = (effectIndex + 1) % effects.length;
+      
+      const prevSlide = slides[prevIndex];
+      const targetSlide = slides[currentIndex];
+      const targetImage = targetSlide.querySelector('img');
+      
+    
+      targetSlide.style.zIndex = '10';
+      prevSlide.style.zIndex = '5';
+      
+   
+      if (targetImage && targetImage.classList.contains('loaded')) {
+  
+        targetSlide.style.opacity = '1';
+        applyEffectAndProceed(prevSlide, targetSlide, effect);
+      } else if (targetImage) {
+
+        targetSlide.style.opacity = '0.3';
+        
+        const loadHandler = () => {
+          targetImage.classList.add('loaded');
+          targetSlide.style.opacity = '1';
+          targetImage.removeEventListener('load', loadHandler);
+          applyEffectAndProceed(prevSlide, targetSlide, effect);
+        };
+        
+        targetImage.addEventListener('load', loadHandler);
+        
+     
+        setTimeout(() => {
+          if (!targetImage.classList.contains('loaded')) {
+            targetImage.classList.add('loaded');
+            targetSlide.style.opacity = '1';
+            targetImage.removeEventListener('load', loadHandler);
+            applyEffectAndProceed(prevSlide, targetSlide, effect);
+          }
+        }, 3000);
+      } else {
+ 
+        targetSlide.style.opacity = '1';
+        applyEffectAndProceed(prevSlide, targetSlide, effect);
+      }
+    }
+    
+
+    function applyEffectAndProceed(prevSlide, targetSlide, effect) {
+ 
+      effect.func(prevSlide, targetSlide);
+      
+
+      const maxEffectDuration = 1200; 
+      
+    
+      setTimeout(() => {
+        prevSlide.style.opacity = '0';
+        prevSlide.style.zIndex = '1';
+        targetSlide.style.zIndex = '1';
+        isTransitioning = false;
+        resetTimer(); 
+      }, maxEffectDuration);
+    }
+    
+  
+    function applyCameraShakeEffect(prevSlide, targetSlide) {
+   
+      prevSlide.classList.add('camera-shake');
+    }
+  
+    function applySnowFaultEffect(prevSlide, targetSlide) {
+  
+      prevSlide.classList.add('snow-fault');
+   
+      createSnowDots(prevSlide);
+    }
+    
+    function createSnowDots(container) {
+      const dotCount = 50;
+      const containerWidth = container.offsetWidth;
+      const containerHeight = container.offsetHeight;
+      
+      for (let i = 0; i < dotCount; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('snow-dot');
+        
+     
+        const size = 1 + Math.random() * 3;
+        dot.style.width = `${size}px`;
+        dot.style.height = `${size}px`;
+        
+        
+        const posX = Math.random() * containerWidth;
+        const posY = Math.random() * containerHeight;
+        dot.style.left = `${posX}px`;
+        dot.style.top = `${posY}px`;
+        
+  
+        dot.style.opacity = 0.3 + Math.random() * 0.7;
+        
+      
+        const delay = Math.random() * 0.8;
+        const duration = 0.5 + Math.random() * 1;
+        
+        dot.style.animation = `snowDotAnimation ${duration}s linear ${delay}s forwards`;
+        
+        container.appendChild(dot);
+      }
+    }
+    
+
+    function applyShakeEffect(prevSlide, targetSlide) {
+  
+      prevSlide.classList.add('shake');
+    }
+    
+    
+    
+   
+    function applyShakeScaleEffect(prevSlide, targetSlide) {
+
+      prevSlide.classList.add('shake-scale');
+    }
+    
+
+    function startTimer() {
+      timer = setInterval(showNext, 7000);
+    }
+    
+
+    function resetTimer() {
+      clearInterval(timer);
+      startTimer();
+    }
+    
+
+    window.onload = init;
+    </script>
+    </body>
+    </html>

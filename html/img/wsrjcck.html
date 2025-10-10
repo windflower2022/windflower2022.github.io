@@ -4,9 +4,8 @@
 <meta charset="UTF-8">
 <title></title>
 <style>
-
 #mydiv { 
-    margin: 50px auto;
+    margin: 0px 0 30px;
 	display: grid;
 	place-items: center;
 	width: 1600px;
@@ -18,49 +17,6 @@
 	z-index: 1;  
 }
 
-.loading {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000205;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: opacity 0.5s ease;
-}
-
-.loading.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.loading-spinner {
-  width: 50px;
-  height: 50px;
-  border: 5px solid rgba(255, 255, 255, 0.1);
-  border-top: 5px solid #ffffff;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-
-.slide img {
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.slide img.loaded {
-  opacity: 1;
-}
-
 
 .slide {
   position: absolute;
@@ -68,8 +24,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0;
-  transition: opacity 1.5s ease; 
+  opacity: 0; 
 }
 
 .slide img {
@@ -83,385 +38,296 @@
 }
 
 
-.camera-shake {
-  animation: cameraShake 0.8s ease-in-out;
+#overlay {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 80px);
+  object-fit: cover;
+  mix-blend-mode: overlay;
+  opacity: 0.0;
+  z-index: 50;
+  pointer-events: none;
 }
 
-@keyframes cameraShake {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  10% { transform: translate(-5px, -5px) rotate(-1deg); }
-  20% { transform: translate(5px, 5px) rotate(1deg); }
-  30% { transform: translate(-5px, 5px) rotate(-1deg); }
-  40% { transform: translate(5px, -5px) rotate(1deg); }
-  50% { transform: translate(-3px, -3px) rotate(-0.5deg); }
-  60% { transform: translate(3px, 3px) rotate(0.5deg); }
-  70% { transform: translate(-3px, 3px) rotate(-0.5deg); }
-  80% { transform: translate(3px, -3px) rotate(0.5deg); }
-  90% { transform: translate(-2px, -2px) rotate(-0.2deg); }
-}
-
-
-.snow-fault {
-  position: relative;
-  overflow: hidden;
-}
-
-.snow-fault::before {
-  content: '';
+.block-effect-wrapper {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    transparent 100%
-  );
-  background-size: 200% 100%;
-  animation: snowFaultAnimation 0.8s linear;
-  pointer-events: none;
   z-index: 10;
-}
-
-@keyframes snowFaultAnimation {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  display: grid;
+  transition: opacity 0.3s linear;
 }
 
 
-.snow-dot {
+.dissolve-wrapper {
+  grid-template-columns: repeat(30, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+}
+
+
+.pixelate-wrapper {
+  grid-template-columns: repeat(40, 1fr);
+  grid-template-rows: repeat(30, 1fr);
+}
+
+
+.mosaic-wrapper {
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+
+
+.block-piece {
+  background-color: #000205;
+  transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+.shatter-wrapper {
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  perspective: 1500px; 
+}
+
+.shatter-piece {
+  position: absolute;
+  background-color: #000205;
+  transition: transform 1.8s cubic-bezier(0.1, 0.9, 0.3, 1.2), opacity 1.5s ease;
+  opacity: 1;
+  transform-origin: center center;
+  border-radius: 2px; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
+#vid1, #vid2 {
+  position: absolute;
+  width: 100%;
+  height: 120%;
+  top: -80px;
+  object-fit: cover;
   pointer-events: none;
-  z-index: 15;
+  mix-blend-mode: screen;
+  opacity: 0.75;
 }
-
-
-.shake {
-  animation: shake 0.6s ease-in-out;
+#vid1 { z-index: 2; }
+#vid2 { 
+  z-index: 3;
+  -webkit-mask: linear-gradient(to bottom, red 50%, transparent 55%, transparent);
 }
-
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  10% { transform: translateX(-5px); }
-  20% { transform: translateX(5px); }
-  30% { transform: translateX(-5px); }
-  40% { transform: translateX(5px); }
-  50% { transform: translateX(-3px); }
-  60% { transform: translateX(3px); }
-  70% { transform: translateX(-3px); }
-  80% { transform: translateX(3px); }
-  90% { transform: translateX(-2px); }
-}
-
-
-
-
-.shake-scale {
-  animation: shakeScale 1s ease-in-out;
-}
-
-@keyframes shakeScale {
-  0% { transform: scale(1) translateX(0); opacity: 1; }
-  10% { transform: scale(0.98) translateX(-5px); }
-  20% { transform: scale(0.98) translateX(5px); }
-  30% { transform: scale(0.96) translateX(-5px); }
-  40% { transform: scale(0.96) translateX(5px); }
-  50% { transform: scale(0.94) translateX(-3px); }
-  60% { transform: scale(0.94) translateX(3px); }
-  70% { transform: scale(0.92) translateX(-3px); }
-  80% { transform: scale(0.92) translateX(3px); }
-  90% { transform: scale(0.9) translateX(-2px); }
-  100% { transform: scale(0.8) translateX(0); opacity: 0; }
-}
-
-
-@keyframes snowDotAnimation {
-  0% { transform: translateY(0); opacity: 0.8; }
-  100% { transform: translateY(20px); opacity: 0; }
-}
-
-
 </style> 
 <body>
 <div id="mydiv">
 
   <div class="slide" style="opacity: 1;">
-    <img src="https://i.postimg.cc/5Y1pKGz1/wsrjcck1.jpg" alt="图片1">
+    <img src="https://i.ibb.co/sdPBn9WS/wsrjcck1.jpg" alt="图片1">
   </div>
   <div class="slide">
-    <img src="https://i.postimg.cc/gXDsCDyr/wsrjcck3.jpg" alt="图片2">
+    <img src="https://i.ibb.co/WNDynD3X/wsrjcck3.jpg" alt="图片2">
   </div>
   <div class="slide">
-    <img src="https://i.postimg.cc/sQcmkcPx/wsrjcck2.jpg" alt="图片3">
+    <img src="https://i.ibb.co/cSkScBb0/wsrjcck2.jpg" alt="图片3">
   </div>
   <div class="slide">
-    <img src="https://i.postimg.cc/Q9bm2bgH/wsrjcck4.jpg" alt="图片4">
+    <img src="https://i.ibb.co/v413rpmn/wsrjcck4.jpg" alt="图片4">
   </div>
   <div class="slide">
-    <img src="https://i.postimg.cc/k6cs0cN2/wsrjcck5.jpg" alt="图片5">
+    <img src="https://i.ibb.co/mF1hP4qM/wsrjcck5.jpg" alt="图片5">
   </div>
   <div class="slide">
-    <img src="https://i.postimg.cc/T530fDQW/wsrjcck6.jpg" alt="图片6">
+    <img src="https://i.ibb.co/0VXmrndC/wsrjcck6.jpg" alt="图片6">
   </div>
   
+
+  <video id="overlay" autoplay loop muted playsinline>
+    <source src="https://img.tukuppt.com/video_show/2422006/00/01/70/5b4b1e2590ccc.mp4" type="video/mp4">
+  </video>
   
+  <video id="vid1" src="https://img.tukuppt.com/video_show/2629112/00/02/23/5b5885f450f50.mp4" autoplay loop muted></video>
+  <video id="vid2" src="https://img.tukuppt.com/video_show/15653652/00/80/83/60d04564c32f7.mp" autoplay loop muted></video>
 </div>  
 
 <script>
+
+let currentIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length; 
+let timer;
+let effectIndex = 0;
+
+const effects = [
+  {func: applyDissolveEffect},    
+  {func: applyMosaicEffect},      
+  {func: applyShatterEffect},     
+  {func: applyPixelateEffect}    
+];
+
+function createWrapper(className) {
+  const wrapper = document.createElement('div');
+  wrapper.className = className;
+  return wrapper;
+}
+
+function createBlockPiece() {
+  const piece = document.createElement('div');
+  piece.className = 'block-piece';
+  return piece;
+}
+
+function init() {
+  const firstSlide = slides[currentIndex];
+  effects[effectIndex].func(firstSlide); 
+  effectIndex = (effectIndex + 1) % effects.length; 
+  startTimer(); 
+}
+
+function clearEffects() {
+  const containers = document.querySelectorAll(
+    '.block-effect-wrapper, .shatter-wrapper' 
+  );
+  containers.forEach(container => container.remove());
   
-    let currentIndex = 0;
-    const slides = document.querySelectorAll('.slide');
-    const totalSlides = slides.length; 
-    let timer;
-    let effectIndex = 0;
-    let isTransitioning = false;
-    
-   
-    function preloadImages() {
-      const promises = [];
-      
-      slides.forEach(slide => {
-        const img = slide.querySelector('img');
-        if (img) {
-          const promise = new Promise((resolve, reject) => {
-            
-            const preloadImg = new Image();
-            preloadImg.src = img.src;
-            
-            preloadImg.onload = () => {
-            
-              img.classList.add('loaded');
-              resolve();
-            };
-            
-            preloadImg.onerror = () => {
-              console.error(`图片预加载失败: ${img.src}`);
-             
-              img.classList.add('loaded');
-              resolve();
-            };
-            
-            // 超时处理
-            setTimeout(() => {
-              if (!img.classList.contains('loaded')) {
-                console.warn(`图片预加载超时: ${img.src}`);
-                img.classList.add('loaded');
-                resolve();
-              }
-            }, 5000);
-          });
-          promises.push(promise);
-        }
-      });
-      
-      return Promise.all(promises);
-    }
-    
-   
-    const effects = [
-      {func: applyCameraShakeEffect},    
-      {func: applySnowFaultEffect},      
-      {func: applyShakeEffect},          
-      {func: applyShakeScaleEffect}      
-    ];
-    
-    
-    function init() {
-      
-      preloadImages().then(() => {
-   
-        const loadingIndicator = document.querySelector('.loading');
-        if (loadingIndicator) {
-          loadingIndicator.classList.add('hidden');
-   
-          setTimeout(() => {
-            loadingIndicator.style.display = 'none';
-          }, 500);
-        }
-        
-    
-        const firstSlide = slides[0];
-        if (firstSlide) {
-          firstSlide.style.opacity = '1';
-          const firstImage = firstSlide.querySelector('img');
-          if (firstImage) {
-            firstImage.classList.add('loaded');
-          }
-        }
-        
-       
-        startTimer();
-      });
-    }
-    
-    
-    function clearEffects() {
-    
-      slides.forEach(slide => {
-        slide.classList.remove('camera-shake', 'snow-fault', 'shake', 'shake-scale');
-        slide.style.opacity = '0';
-        slide.style.transition = 'opacity 1.5s ease';
-        
- 
-        
-        const snowDots = slide.querySelectorAll('.snow-dot');
-        snowDots.forEach(dot => dot.remove());
-      });
-    }
-    
 
-    function showNext() {
+  slides.forEach(slide => {
+    slide.style.opacity = '0';
+  });
+}
 
-      if (isTransitioning) return;
-      
-      isTransitioning = true;
-      clearEffects(); 
-      
+function showNext() {
+  clearEffects(); 
+  currentIndex = (currentIndex + 1) % totalSlides;
+  const currentEffect = effects[effectIndex];
+  effectIndex = (effectIndex + 1) % effects.length; 
   
-      const prevIndex = currentIndex;
-      currentIndex = (currentIndex + 1) % totalSlides;
-      
-    
-      const effect = effects[effectIndex];
-      effectIndex = (effectIndex + 1) % effects.length;
-      
-      const prevSlide = slides[prevIndex];
-      const targetSlide = slides[currentIndex];
-      const targetImage = targetSlide.querySelector('img');
-      
-    
-      targetSlide.style.zIndex = '10';
-      prevSlide.style.zIndex = '5';
-      
-   
-      if (targetImage && targetImage.classList.contains('loaded')) {
+  const targetSlide = slides[currentIndex];
+  currentEffect.func(targetSlide); 
+  resetTimer(); 
+}
+
+function applyDissolveEffect(slide) {
+  slide.style.opacity = '1'; 
+  const wrapper = createWrapper('block-effect-wrapper dissolve-wrapper');
+  slide.appendChild(wrapper);
   
-        targetSlide.style.opacity = '1';
-        applyEffectAndProceed(prevSlide, targetSlide, effect);
-      } else if (targetImage) {
+  const totalPieces = 30 * 20; 
+  for(let i = 0; i < totalPieces; i++) {
+    const piece = createBlockPiece();
+    piece.style.transitionDelay = `${0.1 + Math.random() * 0.9}s`;
+    wrapper.appendChild(piece);
+  }
 
-        targetSlide.style.opacity = '0.3';
-        
-        const loadHandler = () => {
-          targetImage.classList.add('loaded');
-          targetSlide.style.opacity = '1';
-          targetImage.removeEventListener('load', loadHandler);
-          applyEffectAndProceed(prevSlide, targetSlide, effect);
-        };
-        
-        targetImage.addEventListener('load', loadHandler);
-        
-     
-        setTimeout(() => {
-          if (!targetImage.classList.contains('loaded')) {
-            targetImage.classList.add('loaded');
-            targetSlide.style.opacity = '1';
-            targetImage.removeEventListener('load', loadHandler);
-            applyEffectAndProceed(prevSlide, targetSlide, effect);
-          }
-        }, 3000);
-      } else {
- 
-        targetSlide.style.opacity = '1';
-        applyEffectAndProceed(prevSlide, targetSlide, effect);
-      }
-    }
+  setTimeout(() => {
+    wrapper.querySelectorAll('.block-piece').forEach(piece => {
+      piece.style.opacity = '0';
+      piece.style.transform = 'scale(0.8)'; 
+    });
+  }, 100);
+}
+
+function applyMosaicEffect(slide) {
+  slide.style.opacity = '1';
+  const wrapper = createWrapper('block-effect-wrapper mosaic-wrapper');
+  slide.appendChild(wrapper);
+  
+  const totalPieces = 15 * 10; 
+  for(let i = 0; i < totalPieces; i++) {
+    const piece = createBlockPiece();
+    const row = Math.floor(i / 15);
+    const col = i % 15;
+    piece.style.transitionDelay = `${(row + col) * 0.05}s`;
+    wrapper.appendChild(piece);
+  }
+  
+  setTimeout(() => {
+    wrapper.querySelectorAll('.block-piece').forEach(piece => {
+      piece.style.transform = 'scale(0)'; 
+      piece.style.opacity = '0';
+    });
+  }, 100);
+}
+
+function applyShatterEffect(slide) {
+  slide.style.opacity = '1';
+  const wrapper = createWrapper('shatter-wrapper');
+  slide.appendChild(wrapper);
+  
+  const pieceCount = 80; 
+  const containerWidth = 1600;
+  const containerHeight = 900;
+  
+  for(let i = 0; i < pieceCount; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'shatter-piece';
+    const pieceWidth = 50 + Math.random() * 130;
+    const pieceHeight = 50 + Math.random() * 130;
+    const x = Math.min(Math.random() * containerWidth, containerWidth - pieceWidth);
+    const y = Math.min(Math.random() * containerHeight, containerHeight - pieceHeight);
     
-
-    function applyEffectAndProceed(prevSlide, targetSlide, effect) {
- 
-      effect.func(prevSlide, targetSlide);
+    piece.style.width = `${pieceWidth}px`;
+    piece.style.height = `${pieceHeight}px`;
+    piece.style.left = `${x}px`;
+    piece.style.top = `${y}px`;
+    piece.style.transitionDelay = `${Math.random() * 0.8}s`;
+    wrapper.appendChild(piece);
+  }
+  
+  setTimeout(() => {
+    wrapper.querySelectorAll('.shatter-piece').forEach(piece => {
+      const angle = Math.random() * Math.PI * 2;
+      const distance = 500 + Math.random() * 500;
+      const x = Math.cos(angle) * distance;
+      const y = Math.sin(angle) * distance;
+      const rotateZ = Math.random() * 720 - 360;
       
+      piece.style.transform = `translate3d(${x}px, ${y}px, 300px) rotateZ(${rotateZ}deg)`;
+      piece.style.opacity = '0';
+    });
+  }, 100);
+}
 
-      const maxEffectDuration = 1200; 
-      
-    
-      setTimeout(() => {
-        prevSlide.style.opacity = '0';
-        prevSlide.style.zIndex = '1';
-        targetSlide.style.zIndex = '1';
-        isTransitioning = false;
-        resetTimer(); 
-      }, maxEffectDuration);
-    }
-    
+function applyPixelateEffect(slide) {
+  slide.style.opacity = '1';
+  const wrapper = createWrapper('block-effect-wrapper pixelate-wrapper');
+  slide.appendChild(wrapper);
   
-    function applyCameraShakeEffect(prevSlide, targetSlide) {
-   
-      prevSlide.classList.add('camera-shake');
-    }
+  const totalPieces = 40 * 30; 
+  for(let i = 0; i < totalPieces; i++) {
+    const piece = createBlockPiece();
+    const row = Math.floor(i / 40);
+    const col = i % 40;
+    piece.style.transitionDelay = `${(row * 0.02) + (col * 0.01)}s`;
+    wrapper.appendChild(piece);
+  }
   
-    function applySnowFaultEffect(prevSlide, targetSlide) {
-  
-      prevSlide.classList.add('snow-fault');
-   
-      createSnowDots(prevSlide);
-    }
-    
-    function createSnowDots(container) {
-      const dotCount = 50;
-      const containerWidth = container.offsetWidth;
-      const containerHeight = container.offsetHeight;
-      
-      for (let i = 0; i < dotCount; i++) {
-        const dot = document.createElement('div');
-        dot.classList.add('snow-dot');
-        
-     
-        const size = 1 + Math.random() * 3;
-        dot.style.width = `${size}px`;
-        dot.style.height = `${size}px`;
-        
-        
-        const posX = Math.random() * containerWidth;
-        const posY = Math.random() * containerHeight;
-        dot.style.left = `${posX}px`;
-        dot.style.top = `${posY}px`;
-        
-  
-        dot.style.opacity = 0.3 + Math.random() * 0.7;
-        
-      
-        const delay = Math.random() * 0.8;
-        const duration = 0.5 + Math.random() * 1;
-        
-        dot.style.animation = `snowDotAnimation ${duration}s linear ${delay}s forwards`;
-        
-        container.appendChild(dot);
-      }
-    }
-    
+  setTimeout(() => {
+    wrapper.querySelectorAll('.block-piece').forEach(piece => {
+      const dirs = ['translateX(-50%)', 'translateX(50%)', 'translateY(-50%)', 'translateY(50%)'];
+      piece.style.transform = dirs[Math.floor(Math.random() * dirs.length)];
+      piece.style.opacity = '0';
+    });
+  }, 100);
+}
 
-    function applyShakeEffect(prevSlide, targetSlide) {
-  
-      prevSlide.classList.add('shake');
-    }
-    
-    
-    
-   
-    function applyShakeScaleEffect(prevSlide, targetSlide) {
+function startTimer() {
+  timer = setInterval(showNext, 7000);
+}
 
-      prevSlide.classList.add('shake-scale');
-    }
-    
+function resetTimer() {
+  clearInterval(timer);
+  startTimer();
+}
 
-    function startTimer() {
-      timer = setInterval(showNext, 7000);
-    }
-    
-
-    function resetTimer() {
-      clearInterval(timer);
-      startTimer();
-    }
-    
-
-    window.onload = init;
-    </script>
-    </body>
-    </html>
+window.onload = init;
+</script>
+</body>
+</html>
