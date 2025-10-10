@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>4特效丝滑幻灯片（摇镜+雪花故障+抖动+抖动缩小）</title>
+<style>
+/* 容器基础样式 - 保证6张图展示空间 */
+#mydiv { 
+    margin: 50px auto;
+	display: grid;
+	place-items: center;
+	width: 1600px;
+	height: 900px;
+	background-color: #000205;
+	user-select: none;
+	overflow: hidden;
+	position: relative;
+	z-index: 1;  
+}
+
+/* 加载指示器 */
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000205;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+.loading.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  border-top: 5px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 图片加载状态 */
+.slide img {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.slide img.loaded {
+  opacity: 1;
+}
+
+/* 核心：幻灯片基础样式 */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.5s ease; 
+}
+
+.slide img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 1. 摇镜效果样式 */
+.camera-shake {
+  animation: cameraShake 0.8s ease-in-out;
+}
+
+@keyframes cameraShake {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  10% { transform: translate(-5px, -5px) rotate(-1deg); }
+  20% { transform: translate(5px, 5px) rotate(1deg); }
+  30% { transform: translate(-5px, 5px) rotate(-1deg); }
+  40% { transform: translate(5px, -5px) rotate(1deg); }
+  50% { transform: translate(-3px, -3px) rotate(-0.5deg); }
+  60% { transform: translate(3px, 3px) rotate(0.5deg); }
+  70% { transform: translate(-3px, 3px) rotate(-0.5deg); }
+  80% { transform: translate(3px, -3px) rotate(0.5deg); }
+  90% { transform: translate(-2px, -2px) rotate(-0.2deg); }
+}
+
+/* 2. 雪花故障效果样式 */
+.snow-fault {
+  position: relative;
+  overflow: hidden;
+}
+
+.snow-fault::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: snowFaultAnimation 0.8s linear;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes snowFaultAnimation {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* 雪花点样式 */
+.snow-dot {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 15;
+}
+
+/* 3. 抖动效果样式 */
+.shake {
+  animation: shake 0.6s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10% { transform: translateX(-5px); }
+  20% { transform: translateX(5px); }
+  30% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  50% { transform: translateX(-3px); }
+  60% { transform: translateX(3px); }
+  70% { transform: translateX(-3px); }
+  80% { transform: translateX(3px); }
+  90% { transform: translateX(-2px); }
+}
+
+
+
+/* 5. 抖动缩小转场效果样式 */
+.shake-scale {
+  animation: shakeScale 1s ease-in-out;
+}
+
+@keyframes shakeScale {
+  0% { transform: scale(1) translateX(0); opacity: 1; }
+  10% { transform: scale(0.98) translateX(-5px); }
+  20% { transform: scale(0.98) translateX(5px); }
+  30% { transform: scale(0.96) translateX(-5px); }
+  40% { transform: scale(0.96) translateX(5px); }
+  50% { transform: scale(0.94) translateX(-3px); }
+  60% { transform: scale(0.94) translateX(3px); }
+  70% { transform: scale(0.92) translateX(-3px); }
+  80% { transform: scale(0.92) translateX(3px); }
+  90% { transform: scale(0.9) translateX(-2px); }
+  100% { transform: scale(0.8) translateX(0); opacity: 0; }
+}
+
+/* 雪花点动画 */
+@keyframes snowDotAnimation {
+  0% { transform: translateY(0); opacity: 0.8; }
+  100% { transform: translateY(20px); opacity: 0; }
+}
+
+
+</style> 
+<body>
+<div id="mydiv">
+  <!-- 6张图片完整保留，确保循环切换 -->
+  <div class="slide" style="opacity: 1;">
+    <img src="https://i.postimg.cc/5Y1pKGz1/wsrjcck1.jpg" alt="图片1">
+  </div>
+  <div class="slide">
+    <img src="https://i.postimg.cc/gXDsCDyr/wsrjcck3.jpg" alt="图片2">
+  </div>
+  <div class="slide">
+    <img src="https://i.postimg.cc/sQcmkcPx/wsrjcck2.jpg" alt="图片3">
+  </div>
+  <div class="slide">
+    <img src="https://i.postimg.cc/Q9bm2bgH/wsrjcck4.jpg" alt="图片4">
+  </div>
+  <div class="slide">
+    <img src="https://i.postimg.cc/k6cs0cN2/wsrjcck5.jpg" alt="图片5">
+  </div>
+  <div class="slide">
+    <img src="https://i.postimg.cc/T530fDQW/wsrjcck6.jpg" alt="图片6">
+  </div>
+  
+  
+</div>  
+
+<script>
+    // 基础变量 - 适配6张图+4种效果循环
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length; // 自动识别6张图
+    let timer;
+    let effectIndex = 0;
+    let isTransitioning = false;
+    
+    // 图片预加载
+    function preloadImages() {
+      const promises = [];
+      
+      slides.forEach(slide => {
+        const img = slide.querySelector('img');
+        if (img) {
+          const promise = new Promise((resolve, reject) => {
+            // 创建新的图片对象进行预加载
+            const preloadImg = new Image();
+            preloadImg.src = img.src;
+            
+            preloadImg.onload = () => {
+              // 预加载完成后，设置原始图片为已加载
+              img.classList.add('loaded');
+              resolve();
+            };
+            
+            preloadImg.onerror = () => {
+              console.error(`图片预加载失败: ${img.src}`);
+              // 即使加载失败，也标记为已加载，避免阻塞
+              img.classList.add('loaded');
+              resolve();
+            };
+            
+            // 超时处理
+            setTimeout(() => {
+              if (!img.classList.contains('loaded')) {
+                console.warn(`图片预加载超时: ${img.src}`);
+                img.classList.add('loaded');
+                resolve();
+              }
+            }, 5000);
+          });
+          promises.push(promise);
+        }
+      });
+      
+      return Promise.all(promises);
+    }
+    
+    // 核心：5种新效果列表
+    const effects = [
+      {func: applyCameraShakeEffect},    // 1. 摇镜
+      {func: applySnowFaultEffect},      // 2. 雪花故障
+      {func: applyShakeEffect},          // 3. 抖动
+      {func: applyShakeScaleEffect}      // 4. 抖动缩小
+    ];
+    
+    // 初始化：页面加载后启动幻灯片
+    function init() {
+      // 预加载所有图片
+      preloadImages().then(() => {
+        // 隐藏加载指示器
+        const loadingIndicator = document.querySelector('.loading');
+        if (loadingIndicator) {
+          loadingIndicator.classList.add('hidden');
+          // 等待动画结束后完全移除
+          setTimeout(() => {
+            loadingIndicator.style.display = 'none';
+          }, 500);
+        }
+        
+        // 确保第一张图片显示
+        const firstSlide = slides[0];
+        if (firstSlide) {
+          firstSlide.style.opacity = '1';
+          const firstImage = firstSlide.querySelector('img');
+          if (firstImage) {
+            firstImage.classList.add('loaded');
+          }
+        }
+        
+        // 启动定时器
+        startTimer();
+      });
+    }
+    
+    // 关键：清除所有特效残留（避免前效果干扰下一张图，过渡核心保障）
+    function clearEffects() {
+      // 移除所有效果相关的类
+      slides.forEach(slide => {
+        slide.classList.remove('camera-shake', 'snow-fault', 'shake', 'shake-scale');
+        slide.style.opacity = '0';
+        slide.style.transition = 'opacity 1.5s ease';
+        
+        // 移除所有效果相关的子元素
+        
+        const snowDots = slide.querySelectorAll('.snow-dot');
+        snowDots.forEach(dot => dot.remove());
+      });
+    }
+    
+    // 核心切换逻辑：4种效果循环应用到6张图
+    function showNext() {
+      // 如果正在过渡中，则不执行新的切换
+      if (isTransitioning) return;
+      
+      isTransitioning = true;
+      clearEffects(); // 先清残留，再切图（关键：避免过渡断层）
+      
+      // 6张图循环（取余自动适配）
+      const prevIndex = currentIndex;
+      currentIndex = (currentIndex + 1) % totalSlides;
+      
+      // 4种效果循环（取余自动适配）
+      const effect = effects[effectIndex];
+      effectIndex = (effectIndex + 1) % effects.length;
+      
+      const prevSlide = slides[prevIndex];
+      const targetSlide = slides[currentIndex];
+      const targetImage = targetSlide.querySelector('img');
+      
+      // 确保目标幻灯片在最上层
+      targetSlide.style.zIndex = '10';
+      prevSlide.style.zIndex = '5';
+      
+      // 检查目标图片是否已加载
+      if (targetImage && targetImage.classList.contains('loaded')) {
+        // 图片已加载，直接显示
+        targetSlide.style.opacity = '1';
+        applyEffectAndProceed(prevSlide, targetSlide, effect);
+      } else if (targetImage) {
+        // 图片未加载，显示加载状态
+        targetSlide.style.opacity = '0.3';
+        
+        const loadHandler = () => {
+          targetImage.classList.add('loaded');
+          targetSlide.style.opacity = '1';
+          targetImage.removeEventListener('load', loadHandler);
+          applyEffectAndProceed(prevSlide, targetSlide, effect);
+        };
+        
+        targetImage.addEventListener('load', loadHandler);
+        
+        // 超时处理：如果3秒内仍未加载完成，强制显示
+        setTimeout(() => {
+          if (!targetImage.classList.contains('loaded')) {
+            targetImage.classList.add('loaded');
+            targetSlide.style.opacity = '1';
+            targetImage.removeEventListener('load', loadHandler);
+            applyEffectAndProceed(prevSlide, targetSlide, effect);
+          }
+        }, 3000);
+      } else {
+        // 没有图片元素，直接显示
+        targetSlide.style.opacity = '1';
+        applyEffectAndProceed(prevSlide, targetSlide, effect);
+      }
+    }
+    
+    // 应用效果并继续流程
+    function applyEffectAndProceed(prevSlide, targetSlide, effect) {
+      // 对前一张幻灯片应用转场效果
+      effect.func(prevSlide, targetSlide);
+      
+      // 效果最长持续时间
+      const maxEffectDuration = 1200; // 1.2秒
+      
+      // 等待效果结束后重置状态
+      setTimeout(() => {
+        prevSlide.style.opacity = '0';
+        prevSlide.style.zIndex = '1';
+        targetSlide.style.zIndex = '1';
+        isTransitioning = false;
+        resetTimer(); // 重置定时器，保证每张图展示7秒
+      }, maxEffectDuration);
+    }
+    
+    // 1. 摇镜效果
+    function applyCameraShakeEffect(prevSlide, targetSlide) {
+      // 在前一张幻灯片上应用摇镜效果
+      prevSlide.classList.add('camera-shake');
+    }
+    
+    // 2. 雪花故障效果
+    function applySnowFaultEffect(prevSlide, targetSlide) {
+      // 在前一张幻灯片上应用雪花故障效果
+      prevSlide.classList.add('snow-fault');
+      
+      // 创建雪花点
+      createSnowDots(prevSlide);
+    }
+    
+    // 创建雪花点
+    function createSnowDots(container) {
+      const dotCount = 50;
+      const containerWidth = container.offsetWidth;
+      const containerHeight = container.offsetHeight;
+      
+      for (let i = 0; i < dotCount; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('snow-dot');
+        
+        // 随机大小
+        const size = 1 + Math.random() * 3;
+        dot.style.width = `${size}px`;
+        dot.style.height = `${size}px`;
+        
+        // 随机位置
+        const posX = Math.random() * containerWidth;
+        const posY = Math.random() * containerHeight;
+        dot.style.left = `${posX}px`;
+        dot.style.top = `${posY}px`;
+        
+        // 随机透明度
+        dot.style.opacity = 0.3 + Math.random() * 0.7;
+        
+        // 随机动画延迟和持续时间
+        const delay = Math.random() * 0.8;
+        const duration = 0.5 + Math.random() * 1;
+        
+        dot.style.animation = `snowDotAnimation ${duration}s linear ${delay}s forwards`;
+        
+        container.appendChild(dot);
+      }
+    }
+    
+    // 3. 抖动效果
+    function applyShakeEffect(prevSlide, targetSlide) {
+      // 在前一张幻灯片上应用抖动效果
+      prevSlide.classList.add('shake');
+    }
+    
+    
+    
+    // 4. 抖动缩小转场效果
+    function applyShakeScaleEffect(prevSlide, targetSlide) {
+      // 在前一张幻灯片上应用抖动缩小效果
+      prevSlide.classList.add('shake-scale');
+    }
+    
+    // 定时器控制：7秒切换一次（给足效果展示时间，过渡不仓促）
+    function startTimer() {
+      timer = setInterval(showNext, 7000);
+    }
+    
+    // 重置定时器：确保每张图展示时间一致
+    function resetTimer() {
+      clearInterval(timer);
+      startTimer();
+    }
+    
+    // 页面加载完成后启动
+    window.onload = init;
+    </script>
+    </body>
+    </html>
