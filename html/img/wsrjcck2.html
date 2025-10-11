@@ -2,84 +2,198 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> ckgh</title>
+<title></title>
 <style>
-@font-face{font-family:FontStyle;src:url(".");font-display:fallback;}
-@font-face {font-family: "shishang";src: url(".");font-display:fallback;}
-*{padding:0;margin:0;box-sizing:border-box;
-}html{font-size:10px;}body{background-color:#000;
-}.slideshow{width:100%;height:100vh;
-position:relative;overflow:hidden;
-}.slideshow-item{width:inherit;
-height:inherit;position:absolute;
-opacity:0;
-animation:slideanim 62s infinite;
+#mydiv { 
+    margin: 0px 0 30px;
+	display: grid;
+	place-items: center;
+	width: 1600px;
+	height: 900px;
+	background-color: #000205;
+	user-select: none;
+	overflow: hidden;
+	position: relative;
+	z-index: 1;  
 }
-.slideshow-item:nth-child(1),
-.slideshow-item:nth-child(1) img{animation-delay:0;
+
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; 
 }
-.slideshow-item:nth-child(2),
-.slideshow-item:nth-child(2) img{animation-delay:20s;
-}.slideshow-item:nth-child(3),
-.slideshow-item:nth-child(3) img{animation-delay:40s;
-}.slideshow-item img{width:100%;
-height:100%;object-fit:cover;
-animation:zoom 62s infinite;
+
+.slide img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-.slideshow-item-text{max-width:50%;
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-left:0;
-background-color:rgba(0,0,0,0.8);
-color:#fff;
-padding:10rem 5rem;
-font-family:'Raleway',sans-serif;
+
+
+#overlay {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 80px);
+  object-fit: cover;
+  mix-blend-mode: overlay;
+  opacity: 0.0;
+  z-index: 50;
+  pointer-events: none;
 }
-.slideshow-item-text h5{font-size:3.5rem;
-letter-spacing:3px;
-font-family:shishang,'微软雅黑';
-}.slideshow-item-text p{font-weight:300;
-font-size:1.6rem;
-margin-top:2rem;
-font-family:FontStyle,'微软雅黑';
-}@keyframes slideanim{25%{opacity:1;
+
+/* 添加模糊到清晰效果样式 */
+.blur-to-clear-effect {
+  animation: blurToClear 1.5s ease-out forwards;
 }
-40%{opacity:0;
-}}
-@keyframes zoom{100%{transform:scale(1);
-}}
-@media screen and (max-width:1100px){.slideshow-item-text{max-width:75%;
-}}
-@media screen and (max-width:768px){.slideshow-item-text{padding:3rem 1.5rem;
-}}
-@media screen and (max-width:456px){.slideshow-item-text{max-width:100%;
-top:inherit;
-transform:translateY(0);
-bottom:0;}.slideshow-item-text h5{font-size:2rem;
-}.slideshow-item-text p{font-size:1rem;
-}}
-</style>
-</head>
+
+@keyframes blurToClear {
+  from {
+    filter: blur(10px);
+    opacity: 0;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* 添加迷幻频闪效果样式 */
+.psychedelic-strobe-effect {
+  animation: strobe 0.1s ease-in-out 10;
+}
+
+@keyframes strobe {
+  0%, 100% {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+  50% {
+    filter: grayscale(100%);
+    opacity: 0.8;
+  }
+}
+
+
+#vid1, #vid2 {
+  position: absolute;
+  width: 100%;
+  height: 120%;
+  top: -80px;
+  object-fit: cover;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.55;
+}
+#vid1 { z-index: 2; }
+#vid2 { 
+  z-index: 3;
+  -webkit-mask: linear-gradient(to bottom, red 50%, transparent 55%, transparent);
+}
+</style> 
 <body>
-    <div class="slideshow-item" style="opacity: 1;">
-        <img src="https://i.postimg.cc/5Y1pKGz1/wsrjcck1.jpg" alt="图片1">
-      </div>
-      <div class="slideshow-item">
-        <img src="https://i.postimg.cc/gXDsCDyr/wsrjcck3.jpg" alt="图片2">
-      </div>
-      <div class="slideshow-item">
-        <img src="https://i.postimg.cc/sQcmkcPx/wsrjcck2.jpg" alt="图片3">
-      </div>
-      <div class="slideshow-item">
-        <img src="https://i.postimg.cc/Q9bm2bgH/wsrjcck4.jpg" alt="图片4">
-      </div>
-      <div class="slideshow-item">
-        <img src="https://i.postimg.cc/k6cs0cN2/wsrjcck5.jpg" alt="图片5">
-      </div>
-      <div class="slideshow-item">
-        <img src="https://i.postimg.cc/T530fDQW/wsrjcck6.jpg" alt="图片6">
-      </div>
-    </div>  
+<div id="mydiv">
+
+  <div class="slide" style="opacity: 1;">
+    <img src="https://i.ibb.co/sdPBn9WS/wsrjcck1.jpg" alt="图片1">
+  </div>
+  <div class="slide">
+    <img src="https://i.ibb.co/WNDynD3X/wsrjcck3.jpg" alt="图片2">
+  </div>
+  <div class="slide">
+    <img src="https://i.ibb.co/cSkScBb0/wsrjcck2.jpg" alt="图片3">
+  </div>
+  <div class="slide">
+    <img src="https://i.ibb.co/v413rpmn/wsrjcck4.jpg" alt="图片4">
+  </div>
+  <div class="slide">
+    <img src="https://i.ibb.co/mF1hP4qM/wsrjcck5.jpg" alt="图片5">
+  </div>
+  <div class="slide">
+    <img src="https://i.ibb.co/0VXmrndC/wsrjcck6.jpg" alt="图片6">
+  </div>
+  
+
+  <video id="overlay" autoplay loop muted playsinline>
+    <source src="https://img.tukuppt.com/video_show/2422006/00/01/70/5b4b1e2590ccc.mp4" type="video/mp4">
+  </video>
+  
+  <video id="vid1" src="https://img.tukuppt.com/video_show/2629112/00/02/23/5b5885f450f50.mp4" autoplay loop muted></video>
+  <video id="vid2" src="https://img.tukuppt.com/video_show/15653652/00/80/83/60d04564c32f7.mp4" autoplay loop muted></video>
+</div>  
+
+<script>
+
+let currentIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length; 
+let timer;
+let effectIndex = 0;
+
+// 将效果数组改为只有模糊到清晰和迷幻频闪两种效果
+const effects = [
+  {func: applyBlurToClearEffect},    
+  {func: applyPsychedelicStrobeEffect}      
+];
+
+function init() {
+  const firstSlide = slides[currentIndex];
+  effects[effectIndex].func(firstSlide); 
+  effectIndex = (effectIndex + 1) % effects.length; 
+  startTimer(); 
+}
+
+// 清除所有效果
+function clearEffects() {
+  // 移除所有可能的效果类
+  slides.forEach(slide => {
+    slide.style.opacity = '0';
+    slide.classList.remove('blur-to-clear-effect', 'psychedelic-strobe-effect');
+  });
+}
+
+function showNext() {
+  clearEffects(); 
+  currentIndex = (currentIndex + 1) % totalSlides;
+  const currentEffect = effects[effectIndex];
+  effectIndex = (effectIndex + 1) % effects.length; 
+  
+  const targetSlide = slides[currentIndex];
+  currentEffect.func(targetSlide); 
+  resetTimer(); 
+}
+
+// 模糊到清晰效果
+function applyBlurToClearEffect(slide) {
+  slide.style.opacity = '1';
+  slide.classList.add('blur-to-clear-effect');
+}
+
+// 迷幻频闪效果（黑白交替）
+function applyPsychedelicStrobeEffect(slide) {
+  slide.style.opacity = '1';
+  slide.classList.add('psychedelic-strobe-effect');
+}
+
+function startTimer() {
+  timer = setInterval(showNext, 4000);
+}
+
+function resetTimer() {
+  clearInterval(timer);
+  startTimer();
+}
+
+window.onload = init;
+</script>
 </body>
 </html>
