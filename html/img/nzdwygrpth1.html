@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>视觉体验</title>
+<style>
+#mydiv { 
+    margin: 0px 0 0px;
+	display: grid;
+	place-items: center;
+	width: 100vw;
+	height: 100vh;
+	background-color: #5190ef;
+	user-select: none;
+	overflow: hidden;
+	position: relative;
+	z-index: 1;  
+}
+
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; 
+  z-index: 10;
+}
+
+.slide img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+}
+
+
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: overlay;
+  opacity: 0.0;
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* 添加模糊到清晰效果样式 */
+.blur-to-clear-effect {
+  animation: blurToClear 1.5s ease-out forwards;
+}
+
+@keyframes blurToClear {
+  from {
+    filter: blur(10px);
+    opacity: 0;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* 添加清晰到模糊效果 */
+.clear-to-blur-effect {
+  animation: clearToBlur 1.5s ease-in forwards;
+}
+
+@keyframes clearToBlur {
+  from {
+    filter: blur(0);
+    opacity: 1;
+  }
+  to {
+    filter: blur(10px);
+    opacity: 0;
+  }
+}
+
+
+#vid1, #vid2 {
+  position: absolute;
+  width: 95%;
+  height: 95%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.29;
+  mask: linear-gradient(to top right, red 88%, transparent 0);   
+    -webkit-mask: linear-gradient(to top right, red 88%, transparent 0);   
+}
+#vid1 { z-index: 2; }
+#vid2 { 
+  z-index: 3;
+}
+</style> 
+<body>
+<div id="mydiv">
+
+  <div class="slide">
+    <img src="https://windflower2022.github.io/image/nzdwygrpth1.jpg" alt="图片1">
+  </div>
+  <div class="slide">
+    <img src="https://windflower2022.github.io/image/nzdwygrpth3.jpg" alt="图片2">
+  </div>
+  <div class="slide">
+    <img src="https://windflower2022.github.io/image/nzdwygrpth2.jpg" alt="图片3">
+  </div>
+  <div class="slide">
+    <img src="https://windflower2022.github.io/image/nzdwygrpth1.jpg" alt="图片4">
+</div>
+    <div class="slide">
+        <img src="https://windflower2022.github.io/image/nzdwygrpth2.jpg" alt="图片1">
+      </div>
+      <div class="slide">
+        <img src="https://windflower2022.github.io/image/nzdwygrpth3.jpg" alt="图片3">
+      </div>  
+  </div>
+  
+
+  <video id="overlay" autoplay loop muted playsinline>
+    <source src="https://img.tukuppt.com/video_show/2422006/00/01/70/5b4b1e2590ccc.mp4" type="video/mp4">
+  </video>
+  
+  <video id="vid1" src="https://img.tukuppt.com/video_show/2629112/00/01/74/5b498b31c08a2.mp4" autoplay loop muted></video>
+  <video id="vid2" src="https://img.tukuppt.com/video_show/15653652/00/80/83/60d04564c32f7.mp" autoplay loop muted></video>
+
+
+<script>
+
+let currentIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length; 
+const displayTime = 4000; // 每张图片显示时间（毫秒）
+const transitionTime = 1500; // 过渡动画时间（毫秒）
+
+// 初始化显示第一张图片
+function init() {
+  showSlide(currentIndex);
+}
+
+// 显示指定索引的图片
+function showSlide(index) {
+  // 隐藏所有图片
+  slides.forEach(slide => {
+    slide.style.opacity = '0';
+    slide.classList.remove('blur-to-clear-effect', 'clear-to-blur-effect');
+  });
+  
+  // 显示当前图片
+  const currentSlide = slides[index];
+  currentSlide.style.zIndex = '20'; // 确保当前图片在最上层
+  currentSlide.classList.add('blur-to-clear-effect');
+  
+  // 设置定时器，在显示时间后切换到下一张
+  setTimeout(() => {
+    // 当前图片开始模糊消失
+    currentSlide.classList.add('clear-to-blur-effect');
+    
+    // 等待动画结束后切换到下一张
+    setTimeout(() => {
+      currentSlide.style.zIndex = '10'; // 恢复z-index
+      currentIndex = (currentIndex + 1) % totalSlides;
+      showSlide(currentIndex);
+    }, transitionTime);
+  }, displayTime);
+}
+
+window.onload = init;
+</script>
+</body>
+</html>
