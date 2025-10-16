@@ -71,18 +71,19 @@
 #vid1, #vid2 {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 120%;
   top: 0;
   left: 0;
   object-fit: cover;
   pointer-events: none;
   mix-blend-mode: screen;
   opacity: 0.55;
+  mask: linear-gradient(to top right, red 88%, transparent 0);   
+    -webkit-mask: linear-gradient(to top right, red 88%, transparent 0);   
 }
 #vid1 { z-index: 2; }
 #vid2 { 
   z-index: 3;
-  -webkit-mask: linear-gradient(to bottom, red 50%, transparent 55%, transparent);
 }
 </style> 
 <body>
