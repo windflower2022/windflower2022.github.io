@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>图片轮播展示</title>
 <style>
 #mydiv { 
     margin: 0px 0 30px;
@@ -51,7 +51,7 @@
   pointer-events: none;
 }
 
-/* 添加模糊到清晰效果样式 */
+/* 添加模糊糊到清晰效果样式 */
 .blur-to-clear-effect {
   animation: blurToClear 1.5s ease-out forwards;
 }
@@ -83,6 +83,17 @@
   z-index: 3;
   -webkit-mask: linear-gradient(to bottom, red 50%, transparent 55%, transparent);
 }
+
+/* 视频容器样式，用于控制溢出 */
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 4; /* 确保视频在图片上方 */
+}
 </style> 
 <body>
 <div id="mydiv">
@@ -105,15 +116,17 @@
       <div class="slide">
         <img src="https://windflower2022.github.io/image/xljjh6.jpg" alt="图片3">
       </div>  
-  </div>
-  
 
-  <video id="overlay" autoplay loop muted playsinline>
-    <source src="https://img.tukuppt.com/video/video_show/2422006/00/01/70/5b4b1e2590ccc.mp4=" type="video/mp4">
-  </video>
-  
-  <video id="vid1" src="https://img.tukuppt.com/video_show/2269348/00/14/92/5e67af3447155.mp4" autoplay loop muted></video>
-  <video id="vid2" src="https://img.tukuppt.com/video_show/15653652/00/80/83/60d04564c32f7.mp" autoplay loop muted></video>
+  <!-- 视频容器，用于控制溢出 -->
+  <div class="video-container">
+    <video id="overlay" autoplay loop muted playsinline>
+      <source src="https://img.tukuppt.com/video_show/2422006/00/01/70/5b4b1e2590ccc.mp4=" type="video/mp4">
+    </video>
+    
+    <video id="vid1" src="https://img.tukuppt.com/video_show/2269348/00/14/92/5e67af3447155.mp4" autoplay loop muted></video>
+    <video id="vid2" src="https://img.tukuppt.com/video_show/15653652/00/80/83/60d04564c32f7.mp" autoplay loop muted></video>
+  </div>
+
 </div>  
 
 <script>
