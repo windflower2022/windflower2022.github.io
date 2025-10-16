@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+#mydiv { 
+    margin: 0px 0 30px;
+	display: grid;
+	place-items: center;
+	width: 1600px;
+	height: 900px;
+	background-color: #000205;
+	user-select: none;
+	overflow: hidden;
+	position: relative;
+	z-index: 1;  
+}
+
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; 
+}
+
+.slide img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+#overlay {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 80px);
+  object-fit: cover;
+  mix-blend-mode: overlay;
+  opacity: 0.0;
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* 添加模糊到清晰效果样式 */
+.blur-to-clear-effect {
+  animation: blurToClear 1.5s ease-out forwards;
+}
+
+@keyframes blurToClear {
+  from {
+    filter: blur(10px);
+    opacity: 0;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* 添加迷幻频闪效果样式 */
+.psychedelic-strobe-effect {
+  animation: strobe 0.1s ease-in-out 10;
+}
+
+@keyframes strobe {
+  0%, 100% {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+  50% {
+    filter: grayscale(100%);
+    opacity: 0.8;
+  }
+}
+
+
+#vid1, #vid2 {
+  position: absolute;
+  width: 100%;
+  height: 120%;
+  top: -80px;
+  object-fit: cover;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.55;
+}
+#vid1 { z-index: 2; }
+#vid2 { 
+  z-index: 3;
+  -webkit-mask: linear-gradient(to bottom, red 50%, transparent 55%, transparent);
+}
+</style> 
+<body>
+<div id="mydiv">
+
+  <div class="slide">
+    <img src="https://windflower2022.github.io/image/xljjh1.jpg" alt="图片1">
+  </div>
+  <div class="slide">
+    <img src="https://windflower2022.github.io/image/xljjh3.jpg" alt="图片2">
+  </div>
+  <div class="slide">
+    <img src="https://windflower2022.github.io/image/xljjh2.jpg" alt="图片3">
+  </div>
+  <div class="slide">
+    <img src="https://windflower2022.github.io/image/xljjh1.jpg" alt="图片4">
+</div>
+    <div class="slide">
+        <img src="https://windflower2022.github.io/image/xljjh2.jpg" alt="图片1">
+      </div>
+      <div class="slide">
+        <img src="https://windflower2022.github.io/image/xljjh3.jpg" alt="图片3">
+      </div>  
+  </div>
+  
+
+  <video id="overlay" autoplay loop muted playsinline>
+    <source src="https://img.tukuppt.com/video_show/2422006/00/01/70/5b4b1e2590ccc.mp4" type="video/mp4">
+  </video>
+  
+  <video id="vid1" src="https://img.tukuppt.com/video_show/2629112/00/02/23/5b5885f450f50.mp4" autoplay loop muted></video>
+  <video id="vid2" src="https://img.tukuppt.com/video_show/15653652/00/80/83/60d04564c32f7.mp4" autoplay loop muted></video>
+</div>  
+
+<script>
+
+let currentIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length; 
+let timer;
+let effectIndex = 0;
+
+// 将效果数组改为只有模糊到清晰和迷幻频闪两种效果
+const effects = [
+  {func: applyBlurToClearEffect},    
+  {func: applyPsychedelicStrobeEffect}      
+];
+
+function init() {
+  const firstSlide = slides[currentIndex];
+  effects[effectIndex].func(firstSlide); 
+  effectIndex = (effectIndex + 1) % effects.length; 
+  startTimer(); 
+}
+
+// 清除所有效果
+function clearEffects() {
+  // 移除所有可能的效果类
+  slides.forEach(slide => {
+    slide.style.opacity = '0';
+    slide.classList.remove('blur-to-clear-effect', 'psychedelic-strobe-effect');
+  });
+}
+
+function showNext() {
+  clearEffects(); 
+  currentIndex = (currentIndex + 1) % totalSlides;
+  const currentEffect = effects[effectIndex];
+  effectIndex = (effectIndex + 1) % effects.length; 
+  
+  const targetSlide = slides[currentIndex];
+  currentEffect.func(targetSlide); 
+  resetTimer(); 
+}
+
+// 模糊到清晰效果
+function applyBlurToClearEffect(slide) {
+  slide.style.opacity = '1';
+  slide.classList.add('blur-to-clear-effect');
+}
+
+// 迷幻频闪效果（黑白交替）
+function applyPsychedelicStrobeEffect(slide) {
+  slide.style.opacity = '1';
+  slide.classList.add('psychedelic-strobe-effect');
+}
+
+function startTimer() {
+  timer = setInterval(showNext, 4000);
+}
+
+function resetTimer() {
+  clearInterval(timer);
+  startTimer();
+}
+
+window.onload = init;
+</script>
+</body>
+</html>
