@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>图片轮播展示</title>
 <style>
 #mydiv { 
     margin: 0px 0 30px;
@@ -67,22 +67,6 @@
   }
 }
 
-/* 添加迷幻频闪效果样式 */
-.psychedelic-strobe-effect {
-  animation: strobe 0.1s ease-in-out 10;
-}
-
-@keyframes strobe {
-  0%, 100% {
-    filter: grayscale(0%);
-    opacity: 1;
-  }
-  50% {
-    filter: grayscale(100%);
-    opacity: 0.8;
-  }
-}
-
 
 #vid1, #vid2 {
   position: absolute;
@@ -97,7 +81,7 @@
 #vid1 { z-index: 2; }
 #vid2 { 
   z-index: 3;
-  -webkit-mask: linear-gradient(to bottom, red 50%, transparent 55%, transparent);
+  -webkit-mask: linear-gradient-gradient(to bottom, red 50%, transparent 55%, transparent);
 }
 </style> 
 <body>
@@ -107,29 +91,29 @@
     <img src="https://windflower2022.github.io/image/xljjh1.jpg" alt="图片1">
   </div>
   <div class="slide">
-    <img src="https://windflower2022.github.io/image/xljjh3.jpg" alt="图片2">
+    <img src="https://windflower2022.github.io/image/xljjh2.jpg" alt="图片2">
   </div>
   <div class="slide">
-    <img src="https://windflower2022.github.io/image/xljjh2.jpg" alt="图片3">
+    <img src="https://windflower2022.github.io/image/xljjh3.jpg" alt="图片3">
   </div>
   <div class="slide">
-    <img src="https://windflower2022.github.io/image/xljjh1.jpg" alt="图片4">
+    <img src="https://windflower2022.github.io/image/xljjh4.jpg" alt="图片4">
 </div>
     <div class="slide">
-        <img src="https://windflower2022.github.io/image/xljjh2.jpg" alt="图片1">
+        <img src="https://windflower2022.github.io/image/xljjh5.jpg" alt="图片1">
       </div>
       <div class="slide">
-        <img src="https://windflower2022.github.io/image/xljjh3.jpg" alt="图片3">
+        <img src="https://windflower2022.github.io/image/xljjh6.jpg" alt="图片3">
       </div>  
   </div>
   
 
   <video id="overlay" autoplay loop muted playsinline>
-    <source src="https://img.tukuppt.com/video_show/2422006/00/01/70/5b4b1e2590ccc.mp4" type="video/mp4">
+    <source src="https://img.tukuppt.com/video/video_show/2422006/00/01/70/5b4b1e2590ccc.mp4=" type="video/mp4">
   </video>
   
-  <video id="vid1" src="https://img.tukuppt.com/video_show/2629112/00/02/23/5b5885f450f50.mp4" autoplay loop muted></video>
-  <video id="vid2" src="https://img.tukuppt.com/video_show/15653652/00/80/83/60d04564c32f7.mp4" autoplay loop muted></video>
+  <video id="vid1" src="https://img.tukuppt.com/video_show/2269348/00/14/92/5e67af3447155.mp4" autoplay loop muted></video>
+  <video id="vid2" src="https://img.tukuppt.com/video_show/15653652/00/80/83/60d04564c32f7.mp" autoplay loop muted></video>
 </div>  
 
 <script>
@@ -138,18 +122,15 @@ let currentIndex = 0;
 const slides = document.querySelectorAll('.slide');
 const totalSlides = slides.length; 
 let timer;
-let effectIndex = 0;
 
-// 将效果数组改为只有模糊到清晰和迷幻频闪两种效果
+// 只保留模糊到清晰效果
 const effects = [
-  {func: applyBlurToClearEffect},    
-  {func: applyPsychedelicStrobeEffect}      
+  {func: applyBlurToClearEffect}    
 ];
 
 function init() {
   const firstSlide = slides[currentIndex];
-  effects[effectIndex].func(firstSlide); 
-  effectIndex = (effectIndex + 1) % effects.length; 
+  effects[0].func(firstSlide); // 始终使用第一个效果（模糊到清晰）
   startTimer(); 
 }
 
@@ -158,15 +139,14 @@ function clearEffects() {
   // 移除所有可能的效果类
   slides.forEach(slide => {
     slide.style.opacity = '0';
-    slide.classList.remove('blur-to-clear-effect', 'psychedelic-strobe-effect');
+    slide.classList.remove('blur-to-clear-effect');
   });
 }
 
 function showNext() {
   clearEffects(); 
   currentIndex = (currentIndex + 1) % totalSlides;
-  const currentEffect = effects[effectIndex];
-  effectIndex = (effectIndex + 1) % effects.length; 
+  const currentEffect = effects[0]; // 始终使用第一个效果（模糊到清晰）
   
   const targetSlide = slides[currentIndex];
   currentEffect.func(targetSlide); 
@@ -177,12 +157,6 @@ function showNext() {
 function applyBlurToClearEffect(slide) {
   slide.style.opacity = '1';
   slide.classList.add('blur-to-clear-effect');
-}
-
-// 迷幻频闪效果（黑白交替）
-function applyPsychedelicStrobeEffect(slide) {
-  slide.style.opacity = '1';
-  slide.classList.add('psychedelic-strobe-effect');
 }
 
 function startTimer() {
