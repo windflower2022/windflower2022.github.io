@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+#mydiv { 
+    margin: 0px 0 30px;
+	display: grid;
+	place-items: center;
+	width: 1600px;
+	height: 900px;
+	background-color: #000205;
+	user-select: none;
+	overflow: hidden;
+	position: relative;
+	z-index: 1;  
+}
+
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; 
+}
+
+.slide img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+#overlay {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 80px);
+  object-fit: cover;
+  mix-blend-mode: overlay;
+  opacity: 0.0;
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* 添加模糊糊到清晰效果样式 */
+.blur-to-clear-effect {
+  animation: blurToClear 1.5s ease-out forwards;
+}
+
+@keyframes blurToClear {
+  from {
+    filter: blur(10px);
+    opacity: 0;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+
+#vid1, #vid2 {
+  position: absolute;
+  width: 100%;
+  height: 120%;
+  top: -80px;
+  object-fit: cover;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.08;
+}
+#vid1 { z-index: 2; }
+#vid2 { 
+  z-index: 3;
+  -webkit-mask: linear-gradient(to bottom, red 50%, transparent 55%, transparent);
+}
+
+/* 视频容器样式，用于控制溢出 */
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 4; /* 确保视频在图片上方 */
+}
+</style> 
+<body>
+<div id="mydiv">
+
+  <div class="slide">
+    <img src="https://image.hnol.net/c/2025-10/20/21/20251020211014561-6245755.jpg" alt="图片1">
+  </div>
+  <div class="slide">
+    <img src="https://image.hnol.net/c/2025-10/20/21/202510202110476471-6245755.jpg" alt="图片2">
+  </div>
+  <div class="slide">
+    <img src="https://image.hnol.net/c/2025-10/20/21/202510202111563171-6245755.jpg" alt="图片3">
+  </div>
+  <div class="slide">
+    <img src="https://image.hnol.net/c/2025-10/20/21/202510202112233211-6245755.jpg" alt="图片4">
+</div>
+    <div class="slide">
+        <img src="https://image.hnol.net/c/2025-10/20/21/202510202112502711-6245755.jpg" alt="图片1">
+      </div>
+      <div class="slide">
+        <img src="https://image.hnol.net/c/2025-10/20/21/202510202113134211-6245755.jpg" alt="图片3">
+      </div>  
+
+  <!-- 视频容器，用于控制溢出 -->
+  <div class="video-container">
+    <video id="overlay" autoplay loop muted playsinline>
+      <source src="https://img.tukuppt.com/video_show/2422006/00/01/70/5b4b1e2590ccc.mp" type="video/mp4">
+    </video>
+    
+    <video id="vid1" src="https://img.tukuppt.com/video_show/2269348/00/14/92/5e67af3447155.mp4" autoplay loop muted></video>
+    <video id="vid2" src="https://img.tukuppt.com/video_show/2629112/00/01/74/5b498b31c08a2.mp4" autoplay loop muted></video>
+  </div>
+
+</div>  
+
+<script>
+
+let currentIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length; 
+let timer;
+
+// 只保留模糊到清晰效果
+const effects = [
+  {func: applyBlurToClearEffect}    
+];
+
+function init() {
+  const firstSlide = slides[currentIndex];
+  effects[0].func(firstSlide); // 始终使用第一个效果（模糊到清晰）
+  startTimer(); 
+}
+
+// 清除所有效果
+function clearEffects() {
+  // 移除所有可能的效果类
+  slides.forEach(slide => {
+    slide.style.opacity = '0';
+    slide.classList.remove('blur-to-clear-effect');
+  });
+}
+
+function showNext() {
+  clearEffects(); 
+  currentIndex = (currentIndex + 1) % totalSlides;
+  const currentEffect = effects[0]; // 始终使用第一个效果（模糊到清晰）
+  
+  const targetSlide = slides[currentIndex];
+  currentEffect.func(targetSlide); 
+  resetTimer(); 
+}
+
+// 模糊到清晰效果
+function applyBlurToClearEffect(slide) {
+  slide.style.opacity = '1';
+  slide.classList.add('blur-to-clear-effect');
+}
+
+function startTimer() {
+  timer = setInterval(showNext, 4000);
+}
+
+function resetTimer() {
+  clearInterval(timer);
+  startTimer();
+}
+
+window.onload = init;
+</script>
+</body>
+</html>
