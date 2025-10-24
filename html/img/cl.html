@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>月球视频+全屏vid特效</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+        
+        /* 1. 全屏vid视频特效：覆盖整个页面，作为背景层 */
+        #fullscreen-vid {
+            position: fixed; /* 固定定位，实现全屏覆盖 */
+            top: 0;
+            left: 0;
+            width: 100vw; /* 视口宽度100% */
+            height: 100vh; /* 视口高度100% */
+            object-fit: cover; /* 按比例填充，不拉伸 */
+            muted: true; /* 保留原视频静音属性 */
+            z-index: 0; /* 层级低于月球容器，不遮挡月球视频 */
+            pointer-events: none; /* 禁止响应鼠标事件，不影响其他交互 */
+        }
+        
+        /* 原背景图：层级低于全屏vid，作为底层背景 */
+        .background-image {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://cccimg.com/view.php/d6d427e710f5de7b8c2a256e51ad7916.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+        
+        #vid1 {
+    position: absolute;
+    width: 200%;
+    height: 130%;
+    top: -250px;
+    left: -0px;
+    object-fit: cover;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    mask: linear-gradient(to top right, red 90%, transparent 0);   
+    -webkit-mask: linear-gradient(to top right, red 90%, transparent 0);   
+    z-index: 0;
+    opacity: 0.5;
+}
+
+#vid2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    mask: linear-gradient(to top right, red 90%, transparent 0);   
+    -webkit-mask: linear-gradient(to top right, red 90%, transparent 0);   
+    z-index: 1;
+    opacity: .25;
+}
+
+
+
+        /* 原月球容器：层级高于全屏vid，确保正常显示 */
+        .moon-container {
+            position: absolute;
+            top: 12px;
+            left: 404px;
+            width: 458px;
+            height: 467px;
+            z-index: 2; /* 高于全屏vid（z=0），低于页面其他交互元素 */
+            opacity: .45;
+        }
+        
+        /* 原月球视频样式：保持所有强羽化、光影效果 */
+        .moon-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* 强羽化效果 */
+            mask-image: radial-gradient(circle, 
+                rgba(0, 0, 0, 1) 50%,
+                rgba(0, 0, 0, 0.2) 80%,
+                rgba(0, 0, 0, 0) 90%
+            );
+            -webkit-mask-image: radial-gradient(circle, 
+                rgba(0, 0, 0, 1) 50%,
+                rgba(0, 0, 0, 0.2) 80%,
+                rgba(0, 0, 0, 0) 90%
+            );
+            mask-size: 100% 100%;
+            -webkit-mask-size: 100% 100%;
+            mask-repeat: no-repeat;
+            -webkit-mask-repeat: no-repeat;
+            /* 70%不透明度 */
+            opacity: 0.7;
+            /* 圆形裁剪与光影 */
+            clip-path: circle(45% at 50% 50%);
+            -webkit-clip-path: circle(45% at 50% 50%);
+            transition: all 0.4s ease;
+            border: 8px solid rgba(255, 255, 255, 0.22);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 
+                      inset 0 0 50px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* 原响应式适配：同步调整月球容器位置和大小 */
+        @media (max-width: 1200px) {
+            .moon-container {
+                width: calc(350px * 0.9);
+                height: calc(350px * 0.9);
+                top: calc(66px * 0.9);
+                left: calc(452px * 0.9);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .moon-container {
+                width: calc(350px * 0.75);
+                height: calc(350px * 0.75);
+                top: calc(66px * 0.75);
+                left: calc(452px * 0.75);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .moon-container {
+                width: calc(350px * 0.6);
+                height: calc(350px * 0.6);
+                top: calc(66px * 0.6);
+                left: calc(452px * 0.6);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .moon-container {
+                width: calc(350px * 0.45);
+                height: calc(350px * 0.45);
+                top: calc(66px * 0.45);
+                left: calc(452px * 0.45);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 2. 全屏vid视频：放在最外层，确保全屏覆盖 -->
+    <video id="vid1" src="https://img.tukuppt.com/video_show/15653652/01/29/69/62a4720b6a6ca.mp4" autoplay loop muted></video>
+    <video id="vid2" src="https://img.tukuppt.com/video_show/1863507/00/13/37/5df207d80ab35.mp" autoplay loop muted></video>
+    
+    <!-- 原背景图 -->
+    <div class="background-image"></div>
+    
+    <!-- 原月球容器及视频 -->
+    <div class="moon-container">
+        <video id="moonVideo" class="moon-video" 
+               poster="" 
+               autoplay loop controlsList="nodownload noplaybackrate">
+            <source src="https://cccimg.com/view.php/56969b4220272cd40357535e111bca84.mp4" type="video/mp4">
+            您的浏览器不支持HTML5视频。
+        </video>
+    </div>
+
+    <script>
+        const moonVideo = document.getElementById('moonVideo');
+        const fullscreenVid = document.getElementById('fullscreen-vid');
+        
+        // 1. 保留原月球视频音频逻辑
+        moonVideo.muted = false;
+        function initMoonAudioPlay() {
+            if (moonVideo.paused) {
+                moonVideo.play().catch(error => {
+                    console.log('需用户交互后播放月球视频音频，点击页面任意位置即可');
+                    document.body.addEventListener('click', () => {
+                        moonVideo.play();
+                    }, { once: true });
+                });
+            }
+        }
+        moonVideo.addEventListener('loadedmetadata', initMoonAudioPlay);
+        moonVideo.addEventListener('ended', () => {
+            moonVideo.currentTime = 0;
+            moonVideo.play();
+        });
+        
+        // 2. 确保全屏vid正常播放（冗余保障）
+        fullscreenVid.addEventListener('loadedmetadata', () => {
+            if (fullscreenVid.paused) {
+                fullscreenVid.play().catch(error => {
+                    console.log('全屏vid自动播放已触发');
+                });
+            }
+        });
+        fullscreenVid.addEventListener('ended', () => {
+            fullscreenVid.currentTime = 0;
+            fullscreenVid.play();
+        });
+    </script>
+</body>
+</html>
