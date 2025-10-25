@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>月球视频+全屏vid特效</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+            touch-action: none; /* 防止触摸设备上的默认行为 */
+            -webkit-tap-highlight-color: transparent; /* 移除移动端点击高亮 */
+        }
+        
+        /* 全屏视频特效：覆盖整个页面，作为背景层 */
+        #vid1, #vid2 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            pointer-events: none;
+            mix-blend-mode: screen;
+            mask: linear-gradient(to top right, red 90%, transparent 0);   
+            -webkit-mask: linear-gradient(to top right, red 90%, transparent 0);   
+        }
+        
+        #vid1 {
+            opacity: 0.5;
+            z-index: 0;
+        }
+        
+        #vid2 {
+            opacity: 0.25;
+            z-index: 1;
+        }
+        
+        /* 原背景图：层级低于全屏vid，作为底层背景 */
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('https://cccimg.com/view.php/d6d427e710f5de7b8c2a256e51ad7916.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+        
+        /* 月球容器：使用相对单位和transform确保在各种屏幕上居中 */
+        .moon-container {
+            position: absolute;
+            top: 53%;
+            left: 43%;
+            transform: translate(-50%, -50%);
+            width: 80vmin;
+            height: 80vmin;
+            max-width: 458px;
+            max-height: 467px;
+            z-index: 2;
+            opacity: 0.45;
+        }
+        
+        /* 月球视频样式：保持所有强羽化、光影效果 */
+        .moon-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* 强羽化效果 */
+            mask-image: radial-gradient(circle, 
+                rgba(0, 0, 0, 1) 50%,
+                rgba(0, 0, 0, 0.2) 80%,
+                rgba(0, 0, 0, 0) 90%
+            );
+            -webkit-mask-image: radial-gradient(circle, 
+                rgba(0, 0, 0, 1) 50%,
+                rgba(0, 0, 0, 0.2) 80%,
+                rgba(0, 0, 0, 0) 90%
+            );
+            mask-size: 100% 100%;
+            -webkit-mask-size: 100% 100%;
+            mask-repeat: no-repeat;
+            -webkit-mask-repeat: no-repeat;
+            /* 70%不透明度 */
+            opacity: 0.7;
+            /* 圆形裁剪与光影 */
+            clip-path: circle(45% at 50% 50%);
+            -webkit-clip-path: circle(45% at 50% 50%);
+            transition: all 0.4s ease;
+            border: 8px solid rgba(255, 255, 255, 0.22);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 
+                      inset 0 0 50px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* 针对不同高宽比屏幕的优化 */
+        @media (max-aspect-ratio: 1/1) {
+            .moon-container {
+                width: 90vmin;
+                height: 90vmin;
+            }
+        }
+        
+        @media (max-aspect-ratio: 4/3) {
+            .moon-container {
+                width: 85vmin;
+                height: 85vmin;
+            }
+        }
+        
+        @media (max-aspect-ratio: 3/2) {
+            .moon-container {
+                width: 80vmin;
+                height: 80vmin;
+            }
+        }
+        
+        /* 针对非常小的屏幕 */
+        @media (max-width: 320px) {
+            .moon-video {
+                border-width: 4px;
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 
+                          inset 0 0 30px rgba(255, 255, 255, 0.3);
+            }
+        }
+        
+        /* 针对高分辨率屏幕 */
+        @media (min-resolution: 2dppx) {
+            .moon-video {
+                border-width: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 全屏vid视频：放在最外层，确保全屏屏覆盖 -->
+    <video id="vid1" src="https://img.tukuppt.com/video_show/15653652/01/29/69/62a4720b6a6ca.mp4" autoplay loop muted playsinline></video>
+    <video id="vid2" src="https://img.tukuppt.com/video_show/1863507/00/13/37/5df207d80ab35.mp" autoplay loop muted playsinline></video>
+    
+    <!-- 原背景图 -->
+    <div class="background-image"></div>
+    
+    <!-- 原月球容器及视频 -->
+    <div class="moon-container">
+        <video id="moonVideo" class="moon-video" 
+               poster="" 
+               autoplay loop controlsList="nodownload noplaybackrate"
+               playsinline>
+            <source src="https://cccimg.com/view.php/56969b4220272cd40357535e111bca84.mp4" type="video/mp4">
+            您的浏览器不支持HTML5视频。
+        </video>
+    </div>
+
+    <script>
+        const moonVideo = document.getElementById('moonVideo');
+        const vid1 = document.getElementById('vid1');
+        const vid2 = document.getElementById('vid2');
+        
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化视频播放
+            initVideoPlayback();
+            
+            // 添加触摸事件支持
+            addTouchSupport();
+            
+            // 窗口大小变化时重新调整
+            window.addEventListener('resize', debounce(adjustForScreenSize, 100));
+            
+            // 初始调整
+            adjustForScreenSize();
+        });
+        
+        // 初始化视频播放
+        function initVideoPlayback() {
+            // 月球视频配置
+            moonVideo.muted = false;
+            
+            // 尝试自动播放所有视频
+            const playPromises = [
+                playVideoWithUserInteraction(moonVideo),
+                playVideoSilently(vid1),
+                playVideoSilently(vid2)
+            ];
+            
+            Promise.all(playPromises)
+                .then(() => console.log('所有视频播放初始化完成'))
+                .catch(error => console.log('视频播放初始化部分失败:', error));
+        }
+        
+        // 处理需要用户交互的视频播放
+        function playVideoWithUserInteraction(video) {
+            return new Promise((resolve, reject) => {
+                // 尝试直接播放
+                video.playVideo(video)
+                    .then(() => {
+                        console.log(`${video.id} 自动播放成功`);
+                        resolve();
+                    })
+                    .catch(error(error => {
+                        console.log(`${video.id} 需要用户交互才能播放，点击或触摸屏幕开始`);
+                        
+                        // 添加一次性点击/触摸事件
+                        const startPlayback = () => {
+                            playVideo(video)
+                                .then(() => {
+                                    console.log(`${video.id} 通过用户交互播放成功`);
+                                    resolve();
+                                })
+                                .catch(err => {
+                                    console.error(`${video.id} 用户交互后播放失败:`, err);
+                                    reject(err);
+                                });
+                            
+                            // 移除事件监听
+                            document.removeEventListener('click', startPlayback);
+                            document.removeEventListener('touchstart', startPlayback);
+                        };
+                        
+                        document.addEventListener('click', startPlayback, { once: true });
+                        document.addEventListener('touchstart', startPlayback, { once: true });
+                    });
+                
+                // 视频结束时循环播放
+                video.addEventListener('ended', () => {
+                    video.currentTime = 0;
+                    playVideo(video).catch(err => console.log(`${video.id} 循环播放失败:`, err));
+                });
+            });
+        }
+        
+        // 处理静音音视频的播放
+        function playVideoSilently(video) {
+            return new Promise((resolve, reject) => {
+                // 确保视频是静音的
+                video.muted = true;
+                
+                // 尝试播放
+                playVideo(video)
+                    .then(() => {
+                        console.log(`${video.id} 静音视频播放成功`);
+                        resolve();
+                    })
+                    .catch(error => {
+                        console.log(`${video.id} 静音视频需要用户交互，点击或触摸屏幕开始`);
+                        
+                        // 添加一次性点击/触摸事件
+                        const startPlayback = () => {
+                            playVideo(video)
+                                .then(() => {
+                                    console.log(`${video.id} 静音视频通过用户交互播放成功`);
+                                    resolve();
+                                })
+                                .catch(err => {
+                                    console.error(`${video.id} 静音视频用户交互后播放失败:`, err);
+                                    reject(err);
+                                });
+                            
+                            // 移除事件监听
+                            document.removeEventListener('click', startPlayback);
+                            document.removeEventListener('touchstart', startPlayback);
+                        };
+                        
+                        document.addEventListener('click', startPlayback, { once: true });
+                        document.addEventListener('touchstart', startPlayback, { once: true });
+                    });
+                
+                // 视频结束时循环播放
+                video.addEventListener('ended', () => {
+                    video.currentTime = 0;
+                    playVideo(video).catch(err => console.log(`${video.id} 静音视频循环播放失败:`, err));
+                });
+            });
+        }
+        
+        // 统一的视频播放函数，处理各种浏览器兼容性
+        function playVideo(video) {
+            return new Promise((resolve, reject) => {
+                // 对于较旧的浏览器，使用webkit前缀
+                if (video.play && typeof video.play === 'function') {
+                    video.play()
+                        .then(resolve)
+                        .catch(reject);
+                } else if (video.webkitPlay && typeof video.webkitPlay === 'function') {
+                    try {
+                        video.webkitPlay();
+                        resolve();
+                    } catch (e) {
+                        reject(e);
+                    }
+                } else {
+                    reject(new Error('浏览器不支持视频播放'));
+                }
+            });
+        }
+        
+        // 添加触摸支持
+        function addTouchSupport() {
+            // 防止触摸时的默认行为和事件冒泡
+            document.body.addEventListener('touchmove', function(e) {
+                e.preventDefault();
+            }, { passive: false });
+            
+            // 添加触摸触摸反馈
+            document.body.addEventListener('touchstart', function() {
+                document.body.style.opacity = '0.95';
+            });
+            
+            document.body.addEventListener('touchend', function() {
+                document.body.style.opacity = '1';
+            });
+        }
+        
+        // 根据屏幕大小大小调整视频
+        function adjustForScreenSize() {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const aspectRatio = windowWidth / windowHeight;
+            
+            // 调整背景视频的大小和位置
+            const backgroundVideos = [vid1, vid2];
+            backgroundVideos.forEach(video => {
+                if (aspectRatio > 16/9) {
+                    // 宽屏
+                    video.style.width = '100%';
+                    video.style.height = 'auto';
+                } else {
+                    // 窄屏或竖屏
+                    video.style.width = 'auto';
+                    video.style.height = '100%';
+                }
+            });
+            
+            console.log(`屏幕调整: ${windowWidth}x${windowHeight}, 宽高比: ${aspectRatio.toFixed(2)}`);
+        }
+        
+        // 防抖函数
+        function debounce(func, wait) {
+            let timeout;
+            return function() {
+                const context = this;
+                const args = arguments;
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    func.apply(context, args);
+                }, wait);
+            };
+        }
+    </script>
+</body>
+</html>
